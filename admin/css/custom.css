@@ -1,0 +1,15 @@
+/* override style css*/
+body{
+	font-size: 11px;
+}
+.headerBar {
+	font-size: 11px;
+}
+
+.default-font{
+	font-size: 12px;
+}
+.icon{
+	width: 28px;
+	cursor: pointer;
+}

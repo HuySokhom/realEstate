@@ -1,0 +1,139 @@
+<div class="panel with-nav-tabs panel-default">
+	<div class="panel-heading">
+		<div class="tab-content">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active">
+					<a href="#home" role="tab" data-toggle="tab">
+						<icon class="fa fa-desktop"></icon>
+						Manage Post
+					</a>
+				</li>
+				<li>
+					<a href="#profile" role="tab" data-toggle="tab">
+						<i class="fa fa-user"></i>
+						My Account
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+			<div class="tab-pane fade active in" id="home">
+
+		<button
+			class="btn btn-default"
+			data-ng-click="add();"
+			data-toggle="modal"
+			data-target="#product-popup"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Post Product
+		</button>
+		<br/><br/>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<th>
+					Title
+				</th>
+				<th>
+					Image
+				</th>
+				<th width="100px">
+					Product View
+				</th>
+				<th>
+					Price
+				</th>
+				<th width="240px">
+					Action
+				</th>
+			</thead>
+			<tr data-ng-repeat="product in products_post.elements">
+				<td>
+					<span data-ng-bind="product.fields[0].products_name"></span>
+				</td>
+				<td>
+					<img
+						src="images/{{product.products_image_thumbnail}}"
+						alt="{{product.fields[0].products_name}}"
+						title="{{product.fields[0].products_name}}"
+						class="img"
+					>
+				</td>
+				<td>
+					<span data-ng-bind="product.fields[0].products_viewed"></span>
+				</td>
+				<td>
+					<span data-ng-bind="product.products_price | currency"></span>
+				</td>
+				<td>
+					<button class="btn btn-default" data-ng-click="edit(product);">
+						<span class="glyphicon glyphicon-edit"></span>
+					</button>
+					<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<button
+						class="btn btn-warning"
+						data-ng-click="updateStatus(product);"
+						data-ng-show="product.products_status == 0"
+					>
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+					<button
+						class="btn btn-success"
+						data-ng-click="updateStatus(product);"
+						data-ng-show="product.products_status == 1"
+					>
+						<span class="glyphicon glyphicon-ok"></span>
+					</button>
+					<button
+						class="btn btn-info"
+						data-ng-click="refreshDate(product);"
+					>
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>
+					<button
+						class="btn btn-default"
+						data-ng-click="link(product.id);"
+					>
+						<span class="glyphicon glyphicon-link"></span>
+					</button>
+				</td>
+			</tr>
+		</table>
+		<div
+			data-ng-if="products_post.elements == 0"
+		>
+			<div class="alert alert-warning alert-dismissible">
+				<strong>Warning!</strong> No product post.
+			</div>
+		</div>
+		<div
+			data-ng-if="!products_post"
+			class="align_center"
+		>
+		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+		</div>
+		<div
+			class="panel-footer"
+			data-ng-show="totalItems > 10"
+		>
+			<pagination
+				total-items="totalItems"
+				ng-model="currentPage"
+				ng-change="pageChanged()"
+				max-size="5"
+				items-per-page="10"
+				boundary-links="true"
+			></pagination>
+		</div>
+		<product:post:popup></product:post:popup>
+		</div>
+			<div class="tab-pane fade" id="profile">
+				<div account></div>
+			</div>
+		</div>
+	</div>
+</div>

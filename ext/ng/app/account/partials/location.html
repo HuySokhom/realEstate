@@ -1,0 +1,9 @@
+<select 
+	class="form-control" 
+	data-ng-model="products_location"
+	data-ng-options="location.id as location.name for location in location.elements"
+	data-ng-init="account.customers_location == location.id"
+	required
+>
+	<option value="">--Select--</option>
+</select>

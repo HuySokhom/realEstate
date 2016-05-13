@@ -1,0 +1,248 @@
+<form data-ng-submit="save();" name="myForm">
+<div 
+	class="modal fade"
+	id="product-popup"
+	data-keyboard="false"
+	data-backdrop="static"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button 
+					type="button" 
+					class="close" 
+					data-dismiss="modal"
+					data-ng-click="closeForm();"
+				>
+					<span>&times;</span>
+				</button>
+				<h4> 
+					<label>Post Your Ad</label>
+				</h4>
+	      	</div>
+			<div class="modal-body">
+				<div >
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active">
+							<a href="#home1" role="tab" data-toggle="tab">
+								<icon class="fa fa-home"></icon> Product
+							</a>
+						</li>
+						<li><a href="#profile1" role="tab" data-toggle="tab">
+								<i class="fa fa-user"></i> Contact
+							</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane fade active in" id="home1">
+							<h5><label>Product Info</label></h5>
+							<table class="table table-bordered">
+								<tr>
+									<td>
+										Category
+									</td>
+									<td>
+										<div id="category"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Title:
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="title"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Kind of
+									</td>
+									<td>
+										<select
+											data-ng-model="manufacturer"
+											data-ng-options="manufacturer.id as manufacturer.manufacturers_name for manufacturer in manufacturers.elements"
+											data-ng-init="manufacturer == manufacturer.id"
+											class="form-control"
+											required
+										>
+											<option value="">--Select--</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Location
+									</td>
+									<td>
+										<location:account></location:account>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Price
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="price"
+											only-numbers
+											required
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Description
+									</td>
+									<td>
+										<textarea
+											rows="15"
+											id="description"
+										>
+										</textarea>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Add Photo Main
+									</td>
+									<td>
+										<input
+											type="file"
+											ng-model="picFile"
+											name="file"
+											accept="image/*"
+											ngf-model-invalid="errorFiles"
+											ngf-select="uploadPic(picFile, 'main_image')"
+											class="form-control"
+											data-ng-value="image_thumbnail"
+										>
+										<img
+											ng-show="image"
+											class="thumb"
+											src="images/{{image_thumbnail}}"
+										>
+										<span class="progress" data-ng-show="picFile.progress >= 0">
+											<div
+												style="width:{{picFile.progress}}%"
+												ng-bind="picFile.progress + '%'"
+											>
+											</div>
+										</span>
+										<span ng-show="picFile.result">Upload Successful</span>
+										<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Add Photo Detail
+									</td>
+									<td>
+										<div image></div>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="tab-pane fade" id="profile1">
+							<h5><label>Contact Info</label></h5>
+							<table class="table table-bordered">
+								<tr width="150px">
+									<td>
+										Name
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="user.user_name"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Telephone Number
+									</td>
+									<td>
+										<input
+											type="text"
+											class="form-control"
+											data-ng-model="user.customers_telephone"
+											only-numbers
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Email
+									</td>
+									<td>
+										<input
+											type="email"
+											class="form-control"
+											data-ng-model="user.customers_email_address"
+											required="required"
+										/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Location
+									</td>
+									<td>
+										<select
+											class="form-control"
+											data-ng-model="user.customers_location"
+											data-ng-options="location.id as location.name for location in location.elements"
+											data-ng-init="user.customers_location == location.id"
+										>
+											<option value="">--Select--</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Address
+									</td>
+									<td>
+										<textarea
+											class="form-control"
+											data-ng-model="user.customers_address"
+											rows="5"
+										></textarea>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button 
+					class="btn btn-default" 
+					data-dismiss="modal"
+					data-ng-click="closeForm();"
+				>
+					Close
+				</button>
+				<button 
+					class="btn btn-primary"
+					data-ng-disabled="!disabled"
+				>
+					Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+

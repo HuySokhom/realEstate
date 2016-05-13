@@ -1,0 +1,58 @@
+<button 
+	class="btn btn-default default-font" 
+	data-toggle="modal" 
+	data-target="#brand"
+	data-ng-click="add();"
+>
+	<span class="glyphicon glyphicon-plus"></span>
+	Add Vehicles Model
+</button>
+<table class="table table-striped table-bordered default-font">
+	<tr>
+		<th>
+			Id
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Brand
+		</th>
+		<th>
+			Action
+		</th>	
+	</tr>
+	<tr
+		data-ng-repeat="vehicle in vehicle_model.elements"
+	>
+		<td width="10%">
+			<span data-ng-bind="vehicle.id"></span>
+		</td>
+		<td width="40%">
+			<span data-ng-bind="vehicle.name"></span>
+		</td>
+		<td width="40%">
+			<span data-ng-bind="vehicle.brand[0].name"></span>
+		</td>
+		<td width="10%">
+			<img 
+				alt="edit" 
+				src="images/icons/edit.png"
+				class="icon"
+				title="edit"
+				data-toggle="modal" 
+				data-target="#brand"
+				data-ng-click="edit(vehicle);"
+			>
+			<img 
+				alt="edit" 
+				src="images/icons/delete.png"
+				class="icon"
+				title="edit"
+				data-ng-click="remove($index, vehicle.id);"
+			>
+		</td>
+	</tr>
+</table>
+<vehicle:popup></vehicle:popup>
+

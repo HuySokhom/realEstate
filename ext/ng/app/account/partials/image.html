@@ -1,0 +1,211 @@
+<div
+    data-ng-if="product_image_thumbnail"
+    data-ng-repeat="product_image in product_image_thumbnail"
+>
+    <img src="images/{{product_image.image_thumbnail}}">{{$index}}
+    <input
+        type="file"
+        ng-model="picFile"
+        name="file"
+        accept="image/*"
+        ngf-model-invalid="errorFiles"
+        ngf-select="uploadPic(picFile@index, '1')"
+        class="form-control"
+    >
+</div>
+<input
+    type="file"
+    ng-model="picFile1"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile1, '1')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail1"
+    class="thumb"
+    src="images/{{image_thumbnail1}}"
+>
+<span class="progress" data-ng-show="picFile1.progress >= 0">
+    <div
+        style="width:{{picFile.progress}}%"
+        ng-bind="picFile1.progress + '%'"
+    >
+</div>
+</span>
+<span ng-show="picFile1.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+<!-- file upload 2-->
+<input
+    type="file"
+    ng-model="picFile2"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile2, '2')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail2"
+    class="thumb"
+    src="images/{{image_thumbnail2}}"
+>
+<span class="progress" data-ng-show="picFile2.progress >= 0">
+    <div
+        style="width:{{picFile2.progress}}%"
+        data-ng-bind="picFile2.progress + '%'"
+        >
+    </div>
+</span>
+<span data-ng-show="picFile2.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+<!-- file upload 3-->
+<input
+    type="file"
+    ng-model="picFile3"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile3, '3')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail3"
+    class="thumb"
+    src="images/{{image_thumbnail3}}"
+>
+<span class="progress" data-ng-show="picFile3.progress >= 0">
+    <div
+        style="width:{{picFile3.progress}}%"
+        data-ng-bind="picFile3.progress + '%'"
+    >
+    </div>
+</span>
+<span data-ng-show="picFile3.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+<!-- file upload 4-->
+<input
+    type="file"
+    ng-model="picFile4"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile4, '4')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail4"
+    class="thumb"
+    src="images/{{image_thumbnail4}}"
+>
+<span class="progress" data-ng-show="picFile4.progress >= 0">
+    <div
+        style="width:{{picFile4.progress}}%"
+        data-ng-bind="picFile4.progress + '%'"
+        >
+    </div>
+</span>
+<span data-ng-show="picFile4.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+<!-- file upload 5-->
+<input
+    type="file"
+    ng-model="picFile5"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile5, '5')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail5"
+    class="thumb"
+    src="images/{{image_thumbnail5}}"
+>
+<span class="progress" data-ng-show="picFile5.progress >= 0">
+    <div
+        style="width:{{picFile5.progress}}%"
+        data-ng-bind="picFile5.progress + '%'"
+        >
+    </div>
+</span>
+<span data-ng-show="picFile5.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+<!-- file upload 6-->
+<input
+    type="file"
+    ng-model="picFile6"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile6, '6')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail6"
+    class="thumb"
+    src="images/{{image_thumbnail6}}"
+    >
+<span class="progress" data-ng-show="picFile6.progress >= 0">
+    <div
+        style="width:{{picFile6.progress}}%"
+        data-ng-bind="picFile6.progress + '%'"
+        >
+    </div>
+</span>
+<span data-ng-show="picFile6.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+<!-- file upload 7-->
+<input
+    type="file"
+    ng-model="picFile7"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile7, '7')"
+    class="form-control"    
+>
+<img
+    ng-show="image_thumbnail7"
+    class="thumb"
+    src="images/{{image_thumbnail7}}"
+    >
+<span class="progress" data-ng-show="picFile7.progress >= 0">
+    <div
+        style="width:{{picFile7.progress}}%"
+        data-ng-bind="picFile7.progress + '%'"
+        >
+    </div>
+</span>
+<span data-ng-show="picFile7.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+<!-- file upload 8-->
+<input
+    type="file"
+    ng-model="picFile8"
+    name="file"
+    accept="image/*"
+    ngf-model-invalid="errorFiles"
+    ngf-select="uploadPic(picFile8, '8')"
+    class="form-control"
+>
+<img
+    ng-show="image_thumbnail8"
+    class="thumb"
+    src="images/{{image_thumbnail8}}"
+>
+<span class="progress" data-ng-show="picFile8.progress >= 0">
+    <div
+        style="width:{{picFile8.progress}}%"
+        data-ng-bind="picFile8.progress + '%'"
+    >
+    </div>
+</span>
+<span data-ng-show="picFile8.result">Upload Successful</span>
+<span class="err" ng-show="errorMsg">{{errorMsg}}</span>

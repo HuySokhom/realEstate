@@ -1,0 +1,68 @@
+<?php
+/*
+  $Id$
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  Copyright (c) 2010 osCommerce
+
+  Released under the GNU General Public License
+*/
+
+  $cl_box_groups[] = array(
+    'heading' => BOX_HEADING_CATALOG,
+    'apps' => array(
+      array(
+        'code' => FILENAME_CATEGORIES,
+        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS,
+        'link' => tep_href_link(FILENAME_CATEGORIES)
+      ),
+      array(
+        'code' => FILENAME_PRODUCTS_ATTRIBUTES,
+        'title' => BOX_CATALOG_CATEGORIES_PRODUCTS_ATTRIBUTES,
+        'link' => tep_href_link(FILENAME_PRODUCTS_ATTRIBUTES)
+      ),
+      array(
+        'code' => FILENAME_MANUFACTURERS,
+        'title' => BOX_CATALOG_MANUFACTURERS,
+        'link' => tep_href_link(FILENAME_MANUFACTURERS)
+      ),
+      array(
+        'code' => FILENAME_REVIEWS,
+        'title' => BOX_CATALOG_REVIEWS,
+        'link' => tep_href_link(FILENAME_REVIEWS)
+      ),
+      array(
+        'code' => FILENAME_SPECIALS,
+        'title' => BOX_CATALOG_SPECIALS,
+        'link' => tep_href_link(FILENAME_SPECIALS)
+      ),
+      array(
+        'code' => FILENAME_PRODUCTS_EXPECTED,
+        'title' => BOX_CATALOG_PRODUCTS_EXPECTED,
+        'link' => tep_href_link(FILENAME_PRODUCTS_EXPECTED)
+      ),
+      array(
+        'code' => FILENAME_VEHICLES_TYPE,
+        'title' => BOX_CATALOG_VEHICLES_TYPE,
+        'link' => tep_href_link(FILENAME_VEHICLES_TYPE)
+      ),
+      array(
+          'code' => FILENAME_LOCATION,
+          'title' => BOX_CATALOG_LOCATION,
+          'link' => tep_href_link(FILENAME_LOCATION)
+      ),
+      array(
+          'code' => FILENAME_IMAGE_SLIDER,
+          'title' => BOX_CATALOG_IMAGE_SLIDER,
+          'link' => tep_href_link(FILENAME_IMAGE_SLIDER)
+      ),
+      array(
+          'code' => FILENAME_CATEGORIES_BRAND,
+          'title' => BOX_CATALOG_CATEGORIES_BRAND,
+          'link' => tep_href_link(FILENAME_CATEGORIES_BRAND)
+      )
+    )
+  );
+?>
