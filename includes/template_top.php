@@ -38,7 +38,7 @@
    <script src="ext/js/respond.min.js"></script>
    <script src="ext/js/excanvas.min.js"></script>
 <![endif]-->
- 
+    <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
 <script src="ext/jquery/jquery-1.11.1.min.js"></script>
 
 <!-- font awesome -->
