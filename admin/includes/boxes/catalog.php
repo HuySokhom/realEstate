@@ -57,11 +57,6 @@
           'code' => FILENAME_IMAGE_SLIDER,
           'title' => BOX_CATALOG_IMAGE_SLIDER,
           'link' => tep_href_link(FILENAME_IMAGE_SLIDER)
-      ),
-      array(
-          'code' => FILENAME_CATEGORIES_BRAND,
-          'title' => BOX_CATALOG_CATEGORIES_BRAND,
-          'link' => tep_href_link(FILENAME_CATEGORIES_BRAND)
       )
     )
   );
