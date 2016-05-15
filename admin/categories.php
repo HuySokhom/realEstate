@@ -659,7 +659,7 @@ updateGross();
 <!-- TinyMce ditor -->
 <script>
 	tinymce.init({
-      selector:'#products_description',
+      selector:'textarea',
       plugins: 'media'
     });
 </script>
