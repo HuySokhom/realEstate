@@ -988,10 +988,6 @@ CREATE TABLE `customers` (
 INSERT INTO `customers` VALUES ('1', '3', '', 'test', 'test', 'test posting', '', '0000-00-00 00:00:00', 'test@test.com', '1', 'phnom penh', '0912 332', '', '$P$DHXuIqt1FraLmwA0.jDbRUQKNw69qs.', '1');
 INSERT INTO `customers` VALUES ('2', '0', 'm', 'test', 'test', '', '', '2010-05-06 00:00:00', 'cvn@testw.adf', '2', '', '12512', 'test@test.com', '$P$DpiUh/.52rNO0l1mcIRJgTWMWkXjCp/', '');
 INSERT INTO `customers` VALUES ('3', '0', 'm', 'GASG', 'sd gsgd', '', '', '1999-01-05 00:00:00', 'asg@gm.com', '3', '', '1241241 52 1255', '', '$P$DWCxvfMUNfRgLmjSP01fkWZIVEL.fB.', '');
-INSERT INTO `customers` VALUES ('4', '0', '', '', '', 'test', '', '0000-00-00 00:00:00', 'test@test123.com', '4', '', '', '', '$P$DZzKStkf05c.AJtH/FjMmTBwEDpyKf0', '');
-INSERT INTO `customers` VALUES ('5', '21', '', '', '', 'ate', '', '0000-00-00 00:00:00', 'test@21test.com', '5', 'hohohohohoho', '11111111111111111111111111111', '', '$P$Dzk5dwyypgi7zq0E6LngYaqNzdgK3//', '');
-INSERT INTO `customers` VALUES ('6', '0', '', '', '', 'gooo', '', '0000-00-00 00:00:00', 'goo@gmail.com', '6', '', '', '', '$P$DxmYD6GiXi0cLukSEyDtCo53yRQw7R0', '');
-
 -- ----------------------------
 -- Table structure for `customers_basket`
 -- ----------------------------
