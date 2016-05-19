@@ -23,7 +23,12 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 
+?>
+<div class="container">
+
+<?php
   if ($product_check['total'] < 1) {
+
 ?>
 
 <div class="contentContainer">
@@ -303,7 +308,7 @@
 ?>
 
 </div>
-
+</div>
 </div>
 </form>
 <script>

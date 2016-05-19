@@ -33,7 +33,11 @@
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 
   require(DIR_WS_INCLUDES . 'template_top.php');
-include(DIR_WS_INCLUDES . 'slider.php');
+  include(DIR_WS_INCLUDES . 'slider.php');
+
+?>
+<div class="container">
+<?php
   if ($category_depth == 'nested') {
     $category_query = tep_db_query("select cd.categories_name, c.categories_image from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = '" . (int)$current_category_id . "' and cd.categories_id = '" . (int)$current_category_id . "' and cd.language_id = '" . (int)$languages_id . "'");
     $category = tep_db_fetch_array($category_query);

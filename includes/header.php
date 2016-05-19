@@ -21,7 +21,10 @@
     <div class="navigation-block">
       <!-- Logo Block -->
       <div class="col-md-2 logo-block no-padding">
-        <a title="logo" href="index.html"><img src="images/logo.png" alt="logo" /></a>
+        <?php
+        echo '<a href="' . tep_href_link('index.php') . '">
+            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"  alt="logo"/></a>';
+        ?>
       </div><!-- Logo Block /- -->
       <!-- Menu Block -->
       <div class="col-md-10 menu-block">
@@ -37,62 +40,35 @@
           </div>
           <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="index.html">Home 1</a></li>
-                  <li><a href="index2.html">Home 2</a></li>
-                  <li><a href="index3.html">Home 3</a></li>
-                </ul>
+              <li>
+                <a href="index.html">BUY</a>
               </li>
-              <li class="dropdown">
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">Listing</a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="aa-listing.html">AA Listing</a></li>
-                  <li><a href="aa-listing-list.html">AA Listing List</a></li>
-                </ul>
+              <li>
+                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">RENT</a>
               </li>
-              <li class="dropdown">
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">Property</a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="property-detail.html">Detail 1</a></li>
-                  <li><a href="property-detail-2.html">Detail 2</a></li>
-                </ul>
+              <li>
+                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">NEW DEVELOPMENTS</a>
               </li>
-              <li class="dropdown">
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="blog.html">Blog</a></li>
-                  <li><a href="blog-detail.html">Blog Detail</a></li>
-                </ul>
+              <li>
+                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">CONDO</a>
               </li>
-              <!--li><a href="work.html">Gallery</a></li-->
-              <li class="dropdown">
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="profile.html">Profile</a></li>
-                  <li><a href="agent-listing.html">Agent Listing 1</a></li>
-                  <li><a href="agent-listing-2.html">Agent Listing 2</a></li>
-                  <li><a href="agent-details.html">Agent Detail</a></li>
-                  <li><a href="shortcodes.html">Shortcodes</a></li>
-                </ul>
+              <li>
+                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">BOREYS</a>
               </li>
-              <li><a href="contact.html">Contact Us</a></li>
+              <li>
+                  <a href="contact.html">COMMERCIAL</a>
+              </li>
+              <li>
+                <a href="contact.html">AGENTS</a>
+              </li>
+              <li>
+                <a href="contact.html">NEWS</a>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </nav><!-- nav /- -->
         <a title="Add Property" href="submit-property.html" class="pull-right">Add Property</a>
       </div><!-- Menu Block /- -->
     </div><!-- Navigation Block /- -->
-    <div class="pull-right">
-      <a title="User" href="index.html#" class="user-icon"><img src="images/icon/user-icon.png" alt="user icon" /></a>
-      <div id="sb-search" class="sb-search">
-        <form>
-          <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
-          <button class="sb-search-submit"><i class="fa fa-search"></i></button>
-          <span class="sb-icon-search"></span>
-        </form>
-      </div>
-    </div>
   </div><!-- container /- -->
 </header><!-- Header Section /- -->
