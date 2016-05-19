@@ -28,11 +28,24 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
+    <meta name="description" content="singa property, real property, phnom penh, real estate in cambodia, news ">
+    <meta name="keywords" content="singa property, real property, phnom penh, real estate in cambodia, news ">
+    <meta name="author" content="">
+    <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
+    <meta NAME="robots" content="noindex, follow">
+    <meta NAME="robots" content="index, nofollow">
+    <meta NAME="robots" content="noindex, nofollow">
     <link rel="shortcut icon" href="images/banners/logo.ico">
-<link href="ext/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="custom.css" rel="stylesheet">
-<link href="user.css" rel="stylesheet">
-<link href='ext/css/google_fonts.css' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link href="themes/libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+    <linK href="themes/libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
+    <linK href="themes/libraries/owl-carousel/owl.theme.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
+    <link href="themes/libraries/animate/animate.min.css" rel="stylesheet"/>
+    <link href="themes/libraries/checkbox/minimal.css" rel="stylesheet"/>
+    <link href="themes/libraries/drag-drop/drag-drop.css" rel="stylesheet"/>
+    <link href="themes/css/components.css" rel="stylesheet"/>
+    <link href="themes/style.css" rel="stylesheet"/>
+    <link href="themes/css/media.css" rel="stylesheet"/>
 <!--[if lt IE 9]>
    <script src="ext/js/html5shiv.js"></script>
    <script src="ext/js/respond.min.js"></script>
@@ -43,7 +56,8 @@
 
 <!-- font awesome -->
 <link rel="stylesheet" href="ext/css/Font-Awesome-master/css/font-awesome.min.css">
-
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="sNMk592JV2wwHn6DPJ8C5oy/hHDnjIlZBOHyngtTbpQ=" />
 <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
 <body>

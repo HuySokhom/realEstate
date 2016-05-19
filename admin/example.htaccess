@@ -40,7 +40,7 @@
 
 
 RewriteEngine On 
-RewriteBase /osCommerce/admin/
+RewriteBase /realEstate/admin/
 
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
