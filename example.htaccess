@@ -10,7 +10,7 @@ RewriteEngine On
 
   # Change the following line using the instructions above  
   
-RewriteBase /autogear-garage/
+RewriteBase /realEstate/
 
 RewriteRule ^(.*)-p-(.*).html$ product_info.php?products_id=$2&%{QUERY_STRING}
 RewriteRule ^(.*)-c-(.*).html$ index.php?cPath=$2&%{QUERY_STRING}
