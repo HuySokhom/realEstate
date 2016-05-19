@@ -39,3 +39,10 @@ RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
 # /end api
+
+
+RewriteCond %{THE_REQUEST} (.*)\.php
+RewriteRule ^(.*)\.php $1.html [R=301,L]
+
+RewriteCond %{THE_REQUEST} (.*)\.html
+RewriteRule ^(.*)\.html $1.php [L]

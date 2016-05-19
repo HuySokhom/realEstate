@@ -278,7 +278,7 @@ textarea {
 	width: 31.21%;
 	content: "";
 	height: 100%;
-	border-top: 91px solid #79b445;
+	border-top: 91px solid #3C64FF;
 	border-right: 30px solid transparent;
 }
 
@@ -369,7 +369,7 @@ textarea {
 }
 
 .menu-block > a {
-	background-color: #79b445;
+	background-color: #3C64FF;
 	padding: 8px 20px;
 	color: #fff;
 	font-size: 16px;
@@ -383,10 +383,10 @@ textarea {
 	color: #79B445;
 }
 
-.menu-block .navbar-default .navbar-nav > .active > a, 
-.menu-block .navbar-default .navbar-nav > .active > a:focus, 
+.menu-block .navbar-default .navbar-nav > .active > a,
+.menu-block .navbar-default .navbar-nav > .active > a:focus,
 .menu-block .navbar-default .navbar-nav > .active > a:hover,
-.menu-block .dropdown-menu > li > a:focus, 
+.menu-block .dropdown-menu > li > a:focus,
 .menu-block .dropdown-menu > li > a:hover {
 	background-color: transparent;
 }
@@ -429,7 +429,7 @@ textarea {
 	color: #fff;
 	float: left;
 	height: 44px;
-	line-height: 44px; 
+	line-height: 44px;
 	width: 56px;
 	text-align: center;
 	font-size: 18px;
@@ -891,7 +891,7 @@ textarea {
 	width: 50px;
 }
 
-.rent-property-block .owl-controls .owl-buttons .owl-prev, 
+.rent-property-block .owl-controls .owl-buttons .owl-prev,
 .sale-property-block .owl-controls .owl-buttons .owl-prev,
 .featured-property .owl-controls .owl-buttons .owl-prev {
 	background-image: url("images/icon/prev.png")
@@ -1005,7 +1005,7 @@ textarea {
 	display: inline-block;
 	line-height: 32px;
 	text-align: center;
-	margin: 0 13px; 
+	margin: 0 13px;
 }
 
 .featured-section2 .section-header h4:first-child span {
@@ -1181,7 +1181,7 @@ textarea {
 	border-radius: 100%;
 }
 
-/* Partner section */	
+/* Partner section */
 .business-partner {
 	background-color: #f2f4f5;
 	padding: 25px;
@@ -1197,7 +1197,7 @@ textarea {
 	background-position: bottom;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	height: 795px;	
+	height: 795px;
 	width: 100%;
 	clear: both;
 	padding-top: 60px;
@@ -1216,7 +1216,7 @@ textarea {
 	width: 31.21%;
 	content: "";
 	height: 100%;
-	border-top: 72px solid #79b445;
+	border-top: 72px solid #3C64FF;
 	border-left: 30px solid transparent;
 	right: 0;
 }
@@ -1373,7 +1373,7 @@ textarea {
 .banner-inner {
 	position: relative;
 }
- 
+
 .page-title {
 	top: 0%;
 	left: 0;
@@ -1386,7 +1386,7 @@ textarea {
 	font-size: 22px;
 	color: #fff;
 	font-weight: 700;
-	background-color: #272727;	
+	background-color: #272727;
 	margin: 0;
 	padding: 12px 25px 12px 44px;
 	display: inline-block;
@@ -1503,7 +1503,7 @@ textarea {
 
 /* Pagination */
 .listing-pagination {
-	text-align: center;	
+	text-align: center;
 }
 
 .listing-pagination .pagination {
@@ -1555,7 +1555,7 @@ textarea {
 
 .widget-search  .widget-title {
 	font-size: 18px;
-	margin-top: 0;	
+	margin-top: 0;
 	margin-bottom: 45px;
 }
 
@@ -1590,7 +1590,7 @@ textarea {
 	padding: 15px 55px;
 	border-radius: 0;
 	font-size: 17px;
-}	
+}
 
 .widget-property-featured h2  span {
 	font-size: 20px;
@@ -1611,7 +1611,7 @@ textarea {
 	color: #79b445;
 	margin: 0;
 }
-	
+
 .property-featured-inner {
 	border-bottom: 1px solid #f0f0f0;
 	display: inline-block;
@@ -1681,7 +1681,7 @@ textarea {
 .contact-address a {
 	display: inline-block;
 	line-height: 25px;
-	padding-left: 30px;	
+	padding-left: 30px;
 }
 
 .contact-address p span.col-md-6 {
@@ -1712,7 +1712,7 @@ textarea {
 	background-color: #f2f4f5;
 	width: 100%;
 	padding: 41px 33px;
-	display: inline-block;	
+	display: inline-block;
 }
 
 .contact-feedback-form h3,
@@ -1753,7 +1753,7 @@ textarea {
 
 .contact-feedback-form [type="submit"] {
 	color: #fff;
-	background-color: #79b445;	
+	background-color: #79b445;
 	font-weight: 400;
 	border: none;
 	padding: 12px 35px;
@@ -1764,7 +1764,7 @@ textarea {
 
 .contact-feedback-form input:focus,
 .contact-feedback-form textarea:focus,
-.property-profile-form  input[type="text"]:focus, 	
+.property-profile-form  input[type="text"]:focus,
 .property-profile-form  textarea:focus,
 .submit-property .contact-feedback-form select:focus {
 	box-shadow: 0 0px 10px rgba(200,200,200,0.9);
@@ -1892,7 +1892,7 @@ textarea {
 	padding: 9px 22px;
 	background-color: #79b445;
 	color: #fff;
-	margin-top: 15px;	
+	margin-top: 15px;
 	border: none;
 	border-radius: 0;
 }
@@ -2126,7 +2126,7 @@ textarea {
 	margin-right: 10px;
 }
 
-.agent-header ul li a { 
+.agent-header ul li a {
 	color: #565659;
 	font-size: 14px;
 }
@@ -2135,7 +2135,7 @@ textarea {
 	color: #757575;
 	line-height: 26px;
 	font-weight: 300;
-	margin-top: 22px; 
+	margin-top: 22px;
 	margin-bottom: 0;
 }
 
@@ -2300,7 +2300,7 @@ textarea {
 
 .other-properties .property-images-box span,
 .other-properties .property-images-box h4 {
-	font-weight: normal; 
+	font-weight: normal;
 }
 
 
@@ -2458,7 +2458,7 @@ textarea {
 	font-size: 12px;
 }
 
-.agent-listing-detail p i { 
+.agent-listing-detail p i {
 	font-size: 14px;
 	color: #868686;
 	margin-right: 14px;
@@ -2545,7 +2545,7 @@ textarea {
 }
 
 .blog-listing .entry-cover > i,
-.blog-slider .item > i { 
+.blog-slider .item > i {
 	background-color: #79b445;
 	width: 45px;
 	height: 41px;
@@ -2618,8 +2618,8 @@ textarea {
 	outline: none;
 }
 
-.blog-listing .entry-content .read-more:hover, 
-.blog-listing .entry-content .read-more:focus { 
+.blog-listing .entry-content .read-more:hover,
+.blog-listing .entry-content .read-more:focus {
 	background-color: #79b445;
 	border-color: #79b445;
 	color: #fff;
@@ -2638,7 +2638,7 @@ textarea {
 	top: 42%;
 }
 
-.blog-slider .carousel-control:hover { 
+.blog-slider .carousel-control:hover {
 	background-color: #0DBAE8;
 }
 
@@ -2662,7 +2662,7 @@ textarea {
 	color: #fff;
 }
 
-.blog-listing .entry-cover span span { 
+.blog-listing .entry-cover span span {
 	font-size: 20px;
 	margin-top: 30px;
 	padding: 0;
@@ -2967,7 +2967,7 @@ textarea {
 	padding: 30px 20px;
 }
 
-.accordions-type .panel-body p { 
+.accordions-type .panel-body p {
 	line-height: 28px;
 	font-weight: 300;
 	margin-bottom: 30px;
@@ -3001,7 +3001,7 @@ textarea {
     color: #fff;
 }
 
-/* Tabs */ 
+/* Tabs */
 .tabs-type {
 	display: inline-block;
 	margin-bottom: 120px;
@@ -3036,10 +3036,10 @@ textarea {
 	box-shadow: inset -3px 0px 2px 0px rgba(50, 50, 50, 0.15);
 }
 
-.tabs-type .nav-tabs > li > a:focus, 
+.tabs-type .nav-tabs > li > a:focus,
 .tabs-type .nav-tabs > li > a:hover,
-.tabs-type .nav-tabs > li.active > a, 
-.tabs-type .nav-tabs > li.active > a:focus, 
+.tabs-type .nav-tabs > li.active > a,
+.tabs-type .nav-tabs > li.active > a:focus,
 .tabs-type .nav-tabs > li.active > a:hover {
     margin-left: 0px;
 	border-right: none;
@@ -3117,7 +3117,7 @@ textarea {
 .shortcodes .codes-title {
 	font-weight: bold;
 	font-size: 18px;
-	margin: 0px 0 35px 0; 
+	margin: 0px 0 35px 0;
 	text-transform: uppercase;
 }
 
@@ -3217,7 +3217,7 @@ textarea {
 	margin-bottom: 0;
 }
 
-.submit-property .nav > li > a:focus, 
+.submit-property .nav > li > a:focus,
 .submit-property .nav > li > a:hover,
 .submit-property .nav> li.active > a {
     background-color: #79B445;
@@ -3321,12 +3321,12 @@ textarea {
 
 .submit-property .droparea {
 	float: none;
-	display: block;	
+	display: block;
 	padding: 30px;
 	margin: 0 auto 53px;
 }
 
-.submit-property .droparea > input { 
+.submit-property .droparea > input {
 	margin-top: -50px;
 }
 

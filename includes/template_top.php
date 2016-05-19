@@ -61,16 +61,5 @@
 <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
 <body>
-
   <?php echo $oscTemplate->getContent('navigation'); ?>
-  
-  <div id="bodyWrapper" class="<?php echo BOOTSTRAP_CONTAINER; ?>">
-    <div class="row" style="margin-top: 100px;">
-
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
-
-      <div
-          id="bodyContent"
-          class="col-md-<?php echo $oscTemplate->getGridContentWidth(); ?> <?php echo ($oscTemplate->hasBlocks('boxes_column_left') ? 'col-md-push-' . $oscTemplate->getGridColumnWidth() : ''); ?>"
-          style="margin-top: -40px;"
-      >
