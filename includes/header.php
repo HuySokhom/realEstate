@@ -14,6 +14,11 @@
           <li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
           <li><a href="index.html#"><i class="fa fa-linkedin"></i></a></li>
           <li><a href="index.html#"><i class="fa fa-rss"></i></a></li>
+          <li>
+            <button class="btn">
+              Add Property
+            </button>
+          </li>
         </ul>
       </div>
     </div><!-- Top Header -->
@@ -67,7 +72,6 @@
             </ul>
           </div><!--/.nav-collapse -->
         </nav><!-- nav /- -->
-        <a title="Add Property" href="submit-property.html" class="pull-right">Add Property</a>
       </div><!-- Menu Block /- -->
     </div><!-- Navigation Block /- -->
   </div><!-- container /- -->
