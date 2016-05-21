@@ -55,6 +55,10 @@ define('MENU_AGENTS', 'Agents');
 define('MENU_NEWS', 'News');
 define('LOGIN', 'Login');
 define('REGISTER', 'Register');
+define('HEADING_FOOTER_PROFILE', 'Profile');
+define('HEADING_FOOTER_TERM', 'Term');
+define('HEADING_FOOTER_CONTACT', 'Contact');
+define('HEADING_FOOTER_ABOUT', 'About');
 
 // header text in includes/header.php
 define('HEADER_TITLE_CREATE_ACCOUNT', 'Create an Account');

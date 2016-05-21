@@ -14,10 +14,10 @@
 	$(document).ready( function($) {
 		
 		/* Expanding Search */
-		var uisearch = new UISearch( document.getElementById( 'sb-search' ) );
+		//var uisearch = new UISearch( document.getElementById( 'sb-search' ) );
 		
 		/* Sticky Navigation */
-		var stickyNavTop = $('#top').offset().top;
+		var stickyNavTop = $('#top').offset();
 		var scrollTop = $(window).scrollTop();
 		var stickyNav = function() {
 
@@ -316,5 +316,10 @@
 	{
 		$("#site-loader").css('display','none');
 	}
-	
+
+	var selector = "ul a";
+	$(selector).filter(function () {
+		return this.href == location.href.replace(/#.*/, "");
+	}).attr( 'id', 'active' );//.addClass('active');
+
 })(jQuery);

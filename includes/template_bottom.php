@@ -4,79 +4,65 @@
     <!-- container -->
     <div class="container">
         <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <div class="col-sm-6">
-                <div class="footerbox">
-                    <h2><?php echo MODULE_CONTENT_FOOTER_CONTACT_US_HEADING_TITLE; ?></h2>
-                    <address>
-                        <strong><?php echo STORE_NAME; ?></strong><br>
-                        <?php echo nl2br(STORE_ADDRESS); ?><br>
-                        <abbr title="Phone">P:</abbr> <?php echo STORE_PHONE; ?><br>
-                        <abbr title="Email">E:</abbr> <?php echo STORE_OWNER_EMAIL_ADDRESS; ?>
-                    </address>
-                </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="footerbox">
+                <h3><?php echo HEADING_FOOTER_PROFILE; ?></h3>
+                <address>
+                    <strong><?php echo STORE_NAME; ?></strong><br>
+                    <?php echo nl2br(STORE_ADDRESS); ?><br>
+                    Phone:
+                    <?php echo STORE_PHONE; ?>
+                    <br>
+                    Email:
+                    <a href="mailto:<?php echo STORE_OWNER_EMAIL_ADDRESS; ?>" target="_top">
+                        <?php echo STORE_OWNER_EMAIL_ADDRESS; ?>
+                    </a>
+                </address>
             </div>
-
         </div><!-- col-md-3 -->
 
         <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-4 col-sm-6">
             <!-- Quick Link Widget -->
-            <aside class="widget widget_quick_links">
-                <h3 class="widget-title">Quick Links</h3>
-                <ul class="p_l_z">
-                    <li><a title="Quick Links" href="index.html#">Listing</a></li>
-                    <li><a title="Quick Links" href="index.html#">Property</a></li>
-                    <li><a title="Quick Links" href="index.html#">News</a></li>
-                    <li><a title="Quick Links" href="index.html#">Gallery</a></li>
-                    <li><a title="Quick Links" href="index.html#">Pages</a></li>
-                    <li><a title="Quick Links" href="index.html#">Types</a></li>
-                    <li><a title="Quick Links" href="index.html#">Contact Us</a></li>
-                </ul>
+            <aside class="footerbox">
+                <h3 class="widget-title"><?php echo HEADING_FOOTER_CONTACT; ?></h3>
+                <div><a title="contact" href="contact_us.html"><?php echo HEADING_FOOTER_CONTACT; ?></a></div>
+                <div><a title="about" href="about.html"><?php echo HEADING_FOOTER_ABOUT; ?></a></div>
             </aside>
             <!-- Quick Link Widget /- -->
         </div><!-- col-md-3 -->
 
         <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-4 col-sm-6">
             <!-- Address Widget -->
-            <aside class="widget widget_address">
-                <h3 class="widget-title">Address</h3>
-                <p>108 Villa Precy Subdivision Kumintang Ilaya Batangas, Philippines</p>
-                <span>1200 666 12345</span>
-                <a title="mailto" href="mailto:info@propertyexpert.com ">info@propertyexpert.com </a>
+            <aside class="footerbox">
+                <h3 class="widget-title"><?php echo HEADING_FOOTER_TERM; ?></h3>
+                <div>
+                    Privacy Policy
+                </div>
+                <div>
+                    Terms & Conditions
+                </div>
+                <div>
+                    Disclaimer
+                </div>
             </aside>
             <!-- Address Widget /- -->
         </div><!-- col-md-3 -->
-
-        <!-- col-md-3 -->
-        <div class="col-md-3 col-sm-6">
-            <!-- Address Widget -->
-            <aside class="widget widget_newsletter">
-                <h3 class="widget-title">NewsLetter</h3>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter Your ID">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button">Go</button>
-						</span>
-                </div><!-- /input-group -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do</p>
-            </aside>
-            <!-- Address Widget /- -->
-        </div><!-- col-md-3 -->
-    </div><!-- container /- -->
+   </div><!-- container /- -->
     <!-- Footer Bottom -->
     <div id="footer-bottom" class="footer-bottom">
         <!-- container -->
         <div class="container">
-            <p class="col-md-4 col-sm-6 col-xs-12">&copy; 2015 property expert ‐ All Rights Reserved</p>
+            <p class="col-md-4 col-sm-6 col-xs-12">
+            <?php
+                echo 'Copyright &copy; ' . date('Y') . ' <a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . STORE_NAME . '.</a>';
+            ?>
+                Power by <a href="https://www.facebook.com/skwebsolution/" target="_blank">SK Web Solution</a>
+            </p>
             <div class="col-md-4 col-sm-6 col-xs-12 pull-right social">
                 <ul class="footer_social m_b_z">
-                    <li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="index.html#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="index.html#"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="index.html#"><i class="fa fa-rss"></i></a></li>
+
                 </ul>
                 <a href="index.html#" title="back-to-top" id="back-to-top" class="back-to-top"><i class="fa fa-long-arrow-up"></i> Top</a>
             </div>
@@ -95,8 +81,8 @@
 <script src="themes/libraries/drag-drop/modernizr.custom.js"></script> <!-- Drag Drop File -->
 <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false'></script>
 <script src="themes/libraries/gmap/jquery.gmap.min.js"></script> <!-- map -->
-<script src="themes/libraries/expanding-search/classie.js"></script>
-<script src="themes/libraries/expanding-search/uisearch.js"></script>
+<!--<script src="themes/libraries/expanding-search/classie.js"></script>-->
+<!--<script src="themes/libraries/expanding-search/uisearch.js"></script>-->
 <!-- Customized Scripts -->
 <script src="themes/js/functions.js"></script>
 <?php echo $oscTemplate->getBlocks('footer_scripts'); ?>

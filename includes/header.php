@@ -4,7 +4,10 @@
     <!-- Top Header -->
     <div class="top-header">
       <p class="col-md-6 col-sm-9">
-        <span><i class="fa fa-phone"></i>  1-200-666-1234</span>
+        <span>
+          <i class="fa fa-phone"></i>
+          <?php echo STORE_PHONE; ?>
+        </span>
         <span>
           <a href="index.html?language=kh" title="Khmer">
             <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>

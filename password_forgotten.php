@@ -56,52 +56,52 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
-
-<?php
-  if ($messageStack->size('password_forgotten') > 0) {
-    echo $messageStack->output('password_forgotten');
-  }
-
-  if ($password_reset_initiated == true) {
-?>
-
-<div class="contentContainer">
-  <div class="contentText">
-    <div class="alert alert-success"><?php echo TEXT_PASSWORD_RESET_INITIATED; ?></div>
+<div class="container clearfix">
+  <div class="page-header">
+    <h1><?php echo HEADING_TITLE; ?></h1>
   </div>
-</div>
 
-<?php
-  } else {
-?>
+  <?php
+    if ($messageStack->size('password_forgotten') > 0) {
+      echo $messageStack->output('password_forgotten');
+    }
 
-<?php echo tep_draw_form('password_forgotten', tep_href_link(FILENAME_PASSWORD_FORGOTTEN, 'action=process', 'SSL'), 'post', 'class="form-horizontal"', true); ?>
+    if ($password_reset_initiated == true) {
+  ?>
 
-<div class="contentContainer">
-  <div class="contentText">
-    <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
-
-    <div class="form-group has-feedback">
-      <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
-      <div class="col-sm-9">
-        <?php echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" autofocus="autofocus" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email'); ?>
-        <?php echo FORM_REQUIRED_INPUT; ?>
-      </div>
+  <div class="contentContainer">
+    <div class="contentText">
+      <div class="alert alert-success"><?php echo TEXT_PASSWORD_RESET_INITIATED; ?></div>
     </div>
   </div>
 
-  <div class="buttonSet row">
-    <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'glyphicon glyphicon-chevron-left', tep_href_link(FILENAME_LOGIN, '', 'SSL')); ?></div>
-    <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+  <?php
+    } else {
+  ?>
+
+  <?php echo tep_draw_form('password_forgotten', tep_href_link(FILENAME_PASSWORD_FORGOTTEN, 'action=process', 'SSL'), 'post', 'class="form-horizontal"', true); ?>
+
+  <div class="contentContainer">
+    <div class="contentText">
+      <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
+
+      <div class="form-group has-feedback">
+        <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
+        <div class="col-sm-9">
+          <?php echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" autofocus="autofocus" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email'); ?>
+          <?php echo FORM_REQUIRED_INPUT; ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttonSet row">
+      <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'glyphicon glyphicon-chevron-left', tep_href_link(FILENAME_LOGIN, '', 'SSL')); ?></div>
+      <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+    </div>
   </div>
+
+  </form>
 </div>
-
-</form>
-
 <?php
   }
 

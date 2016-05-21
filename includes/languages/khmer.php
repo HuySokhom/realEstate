@@ -58,6 +58,10 @@ define('MENU_NEWS', 'ពត័មាន');
 define('LOGIN', 'ចូល គណនី');
 define('REGISTER', 'ចុះឈ្មោះ');
 
+define('HEADING_FOOTER_PROFILE', 'ប្រវត្តិ');
+define('HEADING_FOOTER_TERM', 'រយៈពេល');
+define('HEADING_FOOTER_CONTACT', 'ការ​ទំនាក់ទំនង');
+define('HEADING_FOOTER_ABOUT', 'អំពី');
 
 
 // header text in includes/header.php

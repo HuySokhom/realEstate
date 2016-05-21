@@ -353,7 +353,6 @@ textarea {
 .menu-block .navbar-default .navbar-nav > li > a {
 	padding: 0;
 	font-size: 14px;
-	font-family: 'Karla', sans-serif;
 	line-height: 38px;
 	color: #3c3c44;
     text-transform: uppercase;	
@@ -3412,4 +3411,17 @@ a:focus, a:hover {
 }
 .search{
 	padding: 5px;
+}
+a {
+	color: #3c3c44;
+	text-decoration: none;
+}
+a:hover {
+	color: #3C64FF;
+}
+.footer-bottom a{
+	color: #337ab7;
+}
+#active {
+	color: #3C64FF;
 }

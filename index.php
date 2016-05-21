@@ -35,6 +35,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <div class="container">
+
 <?php
   if ($category_depth == 'nested') {
     $category_query = tep_db_query("select cd.categories_name, c.categories_image from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where c.categories_id = '" . (int)$current_category_id . "' and cd.categories_id = '" . (int)$current_category_id . "' and cd.language_id = '" . (int)$languages_id . "'");
@@ -213,7 +214,7 @@
 ?>
 
 <div class="page-header">
-  <h1><?php echo $catname; ?></h1>
+<!--  <h1>--><?php //echo $catname; ?><!--</h1>-->
 </div>
 
 <div class="contentContainer">
@@ -245,8 +246,267 @@
       }
     }
 
-    include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
+    //include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
 ?>
+  <!-- Property Listing Section -->
+  <div id="property-listing" class="property-listing">
+    <div class="container">
+      <div class="property-left col-md-9 col-sm-6 p_l_z content-area">
+        <div class="section-header p_l_z">
+          <div class="col-md-10 col-sm-10 p_l_z">
+            <p>property</p>
+            <h3>listing</h3>
+          </div>
+          <div class="view-list col-md-2 col-sm-2 p_r_z">
+            <a title="Grid View" href="aa-listing.html"><i class="fa fa-th "></i></a>
+            <a class="active" title="List View" href="aa-listing-list.html"><i class="fa fa-bars"></i></a>
+          </div>
+        </div>
+
+        <div class="property-listing-box sale-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property1.jpg" alt="property1"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>s</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;330000 </h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box /- -->
+        </div>
+        <div class="property-listing-box rent-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z ">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property2.jpg" alt="property2"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>r</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;320/mo</h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/icon/bed-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/icon/bath-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box /- -->
+        </div>
+        <div class="property-listing-box sale-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property3.jpg" alt="property1"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>s</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;330000 </h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box /- -->
+        </div>
+        <div class="property-listing-box rent-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z ">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property4.jpg" alt="property2"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>r</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;320/mo</h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/icon/bed-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/icon/bath-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box /- -->
+        </div>
+        <div class="property-listing-box sale-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property5.jpg" alt="property1"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>s</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;330000 </h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box -->
+        </div>
+        <div class="property-listing-box rent-block">
+          <!-- Property Main Box -->
+          <div class="property-main-box">
+            <div class="col-md-4 p_z ">
+              <a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property4.jpg" alt="property2"></a>
+            </div>
+            <div class="col-md-8 p_z">
+              <div class="property-details">
+                <span>r</span>
+                <a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+                <h4>&dollar;320/mo</h4>
+                <p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+                <ul>
+                  <li><i class="fa fa-expand"></i> 3326 sq </li>
+                  <li><img src="images/icon/bed-icon.png" alt="bedroom-icon"> 3 </li>
+                  <li><img src="images/icon/bath-icon.png" alt="bathroom-icon">2 </li>
+                  <li><i class="fa fa-car"></i>1</li>
+                </ul>
+              </div>
+            </div>
+          </div><!-- Property Main Box /- -->
+        </div>
+        <!-- Pagination -->
+        <div class="listing-pagination">
+          <ul class="pagination">
+            <li class="active"><a href="aa-listing-list.html#">1</a></li>
+            <li><a href="aa-listing-list.html#">2</a></li>
+            <li><a href="aa-listing-list.html#">3</a></li>
+          </ul>
+        </div><!-- Pagination /- -->
+      </div>
+      <div class="col-md-3 col-sm-6 p_r_z property-sidebar widget-area">
+        <aside class="widget widget-search">
+          <h2 class="widget-title">search<span>property</span></h2>
+          <form>
+            <select>
+              <option value="selected">Property ID</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
+              <option value="four">Four</option>
+              <option value="five">Five</option>
+            </select>
+            <select>
+              <option value="selected">Location</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
+              <option value="four">Four</option>
+              <option value="five">Five</option>
+            </select>
+            <select>
+              <option value="selected">Type</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
+              <option value="four">Four</option>
+              <option value="five">Five</option>
+            </select>
+            <select>
+              <option value="selected">Status</option>
+              <option value="one">One</option>
+              <option value="two">Two</option>
+              <option value="three">Three</option>
+              <option value="four">Four</option>
+              <option value="five">Five</option>
+            </select>
+            <div class="col-md-6 col-sm-6 p_l_z">
+              <select>
+                <option value="selected">Beds</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-6 p_r_z">
+              <select>
+                <option value="selected">Baths</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-6 p_l_z">
+              <select>
+                <option value="selected">Min Price</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-6 p_r_z">
+              <select>
+                <option value="selected">Max Price</option>
+                <option value="one">$3000</option>
+                <option value="two">$30000</option>
+                <option value="three">$300000</option>
+                <option value="four">$3000000</option>
+                <option value="five">$3000000000000000</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-6 p_l_z">
+              <select>
+                <option value="selected">Min Sqft</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+            </div>
+            <div class="col-md-6 col-sm-6 p_r_z">
+              <select>
+                <option value="selected">Max Sqft</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+            </div>
+            <input type="submit" value="Search Now" class="btn">
+          </form>
+        </aside>
+
+      </div>
+    </div>
+  </div><!-- Property Listing Section /- -->
 
 </div>
 
@@ -282,10 +542,211 @@
 <?php
     }
 
-    include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS);
-    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
+    //include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS);
+//    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
 ?>
+  <br/><br/>
+  <!-- Rent Property -->
+  <div class="rent-property">
+    <div class="col-md-3">
+      <div class="section-header">
+        <h3><span>Property</span>For Rent</h3>
+        <p>Our Latest listed properties and check out the facilities on them.</p>
+      </div>
+    </div>
+    <div class="col-md-9 p_r_z">
+      <div id="rent-property-block" class="rent-property-block">
+        <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-12 rent-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
+                <h4>&dollar;380 / pm</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div><!-- col-md-12 /- -->
+        </div>
 
+        <div class="item">
+          <!-- Col-md-12 -->
+          <div class="col-md-12 rent-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-2.jpg" alt="rent" /></a>
+                <h4>&dollar;380 / pm</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">20 Apartments of Type A</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box -->
+          </div><!-- Col-md-12 /- -->
+        </div>
+
+        <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-12 rent-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-3.jpg" alt="rent" /></a>
+                <h4>&dollar;380 / pm</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">15 Apartments of Type B</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div>
+        </div>
+
+        <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-12 rent-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
+                <h4>&dollar;380 / pm</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div><!-- Property Main Box /- -->
+        </div>
+      </div>
+    </div>
+  </div><!-- Rent Property /- -->
+  <div class="clearfix"></div>
+  <!-- Sale Property -->
+  <div class="sale-property">
+    <div class="col-md-3">
+      <div class="section-header">
+        <h3><span>Property</span>For Sale</h3>
+        <p>Our Latest listed properties and check out the facilities on them.</p>
+      </div>
+    </div>
+    <div class="col-md-9 p_r_z">
+      <div id="sale-property-block" class="sale-property-block">
+        <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-12 sale-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
+                <h4>&dollar;380000</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div><!-- Col-md-12 /- -->
+        </div>
+
+        <div class="item">
+          <!-- Col-md-12 -->
+          <div class="col-md-12 sale-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-2.jpg" alt="rent" /></a>
+                <h4>&dollar;330000</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">20 Apartments of Type A</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div><!-- Col-md-12 /- -->
+        </div>
+
+        <div class="item">
+          <!-- Col-md-12 -->
+          <div class="col-md-12 sale-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-3.jpg" alt="rent" /></a>
+                <h4>&dollar;350000</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">15 Apartments of Type B</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box -->
+          </div><!-- col-md-12 -->
+        </div>
+
+        <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-12 sale-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
+                <h4>&dollar;380 / pm</h4>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
+                <ul>
+                  <li><i class="fa fa-expand"></i>3326 sq</li>
+                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <?php
