@@ -5,18 +5,34 @@
     <div class="top-header">
       <p class="col-md-6 col-sm-9">
         <span><i class="fa fa-phone"></i>  1-200-666-1234</span>
-        <span><a title="mail-to" href="mailto:info@propertyexpert.com"><i class="fa fa-envelope-o"></i> info@propertyexpert.com</a></span>
+        <span>
+          <a href="index.html?language=kh" title="Khmer">
+            <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>
+          </a>
+          <a href="index.html?language=en" title="English">
+            <img src="includes/languages/english/images/icon.gif" style="width: 30px;border: none; "/>
+          </a>
+        </span>
       </p>
       <div class="col-md-6 col-sm-3 p_r_z">
         <ul class="property-social p_l_z m_b_z">
-          <li><a href="index.html#"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="index.html#"><i class="fa fa-google-plus"></i></a></li>
-          <li><a href="index.html#"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="index.html#"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="index.html#"><i class="fa fa-rss"></i></a></li>
+          <li>
+            <a href="login.html">
+              <i class="fa fa-sign-in"></i>
+              <?php echo LOGIN;?>
+            </a>
+          </li>
+          <li>
+            <a href="create_account.html">
+              <i class="fa fa-edit"></i>
+              <?php echo REGISTER;?>
+            </a>
+          </li>
           <li>
             <button class="btn">
-              Add Property
+              <a href="account.html" title="<?php echo POST_PROPERTY;?>">
+                <?php echo POST_PROPERTY;?>
+              </a>
             </button>
           </li>
         </ul>
@@ -44,30 +60,16 @@
             </button>
           </div>
           <div class="navbar-collapse collapse" id="navbar">
+
             <ul class="nav navbar-nav">
+              <?php 
+                echo tep_get_categories_list();
+              ?>
               <li>
-                <a href="index.html">BUY</a>
+                <a href="agents.html"><?php echo MENU_AGENTS; ?></a>
               </li>
               <li>
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">RENT</a>
-              </li>
-              <li>
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">NEW DEVELOPMENTS</a>
-              </li>
-              <li>
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">CONDO</a>
-              </li>
-              <li>
-                <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">BOREYS</a>
-              </li>
-              <li>
-                  <a href="contact.html">COMMERCIAL</a>
-              </li>
-              <li>
-                <a href="contact.html">AGENTS</a>
-              </li>
-              <li>
-                <a href="contact.html">NEWS</a>
+                <a href="news.html"><?php echo MENU_NEWS; ?></a>
               </li>
             </ul>
           </div><!--/.nav-collapse -->

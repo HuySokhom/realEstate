@@ -49,6 +49,13 @@ define('CHARSET', 'utf-8');
 // page title
 define('TITLE', STORE_NAME);
 
+// customer language 
+define('POST_PROPERTY', 'Post Property');
+define('MENU_AGENTS', 'Agents');
+define('MENU_NEWS', 'News');
+define('LOGIN', 'Login');
+define('REGISTER', 'Register');
+
 // header text in includes/header.php
 define('HEADER_TITLE_CREATE_ACCOUNT', 'Create an Account');
 define('HEADER_TITLE_MY_ACCOUNT', 'My Account');

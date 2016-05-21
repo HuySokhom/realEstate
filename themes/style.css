@@ -207,7 +207,7 @@ textarea {
 }
 
 .property-social li a {
-	color: #868686;
+	color: #ffffff;
 	font-size: 16px;
 }
 
@@ -356,6 +356,7 @@ textarea {
 	font-family: 'Karla', sans-serif;
 	line-height: 38px;
 	color: #3c3c44;
+    text-transform: uppercase;	
 }
 
 .menu-block .navbar-default .navbar-nav > li > a:before {
@@ -772,8 +773,8 @@ textarea {
 
 /* ## Search Section ## */
 .search-section {
-	background-color: #f2f4f5;
-	padding: 60px 0;
+	/*background-color: #f2f4f5;*/
+	padding: 20px 0;
 }
 
 .search-section .col-md-10 select {
@@ -3370,7 +3371,6 @@ textarea {
 }
 button.btn{
 	background-color: #3C64FF;
-	max-width: 118px;
 	max-height: 37px;
 	line-height: 36px;
 	font-weight: bold;
@@ -3385,4 +3385,31 @@ button.btn{
 button.btn:hover{
 	background-color: #3C64FF;
 	color: #fff;
+}
+a:focus, a:hover {
+    text-decoration: none;
+}
+.btn-primary {
+    color: #fff;
+    border-radius: 0px;
+    background-color: #000;
+    border-color: #2e6da4;
+}
+.btn-primary:hover{
+	background-color: #000;
+}
+.form-control {
+     border-radius: 0px; 
+}
+.panel {
+     border-radius: 0px; 
+}
+.alert {
+   border-radius: 0px;
+}
+.search_panel{
+	margin-top: 15px;
+}
+.search{
+	padding: 5px;
 }

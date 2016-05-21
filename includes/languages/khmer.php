@@ -49,6 +49,17 @@ define('CHARSET', 'utf-8');
 // page title
 define('TITLE', STORE_NAME);
 
+
+// customer language 
+define('POST_PROPERTY', 'បង្កើតអចលនទ្រព្យ');
+define('MENU_AGENTS', 'ភ្នាក់ងារ');
+define('MENU_NEWS', 'ពត័មាន');
+
+define('LOGIN', 'ចូល គណនី');
+define('REGISTER', 'ចុះឈ្មោះ');
+
+
+
 // header text in includes/header.php
 define('HEADER_TITLE_CREATE_ACCOUNT', 'Create an Account');
 define('HEADER_TITLE_MY_ACCOUNT', 'My Account');

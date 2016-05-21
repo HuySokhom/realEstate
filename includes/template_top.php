@@ -60,6 +60,25 @@
     <meta name="csrf-token" content="sNMk592JV2wwHn6DPJ8C5oy/hHDnjIlZBOHyngtTbpQ=" />
 <?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
-<body>
+<body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
   <?php echo $oscTemplate->getContent('navigation'); ?>
-      <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
+      <?php require(DIR_WS_INCLUDES . 'header.php'); 
+        $url = $_SERVER['REQUEST_URI'];
+          $fullUrl = end((explode('/', $url)));
+          // check url if is index page
+          if( strpos($fullUrl,'index.html') !== false || $fullUrl == '' ){
+            $image_slider_query = tep_db_query("
+                select
+                  text, image
+                from
+                  image_slider
+                where
+                  image != ''
+                    order by
+                  sort_order asc limit 10
+               ");
+            if (tep_db_num_rows($image_slider_query) > 0) {
+
+          include(DIR_WS_INCLUDES . 'slider.php');
+        }}
+      ?>

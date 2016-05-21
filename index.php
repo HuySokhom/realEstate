@@ -33,8 +33,6 @@
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_DEFAULT);
 
   require(DIR_WS_INCLUDES . 'template_top.php');
-  include(DIR_WS_INCLUDES . 'slider.php');
-
 ?>
 <div class="container">
 <?php
@@ -256,15 +254,17 @@
   } else { // default page
 ?>
 
-<div class="page-header">
-  <h3>Latest Ads</h3>
-</div>
-
 <?php
   if ($messageStack->size('product_action') > 0) {
     echo $messageStack->output('product_action');
   }
 ?>
+
+    <!-- Search Section -->
+    <?php
+      include('advanced_search_box.php');
+    ?>
+    <!-- Search Section /- -->
 
 <div class="contentContainer">
   <div class="alert alert-info" style="display: none;">
