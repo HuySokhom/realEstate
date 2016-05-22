@@ -3425,3 +3425,16 @@ a:hover {
 #active {
 	color: #3C64FF;
 }
+.popular-search{
+	background-color: #f2f4f5;
+	padding: 20px 0;
+}
+.popular-search > span {
+	padding: 10px;
+}
+/*.popular-search > ul li:not(:first-child) {*/
+	/*border-left: 1px solid #ddd;*/
+/*}*/
+.search_text{
+	font-size: 20px;
+}

@@ -144,6 +144,51 @@ function check_form() {
         echo tep_draw_input_field('dto', '', 'id="dto" placeholder="' . ENTRY_BED_TO . '"');
         ?>
       </div>
+
+      <div class="clearfix">
+        <div class="popular-search">
+          <span class="search_text">
+            <?php echo POPULAR_LOCATION;?>
+          </span>
+          <span class="first">
+            <i class="fa fa-hand-o-right"></i>
+            <a href="javascript:void(0)">Siem Reap</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="javascript:void(0)">Sihanouk</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Beoung Kangkong 1</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Tonle Bassac</a>
+          </span>
+          <spani>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Toul Tum Poung</a>
+          </spani>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Toul Kork</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Chamkarmom</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Kampot</a>
+          </span>
+          <span>
+            <i class="fa fa-hand-o-right"></i>
+            <a href="">Riverside</a>
+          </span>
+        </div>
+      </div>
+
   </div>
 
     <!-- col-md-2 -->

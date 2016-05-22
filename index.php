@@ -520,11 +520,11 @@
   }
 ?>
 
-    <!-- Search Section -->
-    <?php
-      include('advanced_search_box.php');
-    ?>
-    <!-- Search Section /- -->
+<!-- Search Section -->
+<?php
+  include('advanced_search_box.php');
+?>
+<!-- Search Section /- -->
 
 <div class="contentContainer">
   <div class="alert alert-info" style="display: none;">

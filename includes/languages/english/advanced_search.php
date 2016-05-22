@@ -52,3 +52,5 @@ define('PROPERTY', 'Property');
 
 define('ENTRY_BED_FROM', 'Bed From');
 define('ENTRY_BED_TO', 'Bed To');
+
+define('POPULAR_LOCATION', 'Popular Locations:');
