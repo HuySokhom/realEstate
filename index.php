@@ -34,7 +34,7 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<div class="container">
+<div class="">
 
 <?php
   if ($category_depth == 'nested') {
@@ -526,11 +526,7 @@
 ?>
 <!-- Search Section /- -->
 
-<div class="contentContainer">
-  <div class="alert alert-info" style="display: none;">
-    <?php echo tep_customer_greeting(); ?>
-  </div>
-
+<div class="container">
 <?php
     if (tep_not_null(TEXT_MAIN)) {
 ?>

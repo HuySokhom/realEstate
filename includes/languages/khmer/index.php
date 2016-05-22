@@ -21,6 +21,6 @@ define('TEXT_NUMBER_OF_PRODUCTS', 'Number of Products: ');
 define('TEXT_SHOW', '<strong>Show:</strong>');
 define('TEXT_BUY', 'Buy 1 \'');
 define('TEXT_NOW', '\' now');
-define('TEXT_ALL_CATEGORIES', 'All Categories');
-define('TEXT_ALL_MANUFACTURERS', '--Kind Of--');
+define('TEXT_ALL_CATEGORIES', 'ប្រភេទទាំងអស់');
+define('TEXT_ALL_MANUFACTURERS', '--ប្រភេទ​នៃ--');
 
