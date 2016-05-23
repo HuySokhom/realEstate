@@ -3384,6 +3384,7 @@ button.btn{
 button.btn:hover{
 	background-color: #3C64FF;
 	color: #fff;
+	border-color: #3C64FF;
 }
 a:focus, a:hover {
     text-decoration: none;
