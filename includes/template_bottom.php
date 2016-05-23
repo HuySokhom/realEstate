@@ -83,6 +83,13 @@
 <script src="themes/libraries/gmap/jquery.gmap.min.js"></script> <!-- map -->
 <!--<script src="themes/libraries/expanding-search/classie.js"></script>-->
 <!--<script src="themes/libraries/expanding-search/uisearch.js"></script>-->
+
+<!-- customer angular -->
+<script src="ext/ng/lib/angular/1.3.15/angular.min.js"></script>
+<script src="ext/ng/app/main.js"></script>
+<script src="ext/ng/app/core/restful/restful.js"></script>
+<script src="ext/ng/app/global.js"></script>
+
 <!-- Customized Scripts -->
 <script src="themes/js/functions.js"></script>
 <?php echo $oscTemplate->getBlocks('footer_scripts'); ?>

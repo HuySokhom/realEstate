@@ -1,38 +1,61 @@
-<!-- Slider block -->
-<div class="slider-block container-fluid p_z">
-    <!-- Slider Section -->
-    <div id="property-slider" class="carousel slide slider-section" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#property-slider" data-slide-to="0" class="active"><img src="images/slider/slide-1.jpg" alt="Slide 1"></li>
-            <li data-target="#property-slider" data-slide-to="1"><img src="images/slider/slide-2.jpg" alt="Slide 2"></li>
-            <li data-target="#property-slider" data-slide-to="2"><img src="images/slider/slide-1.jpg" alt="Slide 1"></li>
-            <li data-target="#property-slider" data-slide-to="3"><img src="images/slider/slide-2.jpg" alt="Slide 2"></li>
-        </ol>
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="images/slider/slide-1.jpg" alt="Slide 1">
-            </div>
-            <div class="item">
-                <img src="images/slider/slide-2.jpg" alt="Slide 2">
-            </div>
-            <div class="item">
-                <img src="images/slider/slide-1.jpg" alt="Slide 1">
-            </div>
-            <div class="item">
-                <img src="images/slider/slide-2.jpg" alt="Slide 2">
-            </div>
+<link href="ext/css/slider.css" rel="stylesheet">
+<script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
+<script type="text/javascript" src="ext/js/slider.js"></script>
+<div
+    id="jssor_1"
+    style="
+      position: relative;
+      margin: 0 auto;
+      top: 0px; left: 0px;
+      width: 1300px; height: 500px;
+      overflow: hidden; visibility: hidden;
+    "
+    data-ng-controller="slider_ctrl"
+    data-ng-init="initImageSlider();"
+>
+    <!-- Loading Screen -->
+    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+        <div
+            style="filter: alpha(opacity=70); opacity: 0.7;
+        position: absolute; display: block; top: 0px; left: 0px;
+        width: 100%; height: 100%;
+      ">
         </div>
-        <!-- Controls -->
-        <a class="left carousel-control" href="index.html#property-slider" role="button" data-slide="prev">
-            <span class="fa fa-long-arrow-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="index.html#property-slider" role="button" data-slide="next">
-            <span class="fa fa-long-arrow-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div><!-- Slider Section /- -->
-</div><!-- Slider Block /- -->
+        <div
+            style="position:absolute;display:block;
+          background:url('images/loading.gif') no-repeat center center;top:0px;
+          left:0px;width:100%;height:100%;
+  ">
+        </div>
+    </div>
+    <div data-u="slides"
+         style="
+      cursor: default; position: relative;
+      top: 0px; left: 0px; width: 1300px;
+      height: 500px; overflow: hidden;
+
+   ">
+<!--        <div data-p="225.00" style="display: none;" data-ng-repeat="image in imageSlider.elements">-->
+<!--            <img data-u="image" src="images/slider/{{image.image}}">-->
+<!--        </div>-->
+        <?php
+        while ($image_slider = tep_db_fetch_array($image_slider_query)) {
+            ?>
+            <div data-p="225.00" style="display: none;">
+                <img data-u="image" src="images/slider/<?php echo $image_slider['image']?>" />
+            </div>
+
+            <?php
+        }
+        ?>
+    </div>
+    <!-- Bullet Navigator -->
+    <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+        <!-- bullet navigator item prototype -->
+        <div data-u="prototype" style="width:16px;height:16px;"></div>
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora22l" style="top:0px;left:12px;width:40px;height:58px;" data-autocenter="2"></span>
+    <span data-u="arrowright" class="jssora22r" style="top:0px;right:12px;width:40px;height:58px;" data-autocenter="2"></span>
+    <a href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
+</div>

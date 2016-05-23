@@ -60,7 +60,7 @@
     <meta name="csrf-token" content="sNMk592JV2wwHn6DPJ8C5oy/hHDnjIlZBOHyngtTbpQ=" />
 <?php //echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
-<body data-offset="200" data-spy="scroll" data-target=".primary-navigation">
+<body data-offset="200" data-spy="scroll" data-target=".primary-navigation" data-ng-app="main">
   <?php echo $oscTemplate->getContent('navigation'); ?>
       <?php require(DIR_WS_INCLUDES . 'header.php'); 
         $url = $_SERVER['REQUEST_URI'];
