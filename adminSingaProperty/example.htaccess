@@ -40,7 +40,7 @@
 
 
 RewriteEngine On 
-RewriteBase /realEstate/admin/
+RewriteBase /realEstate/adminSingaProperty/
 
 # start api
 RewriteRule ^api/ api/index.php [L,QSA]
