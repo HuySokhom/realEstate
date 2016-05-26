@@ -435,10 +435,18 @@
     <div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-body">
-      <h4>Register Today and Enjoy :</h4>
-      <p><span class="glyphicon glyphicon-user icon-font"></span>Join <strong>Free</strong></p>
-      <p><span class="glyphicon glyphicon-check icon-font"></span>Posting your ads for <strong>Free</strong></p>
-      <p><span class="glyphicon glyphicon-thumbs-up icon-font"></span><strong>Easy</strong> ways to manage your Ads</p>
+      <h4><?php echo MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER; ?></h4>
+      <p>
+        <i class="fa fa-hand-o-right"></i>
+        <?php echo MODULE_CONTENT_JOIN_FREE; ?>
+      <p>
+        <i class="fa fa-hand-o-right"></i>
+        <?php echo MODULE_CONTENT_JOIN_FREE; ?>
+      </p>
+      <p>
+        <i class="fa fa-hand-o-right"></i>
+        <?php echo MODULE_CONTENT_EASY_MANAGE; ?>
+      </p>
     </div>
   </div>
     </div>

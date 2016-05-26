@@ -10,12 +10,12 @@
   Released under the GNU General Public License
 */
 
-  define('MODULE_CONTENT_LOGIN_FORM_TITLE', 'Login Form');
-  define('MODULE_CONTENT_LOGIN_FORM_DESCRIPTION', 'Show a login form on the login page');
+  define('MODULE_CONTENT_LOGIN_FORM_TITLE', 'សំណុំបែបបទចូល');
+  define('MODULE_CONTENT_LOGIN_FORM_DESCRIPTION', 'បង្ហាញសំណុំបែបបទចូលមួយនៅលើទំព័រចូល');
 
-  define('MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER', 'Login Customer');
-  define('MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER', 'I am a returning customer.');
-  define('MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN', 'Password forgotten? Click here.');
+  define('MODULE_CONTENT_LOGIN_HEADING_RETURNING_CUSTOMER', 'ចូលអតិថិជន');
+  define('MODULE_CONTENT_LOGIN_TEXT_RETURNING_CUSTOMER', 'ខ្ញុំជាអតិថិជនវិលត្រឡប់មកវិញ។');
+  define('MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN', 'ភ្លេចពាក្យសម្ងាត់? ចុច​ទីនេះ។');
 
-  define('MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR', 'Error: No match for E-Mail Address and/or Password.');
+  define('MODULE_CONTENT_LOGIN_TEXT_LOGIN_ERROR', 'កំហុស: មិនមានអាសយដ្ឋានអ៊ីម៉ែលនិង / ឬពាក្យសម្ងាត់។');
 ?>
