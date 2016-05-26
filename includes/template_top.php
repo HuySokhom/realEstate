@@ -35,8 +35,7 @@
     <meta NAME="robots" content="noindex, follow">
     <meta NAME="robots" content="index, nofollow">
     <meta NAME="robots" content="noindex, nofollow">
-    <link rel="shortcut icon" href="images/banners/logo.ico">
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="images/banners/ico.png">
     <link href="themes/libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <linK href="themes/libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
     <linK href="themes/libraries/owl-carousel/owl.theme.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
