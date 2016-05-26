@@ -3439,3 +3439,13 @@ a:hover {
 .search_text{
 	font-size: 20px;
 }
+@media screen and (min-width: 992px){
+	.margin-top {
+		padding-top: 180px;
+	}
+}
+@media screen and (max-width: 990px){
+	.margin-top {
+		padding-top: 20px;
+	}
+}

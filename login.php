@@ -82,18 +82,14 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 
-<div class="page-header">
-  <h3><?php echo HEADING_TITLE; ?></h3>
-</div>
-
 <?php
   if ($messageStack->size('login') > 0) {
     echo $messageStack->output('login');
   }
 ?>
 
-<div id="loginModules">
-  <div class="row">
+<div class="container">
+  <div class="margin-top">
     <?php echo $page_content; ?>
   </div>
 </div>
