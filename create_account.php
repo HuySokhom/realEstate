@@ -263,24 +263,19 @@
   require('includes/form_check.js.php');
 ?>
 
-<div class="page-header">
-  <h3><?php echo HEADING_TITLE; ?></h3>
-</div>
-
 <?php
   if ($messageStack->size('create_account') > 0) {
     echo $messageStack->output('create_account');
   }
 ?>
-
+<div class="margin-top">
+  <div class="container">
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
 </div>
 
 <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
 
-<div class="contentContainer">
-  <div class="contentText">
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -427,7 +422,7 @@
   </div>
 */ ?>
   <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-user', null, 'primary', null, 'btn-success'); ?></div>
+    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 
 </form>
