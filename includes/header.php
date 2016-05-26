@@ -9,10 +9,10 @@
           <?php echo STORE_PHONE; ?>
         </span>
         <span>
-          <a href="index.html?language=kh" title="Khmer">
+          <a href="index.php?language=kh" title="Khmer">
             <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>
           </a>
-          <a href="index.html?language=en" title="English">
+          <a href="index.php?language=en" title="English">
             <img src="includes/languages/english/images/icon.gif" style="width: 30px;border: none; "/>
           </a>
         </span>
@@ -20,20 +20,20 @@
       <div class="col-md-6 col-sm-3 p_r_z">
         <ul class="property-social p_l_z m_b_z">
           <li>
-            <a href="login.html">
+            <a href="login.php">
               <i class="fa fa-sign-in"></i>
               <?php echo LOGIN;?>
             </a>
           </li>
           <li>
-            <a href="create_account.html">
+            <a href="create_account.php">
               <i class="fa fa-edit"></i>
               <?php echo REGISTER;?>
             </a>
           </li>
           <li>
             <button class="btn">
-              <a href="account.html" title="<?php echo POST_PROPERTY;?>">
+              <a href="account.php" title="<?php echo POST_PROPERTY;?>">
                 <?php echo POST_PROPERTY;?>
               </a>
             </button>
@@ -69,10 +69,10 @@
                 echo tep_get_categories_list();
               ?>
               <li>
-                <a href="agents.html"><?php echo MENU_AGENTS; ?></a>
+                <a href="agents.php"><?php echo MENU_AGENTS; ?></a>
               </li>
               <li>
-                <a href="news.html"><?php echo MENU_NEWS; ?></a>
+                <a href="news.php"><?php echo MENU_NEWS; ?></a>
               </li>
             </ul>
           </div><!--/.nav-collapse -->
