@@ -24,19 +24,15 @@
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <link href="ext/css/product_post.css" rel="stylesheet">
-<div class="page-header">
-  <h3><?php echo HEADING_TITLE; ?></h3>
-</div>
-
-<?php
-  if ($messageStack->size('account') > 0) {
-    echo $messageStack->output('account');
-  }
-?>
-<div 
-	class="contentContainer"
+<div
+	class="container margin-top"
 	data-ng-app="main"
->
+	>
+	<?php
+	  if ($messageStack->size('account') > 0) {
+		echo $messageStack->output('account');
+	  }
+	?>
 	<div class="row">
 		<div class="col-md-12">
 			<div data-ui-view=""></div>
@@ -48,24 +44,26 @@
 	</div>
 </div>
 <textarea style="display: none;"></textarea>
+
+<?php
+require(DIR_WS_INCLUDES . 'template_bottom.php');
+require(DIR_WS_INCLUDES . 'application_bottom.php');
+?>
+
 <!-- lib -->
-<script 
-	type="text/javascript" 
-	src="ext/underscore/1.7.0/underscore.js"
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular/1.3.15/angular.min.js"
 ></script>
-<script 
-	type="text/javascript" 
-	src="ext/ng/lib/angular/1.2.25/angular.js"
-></script>
-<script 
-	type="text/javascript" 
+<script
+	type="text/javascript"
 	src="ext/ng/lib/angular-ui-route/angular-ui-router.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
 ></script>
@@ -77,35 +75,35 @@
 <script>tinymce.init({ selector:'textarea' });</script>
 <!-- custom file -->
 
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/main.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/config/route.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/controller/account_ctrl.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/controller/manage_ctrl.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/core/restful/restful.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/services/services.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/directive/popup.js"
 ></script>
-<script 
+<script
 	type="text/javascript"
 	src="ext/ng/app/account/directive/location.js"
 ></script>
@@ -121,7 +119,3 @@
 	type="text/javascript"
 	src="ext/ng/app/account/directive/image.js"
 ></script>
-<?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
-?>
