@@ -56,19 +56,19 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-ui-route/angular-ui-router.js"
+	src="ext/ng/lib/angular-ui-route/angular-ui-router.min.js"
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.js"
+	src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls.1.3.3.min.js"
 ></script>
 <script
 	type="text/javascript"
 	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
 ></script>
-<script src="ext/ng/lib/angular-upload/ng-file-upload-shim.js"></script>
+<!--<script src="ext/ng/lib/angular-upload/ng-file-upload-shim.js"></script>-->
 <!-- for no html5 browsers support -->
-<script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>
+<!--<script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>-->
 
 <script src="ext/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
