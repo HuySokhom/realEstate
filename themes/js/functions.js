@@ -246,11 +246,11 @@
 		});
 		
 		/* Checkbox */
-		 $('input').iCheck({
-			checkboxClass: 'icheckbox_minimal',
-			radioClass: 'iradio_minimal',
-			increaseArea: '20%' // optional
-		});
+		// $('input').iCheck({
+		//	checkboxClass: 'icheckbox_minimal',
+		//	radioClass: 'iradio_minimal',
+		//	increaseArea: '20%' // optional
+		//});
 		
 		/* Contact Form */
 		$( "#btn_smt" ).on( "click", function(event) {
