@@ -75,7 +75,7 @@
       tep_redirect($origin_href);
     }
 
-    tep_redirect(tep_href_link(FILENAME_DEFAULT));
+    tep_redirect(tep_href_link(FILENAME_ACCOUNT));
   }
 
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_LOGIN);
