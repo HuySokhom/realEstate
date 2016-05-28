@@ -27,6 +27,7 @@
 //      }
 //    }
     $name = tep_db_prepare_input($HTTP_POST_VARS['name']);
+    $type = $HTTP_POST_VARS['type'];
     $firstname = tep_db_prepare_input($HTTP_POST_VARS['firstname']);
     $lastname = tep_db_prepare_input($HTTP_POST_VARS['lastname']);
     if (ACCOUNT_DOB == 'true') $dob = tep_db_prepare_input($HTTP_POST_VARS['dob']);
@@ -170,6 +171,7 @@
     if ($error == false) {
       $sql_data_array = array(
           'user_name' => $name,
+          'user_type' => $type,
           'customers_firstname' => $firstname,
           'customers_lastname' => $lastname,
           'customers_email_address' => $email_address,
@@ -213,18 +215,20 @@
 
       tep_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
 
-      tep_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
+//      tep_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
 
       if (SESSION_RECREATE == 'True') {
         tep_session_recreate();
       }
 
       $customer_user_name = $name;
+      $customer_type = $type;
       $customer_first_name = $firstname;
       $customer_default_address_id = $address_id;
       $customer_country_id = $country;
       $customer_zone_id = $zone_id;
       tep_session_register('customer_user_name');
+      tep_session_register('customer_type');
       tep_session_register('customer_id');
       tep_session_register('customer_first_name');
       tep_session_register('customer_default_address_id');
@@ -262,14 +266,14 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
   require('includes/form_check.js.php');
 ?>
-
-<?php
+<div class="margin-top">
+  <div class="container">
+  <?php
   if ($messageStack->size('create_account') > 0) {
     echo $messageStack->output('create_account');
   }
-?>
-<div class="margin-top">
-  <div class="container">
+  ?>
+
 <div class="alert alert-warning">
   <?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?><span class="inputRequirement pull-right text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></span>
 </div>
@@ -280,8 +284,8 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="form-group has-feedback">
-          <label for="inputName" class="control-label col-sm-3"><?php echo ENTRY_NAME; ?></label>
-          <div class="col-sm-9">
+          <label for="inputName" class="control-label col-sm-4"><?php echo ENTRY_NAME; ?></label>
+          <div class="col-sm-8">
             <?php
             echo tep_draw_input_field('name', NULL, 'required aria-required="true" id="inputName" placeholder="' . ENTRY_NAME . '"');
             echo FORM_REQUIRED_INPUT;
@@ -290,8 +294,8 @@
           </div>
         </div>
         <div class="form-group has-feedback">
-          <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
-          <div class="col-sm-9">
+          <label for="inputEmail" class="control-label col-sm-4"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
+          <div class="col-sm-8">
             <?php
             echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email');
             echo FORM_REQUIRED_INPUT;
@@ -301,8 +305,8 @@
         </div>
         <div class="contentText">
           <div class="form-group has-feedback">
-            <label for="inputPassword" class="control-label col-sm-3"><?php echo ENTRY_PASSWORD; ?></label>
-            <div class="col-sm-9">
+            <label for="inputPassword" class="control-label col-sm-4"><?php echo ENTRY_PASSWORD; ?></label>
+            <div class="col-sm-8">
               <?php
               echo tep_draw_password_field('password', NULL, 'required aria-required="true" id="inputPassword" placeholder="' . ENTRY_PASSWORD . '"');
               echo FORM_REQUIRED_INPUT;
@@ -311,8 +315,8 @@
             </div>
           </div>
           <div class="form-group has-feedback">
-            <label for="inputConfirmation" class="control-label col-sm-3"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></label>
-            <div class="col-sm-9">
+            <label for="inputConfirmation" class="control-label col-sm-4"><?php echo ENTRY_PASSWORD_CONFIRMATION; ?></label>
+            <div class="col-sm-8">
               <?php
               echo tep_draw_password_field('confirmation', NULL, 'required aria-required="true" id="inputConfirmation" placeholder="' . ENTRY_PASSWORD_CONFIRMATION . '"');
               echo FORM_REQUIRED_INPUT;
@@ -321,6 +325,19 @@
             </div>
           </div>
         </div>
+
+        <div class="contentText">
+          <div class="form-group has-feedback">
+            <label for="inputPassword" class="control-label col-sm-4"><?php echo ENTRY_TYPE; ?></label>
+            <div class="col-sm-8" style="margin-top: 6px;">
+              <input type="radio" name="type" value="normal" checked="checked"/>
+              <?php echo ENTRY_NORMAL;?>
+              <input type="radio" name="type" value="agency"/>
+              <?php echo ENTRY_AGENCY;?>
+            </div>
+          </div>
+        </div>
+
 <?php /*
   if (ACCOUNT_GENDER == 'true') {
 ?>

@@ -134,7 +134,7 @@ define('ENTRY_LOCATION', 'ទីតាំង');
 define('ENTRY_USER_NAME', 'ឈ្មោះអ្នកប្រើ');
 define('ENTRY_EMAIL_ADDRESS_ERROR', 'Your E-Mail Address must contain a minimum of ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' characters.');
 define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Your E-Mail Address does not appear to be valid - please make any necessary corrections.');
-define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Your E-Mail Address already exists in our records - please log in with the e-mail address or create an account with a different address.');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នករួចហើយនៅក្នុងកំណត់ត្រារបស់យើង - សូមចូលជាមួយអាសយដ្ឋានអ៊ីម៉ែលឬបង្កើតគណនីមួយជាមួយអាសយដ្ឋានផ្សេង។');
 define('ENTRY_EMAIL_ADDRESS_TEXT', '');
 define('ENTRY_STREET_ADDRESS', 'Street Address');
 define('ENTRY_STREET_ADDRESS_ERROR', 'Your Street Address must contain a minimum of ' . ENTRY_STREET_ADDRESS_MIN_LENGTH . ' characters.');
@@ -177,6 +177,11 @@ define('ENTRY_PASSWORD_NEW_TEXT', '');
 define('ENTRY_PASSWORD_NEW_ERROR', 'ពាក្យសម្ងាត់ថ្មីរបស់អ្នកត្រូវតែមានអប្បរមានៃការមួយ' . ENTRY_PASSWORD_MIN_LENGTH . '  តួអក្សរ.');
 define('ENTRY_PASSWORD_NEW_ERROR_NOT_MATCHING', 'អះអាងពាក្យសម្ងាត់ត្រូវតែផ្គូផ្គងពាក្យសម្ងាត់ថ្មីរបស់អ្នក.');
 define('PASSWORD_HIDDEN', '--HIDDEN--');
+
+define('ENTRY_TYPE', 'ប្រភេទ');
+define('ENTRY_NORMAL', 'ធម្មតា');
+define('ENTRY_AGENCY', 'ភ្នាកងារ');
+
 
 // constants for use in tep_prev_next_display function
 define('TEXT_RESULT_PAGE', 'Result Pages:');

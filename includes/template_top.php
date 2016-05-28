@@ -39,10 +39,10 @@
     <link href="themes/libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <linK href="themes/libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
     <linK href="themes/libraries/owl-carousel/owl.theme.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS Theme  File  *	v1.3.3 -->
-    <link href="themes/libraries/animate/animate.min.css" rel="stylesheet"/>
-    <link href="themes/libraries/checkbox/minimal.css" rel="stylesheet"/>
-    <link href="themes/libraries/drag-drop/drag-drop.css" rel="stylesheet"/>
-    <link href="themes/css/components.css" rel="stylesheet"/>
+<!--    <link href="themes/libraries/animate/animate.min.css" rel="stylesheet"/>-->
+<!--    <link href="themes/libraries/checkbox/minimal.css" rel="stylesheet"/>-->
+<!--    <link href="themes/libraries/drag-drop/drag-drop.css" rel="stylesheet"/>-->
+<!--    <link href="themes/css/components.css" rel="stylesheet"/>-->
     <link href="themes/style.css" rel="stylesheet"/>
     <link href="themes/css/media.css" rel="stylesheet"/>
 <!--[if lt IE 9]>

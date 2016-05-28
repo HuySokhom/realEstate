@@ -101,6 +101,10 @@ define('JS_ERROR_SUBMITTED', 'This form has already been submitted. Please press
 
 define('ERROR_NO_PAYMENT_MODULE_SELECTED', 'Please select a payment method for your order.');
 
+define('ENTRY_TYPE', 'Type');
+define('ENTRY_NORMAL', 'Normal');
+define('ENTRY_AGENCY', 'Agency');
+
 define('CATEGORY_COMPANY', 'Company Details');
 define('CATEGORY_PERSONAL', 'Your Personal Details');
 define('CATEGORY_ADDRESS', 'Your Address');
