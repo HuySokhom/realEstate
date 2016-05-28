@@ -26,23 +26,23 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
+<div class="container margin-top">
+  <div class="">
+    <h1><?php echo HEADING_TITLE; ?></h1>
+  </div>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
+  <div class="contentContainer">
+    <div class="contentText">
+      <div class="alert alert-success">
+        <?php echo TEXT_ACCOUNT_CREATED; ?>
+      </div>
+    </div>
 
-<div class="contentContainer">
-  <div class="contentText">
-    <div class="alert alert-success">
-      <?php echo TEXT_ACCOUNT_CREATED; ?>
+    <div class="buttonSet">
+      <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-chevron-right', $origin_href, null, null, 'btn-success'); ?></div>
     </div>
   </div>
-
-  <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', $origin_href, null, null, 'btn-success'); ?></div>
-  </div>
 </div>
-
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

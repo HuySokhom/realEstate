@@ -3433,6 +3433,21 @@ a:hover {
 .popular-search > span {
 	padding: 10px;
 }
+.back-to-top {
+	background-color: #fff;
+	width: 103px;
+	height: 52px;
+	line-height: 52px;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 16px;
+	color: #3c3c44;
+	display: inline-block;
+	font-weight: bold;
+	position: absolute;
+	top: -31%;
+	left: 30%;
+}
 /*.popular-search > ul li:not(:first-child) {*/
 	/*border-left: 1px solid #ddd;*/
 /*}*/
@@ -3441,7 +3456,7 @@ a:hover {
 }
 @media screen and (min-width: 992px){
 	.margin-top {
-		padding-top: 180px;
+		padding-top: 160px;
 	}
 }
 @media screen and (max-width: 990px){
