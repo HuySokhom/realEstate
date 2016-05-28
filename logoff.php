@@ -17,7 +17,8 @@
   $breadcrumb->add(NAVBAR_TITLE);
 
   tep_session_unregister('customer_id');
-  tep_session_unregister('customer_user_name');
+  tep_session_unregister('user_type');
+  tep_session_unregister('user_name');
   tep_session_unregister('customer_default_address_id');
   tep_session_unregister('customer_first_name');
   tep_session_unregister('customer_last_name');
@@ -47,10 +48,7 @@ if ( tep_session_is_registered('comments') ) {
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
+<div class="container margin-top">
 
 <div class="contentContainer">
   <div class="contentText">
@@ -63,7 +61,7 @@ if ( tep_session_is_registered('comments') ) {
     <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', tep_href_link(FILENAME_DEFAULT), null, null, 'btn-danger'); ?></div>
   </div>
 </div>
-
+</div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

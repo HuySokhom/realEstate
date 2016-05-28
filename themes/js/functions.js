@@ -317,7 +317,7 @@
 		$("#site-loader").css('display','none');
 	}
 
-	var selector = "ul a";
+	var selector = ".nav li a";
 	$(selector).filter(function () {
 		return this.href == location.href.replace(/#.*/, "");
 	}).attr( 'id', 'active' );//.addClass('active');

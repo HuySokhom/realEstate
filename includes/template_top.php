@@ -61,7 +61,7 @@
 </head>
 <body data-offset="200" data-spy="scroll" data-target=".primary-navigation" data-ng-app="main">
   <?php echo $oscTemplate->getContent('navigation'); ?>
-      <?php require(DIR_WS_INCLUDES . 'header.php'); 
+      <?php require(DIR_WS_INCLUDES . 'header.php');
         $url = $_SERVER['REQUEST_URI'];
           $fullUrl = end( (explode('/', $url)) );
           // check url if is index page

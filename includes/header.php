@@ -18,7 +18,11 @@
         </span>
       </p>
       <div class="col-md-6 col-sm-3 p_r_z">
+
         <ul class="property-social p_l_z m_b_z">
+          <?php //var_dump($_SESSION);
+            if( !$_SESSION['user_name'] ){
+          ?>
           <li>
             <a href="login.php">
               <i class="fa fa-sign-in"></i>
@@ -31,6 +35,24 @@
               <?php echo REGISTER;?>
             </a>
           </li>
+          <?php
+            }else{
+          ?>
+              <li>
+                <a href="account.php">
+                  <i class="fa fa-sign-in"></i>
+                  <?php echo HEADER_TITLE_MY_ACCOUNT;?>
+                </a>
+              </li>
+              <li>
+                <a href="logoff.php">
+                  <i class="fa fa-edit"></i>
+                  <?php echo HEADER_TITLE_LOGOFF;?>
+                </a>
+              </li>
+          <?php
+            }
+          ?>
           <li>
             <button class="btn">
               <a href="account.php" title="<?php echo POST_PROPERTY;?>">
@@ -39,6 +61,7 @@
             </button>
           </li>
         </ul>
+
       </div>
     </div><!-- Top Header -->
     <!-- Navigation Block -->

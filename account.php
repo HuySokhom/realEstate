@@ -23,7 +23,6 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<link href="ext/css/product_post.css" rel="stylesheet">
 <div
 	class="container margin-top"
 	data-ng-app="main"
