@@ -39,7 +39,7 @@
             }else{
           ?>
               <li>
-                <a href="account.php">
+                <a href="account.php#/account">
                   <i class="fa fa-sign-in"></i>
                   <?php echo HEADER_TITLE_MY_ACCOUNT;?>
                 </a>
@@ -55,7 +55,7 @@
           ?>
           <li>
             <button class="btn">
-              <a href="account.php" title="<?php echo POST_PROPERTY;?>">
+              <a href="account.php#/managePost" title="<?php echo POST_PROPERTY;?>">
                 <?php echo POST_PROPERTY;?>
               </a>
             </button>

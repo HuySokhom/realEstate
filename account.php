@@ -34,7 +34,44 @@
 	?>
 	<div class="row">
 		<div class="col-md-12">
-			<div data-ui-view=""></div>
+			<div class="panel with-nav-tabs panel-default">
+				<div class="panel-heading">
+					<div class="tab-content">
+						<ul class="nav nav-tabs" role="tablist">
+							<li ui-sref-active="active">
+								<a href="account.php#/managePost" ui-sref="/managePost">
+									<icon class="fa fa-desktop"></icon>
+									Manage Post
+								</a>
+							</li>
+							<li ui-sref-active="active" ui-sref="/account">
+								<a href="account.php#/account">
+									<i class="fa fa-user"></i>
+									My Account
+								</a>
+							</li>
+							<?php
+								if($_SESSION['user_type'] == 'member'){
+							?>
+							<li ui-sref-active="active">
+								<a ui-sref="/manageNews" href="account.php#/manageNews">
+									<i class="fa fa-newspaper-o"></i>
+									Manage News
+								</a>
+							</li>
+							<?php
+								}
+							?>
+						</ul>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div data-ui-view=""></div>
+					</div>
+				</div>
+			</div>
+
 		</div>
     <?php
     	// don't need to show
