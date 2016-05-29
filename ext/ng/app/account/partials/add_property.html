@@ -1,0 +1,135 @@
+<form data-ng-submit="save();" name="myForm">
+	<h4>
+		Product Information
+	</h4>
+	<table class="table table-bordered">
+		<tr>
+			<td style="width: 15%;">
+				Category
+			</td>
+			<td>
+				<div id="category"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Title:
+			</td>
+			<td>
+				<input
+					type="text"
+					class="form-control"
+					data-ng-model="title"
+					required="required"
+				/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Kind of
+			</td>
+			<td>
+				<select
+					data-ng-model="manufacturer"
+					data-ng-options="manufacturer.id as manufacturer.manufacturers_name for manufacturer in manufacturers.elements"
+					data-ng-init="manufacturer == manufacturer.id"
+					class="form-control"
+					required
+				>
+					<option value="">--Select--</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Location
+			</td>
+			<td>
+				<location:account></location:account>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Price
+			</td>
+			<td>
+				<input
+					type="text"
+					class="form-control"
+					data-ng-model="price"
+					only-numbers
+					required
+				/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Description
+			</td>
+			<td>
+				<textarea
+					rows="15"
+					id="description"
+				>
+				</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Add Photo Main
+			</td>
+			<td>
+				<input
+					type="file"
+					ng-model="picFile"
+					name="file"
+					accept="image/*"
+					ngf-model-invalid="errorFiles"
+					ngf-select="uploadPic(picFile, 'main_image')"
+					class="form-control"
+					data-ng-value="image_thumbnail"
+				>
+				<img
+					ng-show="image"
+					class="thumb"
+					src="images/{{image_thumbnail}}"
+				>
+				<span class="progress" data-ng-show="picFile.progress >= 0">
+					<div
+						style="width:{{picFile.progress}}%"
+						ng-bind="picFile.progress + '%'"
+					>
+					</div>
+				</span>
+				<span ng-show="picFile.result">Upload Successful</span>
+				<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Add Photo Detail
+			</td>
+			<td>
+				<div image></div>
+			</td>
+		</tr>
+	</table>
+	<div class="align-left">
+		<button
+			class="btn btn-default"
+			onclick="location.href='account.php#/manage_property';"
+		>
+			Close
+		</button>
+	</div>
+	<div class="align-right">
+		<button
+			class="btn btn-primary"
+			data-ng-disabled="!disabled"
+		>
+			Save
+		</button>
+	</div>
+</form>
+
+

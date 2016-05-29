@@ -1,5 +1,5 @@
 app.controller(
-	'account_ctrl', [
+	'news_ctrl', [
 	'$scope'
 	, 'Restful'
 	, function ($scope, Restful){

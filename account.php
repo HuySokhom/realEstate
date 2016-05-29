@@ -118,23 +118,26 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/app/account/controller/account_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/controller/manage_ctrl.js"
-></script>
-<script
-	type="text/javascript"
 	src="ext/ng/app/core/restful/restful.js"
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/app/account/services/services.js"
+	src="ext/ng/app/core/services/services.js"
+></script>
+
+
+<script
+		type="text/javascript"
+		src="ext/ng/app/account/controller/account_ctrl.js"
 ></script>
 <script
+		type="text/javascript"
+		src="ext/ng/app/account/controller/property_ctrl.js"
+></script>
+
+<script
 	type="text/javascript"
-	src="ext/ng/app/account/directive/popup.js"
+	src="ext/ng/app/account/controller/news_ctrl.js"
 ></script>
 <script
 	type="text/javascript"
@@ -143,10 +146,6 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/directive/account.js"
 ></script>
 <script
 	type="text/javascript"

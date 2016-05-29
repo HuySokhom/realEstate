@@ -1,11 +1,12 @@
 app.controller(
-	'manage_ctrl', [
+	'property_ctrl', [
 	'$scope'
 	, 'Restful'
 	, 'Services'
 	//, 'Upload'
 	, '$timeout'
 	, function ($scope, Restful, Services, $timeout){
+
 		var url = 'api/Session/User/ProductPost';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
