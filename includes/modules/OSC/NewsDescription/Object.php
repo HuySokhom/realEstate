@@ -80,12 +80,14 @@ class Object extends DbObj {
 			INSERT INTO
 				news_description
 			(
+				news_id,
 				title,
 				content,
 				language_id
 			)
 				VALUES
 			(
+				'" . $this->getNewsId() . "',
  				'" . $this->getTitle() . "',
  				'" . $this->getContent() . "',
  				'" . $this->getLanguageId() . "'
@@ -105,6 +107,13 @@ class Object extends DbObj {
 	}
 	public function setTitle($string){
 		$this->title = $string;
+	}
+
+	public function getNewsId(){
+		return $this->newsId;
+	}
+	public function setNewsId($string){
+		$this->newsId = $string;
 	}
 
 	public function getContent(){

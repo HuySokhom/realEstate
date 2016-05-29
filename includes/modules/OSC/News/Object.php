@@ -90,13 +90,11 @@ class Object extends DbObj {
 			INSERT INTO
 				news
 			(
-				customer_id,
-				status
+				customer_id
 			)
 				VALUES
 			(
-				'" . $this->getCustomerId() . "',
- 				'" . $this->getStatus() . "'
+				'" . $this->getCustomerId() . "'
 			)
 		");
 	}
