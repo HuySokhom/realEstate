@@ -1,0 +1,78 @@
+<form data-ng-submit="save();" name="myForm">
+    <h4>
+        News Information
+    </h4>
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 15%;">
+                Title EN:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="title_en"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Title KH:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="title_kh"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Content EN:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="content_en"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Content KH:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="content_kh"
+                    required="required"
+                />
+            </td>
+        </tr>
+    </table>
+    <div class="align-left">
+        <button
+            class="btn btn-default"
+            onclick="location.href='account.php#/manage_news';"
+        >
+            <i class="fa fa-close"></i>
+            Close
+        </button>
+    </div>
+    <div class="align-right">
+        <button
+            class="btn btn-primary"
+        >
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+    </div>
+</form>
+
+

@@ -1,5 +1,5 @@
-app.service("Services", [
-	, function() {
+app.service("Services",
+	function() {
         var services = function(){
             var self = this;
         };
@@ -19,4 +19,4 @@ app.service("Services", [
         return services;
         
  	}
-]);
+);
