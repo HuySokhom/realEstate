@@ -3429,6 +3429,7 @@ a:hover {
 .popular-search{
 	background-color: #f2f4f5;
 	padding: 20px 0;
+	clear: both;
 }
 .popular-search > span {
 	padding: 10px;
