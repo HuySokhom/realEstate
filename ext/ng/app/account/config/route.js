@@ -23,6 +23,16 @@ app.config([
 				templateUrl: 'ext/ng/app/account/partials/news.html',
 				controller: 'news_ctrl'
 			})
+			.state('/manage_news/post', {
+				url: '/manage_news/post',
+				templateUrl: 'ext/ng/app/account/partials/news_post.html',
+				controller: 'news_post_ctrl'
+			})
+			.state('/manage_news/edit/:id', {
+				url: '/manage_news/edit:id',
+				templateUrl: 'ext/ng/app/account/partials/news_edit.html',
+				controller: 'news_edit_ctrl'
+			})
 			.state('/account', {
 				url: '/account',
 				templateUrl: 'ext/ng/app/account/partials/account.html',

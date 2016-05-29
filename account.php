@@ -141,6 +141,14 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
+	src="ext/ng/app/account/controller/news_edit_ctrl.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/news_post_ctrl.js"
+></script>
+<script
+	type="text/javascript"
 	src="ext/ng/app/account/directive/location.js"
 ></script>
 <script
