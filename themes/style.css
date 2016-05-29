@@ -3470,3 +3470,6 @@ a:hover {
 .align-right{
 	 float: right;
  }
+.btn.focus, .btn:focus, .btn:hover {
+	color: #ffffff;
+}
