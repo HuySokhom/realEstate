@@ -1,93 +1,102 @@
 <div class="panel-body">
 	<button
 		class="btn btn-default"
-		onclick="location.href='account.php#/manage_property/post';"
+		onclick="location.href='account.php#/manage_news/post';"
 	>
 		<span class="glyphicon glyphicon-plus-sign"></span>
-		Post Property
+		Post News
 	</button>
 	<br/><br/>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<th>
-				Title
+				Title EN
 			</th>
 			<th>
-				Image
-			</th>
-			<th width="100px">
-				Product View
+				Title KH
 			</th>
 			<th>
-				Price
+				Content EN
+			</th>
+			<th>
+				Content KH
 			</th>
 			<th width="240px">
 				Action
 			</th>
 		</thead>
-		<tr data-ng-repeat="product in products_post.elements">
+		<tr data-ng-repeat="n in news.elements">
 			<td>
-				<span data-ng-bind="product.fields[0].products_name"></span>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 1">
+						{{i.title}}
+					</span>
+				</span>
 			</td>
 			<td>
-				<img
-					src="images/{{product.products_image_thumbnail}}"
-					alt="{{product.fields[0].products_name}}"
-					title="{{product.fields[0].products_name}}"
-					class="img"
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 2">
+						{{i.title}}
+					</span>
+				</span>
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 1">
+						<span data-ng-bind-html="i.content"></span>
+					</span>
+				</span>
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 2">
+						<span data-ng-bind-html="i.content"></span>
+					</span>
+				</span>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(n);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="edit"
+					tooltip
 				>
-			</td>
-			<td>
-				<span data-ng-bind="product.fields[0].products_viewed"></span>
-			</td>
-			<td>
-				<span data-ng-bind="product.products_price | currency"></span>
-			</td>
-			<td>
-				<button class="btn btn-default" data-ng-click="edit(product);">
-					<span class="glyphicon glyphicon-edit"></span>
+					<span class="fa fa-pencil-square-o"></span>
 				</button>
-				<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(n.id, $index);"
+					data-toggle="tooltip"
+					data-placement="bottom"
+					title="delete"
+					tooltip
+				>
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 				<button
-					class="btn btn-warning"
-					data-ng-click="updateStatus(product);"
-					data-ng-show="product.products_status == 0"
-				>
-					<span class="glyphicon glyphicon-minus"></span>
-				</button>
-				<button
-					class="btn btn-success"
-					data-ng-click="updateStatus(product);"
-					data-ng-show="product.products_status == 1"
-				>
-					<span class="glyphicon glyphicon-ok"></span>
-				</button>
-				<button
-					class="btn btn-info"
-					data-ng-click="refreshDate(product);"
-				>
-					<span class="glyphicon glyphicon-refresh"></span>
-				</button>
-				<button
 					class="btn btn-default"
-					data-ng-click="link(product.id);"
+					data-ng-click="link(n.id);"
+					data-toggle="tooltip"
+					data-placement="right"
+					title="view"
+					tooltip
 				>
-					<span class="glyphicon glyphicon-link"></span>
+					<span class="fa fa-eye"></span>
 				</button>
 			</td>
 		</tr>
 	</table>
 	<div
-		data-ng-if="products_post.elements == 0"
+		data-ng-if="news.elements == 0"
 	>
 		<div class="alert alert-warning alert-dismissible">
 			<strong>Warning!</strong> No product post.
 		</div>
 	</div>
 	<div
-		data-ng-if="!products_post"
+		data-ng-if="!news"
 		class="align_center"
 	>
 	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>

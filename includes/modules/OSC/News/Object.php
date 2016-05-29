@@ -10,7 +10,8 @@ use
 class Object extends DbObj {
 
 	protected
-		$detail
+		$detail,
+		$customerId
 	;
 	public function __construct( $params = array() ){
 		parent::__construct($params);
@@ -22,6 +23,7 @@ class Object extends DbObj {
 		$args = array(
 			'include' => array(
 				'id',
+				'customer_id',
 				'status',
 				'create_by',
 				'create_date',
@@ -34,6 +36,7 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
+				customer_id,
 				status,
 				create_by,
 				create_date
@@ -87,10 +90,12 @@ class Object extends DbObj {
 			INSERT INTO
 				news
 			(
+				customer_id,
 				status
 			)
 				VALUES
 			(
+				'" . $this->getCustomerId() . "',
  				'" . $this->getStatus() . "'
 			)
 		");
@@ -103,4 +108,13 @@ class Object extends DbObj {
 	public function getDetail(){
 		return $this->detail;
 	}
+
+	public function setCustomerId( $int ){
+		$this->customerId = (int)$int;
+	}
+
+	public function getCustomerId(){
+		return $this->customerId;
+	}
+
 }

@@ -15,6 +15,14 @@ class Collection extends StdCollection {
 		$this->objectType = __NAMESPACE__ . '\Object';	
 	}
 
+	public function filterByUserId( $arg ){
+		$this->addWhere("n.customer_id = '" . (int)$arg. "' ");
+	}
+
+	public function sortByDate( $arg ){
+		$this->addOrderBy('n.create_date', $arg);
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("n.id = '" . (int)$arg. "' ");
 	}
