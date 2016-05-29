@@ -111,7 +111,9 @@ define('CATEGORY_ADDRESS', 'Your Address');
 define('CATEGORY_CONTACT', 'Your Contact Information');
 define('CATEGORY_OPTIONS', 'Options');
 define('CATEGORY_PASSWORD', 'Your Password');
-
+define('ENTRY_MANAGE_POST', 'គ្រប់គ្រងអចលនទ្រព្យ');
+define('ENTRY_MANAGE_NEWS', 'គ្រប់គ្រងព័ត៍មាន');
+define('ENTRY_MY_ACCOUNT', 'គណនី​របស់ខ្ញុំ');
 define('ENTRY_COMPANY', 'Company Name');
 define('ENTRY_COMPANY_TEXT', '');
 define('ENTRY_GENDER', 'Gender');

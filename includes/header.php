@@ -55,7 +55,7 @@
           ?>
           <li>
             <button class="btn">
-              <a href="account.php#/managePost" title="<?php echo POST_PROPERTY;?>">
+              <a href="account.php#/manage_property/post" title="<?php echo POST_PROPERTY;?>">
                 <?php echo POST_PROPERTY;?>
               </a>
             </button>

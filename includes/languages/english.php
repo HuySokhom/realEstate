@@ -111,7 +111,9 @@ define('CATEGORY_ADDRESS', 'Your Address');
 define('CATEGORY_CONTACT', 'Your Contact Information');
 define('CATEGORY_OPTIONS', 'Options');
 define('CATEGORY_PASSWORD', 'Your Password');
-
+define('ENTRY_MANAGE_POST', 'Manage Post');
+define('ENTRY_MANAGE_NEWS', 'Manage News');
+define('ENTRY_MY_ACCOUNT', 'My Account');
 define('ENTRY_COMPANY', 'Company Name');
 define('ENTRY_COMPANY_TEXT', '');
 define('ENTRY_GENDER', 'Gender');

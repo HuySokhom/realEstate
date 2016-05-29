@@ -10,16 +10,13 @@
   Released under the GNU General Public License
 */
 
-  require('includes/application_top.php');
-
-  if (!tep_session_is_registered('customer_id')) {
-    $navigation->set_snapshot();
-    tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
-  }
-
-  require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ACCOUNT);
-
-  $breadcrumb->add(NAVBAR_TITLE, tep_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+  	require('includes/application_top.php');
+	if (!tep_session_is_registered('customer_id')) {
+		$navigation->set_snapshot();
+		tep_redirect(tep_href_link(FILENAME_LOGIN, '', 'SSL'));
+	}
+  	require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ACCOUNT);
+  	$breadcrumb->add(NAVBAR_TITLE, tep_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
@@ -39,24 +36,24 @@
 					<div class="tab-content">
 						<ul class="nav nav-tabs" role="tablist">
 							<li ui-sref-active="active">
-								<a href="account.php#/managePost" ui-sref="/managePost">
+								<a href="account.php#/manage_property" ui-sref="/manage_property">
 									<icon class="fa fa-desktop"></icon>
-									Manage Post
+									<?php echo ENTRY_MANAGE_POST;?>
 								</a>
 							</li>
 							<li ui-sref-active="active" ui-sref="/account">
 								<a href="account.php#/account">
 									<i class="fa fa-user"></i>
-									My Account
+									<?php echo ENTRY_MY_ACCOUNT;?>
 								</a>
 							</li>
 							<?php
 								if($_SESSION['user_type'] == 'member'){
 							?>
 							<li ui-sref-active="active">
-								<a ui-sref="/manageNews" href="account.php#/manageNews">
+								<a ui-sref="/manage_news" href="account.php#/manageNews">
 									<i class="fa fa-newspaper-o"></i>
-									Manage News
+									<?php echo ENTRY_MANAGE_NEWS;?>
 								</a>
 							</li>
 							<?php
