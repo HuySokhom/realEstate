@@ -16,6 +16,9 @@
 	<table class="table table-bordered table-striped">
 		<thead>
 			<th>
+				Id
+			</th>
+			<th>
 				Title EN
 			</th>
 			<th>
@@ -32,6 +35,9 @@
 			</th>
 		</thead>
 		<tr data-ng-repeat="n in news.elements">
+			<td>
+				{{n.id}}
+			</td>
 			<td>
 				<span data-ng-repeat="i in n.detail">
 					<span data-ng-show="i.language_id == 1">
