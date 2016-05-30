@@ -1,12 +1,18 @@
 <div class="panel-body">
-	<button
-		class="btn btn-default"
-		onclick="location.href='account.php#/manage_news/post';"
-	>
-		<span class="glyphicon glyphicon-plus-sign"></span>
-		Post News
-	</button>
-	<br/><br/>
+	<div class="col-md-9">
+		<button
+			class="btn btn-default"
+			onclick="location.href='account.php#/manage_news/post';"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Post News
+		</button>
+	</div>
+	<div class="col-md-3">
+		<input type="text" placeholder="Search..." class="form-control" data-ng-model="search"/>
+	</div>
+	<div class="clearfix"></div>
+	<br/>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<th>
@@ -68,8 +74,9 @@
 				<button
 					class="btn"
 					data-ng-click="remove(n.id, $index);"
-					data-toggle="tooltip"
+					data-toggle="modal"
 					data-placement="bottom"
+					data-target="#message"
 					title="delete"
 					tooltip
 				>
@@ -113,5 +120,30 @@
 			items-per-page="10"
 			boundary-links="true"
 		></pagination>
+	</div>
+</div>
+
+<div class="modal fade" id="message">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Delete</h4>
+			</div>
+			<div class="modal-body">
+				<i class="fa fa-hand-o-right"></i>
+				Are you sure to delete this article?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					<i class="fa fa-times-circle" aria-hidden="true"></i>
+					Cancel
+				</button>
+				<button type="button" class="btn btn-primary" data-ng-disabled="!disabled" data-ng-click="confirmDelete();">
+					<i class="fa fa-check" aria-hidden="true"></i>
+					Yes
+				</button>
+			</div>
+		</div>
 	</div>
 </div>

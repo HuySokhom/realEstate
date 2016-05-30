@@ -3474,3 +3474,6 @@ a:hover {
 .btn.focus, .btn:focus, .btn:hover {
 	color: #ffffff;
 }
+.modal-content{
+	border-radius: 0px;
+}

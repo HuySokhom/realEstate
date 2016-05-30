@@ -12,7 +12,31 @@ app.controller(
 		};
 		$scope.init();
 
-		/**
+		$scope.id = '';
+		$scope.index = '';
+		$scope.remove = function(id, $index){
+			$scope.id = id;
+			$scope.index = $index;
+		};
+		$scope.disabled = true;
+		$scope.confirmDelete = function(){
+			$scope.disabled = false;
+			Restful.delete( 'api/Session/User/News/' + $scope.id ).success(function(data){
+				$scope.disabled = true;
+				$.notify({
+					title: '<strong>Complete: </strong>',
+					message: 'Delete Success.'
+				},{
+					type: 'success'
+				});
+				//$scope.init();
+				$scope.news.elements.splice($scope.index, 1);
+				$('#message').modal('hide');
+			});
+
+		};
+
+				/**
 		 * start functionality pagination
 		 */
 		var params = {};
