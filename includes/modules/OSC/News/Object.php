@@ -83,6 +83,13 @@ class Object extends DbObj {
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
+		// remove from description
+		$this->dbQuery("
+			DELETE FROM
+				news_description
+			WHERE
+				news_id = '" . (int)$this->getId() . "'
+		");
 	}
 	
 	public function insert(){	

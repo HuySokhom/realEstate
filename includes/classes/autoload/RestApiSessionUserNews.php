@@ -109,17 +109,17 @@ class RestApiSessionUserNews extends RestApi {
 		$userId = $this->getOwner()->getId();
 		if( !$userId ){
 			throw new \Exception(
-					"403: Access Denied",
-					403
+				"403: Access Denied",
+				403
 			);
 		}else {
-			$cols = new ProductPostCol();
-			$cols->filterByCustomersId($userId);
+			$cols = new NewsCol();
+			$cols->filterByUserId($userId);
 			$cols->filterById( $this->getId() );
 			if( $cols->getTotalCount() > 0 ){
 				$cols->populate();
 				$col = $cols->getFirstElement();
-				$col->setProductsId($this->getId());
+				$col->setId($this->getId());
 				$col->delete();
 			}
 			return array(

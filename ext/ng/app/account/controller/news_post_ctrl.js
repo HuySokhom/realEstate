@@ -37,10 +37,10 @@ app.controller(
 				]
 			};
 			$scope.disabled = false;
-			console.log(data);
+			//console.log(data);
 			Restful.save('api/Session/User/News', data).success(function (data) {
 				$scope.disabled = true;
-				console.log(data);
+				//console.log(data);
 				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
 				$location.path('manage_news');
 			});
