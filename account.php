@@ -86,7 +86,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <!-- lib -->
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular/1.3.15/angular.min.js"
+	src="ext/ng/lib/angular/1.2.25/angular.min.js"
 ></script>
 <script
 	type="text/javascript"
@@ -109,6 +109,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <!--<script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>-->
 
 <script src="ext/tinymce/tinymce.min.js"></script>
+
 <script>tinymce.init({ selector:'textarea' });</script>
 <!-- custom file -->
 

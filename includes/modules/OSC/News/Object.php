@@ -97,6 +97,7 @@ class Object extends DbObj {
 				'" . $this->getCustomerId() . "'
 			)
 		");
+		$this->setId( $this->dbInsertId() );
 	}
 
 	public function setDetail( $array ){

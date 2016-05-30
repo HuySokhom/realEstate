@@ -6,27 +6,41 @@ app.controller(
 	, '$location'
 	, function ($scope, Restful, Services, $location){
 		$scope.service = new Services();
-
+		// init tinymce
+		tinymce.init({
+			selector:'textarea',
+			plugins: [
+				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+				"searchreplace wordcount visualblocks visualchars fullscreen",
+				"insertdatetime media nonbreaking save table contextmenu directionality",
+				"emoticons template paste textcolor colorpicker textpattern media"
+			],
+			toolbar1: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+			toolbar2: "print preview media | forecolor backcolor emoticons",
+			image_advtab: true,
+			paste_data_images: true
+		});
 		$scope.save = function(){
 			// set object to save into news
-			var params = {
+			var data = {
 				news: [
 					{
 						title: $scope.title_en,
-						content: tinymce.get('description_en').getContent(),
+						content: tinymce.get('content_en').getContent(),
 						language_id: 1
 					},
 					{
-						products_name: $scope.title_kh,
-						products_description: tinymce.get('description_kh').getContent(),
+						title: $scope.title_kh,
+						content: tinymce.get('content_kh').getContent(),
 						language_id: 2
 					}
 				]
 			};
 			$scope.disabled = false;
-			Restful.save('api/Session/User/News', params).success(function (data) {
-				$scope.init();
+			console.log(data);
+			Restful.save('api/Session/User/News', data).success(function (data) {
 				$scope.disabled = true;
+				console.log(data);
 				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
 				$location.path('manage_news');
 			});

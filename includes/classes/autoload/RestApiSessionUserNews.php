@@ -47,7 +47,6 @@ class RestApiSessionUserNews extends RestApi {
 			$newsObj = new NewsObj();
 			$userId = $this->getOwner()->getId();
 			$newsObj->setCustomerId($userId);
-//			$newsObj->setProperties($params['POST']['news'][0]);
 			$newsObj->insert();
 			$newId = $newsObj->getId();
 
