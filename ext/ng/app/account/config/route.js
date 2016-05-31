@@ -29,7 +29,7 @@ app.config([
 				controller: 'news_post_ctrl'
 			})
 			.state('/manage_news/edit/:id', {
-				url: '/manage_news/edit:id',
+				url: '/manage_news/edit/:id',
 				templateUrl: 'ext/ng/app/account/partials/news_edit.html',
 				controller: 'news_edit_ctrl'
 			})

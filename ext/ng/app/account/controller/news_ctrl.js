@@ -2,7 +2,8 @@ app.controller(
 	'news_ctrl', [
 	'$scope'
 	, 'Restful'
-	, function ($scope, Restful){
+	, '$location'
+	, function ($scope, Restful, $location){
 		var url = 'api/Session/User/News';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
@@ -12,6 +13,7 @@ app.controller(
 		};
 		$scope.init();
 
+		// remove functionality
 		$scope.id = '';
 		$scope.index = '';
 		$scope.remove = function(id, $index){
@@ -35,13 +37,18 @@ app.controller(
 			});
 
 		};
-
+		// search functionality
 		$scope.search = function(){
 			params.search_title = $scope.search_title;
 			params.id = $scope.id;
 			console.log(params);
 			$scope.init(params);
 		};
+		// edit functionality
+		$scope.edit = function(id){
+			$location.path('/manage_news/edit/' + id);
+		};
+
 		/**
 		 * start functionality pagination
 		 */
