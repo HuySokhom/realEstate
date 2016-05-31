@@ -36,7 +36,13 @@ app.controller(
 
 		};
 
-				/**
+		$scope.search = function(){
+			params.search_title = $scope.search_title;
+			params.id = $scope.id;
+			console.log(params);
+			$scope.init(params);
+		};
+		/**
 		 * start functionality pagination
 		 */
 		var params = {};

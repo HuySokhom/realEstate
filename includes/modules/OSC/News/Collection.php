@@ -26,4 +26,12 @@ class Collection extends StdCollection {
 	public function filterById( $arg ){
 		$this->addWhere("n.id = '" . (int)$arg. "' ");
 	}
+
+	public function filterByTitle( $arg ){
+		$this->addTable('news_description', 'nd');
+
+		$this->addWhere(" n.id = nd.news_id ");
+		$this->addWhere("nd.title LIKE '%" . $arg. "%' ");
+	}
+
 }

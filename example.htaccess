@@ -40,9 +40,23 @@ RewriteRule ^(.*)-po-([0-9]+).html$ pollbooth.php?pollid=$2&%{QUERY_STRING}
 RewriteRule ^api/ api/index.php [L,QSA]
 # /end api
 
+#################################
+###### to rewrite url php #######
+#################################
 
-RewriteCond %{THE_REQUEST} (.*)\.php
-RewriteRule ^(.*)\.php $1.html [R=301,L]
-
-RewriteCond %{THE_REQUEST} (.*)\.html
-RewriteRule ^(.*)\.html $1.php [L]
+# Unless directory, remove trailing slash
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^([^/]+)/$ /realEstate/$1 [R=301,L]
+#
+## Redirect external .php requests to extensionless url
+#RewriteCond %{THE_REQUEST} ^(.+)\.php([#?][^\ ]*)?\ HTTP/
+#RewriteRule ^(.+)\.php$ /realEstate/$1 [R=301,L]
+#
+## Resolve .php file for extensionless php urls
+#RewriteRule ^([^/.]+)$ $1.php [L]
+#
+#RewriteCond %{THE_REQUEST} (.*)\.php
+#RewriteRule ^(.*)\.php $1.html [R=301,L]
+#
+#RewriteCond %{THE_REQUEST} (.*)\.html
+#RewriteRule ^(.*)\.html $1.php [L]

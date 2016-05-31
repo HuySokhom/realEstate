@@ -1,5 +1,5 @@
 <div class="panel-body">
-	<div class="col-md-9">
+	<div class="col-md-6">
 		<button
 			class="btn btn-default"
 			onclick="location.href='account.php#/manage_news/post';"
@@ -8,8 +8,31 @@
 			Post News
 		</button>
 	</div>
-	<div class="col-md-3">
-		<input type="text" placeholder="Search..." class="form-control" data-ng-model="search"/>
+	<div class="col-md-6">
+		<div class="row">
+		<div class="form-group has-feedback col-sm-6">
+			<input
+				type="text"
+				placeholder="Search Title..."
+				style="width: 106%;"
+				class="form-control"
+				data-ng-model="search_title"
+				data-ng-keypress="($event.which === 13) ? search() : 0"
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback col-sm-6">
+			<input
+				type="text"
+				placeholder="Search Id..."
+			   	style="width: 106%;"
+			   	class="form-control"
+				data-ng-model="id"
+				data-ng-keypress="($event.which === 13) ? search() : 0"
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		</div>
 	</div>
 	<div class="clearfix"></div>
 	<br/>
