@@ -49,12 +49,12 @@ class Object extends DbObj {
 	}
 	
 	public function update() {
-		if( !$this->getProductsId() ) {
-			throw new Exception("save method requires id");
+		if( !$this->getLanguageId() ) {
+			throw new Exception("save method requires language id");
 		}
 		$this->dbQuery("
 			UPDATE
-				news
+				news_description
 			SET 
 				title = '" .  $this->getTitle() . "',
 				content = '" .  $this->getContent() . "'

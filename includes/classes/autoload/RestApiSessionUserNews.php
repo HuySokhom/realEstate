@@ -76,34 +76,27 @@ class RestApiSessionUserNews extends RestApi {
 					"403: Access Denied",
 					403
 			);
-		}else {var_dump($params['PUT']);
-			$cols = new ProductPostCol();
-			$cols->filterByCustomersId($userId);
-			$productId = $this->getId();
-			$cols->filterById( $productId );
+		}else {
+			var_dump($this->getId());
+//			var_dump($params['PUT']);
+			$cols = new NewsCol();
+			$cols->filterByUserId($userId);
+			$newsId = $this->getId();
+			$cols->filterById( $newsId );
 			if( $cols->getTotalCount() > 0 ){
-				$cols->populate();
-				$col = $cols->getFirstElement();
-				$col->setProductsId($productId);
-				$col->setProperties($params['PUT']['product'][0]);
-				$col->update();
-
-				$productDetailObject = new ProductDescriptionObj();
-				$productDetailObject->setProductsId($productId);
-				$productDetailObject->setProperties($params['PUT']['product_detail'][0]);
-				$productDetailObject->update();
-//
-				$productToCategoryObject = new ProductToCategoryObj();
-				$productToCategoryObject->setProductsId($productId);
-				$productToCategoryObject->setProperties($params['PUT']['categories'][0]);
-				$productToCategoryObject->update();
-//
-				$productContactPersonObject = new ProductContactPersonObj();
-				$productContactPersonObject->setProductsId($productId);
-				$productContactPersonObject->setProperties($params['PUT']['contact_person'][0]);
-				$productContactPersonObject->update();
-
+				$fields = $params['PUT']['news'];
+				$newsDetailObj = new NewsDescriptionObj();
+				foreach ( $fields as $k => $v){
+					$newsDetailObj->setProperties($v);
+					$newsDetailObj->update();
+					unset($v);
+				}
 			}
+			return array(
+				'data' => array(
+					'success' => 'true'
+				)
+			);
 		}
 	}
 

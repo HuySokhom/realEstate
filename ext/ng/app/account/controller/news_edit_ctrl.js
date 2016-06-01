@@ -4,7 +4,8 @@ app.controller(
 	, 'Restful'
 	, '$stateParams'
 	, 'Services'
-	, function ($scope, Restful, $stateParams, Services){
+	, '$location'
+	, function ($scope, Restful, $stateParams, Services, $location){
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [
@@ -54,9 +55,8 @@ app.controller(
 			//console.log(data);
 			Restful.put('api/Session/User/News/' + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;
-				console.log(data);
-				//$scope.service.alertMessage('Complete', 'Save Success.', 'success');
-				//$location.path('manage_news');
+				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
+				$location.path('manage_news');
 			});
 		};
 

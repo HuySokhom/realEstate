@@ -7,8 +7,7 @@ app.controller(
 		var url = 'api/Session/User/News';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.news = data;console.log(data);
-				$scope.totalItems = data.count;
+				$scope.news = data;
 			});
 		};
 		$scope.init();
@@ -31,9 +30,9 @@ app.controller(
 				},{
 					type: 'success'
 				});
-				//$scope.init();
-				$scope.news.elements.splice($scope.index, 1);
-				$('#message').modal('hide');
+				$scope.init();
+				//$scope.news.elements.splice($scope.index, 1);
+				$('#message').mo34dal('hide');
 			});
 
 		};
@@ -41,7 +40,6 @@ app.controller(
 		$scope.search = function(){
 			params.search_title = $scope.search_title;
 			params.id = $scope.id;
-			console.log(params);
 			$scope.init(params);
 		};
 		// edit functionality
