@@ -3477,3 +3477,7 @@ a:hover {
 .modal-content{
 	border-radius: 0px;
 }
+.btn-default:hover{
+	color: #333;
+	background-color: #ffffff;
+}

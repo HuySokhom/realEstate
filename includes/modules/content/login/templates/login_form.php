@@ -18,6 +18,13 @@
     </div>
   </div>
 
-  <p><?php echo '<a class="btn btn-default" role="button" href="' . tep_href_link(FILENAME_PASSWORD_FORGOTTEN, '', 'SSL') . '">' . MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN . '</a>'; ?></p>
+  <p>
+    <a href="password_forgotten.php">
+      <button class="btn">
+        <i class="fa fa-hand-o-right"></i>
+        <?php echo MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN; ?>
+      </button>
+    </a>
+  </p>
 
 </div>
