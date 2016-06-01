@@ -109,9 +109,9 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 	type="text/javascript"
 	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
 ></script>
-<!--<script src="ext/ng/lib/angular-upload/ng-file-upload-shim.js"></script>-->
+<script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
-<!--<script src="ext/ng/lib/angular-upload/ng-file-upload.js"></script>-->
+<script src="ext/ng/lib/angular-upload/ng-file-upload.min.js"></script>
 
 <script>tinymce.init({ selector:'textarea' });</script>
 <!-- custom file -->

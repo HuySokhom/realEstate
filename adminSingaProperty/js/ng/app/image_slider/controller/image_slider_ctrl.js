@@ -84,7 +84,7 @@ app.controller(
 					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 				});
 			}
-		}
+		};
 
 		/**
 		 * start functionality pagination
