@@ -4,10 +4,10 @@ app.controller(
 	, 'Restful'
 	, '$location'
 	, function ($scope, Restful, $location){
-		var url = 'api/Session/User/News';
+		var url = 'api/News';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.news = data;
+				$scope.news = data;console.log(data);
 			});
 		};
 		$scope.init();

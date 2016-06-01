@@ -1,1 +1,168 @@
-<h1>view</h1>
+<div id="property-listing" class="property-listing">
+	<div class="container">
+		<div class="property-left col-md-9 col-sm-6 p_l_z content-area">
+			<div class="section-header p_l_z">
+				<div class="col-md-10 col-sm-10 p_l_z">
+					<p>property</p>
+					<h3>News</h3>
+				</div>
+			</div>
+
+			<div class="property-listing-box sale-block" data-ng-repeat="n in news.elements">
+				<!-- Property Main Box -->
+				<div class="property-main-box">
+					<div class="col-md-4 p_z">
+						<a title="{{n.detail[0].title}}" href="news.php#/{{n.id}}">
+							<img src="images/{{n.image_thumbnail}}" class="img-news" alt="">
+						</a>
+					</div>
+					<div class="col-md-8 p_z">
+						<div class="property-details">
+							<a title="Property Title" href="news.php#/{{n.id}}">
+								{{n.detail[0].title}}
+							</a>
+							<div data-ng-bind-html="n.detail[0].content | limitTo:200"></div>
+							<ul>
+								<li>
+									<i class="fa fa-clock-o"></i>
+									Post On {{n.create_date | date}}
+								</li>
+								<li>
+									<i class="fa fa-user"></i>
+									{{n.create_by}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- Property Main Box /- -->
+			</div>
+
+			<div class="property-listing-box rent-block">
+				<!-- Property Main Box -->
+				<div class="property-main-box">
+					<div class="col-md-4 p_z ">
+						<a title="Property Image" href="aa-listing-list.html#"><img src="images/aa-listing/property4.jpg" alt="property2"></a>
+					</div>
+					<div class="col-md-8 p_z">
+						<div class="property-details">
+							<span>r</span>
+							<a title="Property Title" href="aa-listing-list.html#">15 Apartments of Type B </a>
+							<h4>&dollar;320/mo</h4>
+							<p>Our Latest listed properties and check out the facnd check out the facilities on them.</p>
+							<ul>
+								<li><i class="fa fa-expand"></i> 3326 sq </li>
+								<li><img src="images/icon/bed-icon.png" alt="bedroom-icon"> 3 </li>
+								<li><img src="images/icon/bath-icon.png" alt="bathroom-icon">2 </li>
+								<li><i class="fa fa-car"></i>1</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- Property Main Box /- -->
+			</div>
+			<!-- Pagination -->
+
+			<!-- Pagination /- -->
+		</div>
+		<div class="col-md-3 col-sm-6 p_r_z property-sidebar widget-area">
+			<aside class="widget widget-search">
+				<h2 class="widget-title">search<span>property</span></h2>
+				<form>
+					<select>
+						<option value="selected">Property ID</option>
+						<option value="one">One</option>
+						<option value="two">Two</option>
+						<option value="three">Three</option>
+						<option value="four">Four</option>
+						<option value="five">Five</option>
+					</select>
+					<select>
+						<option value="selected">Location</option>
+						<option value="one">One</option>
+						<option value="two">Two</option>
+						<option value="three">Three</option>
+						<option value="four">Four</option>
+						<option value="five">Five</option>
+					</select>
+					<select>
+						<option value="selected">Type</option>
+						<option value="one">One</option>
+						<option value="two">Two</option>
+						<option value="three">Three</option>
+						<option value="four">Four</option>
+						<option value="five">Five</option>
+					</select>
+					<select>
+						<option value="selected">Status</option>
+						<option value="one">One</option>
+						<option value="two">Two</option>
+						<option value="three">Three</option>
+						<option value="four">Four</option>
+						<option value="five">Five</option>
+					</select>
+					<div class="col-md-6 col-sm-6 p_l_z">
+						<select>
+							<option value="selected">Beds</option>
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-6 p_r_z">
+						<select>
+							<option value="selected">Baths</option>
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-6 p_l_z">
+						<select>
+							<option value="selected">Min Price</option>
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-6 p_r_z">
+						<select>
+							<option value="selected">Max Price</option>
+							<option value="one">$3000</option>
+							<option value="two">$30000</option>
+							<option value="three">$300000</option>
+							<option value="four">$3000000</option>
+							<option value="five">$3000000000000000</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-6 p_l_z">
+						<select>
+							<option value="selected">Min Sqft</option>
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+					</div>
+					<div class="col-md-6 col-sm-6 p_r_z">
+						<select>
+							<option value="selected">Max Sqft</option>
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+					</div>
+					<input type="submit" value="Search Now" class="btn">
+				</form>
+			</aside>
+
+		</div>
+	</div>
+</div>

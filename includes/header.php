@@ -70,7 +70,7 @@
       <div class="col-md-2 logo-block no-padding">
         <?php
         echo '<a href="' . tep_href_link('index.php') . '">
-            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"  alt="logo"/></a>';
+            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"  alt="logo" style="width: 100px;"/></a>';
         ?>
       </div><!-- Logo Block /- -->
       <!-- Menu Block -->
