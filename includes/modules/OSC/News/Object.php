@@ -74,7 +74,8 @@ class Object extends DbObj {
 				news
 			SET 
 				image = '" .  $this->getImage() . "',
-				image_thumbnail = '" .  $this->getImageThumbnail() . "'
+				image_thumbnail = '" .  $this->getImageThumbnail() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -106,13 +107,15 @@ class Object extends DbObj {
 			(
 				customer_id,
 				image,
-				image_thumbnail
+				image_thumbnail,
+				create_by
 			)
 				VALUES
 			(
 				'" . $this->getCustomerId() . "',
 				'" . $this->getImage() . "',
-				'" . $this->getImageThumbnail() . "'
+				'" . $this->getImageThumbnail() . "',
+				'" . $this->getCreateBy() . "'
 			)
 		");
 		$this->setId( $this->dbInsertId() );
