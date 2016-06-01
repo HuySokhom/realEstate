@@ -12,7 +12,7 @@ app.factory("Restful", [
             });
         };
 
-		obj.save = function(url, params) {
+		obj.post = function(url, params) {
 			return $http({
 				url: url,
 				method: 'POST',
