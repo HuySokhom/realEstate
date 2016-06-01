@@ -57,3 +57,8 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
     type="text/javascript"
     src="ext/ng/app/news/controller/news_detail_ctrl.js"
 ></script>
+<script
+    type="text/javascript"
+    src="ext/ng/app/news/directive/search.js"
+></script>
+

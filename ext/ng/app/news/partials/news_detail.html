@@ -1,112 +1,56 @@
-<form data-ng-submit="save();" name="myForm">
-    <h4>
-        Edit News
-    </h4>
-    <table class="table table-bordered">
-        <tr>
-            <td style="width: 15%;">
-                Title EN:
-            </td>
-            <td>
-                <input
-                    type="text"
-                    class="form-control"
-                    data-ng-model="title_en"
-                    required="required"
-                />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Title KH:
-            </td>
-            <td>
-                <input
-                    type="text"
-                    class="form-control"
-                    data-ng-model="title_kh"
-                    required="required"
-                />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Image:
-            </td>
-            <td>
-                <input
-                    type="file"
-                    ng-model="picFile"
-                    name="file"
-                    accept="image/*"
-                    ngf-max-size="2MB"
-                    ngf-model-invalid="errorFiles"
-                    ngf-select="uploadPic(picFile)"
-                >
-                <i ng-show="myForm.file.$error.maxSize">
-                    File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-                </i>
-                <img
-                    ng-show="image"
-                    class="thumb"
-                    src="images/{{image_thumbnail}}"
-                >
-                <span class="progress" ng-show="picFile.progress >= 0">
-                    <div
-                        style="width:{{picFile.progress}}%"
-                        ng-bind="picFile.progress + '%'"
-                    >
-                    </div>
-                </span>
-                <span ng-show="picFile.result">Upload Successful</span>
-                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Content EN:
-            </td>
-            <td>
-                <textarea
-                    class="form-control"
-                    ui-tinymce="tinymceOptions"
-                    data-ng-model="content_en"
-                    id="content_en"
-                    rows="15"
-                ></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Content KH:
-            </td>
-            <td>
-                <textarea
-                    ui-tinymce="tinymceOptions"
-                    class="form-control"
-                    id="content_kh"
-                    data-ng-model="content_kh"
-                    rows="15"
-                ></textarea>
-            </td>
-        </tr>
-    </table>
-
-    <div class="align-left">
-        <button
-            class="btn btn-default"
-            onclick="location.href='account.php#/manage_news';"
-        >
-            <i class="fa fa-close"></i>
-            Close
-        </button>
+<div class="col-md-9 col-sm-6 p_l_z content-area margin-to">
+    <div class="blog-listing single-post col-md-12 p_z">
+        <article>
+            <div class="entry-cover">
+                <img src="images/{{image}}" alt="{{title_en}}">
+                <i class="fa fa-image"></i>
+            </div>
+            <div class="entry-header">
+                <h3 class="entry-title">{{title_en}}</h3>
+                <div class="entry-meta">
+                    <span class="posted-on">
+                        <a title="{{title_en}}">
+                            <i class="fa fa-clock-o"></i>
+                            Posted On {{postDate | date}}
+                        </a>
+                    </span>
+                    <span class="byline">
+                        <i class="fa fa-user"></i>
+                        <a title="{{createBy}}">
+                            {{createBy}}
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="entry-content" data-ng-bind-html="content_en"></div>
+        </article>
+        <!-- Related Post -->
+        <div class="related-post p_z row">
+            <h3>Other Post</h3>
+            <div class="col-md-4 col-sm-12">
+                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-1.jpg" alt="releted-post-1"></a>
+                <a title="Related post" href="blog-detail.html#">Suspendisse non diamur imperdiet.</a>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-2.jpg" alt="releted-post-1"></a>
+                <a title="Related post" href="blog-detail.html#">Lorem ipsun dolor sit amet felis</a>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-3.jpg" alt="releted-post-1"></a>
+                <a title="Related post" href="blog-detail.html#">Phaselus one it opn met diam felis</a>
+            </div>
+        </div><!-- Related Post /- -->
+        <!-- Post Navigation -->
+        <div class="post-navigation">
+            <a title="Nexr Post" href="blog-detail.html#" class="pull-left prev-post">
+                <i class="fa fa-long-arrow-left"></i> Previous Post
+                <b>Heading Title of Post</b>
+            </a>
+            <a title="Next Post" href="blog-detail.html#" class="pull-right next-post">
+                Next Post<i class="fa fa-long-arrow-right"></i>
+                <b>Heading Title of Post</b>
+            </a>
+        </div>
     </div>
-    <div class="align-right">
-        <button
-            class="btn btn-primary"
-        >
-            <i class="fa fa-save"></i>
-            Save
-        </button>
-    </div>
-</form>
+</div>
+<div search></div>
