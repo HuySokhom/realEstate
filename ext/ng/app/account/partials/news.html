@@ -111,16 +111,18 @@
 				>
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
-				<button
-					class="btn"
-					data-ng-click="link(n.id);"
-					data-toggle="tooltip"
-					data-placement="right"
-					title="view"
-					tooltip
-				>
-					<span class="fa fa-eye"></span>
-				</button>
+				<a href="news.php#/{{n.id}}" target="_blank">
+					<button
+						class="btn"
+						data-ng-click="link(n.id);"
+						data-toggle="tooltip"
+						data-placement="right"
+						title="view"
+						tooltip
+					>
+						<span class="fa fa-eye"></span>
+					</button>
+				</a>
 			</td>
 		</tr>
 	</table>
