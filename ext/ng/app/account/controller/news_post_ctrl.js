@@ -4,7 +4,9 @@ app.controller(
 	, 'Restful'
 	, 'Services'
 	, '$location'
-	, function ($scope, Restful, Services, $location){
+	, 'Upload'
+	, '$timeout'
+	, function ($scope, Restful, Services, $location, Upload, $timeout){
 		$scope.service = new Services();
 		// init tiny option
 		$scope.tinymceOptions = {
@@ -22,7 +24,11 @@ app.controller(
 		$scope.save = function(){
 			// set object to save into news
 			var data = {
-				news: [
+				news: {
+					image: $scope.image,
+					image_thumbnail: $scope.image_thumbnail
+				},
+				news_description: [
 					{
 						title: $scope.title_en,
 						content: $scope.content_en,
@@ -43,6 +49,29 @@ app.controller(
 				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
 				$location.path('manage_news');
 			});
+		};
+
+		//functionality upload
+		$scope.uploadPic = function(file) {
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/UploadImage',
+					data: {file: file, username: $scope.username},
+				});console.log(file);
+				file.upload.then(function (response) {
+					$timeout(function () {console.log(response);
+						file.result = response.data;
+						$scope.image = response.data.image;
+						$scope.image_thumbnail = response.data.image_thumbnail;
+					});
+				}, function (response) {
+					if (response.status > 0)
+						$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix I	E which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
 		};
 
 	}

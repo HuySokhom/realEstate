@@ -60,6 +60,8 @@ class Object extends DbObj {
 				content = '" .  $this->getContent() . "'
 			WHERE
 				language_id = '" . (int)$this->getLanguageId() . "'
+					and
+				news_id = '" . (int)$this->getNewsId() . "'
 		");
 	}
 

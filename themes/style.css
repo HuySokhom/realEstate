@@ -3482,23 +3482,16 @@ a:hover {
 	background-color: #ffffff;
 }
 .thumb {
-	width: 30px;
-	height: 30px;
-	float: none;
-	position: relative;
-	top: 7px;
+	width: 230px;
+	margin-top: 10px;
 }
 form .progress {
 	line-height: 15px;
 }
-.progress {
-	display: inline-block;
-	width: 100px;
-	border: 3px groove #CCC;
-}
 .progress div {
 	font-size: smaller;
-	background: orange;
+	background: #3C64FF;
 	width: 0;
+	color: #ffffff;
 	margin-top: 10px;
 }

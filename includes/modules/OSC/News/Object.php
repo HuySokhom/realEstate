@@ -11,7 +11,9 @@ class Object extends DbObj {
 
 	protected
 		$detail,
-		$customerId
+		$customerId,
+		$image,
+		$imageThumbnail
 	;
 	public function __construct( $params = array() ){
 		parent::__construct($params);
@@ -24,6 +26,8 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'customer_id',
+				'image',
+				'image_thumbnail',
 				'status',
 				'create_by',
 				'create_date',
@@ -37,6 +41,8 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customer_id,
+				image_thumbnail,
+				image,
 				status,
 				create_by,
 				create_date
@@ -60,14 +66,15 @@ class Object extends DbObj {
 	}
 	
 	public function update() {
-		if( !$this->getProductsId() ) {
+		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
 		$this->dbQuery("
 			UPDATE
 				news
 			SET 
-				status = '" .  $this->getStatus() . "'
+				image = '" .  $this->getImage() . "',
+				image_thumbnail = '" .  $this->getImageThumbnail() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -97,11 +104,15 @@ class Object extends DbObj {
 			INSERT INTO
 				news
 			(
-				customer_id
+				customer_id,
+				image,
+				image_thumbnail
 			)
 				VALUES
 			(
-				'" . $this->getCustomerId() . "'
+				'" . $this->getCustomerId() . "',
+				'" . $this->getImage() . "',
+				'" . $this->getImageThumbnail() . "'
 			)
 		");
 		$this->setId( $this->dbInsertId() );
@@ -113,6 +124,22 @@ class Object extends DbObj {
 
 	public function getDetail(){
 		return $this->detail;
+	}
+
+	public function setImageThumbnail( $string ){
+		$this->imageThumbnail = $string;
+	}
+
+	public function getImageThumbnail(){
+		return $this->imageThumbnail;
+	}
+
+	public function setImage( $string ){
+		$this->image = $string;
+	}
+
+	public function getImage(){
+		return $this->image;
 	}
 
 	public function setCustomerId( $int ){

@@ -49,11 +49,12 @@ class RestApiSessionUserNews extends RestApi {
 			$newsObj = new NewsObj();
 			$userId = $this->getOwner()->getId();
 			$newsObj->setCustomerId($userId);
+			$newsObj->setProperties( $params['POST']['news'] );
 			$newsObj->insert();
 			$newId = $newsObj->getId();
 
 			$newsDetailObj = new NewsDescriptionObj();
-			$fields = $params['POST']['news'];
+			$fields = $params['POST']['news_description'];
 			foreach ( $fields as $k => $v){
 				$newsDetailObj->setNewsId($newId);
 				$newsDetailObj->setProperties($v);
@@ -77,16 +78,21 @@ class RestApiSessionUserNews extends RestApi {
 					403
 			);
 		}else {
-			var_dump($this->getId());
-//			var_dump($params['PUT']);
 			$cols = new NewsCol();
 			$cols->filterByUserId($userId);
 			$newsId = $this->getId();
 			$cols->filterById( $newsId );
 			if( $cols->getTotalCount() > 0 ){
-				$fields = $params['PUT']['news'];
+				$cols->populate();
+				$col = $cols->getFirstElement();
+				$col->setId($this->getId());
+				$col->setProperties($params['PUT']['news']);
+				$col->update();
+
+				$fields = $params['PUT']['news_description'];
 				$newsDetailObj = new NewsDescriptionObj();
 				foreach ( $fields as $k => $v){
+					$newsDetailObj->setNewsId($newsId);
 					$newsDetailObj->setProperties($v);
 					$newsDetailObj->update();
 					unset($v);

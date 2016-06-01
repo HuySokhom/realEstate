@@ -5,7 +5,9 @@ app.controller(
 	, '$stateParams'
 	, 'Services'
 	, '$location'
-	, function ($scope, Restful, $stateParams, Services, $location){
+	, 'Upload'
+	, '$timeout'
+	, function ($scope, Restful, $stateParams, Services, $location, Upload, $timeout){
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [
@@ -30,6 +32,8 @@ app.controller(
 				$scope.title_kh = data.elements[0].detail[1].title;
 				$scope.content_en = data.elements[0].detail[0].content;
 				$scope.content_kh = data.elements[0].detail[1].content;
+				$scope.image = data.elements[0].image;
+				$scope.image_thumbnail = data.elements[0].image_thumbnail;
 			});
 		};
 		$scope.init();
@@ -38,7 +42,11 @@ app.controller(
 		$scope.save = function(){
 			// set object to save into news
 			var data = {
-				news: [
+				news: {
+					image: $scope.image,
+					image_thumbnail: $scope.image_thumbnail
+				},
+				news_description: [
 					{
 						title: $scope.title_en,
 						content: $scope.content_en,
@@ -52,12 +60,35 @@ app.controller(
 				]
 			};
 			$scope.disabled = false;
-			//console.log(data);
+
 			Restful.put('api/Session/User/News/' + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;
 				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
 				$location.path('manage_news');
 			});
+		};
+
+		//functionality upload
+		$scope.uploadPic = function(file) {
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/UploadImage',
+					data: {file: file, username: $scope.username},
+				});console.log(file);
+				file.upload.then(function (response) {
+					$timeout(function () {console.log(response);
+						file.result = response.data;
+						$scope.image = response.data.image;
+						$scope.image_thumbnail = response.data.image_thumbnail;
+					});
+				}, function (response) {
+					if (response.status > 0)
+						$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix I	E which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
 		};
 
 	}

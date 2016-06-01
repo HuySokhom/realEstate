@@ -41,9 +41,7 @@ class RestApiUploadImage extends RestApi {
                 }
                 $user = str_replace(' ', '_', $_SESSION['user_name']);
                 // add timestamp to image name to prevent against overwrites
-                $file['name'] = substr($file['name'], 0, strlen($ext) * -1)
-                    . time()
-                    . '.' . $ext;
+                $file['name'] = substr($file['name'], 0, strlen($ext) * -1) . '.' . $ext;
 
                 // create folder for each user when upload
                 $folderName = DIR_FS_CATALOG . 'images/' . $user;
@@ -87,7 +85,7 @@ class RestApiUploadImage extends RestApi {
                         $imgOriginal = $folderImage . $file['name'];
                         $imgThumbnail = $folderImageThumbnail . $file['name'];
 
-                        $this->make_thumb($file, $imgOriginal, $imgThumbnail, 120);
+                        $this->make_thumb($file, $imgOriginal, $imgThumbnail, 250);
                     }
 
                     return array(

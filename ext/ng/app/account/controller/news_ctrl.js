@@ -32,7 +32,7 @@ app.controller(
 				});
 				$scope.init();
 				//$scope.news.elements.splice($scope.index, 1);
-				$('#message').mo34dal('hide');
+				$('#message').modal('hide');
 			});
 
 		};
