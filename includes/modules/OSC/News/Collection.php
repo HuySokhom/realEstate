@@ -23,6 +23,14 @@ class Collection extends StdCollection {
 		$this->addOrderBy('n.create_date', $arg);
 	}
 
+	public function filterByNextRecord( $arg ){
+		$this->addWhere("n.id = ( select min(n.id) from news where id > '" . (int)$arg. "')  ");
+	}
+
+	public function filterByPreviousRecord( $arg ){
+		$this->addWhere("n.id = ( select max(n.id) from news where id < '" . (int)$arg. "')  ");
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("n.id = '" . (int)$arg. "' ");
 	}
