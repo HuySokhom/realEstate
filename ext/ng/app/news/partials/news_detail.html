@@ -33,17 +33,11 @@
         <!-- Related Post -->
         <div class="related-post p_z row">
             <h3>Other Post</h3>
-            <div class="col-md-4 col-sm-12">
-                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-1.jpg" alt="releted-post-1"></a>
-                <a title="Related post" href="blog-detail.html#">Suspendisse non diamur imperdiet.</a>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-2.jpg" alt="releted-post-1"></a>
-                <a title="Related post" href="blog-detail.html#">Lorem ipsun dolor sit amet felis</a>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <a title="Related post" href="blog-detail.html#"><img src="images/blog/releted-post-3.jpg" alt="releted-post-1"></a>
-                <a title="Related post" href="blog-detail.html#">Phaselus one it opn met diam felis</a>
+            <div class="col-md-4 col-sm-12" data-ng-repeat="n in newsOther.elements">
+                <a title="" href="news.php#/{{n.id}}"><img src="images/{{n.image}}" alt=""></a>
+                <a title="" href="news.php#/{{n.id}}">
+                    <span data-ng-bind-html="n.detail[0].title"></span>
+                </a>
             </div>
         </div><!-- Related Post /- -->
         <!-- Post Navigation -->

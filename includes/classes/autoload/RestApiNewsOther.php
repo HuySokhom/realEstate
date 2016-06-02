@@ -1,0 +1,28 @@
+<?php
+
+use
+	OSC\News\Collection as NewsCol
+;
+
+class RestApiNewsOther extends RestApi {
+
+	public function get($params){
+		$col = new NewsCol();
+		$col->sortByDate('DESC');
+		$this->getId() ? $col->filterById($this->getId()) : '';
+
+		// start limit page
+		$showDataPerPage = 3;
+		$start = $params['GET']['start'];
+		$this->applyLimit($col,
+			array(
+				'limit' => array( $start, $showDataPerPage )
+			)
+		);
+
+		$this->applyFilters($col, $params);
+		$this->applySortBy($col, $params);
+		return $this->getReturn($col, $params);
+	}
+
+}

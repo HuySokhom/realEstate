@@ -6,7 +6,7 @@ app.controller(
 	, '$location'
 	, function ($scope, Restful, $stateParams, $location){
 
-		var url = 'api/Session/User/News/';
+		var url = 'api/News/';
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
 				$scope.news = data.elements[0].detail;
@@ -18,6 +18,10 @@ app.controller(
 				$scope.postDate = data.elements[0].create_date;
 				$scope.createBy = data.elements[0].create_by;
 				console.log(data);
+			});
+			// init other post news
+			Restful.get('api/NewsOther/', params).success(function(data){
+				$scope.newsOther = data;console.log(data);
 			});
 		};
 		$scope.init();
