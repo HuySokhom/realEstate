@@ -136,10 +136,7 @@
   require('includes/form_check.js.php');
 ?>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
-
+<div class="container margin-top">
 <?php
   if ($messageStack->size('account_edit') > 0) {
     echo $messageStack->output('account_edit');
@@ -251,7 +248,7 @@
     <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 </div>
-
+</div>
 </form>
 
 <?php
