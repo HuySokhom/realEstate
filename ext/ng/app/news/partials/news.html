@@ -38,7 +38,14 @@
 			</div>
 
 			<!-- Pagination -->
-
+			<pagination
+				total-items="totalItems"
+				ng-model="currentPage"
+				ng-change="pageChanged()"
+				max-size="5"
+				items-per-page="10"
+				boundary-links="true"
+			></pagination>
 			<!-- Pagination /- -->
 		</div>
 		<div search></div>
