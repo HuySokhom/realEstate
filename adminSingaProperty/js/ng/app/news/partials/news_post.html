@@ -1,0 +1,111 @@
+<form data-ng-submit="save();" name="myForm">
+    <h4>
+        News Information
+    </h4>
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 15%;">
+                Title EN:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="title_en"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Title KH:
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="title_kh"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Image
+            </td>
+            <td>
+                <input
+                    type="file"
+                    ng-model="picFile"
+                    name="file"
+                    accept="image/*"
+                    ngf-max-size="2MB"
+                    ngf-model-invalid="errorFiles"
+                    ngf-select="uploadPic(picFile)"
+                >
+                <i ng-show="myForm.file.$error.maxSize">
+                    File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+                </i>
+                <img
+                    ng-show="image"
+                    class="thumb"
+                    src="images/{{image_thumbnail}}"
+                >
+                <span class="progress" ng-show="picFile.progress >= 0">
+                    <div
+                        style="width:{{picFile.progress}}%"
+                        ng-bind="picFile.progress + '%'"
+                    >
+                    </div>
+                </span>
+                <span ng-show="picFile.result">Upload Successful</span>
+                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Content EN:
+            </td>
+            <td>
+                <textarea
+                        class="form-control"
+                        data-ng-model="content_en"
+                        ui-tinymce="tinymceOptions"
+                        rows="15"
+                ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Content KH:
+            </td>
+            <td>
+                <textarea
+                    class="form-control"
+                    ui-tinymce="tinymceOptions"
+                    data-ng-model="content_kh"
+                    rows="15"
+                ></textarea>
+            </td>
+        </tr>
+    </table>
+    <div class="align-left">
+        <button
+            class="btn btn-default"
+            onclick="location.href='account.php#/manage_news';"
+        >
+            <i class="fa fa-close"></i>
+            Close
+        </button>
+    </div>
+    <div class="align-right">
+        <button
+            class="btn btn-primary"
+        >
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+    </div>
+</form>
+
+

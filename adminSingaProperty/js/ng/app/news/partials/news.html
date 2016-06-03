@@ -1,0 +1,179 @@
+<div class="panel-body">
+	<div class="col-md-6">
+		<button
+			class="btn btn-default"
+			onclick="location.href='account.php#/manage_news/post';"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Post News
+		</button>
+	</div>
+	<div class="col-md-6">
+		<div class="row">
+		<div class="form-group has-feedback col-sm-6">
+			<input
+				type="text"
+				placeholder="Search Title..."
+				style="width: 106%;"
+				class="form-control"
+				data-ng-model="search_title"
+				data-ng-keypress="($event.which === 13) ? search() : 0"
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback col-sm-6">
+			<input
+				type="text"
+				placeholder="Search Id..."
+			   	style="width: 106%;"
+			   	class="form-control"
+				data-ng-model="id"
+				data-ng-keypress="($event.which === 13) ? search() : 0"
+			/>
+			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<br/>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<th>
+				Id
+			</th>
+			<th>
+				Title EN
+			</th>
+			<th>
+				Title KH
+			</th>
+			<th>
+				Content EN
+			</th>
+			<th>
+				Content KH
+			</th>
+			<th width="150px">
+				Action
+			</th>
+		</thead>
+		<tr data-ng-repeat="n in news.elements">
+			<td>
+				{{n.id}}
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 1">
+						{{i.title}}
+					</span>
+				</span>
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 2">
+						{{i.title}}
+					</span>
+				</span>
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 1">
+						<span data-ng-bind-html="i.content | limitTo:100"></span>
+					</span>
+				</span>
+			</td>
+			<td>
+				<span data-ng-repeat="i in n.detail">
+					<span data-ng-show="i.language_id == 2">
+						<span data-ng-bind-html="i.content | limitTo:100"></span>
+					</span>
+				</span>
+			</td>
+			<td>
+				<button
+					class="btn"
+					data-ng-click="edit(n.id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="edit"
+					tooltip
+				>
+					<span class="fa fa-pencil-square-o"></span>
+				</button>
+				<button
+					class="btn"
+					data-ng-click="remove(n.id, $index);"
+					data-toggle="modal"
+					data-placement="bottom"
+					data-target="#message"
+					title="delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+				<a href="news.php#/{{n.id}}" target="_blank">
+					<button
+						class="btn"
+						data-ng-click="link(n.id);"
+						data-toggle="tooltip"
+						data-placement="right"
+						title="view"
+						tooltip
+					>
+						<span class="fa fa-eye"></span>
+					</button>
+				</a>
+			</td>
+		</tr>
+	</table>
+	<div
+		data-ng-if="news.elements == 0"
+	>
+		<div class="alert alert-warning alert-dismissible">
+			<strong>Warning!</strong> No product post.
+		</div>
+	</div>
+	<div
+		data-ng-if="!news"
+		class="align_center"
+	>
+	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+		class="panel-footer"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>
+
+<div class="modal fade" id="message">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Delete</h4>
+			</div>
+			<div class="modal-body">
+				<i class="fa fa-hand-o-right"></i>
+				Are you sure to delete this article?
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					<i class="fa fa-times-circle" aria-hidden="true"></i>
+					Cancel
+				</button>
+				<button type="button" class="btn btn-primary" data-ng-disabled="!disabled" data-ng-click="confirmDelete();">
+					<i class="fa fa-check" aria-hidden="true"></i>
+					Yes
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
