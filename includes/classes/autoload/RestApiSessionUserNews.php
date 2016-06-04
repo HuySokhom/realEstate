@@ -12,7 +12,8 @@ class RestApiSessionUserNews extends RestApi {
 		$col = new NewsCol();
 		// security of user
 		$userId = $this->getOwner()->getId();
-		if( !$userId ){
+		$userType = $_SESSION['user_type'];
+		if( !$userId || $userType != "member"){
 			throw new \Exception(
 				"403: Access Denied",
 				403
@@ -39,8 +40,9 @@ class RestApiSessionUserNews extends RestApi {
 
 	public function post($params){
 		$userId = $this->getOwner()->getId();
+		$userType = $_SESSION['user_type'];
 		// security of user
-		if( !$userId ){
+		if( !$userId || $userType != "member"){
 			throw new \Exception(
 				"403: Access Denied",
 				403
@@ -73,10 +75,11 @@ class RestApiSessionUserNews extends RestApi {
 
 	public function put($params){
 		$userId = $this->getOwner()->getId();
-		if( !$userId ){
+		$userType = $_SESSION['user_type'];
+		if( !$userId || $userType != "member"){
 			throw new \Exception(
-					"403: Access Denied",
-					403
+				"403: Access Denied",
+				403
 			);
 		}else {
 			$cols = new NewsCol();
@@ -110,7 +113,8 @@ class RestApiSessionUserNews extends RestApi {
 
 	public function delete(){
 		$userId = $this->getOwner()->getId();
-		if( !$userId ){
+		$userType = $_SESSION['user_type'];
+		if( !$userId || $userType != "member"){
 			throw new \Exception(
 				"403: Access Denied",
 				403

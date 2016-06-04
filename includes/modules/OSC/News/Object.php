@@ -108,14 +108,16 @@ class Object extends DbObj {
 				customer_id,
 				image,
 				image_thumbnail,
-				create_by
+				create_by,
+				create_date
 			)
 				VALUES
 			(
 				'" . $this->getCustomerId() . "',
 				'" . $this->getImage() . "',
 				'" . $this->getImageThumbnail() . "',
-				'" . $this->getCreateBy() . "'
+				'" . $this->getCreateBy() . "',
+				NOW()
 			)
 		");
 		$this->setId( $this->dbInsertId() );
