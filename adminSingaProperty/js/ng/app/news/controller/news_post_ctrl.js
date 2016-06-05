@@ -43,7 +43,7 @@ app.controller(
 			};
 			$scope.disabled = false;
 			//console.log(data);
-			Restful.post('api/Session/User/News', data).success(function (data) {
+			Restful.post('api/News', data).success(function (data) {
 				$scope.disabled = true;
 				//console.log(data);
 				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
@@ -55,7 +55,7 @@ app.controller(
 		$scope.uploadPic = function(file) {
 			if (file) {
 				file.upload = Upload.upload({
-					url: 'api/UploadImage',
+					url: 'api/ImageUpload',
 					data: {file: file, username: $scope.username},
 				});console.log(file);
 				file.upload.then(function (response) {
