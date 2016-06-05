@@ -13,3 +13,23 @@ body{
 	width: 28px;
 	cursor: pointer;
 }
+.thumb {
+	width: 230px;
+	margin-top: 10px;
+}
+form .progress {
+	line-height: 15px;
+}
+.progress div {
+	font-size: smaller;
+	background: #3C64FF;
+	width: 0;
+	color: #ffffff;
+	margin-top: 10px;
+}
+.align-left{
+	float: left;
+}
+.align-right{
+	float: right;
+}

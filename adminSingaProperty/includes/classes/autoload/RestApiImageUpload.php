@@ -34,8 +34,8 @@ class RestApiImageUpload extends RestApi {
 			}
 			return array(
 				'data' => array(
-					'image' => $file['name'],
-					'image_thumbnail' => 'news/' . $file['name']
+					'image' => 'news/' . $file['name'],
+					'image_thumbnail' => 'news_thumbnail/' . $file['name']
 				)
 			);
 		}
