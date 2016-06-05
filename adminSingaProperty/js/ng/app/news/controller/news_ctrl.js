@@ -4,7 +4,7 @@ app.controller(
 	, 'Restful'
 	, '$location'
 	, function ($scope, Restful, $location){
-		var url = 'api/Session/User/News';
+		var url = 'api/News/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.news = data;
@@ -23,7 +23,7 @@ app.controller(
 		$scope.disabled = true;
 		$scope.confirmDelete = function(){
 			$scope.disabled = false;
-			Restful.delete( 'api/Session/User/News/' + $scope.id ).success(function(data){
+			Restful.delete( url + $scope.id ).success(function(data){
 				$scope.disabled = true;
 				$.notify({
 					title: '<strong>Complete: </strong>',
