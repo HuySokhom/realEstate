@@ -82,6 +82,14 @@ class RestApiNews extends RestApi {
 
 	}
 
+	public function patch($params){
+		$obj = new NewsObj();
+		$obj->setId($this->getId());
+		$obj->setUpdateBy($_SESSION['user_name']);
+		$obj->setStatus($params['PATCH']['status']);
+		$obj->updateStatus();
+	}
+
 	public function delete(){
 
 		$cols = new NewsCol();

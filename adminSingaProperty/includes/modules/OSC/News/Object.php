@@ -64,7 +64,22 @@ class Object extends DbObj {
 		$this->detail->setFilter('news_id', $this->getId());
 		$this->detail->populate();
 	}
-	
+
+	public function updateStatus() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+		$this->dbQuery("
+			UPDATE
+				news
+			SET
+				status = '" .  $this->getStatus() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
+			WHERE
+				id = '" . (int)$this->getId() . "'
+		");
+	}
+
 	public function update() {
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");

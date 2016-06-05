@@ -6,5 +6,6 @@ var app = angular.module(
 		, 'ngSanitize'
 		, 'ui.tinymce'
 		, 'ngFileUpload'
+		, 'ngCookies'
 	]
 );

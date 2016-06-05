@@ -3,7 +3,9 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, '$location'
-	, function ($scope, Restful, $location){
+	, 'Services'
+	, function ($scope, Restful, $location, Services){
+		$scope.service = new Services();
 		var url = 'api/News/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
@@ -12,6 +14,15 @@ app.controller(
 			});
 		};
 		$scope.init();
+
+		$scope.updateStatus = function(params){
+			params.status === 1 ? params.status = 0 : params.status = 1;
+			console.log(params);
+			Restful.patch(url + params.id, params ).success(function(data) {
+				console.log(data);
+				$scope.service.alertMessage('<strong>Success: </strong>', 'Update Success.', 'success');
+			});
+		};
 
 		// remove functionality
 		$scope.id = '';
