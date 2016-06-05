@@ -37,6 +37,8 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 	</div>
 </body>
 <!-- lib -->
+
+<script src="css/bootstrap/bootstrap.min.js"></script>
 <script
 	type="text/javascript"
 	src="js/tinymce/tinymce.min.js"
@@ -44,6 +46,10 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 <script 
 	type="text/javascript" 
 	src="js/ng/lib/angular/1.5.6/angular.min.js"
+></script>
+<script
+	type="text/javascript"
+	src="js/ng/lib/angular-cookies/angular-cookies.min.js"
 ></script>
 <script
 	type="text/javascript"
