@@ -5,5 +5,6 @@ var app = angular.module(
 		, 'ui.bootstrap'
 		, 'ngSanitize'
 		, 'ui.tinymce'
+		, 'ngFileUpload'
 	]
 );
