@@ -2,7 +2,7 @@
     <h4>
         Edit News
     </h4>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="font-size: 12px;">
         <tr>
             <td style="width: 15%;">
                 Title EN:
@@ -14,6 +14,22 @@
                     data-ng-model="title_en"
                     required="required"
                 />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Create Date:
+            </td>
+            <td>
+                {{create_date}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Post By:
+            </td>
+            <td>
+                {{create_by}}
             </td>
         </tr>
         <tr>

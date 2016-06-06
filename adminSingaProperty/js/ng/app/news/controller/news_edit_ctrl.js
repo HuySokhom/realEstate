@@ -34,6 +34,8 @@ app.controller(
 				$scope.content_kh = data.elements[0].detail[1].content;
 				$scope.image = data.elements[0].image;
 				$scope.image_thumbnail = data.elements[0].image_thumbnail;
+				$scope.create_by = data.elements[0].create_by;
+				$scope.create_date = data.elements[0].create_date;
 			});
 		};
 		$scope.init();
