@@ -10,7 +10,6 @@ class RestApiNewsType extends RestApi {
 	public function get($params){
 		$col = new NewsTypeCol();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
-		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
@@ -41,13 +40,13 @@ class RestApiNewsType extends RestApi {
 
 	public function put($params){
 		$cols = new NewsTypeCol();
-		$newsId = $this->getId();
-		$cols->filterById( $newsId );
+		$typeId = $this->getId();
+		$cols->filterById( $typeId );
 		if( $cols->getTotalCount() > 0 ){
 			$cols->populate();
 			$col = $cols->getFirstElement();
 			$col->setId($this->getId());
-			$col->setProperties($params['PUT']['news']);
+			$col->setProperties($params['PUT']);
 			$col->setUpdateBy($_SESSION['admin']['username']);
 			$col->update();
 		}
