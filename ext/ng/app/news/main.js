@@ -4,5 +4,6 @@ var app = angular.module(
         'ui.router'
         , 'ui.bootstrap'
         , 'ngSanitize'
+        , 'ngCookies'
     ]
 );

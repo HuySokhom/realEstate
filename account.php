@@ -91,6 +91,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
+	src="ext/ng/lib/angular-cookies/angular-cookies.min.js"
+></script>
+<script
+	type="text/javascript"
 	src="ext/ng/lib/angular-ui-route/angular-ui-router.min.js"
 ></script>
 <script

@@ -24,8 +24,8 @@
 							<div data-ng-bind-html="n.detail[0].content | limitTo:200"></div>
 							<ul>
 								<li>
-									<i class="fa fa-clock-o"></i>
-									Post On {{n.create_date | date}}
+									<i class="fa fa-calendar"></i>
+									{{ n.create_date  | date:'MM/dd/yyyy' }}
 								</li>
 								<li>
 									<i class="fa fa-user"></i>
