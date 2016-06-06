@@ -1,14 +1,14 @@
 <?php
 
 use
-	OSC\NewsType\Collection as NewsCol,
-	OSC\NewsType\Object as NewsObj
+	OSC\NewsType\Collection as NewsTypeCol,
+	OSC\NewsType\Object as NewsTypeObj
 ;
 
 class RestApiNewsType extends RestApi {
 
 	public function get($params){
-		$col = new NewsCol();
+		$col = new NewsTypeCol();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 		// start limit page
@@ -27,23 +27,11 @@ class RestApiNewsType extends RestApi {
 	}
 
 	public function post($params){
-		$newsObj = new NewsObj();
-		$userId = $this->getOwner()->getId();
-		$newsObj->setCustomerId($userId);
-		$newsObj->setCreateBy($_SESSION['user_name']);
-		$newsObj->setProperties( $params['POST']['news'] );
+		$newsObj = new NewsTypeObj();
+		$newsObj->setCreateBy($_SESSION['admin']['username']);
+		$newsObj->setProperties( $params['POST'] );
 		$newsObj->insert();
 		$newId = $newsObj->getId();
-
-		$newsDetailObj = new NewsDescriptionObj();
-		$fields = $params['POST']['news_description'];
-		foreach ( $fields as $k => $v){
-			$newsDetailObj->setNewsId($newId);
-			$newsDetailObj->setProperties($v);
-			$newsDetailObj->insert();
-			unset($v);
-		}
-
 		return array(
 			'data' => array(
 				'id' => $newId
@@ -52,7 +40,7 @@ class RestApiNewsType extends RestApi {
 	}
 
 	public function put($params){
-		$cols = new NewsCol();
+		$cols = new NewsTypeCol();
 		$newsId = $this->getId();
 		$cols->filterById( $newsId );
 		if( $cols->getTotalCount() > 0 ){
@@ -60,17 +48,8 @@ class RestApiNewsType extends RestApi {
 			$col = $cols->getFirstElement();
 			$col->setId($this->getId());
 			$col->setProperties($params['PUT']['news']);
-			$col->setUpdateBy($_SESSION['user_name']);
+			$col->setUpdateBy($_SESSION['admin']['username']);
 			$col->update();
-
-			$fields = $params['PUT']['news_description'];
-			$newsDetailObj = new NewsDescriptionObj();
-			foreach ( $fields as $k => $v){
-				$newsDetailObj->setNewsId($newsId);
-				$newsDetailObj->setProperties($v);
-				$newsDetailObj->update();
-				unset($v);
-			}
 		}
 		return array(
 			'data' => array(
@@ -81,16 +60,16 @@ class RestApiNewsType extends RestApi {
 	}
 
 	public function patch($params){
-		$obj = new NewsObj();
+		$obj = new NewsTypeObj();
 		$obj->setId($this->getId());
-		$obj->setUpdateBy($_SESSION['user_name']);
+		$obj->setUpdateBy($_SESSION['admin']['username']);
 		$obj->setStatus($params['PATCH']['status']);
 		$obj->updateStatus();
 	}
 
 	public function delete(){
 
-		$cols = new NewsCol();
+		$cols = new NewsTypeCol();
 		$cols->filterById( $this->getId() );
 		if( $cols->getTotalCount() > 0 ){
 			$cols->populate();

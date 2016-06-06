@@ -9,13 +9,16 @@
 	<br/><br/>
 	<table class="table table-bordered table-striped" style="font-size: 12px;">
 		<thead>
-			<th>
+			<th width="5%">
 				Id
 			</th>
-			<th>
-				Type
+			<th width="42%">
+				Name EN
 			</th>
-			<th width="240px">
+			<th width="42%">
+				Name KH
+			</th>
+			<th width="10%">
 				Action
 			</th>
 		</thead>
@@ -25,7 +28,10 @@
 				<span data-ng-bind="t.id"></span>
 			</td>
 			<td>
-				<span data-ng-bind="t.name"></span>
+				<span data-ng-bind="t.name_en"></span>
+			</td>
+			<td>
+				<span data-ng-bind="t.name_kh"></span>
 			</td>
 			<td>
 				<button class="btn btn-default" data-ng-click="edit(t);">
@@ -33,32 +39,6 @@
 				</button>
 				<button class="btn btn-danger" data-ng-click="remove(t.id, $index);">
 					<span class="glyphicon glyphicon-trash"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-click="updateStatus(t);"
-					data-ng-show="product.products_status == 0"
-				>
-					<span class="glyphicon glyphicon-minus"></span>
-				</button>
-				<button
-					class="btn btn-success"
-					data-ng-click="updateStatus(product);"
-					data-ng-show="product.products_status == 1"
-				>
-					<span class="glyphicon glyphicon-ok"></span>
-				</button>
-				<button
-					class="btn btn-info"
-					data-ng-click="refreshDate(t);"
-				>
-					<span class="glyphicon glyphicon-refresh"></span>
-				</button>
-				<button
-					class="btn btn-default"
-					data-ng-click="link(t.id);"
-				>
-					<span class="glyphicon glyphicon-link"></span>
 				</button>
 			</td>
 		</tr>
