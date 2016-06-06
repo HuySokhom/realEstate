@@ -123,6 +123,7 @@ class Object extends DbObj {
 				customer_id,
 				image,
 				image_thumbnail,
+				status,
 				create_by,
 				create_date
 			)
@@ -131,6 +132,7 @@ class Object extends DbObj {
 				'" . $this->getCustomerId() . "',
 				'" . $this->getImage() . "',
 				'" . $this->getImageThumbnail() . "',
+				'" . $this->getStatus() . "',
 				'" . $this->getCreateBy() . "',
 				NOW()
 			)

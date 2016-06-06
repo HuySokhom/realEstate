@@ -30,9 +30,8 @@ class RestApiNews extends RestApi {
 
 	public function post($params){
 		$newsObj = new NewsObj();
-		$userId = $this->getOwner()->getId();
-		$newsObj->setCustomerId($userId);
-		$newsObj->setCreateBy($_SESSION['user_name']);
+		$newsObj->setStatus(1);
+		$newsObj->setCreateBy($_SESSION['admin']['username']);
 		$newsObj->setProperties( $params['POST']['news'] );
 		$newsObj->insert();
 		$newId = $newsObj->getId();
@@ -62,7 +61,7 @@ class RestApiNews extends RestApi {
 			$col = $cols->getFirstElement();
 			$col->setId($this->getId());
 			$col->setProperties($params['PUT']['news']);
-			$col->setUpdateBy($_SESSION['user_name']);
+			$col->setUpdateBy($_SESSION['admin']['username']);
 			$col->update();
 
 			$fields = $params['PUT']['news_description'];
@@ -85,7 +84,7 @@ class RestApiNews extends RestApi {
 	public function patch($params){
 		$obj = new NewsObj();
 		$obj->setId($this->getId());
-		$obj->setUpdateBy($_SESSION['user_name']);
+		$obj->setUpdateBy($_SESSION['admin']['username']);
 		$obj->setStatus($params['PATCH']['status']);
 		$obj->updateStatus();
 	}
