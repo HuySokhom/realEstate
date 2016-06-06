@@ -1,15 +1,15 @@
 app.controller(
-	'news_ctrl', [
+	'type_ctrl', [
 	'$scope'
 	, 'Restful'
 	, '$location'
 	, 'Services'
 	, function ($scope, Restful, $location, Services){
 		$scope.service = new Services();
-		var url = 'api/News/';
+		var url = 'api/NewsType/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.news = data;
+				$scope.types = data;console.log(data);
 				$scope.totalItems = data.count;
 			});
 		};
@@ -56,7 +56,7 @@ app.controller(
 		};
 		// edit functionality
 		$scope.edit = function(id){
-			$location.path('/manage_article/edit/' + id);
+			$location.path('/type/edit/' + id);
 		};
 
 		/**

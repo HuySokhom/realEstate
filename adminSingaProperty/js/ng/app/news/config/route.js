@@ -21,7 +21,17 @@ app.config([
 			.state('/type', {
 				url: '/type',
 				templateUrl: 'js/ng/app/news/partials/type.html',
-                controller: 'news_ctrl'
+                controller: 'type_ctrl'
+			})
+			.state('/type/edit:id', {
+				url: '/type/edit/:id',
+				templateUrl: 'js/ng/app/news/partials/type_edit.html',
+				controller: 'type_edit_ctrl'
+			})
+			.state('/type/post', {
+				url: '/type/post',
+				templateUrl: 'js/ng/app/news/partials/type_post.html',
+				controller: 'type_post_ctrl'
 			})
 		;
 		$urlRouterProvider.otherwise('/manage_article');

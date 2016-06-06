@@ -1,5 +1,5 @@
 app.controller(
-	'news_edit_ctrl', [
+	'type_edit_ctrl', [
 	'$scope'
 	, 'Restful'
 	, '$stateParams'
@@ -22,7 +22,7 @@ app.controller(
 			paste_data_images: true
 		};
 
-		var url = 'api/News/';
+		var url = 'api/Type/';
 		$scope.service = new Services();
 
 		$scope.init = function(params){
@@ -61,10 +61,10 @@ app.controller(
 			};
 			$scope.disabled = false;
 
-			Restful.put('api/News/' + $stateParams.id, data).success(function (data) {
+			Restful.put('api/Type/' + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;
 				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
-				$location.path('manage_news');
+				$location.path('type');
 			});
 		};
 

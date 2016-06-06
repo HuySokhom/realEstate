@@ -1,58 +1,42 @@
 <div class="panel-body">
 	<button
 		class="btn btn-default"
-		onclick="location.href='account.php#/manage_property/post';"
+		onclick="location.href='news.php#/type/post';"
 	>
 		<span class="glyphicon glyphicon-plus-sign"></span>
-		Post Property
+		Add Type
 	</button>
 	<br/><br/>
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" style="font-size: 12px;">
 		<thead>
 			<th>
-				Title
+				Id
 			</th>
 			<th>
-				Image
-			</th>
-			<th width="100px">
-				Product View
-			</th>
-			<th>
-				Price
+				Type
 			</th>
 			<th width="240px">
 				Action
 			</th>
 		</thead>
-		<tr data-ng-repeat="product in products_post.elements">
+		<tr data-ng-repeat="t in types.elements">
+
 			<td>
-				<span data-ng-bind="product.fields[0].products_name"></span>
+				<span data-ng-bind="t.id"></span>
 			</td>
 			<td>
-				<img
-					src="images/{{product.products_image_thumbnail}}"
-					alt="{{product.fields[0].products_name}}"
-					title="{{product.fields[0].products_name}}"
-					class="img"
-				>
+				<span data-ng-bind="t.name"></span>
 			</td>
 			<td>
-				<span data-ng-bind="product.fields[0].products_viewed"></span>
-			</td>
-			<td>
-				<span data-ng-bind="product.products_price | currency"></span>
-			</td>
-			<td>
-				<button class="btn btn-default" data-ng-click="edit(product);">
+				<button class="btn btn-default" data-ng-click="edit(t);">
 					<span class="glyphicon glyphicon-edit"></span>
 				</button>
-				<button class="btn btn-danger" data-ng-click="remove(product.id, $index);">
+				<button class="btn btn-danger" data-ng-click="remove(t.id, $index);">
 					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 				<button
 					class="btn btn-warning"
-					data-ng-click="updateStatus(product);"
+					data-ng-click="updateStatus(t);"
 					data-ng-show="product.products_status == 0"
 				>
 					<span class="glyphicon glyphicon-minus"></span>
@@ -66,13 +50,13 @@
 				</button>
 				<button
 					class="btn btn-info"
-					data-ng-click="refreshDate(product);"
+					data-ng-click="refreshDate(t);"
 				>
 					<span class="glyphicon glyphicon-refresh"></span>
 				</button>
 				<button
 					class="btn btn-default"
-					data-ng-click="link(product.id);"
+					data-ng-click="link(t.id);"
 				>
 					<span class="glyphicon glyphicon-link"></span>
 				</button>
@@ -80,14 +64,14 @@
 		</tr>
 	</table>
 	<div
-		data-ng-if="products_post.elements == 0"
+		data-ng-if="types.count == 0"
 	>
 		<div class="alert alert-warning alert-dismissible">
-			<strong>Warning!</strong> No product post.
+			<strong>Warning!</strong> Data Empty.
 		</div>
 	</div>
 	<div
-		data-ng-if="!products_post"
+		data-ng-if="!types"
 		class="align_center"
 	>
 	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>

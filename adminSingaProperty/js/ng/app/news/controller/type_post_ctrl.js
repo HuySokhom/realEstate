@@ -1,13 +1,13 @@
 app.controller(
-	'news_edit_ctrl', [
+	'type_post_ctrl', [
 	'$scope'
 	, 'Restful'
-	, '$stateParams'
 	, 'Services'
 	, '$location'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, $stateParams, Services, $location, Upload, $timeout){
+	, function ($scope, Restful, Services, $location, Upload, $timeout){
+		$scope.service = new Services();
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [
@@ -21,24 +21,6 @@ app.controller(
 			image_advtab: true,
 			paste_data_images: true
 		};
-
-		var url = 'api/News/';
-		$scope.service = new Services();
-
-		$scope.init = function(params){
-			Restful.get(url + $stateParams.id, params).success(function(data){
-				$scope.news = data.elements[0].detail;console.log(data);
-				$scope.title_en = data.elements[0].detail[0].title;
-				$scope.title_kh = data.elements[0].detail[1].title;
-				$scope.content_en = data.elements[0].detail[0].content;
-				$scope.content_kh = data.elements[0].detail[1].content;
-				$scope.image = data.elements[0].image;
-				$scope.image_thumbnail = data.elements[0].image_thumbnail;
-			});
-		};
-		$scope.init();
-
-		// update functionality
 		$scope.save = function(){
 			// set object to save into news
 			var data = {
@@ -60,11 +42,12 @@ app.controller(
 				]
 			};
 			$scope.disabled = false;
-
-			Restful.put('api/News/' + $stateParams.id, data).success(function (data) {
+			//console.log(data);
+			Restful.post('api/Type', data).success(function (data) {
 				$scope.disabled = true;
-				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
-				$location.path('manage_news');
+				//console.log(data);
+				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
+				$location.path('type');
 			});
 		};
 
