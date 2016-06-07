@@ -11717,7 +11717,7 @@ CREATE TABLE `popular_search` (
   `khmer_name` varchar(127) DEFAULT NULL,
   `english_name` varchar(127) DEFAULT NULL,
   `create_by` varchar(127) DEFAULT NULL,
-  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_date` timestamp NULL DEFAULT NULL,
   `update_by` varchar(255) DEFAULT NULL,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
