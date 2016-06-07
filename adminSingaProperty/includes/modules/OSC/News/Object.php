@@ -5,6 +5,7 @@ namespace OSC\News;
 use
 	Aedea\Core\Database\StdObject as DbObj
 	, OSC\NewsDescription\Collection as NewDescriptionCol
+	, OSC\NewsType\Collection as NewsTypeCol
 ;
 
 class Object extends DbObj {
@@ -12,12 +13,14 @@ class Object extends DbObj {
 	protected
 		$detail,
 		$customerId,
+		$newsTypeId,
 		$image,
-		$imageThumbnail
+		$imageThumbnail,
+		$type
 	;
 	public function __construct( $params = array() ){
 		parent::__construct($params);
-
+		$this->type = new NewsTypeCol();
 		$this->detail = new NewDescriptionCol();
 	}
 
@@ -31,7 +34,8 @@ class Object extends DbObj {
 				'status',
 				'create_by',
 				'create_date',
-				'detail'
+				'detail',
+				'type'
 			)
 		);
 		return parent::toArray($args);
@@ -41,6 +45,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customer_id,
+				news_type_id,
 				image_thumbnail,
 				image,
 				status,
@@ -63,6 +68,9 @@ class Object extends DbObj {
 
 		$this->detail->setFilter('news_id', $this->getId());
 		$this->detail->populate();
+
+		$this->type->setFilter('id', $this->getNewsTypeId());
+		$this->type->populate();
 	}
 
 	public function updateStatus() {
@@ -121,6 +129,7 @@ class Object extends DbObj {
 				news
 			(
 				customer_id,
+				news_type_id,
 				image,
 				image_thumbnail,
 				status,
@@ -130,6 +139,7 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . $this->getCustomerId() . "',
+				'" . $this->getNewsTypeId() . "',
 				'" . $this->getImage() . "',
 				'" . $this->getImageThumbnail() . "',
 				'" . $this->getStatus() . "',
@@ -138,6 +148,22 @@ class Object extends DbObj {
 			)
 		");
 		$this->setId( $this->dbInsertId() );
+	}
+
+	public function setNewsTypeId( $array ){
+		$this->newsTypeId = $array;
+	}
+
+	public function getNewsTypeId(){
+		return $this->newsTypeId;
+	}
+
+	public function setType( $array ){
+		$this->type = $array;
+	}
+
+	public function getType(){
+		return $this->type;
 	}
 
 	public function setDetail( $array ){

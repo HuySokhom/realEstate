@@ -21,12 +21,22 @@ app.controller(
 			image_advtab: true,
 			paste_data_images: true
 		};
+
+		// init news type
+		$scope.initNewsType = function(){
+			Restful.get("api/NewsType").success(function(data){
+				$scope.newsType = data;
+			});
+		};
+		$scope.initNewsType();
+
 		$scope.save = function(){
 			// set object to save into news
 			var data = {
 				news: {
 					image: $scope.image,
-					image_thumbnail: $scope.image_thumbnail
+					image_thumbnail: $scope.image_thumbnail,
+					news_type_id: $scope.news_type_id
 				},
 				news_description: [
 					{

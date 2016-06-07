@@ -49,6 +49,9 @@
 				Id
 			</th>
 			<th>
+				Type
+			</th>
+			<th>
 				Title EN
 			</th>
 			<th>
@@ -67,6 +70,9 @@
 		<tr data-ng-repeat="n in news.elements">
 			<td>
 				{{n.id}}
+			</td>
+			<td>
+				{{n.type[0].name_en}}
 			</td>
 			<td>
 				<span data-ng-repeat="i in n.detail">
