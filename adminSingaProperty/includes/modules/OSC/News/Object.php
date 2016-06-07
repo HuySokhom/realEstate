@@ -98,6 +98,7 @@ class Object extends DbObj {
 			SET 
 				image = '" .  $this->getImage() . "',
 				image_thumbnail = '" .  $this->getImageThumbnail() . "',
+				news_type_id = '" .  $this->getNewsTypeId() . "',
 				update_by = '" .  $this->getUpdateBy() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'

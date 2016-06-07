@@ -4,6 +4,22 @@
     </h4>
     <table class="table table-bordered" style="font-size: 12px;">
         <tr>
+            <td>
+                Type:
+            </td>
+            <td>
+                <select
+                    data-ng-model="news_type_id"
+                    data-ng-options="type.id as type.name_en for type in newsType.elements"
+                    data-ng-init="news_type_id == type.id"
+                    class="form-control"
+                    required
+                >
+                    <option value="">--Select--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td style="width: 15%;">
                 Title EN:
             </td>
