@@ -46,7 +46,15 @@
         </article>
         <!-- Related Post -->
         <div class="related-post p_z row">
-            <h3>Other Post</h3>
+            <h3>Relate Post</h3>
+            <div
+                data-ng-if="newsOther.count == 0"
+                class="alert alert-info"
+            >
+                <p>
+                    No Posting.
+                </p>
+            </div>
             <div
                 data-ng-if="!newsOther"
                 class="align_center"

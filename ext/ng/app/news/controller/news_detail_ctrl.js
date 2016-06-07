@@ -3,14 +3,13 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, '$stateParams'
-	, '$location'
-	, function ($scope, Restful, $stateParams, $location){
+	, function ($scope, Restful, $stateParams){
 
 		var url = 'api/News/';
 		$scope.init = function(params){
-			Restful.get(url + $stateParams.id, params).success(function(data){
-				if(data) {
-					$scope.news = data.elements[0].detail;
+			Restful.get(url + $stateParams.newsId, params).success(function(data){
+				$scope.news = data;
+				if(data.count > 0) {
 					$scope.title_en = data.elements[0].detail[0].title;
 					$scope.title_kh = data.elements[0].detail[1].title;
 					$scope.content_en = data.elements[0].detail[0].content;
@@ -22,12 +21,14 @@ app.controller(
 				}
 			});
 			// init other post news
-			Restful.get('api/NewsOther/', params).success(function(data){
+			var params = {
+				type_id: $stateParams.typeId
+			};
+			Restful.get('api/NewsOther/', params ).success(function(data){
 				$scope.newsOther = data;
-				//console.log(data);
+				console.log(data);
 			});
 		};
 		$scope.init();
-
 	}
 ]);
