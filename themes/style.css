@@ -3505,3 +3505,6 @@ form .progress {
 .align_center{
 	text-align: center;
 }
+.click:hover{
+	cursor: pointer;
+}

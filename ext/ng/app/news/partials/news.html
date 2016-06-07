@@ -17,15 +17,20 @@
 				<!-- Property Main Box -->
 				<div class="property-main-box">
 					<div class="col-md-4 p_z">
-						<a title="{{n.detail[0].title}}" href="news.php#/{{n.id}}">
-							<img src="images/{{n.image_thumbnail}}" class="img-news" alt="">
-						</a>
+						<img
+							src="images/{{n.image_thumbnail}}"
+							class="img-news click"
+							alt=""
+							data-ng-click="link(n.type[0].id, n.id)"
+						/>
 					</div>
 					<div class="col-md-8 p_z">
 						<div class="property-details">
-							<a title="Property Title" href="news.php#/{{n.id}}">
-								{{n.detail[0].title}}
-							</a>
+							<div
+								data-ng-click="link(n.type[0].id, n.id)"
+								data-ng-bind="n.detail[0].title"
+								class="click"
+							></div>
 							<div data-ng-bind-html="n.detail[0].content | limitTo:200"></div>
 							<ul>
 								<li>

@@ -12,6 +12,12 @@ app.controller(
 			});
 		};
 		$scope.init();
+
+		/* function link page single */
+		$scope.link = function(typeId, newId){
+			$location.path(typeId + '/' + newId);
+		};
+
 		/**
 		 * start functionality pagination
 		 */
