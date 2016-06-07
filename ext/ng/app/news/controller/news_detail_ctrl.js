@@ -26,7 +26,7 @@ app.controller(
 			};
 			Restful.get('api/NewsOther/', params ).success(function(data){
 				$scope.newsOther = data;
-				console.log(data);
+				//console.log(data);
 			});
 		};
 		$scope.init();
