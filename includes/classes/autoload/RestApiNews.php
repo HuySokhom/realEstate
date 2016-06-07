@@ -9,6 +9,7 @@ class RestApiNews extends RestApi {
 	public function get($params){
 		$col = new NewsCol();
 		$col->sortByDate('DESC');
+		$col->filterByStatus(1);
 		$this->getId() ? $col->filterById($this->getId()) : '';
 
 		// start limit page
