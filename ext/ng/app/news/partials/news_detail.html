@@ -1,6 +1,12 @@
 <div class="col-md-9 col-sm-6 p_l_z content-area margin-to">
     <div class="blog-listing single-post col-md-12 p_z">
-        <article>
+        <div
+            data-ng-if="!news"
+            class="align_center"
+        >
+            <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+        </div>
+        <article data-ng-show="news">
             <h3 class="entry-title">{{title_en}}</h3>
             <div class="entry-cover clearfix">
                 <img src="images/{{image}}" alt="{{title_en}}">
@@ -33,6 +39,12 @@
         <!-- Related Post -->
         <div class="related-post p_z row">
             <h3>Other Post</h3>
+            <div
+                data-ng-if="!newsOther"
+                class="align_center"
+            >
+                <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+            </div>
             <div class="col-md-4 col-sm-12" data-ng-repeat="n in newsOther.elements">
                 <a title="" href="news.php#/{{n.id}}"><img src="images/{{n.image}}" alt=""></a>
                 <a title="" href="news.php#/{{n.id}}">

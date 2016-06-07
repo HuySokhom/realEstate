@@ -7,7 +7,12 @@
 					<h3>News</h3>
 				</div>
 			</div>
-
+			<div
+				data-ng-if="!news"
+				class="align_center"
+			>
+				<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+			</div>
 			<div class="property-listing-box sale-block" data-ng-repeat="n in news.elements">
 				<!-- Property Main Box -->
 				<div class="property-main-box">
@@ -39,6 +44,7 @@
 
 			<!-- Pagination -->
 			<pagination
+				data-ng-show="totalItems > 10"
 				total-items="totalItems"
 				ng-model="currentPage"
 				ng-change="pageChanged()"
