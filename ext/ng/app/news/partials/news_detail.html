@@ -62,8 +62,8 @@
                 <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
             </div>
             <div class="col-md-4 col-sm-12" data-ng-repeat="n in newsOther.elements">
-                <a title="" href="news.php#/{{n.id}}"><img src="images/{{n.image}}" alt=""></a>
-                <a title="" href="news.php#/{{n.id}}">
+                <a title="" href="news.php#/{{n.type[0].id}}/{{n.id}}"><img src="images/{{n.image}}" alt=""></a>
+                <a title="" href="news.php#/{{n.type[0].id}}/{{n.id}}">
                     <span data-ng-bind-html="n.detail[0].title"></span>
                 </a>
             </div>

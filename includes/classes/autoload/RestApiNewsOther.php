@@ -10,7 +10,7 @@ class RestApiNewsOther extends RestApi {
 		$col = new NewsCol();
 		if($params['GET']['type_id']){
 			$col->sortByDate('DESC');
-			$col->filterByNewsType($params['GET']['type_id']);
+			$col->filterByNewsType($params['GET']['type_id'], $params['GET']['news_id']);
 			$col->filterByStatus(1);
 
 			// start limit page

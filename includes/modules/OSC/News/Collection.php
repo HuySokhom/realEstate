@@ -35,8 +35,8 @@ class Collection extends StdCollection {
 		$this->addWhere("n.id = '" . (int)$arg. "' ");
 	}
 
-	public function filterByNewsType( $arg ){
-		$this->addWhere("n.news_type_id = '" . (int)$arg. "' ");
+	public function filterByNewsType( $typeId, $newId ){
+		$this->addWhere("n.news_type_id = '" . (int)$typeId. "' AND n.id != '" . (int)$newId . "' ");
 	}
 
 	public function filterByStatus( $arg ){
