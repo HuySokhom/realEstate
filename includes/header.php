@@ -6,13 +6,16 @@
       <p class="col-md-6 col-sm-9">
         <span>
           <i class="fa fa-phone"></i>
-          <?php echo STORE_PHONE; ?>
+          <?php
+            echo STORE_PHONE;
+            $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+          ?>
         </span>
         <span>
-          <a href="index.php?language=kh" title="Khmer">
+          <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $uri_parts[0] . '?language=kh';?>" title="Khmer">
             <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>
           </a>
-          <a href="index.php?language=en" title="English">
+          <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $uri_parts[0] . '?language=en';?>" title="English">
             <img src="includes/languages/english/images/icon.gif" style="width: 30px;border: none; "/>
           </a>
         </span>
