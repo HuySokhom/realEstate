@@ -8,9 +8,13 @@
 				</div>
 			</div>
 			<div class="news_type">
-				<ul class="nav navbar-nav" data-ng-repeat="type in newsType.elements">
-					<li ng-id="{active : activeMenu === type.id}">
-						<span data-ng-click="setActive(type.id)" data-ng-bind="type.name_en"></span>
+				<ul class="nav navbar-nav">
+					<li data-ng-repeat="type in newsType.elements">
+						<span
+							data-ng-class="{active : activeMenu === type.id}"
+							data-ng-click="setActive(type.id)"
+							data-ng-bind="type.name_en"
+						></span>
 					</li>
 				</ul>
 			</div>

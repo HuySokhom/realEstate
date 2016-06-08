@@ -3517,3 +3517,7 @@ form .progress {
 .news_type > ul > li:hover{
 	cursor: pointer;
 }
+.active {
+	font-weight: 600;
+	color: #3C64FF;
+}
