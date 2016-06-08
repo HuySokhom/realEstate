@@ -12,7 +12,7 @@ app.controller(
 			});
 
 			Restful.get("api/NewsType").success(function(data){
-				$scope.newsType = data;console.log(data);
+				$scope.newsType = data;
 			});
 
 		};
@@ -22,7 +22,8 @@ app.controller(
 		$scope.activeMenu = "";
 		$scope.setActive = function(item) {
 			$scope.activeMenu = item;
-
+			var data = {news_type_id: $scope.activeMenu};
+			$scope.init(data);
 		};
 
 		/* function link page single */
