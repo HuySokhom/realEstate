@@ -22,12 +22,21 @@ app.controller(
 			paste_data_images: true
 		};
 
+		// init news type
+		$scope.initNewsType = function(){
+			Restful.get("api/NewsType").success(function(data){
+				$scope.newsType = data;
+			});
+		};
+		$scope.initNewsType();
+
 		var url = 'api/Session/User/News/';
 		$scope.service = new Services();
 
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
 				$scope.news = data.elements[0].detail;
+				$scope.news_type_id = data.elements[0].type[0].id;
 				$scope.title_en = data.elements[0].detail[0].title;
 				$scope.title_kh = data.elements[0].detail[1].title;
 				$scope.content_en = data.elements[0].detail[0].content;
@@ -44,7 +53,8 @@ app.controller(
 			var data = {
 				news: {
 					image: $scope.image,
-					image_thumbnail: $scope.image_thumbnail
+					image_thumbnail: $scope.image_thumbnail,
+					news_type_id: $scope.news_type_id
 				},
 				news_description: [
 					{

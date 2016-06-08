@@ -80,7 +80,8 @@ class Object extends DbObj {
 		$this->dbQuery("
 			UPDATE
 				news
-			SET 
+			SET
+				news_type_id = '" .  $this->getNewsTypeId() . "',
 				image = '" .  $this->getImage() . "',
 				image_thumbnail = '" .  $this->getImageThumbnail() . "',
 				update_by = '" .  $this->getUpdateBy() . "'
@@ -114,6 +115,7 @@ class Object extends DbObj {
 				news
 			(
 				customer_id,
+				news_type_id,
 				image,
 				image_thumbnail,
 				create_by,
@@ -122,6 +124,7 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . $this->getCustomerId() . "',
+				'" . $this->getNewsTypeId() . "',
 				'" . $this->getImage() . "',
 				'" . $this->getImageThumbnail() . "',
 				'" . $this->getCreateBy() . "',
