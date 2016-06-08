@@ -2,10 +2,17 @@
 	<div class="container">
 		<div class="property-left col-md-9 col-sm-6 p_l_z content-area">
 			<div class="section-header p_l_z">
-				<div class="col-md-10 col-sm-10 p_l_z">
+				<div class="col-md-12 col-sm-10 p_l_z">
 					<p>property</p>
 					<h3>News</h3>
 				</div>
+			</div>
+			<div class="news_type">
+				<ul class="nav navbar-nav" data-ng-repeat="type in newsType.elements">
+					<li ng-id="{active : activeMenu === type.id}">
+						<span data-ng-click="setActive(type.id)" data-ng-bind="type.name_en"></span>
+					</li>
+				</ul>
 			</div>
 			<div
 				data-ng-if="!news"

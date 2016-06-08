@@ -10,8 +10,19 @@ app.controller(
 				$scope.news = data;
 				$scope.totalItems = data.count;
 			});
+
+			Restful.get("api/NewsType").success(function(data){
+				$scope.newsType = data;console.log(data);
+			});
+
 		};
 		$scope.init();
+
+		/* set active link */
+		$scope.activeMenu = "";
+		$scope.setActive = function(item) {
+			$scope.activeMenu = item;
+		};
 
 		/* function link page single */
 		$scope.link = function(typeId, newId){

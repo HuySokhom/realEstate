@@ -1439,8 +1439,8 @@ textarea {
 }
 
 .property-listing .section-header {
-	padding-bottom: 25px;
-	margin-bottom: 35px;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
 	border-bottom: 1px solid #f0f0f0;
 	display: inline-block;
 	width: 100%;
@@ -3506,5 +3506,14 @@ form .progress {
 	text-align: center;
 }
 .click:hover{
+	cursor: pointer;
+}
+.news_type{
+	padding-bottom: 30px;
+}
+.news_type > ul > li{
+	margin-right: 20px;
+}
+.news_type > ul > li:hover{
 	cursor: pointer;
 }
