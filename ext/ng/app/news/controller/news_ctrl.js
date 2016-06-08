@@ -22,6 +22,7 @@ app.controller(
 		$scope.activeMenu = "";
 		$scope.setActive = function(item) {
 			$scope.activeMenu = item;
+
 		};
 
 		/* function link page single */
