@@ -22,7 +22,8 @@ app.controller(
 			});
 			// init other post news
 			var params = {
-				type_id: $stateParams.typeId
+				type_id: $stateParams.typeId,
+				news_id: $stateParams.newsId
 			};
 			Restful.get('api/NewsOther/', params ).success(function(data){
 				$scope.newsOther = data;
