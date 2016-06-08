@@ -22,6 +22,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
     type="text/javascript"
+    src="ext/ng/lib/angular-cookies/angular-cookies.min.js"
+></script>
+<script
+    type="text/javascript"
     src="ext/ng/lib/angular-ui-route/angular-ui-router.min.js"
 ></script>
 <script
@@ -37,11 +41,11 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 
 <script
     type="text/javascript"
-    src="ext/ng/app/news/main.js"
+    src="ext/ng/app/agents/main.js"
 ></script>
 <script
     type="text/javascript"
-    src="ext/ng/app/news/config/route.js"
+    src="ext/ng/app/agents/config/route.js"
 ></script>
 <script
     type="text/javascript"
@@ -49,11 +53,11 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
     type="text/javascript"
-    src="ext/ng/app/news/controller/news_ctrl.js"
+    src="ext/ng/app/agents/controller/agent_ctrl.js"
 ></script>
 <script
     type="text/javascript"
-    src="ext/ng/app/news/controller/news_detail_ctrl.js"
+    src="ext/ng/app/agents/controller/detail_ctrl.js"
 ></script>
 <script
     type="text/javascript"
