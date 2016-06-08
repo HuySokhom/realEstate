@@ -70,7 +70,7 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});console.log(file);
 				file.upload.then(function (response) {
-					$timeout(function () {console.log(response);
+					$timeout(function () {
 						file.result = response.data;
 						$scope.image = response.data.image;
 						$scope.image_thumbnail = response.data.image_thumbnail;
