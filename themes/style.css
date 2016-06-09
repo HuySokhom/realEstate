@@ -3521,3 +3521,6 @@ form .progress {
 	font-weight: 600;
 	color: #3C64FF;
 }
+.btn {
+	border-radius: 0px;
+}

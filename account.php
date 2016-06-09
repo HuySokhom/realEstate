@@ -70,9 +70,16 @@
 				</div>
 			</div>
 
+			<div class="alert alert-info">
+				<i class="fa fa-star"></i>
+				Pay Services at SingaProperty.com Prices for publishing ads offers at SingaProperty.com
+				The property ads with higher rank are displayed before the other property ads.
+				All property ads are with duration of 15/30 days. If the desired number of candidates
+				is reached earlier you have the option to stop the property ad.
+			</div>
+
 			<div class="row">
 				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-
 					<!-- PRICE ITEM -->
 					<div class="panel price panel-red">
 						<div class="panel-heading  text-center">
@@ -87,16 +94,13 @@
 							<li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-danger" href="#">BUY NOW!</a>
+							<a class="btn btn-lg btn-block btn-danger" href="">BUY NOW!</a>
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
-
-
 				</div>
 
 				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-
 					<!-- PRICE ITEM -->
 					<div class="panel price panel-blue">
 						<div class="panel-heading arrow_box text-center">
@@ -111,16 +115,13 @@
 							<li class="list-group-item"><i class="icon-ok text-info"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-info" href="#">BUY NOW!</a>
+							<a class="btn btn-lg btn-block btn-info" href="">BUY NOW!</a>
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
-
-
 				</div>
 
 				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-
 					<!-- PRICE ITEM -->
 					<div class="panel price panel-green">
 						<div class="panel-heading arrow_box text-center">
@@ -135,12 +136,10 @@
 							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-success" href="#">BUY NOW!</a>
+							<a class="btn btn-lg btn-block btn-success" href="">BUY NOW!</a>
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
-
-
 				</div>
 
 				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
@@ -159,12 +158,10 @@
 							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-primary" href="#">BUY NOW!</a>
+							<a class="btn btn-lg btn-block btn-primary" href="">BUY NOW!</a>
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->
-
-
 				</div>
 
 			</div>
