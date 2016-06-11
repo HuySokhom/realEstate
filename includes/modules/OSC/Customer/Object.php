@@ -83,7 +83,7 @@ class Object extends DbObj {
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
-				detail = '" . (int)$this->getDetail() . "',
+				detail = '" . $this->dbEscape( $this->getDetail() ). "',
 				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'

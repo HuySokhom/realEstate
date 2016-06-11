@@ -21,7 +21,12 @@
 				Address:
 			</td>
 			<td>
-				<input type="text" data-ng-model="address" required="required" class="form-control" />
+				<textarea
+					data-ng-model="address"
+					required="required"
+					class="form-control"
+					rows="5"
+				></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -45,7 +50,12 @@
 				Detail:
 			</td>
 			<td>
-				<input type="text" data-ng-model="detail" required="required" class="form-control" />
+				<textarea
+					ui-tinymce="tinymceOptions"
+					data-ng-model="detail"
+					id="detail"
+					class="form-control"
+				></textarea>
 			</td>
 		</tr>
 		<tr>
@@ -53,7 +63,7 @@
 				Photo:
 			</td>
 			<td>
-				<input type="file" data-ng-model="detail" required="required" class="form-control" />
+				<input type="file" data-ng-model="detail" class="form-control" />
 			</td>
 		</tr>
 	</table>
