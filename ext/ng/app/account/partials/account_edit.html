@@ -63,7 +63,33 @@
 				Photo:
 			</td>
 			<td>
-				<input type="file" data-ng-model="detail" class="form-control" />
+				<input
+					type="file"
+					ng-model="picFile"
+					name="file"
+					accept="image/*"
+					ngf-max-size="2MB"
+					ngf-model-invalid="errorFiles"
+					ngf-select="uploadPic(picFile)"
+					class="form-control"
+				>
+				<i ng-show="myForm.file.$error.maxSize">
+					File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+				</i>
+				<img
+					ng-show="photo_thumbnail"
+					class="thumb"
+					src="images/{{photo_thumbnail}}"
+				>
+                <span class="progress" ng-show="picFile.progress >= 0">
+                    <div
+						style="width: {{picFile.progress}}%"
+						ng-bind="picFile.progress + '%'"
+					>
+					</div>
+                </span>
+				<span ng-show="picFile.result">Upload Successful</span>
+				<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 			</td>
 		</tr>
 	</table>

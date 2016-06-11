@@ -23,6 +23,7 @@ class Object extends DbObj {
 		, $customersGender
 		, $userName
 		, $photo
+		, $photoThumbnail
 		, $detail
 	;
 	
@@ -32,6 +33,7 @@ class Object extends DbObj {
 				'id',
 				'user_name',
 				'photo',
+				'photo_thumbnail',
 				'detail',
 				'customers_email_address',
 				'customers_address',
@@ -48,6 +50,7 @@ class Object extends DbObj {
 			SELECT
 				user_name,
 				photo,
+				photo_thumbnail,
 				customers_email_address,
 				customers_telephone,
 				customers_address,
@@ -80,7 +83,9 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
+				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
@@ -106,6 +111,14 @@ class Object extends DbObj {
 
 	public function getPhoto(){
 		return $this->photo;
+	}
+
+	public function setPhotoThumbnail( $string ){
+		$this->photoThumbnail = (string)$string;
+	}
+
+	public function getPhotoThumbnail(){
+		return $this->photoThumbnail;
 	}
 
 	public function setUserName( $string ){
