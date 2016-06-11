@@ -11,7 +11,7 @@
 				<div class="col-md-4 col-sm-12" data-ng-repeat="a in agents.elements">
 					<div class="agent-list-box">
 						<div class="agent-list-image-box">
-							<a title="Agent" href="#/{{a.id}}">
+							<a title="Agent" href="agents.php#/{{a.id}}">
 								<img
 									src="images/{{a.photo_thumbnail}}"
 								 	alt="{{a.name}}"
@@ -21,7 +21,7 @@
 						</div>
 						<div class="agent-listing-detail">
 							<h4>
-								<a href="#/{{a.id}}" title="{{a.name}}">John Doe</a>
+								<a href="agents.php#/{{a.id}}" title="{{a.name}}">John Doe</a>
 								<span data-ng-bind="a.name"></span>
 							</h4>
 							<p>
