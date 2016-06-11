@@ -8,13 +8,9 @@ app.controller(
 
 		var url = 'api/Agent/';
 		$scope.init = function(params){
-			Restful.get(url + $stateParams.newsId, params).success(function(data){
-				$scope.news = data;
-				if(data.count > 0) {
-
-					$scope.createBy = data.elements[0].create_by;
-					console.log(data);
-				}
+			Restful.get(url + $stateParams.id, params).success(function(data){
+				$scope.agents = data;
+				console.log(data);
 			});
 			// init other post news
 			var params = {
