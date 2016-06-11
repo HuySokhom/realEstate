@@ -243,6 +243,13 @@
     </div>
   </div>
 
+  <div class="form-group has-feedback">
+    <label class="control-label col-sm-3"><?php echo ENTRY_PHOTO; ?> </label>
+    <div class="col-sm-9">
+      <input type="file" class="form-control" name="photo"/>
+    </div>
+  </div>
+
   <div class="buttonSet row">
     <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'glyphicon glyphicon-chevron-left', tep_href_link(FILENAME_ACCOUNT, '', 'SSL')); ?></div>
     <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
