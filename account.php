@@ -244,6 +244,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
+	src="ext/ng/app/account/controller/account_edit_ctrl.js"
+></script>
+<script
+	type="text/javascript"
 	src="ext/ng/app/account/controller/property_ctrl.js"
 ></script>
 
