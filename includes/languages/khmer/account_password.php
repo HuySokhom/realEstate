@@ -11,12 +11,13 @@
 */
 
 define('NAVBAR_TITLE_1', 'My Account');
-define('NAVBAR_TITLE_2', 'Change Password');
+define('NAVBAR_TITLE_2', 'ផ្លាស់ប្តូរពាក្យសម្ងាត់');
 
-define('HEADING_TITLE', 'My Password');
+define('HEADING_TITLE', '
+ពាក្យសម្ងាត់របស់ខ្ញុំ');
 
-define('MY_PASSWORD_TITLE', 'My Password');
+define('MY_PASSWORD_TITLE', 'ពាក្យសម្ងាត់របស់ខ្ញុំ');
 
-define('SUCCESS_PASSWORD_UPDATED', 'Your password has been successfully updated.');
-define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'Your Current Password did not match the password in our records. Please try again.');
+define('SUCCESS_PASSWORD_UPDATED', 'ពាក្យសម្ងាត់របស់អ្នកត្រូវបានកែប្រែដោយជោគជ័យ។');
+define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'ពាក្យសម្ងាត់របស់អ្នកបច្ចុប្បន្នមិនផ្គូផ្គងពាក្យសម្ងាត់នៅក្នុងកំណត់ត្រារបស់យើង។ សូម​ព្យាយាម​ម្ដងទៀត។');
 ?>
