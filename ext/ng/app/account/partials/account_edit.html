@@ -34,7 +34,15 @@
 				Location:
 			</td>
 			<td>
-				<input type="text" data-ng-model="location" required="required" class="form-control" />
+				<select
+					class="form-control"
+					data-ng-model="location"
+					data-ng-options="location.id as location.name for location in locations"
+					data-ng-init="location == location.id"
+					required
+				>
+					<option value="">--Select--</option>
+				</select>
 			</td>
 		</tr>
 		<tr>

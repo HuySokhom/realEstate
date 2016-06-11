@@ -20,7 +20,9 @@ app.controller(
 				$scope.detail = data.elements[0].detail;
 				$scope.address = data.elements[0].customers_address;
 				$scope.photo_thumbnail = data.elements[0].photo_thumbnail;
-				console.log(data);
+			});
+			Restful.get("api/Location").success(function(data){
+				$scope.locations = data.elements;
 			});
 		};
 		$scope.init();
