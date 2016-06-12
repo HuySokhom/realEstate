@@ -15,14 +15,16 @@
 								<img
 									src="images/{{a.photo_thumbnail}}"
 								 	alt="{{a.name}}"
-									title="{{a.name}}"
+									title="{{a.user_name}}"
 								/>
 							</a>
 						</div>
 						<div class="agent-listing-detail">
 							<h4>
-								<a href="agents.php#/{{a.id}}" title="{{a.name}}">John Doe</a>
-								<span data-ng-bind="a.name"></span>
+								<a href="agents.php#/{{a.id}}" title="{{a.user_name}}">
+									{{a.name}}
+								</a>
+								<span data-ng-bind="a.user_name"></span>
 							</h4>
 							<p>
 								<i class="fa fa-phone"></i>
