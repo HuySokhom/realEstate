@@ -53,7 +53,15 @@
 				<input type="text" data-ng-model="telephone" required="required" class="form-control" />
 			</td>
 		</tr>
-		<tr>
+		<tr data-ng-show="type == 'agency' || type == 'member'">
+			<td>
+				Fax:
+			</td>
+			<td>
+				<input type="text" data-ng-model="fax" required="required" class="form-control" />
+			</td>
+		</tr>
+		<tr data-ng-show="type == 'agency' || type == 'member'">
 			<td>
 				Detail:
 			</td>

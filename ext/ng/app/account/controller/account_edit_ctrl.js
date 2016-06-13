@@ -20,6 +20,8 @@ app.controller(
 				$scope.detail = data.elements[0].detail;
 				$scope.address = data.elements[0].customers_address;
 				$scope.photo_thumbnail = data.elements[0].photo_thumbnail;
+				$scope.fax = data.elements[0].customers_fax;
+				$scope.type = data.elements[0].user_type;
 			});
 			Restful.get("api/Location").success(function(data){
 				$scope.locations = data.elements;
@@ -35,12 +37,12 @@ app.controller(
 				customers_email_address: $scope.email,
 				customers_location: $scope.location,
 				customers_telephone: $scope.telephone,
+				customers_fax: $scope.fax,
 				detail: $scope.detail,
 				customers_address: $scope.address,
 				photo: $scope.photo,
 				photo_thumbnail: $scope.photo_thumbnail
 			};
-			console.log(data);
 			$scope.disabled = false;
 
 			Restful.put('api/Session/Customer/', data).success(function (data) {

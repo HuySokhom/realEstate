@@ -20,13 +20,20 @@
             <!-- col-md-4 -->
             <div class="col-md-4">
                 <div class="agent-header">
-                    <div class="agent-img"><img src="images/agent/agent-2.jpg" alt="agent"></div>
-                    <div class="agent-name">
-                        <h5>John Doe <span>Real Estate Agent</span></h5>
+                    <div class="agent-img">
+                        <img src="images/{{agents.photo_thumbnail}}" alt="{{agents.user_name}}">
                     </div>
-                    <p><i class="fa fa-phone"></i> 305 555 4555</p>
-                    <p><i class="fa fa-mobile"></i> 305 555 4555</p>
-                    <p><i class="fa fa-fax"></i> 305 555 4555</p>
+                    <div class="agent-name">
+                        <span data-ng-bind="agents.user_name"></span>
+                    </div>
+                    <p>
+                        <i class="fa fa-phone"></i>
+                        <span data-ng-bind="agents.customers_telephone"></span>
+                    </p>
+                    <p>
+                        <i class="fa fa-fax"></i>
+                        <span data-ng-bind="agents.customers_fax"></span>
+                    </p>
                     <p><i class="fa fa-envelope-o"></i> <a title="mail" href="mailto:john@propertyexpert.com">john@propertyexpert.com</a></p>
                     <ul class="property-social p_l_z m_b_z">
                         <li><a title="twitter" href="agent-details.html#"><i class="fa fa-twitter"></i></a></li>

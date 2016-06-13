@@ -11,6 +11,7 @@ class Object extends DbObj {
 	protected
 		$customersFirstname
 		, $customersLastname
+		, $customersFax
 		, $customersEmailAddress
 		, $customersAddress
 		, $customersTelephone
@@ -22,6 +23,7 @@ class Object extends DbObj {
 		, $customersContactName
 		, $customersGender
 		, $userName
+		, $userType
 		, $photo
 		, $photoThumbnail
 		, $detail
@@ -32,11 +34,13 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'user_name',
+				'user_type',
 				'photo',
 				'photo_thumbnail',
 				'detail',
 				'customers_email_address',
 				'customers_address',
+				'customers_fax',
 				'customers_telephone',
 				'customers_location'
 			)
@@ -49,7 +53,9 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				user_name,
+				user_type,
 				photo,
+				customers_fax,
 				photo_thumbnail,
 				customers_email_address,
 				customers_telephone,
@@ -71,14 +77,32 @@ class Object extends DbObj {
 	
 		$this->setProperties($this->dbFetchArray($q));
 	}
-	
+
+	public function updateUserType() {
+
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+
+		$this->dbQuery("
+			UPDATE
+				customers
+			SET
+				user_type = '" . $this->dbEscape( $this->getUserType() ) . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+
+	}
+
+
 	public function update() {
 	
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
 	
-		$q = $this->dbQuery("
+		$this->dbQuery("
 			UPDATE
 				customers
 			SET
@@ -87,6 +111,7 @@ class Object extends DbObj {
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
 				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
+				customers_fax = '" . $this->dbEscape( $this->getCustomersFax() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
 				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
@@ -96,6 +121,15 @@ class Object extends DbObj {
 	
 	}
 
+	public function setCustomersFax( $string ){
+		$this->customersFax = (string)$string;
+	}
+
+	public function getCustomersFax(){
+		return $this->customersFax;
+	}
+
+
 	public function setDetail( $string ){
 		$this->detail = (string)$string;
 	}
@@ -104,6 +138,13 @@ class Object extends DbObj {
 		return $this->detail;
 	}
 
+	public function setUserType( $string ){
+		$this->userType = (string)$string;
+	}
+
+	public function getUserType(){
+		return $this->userType;
+	}
 
 	public function setPhoto( $string ){
 		$this->photo = (string)$string;
