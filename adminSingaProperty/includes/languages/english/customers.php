@@ -10,7 +10,7 @@
   Released under the GNU General Public License
 */
 
-define('HEADING_TITLE', 'Customers');
+define('HEADING_TITLE', 'Users');
 define('HEADING_TITLE_SEARCH', 'Search:');
 
 define('TABLE_HEADING_FIRSTNAME', 'First Name');
