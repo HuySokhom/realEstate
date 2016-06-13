@@ -73,11 +73,11 @@
 
 <script
     type="text/javascript"
-    src="js/ng/app/news/main.js"
+    src="js/ng/app/core/main.js"
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/app/news/config/route.js"
+    src="js/ng/app/core/config/route.js"
 ></script>
 <script
     type="text/javascript"

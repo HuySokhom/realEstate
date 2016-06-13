@@ -25,7 +25,7 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
+<div data-ui-view=""></div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
