@@ -23,7 +23,7 @@
     }
   }
 
-  require(DIR_WS_INCLUDES . 'template_top.php');
+  require(DIR_WS_INCLUDES . 'template_top_.php');
 ?>
 
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
@@ -100,6 +100,6 @@
     </table>
 
 <?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
+  require(DIR_WS_INCLUDES . 'template_bottom_.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
