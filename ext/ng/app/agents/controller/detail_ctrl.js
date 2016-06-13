@@ -9,7 +9,7 @@ app.controller(
 		var url = 'api/Agent/';
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
-				$scope.agents = data;
+				$scope.agent = data.elements[0];
 				console.log(data);
 			});
 			// init other post news

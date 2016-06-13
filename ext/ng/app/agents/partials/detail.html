@@ -1,13 +1,13 @@
 <div class="col-md-9 col-sm-6 p_l_z content-area margin-to">
     <div class="blog-listing single-post col-md-12 p_z">
         <div
-            data-ng-if="!agents"
+            data-ng-if="!agent"
             class="align_center"
         >
             <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
         </div>
         <div
-            data-ng-if="agents.count == 0"
+            data-ng-if="agent.count == 0"
             class="alert alert-info"
         >
             <p>
@@ -19,39 +19,42 @@
         <div class="agent-detail-box">
             <!-- col-md-4 -->
             <div class="col-md-4">
-                <div class="agent-header">
+                <div class="s">
                     <div class="agent-img">
-                        <img src="images/{{agents.photo_thumbnail}}" alt="{{agents.user_name}}">
+                        <img src="images/{{agent.photo_thumbnail}}" alt="{{agents.user_name}}">
                     </div>
                     <div class="agent-name">
-                        <span data-ng-bind="agents.user_name"></span>
+                        <h4 data-ng-bind="agent.user_name"></h4>
                     </div>
-                    <p>
-                        <i class="fa fa-phone"></i>
-                        <span data-ng-bind="agents.customers_telephone"></span>
-                    </p>
-                    <p>
-                        <i class="fa fa-fax"></i>
-                        <span data-ng-bind="agents.customers_fax"></span>
-                    </p>
-                    <p><i class="fa fa-envelope-o"></i> <a title="mail" href="mailto:john@propertyexpert.com">john@propertyexpert.com</a></p>
-                    <ul class="property-social p_l_z m_b_z">
+                    <div>
+                        <i class="fa fa-phone margin-right"></i>
+                        {{agent.customers_telephone}}
+                    </div>
+                    <div>
+                        <i class="fa fa-fax margin-right"></i>
+                        {{agent.customers_fax}}
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope-o margin-right"></i>
+                        <a
+                            title="mail"
+                            data-ng-bind="agent.customers_email_address"
+                            href="mailto:{{agent.customers_email_address}}"
+                        ></a>
+                    </div>
+                    <ul class="nav navbar-nav">
                         <li><a title="twitter" href="agent-details.html#"><i class="fa fa-twitter"></i></a></li>
                         <li><a title="facebook" href="agent-details.html#"><i class="fa fa-facebook"></i></a></li>
                         <li><a title="google-plus" href="agent-details.html#"><i class="fa fa-google-plus"></i></a></li>
                         <li><a title="linkedin-square" href="agent-details.html#"><i class="fa fa-linkedin-square"></i></a></li>
-                        <li><a title="pinterest" href="agent-details.html#"><i class="fa fa-pinterest"></i></a></li>
                         <li><a title="instagram" href="agent-details.html#"><i class="fa fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div><!-- col-md-4 /- -->
             <!-- col-md-8 -->
             <div class="col-md-8">
-                <div class="about-agent">
-                    <h5>ABOUT ME</h5>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum, Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.</p>
-                    <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
+                <div class="about-agentd">
+                    <p style="text-align: justify" data-ng-bind-html="agent.detail"></p>
                 </div>
             </div><!-- col-md-8 /- -->
         </div><!-- Agent Detail Box -->

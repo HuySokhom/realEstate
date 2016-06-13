@@ -2316,6 +2316,7 @@ textarea {
 	border: 1px solid #c8c8c8;
 	border-top: 4px solid #3c3c44;
 	padding-bottom: 55px;
+	padding-top: 12px;
 }
 
 .agent-detail-box .agent-header {
@@ -2335,7 +2336,7 @@ textarea {
 
 .agent-detail-box .agent-header .agent-name h5 {
 	color: #3c3c44;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: 900;
 	margin-top: 23px;
 }
@@ -2353,10 +2354,6 @@ textarea {
 .agent-detail-box .agent-header > p a {
 	margin-top: 18px;
 	color: #3c3c44;
-}
-
-.agent-detail-box .agent-header > p a {
-	text-decoration: underline;
 }
 
 .agent-detail-box .agent-header > ul {
@@ -3523,4 +3520,7 @@ form .progress {
 }
 .btn {
 	border-radius: 0px;
+}
+.margin-right{
+	margin-right: 10px;
 }
