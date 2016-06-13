@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/fonts/font-awesome.min.css">
 <?php
 require('includes/application_top.php');
 ?>
@@ -36,88 +34,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 		</div>
 	</div>
 </body>
-<!-- lib -->
 
-<script src="css/bootstrap/bootstrap.min.js"></script>
-<script
-	type="text/javascript"
-	src="js/tinymce/tinymce.min.js"
-></script>
-<script 
-	type="text/javascript" 
-	src="js/ng/lib/angular/1.5.6/angular.min.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/lib/angular-cookies/angular-cookies.min.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/lib/angular-ui-route/angular-ui-router.min.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/lib/angular-sanitize/angular-sanitize.min.js"
-></script>
-<script 
-	type="text/javascript"
-	src="js/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/lib/angular-tinymce/tinymce.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
-></script>
-<script src="js/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
-<!-- for no html5 browsers support -->
-<script src="js/ng/lib/angular-upload/ng-file-upload.min.js"></script>
-
-<!-- custom file -->
-
-<script
-	type="text/javascript"
-	src="js/ng/app/news/main.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/config/route.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/core/restful/restful.js"
-></script>
-<script
-		type="text/javascript"
-		src="js/ng/app/core/services/services.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/news_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/news_post_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/news_edit_ctrl.js"
-></script>
-
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/type_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/type_post_ctrl.js"
-></script>
-<script
-	type="text/javascript"
-	src="js/ng/app/news/controller/type_edit_ctrl.js"
-></script>
 
 <?php
 require(DIR_WS_INCLUDES . 'template_bottom.php');
