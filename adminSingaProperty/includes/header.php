@@ -37,6 +37,9 @@
           <li>
             <a href="#/news"><span class="fa fa-envelope"></span> News</a>
           </li>
+          <li>
+            <a href="#/news_type"><span class="fa fa-envelope"></span> News Type</a>
+          </li>
           <li><a href="#/products_attributes"><span class="fa fa-comments"></span> Products Attributes</a></li>
           <li><a href="#/products_expected"><span class="fa fa-calendar"></span> Products Expected</a></li>
           <li><a href="#/reviews"><span class="fa fa-edit"></span> Reviews</a></li>

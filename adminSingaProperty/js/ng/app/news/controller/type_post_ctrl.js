@@ -16,7 +16,7 @@ app.controller(
 				$scope.disabled = true;
 				console.log(data);
 				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
-				$location.path('type');
+				$location.path('news_type');
 			});
 		};
 

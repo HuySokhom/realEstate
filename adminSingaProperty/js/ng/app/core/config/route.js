@@ -18,18 +18,18 @@ app.config([
 				templateUrl: 'js/ng/app/news/partials/news_edit.html',
 				controller: 'news_edit_ctrl'
 			})
-			.state('/type', {
-				url: '/type',
+			.state('/news_type', {
+				url: '/news_type',
 				templateUrl: 'js/ng/app/news/partials/type.html',
                 controller: 'type_ctrl'
 			})
-			.state('/type/edit:id', {
-				url: '/type/edit/:id',
+			.state('/news_type/edit:id', {
+				url: '/news_type/edit/:id',
 				templateUrl: 'js/ng/app/news/partials/type_edit.html',
 				controller: 'type_edit_ctrl'
 			})
-			.state('/type/post', {
-				url: '/type/post',
+			.state('/news_type/post', {
+				url: '/news_type/post',
 				templateUrl: 'js/ng/app/news/partials/type_post.html',
 				controller: 'type_post_ctrl'
 			})
