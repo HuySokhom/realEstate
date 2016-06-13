@@ -1,5 +1,5 @@
 <div align="center" class="smallText">
-  SKWeb Solution Copyright &copy; 2016-<?php echo date('Y'); ?>
+  SK Web Solution Copyright &copy; 2016-<?php echo date('Y'); ?>
   <a href="https://www.facebook.com/skwebsolution/" target="_blank">
     SK Web Solution
   </a>
@@ -62,13 +62,9 @@
 <!-- START THIS PAGE PLUGINS-->
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/actions.js"></script>
-<script type="text/javascript" src="js/faq.js"></script>
 <!-- END TEMPLATE -->
 
 <!-- Start Plugin Custom NG Js-->
-
-<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
-<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
 
 
 <script

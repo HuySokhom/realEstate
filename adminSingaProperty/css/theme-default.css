@@ -200,6 +200,7 @@ body {
 }
 .page-container .page-content .page-content-wrap {
   float: left;
+  background: #f5f5f5;
   width: 100%;
 }
 .page-container.page-container-wide .page-content {
@@ -7329,4 +7330,10 @@ li.ext_zip {
 }
 .x-navigation-minimized .xn-logo{
 display:none;
+}
+.align-left{
+  float: left;
+}
+.align-right{
+  float: right;
 }

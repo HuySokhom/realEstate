@@ -54,7 +54,7 @@ app.controller(
 		};
 		// edit functionality
 		$scope.edit = function(id){
-			$location.path('/manage_article/edit/' + id);
+			$location.path('/news/edit/' + id);
 		};
 
 		/**
