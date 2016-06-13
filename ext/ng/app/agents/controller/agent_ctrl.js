@@ -8,13 +8,8 @@ app.controller(
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.agents = data;
-				$scope.totalItems = data.count;
+				$scope.totalItems = data.count;console.log(data);
 			});
-
-			Restful.get("api/News").success(function(data){
-				$scope.news = data;
-			});
-
 		};
 		$scope.init();
 

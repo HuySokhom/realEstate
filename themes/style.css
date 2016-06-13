@@ -1520,8 +1520,8 @@ textarea {
 	font-weight: 500;
 	height: 43px;
 	line-height: 43px;
-	width: 43px;
-	padding: 0;
+	/*width: 43px;*/
+	padding: 0px 10px 0px 10px;
 	color: #3c3c44;
 }
 
@@ -1530,7 +1530,7 @@ textarea {
 .listing-pagination .pagination li.active a:hover,
 .listing-pagination .pagination li.active a:focus,
 .listing-pagination .pagination li.active a {
-	background-color: #79b445;
+	background-color: #3C64FF;
 	border: none;
 	color: #fff;
 }
@@ -2425,7 +2425,7 @@ textarea {
 }
 
 .agent-listing-detail {
-	padding: 30px 20px;
+	padding: 15px 15px;
 	border: 1px solid #e7e7e7;
 }
 

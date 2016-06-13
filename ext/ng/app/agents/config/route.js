@@ -5,7 +5,7 @@ app.config([
 		$stateProvider.
 			state('/', {
 				url: '/',
-				templateUrl: 'ext/ng/app/agents/partails/index.html',
+				templateUrl: 'ext/ng/app/agents/partials/index.html',
 				controller: 'agent_ctrl'
 			})
 			.state('/:id', {

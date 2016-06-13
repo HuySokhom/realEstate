@@ -22,6 +22,9 @@ class Object extends DbObj {
 		, $customersContactName
 		, $customersGender
 		, $userName
+		, $photo
+		, $photoThumbnail
+		, $detail
 	;
 	
 	public function toArray( $params = array() ){
@@ -29,13 +32,13 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'user_name',
-				'customers_firstname',
-				'customers_lastname',
+				'photo',
+				'photo_thumbnail',
+				'detail',
 				'customers_email_address',
 				'customers_address',
 				'customers_telephone',
-				'customers_location',
-				'customers_gender',
+				'customers_location'
 			)
 		);
 	
@@ -45,14 +48,14 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				customers_firstname,
 				user_name,
-				customers_lastname,
+				photo,
+				photo_thumbnail,
 				customers_email_address,
 				customers_telephone,
 				customers_address,
 				customers_location,
-				customers_gender
+				detail
 			FROM
 				customers
 			WHERE
@@ -79,15 +82,43 @@ class Object extends DbObj {
 			UPDATE
 				customers
 			SET
-				customers_firstname = '" . $this->dbEscape( $this->getCustomersFirstname() ) . "',
-				customers_lastname = '" . $this->dbEscape( $this->getCustomersLastname() ) . "',
+				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
+				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
+				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
+				detail = '" . $this->dbEscape( $this->getDetail() ). "',
 				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	
+	}
+
+	public function setDetail( $string ){
+		$this->detail = (string)$string;
+	}
+
+	public function getDetail(){
+		return $this->detail;
+	}
+
+
+	public function setPhoto( $string ){
+		$this->photo = (string)$string;
+	}
+
+	public function getPhoto(){
+		return $this->photo;
+	}
+
+	public function setPhotoThumbnail( $string ){
+		$this->photoThumbnail = (string)$string;
+	}
+
+	public function getPhotoThumbnail(){
+		return $this->photoThumbnail;
 	}
 
 	public function setUserName( $string ){

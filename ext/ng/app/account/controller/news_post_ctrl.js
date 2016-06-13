@@ -68,7 +68,7 @@ app.controller(
 				file.upload = Upload.upload({
 					url: 'api/UploadImage',
 					data: {file: file, username: $scope.username},
-				});console.log(file);
+				});
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;

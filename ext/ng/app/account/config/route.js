@@ -38,6 +38,11 @@ app.config([
 				templateUrl: 'ext/ng/app/account/partials/account.html',
                 controller: 'account_ctrl'
 			})
+			.state('/account/edit', {
+				url: '/account/edit',
+				templateUrl: 'ext/ng/app/account/partials/account_edit.html',
+				controller: 'account_edit_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/account');
 	}

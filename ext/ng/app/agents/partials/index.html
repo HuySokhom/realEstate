@@ -1,0 +1,62 @@
+<div id="property-listing" class="property-listing">
+	<div class="container">
+		<div class="col-md-9 col-sm-6 p_l_z">
+			<!-- Section Header -->
+			<div class="section-header">
+				<h3><span>AGENT</span>Listing</h3>
+			</div><!-- Section Header /- -->
+			<!-- Agent List -->
+			<div class="agent-list row">
+				<!-- col-md-4 -->
+				<div class="col-md-4 col-sm-12" data-ng-repeat="a in agents.elements">
+					<div class="agent-list-box">
+						<div class="agent-list-image-box">
+							<a title="Agent" href="agents.php#/{{a.id}}">
+								<img
+									src="images/{{a.photo_thumbnail}}"
+								 	alt="{{a.name}}"
+									title="{{a.user_name}}"
+									style="width: 100%;height: 165px;"
+								/>
+							</a>
+						</div>
+						<div class="agent-listing-detail">
+							<h4>
+								<a href="agents.php#/{{a.id}}" title="{{a.user_name}}">
+									{{a.name}}
+								</a>
+								<span data-ng-bind="a.user_name"></span>
+							</h4>
+							<p>
+								<i class="fa fa-phone"></i>
+								{{a.customers_telephone}}
+							</p>
+							<p>
+								<i class="fa fa-envelope-o"></i>
+								<a title="mail" href="mailto:{{a.customers_email_address}}">
+									{{a.customers_email_address}}
+								</a>
+							</p>
+							<p data-ng-bind-html="a.detail | limitTo:325" style="text-align: justify;"></p>
+							
+						</div>
+					</div>
+				</div><!-- col-md-4 /- -->
+
+			</div><!-- Agent List /- -->
+			<div class="listing-pagination">
+				<!-- Pagination -->
+				<pagination
+					total-items="totalItems"
+					ng-model="currentPage"
+					ng-change="pageChanged()"
+					max-size="5"
+					items-per-page="10"
+					boundary-links="true"
+				></pagination>
+				<!-- Pagination /- -->
+			</div>
+		</div><!-- col-md-9 /- -->
+		<div search></div>
+	</div>
+</div>

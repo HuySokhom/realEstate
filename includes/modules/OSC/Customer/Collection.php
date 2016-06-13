@@ -14,7 +14,12 @@ class Collection extends StdCollection {
 		$this->setDistinct(true);
 		$this->objectType = __NAMESPACE__ .'\Object';
 	}
-	
+
+
+	public function filterByStatus( $arg ){
+		$this->addWhere("c.status = '" . (int)$arg . "'");
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("c.customers_id = '" . (int)$arg . "'");
 	}
