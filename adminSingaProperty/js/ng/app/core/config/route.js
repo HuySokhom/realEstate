@@ -43,6 +43,11 @@ app.config([
 				templateUrl: 'js/ng/app/image_slider/partials/index.html',
 				controller: 'image_slider_ctrl'
 			})
+			.state('/customer', {
+				url: '/customer',
+				templateUrl: 'js/ng/app/customer/partials/index.html',
+				controller: 'customer_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 	}
