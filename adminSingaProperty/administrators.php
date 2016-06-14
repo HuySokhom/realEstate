@@ -232,8 +232,8 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
-    <table border="0" width="100%" cellspacing="0" cellpadding="2">
+<div class="page-content-wrap panel-body">
+    <table class="table table-bordered">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
@@ -243,16 +243,16 @@
         </table></td>
       </tr>
       <tr>
-        <td>
+        <td class="alert alert-warning">
 <?php
   echo $secMessageStack->output();
 ?>
         </td>
       </tr>
       <tr>
-        <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
+        <td><table>
           <tr>
-            <td valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+            <td valign="top"><table class="table datatable dataTable no-footer">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_ADMINISTRATORS; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_HTPASSWD; ?></td>
@@ -374,7 +374,7 @@
         </table></td>
       </tr>
     </table>
-
+</div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

@@ -2415,11 +2415,6 @@ label.valid {
   color: #FFF;
   border-color: #36b7e3;
 }
-.alert-warning {
-  background-color: #1caf9a;
-  color: #FFF;
-  border-color: #fe9e19;
-}
 .alert-danger {
   background-color: #E04B4A;
   color: #FFF;
