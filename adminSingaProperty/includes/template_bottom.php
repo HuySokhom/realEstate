@@ -65,5 +65,13 @@
     src="js/ng/app/image_slider/directive/image_slider_popup.js"
 ></script>
 
+<script
+    type="text/javascript"
+    src="js/ng/app/user/controller/user_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/user/controller/user_edit_ctrl.js"
+></script>
 </body>
 </html>

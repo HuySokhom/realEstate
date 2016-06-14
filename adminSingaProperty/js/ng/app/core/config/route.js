@@ -43,10 +43,15 @@ app.config([
 				templateUrl: 'js/ng/app/image_slider/partials/index.html',
 				controller: 'image_slider_ctrl'
 			})
-			.state('/customer', {
-				url: '/customer',
-				templateUrl: 'js/ng/app/customer/partials/index.html',
-				controller: 'customer_ctrl'
+			.state('/user', {
+				url: '/user',
+				templateUrl: 'js/ng/app/user/partials/index.html',
+				controller: 'user_ctrl'
+			})
+			.state('/user/edit', {
+				url: '/user/edit',
+				templateUrl: 'ext/ng/app/user/partials/user_edit.html',
+				controller: 'user_edit_ctrl'
 			})
 		;
 		$urlRouterProvider.otherwise('/');

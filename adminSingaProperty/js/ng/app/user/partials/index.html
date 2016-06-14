@@ -1,0 +1,161 @@
+<div class="row">
+	<div class="col-md-4">
+		<button
+				class="btn btn-default"
+				onclick="location.href='#/user/post';"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Post News
+		</button>
+	</div>
+	<div class="col-md-8">
+		<div class="row">
+			<div class="form-group has-feedback col-sm-6">
+				<div class="input-group">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Search Title..."
+						data-ng-model="search_title"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					>
+				<span class="input-group-btn">
+					<button class="btn btn-default" data-ng-click="search()" type="button">Search</button>
+				</span>
+				</div>
+
+			</div>
+			<div class="form-group has-feedback col-sm-6">
+				<div class="input-group">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Search ID..."
+						data-ng-model="id"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					>
+				<span class="input-group-btn">
+					<button class="btn btn-default" data-ng-click="search()" type="button">Search</button>
+				</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<br/>
+	<table class="table table-bordered table-striped" style="font-size: 12px;">
+		<thead>
+		<th>
+			Id
+		</th>
+		<th>
+			Type
+		</th>
+		<th>
+			User Name
+		</th>
+		<th>
+			Email Address
+		</th>
+		<th>
+			Telephone
+		</th>
+		<th>
+			Address
+		</th>
+		<th style="width: 180px;">
+			Action
+		</th>
+		</thead>
+		<tr data-ng-repeat="u in users.elements">
+			<td>
+				{{u.id}}
+			</td>
+			<td>
+				{{u.user_type}}
+			</td>
+			<td>
+				{{u.user_name}}
+			</td>
+			<td>
+				{{u.customers_email_address}}
+			</td>
+			<td>
+				<span data-ng-bind="u.customers_telephone"></span>
+			</td>
+			<td>
+				<span data-ng-bind="u.customers_address"></span>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(u.id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Edit"
+					tooltip
+				>
+					<span class="fa fa-pencil-square-o"></span>
+				</button>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(u.id, $index);"
+					data-toggle="modals"
+					data-placement="bottom"
+					data-target="#messages"
+					title="Delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+				<button
+					class="btn btn-success"
+					data-ng-click="updateStatus(u);"
+					data-ng-if="u.status == 1"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Active"
+					tooltip
+				>
+					<span class="fa fa-check-square-o"></span>
+				</button>
+				<button
+					class="btn btn-warning"
+					data-ng-if="u.status == 0"
+					data-ng-click="updateStatus(u);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Inactive"
+					tooltip
+				>
+					<span class="fa fa-minus-square-o"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+	<div
+			data-ng-if="users.elements == 0"
+	>
+		<div class="alert alert-danger alert-dismissible">
+			<strong>Warning!</strong> Data Empty.
+		</div>
+	</div>
+	<div
+			data-ng-if="!users"
+			class="align_center"
+	>
+		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+			class="panel-footer"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>

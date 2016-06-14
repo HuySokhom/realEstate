@@ -1,0 +1,127 @@
+<form name="account" data-ng-submit="save();">
+	<table class="table table-bordered">
+		<tr>
+			<td width="20%">
+				User Name:
+			</td>
+			<td>
+				<input type="text" data-ng-model="user_name" required="required" class="form-control" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				E-Mail Address:
+			</td>
+			<td>
+				<input type="text" data-ng-model="email" required="required" class="form-control" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Address:
+			</td>
+			<td>
+				<textarea
+					data-ng-model="address"
+					required="required"
+					class="form-control"
+					rows="5"
+				></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Location:
+			</td>
+			<td>
+				<select
+					class="form-control"
+					data-ng-model="location"
+					data-ng-options="location.id as location.name for location in locations"
+					data-ng-init="location == location.id"
+					required
+				>
+					<option value="">--Select--</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Telephone:
+			</td>
+			<td>
+				<input type="text" data-ng-model="telephone" required="required" class="form-control" />
+			</td>
+		</tr>
+		<tr data-ng-show="type == 'agency' || type == 'member'">
+			<td>
+				Fax:
+			</td>
+			<td>
+				<input type="text" data-ng-model="fax" required="required" class="form-control" />
+			</td>
+		</tr>
+		<tr data-ng-show="type == 'agency' || type == 'member'">
+			<td>
+				Detail:
+			</td>
+			<td>
+				<textarea
+					ui-tinymce="tinymceOptions"
+					data-ng-model="detail"
+					id="detail"
+					class="form-control"
+				></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Photo:
+			</td>
+			<td>
+				<input
+					type="file"
+					ng-model="picFile"
+					name="file"
+					accept="image/*"
+					ngf-max-size="2MB"
+					ngf-model-invalid="errorFiles"
+					ngf-select="uploadPic(picFile)"
+					class="form-control"
+				>
+				<i ng-show="myForm.file.$error.maxSize">
+					File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+				</i>
+				<img
+					ng-show="photo_thumbnail"
+					class="thumb"
+					src="images/{{photo_thumbnail}}"
+				>
+                <span class="progress" ng-show="picFile.progress >= 0">
+                    <div
+						style="width: {{picFile.progress}}%"
+						ng-bind="picFile.progress + '%'"
+					>
+					</div>
+                </span>
+				<span ng-show="picFile.result">Upload Successful</span>
+				<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+			</td>
+		</tr>
+	</table>
+	<button
+		class="btn btn-default"
+		onclick="location.href='account.php#/account';"
+	>
+		<i class="fa fa-close"></i>
+		Close
+	</button>
+	<div class="align-right">
+		<button
+			class="btn btn-primary"
+		>
+			<i class="fa fa-save"></i>
+			Save
+		</button>
+	</div>
+</form>

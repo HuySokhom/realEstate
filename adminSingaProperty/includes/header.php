@@ -30,18 +30,19 @@
       <li class="xn-openable">
         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Catalog</span></a>
         <ul>
-          <li><a href="#/category"><span class="fa fa-image"></span> Categories</a></li>
-          <li><a href="#/product"><span class="fa fa-image"></span> Products</a></li>
-          <li><a href="#/slider"><span class="fa fa-user"></span> Image Slider</a></li>
-          <li><a href="#/location"><span class="fa fa-users"></span> Location</a></li>
+          <li><a href="#/category"><span class="fa fa-code-fork"></span> Categories</a></li>
+          <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
+          <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
+          <li><a href="#/slider"><span class="fa fa-film"></span> Image Slider</a></li>
+          <li><a href="#/location"><span class="fa fa-map-marker"></span> Location</a></li>
           <li>
             <a href="#/manufacturers"><span class="fa fa-clock-o"></span> Manufacturers</a>
           </li>
           <li>
-            <a href="#/news"><span class="fa fa-envelope"></span> News</a>
+            <a href="#/news"><span class="fa fa-dashboard"></span> News</a>
           </li>
           <li>
-            <a href="#/news_type"><span class="fa fa-envelope"></span> News Type</a>
+            <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>
           </li>
           <li><a href="#/products_attributes"><span class="fa fa-comments"></span> Products Attributes</a></li>
           <li><a href="#/products_expected"><span class="fa fa-calendar"></span> Products Expected</a></li>
