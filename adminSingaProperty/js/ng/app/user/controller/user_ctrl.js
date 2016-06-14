@@ -51,7 +51,7 @@ app.controller(
 		};
 		// search functionality
 		$scope.search = function(){
-			params.search_title = $scope.search_title;
+			params.search_name = $scope.search_name;
 			params.id = $scope.id;
 			$scope.init(params);
 		};

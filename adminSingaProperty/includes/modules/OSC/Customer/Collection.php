@@ -23,5 +23,12 @@ class Collection extends StdCollection {
 	public function filterById( $arg ){
 		$this->addWhere("c.customers_id = '" . (int)$arg . "'");
 	}
-	
+
+	public function filterByTitle( $arg ){
+		$this->addWhere("c.user_name LIKE '%" . $arg. "%' ");
+	}
+
+	public function sortByDate( $arg ){
+		$this->addOrderBy('c.create_date', $arg);
+	}
 }

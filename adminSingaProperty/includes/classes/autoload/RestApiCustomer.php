@@ -7,10 +7,19 @@ use
 
 class RestApiCustomer extends RestApi {
 
-	public function get(){		
+	public function get($params){
 		$col = new CustomerCol();
-//		$col->filterById($customerId);
-		$this->applySortBy($col, $params);
+		$col->sortByDate('DESC');
+		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
+		// start limit page
+		$showDataPerPage = 10;
+		$start = $params['GET']['start'];
+		$this->applyLimit($col,
+			array(
+				'limit' => array( $start, $showDataPerPage )
+			)
+		);
 		return $this->getReturn($col, $params);
 
 	}

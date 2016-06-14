@@ -36,6 +36,7 @@ class Object extends DbObj {
 				'user_name',
 				'user_type',
 				'photo',
+				'status',
 				'photo_thumbnail',
 				'detail',
 				'customers_email_address',
@@ -53,6 +54,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				user_name,
+				status,
 				user_type,
 				photo,
 				customers_fax,
