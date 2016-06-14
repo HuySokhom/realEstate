@@ -56,7 +56,7 @@ app.controller(
 			Restful.post('api/News', data).success(function (data) {
 				$scope.disabled = true;
 				//console.log(data);
-				$scope.service.alertMessage('Complete', 'Save Success.', 'success');
+				$scope.service.alertMessage('Complete Save Success.');
 				$location.path('news');
 			});
 		};

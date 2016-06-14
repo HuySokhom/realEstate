@@ -7337,3 +7337,17 @@ display:none;
 .align-right{
   float: right;
 }
+.thumb {
+  width: 230px;
+  margin-top: 10px;
+}
+form .progress {
+  line-height: 15px;
+}
+.progress div {
+  font-size: smaller;
+  background: #3C64FF;
+  width: 0;
+  color: #ffffff;
+  margin-top: 10px;
+}
