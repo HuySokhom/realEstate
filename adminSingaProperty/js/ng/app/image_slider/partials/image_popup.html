@@ -43,6 +43,7 @@
 								type="file"
 								ng-model="picFile"
 								name="file"
+								data-ng-disabled="image_slider.text == ''"
 								accept="image/*"
 								ngf-max-size="2MB"
 								ngf-model-invalid="errorFiles"
