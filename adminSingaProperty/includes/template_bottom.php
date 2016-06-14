@@ -24,6 +24,12 @@
 </div>
 
 <?php require(DIR_WS_INCLUDES . 'footer.php'); ?>
+
+<script
+    type="text/javascript"
+    src="js/ng/app/index/controller/index_ctrl.js"
+></script>
+
 <script
     type="text/javascript"
     src="js/ng/app/news/controller/news_ctrl.js"
