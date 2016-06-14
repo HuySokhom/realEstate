@@ -5,7 +5,7 @@
     <!-- START X-NAVIGATION -->
     <ul class="x-navigation">
       <li class="xn-logo">
-        <a href="index.html">Singa Property</a>
+        <a href="#">Singa Property</a>
         <a href="#" class="x-navigation-control"></a>
       </li>
       <li class="xn-profile">
@@ -17,11 +17,10 @@
             <img src="images/logo.png" alt="John Doe" style="background: #ffffff;"/>
           </div>
           <div class="profile-data">
-            <div class="profile-data-name">Singa Property</div>
-          </div>
-          <div class="profile-controls">
-            <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
-            <a href="#" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+            <div class="profile-data-name">
+              <i class="fa fa-user"></i>
+              <?php echo $admin['username'];?>
+            </div>
           </div>
         </div>
       </li>
@@ -164,10 +163,10 @@
       </li>
       <!-- END TOGGLE NAVIGATION -->
       <!-- SEARCH -->
-      <li class="xn-search">
-        <form role="form">
-          <input type="text" name="search" placeholder="Search..." />
-        </form>
+      <li>
+        <a href=" <?php echo tep_catalog_href_link(); ?>" target="_blank">
+          <?php echo HEADER_TITLE_ONLINE_CATALOG ?>
+        </a>
       </li>
       <!-- END SEARCH -->
       <!-- SIGN OUT -->
