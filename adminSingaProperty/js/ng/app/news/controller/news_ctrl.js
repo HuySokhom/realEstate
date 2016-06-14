@@ -4,7 +4,8 @@ app.controller(
 	, 'Restful'
 	, '$location'
 	, 'Services'
-	, function ($scope, Restful, $location, Services){
+	, 'alertify'
+	, function ($scope, Restful, $location, Services, $alertify){
 		$scope.service = new Services();
 		var url = 'api/News/';
 		$scope.init = function(params){
@@ -28,22 +29,27 @@ app.controller(
 		$scope.remove = function(id, $index){
 			$scope.id = id;
 			$scope.index = $index;
-		};
-		$scope.disabled = true;
-		$scope.confirmDelete = function(){
-			$scope.disabled = false;
-			Restful.delete( url + $scope.id ).success(function(data){
-				$scope.disabled = true;
-				$.notify({
-					title: '<strong>Complete: </strong>',
-					message: 'Delete Success.'
-				},{
-					type: 'success'
+
+			$alertify.okBtn("Ok")
+				.cancelBtn("Cancel")
+				.confirm("Are you sure want to delete this news?", function (ev) {
+					// The click event is in the
+					// event variable, so you can use
+					// it here.
+					ev.preventDefault();
+					Restful.delete( url + $scope.id ).success(function(data){
+						$scope.disabled = true;
+						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
+						$scope.init();
+						//$scope.news.elements.splice($scope.index, 1);
+						//$('#message').modal('hide');
+					});
+				}, function(ev) {
+					// The click event is in the
+					// event variable, so you can use
+					// it here.
+					ev.preventDefault();
 				});
-				$scope.init();
-				//$scope.news.elements.splice($scope.index, 1);
-				$('#message').modal('hide');
-			});
 
 		};
 		// search functionality

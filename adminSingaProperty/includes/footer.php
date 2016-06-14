@@ -4,12 +4,10 @@
     SK Web Solution
   </a>
 </div>
-
 <!-- START PRELOADS -->
 <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
 <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
 <!-- END PRELOADS -->
-
 <!-- START SCRIPTS -->
 <!-- START PLUGINS -->
 <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
@@ -46,11 +44,11 @@
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/lib/angular-tinymce/tinymce.js"
+    src="js/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
+    src="js/ng/lib/angular-tinymce/tinymce.js"
 ></script>
 <script src="js/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
@@ -61,7 +59,6 @@
 <!-- START THIS PAGE PLUGINS-->
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/actions.js"></script>
-
 <!-- END TEMPLATE -->
 
 <!-- Start Plugin Custom NG Js-->

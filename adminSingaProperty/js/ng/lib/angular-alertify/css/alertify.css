@@ -5,3 +5,6 @@
 .alertify-logs{
     z-index: 9999;
 }
+.alertify {
+    z-index: 9999;
+}
