@@ -24,8 +24,6 @@ app.controller(
 		};
 
 		// remove functionality
-		$scope.id = '';
-		$scope.index = '';
 		$scope.remove = function(id, $index){
 			$scope.id = id;
 			$scope.index = $index;

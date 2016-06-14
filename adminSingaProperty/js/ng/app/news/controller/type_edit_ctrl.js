@@ -31,7 +31,7 @@ app.controller(
 
 			Restful.put('api/NewsType/' + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;console.log(data);
-				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
+				$scope.service.alertMessage('Complete: Update Success.');
 				$location.path('news_type');
 			});
 		};
