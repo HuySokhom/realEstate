@@ -25,7 +25,10 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-<div data-ui-view="" class="page-content-wrap"></div>
+<div class="page-content-wrap panel-body">
+  <br/>
+  <span data-ui-view="" ></span>
+</div>
 <?php
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');

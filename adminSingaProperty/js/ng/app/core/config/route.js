@@ -3,6 +3,11 @@ app.config([
 	'$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 		$stateProvider
+			.state('/', {
+				url: '/',
+				templateUrl: 'js/ng/app/index/partials/index.html',
+				controller: 'index_ctrl'
+			})
 			.state('/news', {
 				url: '/news',
 				templateUrl: 'js/ng/app/news/partials/news.html',
