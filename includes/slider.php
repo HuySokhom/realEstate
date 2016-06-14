@@ -42,7 +42,7 @@
         while ($image_slider = tep_db_fetch_array($image_slider_query)) {
             ?>
             <div data-p="225.00" style="display: none;">
-                <img data-u="image" src="images/slider/<?php echo $image_slider['image']?>" />
+                <img data-u="image" src="images/<?php echo $image_slider['image']?>" />
             </div>
 
             <?php

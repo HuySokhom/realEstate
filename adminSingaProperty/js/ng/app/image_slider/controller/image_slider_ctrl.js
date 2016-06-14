@@ -63,7 +63,7 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( 'api/ImageSlider/' + $scope.id ).success(function(data){
+					Restful.delete( 'api/ImageSlider/' + id ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
 						$scope.image_sliders.elements.splice($index, 1);
@@ -90,7 +90,7 @@ app.controller(
 				file.upload = Upload.upload({
 					url: 'api/ImageUpload',
 					data: {file: file, username: $scope.username},
-				});console.log(file);
+				});
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;
