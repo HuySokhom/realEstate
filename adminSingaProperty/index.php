@@ -26,7 +26,6 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 <div class="page-content-wrap panel-body">
-  <br/>
   <span data-ui-view="" ></span>
 </div>
 <?php

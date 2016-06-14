@@ -18,7 +18,7 @@ app.controller(
 		$scope.updateStatus = function(params){
 			params.status === 1 ? params.status = 0 : params.status = 1;
 			Restful.patch(url + params.id, params ).success(function(data) {
-				$scope.service.alertMessage('<strong>Success: </strong>', 'Update Success.', 'success');
+				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};
 

@@ -7,5 +7,6 @@ var app = angular.module(
         , 'ui.tinymce'
         , 'ngFileUpload'
         , 'ngCookies'
+        , 'ngAlertify'
     ]
 );
