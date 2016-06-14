@@ -1,7 +1,7 @@
 <button 
 	class="btn btn-default default-font" 
 	data-toggle="modal" 
-	data-target="#brand"
+	data-target="#imagePopup"
 	data-ng-click="add();"
 >
 	<span class="glyphicon glyphicon-plus"></span>
@@ -42,29 +42,28 @@
 				src="../images/{{image_slider.image_thumbnail}}"
 				data-ng-show="image_slider.image_thumbnail"
 			>
-			<img
-				src="../images/noimg.gif"
-				data-ng-show="!image_slider.image_thumbnail"
-				style="width: 100px;"
-			>
 		</td>
-		<td width="10%">
-			<img 
-				alt="edit" 
-				src="images/icons/edit.png"
-				class="icon"
-				title="edit"
-				data-toggle="modal" 
-				data-target="#brand"
+		<td width="">
+			<button
+				class="btn btn-default"
 				data-ng-click="edit(image_slider);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Edit"
+				tooltip
 			>
-			<img 
-				alt="edit" 
-				src="images/icons/delete.png"
-				class="icon"
-				title="edit"
+				<span class="fa fa-pencil-square-o"></span>
+			</button>
+			<button
+				class="btn btn-danger"
 				data-ng-click="remove($index, image_slider.id);"
+				data-toggle="modals"
+				data-placement="bottom"
+				title="Delete"
+				tooltip
 			>
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
 		</td>
 	</tr>
 </table>

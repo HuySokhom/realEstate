@@ -10,7 +10,7 @@ app.controller(
 		var url = 'api/NewsType/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.types = data;console.log(data);
+				$scope.types = data;
 				$scope.totalItems = data.count;
 			});
 		};

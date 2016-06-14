@@ -38,6 +38,11 @@ app.config([
 				templateUrl: 'js/ng/app/news/partials/type_post.html',
 				controller: 'type_post_ctrl'
 			})
+			.state('/slider', {
+				url: '/slider',
+				templateUrl: 'js/ng/app/image_slider/partials/index.html',
+				controller: 'image_slider_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 	}

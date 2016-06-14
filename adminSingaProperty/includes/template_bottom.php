@@ -56,5 +56,14 @@
     src="js/ng/app/news/controller/type_edit_ctrl.js"
 ></script>
 
+<script
+    type="text/javascript"
+    src="js/ng/app/image_slider/controller/image_slider_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/image_slider/directive/image_slider_popup.js"
+></script>
+
 </body>
 </html>

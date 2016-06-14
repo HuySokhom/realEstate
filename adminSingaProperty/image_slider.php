@@ -64,11 +64,13 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 <script
     type="text/javascript"
     src="js/ng/app/image_slider/services/services.js"
-    ></script>
+></script>
 <script
     type="text/javascript"
     src="js/ng/app/image_slider/directive/image_slider_popup.js"
-    ></script>
+></script>
+
+
 </body>
 <?php
 require(DIR_WS_INCLUDES . 'template_bottom.php');
