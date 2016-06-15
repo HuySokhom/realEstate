@@ -1,5 +1,5 @@
 <div class="panel-body">
-	<div class="col-md-6">
+	<div class="col-md-3">
 		<button
 			class="btn btn-default"
 			onclick="location.href='account.php#/manage_news/post';"
@@ -8,9 +8,9 @@
 			Post News
 		</button>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-9">
 		<div class="row">
-		<div class="form-group has-feedback col-sm-6">
+		<div class="form-group has-feedback col-sm-4">
 			<input
 				type="text"
 				placeholder="Search Title..."
@@ -21,7 +21,7 @@
 			/>
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
 		</div>
-		<div class="form-group has-feedback col-sm-6">
+		<div class="form-group has-feedback col-sm-4">
 			<input
 				type="text"
 				placeholder="Search Id..."
@@ -31,6 +31,17 @@
 				data-ng-keypress="($event.which === 13) ? search() : 0"
 			/>
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback col-sm-4">
+			<select
+				data-ng-model="news_type_id"
+				data-ng-options="type.id as type.name_en for type in newsType.elements"
+				class="form-control"
+				data-ng-change="search();"
+				required
+			>
+				<option value="">--Filter News Type--</option>
+			</select>
 		</div>
 		</div>
 	</div>
@@ -48,13 +59,10 @@
 				Title EN
 			</th>
 			<th>
-				Title KH
-			</th>
-			<th>
 				Content EN
 			</th>
 			<th>
-				Content KH
+				Status
 			</th>
 			<th width="150px">
 				Action
@@ -76,23 +84,17 @@
 			</td>
 			<td>
 				<span data-ng-repeat="i in n.detail">
-					<span data-ng-show="i.language_id == 2">
-						{{i.title}}
-					</span>
-				</span>
-			</td>
-			<td>
-				<span data-ng-repeat="i in n.detail">
 					<span data-ng-show="i.language_id == 1">
 						<span data-ng-bind-html="i.content | limitTo:100"></span>
 					</span>
 				</span>
 			</td>
 			<td>
-				<span data-ng-repeat="i in n.detail">
-					<span data-ng-show="i.language_id == 2">
-						<span data-ng-bind-html="i.content | limitTo:100"></span>
-					</span>
+				<span data-ng-if="n.status == 0" class="label label-danger">
+					Pending
+				</span>
+				<span data-ng-if="n.status == 1" class="label label-success">
+					Approve
 				</span>
 			</td>
 			<td>

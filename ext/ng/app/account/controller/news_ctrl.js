@@ -10,6 +10,9 @@ app.controller(
 				$scope.news = data;console.log(data);
 				$scope.totalItems = data.count;
 			});
+			Restful.get("api/NewsType").success(function(data){
+				$scope.newsType = data;
+			});
 		};
 		$scope.init();
 
@@ -41,6 +44,7 @@ app.controller(
 		$scope.search = function(){
 			params.search_title = $scope.search_title;
 			params.id = $scope.id;
+			params.type = $scope.news_type_id;
 			$scope.init(params);
 		};
 		// edit functionality
