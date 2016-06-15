@@ -17,7 +17,7 @@ class Collection extends StdCollection {
 
 
 	public function filterByStatus( $arg ){
-		$this->addWhere("c.status = '" . (int)$arg . "'");
+		$this->addWhere("c.is_agency = '" . (int)$arg . "'");
 	}
 
 	public function filterById( $arg ){

@@ -25,7 +25,7 @@ app.controller(
 		$scope.currentPage = 1;
 		//get another portions of data on page changed
 		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
+			$scope.pageSize = 9 * ( $scope.currentPage - 1 );
 			params.start = $scope.pageSize;
 			$scope.init(params);
 		};
