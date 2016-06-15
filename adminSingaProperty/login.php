@@ -132,7 +132,7 @@ if (tep_db_num_rows($admins_check_query) < 1) {
 }
 ?>
 <!DOCTYPE html>
-<html <?php echo HTML_PARAMS; ?>>
+<html <?php echo HTML_PARAMS; ?> class="body-full-height">
 <head>
   <!-- META SECTION -->
   <title><?php echo TITLE; ?></title>
@@ -161,12 +161,12 @@ if (tep_db_num_rows($admins_check_query) < 1) {
         <?php echo tep_draw_form('login', FILENAME_LOGIN, 'action=process', 'post', 'class="form-horizontal"', true);?>
           <div class="form-group">
             <div class="col-md-12">
-              <input type="text" class="form-control" placeholder="Username" name="username"/>
+              <input type="text" class="form-control" required placeholder="Username" name="username"/>
             </div>
           </div>
           <div class="form-group">
             <div class="col-md-12">
-              <input type="password" class="form-control" placeholder="Password" name="password"/>
+              <input type="password" class="form-control" required placeholder="Password" name="password"/>
             </div>
           </div>
           <div class="form-group">
