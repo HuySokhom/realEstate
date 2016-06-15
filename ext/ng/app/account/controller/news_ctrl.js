@@ -7,7 +7,7 @@ app.controller(
 		var url = 'api/Session/User/News';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.news = data;
+				$scope.news = data;console.log(data);
 				$scope.totalItems = data.count;
 			});
 		};
