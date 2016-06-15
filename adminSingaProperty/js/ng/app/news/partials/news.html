@@ -63,16 +63,13 @@
 				Type
 			</th>
 			<th>
+				Create By
+			</th>
+			<th>
 				Title EN
 			</th>
 			<th>
-				Title KH
-			</th>
-			<th>
 				Content EN
-			</th>
-			<th>
-				Content KH
 			</th>
 			<th style="width: 180px;">
 				Action
@@ -86,6 +83,9 @@
 				{{n.type[0].name_en}}
 			</td>
 			<td>
+				{{n.create_by}}
+			</td>
+			<td>
 				<span data-ng-repeat="i in n.detail">
 					<span data-ng-show="i.language_id == 1">
 						{{i.title}}
@@ -94,21 +94,7 @@
 			</td>
 			<td>
 				<span data-ng-repeat="i in n.detail">
-					<span data-ng-show="i.language_id == 2">
-						{{i.title}}
-					</span>
-				</span>
-			</td>
-			<td>
-				<span data-ng-repeat="i in n.detail">
 					<span data-ng-show="i.language_id == 1">
-						<span data-ng-bind-html="i.content | limitTo:100"></span>
-					</span>
-				</span>
-			</td>
-			<td>
-				<span data-ng-repeat="i in n.detail">
-					<span data-ng-show="i.language_id == 2">
 						<span data-ng-bind-html="i.content | limitTo:100"></span>
 					</span>
 				</span>
