@@ -13,7 +13,7 @@
 				E-Mail Address:
 			</td>
 			<td>
-				<input type="text" data-ng-model="email" required="required" class="form-control" />
+				<input type="email" data-ng-model="email" required="required" class="form-control" />
 			</td>
 		</tr>
 		<tr>
@@ -95,7 +95,7 @@
 				<img
 					ng-show="photo_thumbnail"
 					class="thumb"
-					src="images/{{photo_thumbnail}}"
+					src="../images/{{photo_thumbnail}}"
 				>
                 <span class="progress" ng-show="picFile.progress >= 0">
                     <div

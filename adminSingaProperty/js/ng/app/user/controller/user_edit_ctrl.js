@@ -47,13 +47,13 @@ app.controller(
 			};
 			$scope.disabled = false;
 
-			Restful.put('api/Session/Customer/', data).success(function (data) {
+			Restful.put('api/Customer/', data).success(function (data) {
 				$scope.disabled = true;
 				if(data == 1){
-					$scope.service.alertMessage('Complete', 'Update Success.', 'success');
-					$location.path('account');
+					$scope.service.alertMessage('<b>Complete:</b> Update Success.');
+					$location.path('user');
 				}else{
-					$scope.service.alertMessage('Warning', 'Email Existing. Please use other email.', 'warning');
+					$scope.service.alertMessage('<b>Warning:</b> Email Existing. Please use other email.');
 				}
 			});
 		};
