@@ -6,7 +6,8 @@ app.controller(
 	, '$location'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, Services, $location, Upload, $timeout){
+	, '$stateParams'
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $stateParams){
 		var url = 'api/Customer/';
 		$scope.service = new Services();
 		// init tiny option
@@ -27,7 +28,8 @@ app.controller(
 				$scope.locations = data.elements;
 			});
 		};
-		$scope.init();
+		var params = {id: $stateParams.id};
+		$scope.init(params);
 
 		// update functionality
 		$scope.save = function(){

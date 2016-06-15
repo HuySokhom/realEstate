@@ -97,6 +97,36 @@ class Object extends DbObj {
 
 	}
 
+	public function updateStatus() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+		$this->dbQuery("
+			UPDATE
+				customers
+			SET
+				status = '" .  $this->getStatus() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+	}
+
+	public function delete() {
+
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+		$this->dbQuery("
+			DELETE FROM
+				customers
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+
+	}
+
+
 
 	public function update() {
 	

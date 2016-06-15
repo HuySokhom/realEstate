@@ -2,16 +2,19 @@
 
 use
 	OSC\Customer\Collection
-		as CustomerCol
+		as CustomersCol,
+	OSC\Customer\Object
+		as CustomersObject
 ;
 
 class RestApiCustomer extends RestApi {
 
 	public function get($params){
-		$col = new CustomerCol();
+		$col = new CustomersCol();
 		$col->sortByDate('DESC');
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
-		$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
+		$params['GET']['type'] ? $col->filterByType($params['GET']['type']) : '';
+		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
 		// start limit page
 		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
@@ -26,8 +29,8 @@ class RestApiCustomer extends RestApi {
 	
 	public function put($params){
 
-		$cols = new CustomerCol();
-		$customerId = $this->getOwner()->getId();
+		$cols = new CustomersCol();
+		$customerId = $this->getId();
 		// check email existing
 		$check_email_query = tep_db_query("
 			SELECT
@@ -45,24 +48,38 @@ class RestApiCustomer extends RestApi {
 			$result =  false;
 			echo $result;
 		}else {
-			if (!$customerId) {
-				throw new \Exception(
-					"403: Access Denied",
-					403
-				);
-			} else {
-				$cols->filterById($customerId);
-				if ($cols->getTotalCount() > 0) {
-					$cols->populate();
-					$col = $cols->getFirstElement();
-					$col->setId($customerId);
-					$col->setProperties($params['PUT']);
-					$col->update();
-					$result = true;
-					echo $result;
-				}
+			$cols->filterById($customerId);
+			if ($cols->getTotalCount() > 0) {
+				$cols->populate();
+				$col = $cols->getFirstElement();
+				$col->setId($customerId);
+				$col->setProperties($params['PUT']);
+				$col->update();
+				$result = true;
+				echo $result;
 			}
 		}
+	}
+
+	public function patch($params){
+		$obj = new CustomersObject();
+		$obj->setId($this->getId());
+		$obj->setUpdateBy($_SESSION['admin']['username']);
+		$obj->setStatus($params['PATCH']['status']);
+		$obj->updateStatus();
+	}
+
+	public function delete(){
+
+		$obj = new CustomersObject();
+		$obj->setId($this->getId());
+		$obj->delete();
+		return array(
+			'data' => array(
+				'data' => 'success'
+			)
+		);
+
 	}
 	
 }

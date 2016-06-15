@@ -48,9 +48,9 @@ app.config([
 				templateUrl: 'js/ng/app/user/partials/index.html',
 				controller: 'user_ctrl'
 			})
-			.state('/user/edit', {
-				url: '/user/edit',
-				templateUrl: 'ext/ng/app/user/partials/user_edit.html',
+			.state('/user/edit/:id', {
+				url: '/user/edit/:id',
+				templateUrl: 'js/ng/app/user/partials/user_edit.html',
 				controller: 'user_edit_ctrl'
 			})
 		;

@@ -4,7 +4,8 @@ app.controller(
 	, 'Restful'
 	, 'Services'
 	, 'alertify'
-	, function ($scope, Restful, Services, $alertify){
+	, '$location'
+	, function ($scope, Restful, Services, $alertify, $location){
 		$scope.service = new Services();
 		var url = 'api/Customer/';
 		$scope.init = function(params){
@@ -17,7 +18,7 @@ app.controller(
 
 		$scope.updateStatus = function(params){
 			params.status === 1 ? params.status = 0 : params.status = 1;
-			Restful.patch(url + params.id, params ).success(function(data) {
+			Restful.patch(url + params.id, params ).success(function(data) {console.log(data);
 				$scope.service.alertMessage('<strong>Success: </strong>Update Success.');
 			});
 		};
@@ -53,6 +54,8 @@ app.controller(
 		$scope.search = function(){
 			params.search_name = $scope.search_name;
 			params.id = $scope.id;
+			params.type = $scope.type;
+			console.log(params);
 			$scope.init(params);
 		};
 		// edit functionality

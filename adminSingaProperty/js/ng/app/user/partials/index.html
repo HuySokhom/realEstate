@@ -10,7 +10,7 @@
 	</div>
 	<div class="col-md-8">
 		<div class="row">
-			<div class="form-group has-feedback col-sm-6">
+			<div class="form-group has-feedback col-sm-4">
 				<div class="input-group">
 					<input
 						type="text"
@@ -25,7 +25,7 @@
 				</div>
 
 			</div>
-			<div class="form-group has-feedback col-sm-6">
+			<div class="form-group has-feedback col-sm-4">
 				<div class="input-group">
 					<input
 						type="text"
@@ -38,6 +38,14 @@
 					<button class="btn btn-default" data-ng-click="search()" type="button">Search</button>
 				</span>
 				</div>
+			</div>
+			<div class="form-group has-feedback col-sm-4">
+				<select class="form-control" data-ng-model="type" data-ng-change="search()">
+					<option value="">--Search Type--</option>
+					<option value="normal">Normal</option>
+					<option value="agency">Agency</option>
+					<option value="member">Member</option>
+				</select>
 			</div>
 		</div>
 	</div>
@@ -63,7 +71,10 @@
 		<th>
 			Address
 		</th>
-		<th style="width: 180px;">
+		<th style="width: 120px;">
+			Agency Status
+		</th>
+		<th style="width: 140px;">
 			Action
 		</th>
 		</thead>
@@ -86,28 +97,7 @@
 			<td>
 				<span data-ng-bind="u.customers_address"></span>
 			</td>
-			<td>
-				<button
-					class="btn btn-default"
-					data-ng-click="edit(u.id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-pencil-square-o"></span>
-				</button>
-				<button
-					class="btn btn-danger"
-					data-ng-click="remove(u.id, $index);"
-					data-toggle="modals"
-					data-placement="bottom"
-					data-target="#messages"
-					title="Delete"
-					tooltip
-				>
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
+			<td align="center">
 				<button
 					class="btn btn-success"
 					data-ng-click="updateStatus(u);"
@@ -129,6 +119,29 @@
 					tooltip
 				>
 					<span class="fa fa-minus-square-o"></span>
+				</button>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(u.id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Edit"
+					tooltip
+				>
+					<span class="fa fa-pencil-square-o"></span>
+				</button>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(u.id, $index);"
+					data-toggle="modals"
+					data-placement="bottom"
+					data-target="#messages"
+					title="Delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
 				</button>
 			</td>
 		</tr>
