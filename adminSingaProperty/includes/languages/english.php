@@ -42,7 +42,7 @@ define('HTML_PARAMS','dir="ltr" lang="en"');
 define('CHARSET', 'utf-8');
 
 // page title
-define('TITLE', 'osCommerce Online Merchant Administration Tool');
+define('TITLE', 'Singa Property Administration Tool');
 
 // header text in includes/header.php
 define('HEADER_TITLE_TOP', 'Administration');

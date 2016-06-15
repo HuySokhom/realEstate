@@ -127,65 +127,71 @@
   }
 
   $admins_check_query = tep_db_query("select id from " . TABLE_ADMINISTRATORS . " limit 1");
-  if (tep_db_num_rows($admins_check_query) < 1) {
-    $messageStack->add(TEXT_CREATE_FIRST_ADMINISTRATOR, 'warning');
-  }
-
-  require(DIR_WS_INCLUDES . 'template_top.php');
+if (tep_db_num_rows($admins_check_query) < 1) {
+  $messageStack->add(TEXT_CREATE_FIRST_ADMINISTRATOR, 'warning');
+}
 ?>
+<!DOCTYPE html>
+<html <?php echo HTML_PARAMS; ?>>
+<head>
+  <!-- META SECTION -->
+  <title><?php echo TITLE; ?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<table border="0" width="100%" cellspacing="2" cellpadding="2">
-  <tr>
-    <td><table border="0" width="100%" cellspacing="0" cellpadding="0" height="40">
-      <tr>
-        <td class="pageHeading"><?php echo HEADING_TITLE; ?></td>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <!-- END META SECTION -->
 
+  <!-- CSS INCLUDE -->
+  <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+  <!-- EOF CSS INCLUDE -->
+</head>
+<body>
+
+<div class="login-container">
+  <div class="login-box animated fadeInDown">
+    <div class="login-body">
+      <div class="login-title"><strong><?php echo HEADING_TITLE; ?></strong></div>
+        <?php
+          if ($messageStack->size > 0) {
+            echo '<div class="alert alert-danger">' . $messageStack->output() . '</div>';
+          }
+        ?>
+        <?php echo tep_draw_form('login', FILENAME_LOGIN, 'action=process', 'post', 'class="form-horizontal"', true);?>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Username" name="username"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <input type="password" class="form-control" placeholder="Password" name="password"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <button class="btn btn-info btn-block">Log In</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="login-footer">
+      <div class="pull-left">
+        <div align="center" class="smallText">
+          SK Web Solution Copyright &copy; <?php echo date('Y'); ?>
+          <a href="https://www.facebook.com/skwebsolution/" target="_blank">
+            SK Web Solution
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 <?php
-  if (sizeof($languages_array) > 1) {
+require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
+</body>
+</html>
 
-        <td class="pageHeading" align="right"><?php echo tep_draw_form('adminlanguage', FILENAME_DEFAULT, '', 'get') . tep_draw_pull_down_menu('language', $languages_array, $languages_selected, 'onchange="this.form.submit();"') . tep_hide_session_id() . '</form>'; ?></td>
-
-<?php
-  }
-?>
-
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td>
-
-<?php
-  $heading = array();
-  $contents = array();
-
-  if (tep_db_num_rows($admins_check_query) > 0) {
-    $heading[] = array('text' => '<strong>' . HEADING_TITLE . '</strong>');
-
-    $contents = array('form' => tep_draw_form('login', FILENAME_LOGIN, 'action=process'));
-    $contents[] = array('text' => TEXT_USERNAME . '<br />' . tep_draw_input_field('username'));
-    $contents[] = array('text' => '<br />' . TEXT_PASSWORD . '<br />' . tep_draw_password_field('password'));
-    $contents[] = array('align' => 'center', 'text' => '<br />' . tep_draw_button(BUTTON_LOGIN, 'key'));
-  } else {
-    $heading[] = array('text' => '<strong>' . HEADING_TITLE . '</strong>');
-
-    $contents = array('form' => tep_draw_form('login', FILENAME_LOGIN, 'action=create'));
-    $contents[] = array('text' => TEXT_CREATE_FIRST_ADMINISTRATOR);
-    $contents[] = array('text' => '<br />' . TEXT_USERNAME . '<br />' . tep_draw_input_field('username'));
-    $contents[] = array('text' => '<br />' . TEXT_PASSWORD . '<br />' . tep_draw_password_field('password'));
-    $contents[] = array('align' => 'center', 'text' => '<br />' . tep_draw_button(BUTTON_CREATE_ADMINISTRATOR, 'key'));
-  }
-
-  $box = new box;
-  echo $box->infoBox($heading, $contents);
-?>
-
-    </td>
-  </tr>
-</table>
-
-<?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
-?>
