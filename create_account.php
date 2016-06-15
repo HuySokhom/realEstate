@@ -167,7 +167,7 @@
 
       $messageStack->add('create_account', ENTRY_PASSWORD_ERROR_NOT_MATCHING);
     }
-
+    $date = date('Y/m/d H:i:s');
     if ($error == false) {
       $sql_data_array = array(
           'user_name' => $name,
@@ -178,7 +178,8 @@
           'customers_telephone' => $telephone,
           'customers_fax' => $fax,
           'customers_newsletter' => $newsletter,
-          'customers_password' => tep_encrypt_password($password)
+          'customers_password' => tep_encrypt_password($password),
+          'create_date' => $date
       );
 
       if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $gender;

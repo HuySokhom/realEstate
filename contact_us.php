@@ -50,9 +50,8 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
+<div class="container margin-top">
+  <h3><?php echo HEADING_TITLE; ?></h3>
 
 <?php
   if ($messageStack->size('contact') > 0) {
@@ -119,6 +118,7 @@
 </div>
 
 </form>
+</div>
 
 <?php
   }

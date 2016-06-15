@@ -134,8 +134,8 @@ define('ENTRY_EMAIL_ADDRESS', 'អាស័យ​ដ្ឋាន​អ៊ី​�
 define('ENTRY_ADDRESS', 'អាសយដ្ឋាន');
 define('ENTRY_LOCATION', 'ទីតាំង');
 define('ENTRY_USER_NAME', 'ឈ្មោះអ្នកប្រើ');
-define('ENTRY_EMAIL_ADDRESS_ERROR', 'Your E-Mail Address must contain a minimum of ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' characters.');
-define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Your E-Mail Address does not appear to be valid - please make any necessary corrections.');
+define('ENTRY_EMAIL_ADDRESS_ERROR', 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នកត្រូវតែមានអប្បរមានៃការមួយ ' . ENTRY_EMAIL_ADDRESS_MIN_LENGTH . ' តួអក្សរ.');
+define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'អ៊ីម៉ែលអាសយដ្ឋានរបស់អ្នកមិនត្រឹមត្រូវ - សូមធ្វើការកែតម្រូវចាំបាច់ណាមួយ។');
 define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'អាសយដ្ឋានអ៊ីមែលរបស់អ្នករួចហើយនៅក្នុងកំណត់ត្រារបស់យើង - សូមចូលជាមួយអាសយដ្ឋានអ៊ីម៉ែលឬបង្កើតគណនីមួយជាមួយអាសយដ្ឋានផ្សេង។');
 define('ENTRY_EMAIL_ADDRESS_TEXT', '');
 define('ENTRY_STREET_ADDRESS', 'Street Address');
