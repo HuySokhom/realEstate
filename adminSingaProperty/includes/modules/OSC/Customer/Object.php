@@ -27,6 +27,7 @@ class Object extends DbObj {
 		, $photo
 		, $photoThumbnail
 		, $detail
+		, $isAgency
 	;
 	
 	public function toArray( $params = array() ){
@@ -35,6 +36,7 @@ class Object extends DbObj {
 				'id',
 				'user_name',
 				'user_type',
+				'is_agency',
 				'photo',
 				'status',
 				'photo_thumbnail',
@@ -57,6 +59,7 @@ class Object extends DbObj {
 				status,
 				user_type,
 				photo,
+				is_agency,
 				customers_fax,
 				photo_thumbnail,
 				customers_email_address,
@@ -112,6 +115,21 @@ class Object extends DbObj {
 		");
 	}
 
+	public function updateStatusAgency() {
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}
+		$this->dbQuery("
+			UPDATE
+				customers
+			SET
+				is_agency = '" .  $this->getIsAgency() . "',
+				update_by = '" .  $this->getUpdateBy() . "'
+			WHERE
+				customers_id = '" . (int)$this->getId() . "'
+		");
+	}
+
 	public function delete() {
 
 		if( !$this->getId() ) {
@@ -139,6 +157,7 @@ class Object extends DbObj {
 				customers
 			SET
 				user_name = '" . $this->dbEscape( $this->getUserName() ) . "',
+				user_type = '" . $this->dbEscape( $this->getUserType() ) . "',
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
 				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
@@ -146,7 +165,8 @@ class Object extends DbObj {
 				customers_fax = '" . $this->dbEscape( $this->getCustomersFax() ) . "',
 				customers_location = '" . (int)$this->getCustomersLocation() . "',
 				detail = '" . $this->dbEscape( $this->getDetail() ). "',
-				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "'
+				customers_address = '" . $this->dbEscape( $this->getCustomersAddress() ) . "',
+				update_by = '" . $this->getUpdateBy() ."'
 			WHERE
 				customers_id = '" . (int)$this->getId() . "'
 		");
@@ -297,5 +317,13 @@ class Object extends DbObj {
 	public function getCustomersType(){
 		return $this->customersType;
 	}
-	
+
+	public function setIsAgency( $string ){
+		$this->isAgency = $string;
+	}
+
+	public function getIsAgency(){
+		return $this->isAgency;
+	}
+
 }

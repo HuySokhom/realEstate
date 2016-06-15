@@ -83,7 +83,16 @@
 				{{u.id}}
 			</td>
 			<td>
-				{{u.user_type}}
+				<span
+					data-ng-class="{
+						'label-primary': (u.user_type == 'normal'),
+						'label-success': (u.user_type == 'member'),
+						'label-warning': (u.user_type == 'agency')
+					}"
+					class="label"
+				>
+					{{u.user_type}}
+				</span>
 			</td>
 			<td>
 				{{u.user_name}}
@@ -101,7 +110,7 @@
 				<button
 					class="btn btn-success"
 					data-ng-click="updateStatus(u);"
-					data-ng-if="u.status == 1"
+					data-ng-if="u.is_agency == 1"
 					data-toggle="tooltip"
 					data-placement="top"
 					title="Active"
@@ -111,7 +120,7 @@
 				</button>
 				<button
 					class="btn btn-warning"
-					data-ng-if="u.status == 0"
+					data-ng-if="u.is_agency == 0"
 					data-ng-click="updateStatus(u);"
 					data-toggle="tooltip"
 					data-placement="top"

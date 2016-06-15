@@ -1,6 +1,18 @@
 <form name="account" data-ng-submit="save();">
 	<table class="table table-bordered">
 		<tr>
+			<td>
+				Type:
+			</td>
+			<td>
+				<select class="form-control" data-ng-model="type">
+					<option value="normal">Normal</option>
+					<option value="agency">Agency</option>
+					<option value="member">Member</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td width="20%">
 				User Name:
 			</td>
@@ -58,7 +70,7 @@
 				Fax:
 			</td>
 			<td>
-				<input type="text" data-ng-model="fax" required="required" class="form-control" />
+				<input type="text" data-ng-model="fax" class="form-control" />
 			</td>
 		</tr>
 		<tr data-ng-show="type == 'agency' || type == 'member'">

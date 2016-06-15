@@ -28,7 +28,6 @@ class RestApiCustomer extends RestApi {
 	}
 	
 	public function put($params){
-
 		$cols = new CustomersCol();
 		$customerId = $this->getId();
 		// check email existing
@@ -53,6 +52,7 @@ class RestApiCustomer extends RestApi {
 				$cols->populate();
 				$col = $cols->getFirstElement();
 				$col->setId($customerId);
+				$col->setUpdateBy($_SESSION['username']);
 				$col->setProperties($params['PUT']);
 				$col->update();
 				$result = true;
@@ -65,8 +65,8 @@ class RestApiCustomer extends RestApi {
 		$obj = new CustomersObject();
 		$obj->setId($this->getId());
 		$obj->setUpdateBy($_SESSION['admin']['username']);
-		$obj->setStatus($params['PATCH']['status']);
-		$obj->updateStatus();
+		$obj->setIsAgency($params['PATCH']['is_agency']);
+		$obj->updateStatusAgency();
 	}
 
 	public function delete(){

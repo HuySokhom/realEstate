@@ -36,6 +36,7 @@ app.controller(
 			// set object to save into news
 			var data = {
 				user_name: $scope.user_name,
+				user_type: $scope.type,
 				customers_email_address: $scope.email,
 				customers_location: $scope.location,
 				customers_telephone: $scope.telephone,
@@ -44,11 +45,11 @@ app.controller(
 				customers_address: $scope.address,
 				photo: $scope.photo,
 				photo_thumbnail: $scope.photo_thumbnail
-			};
+			};console.log(data);
 			$scope.disabled = false;
 
-			Restful.put('api/Customer/', data).success(function (data) {
-				$scope.disabled = true;
+			Restful.put('api/Customer/' + $stateParams.id, data).success(function (data) {
+				$scope.disabled = true;console.log(data);
 				if(data == 1){
 					$scope.service.alertMessage('<b>Complete:</b> Update Success.');
 					$location.path('user');
@@ -62,7 +63,7 @@ app.controller(
 		$scope.uploadPic = function(file) {
 			if (file) {
 				file.upload = Upload.upload({
-					url: 'api/UploadImage',
+					url: 'api/ImageUpload',
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
