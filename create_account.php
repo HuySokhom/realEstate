@@ -222,14 +222,14 @@
         tep_session_recreate();
       }
 
-      $customer_user_name = $name;
-      $customer_type = $type;
+      $user_name = $name;
+      $user_type = $type;
       $customer_first_name = $firstname;
       $customer_default_address_id = $address_id;
       $customer_country_id = $country;
       $customer_zone_id = $zone_id;
-      tep_session_register('customer_user_name');
-      tep_session_register('customer_type');
+      tep_session_register('user_name');
+      tep_session_register('user_type');
       tep_session_register('customer_id');
       tep_session_register('customer_first_name');
       tep_session_register('customer_default_address_id');
