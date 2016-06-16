@@ -34,7 +34,14 @@
           <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
           <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
           <li><a href="#/slider"><span class="fa fa-film"></span> Image Slider</a></li>
-          <li><a href="#/location"><span class="fa fa-map-marker"></span> Location</a></li>
+          <li class="xn-openable">
+            <a href="#"><span class="fa fa-map-marker"></span> Location</a>
+            <ul>
+              <li><a href="#/location">Province</a></li>
+              <li><a href="#/district">District</a></li>
+              <li><a href="#/village">Village</a></li>
+            </ul>
+          </li>
           <li>
             <a href="#/manufacturers"><span class="fa fa-clock-o"></span> Manufacturers</a>
           </li>

@@ -53,6 +53,21 @@ app.config([
 				templateUrl: 'js/ng/app/user/partials/user_edit.html',
 				controller: 'user_edit_ctrl'
 			})
+			.state('/location', {
+				url: '/location',
+				templateUrl: 'js/ng/app/location/partials/location.html',
+				controller: 'location_ctrl'
+			})
+			.state('/district', {
+				url: '/district',
+				templateUrl: 'js/ng/app/location/partials/district.html',
+				controller: 'district_ctrl'
+			})
+			.state('/village', {
+				url: '/village',
+				templateUrl: 'js/ng/app/location/partials/village.html',
+				controller: 'village_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 	}

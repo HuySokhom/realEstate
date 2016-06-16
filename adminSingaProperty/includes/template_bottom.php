@@ -29,7 +29,7 @@
     type="text/javascript"
     src="js/ng/app/index/controller/index_ctrl.js"
 ></script>
-
+<!--- News plugin --->
 <script
     type="text/javascript"
     src="js/ng/app/news/controller/news_ctrl.js"
@@ -42,7 +42,7 @@
     type="text/javascript"
     src="js/ng/app/news/controller/news_edit_ctrl.js"
 ></script>
-
+<!--- News Type plugin --->
 <script
     type="text/javascript"
     src="js/ng/app/news/controller/type_ctrl.js"
@@ -55,7 +55,7 @@
     type="text/javascript"
     src="js/ng/app/news/controller/type_edit_ctrl.js"
 ></script>
-
+<!--- Image Slider plugin --->
 <script
     type="text/javascript"
     src="js/ng/app/image_slider/controller/image_slider_ctrl.js"
@@ -64,7 +64,7 @@
     type="text/javascript"
     src="js/ng/app/image_slider/directive/image_slider_popup.js"
 ></script>
-
+<!--- User plugin --->
 <script
     type="text/javascript"
     src="js/ng/app/user/controller/user_ctrl.js"
@@ -73,5 +73,20 @@
     type="text/javascript"
     src="js/ng/app/user/controller/user_edit_ctrl.js"
 ></script>
+<!--- Start location plugin --->
+<script
+    type="text/javascript"
+    src="js/ng/app/location/controller/location_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/location/controller/village_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/location/controller/district_ctrl.js"
+></script>
+<!--- End location plugin --->
+
 </body>
 </html>

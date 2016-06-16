@@ -1,0 +1,85 @@
+<div class="">
+	<button
+		class="btn btn-default"
+		onclick="location.href='#/news_type/post';"
+	>
+		<span class="glyphicon glyphicon-plus-sign"></span>
+		Add Type
+	</button>
+	<br/><br/>
+	<table class="table table-bordered table-striped" style="font-size: 12px;">
+		<thead>
+			<th width="5%">
+				Id
+			</th>
+			<th width="40%">
+				Name EN
+			</th>
+			<th width="40%">
+				Name KH
+			</th>
+			<th width="20%">
+				Action
+			</th>
+		</thead>
+		<tr data-ng-repeat="t in types.elements">
+
+			<td>
+				<span data-ng-bind="t.id"></span>
+			</td>
+			<td>
+				<span data-ng-bind="t.name_en"></span>
+			</td>
+			<td>
+				<span data-ng-bind="t.name_kh"></span>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(t.id);"
+					data-placement="bottom"
+					data-target="#message"
+					title="Edit"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-edit"></span>
+				</button>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(t.id, $index);"
+					data-placement="bottom"
+					title="Delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+	<div
+		data-ng-if="types.count == 0"
+	>
+		<div class="alert alert-danger alert-dismissible">
+			<strong>Warning!</strong> Data Empty.
+		</div>
+	</div>
+	<div
+		data-ng-if="!types"
+		class="align_center"
+	>
+	<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+		class="panel-footer"
+		data-ng-show="totalItems > 10"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>

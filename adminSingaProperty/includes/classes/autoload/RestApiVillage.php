@@ -11,6 +11,14 @@ class RestApiVillage extends RestApi {
 
 	public function get($params){
 		$col = new VillageCol();
+		// start limit page
+		$showDataPerPage = 10;
+		$start = $params['GET']['start'];
+		$this->applyLimit($col,
+			array(
+				'limit' => array( $start, $showDataPerPage )
+			)
+		);
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
