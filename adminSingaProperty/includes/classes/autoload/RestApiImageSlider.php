@@ -52,16 +52,18 @@ class RestApiImageSlider extends RestApi {
 
     public function delete($params){
         // loop to get key from delete parse data in string
-//        foreach ($params['DELETE'] as $key => $value) {
-//            $name = $key;
-//        }
-//        // decode string to object
-//        $type = json_decode($name);
+        foreach ($params['DELETE'] as $key => $value) {
+            $name = $key;
+        }
+        // decode string to object
+        $type = json_decode($name);
         $obj = new ImageSliderObject();
-
+//        var_dump($type->image);
+//        var_dump($type->image_thumbnail);
         $obj->setId($this->getId());
         $obj->delete();
-
+//        unlink(DIR_FS_CATALOG . 'images/' . $type->image);
+//        unlink(DIR_FS_CATALOG . 'images/' . $type->image_thumbnail);
     }
 
 }

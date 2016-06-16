@@ -42,7 +42,7 @@ app.controller(
 			$scope.isDisabled = true;
 			if( $scope.image_slider.id ){
 				Restful.put('api/ImageSlider/' + $scope.image_slider.id, data).success(function(data){
-					init('api/ImageSlider/');console.log(data);
+					init('api/ImageSlider/');
 					$('#imagePopup').modal('hide');
 					$scope.isDisabled = false;
 				});
@@ -55,7 +55,7 @@ app.controller(
 			}
 		};
 
-		$scope.remove = function($index, id){
+		$scope.remove = function($index, params){
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
 				.confirm("Are you sure you want to delete this image?", function (ev) {
@@ -63,7 +63,7 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( 'api/ImageSlider/' + id ).success(function(data){
+					Restful.delete( 'api/ImageSlider/' + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
 						$scope.image_sliders.elements.splice($index, 1);
@@ -74,14 +74,6 @@ app.controller(
 					// it here.
 					ev.preventDefault();
 				});
-			//if (confirm('Are you sure you want to delete this image?')) {
-			//	var data = {
-			//		id: id
-			//	};
-			//	Restful.delete('api/ImageSlider/' + data).success(function(data){console.log(data);
-			//		$scope.image_sliders.elements.splice($index, 1);
-			//	});
-			//}
 		};
 
 		//functionality upload
@@ -121,15 +113,3 @@ app.controller(
 		};
 	}
 ]);
-//
-//app.controller(
-//	'image_slider_ctrl', [
-//	'$scope'
-//	, 'Restful'
-//	, 'Services'
-//	, 'Upload'
-//	, '$timeout'
-//	, function ($scope, Restful, Services, Upload, $timeout){
-//
-//	}
-//]);
