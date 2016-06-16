@@ -1,23 +1,23 @@
 <?php
 
 use
-	OSC\Location\Collection
-		as LocationCol,
-	OSC\Location\Object
-		as LocationObj
+	OSC\Village\Collection
+		as VillageCol,
+	OSC\Village\Object
+		as VillageObj
 ;
 
-class RestApiLocation extends RestApi {
+class RestApiVillage extends RestApi {
 
 	public function get($params){
-		$col = new LocationCol();
+		$col = new VillageCol();
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
 	}
 
 	public function post($params){
-		$obj = new LocationObj();
+		$obj = new VillageObj();
 		$obj->setProperties( $params['POST'] );
 		$obj->insert();
 		$id = $obj->getId();
@@ -29,7 +29,7 @@ class RestApiLocation extends RestApi {
 	}
 
 	public function put($params){
-		$obj = new LocationObj();
+		$obj = new VillageObj();
 		$obj->setId($this->getId());
 		$obj->setProperties($params['PUT']);
 		$obj->update();
@@ -44,7 +44,7 @@ class RestApiLocation extends RestApi {
 
 	public function delete(){
 
-		$obj = new LocationObj();
+		$obj = new VillageObj();
 		$obj->setId($this->getId());
 		$obj->delete();
 

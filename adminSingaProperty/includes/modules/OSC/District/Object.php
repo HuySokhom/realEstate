@@ -1,6 +1,6 @@
 <?php
 
-namespace OSC\Location;
+namespace OSC\District;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
@@ -9,14 +9,14 @@ use
 class Object extends DbObj {
 		
 	protected
-		$name
+		$nameEn
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'name',
+				'name_en',
 			)
 		);
 
@@ -26,16 +26,16 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				name
+				name_en
 			FROM
-				location
+				district
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
 		
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
-				"404: Location not found",
+				"404: District not found",
 				404
 			);
 		}
@@ -50,9 +50,9 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			UPDATE
-				location
+				district
 			SET
-				name = '" .  $this->getName() . "'
+				name_en = '" .  $this->getNameEn() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -64,7 +64,7 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			DELETE FROM
-				location
+				district
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -73,26 +73,26 @@ class Object extends DbObj {
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
-				location
+				district
 			(
-				name,
+				name_en,
 				create_date
 			)
 				VALUES
 			(
-				'" . $this->getName() . "',
+				'" . $this->getNameEn() . "',
 				NOW()
 			)
 		");
 		$this->setId( $this->dbInsertId() );
 	}
 
-	public function setName( $string ){
-		$this->name = (string)$string;
+	public function setNameEn( $string ){
+		$this->nameEn = (string)$string;
 	}
 	
-	public function getName(){
-		return $this->name;
+	public function getNameEn(){
+		return $this->nameEn;
 	}
 	
 }
