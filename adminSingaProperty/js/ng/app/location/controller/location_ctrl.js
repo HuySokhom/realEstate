@@ -7,6 +7,7 @@ app.controller(
 	, 'alertify'
 	, function ($scope, Restful, $location, Services, $alertify){
 		$scope.service = new Services();
+		var params = {pagination: 'yes'};
 		var url = 'api/Location/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
@@ -14,29 +15,33 @@ app.controller(
 				$scope.totalItems = data.count;
 			});
 		};
-		$scope.init();
+		$scope.init(params);
 
 		$scope.save = function(){
 			var data = {
-				name: $scope.name,
+				name: $scope.name
 			};
 			$scope.isDisabled = true;
 			if( $scope.id ){
 				Restful.put(url + $scope.id, data).success(function(data){
-					$scope.init();
+					$scope.init(params);
 					$('#provincePopup').modal('hide');
 					$scope.isDisabled = false;
+					$scope.clear();
 				});
-			}else{console.log(data);
+			}else{
 				Restful.post(url, data).success(function(data){
-					$scope.init();
+					$scope.init(params);
 					$('#provincePopup').modal('hide');
 					$scope.isDisabled = false;
-					$scope.name = "";
+					$scope.clear();
 				});
 			}
 		};
-
+		$scope.clear = function(){
+			$scope.id = '';
+			$scope.name = '';
+		};
 		// remove functionality
 		$scope.remove = function(id, $index){
 			$scope.id = id;
@@ -52,7 +57,7 @@ app.controller(
 					Restful.delete( url + $scope.id ).success(function(data){
 						$scope.disabled = true;
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.init();
+						$scope.init(params);
 						//$scope.news.elements.splice($scope.index, 1);
 						//$('#message').modal('hide');
 					});
@@ -66,7 +71,7 @@ app.controller(
 		};
 		// search functionality
 		$scope.search = function(){
-			params.search_title = $scope.search_title;
+			params.search_name = $scope.search_title;
 			params.id = $scope.id;
 			params.type = $scope.news_type_id;
 			$scope.init(params);
@@ -75,13 +80,12 @@ app.controller(
 		$scope.edit = function(params){
 			$scope.name = params.name;
 			$scope.id = params.id;
-			$('#provincePopup').modal('show')
+			$('#provincePopup').modal('show');
 		};
 
 		/**
 		 * start functionality pagination
 		 */
-		var params = {};
 		$scope.currentPage = 1;
 		//get another portions of data on page changed
 		$scope.pageChanged = function() {

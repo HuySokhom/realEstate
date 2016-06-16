@@ -1,5 +1,5 @@
 app.controller(
-	'type_ctrl', [
+	'district_ctrl', [
 	'$scope'
 	, 'Restful'
 	, '$location'
@@ -7,22 +7,18 @@ app.controller(
 	, 'alertify'
 	, function ($scope, Restful, $location, Services, $alertify){
 		$scope.service = new Services();
-		var url = 'api/NewsType/';
+		var params = {pagination: 'yes'};
+		var url = 'api/District/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.types = data;
+				$scope.district = data;
 				$scope.totalItems = data.count;
 			});
-		};
-		$scope.init();
-
-		$scope.updateStatus = function(params){
-			params.status === 1 ? params.status = 0 : params.status = 1;
-			console.log(params);
-			Restful.patch(url + params.id, params ).success(function(data) {
-				$scope.service.alertMessage('<strong>Success: </strong> Update Success. ');
+			Restful.get('api/Location/').success(function(data){
+				$scope.province = data;
 			});
 		};
+		$scope.init(params);
 
 		// remove functionality
 		$scope.remove = function(id, $index){
@@ -38,7 +34,7 @@ app.controller(
 					Restful.delete( url + $scope.id ).success(function(data){
 						$scope.disabled = true;
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.init();
+						$scope.init(params);
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -48,21 +44,56 @@ app.controller(
 				});
 
 		};
+
+		// save functionality
+		$scope.save = function(){
+			var data = {
+				name_en: $scope.name,
+				province_id: $scope.province_id
+			};
+			$scope.isDisabled = true;
+			if( $scope.id ){
+				Restful.put(url + $scope.id, data).success(function(data){
+					$scope.init(params);
+					$('#districtPopup').modal('hide');
+					$scope.isDisabled = false;
+					$scope.clear();
+				});
+			}else{
+				Restful.post(url, data).success(function(data){
+					$scope.init(params);
+					$scope.clear();
+					$('#districtPopup').modal('hide');
+					$scope.isDisabled = false;
+					$scope.name = "";
+				});
+			}
+		};
+
 		// search functionality
 		$scope.search = function(){
-			params.search_title = $scope.search_title;
+			params.search_name = $scope.search_title;
+			params.type = $scope.type_id;
 			params.id = $scope.id;
 			$scope.init(params);
 		};
 		// edit functionality
-		$scope.edit = function(id){
-			$location.path('/news_type/edit/' + id);
+		$scope.edit = function(params){
+			$scope.name = params.name_en;
+			$scope.id = params.id;
+			$scope.province_id = params.detail[0].id;
+			$('#districtPopup').modal('show');
 		};
 
+		$scope.clear = function(){
+			$scope.id = '';
+			$scope.province_id = '';
+			$scope.name = '';
+		};
 		/**
 		 * start functionality pagination
 		 */
-		var params = {};
+
 		$scope.currentPage = 1;
 		//get another portions of data on page changed
 		$scope.pageChanged = function() {

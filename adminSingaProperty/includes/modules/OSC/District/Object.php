@@ -4,19 +4,29 @@ namespace OSC\District;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\Location\Collection as ProvinceCol
 ;
 
 class Object extends DbObj {
 		
 	protected
 		$nameEn
+		, $provinceId
+		, $detail
 	;
-	
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+		$this->detail = new ProvinceCol();
+	}
+
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
 				'name_en',
+				'detail'
 			)
 		);
 
@@ -26,7 +36,8 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				name_en
+				name_en,
+				province_id
 			FROM
 				district
 			WHERE
@@ -41,7 +52,9 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
-		
+
+		$this->detail->setFilter('id', $this->getProvinceId());
+		$this->detail->populate();
 	}
 
 	public function update() {
@@ -52,7 +65,8 @@ class Object extends DbObj {
 			UPDATE
 				district
 			SET
-				name_en = '" .  $this->getNameEn() . "'
+				name_en = '" .  $this->getNameEn() . "',
+				province_id = '" .  $this->getProvinceId() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -76,11 +90,13 @@ class Object extends DbObj {
 				district
 			(
 				name_en,
+				province_id,
 				create_date
 			)
 				VALUES
 			(
 				'" . $this->getNameEn() . "',
+				'" . $this->getProvinceId() . "',
 				NOW()
 			)
 		");
@@ -94,5 +110,19 @@ class Object extends DbObj {
 	public function getNameEn(){
 		return $this->nameEn;
 	}
-	
+
+	public function setDetail( $string ){
+		$this->detail = (string)$string;
+	}
+	public function getDetail(){
+		return $this->detail;
+	}
+
+	public function setProvinceId( $string ){
+		$this->provinceId = (int)$string;
+	}
+	public function getProvinceId(){
+		return $this->provinceId;
+	}
+
 }

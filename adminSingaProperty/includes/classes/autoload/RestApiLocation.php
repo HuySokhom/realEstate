@@ -11,14 +11,18 @@ class RestApiLocation extends RestApi {
 
 	public function get($params){
 		$col = new LocationCol();
+		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
 		// start limit page
-		$showDataPerPage = 10;
-		$start = $params['GET']['start'];
-		$this->applyLimit($col,
-			array(
-				'limit' => array( $start, $showDataPerPage )
-			)
-		);
+		if($params['GET']['pagination']) {
+			$showDataPerPage = 10;
+			$start = $params['GET']['start'];
+			$this->applyLimit($col,
+					array(
+							'limit' => array($start, $showDataPerPage)
+					)
+			);
+		}
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
