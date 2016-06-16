@@ -3524,3 +3524,7 @@ form .progress {
 .margin-right{
 	margin-right: 10px;
 }
+.share{
+	cursor: pointer;
+	font-size: 16px;
+}

@@ -38,7 +38,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
     type="text/javascript"
     src="ext/ng/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.0.min.js"
 ></script>
-
+<script
+    type="text/javascript"
+    src="ext/ng/lib/angular-socialshare/angular-socialshare.min.js"
+></script>
 <!-- custom file -->
 
 <script
