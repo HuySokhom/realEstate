@@ -49,23 +49,30 @@
 								ngf-model-invalid="errorFiles"
 								ngf-select="uploadPic(picFile)"
 							>
-							<i ng-show="myForm.file.$error.maxSize">
+							<i ng-show="myForm.file.$error.maxSize" class="error">
 								File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
 							</i>
-							<img
-								ng-show="image_slider.image"
-								class="thumb"
-								src="../images/{{image_slider.image_thumbnail}}"
-							>
-							<span class="progress" ng-show="picFile.progress >= 0">
-								<div
-									style="width:{{picFile.progress}}%"
-									ng-bind="picFile.progress + '%'"
+							<div>
+								<i>
+									Image recommend 1970px * 747
+								</i>
+							</div>
+							<div>
+								<img
+									ng-show="image_slider.image"
+									class="thumb"
+									src="../images/{{image_slider.image_thumbnail}}"
 								>
-								</div>
-							</span>
-							<span ng-show="picFile.result">Upload Successful</span>
-							<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+								<span class="progress" ng-show="picFile.progress >= 0">
+									<div
+										style="width:{{picFile.progress}}%"
+										ng-bind="picFile.progress + '%'"
+									>
+									</div>
+								</span>
+								<span ng-show="picFile.result">Upload Successful</span>
+								<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+							</div>
 						</td>
 					</tr>
 					<tr>

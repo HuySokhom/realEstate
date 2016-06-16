@@ -2590,7 +2590,7 @@ textarea {
 
 .blog-listing span a,
 .blog-listing span i {
-	color: #a5a5a5;
+	/*color: #a5a5a5;*/
 }
 
 .blog-listing .posted-on a,
@@ -3527,4 +3527,8 @@ form .progress {
 .share{
 	cursor: pointer;
 	font-size: 16px;
+}
+.error{
+	color: red;
+	font-size: 12px;
 }

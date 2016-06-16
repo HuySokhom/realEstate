@@ -4,7 +4,8 @@ app.controller(
 	, 'Restful'
 	, 'Services'
 	, '$location'
-	, function ($scope, Restful, Services, $location){
+	, 'alertify'
+	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
 		var params = {pagination: 'yes'};
 		var url = 'api/Village/';
