@@ -208,7 +208,7 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/bootstrap-notify/bootstrap-notify.min.js"
+	src="ext/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->

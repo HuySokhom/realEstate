@@ -1,5 +1,6 @@
-app.service("Services",
-	function() {
+app.service("Services",[
+    'alertify',
+    function($alertify) {
         var services = function(){
             var self = this;
         };
@@ -7,16 +8,12 @@ app.service("Services",
             //@todo
         };
 
-        services.prototype.alertMessage = function(title, message, type){
-            $.notify({
-                title: '<b>' + title + '</b>',
-                message: message
-            },{
-                type: type
-            });
+        services.prototype.alertMessage = function(text){
+            $alertify.logPosition("top right");
+            $alertify.success(text);
         };
 
         return services;
-        
- 	}
-);
+
+    }
+]);

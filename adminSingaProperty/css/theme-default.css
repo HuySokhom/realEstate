@@ -7346,7 +7346,10 @@ form .progress {
   color: #ffffff;
   margin-top: 10px;
 }
-
+.error{
+  color: red;
+  font-size: 12px;
+}
 .alertify-logs{
   z-index: 9999;
 }
