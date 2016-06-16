@@ -58,6 +58,7 @@ app.controller(
 					$('#districtPopup').modal('hide');
 					$scope.isDisabled = false;
 					$scope.clear();
+					$scope.service.alertMessage('<strong>Complete: </strong>Update Success.');
 				});
 			}else{
 				Restful.post(url, data).success(function(data){
@@ -66,6 +67,7 @@ app.controller(
 					$('#districtPopup').modal('hide');
 					$scope.isDisabled = false;
 					$scope.name = "";
+					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
 				});
 			}
 		};

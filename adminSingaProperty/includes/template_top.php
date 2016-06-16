@@ -20,7 +20,7 @@
 <base href="<?php echo ($request_type == 'SSL') ? HTTPS_SERVER . DIR_WS_HTTPS_ADMIN : HTTP_SERVER . DIR_WS_ADMIN; ?>" />
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="css/theme-default.css">
-<link rel="stylesheet" type="text/css" href="js/ng/lib/angular-alertify/css/alertify.css">
+<!--<link rel="stylesheet" type="text/css" href="js/ng/lib/angular-alertify/css/alertify.css">-->
 </head>
 <body data-ng-app="main">
   <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
