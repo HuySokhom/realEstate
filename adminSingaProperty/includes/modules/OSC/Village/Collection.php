@@ -25,7 +25,7 @@ class Collection extends StdCollection {
 	}
 
 	public function filterByName( $arg ){
-		$this->addWhere("d.name_en LIKE '%" . $arg. "%' ");
+		$this->addWhere("vl.name_en LIKE '%" . $arg. "%' ");
 	}
 
 }

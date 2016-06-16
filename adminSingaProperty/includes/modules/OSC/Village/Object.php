@@ -3,20 +3,29 @@
 namespace OSC\Village;
 
 use
-	Aedea\Core\Database\StdObject as DbObj
+	Aedea\Core\Database\StdObject as DbObj,
+	OSC\District\Collection as DistrictCol
 ;
 
 class Object extends DbObj {
 		
 	protected
 		$nameEn
+		, $districtId
+		, $detail
 	;
-	
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+		$this->detail = new DistrictCol();
+	}
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
 				'name_en',
+				'detail'
 			)
 		);
 
@@ -26,7 +35,8 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				name_en
+				name_en,
+				district_id
 			FROM
 				village
 			WHERE
@@ -41,7 +51,8 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
-		
+		$this->detail->setFilter('id', $this->getDistrictId());
+		$this->detail->populate();
 	}
 
 	public function update() {
@@ -52,7 +63,8 @@ class Object extends DbObj {
 			UPDATE
 				village
 			SET
-				name_en = '" .  $this->getNameEn() . "'
+				name_en = '" .  $this->getNameEn() . "',
+				district_id = '" .  $this->getDistrictId() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -75,24 +87,42 @@ class Object extends DbObj {
 			INSERT INTO
 				village
 			(
-				name_eb,
+				name_en,
+				district_id,
 				create_date
 			)
 				VALUES
 			(
 				'" . $this->getNameEn() . "',
+				'" . $this->getDistrictId() . "',
 				NOW()
 			)
 		");
 		$this->setId( $this->dbInsertId() );
 	}
 
-	public function setName( $string ){
+	public function setNameEn( $string ){
 		$this->nameEn = (string)$string;
 	}
 	
 	public function getNameEn(){
 		return $this->nameEn;
 	}
-	
+
+	public function setDistrictId( $string ){
+		$this->districtId = (string)$string;
+	}
+
+	public function getDistrictId(){
+		return $this->districtId;
+	}
+
+	public function setDetail( $string ){
+		$this->detail = (string)$string;
+	}
+
+	public function getDetail(){
+		return $this->detail;
+	}
+
 }
