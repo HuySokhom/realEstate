@@ -1,6 +1,6 @@
 <?php
 
-namespace OSC\Categories;
+namespace OSC\CategoriesDescription;
 
 use Aedea\Core\Database\StdCollection;
 
@@ -18,4 +18,13 @@ class Collection extends StdCollection {
 	public function sortByOrder($arg){
 		$this->addOrderBy('c.sort_order', $arg);
 	}
+
+	public function filterById( $arg ){
+		$this->addWhere("c.customers_id = '" . (int)$arg . "'");
+	}
+
+	public function filterByCategoriesId($arg){
+		$this->addWhere("c.categories_id = '" . (int)$arg . "' ");
+	}
+
 }
