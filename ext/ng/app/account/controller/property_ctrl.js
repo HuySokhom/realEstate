@@ -86,7 +86,7 @@ app.controller(
 		};
 
 		$scope.link = function(id){
-			window.open('product_info.php?products_id=' + id,'_blank');
+			window.open('-p-' + id + '.html','_blank');
 		};
 
 		$scope.add = function(){
