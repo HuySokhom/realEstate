@@ -68,6 +68,16 @@ app.config([
 				templateUrl: 'js/ng/app/location/partials/village.html',
 				controller: 'village_ctrl'
 			})
+			.state('/category', {
+				url: '/category',
+				templateUrl: 'js/ng/app/category/partials/index.html',
+				controller: 'category_ctrl'
+			})
+			.state('/product', {
+				url: '/product',
+				templateUrl: 'js/ng/app/product/partials/index.html',
+				controller: 'product_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 	}

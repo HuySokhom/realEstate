@@ -16,6 +16,8 @@ abstract class StdObject extends StdClass {
 	protected
 		$id,
 		$createDate,
+		$dateAdded,
+		$lastModified,
 		$modified,
 		$status,
 		$createBy,
@@ -242,4 +244,22 @@ abstract class StdObject extends StdClass {
 	public function setUpdateBy( $string ) {
 		$this->updateBy = $string;
 	}
+
+	protected function setLastModified( $mixed ){
+		$this->lastModified = $mixed;
+	}
+
+	public function getLastModified() {
+		return $this->lastModified;
+	}
+
+
+	protected function setDateAdded( $mixed ){
+		$this->dateAdded = $mixed;
+	}
+
+	public function getDateAdded() {
+		return $this->dateAdded;
+	}
+
 }
