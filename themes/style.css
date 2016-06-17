@@ -3532,3 +3532,9 @@ form .progress {
 	color: red;
 	font-size: 12px;
 }
+.alertify-logs{
+	z-index: 9999;
+}
+.alertify {
+	z-index: 9999;
+}

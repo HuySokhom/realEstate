@@ -3,9 +3,9 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, 'Services'
-	//, 'Upload'
+	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, Services, $timeout){
+	, function ($scope, Restful, Services, Upload, $timeout){
 
 		var url = 'api/Session/User/ProductPost';
 		$scope.init = function(params){

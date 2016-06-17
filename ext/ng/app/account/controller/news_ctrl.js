@@ -3,8 +3,11 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, '$location'
-	, function ($scope, Restful, $location){
+	, 'Services'
+	, 'alertify'
+	, function ($scope, Restful, $location, Services, $alertify){
 		var url = 'api/Session/User/News';
+		$scope.service = new Services();
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.news = data;
@@ -28,12 +31,7 @@ app.controller(
 			$scope.disabled = false;
 			Restful.delete( 'api/Session/User/News/' + $scope.id ).success(function(data){
 				$scope.disabled = true;
-				$.notify({
-					title: '<strong>Complete: </strong>',
-					message: 'Delete Success.'
-				},{
-					type: 'success'
-				});
+				$scope.service.alertMessage('<strong>Complete: </strong> Delete Success.');
 				$scope.init();
 				//$scope.news.elements.splice($scope.index, 1);
 				$('#message').modal('hide');

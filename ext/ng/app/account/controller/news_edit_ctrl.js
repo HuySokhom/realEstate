@@ -73,7 +73,7 @@ app.controller(
 
 			Restful.put('api/Session/User/News/' + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;
-				$scope.service.alertMessage('Complete', 'Update Success.', 'success');
+				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
 				$location.path('manage_news');
 			});
 		};

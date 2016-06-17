@@ -6,7 +6,8 @@ app.controller(
 	, '$location'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, Services, $location, Upload, $timeout){
+	, 'alertify'
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $alertify){
 		var url = 'api/Session/Customer/';
 		$scope.service = new Services();
 		// init tiny option
@@ -48,10 +49,10 @@ app.controller(
 			Restful.put('api/Session/Customer/', data).success(function (data) {
 				$scope.disabled = true;
 				if(data == 1){
-					$scope.service.alertMessage('Complete', 'Update Success.', 'success');
+					$scope.service.alertMessage('<strong>Complete: </strong> Update Success.');
 					$location.path('account');
 				}else{
-					$scope.service.alertMessage('Warning', 'Email Existing. Please use other email.', 'warning');
+					$scope.service.alertMessage('<strong>Warning: </strong> Email Existing. Please use other email..');
 				}
 			});
 		};
