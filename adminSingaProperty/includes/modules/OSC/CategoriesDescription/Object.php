@@ -35,7 +35,7 @@ class Object extends DbObj {
 			FROM
 				categories_description
 			WHERE
-				categories_id = '" . (int)$this->getId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 
 		if( ! $this->dbNumRows($q) ){
@@ -68,9 +68,8 @@ class Object extends DbObj {
 			UPDATE
 				categories_description
 			SET
-				parent_id = '" . $this->dbEscape( $this->getParentId() ) . "',
-				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "',
-				categories_image = '" . $this->dbEscape( $this->getCategoriesImage() ) . "'
+				categories_name = '" . $this->dbEscape( $this->getCategoriesName() ) . "',
+				language_id = '" . (int)$this->getLanguageId() . "'
 			WHERE
 				categories_id = '" . (int)$this->getId() . "'
 		");
@@ -82,17 +81,15 @@ class Object extends DbObj {
 			INSERT INTO
 				categories_description
 			(
-				parent_id,
-				categories_image,
-				sort_order,
-				date_added
+				categories_id,
+				categories_name,
+				language_id
 			)
 				VALUES
 			(
-				'" . $this->getParentId() . "',
-				'" . $this->getCategoriesImage() . "',
-				'" . $this->getSortOrder() . "',
-				NOW()
+				'" . (int)$this->getCategoriesId() . "',
+				'" . $this->getCategoriesName() . "',
+				'" . (int)$this->getLanguageId() . "'
 			)
 		");
 		$this->setId($this->dbInsertId());
@@ -115,7 +112,7 @@ class Object extends DbObj {
 	}
 
 	public function setLanguageId( $string ){
-		$this->languageId = $string;
+		$this->languageId = (int)$string;
 	}
 
 	public function getLanguageId(){

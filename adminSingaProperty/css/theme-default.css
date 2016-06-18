@@ -46,7 +46,7 @@ body {
   margin: 0px;
   background: #f5f5f5 url('../img/bg.png') left top repeat;
   position: relative;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif, "khmer OS";
   font-size: 12px;
   color: #22262e;
   overflow-x: hidden;

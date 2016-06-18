@@ -4,7 +4,9 @@ use
     OSC\Categories\Collection
         as CategoryCollection,
     OSC\Categories\Object
-        as CategoryObject
+        as CategoryObject,
+    OSC\CategoriesDescription\Object
+        as CategoryDetailObject
 ;
 
 class RestApiCategory extends RestApi {
@@ -12,8 +14,8 @@ class RestApiCategory extends RestApi {
     public function get($params){
 
         $col = new CategoryCollection();
+        if($params['GET']['pagination']){
         // start limit page
-        if($params['GET']['paginaton']) {
             $showDataPerPage = 10;
             $start = $params['GET']['start'];
             $this->applyLimit($col,
@@ -31,10 +33,19 @@ class RestApiCategory extends RestApi {
 
     public function post($params){
         $obj = new CategoryObject();
-        $obj->setCreateBy($_SESSION['admin']['username']);
-        $obj->setProperties( $params['POST'] );
+
+        $obj->setProperties($params['POST']['category'][0]);
         $obj->insert();
         $id = $obj->getId();
+
+        $objDetail = new CategoryDetailObject();
+        $fields = $params['POST']['detail'];
+        foreach ( $fields as $k => $v){
+            $objDetail->setCategoriesId($id);
+            $objDetail->setProperties($v);
+            $objDetail->insert();
+        }
+
         return array(
             'data' => array(
                 'id' => $id
@@ -45,10 +56,16 @@ class RestApiCategory extends RestApi {
     public function put($params){
         $obj = new CategoryObject();
         $obj->setId($this->getId());
-        $obj->setProperties($params['PUT']);
-        $obj->setUpdateBy($_SESSION['admin']['username']);
+        $obj->setProperties($params['PUT']['category'][0]);
         $obj->update();
 
+        $objDetail = new CategoryDetailObject();
+        $fields = $params['PUT']['detail'];
+        foreach ( $fields as $k => $v){
+            $objDetail->setCategoriesId($this->getId());
+            $objDetail->setProperties($v);
+            $objDetail->update();
+        }
         return array(
             'data' => array(
                 'success' => 'true'

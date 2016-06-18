@@ -2,7 +2,7 @@
 	class="btn btn-default default-font" 
 	data-toggle="modal" 
 	data-target="#categoryPopup"
-	data-ng-click="add();"
+	data-ng-click="clear();"
 >
 	<span class="glyphicon glyphicon-plus"></span>
 	Add Image
@@ -14,39 +14,48 @@
 			Id
 		</th>
 		<th>
-			Name KH
+			Name En
 		</th>
 		<th>
-			Name EN
+			Name Kh
 		</th>
 		<th>
+			Parent Id
+		</th>
+		<th>
+			Sort Order
+		</th>
+		<th width="15%">
 			Action
 		</th>
 	</tr>
-	<tr data-ng-if="!image_sliders">
-		<td colspan="4" align="center">
+	<tr data-ng-if="!category">
+		<td colspan="6" align="center">
 			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
 		</td>
 	</tr>
 	<tr
-		data-ng-repeat="image_slider in image_sliders.elements"
+		data-ng-repeat="c in category.elements"
 	>
 		<td>
-			{{image_slider.id}}
+			{{c.categories_id}}
 		</td>
 		<td>
-			<span data-ng-bind="image_slider.text"></span>
+			<span data-ng-bind="c.detail[0].categories_name"></span>
 		</td>
 		<td>
-			<img
-				src="../images/{{image_slider.image_thumbnail}}"
-				data-ng-show="image_slider.image_thumbnail"
-			>
+			<span data-ng-bind="c.detail[1].categories_name"></span>
 		</td>
-		<td width="">
+		<td>
+			{{c.parent_id}}
+		</td>
+		<td>
+			{{c.sort_order}}
+		</td>
+		<td>
 			<button
 				class="btn btn-default"
-				data-ng-click="edit(image_slider);"
+				data-ng-click="edit(c);"
 				data-toggle="tooltip"
 				data-placement="top"
 				title="Edit"
@@ -56,7 +65,7 @@
 			</button>
 			<button
 				class="btn btn-danger"
-				data-ng-click="remove($index, image_slider);"
+				data-ng-click="remove($index, c);"
 				data-toggle="modals"
 				data-placement="bottom"
 				title="Delete"
@@ -68,10 +77,10 @@
 	</tr>
 </table>
 <div
-	data-ng-if="image_sliders.elements == 0"
+	data-ng-if="category.elements == 0"
 >
 	<div class="alert alert-danger alert-dismissible">
-		<strong>Warning!</strong> No Image.
+		<strong>Warning!</strong> Empty Data.
 	</div>
 </div>
 <div
@@ -112,57 +121,44 @@
 				<div class="modal-body">
 					<table class="table table-bordered table-responsive">
 						<tr>
-							<td width="5%">
-								Name:
+							<td>
+								Parent:{{parent_id}}
+							</td>
+							<td>
+								<select
+									class="form-control"
+									data-ng-model="parent_id"
+									data-ng-options="c.categories_id as c.categories_name for c in categoryDetail.elements"
+									data-ng-selected="parent_id = c.categories_id"
+								>
+									<option value="">--Parent Name--</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td width="20%">
+								Name En:
 							</td>
 							<td>
 								<input
 									type="text"
 									class="form-control"
-									data-ng-model="image_slider.text"
+									data-ng-model="name_en"
 									required="required"
 								/>
 							</td>
 						</tr>
-						<tr data-ng-show="image_slider.text">
-							<td>
-								Image:
+						<tr>
+							<td width="20%">
+								Name Kh:
 							</td>
 							<td>
 								<input
-									type="file"
-									ng-model="picFile"
-									name="file"
-									data-ng-disabled="image_slider.text == ''"
-									accept="image/*"
-									ngf-max-size="2MB"
-									ngf-model-invalid="errorFiles"
-									ngf-select="uploadPic(picFile)"
-								>
-								<i ng-show="myForm.file.$error.maxSize" class="error">
-									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
-								</i>
-								<div>
-									<i>
-										Image recommend 1970px * 747
-									</i>
-								</div>
-								<div>
-									<img
-										ng-show="image_slider.image"
-										class="thumb"
-										src="../images/{{image_slider.image_thumbnail}}"
-									>
-								<span class="progress" ng-show="picFile.progress >= 0">
-									<div
-										style="width:{{picFile.progress}}%"
-										ng-bind="picFile.progress + '%'"
-									>
-									</div>
-								</span>
-									<span ng-show="picFile.result">Upload Successful</span>
-									<span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-								</div>
+									type="text"
+									class="form-control"
+									data-ng-model="name_kh"
+									required="required"
+								/>
 							</td>
 						</tr>
 						<tr>
@@ -170,15 +166,7 @@
 								Sort Order:
 							</td>
 							<td>
-								<input type="text" data-ng-model="image_slider.sort_order" class="form-control"/>
-							</td>
-						</tr>
-						<tr data-ng-hide="true">
-							<td>
-								Link:
-							</td>
-							<td>
-								<input type="text" data-ng-model="image_slider.link" class="form-control"/>
+								<input type="text" data-ng-model="sort_order" class="form-control"/>
 							</td>
 						</tr>
 					</table>

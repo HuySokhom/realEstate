@@ -73,6 +73,27 @@ class Object extends DbObj {
 			WHERE
 				categories_id = '" . (int)$this->getId() . "'
 		");
+		// delete category detail
+		$this->dbQuery("
+			DELETE FROM
+				categories_description
+			WHERE
+				categories_id = '" . (int)$this->getId() . "'
+		");
+		// delete product
+		// query product first to product id
+		$this->dbQuery("
+			SELECT * FROM
+				products_to_categories
+			WHERE
+				categories_id = '" . (int)$this->getId() . "'
+		");
+		$this->dbQuery("
+			DELETE FROM
+				products_to_categories
+			WHERE
+				categories_id = '" . (int)$this->getId() . "'
+		");
 	}
 
 	public function update(){
@@ -83,8 +104,8 @@ class Object extends DbObj {
 			UPDATE
 				categories
 			SET
-				parent_id = '" . $this->dbEscape( $this->getParentId() ) . "',
-				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "',
+				parent_id = '" . (int)$this->getParentId() . "',
+				sort_order = '" . (int)$this->getSortOrder() . "',
 				categories_image = '" . $this->dbEscape( $this->getCategoriesImage() ) . "'
 			WHERE
 				categories_id = '" . (int)$this->getId() . "'
@@ -104,9 +125,9 @@ class Object extends DbObj {
 			)
 				VALUES
 			(
-				'" . $this->getParentId() . "',
+				'" . (int)$this->getParentId() . "',
 				'" . $this->getCategoriesImage() . "',
-				'" . $this->getSortOrder() . "',
+				'" . (int)$this->getSortOrder() . "',
 				NOW()
 			)
 		");
