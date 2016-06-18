@@ -28,7 +28,7 @@ app.controller(
 		};
 
 		$scope.edit = function(params){
-			$('#categoryPopup').modal('show');console.log(params);
+			$('#categoryPopup').modal('show');
 			var temp = angular.copy(params);
 			$scope.name_en = temp.detail[0].categories_name;
 			$scope.name_kh = temp.detail[1].categories_name;
@@ -56,14 +56,14 @@ app.controller(
 			$scope.isDisabled = true;
 			if( $scope.id ){
 				Restful.put(url + $scope.id, data).success(function(data){
-					init(params);console.log(data);
+					init(params);
 					$('#categoryPopup').modal('hide');
 					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
 					$scope.isDisabled = false;
 				});
 			}else{
 				Restful.post(url, data).success(function(data){
-					init(params);console.log(data);
+					init(params);
 					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
 					$('#categoryPopup').modal('hide')
 					$scope.isDisabled = false;
