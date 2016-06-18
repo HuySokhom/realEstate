@@ -62,7 +62,7 @@ class RestApiCategory extends RestApi {
         $objDetail = new CategoryDetailObject();
         $fields = $params['PUT']['detail'];
         foreach ( $fields as $k => $v){
-            $objDetail->setCategoriesId($this->getId());
+            $objDetail->setId($this->getId());
             $objDetail->setProperties($v);
             $objDetail->update();
         }

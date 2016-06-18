@@ -151,7 +151,7 @@ class Object extends DbObj {
 	}
 
 	public function setParentId( $string ){
-		$this->parentId = $string;
+		$this->parentId = (int)$string;
 	}
 
 	public function getParentId(){

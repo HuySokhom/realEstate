@@ -68,10 +68,11 @@ class Object extends DbObj {
 			UPDATE
 				categories_description
 			SET
-				categories_name = '" . $this->dbEscape( $this->getCategoriesName() ) . "',
-				language_id = '" . (int)$this->getLanguageId() . "'
+				categories_name = '" . $this->dbEscape( $this->getCategoriesName() ) . "'
 			WHERE
 				categories_id = '" . (int)$this->getId() . "'
+					AND
+				language_id = '" . (int)$this->getLanguageId() . "'
 		");
 	}
 	

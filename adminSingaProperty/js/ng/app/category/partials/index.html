@@ -83,19 +83,6 @@
 		<strong>Warning!</strong> Empty Data.
 	</div>
 </div>
-<div
-	class="panel-footer"
-	data-ng-show="totalItems > 10"
->
-	<pagination
-		total-items="totalItems"
-		ng-model="currentPage"
-		ng-change="pageChanged()"
-		max-size="5"
-		items-per-page="10"
-		boundary-links="true"
-	></pagination>
-</div>
 
 <form data-ng-submit="save();" name="myForm">
 	<div
@@ -122,14 +109,15 @@
 					<table class="table table-bordered table-responsive">
 						<tr>
 							<td>
-								Parent:{{parent_id}}
+								Parent:
 							</td>
 							<td>
 								<select
 									class="form-control"
+									data-ng-options="c.detail[0].categories_id as c.detail[0].categories_name for c in category.elements"
 									data-ng-model="parent_id"
-									data-ng-options="c.categories_id as c.categories_name for c in categoryDetail.elements"
-									data-ng-selected="parent_id = c.categories_id"
+
+									data-ng-init="parent_id == c.detail[0].categories_id"
 								>
 									<option value="">--Parent Name--</option>
 								</select>
