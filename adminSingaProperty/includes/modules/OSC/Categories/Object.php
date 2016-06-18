@@ -82,18 +82,43 @@ class Object extends DbObj {
 		");
 		// delete product
 		// query product first to product id
-		$this->dbQuery("
-			SELECT * FROM
-				products_to_categories
-			WHERE
+		$product_ids_query = tep_db_query("
+			select
+				products_id
+			from
+				" . TABLE_PRODUCTS_TO_CATEGORIES . "
+			where
 				categories_id = '" . (int)$this->getId() . "'
 		");
-		$this->dbQuery("
-			DELETE FROM
-				products_to_categories
-			WHERE
-				categories_id = '" . (int)$this->getId() . "'
-		");
+
+		while ($product_ids = tep_db_fetch_array($product_ids_query)) {
+			$pId = $product_ids['products_id'];
+			$this->dbQuery("
+				DELETE FROM
+					products_to_categories
+				WHERE
+					categories_id = '" . (int)$this->getId() . "'
+			");
+			$this->dbQuery("
+				DELETE FROM
+					products
+				WHERE
+					products_id = '" . $pId . "'
+			");
+			$this->dbQuery("
+				DELETE FROM
+					products_description
+				WHERE
+					products_id = '" . $pId . "'
+			");
+			$this->dbQuery("
+				DELETE FROM
+					products_images
+				WHERE
+					products_id = '" . $pId . "'
+			");
+		}
+
 	}
 
 	public function update(){
