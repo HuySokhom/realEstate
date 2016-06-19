@@ -312,7 +312,7 @@ class Object extends DbObj {
 		return $this->villageId;
 	}
 	public function setVillageId( $int ){
-		$this->villageId = $int;
+		$this->villageId = (int)$int;
 	}
 
 	public function getProductsKindOf(){
@@ -347,13 +347,13 @@ class Object extends DbObj {
         return $this->bedRooms;
     }
     public function setBedRooms( $int ){
-        $this->bedRooms = $int;
+        $this->bedRooms = (int)$int;
     }
     public function getBathRooms(){
         return $this->bathRooms;
     }
     public function setBathRooms( $int ){
-        $this->bathRooms = $int;
+        $this->bathRooms = (int)$int;
     }
 
 	public function getCategoriesId(){
@@ -367,6 +367,6 @@ class Object extends DbObj {
         return $this->numberOfFloors;
     }
     public function setNumberOfFloors( $int ){
-        $this->numberOfFloors = $int;
+        $this->numberOfFloors = (int)$int;
     }
 }
