@@ -1,15 +1,15 @@
 <?php
 
-namespace OSC\ProductPost;
+namespace OSC\Product;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
 	, OSC\ProductDescription\Collection
-			as ProductDescriptionCol
-	, OSC\ProductToCategory\Collection
-		as ProductToCategoryCol
-	, OSC\ProductContactPerson\Collection
-		as ProductContactPerson
+		as ProductDescriptionCol
+	, OSC\Customer\Collection
+		as CustomerCol
+	, OSC\CategoriesDescription\Collection
+		as CategoryCollection
 	, OSC\ProductImage\Collection
 		as ProductImageCol
 ;
@@ -19,35 +19,48 @@ class Object extends DbObj {
 	protected
 		$customersId
 		, $productsId
-		, $locationId
+		, $provinceId
+        , $districtId
+        , $villageId
 		, $productsImage
 		, $productsImageThumbnail
 		, $productsPrice
 		, $productsDateAdded
 		, $productsStatus
-		, $manufacturersId
-		, $fields
-		, $category
-		, $contact
-		, $image
+		, $productsKindOf
+		, $bedRooms
+		, $bathRooms
+		, $numberOfFloors
+		, $imageDetail
+        , $productDetail
+		, $categoriesId
+		, $categoryDetail
+		, $customersDetail
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
+				'categories_id',
+				'category_detail',
+				'customers_detail',
 				'customers_id',
-				'location_id',
+				'province_id',
+                'district_id',
+                'village_id',
 				'products_image',
 				'products_image_thumbnail',
 				'products_price',
-				'products_date_added',
+				'create_date',
+				'create_by',
 				'products_status',
-				'manufacturers_id',
-				'fields',
-				'category',
-				'image',
-				'contact'
+				'products_kind_of',
+				'bed_rooms',
+				'bath_rooms',
+                'number_of_floors',
+				'image_detail',
+				'product_detail'
 			)
 		);
 		return parent::toArray($args);
@@ -55,24 +68,32 @@ class Object extends DbObj {
 
 	public function __construct( $params = array() ){
  		parent::__construct($params);
-		
- 		$this->fields = new ProductDescriptionCol();
-		$this->category = new ProductToCategoryCol();
-		$this->contact = new ProductContactPerson();
-		$this->image = new ProductImageCol();
+
+ 		$this->productDetail = new ProductDescriptionCol();
+		$this->customersDetail = new CustomerCol();
+		$this->categoryDetail = new CategoryCollection();
+		$this->imageDetail = new ProductImageCol();
 	}
 
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
-				location_id,
+				categories_id,
+				province_id,
+				district_id,
+				village_id,
 				products_image,
+				products_image_thumbnail,
 				products_price,
 				products_date_added,
 				products_status,
-				manufacturers_id,
-				products_image_thumbnail
+				products_kind_of,
+				bed_rooms,
+				bath_rooms,
+				number_of_floors,
+				create_date,
+				create_by
 			FROM
 				products
 			WHERE
@@ -88,17 +109,17 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->contact->setFilter('products_id', $this->getId());
-		$this->contact->populate();
+		$this->customersDetail->setFilter('id', $this->getCustomersId());
+		$this->customersDetail->populate();
 
- 		$this->fields->setFilter('id', $this->getId());
- 		$this->fields->populate();
+ 		$this->productDetail->setFilter('id', $this->getId());
+ 		$this->productDetail->populate();
 
-		$this->category->setFilter('id', $this->getId());
-		$this->category->populate();
+		$this->categoryDetail->setFilter('categories_id', $this->getCategoriesId());
+		$this->categoryDetail->populate();
 
-		$this->image->setFilter('products_id', $this->getId());
-		$this->image->populate();
+		$this->imageDetail->setFilter('products_id', $this->getId());
+		$this->imageDetail->populate();
 	}
 	
 	public function updateStatus() {
@@ -171,11 +192,17 @@ class Object extends DbObj {
 			UPDATE
 				products
 			SET
-				location_id = '" . (int)$this->getLocationId() . "',
+				province_id = '" . (int)$this->getProvinceId() . "',
+				categories_id = '" . (int)$this->getCategoriesId() . "',
+				district_id = '" . (int)$this->getDistrictId() . "',
+				village_id = '" . (int)$this->getVillageId() . "',
 				products_image = '" . $this->getProductsImage() . "',
 				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
  				products_price = '" . $this->getProductsPrice() . "',
- 				manufacturers_id = '" . (int)$this->getManufacturersId() . "'
+ 				products_kind_of = '" . $this->getProductsKindOf() . "',
+ 				number_of_floors = '" . $this->getNumberOfFloors() . "',
+ 				bed_rooms = '" . $this->getBedRooms() . "',
+ 				bath_rooms = '" . $this->getBathRooms() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
@@ -188,24 +215,36 @@ class Object extends DbObj {
 				products
 			(
 				customers_id,
-				location_id,
+				province_id,
+				district_id,
+				village_id,
 				products_image,
 				products_image_thumbnail,
 				products_price,
 				products_date_added,
 				products_status,
-				manufacturers_id
+				create_date,
+				products_kind_of,
+				bed_rooms,
+				bath_rooms,
+				number_of_floors
 			)
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
-				'" . (int)$this->getLocationId() . "',
+				'" . (int)$this->getProvinceId() . "',
+				'" . (int)$this->getDistrictId() . "',
+				'" . (int)$this->getVillageId() . "',
  				'" . $this->dbEscape( $this->getProductsImage() ) . "',
  				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
 				'" . $this->getProductsPrice() . "',
  				NOW(),
  				1,
-				'" . (int) $this->getManufacturersId() . "'
+ 				NOW(),
+				'" . $this->getProductsKindOf() . "',
+				'" . (int)$this->getBedRooms() . "',
+				'" . (int)$this->getBathRooms() . "',
+				'" . (int)$this->getNumberOfFloors() . "'
 			)
 		");	
 		$this->setProductsId( $this->dbInsertId() );
@@ -219,12 +258,12 @@ class Object extends DbObj {
 		return $this->customersId;
 	}
 	
-	public function setLocationId( $int ){
-		$this->locationId = (int)$int;
+	public function setProvinceId( $int ){
+		$this->provinceId = (int)$int;
 	}
 	
-	public function getLocationId(){
-		return $this->locationId;
+	public function getProvinceId(){
+		return $this->provinceId;
 	}
 	
 	public function setProductsId( $int ){
@@ -267,46 +306,88 @@ class Object extends DbObj {
 		return $this->productsStatus;
 	}
 
-	public function setManufacturersId( $int ){
-		$this->manufacturersId = (int)$int;
+	public function setDistrictId( $int ){
+		$this->districtId = (int)$int;
 	}
 
-	public function getManufacturersId(){
-		return $this->manufacturersId;
+	public function getDistrictId(){
+		return $this->districtId;
 	}
 
-	public function getCategory(){
-		return $this->category;
+	public function getVillageId(){
+		return $this->villageId;
 	}
-	public function setCategory( $array ){
-		$this->category = $array;
-	}
-
-	public function getContact(){
-		return $this->contact;
-	}
-	public function setContact( $array ){
-		$this->contact = $array;
+	public function setVillageId( $int ){
+		$this->villageId = (int)$int;
 	}
 
-	public function getImage(){
-		return $this->image;
+	public function getProductsKindOf(){
+		return $this->productsKindOf;
 	}
-	public function setImage( $int ){
-		$this->image = $int;
+	public function setProductsKindOf( $array ){
+		$this->productsKindOf = $array;
 	}
 
-	public function getFields(){
-		return $this->fields;
+	public function getImageDetail(){
+		return $this->imageDetail;
 	}
-	public function setFields( $int ){
-		$this->fields = $int;
+	public function setImageDetail( $array ){
+		$this->imageDetail = $array;
+	}
+
+	public function getProductDetail(){
+		return $this->productDetail;
+	}
+	public function setProductDetail( $array ){
+		$this->productDetail = $array;
 	}
 
 	public function getProductsPrice(){
 		return $this->productsPrice;
 	}
 	public function setProductsPrice( $int ){
-		$this->productsPrice = $int;
+		$this->productsPrice = doubleval($int);
 	}
+
+    public function getBedRooms(){
+        return $this->bedRooms;
+    }
+    public function setBedRooms( $int ){
+        $this->bedRooms = (int)$int;
+    }
+    public function getBathRooms(){
+        return $this->bathRooms;
+    }
+    public function setBathRooms( $int ){
+        $this->bathRooms = (int)$int;
+    }
+
+	public function getCategoriesId(){
+		return $this->categoriesId;
+	}
+	public function setCategoriesId( $int ){
+		$this->categoriesId = (int)$int;
+	}
+
+    public function getNumberOfFloors(){
+        return $this->numberOfFloors;
+    }
+    public function setNumberOfFloors( $int ){
+        $this->numberOfFloors = (int)$int;
+    }
+
+	public function getCategoryDetail(){
+		return $this->categoryDetail;
+	}
+	public function setCategoryDetail( $array ){
+		$this->categoryDetail = $array;
+	}
+
+	public function getCustomersDetail(){
+		return $this->customersDetail;
+	}
+	public function setCustomersDetail( $array ){
+		$this->customersDetail = $array;
+	}
+
 }

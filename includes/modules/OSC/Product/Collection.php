@@ -1,6 +1,6 @@
 <?php
 
-namespace OSC\ProductPost;
+namespace OSC\Product;
 
 use Aedea\Core\Database\StdCollection;
 
