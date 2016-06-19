@@ -1,7 +1,7 @@
 <?php
 
 use
-	OSC\ProductPost\Collection
+	OSC\Product\Collection
 		as ProductPostCol
 	, OSC\ProductPost\Object
 		as ProductPostObj
@@ -21,7 +21,7 @@ class RestApiProduct extends RestApi {
 		$col = new ProductPostCol();
 
 		// start limit page
-		$showDataPerPage = 10;
+		$showDataPerPage = 20;
 		$start = $params['GET']['start'];
 		$this->applyLimit($col,
 			array(
@@ -29,9 +29,6 @@ class RestApiProduct extends RestApi {
 			)
 		);
 		$col->sortByDate('DESC');
-//			$col->filterByCustomersId($userId);
-		// filter with default status 1
-//			$params['filters']['status'] = 1;
 		$this->applyFilters($col, $params);
 		$this->applySortBy($col, $params);
 		return $this->getReturn($col, $params);
