@@ -82,6 +82,6 @@ app.config([
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url
-		$locationProvider.html5Mode(true);
+		// $locationProvider.html5Mode(true);
 	}
 ]);
