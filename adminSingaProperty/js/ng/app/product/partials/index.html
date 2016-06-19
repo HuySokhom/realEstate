@@ -17,7 +17,7 @@
 			Name
 		</th>
 		<th>
-			Image
+			Description
 		</th>
 		<th>
 			Action
@@ -32,16 +32,13 @@
 		data-ng-repeat="p in products.elements"
 	>
 		<td>
-			{{p.products_id}}
+			{{p.id}}
 		</td>
 		<td>
-			<span data-ng-bind="p.products_name"></span>
+			<span data-ng-bind="p.product_detail[0].products_name"></span>
 		</td>
 		<td>
-			<img
-				src="../images/{{p.image_thumbnail}}"
-				data-ng-show="image_slider.image_thumbnail"
-			>
+			<span data-ng-bind="p.product_detail[0].products_description"></span>
 		</td>
 		<td width="">
 			<button

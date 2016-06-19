@@ -33,12 +33,14 @@ class Object extends DbObj {
 		, $numberOfFloors
 		, $imageDetail
         , $productDetail
+		, $categoriesId
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
+				'categories_id',
 				'customers_id',
 				'province_id',
                 'district_id',
@@ -72,6 +74,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
+				categories_id,
 				province_id,
 				district_id,
 				village_id,
@@ -184,6 +187,7 @@ class Object extends DbObj {
 				products
 			SET
 				province_id = '" . (int)$this->getProvinceId() . "',
+				categories_id = '" . (int)$this->getCategoriesId() . "',
 				district_id = '" . (int)$this->getDistrictId() . "',
 				village_id = '" . (int)$this->getVillageId() . "',
 				products_image = '" . $this->getProductsImage() . "',
@@ -351,6 +355,13 @@ class Object extends DbObj {
     public function setBathRooms( $int ){
         $this->bathRooms = $int;
     }
+
+	public function getCategoriesId(){
+		return $this->categoriesId;
+	}
+	public function setCategoriesId( $int ){
+		$this->categoriesId = (int)$int;
+	}
 
     public function getNumberOfFloors(){
         return $this->numberOfFloors;
