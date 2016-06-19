@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-06-19 14:23:17
+Date: 2016-06-19 16:44:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -67,6 +67,7 @@ INSERT INTO `action_recorder` VALUES ('27', 'ar_admin_login', '1', 'admin', '', 
 INSERT INTO `action_recorder` VALUES ('28', 'ar_admin_login', '0', 'oop@gmail.com', '', '0', '2016-06-18 21:10:25');
 INSERT INTO `action_recorder` VALUES ('29', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-18 21:10:32');
 INSERT INTO `action_recorder` VALUES ('30', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 11:06:43');
+INSERT INTO `action_recorder` VALUES ('31', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 14:47:13');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -214,9 +215,9 @@ CREATE TABLE `cache` (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2016-06-18 11:11:53', '2016-07-18 11:11:53');
-INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'S0lNy8xL1VAPCPJ3CXUOifdz9HWNN1bXUVBPL09NV9e05gIA', '1', '1', 'EVAL', '2016-06-18 11:11:51', '2016-07-18 11:11:51');
-INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'S0lNy8xL1VB3dgxxdfcPioz3c/R1jTc1V9dRUE/KL0qtLFbXtOZKwa7KBKyqtBKPEkuQkuT83NzUouTMxBw8Ki0gKvNS8vEoMgMpSkktS83JL8hNzSvB5zpTkNoioCKQeQA=', '1', '1', 'EVAL', '2016-06-18 11:11:52', '2016-07-18 11:11:52');
+INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2016-06-19 10:39:36', '2016-07-19 10:39:36');
+INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'S0lNy8xL1VAPCPJ3CXUOifdz9HWNN1HXUVBPLE5JL1PXtOZKwabEGKQkvTw1HaQCAA==', '1', '1', 'EVAL', '2016-06-19 10:39:36', '2016-07-19 10:39:36');
+INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'S0lNy8xL1VB3dgxxdfcPioz3c/R1jTc1V9dRUE/KL0qtLFbXtOZKwa7KBKyqtBKPEkuQkuT83NzUouTMxBw8Ki0gKvNS8vEoMgMpSkktS83JL8hNzSvB5zpTkNoioCKQeQA=', '1', '1', 'EVAL', '2016-06-19 10:39:36', '2016-07-19 10:39:36');
 
 -- ----------------------------
 -- Table structure for `cambodia_province`
@@ -11794,6 +11795,7 @@ INSERT INTO `popular_search` VALUES ('3', null, 'ព្រះវិហារ', '
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `products_id` int(11) NOT NULL AUTO_INCREMENT,
+  `categories_id` int(11) NOT NULL DEFAULT '0',
   `province_id` int(11) NOT NULL,
   `customers_id` int(11) NOT NULL,
   `products_image` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -11819,15 +11821,16 @@ CREATE TABLE `products` (
   `create_date` datetime DEFAULT NULL,
   `modifies_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`products_id`),
+  PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('3', '3', '0', null, '', null, '0.0000', null, null, null, null, null, null, '1', '0', '2016-06-18 16:10:07', null, '0000-00-00 00:00:00', '', '23', '0.00', '1', '7', null, null, null);
+INSERT INTO `products` VALUES ('3', '0', '4', '0', null, '', null, '10.6200', null, null, null, null, null, null, '1', '0', '2016-06-18 16:10:07', null, '0000-00-00 00:00:00', '', '23', '0.00', '1', '7', null, '2016-06-19 15:18:00', null);
+INSERT INTO `products` VALUES ('4', '0', '0', '0', null, null, null, '56.0000', null, null, null, null, null, null, '1', '0', '2016-06-19 15:21:11', null, '0000-00-00 00:00:00', '', '0', '0.00', '0', '3', null, null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -11879,13 +11882,15 @@ CREATE TABLE `products_description` (
   `products_viewed` int(5) DEFAULT '0',
   PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
 -- ----------------------------
 INSERT INTO `products_description` VALUES ('1', '3', '1', 'Gweg', 'hsdfhfsda', '', '4353');
 INSERT INTO `products_description` VALUES ('2', '3', '2', 'ប្រពន្ដ', 'សខថដាដថហ', '', '4353');
+INSERT INTO `products_description` VALUES ('3', '4', '2', 'sdgsdgzxc', '', '', '0');
+INSERT INTO `products_description` VALUES ('4', '4', '1', 'asdgv', '', '', '0');
 
 -- ----------------------------
 -- Table structure for `products_images`
@@ -12024,12 +12029,13 @@ CREATE TABLE `products_to_categories` (
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`,`categories_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
 -- ----------------------------
 INSERT INTO `products_to_categories` VALUES ('1', '3', '0');
+INSERT INTO `products_to_categories` VALUES ('2', '4', '59');
 
 -- ----------------------------
 -- Table structure for `product_contact_person`
@@ -12178,6 +12184,8 @@ CREATE TABLE `sessions` (
 -- Records of sessions
 -- ----------------------------
 INSERT INTO `sessions` VALUES ('0oobhpt8larte88jeromteqhq1', '1466241114', 'sessiontoken|s:32:\"85df16c89e374327ac3ec7075d8491fd\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"00252\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:6;user_name|s:10:\"huy sokhom\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('8tst43q5116etnim48hbt1l3r6', '1466325588', 'sessiontoken|s:32:\"f95a80aa200d42cd341c86c6538e58f7\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('9g66ehipk58k9nb4p2is2hkg45', '1466329426', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('f6j1bmp13kc8ir2vgdrq3u5p20', '1466320321', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('ga8uccvfiacg56bemd2jog2oj0', '1466258902', 'sessiontoken|s:32:\"7096271c43385b4784c14f0f1b85d7ed\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('lnc2fsnp62colth2a5fl4o09t4', '1466241017', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
@@ -12285,7 +12293,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', 'ga8uccvfiacg56bemd2jog2oj0', '', '1466258901', '1466258901', '/realEstate/');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', '8tst43q5116etnim48hbt1l3r6', '', '1466325577', '1466325577', '/realEstate/');
 
 -- ----------------------------
 -- Table structure for `zones`
