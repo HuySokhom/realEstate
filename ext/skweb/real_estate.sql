@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : root
+Source Server         : MySQL
 Source Server Version : 50617
 Source Host           : localhost:3306
 Source Database       : real_estate
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-06-15 17:06:32
+Date: 2016-06-19 14:23:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -54,41 +54,19 @@ INSERT INTO `action_recorder` VALUES ('14', 'ar_admin_login', '0', 'oop@gmail.co
 INSERT INTO `action_recorder` VALUES ('15', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-06 22:46:13');
 INSERT INTO `action_recorder` VALUES ('16', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-07 21:23:55');
 INSERT INTO `action_recorder` VALUES ('17', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-11 13:56:41');
-INSERT INTO `action_recorder` VALUES ('18', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-13 14:34:09');
-INSERT INTO `action_recorder` VALUES ('19', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-13 16:44:38');
-INSERT INTO `action_recorder` VALUES ('20', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-14 10:37:53');
-INSERT INTO `action_recorder` VALUES ('21', 'ar_admin_login', '0', 'adminfdg', '', '0', '2016-06-15 08:35:34');
-INSERT INTO `action_recorder` VALUES ('22', 'ar_admin_login', '0', 'adminfdg', '', '0', '2016-06-15 08:35:44');
-INSERT INTO `action_recorder` VALUES ('23', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-15 08:35:47');
-INSERT INTO `action_recorder` VALUES ('24', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 08:58:54');
-INSERT INTO `action_recorder` VALUES ('25', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 08:58:57');
-INSERT INTO `action_recorder` VALUES ('26', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 08:59:24');
-INSERT INTO `action_recorder` VALUES ('27', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 08:59:26');
-INSERT INTO `action_recorder` VALUES ('28', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 08:59:29');
-INSERT INTO `action_recorder` VALUES ('29', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:00:31');
-INSERT INTO `action_recorder` VALUES ('30', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:02:57');
-INSERT INTO `action_recorder` VALUES ('31', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:03:11');
-INSERT INTO `action_recorder` VALUES ('32', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:05:50');
-INSERT INTO `action_recorder` VALUES ('33', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:05:53');
-INSERT INTO `action_recorder` VALUES ('34', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:05:55');
-INSERT INTO `action_recorder` VALUES ('35', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:09:08');
-INSERT INTO `action_recorder` VALUES ('36', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:09:18');
-INSERT INTO `action_recorder` VALUES ('37', 'ar_admin_login', '0', 'adminsafd', '', '0', '2016-06-15 09:09:18');
-INSERT INTO `action_recorder` VALUES ('38', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:09:26');
-INSERT INTO `action_recorder` VALUES ('39', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:11:16');
-INSERT INTO `action_recorder` VALUES ('40', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:12:06');
-INSERT INTO `action_recorder` VALUES ('41', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:15:37');
-INSERT INTO `action_recorder` VALUES ('42', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:17:29');
-INSERT INTO `action_recorder` VALUES ('43', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:18:45');
-INSERT INTO `action_recorder` VALUES ('44', 'ar_admin_login', '0', 'aas', '', '0', '2016-06-15 09:18:46');
-INSERT INTO `action_recorder` VALUES ('45', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-15 09:28:18');
-INSERT INTO `action_recorder` VALUES ('46', 'ar_admin_login', '0', 'admin', '', '0', '2016-06-15 09:28:29');
-INSERT INTO `action_recorder` VALUES ('47', 'ar_admin_login', '0', 'adminsdhs', '', '0', '2016-06-15 09:28:34');
-INSERT INTO `action_recorder` VALUES ('48', 'ar_admin_login', '0', 'admin', '', '0', '2016-06-15 09:28:36');
-INSERT INTO `action_recorder` VALUES ('49', 'ar_admin_login', '0', 'adminsdhs', '', '0', '2016-06-15 09:28:38');
-INSERT INTO `action_recorder` VALUES ('50', 'ar_admin_login', '0', 'admin', '', '0', '2016-06-15 09:28:43');
-INSERT INTO `action_recorder` VALUES ('51', 'ar_admin_login', '0', 'admin', '', '0', '2016-06-15 09:31:12');
-INSERT INTO `action_recorder` VALUES ('52', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-15 09:34:35');
+INSERT INTO `action_recorder` VALUES ('18', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-13 21:28:08');
+INSERT INTO `action_recorder` VALUES ('19', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-14 21:20:55');
+INSERT INTO `action_recorder` VALUES ('20', 'ar_admin_login', '0', 'oop@gmail.com', '', '0', '2016-06-15 21:54:09');
+INSERT INTO `action_recorder` VALUES ('21', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-15 21:54:14');
+INSERT INTO `action_recorder` VALUES ('22', 'ar_contact_us', '9', 'oopoik', '', '1', '2016-06-15 23:38:32');
+INSERT INTO `action_recorder` VALUES ('23', 'ar_contact_us', '9', 'test', '', '0', '2016-06-15 23:39:49');
+INSERT INTO `action_recorder` VALUES ('24', 'ar_contact_us', '9', 'test', '', '0', '2016-06-15 23:43:05');
+INSERT INTO `action_recorder` VALUES ('25', 'ar_contact_us', '9', 'test', '', '0', '2016-06-15 23:43:20');
+INSERT INTO `action_recorder` VALUES ('26', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-16 21:37:23');
+INSERT INTO `action_recorder` VALUES ('27', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-18 10:27:36');
+INSERT INTO `action_recorder` VALUES ('28', 'ar_admin_login', '0', 'oop@gmail.com', '', '0', '2016-06-18 21:10:25');
+INSERT INTO `action_recorder` VALUES ('29', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-18 21:10:32');
+INSERT INTO `action_recorder` VALUES ('30', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 11:06:43');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -110,7 +88,7 @@ CREATE TABLE `address_book` (
   `entry_zone_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`address_book_id`),
   KEY `idx_address_book_customers_id` (`customers_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of address_book
@@ -122,10 +100,15 @@ INSERT INTO `address_book` VALUES ('4', '4', '', null, '', '', '', null, '', '',
 INSERT INTO `address_book` VALUES ('5', '5', '', null, '', '', '', null, '', '', null, '0', '0');
 INSERT INTO `address_book` VALUES ('6', '6', '', null, '', '', '', null, '', '', null, '0', '0');
 INSERT INTO `address_book` VALUES ('7', '5', '', null, '', '', '', null, '', '', null, '0', '0');
-INSERT INTO `address_book` VALUES ('8', '6', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('8', '6', '', null, '', '', '', null, '', '', null, '0', '0');
 INSERT INTO `address_book` VALUES ('9', '7', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('10', '8', '', null, '', '', '', null, '', '', null, '36', '0');
 INSERT INTO `address_book` VALUES ('11', '9', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('12', '10', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('13', '11', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('14', '12', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('15', '13', '', null, '', '', '', null, '', '', null, '36', '0');
+INSERT INTO `address_book` VALUES ('16', '14', '', null, '', '', '', null, '', '', null, '36', '0');
 
 -- ----------------------------
 -- Table structure for `address_format`
@@ -231,9 +214,9 @@ CREATE TABLE `cache` (
 -- ----------------------------
 -- Records of cache
 -- ----------------------------
-INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2016-06-15 03:33:39', '2016-07-15 03:33:39');
-INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'S0lNy8xL1VAPCPJ3CXUOifdz9HWNNzS2UNdRUE/NTUosLq7UTU7NKylKzNEtyMjLz9UtSM3L0E1JLUvNyS/IBcroFifmpOomZyTmZicW5ebnqWtacwEA', '1', '1', 'EVAL', '2016-06-15 03:33:39', '2016-07-15 03:33:39');
-INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'S0lNy8xL1VB3dgxxdfcPioz3c/R1jTcxUtdRUE/KL0qtLFbXtOZKwarK2AKsqrQStxITY5CS5Pzc3NSi5MzEHDwqDSEq81Ly8SgyAClKSS1LzckvyE3NK8HnOkuQ2iKgIpB5AA==', '1', '1', 'EVAL', '2016-06-15 03:33:39', '2016-07-15 03:33:39');
+INSERT INTO `cache` VALUES ('3f99e969ab97a4ed9b2f66db76e4c167', '1', 'seo_urls_v2_MANUFACTURERS', 'S0lNy8xL1VD3dfQLdXN0DgkNcg2K93P0dY03VtdRUE8qrVTXtOZKwanKHKQqvyQjtQi/OkMDkMLixJxUkDoA', '1', '1', 'EVAL', '2016-06-18 11:11:53', '2016-07-18 11:11:53');
+INSERT INTO `cache` VALUES ('5aea2ef0968befad405de776007fa7b2', '1', 'seo_urls_v2_PRODUCTS', 'S0lNy8xL1VAPCPJ3CXUOifdz9HWNN1bXUVBPL09NV9e05gIA', '1', '1', 'EVAL', '2016-06-18 11:11:51', '2016-07-18 11:11:51');
+INSERT INTO `cache` VALUES ('82c85abb1a53ab2274cf8f913897f181', '1', 'seo_urls_v2_CATEGORIES', 'S0lNy8xL1VB3dgxxdfcPioz3c/R1jTc1V9dRUE/KL0qtLFbXtOZKwa7KBKyqtBKPEkuQkuT83NzUouTMxBw8Ki0gKvNS8vEoMgMpSkktS83JL8hNzSvB5zpTkNoioCKQeQA=', '1', '1', 'EVAL', '2016-06-18 11:11:52', '2016-07-18 11:11:52');
 
 -- ----------------------------
 -- Table structure for `cambodia_province`
@@ -10265,45 +10248,46 @@ CREATE TABLE `categories` (
   `last_modified` datetime DEFAULT NULL,
   PRIMARY KEY (`categories_id`),
   KEY `idx_categories_parent_id` (`parent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES ('38', null, '0', '1', '2016-05-15 15:40:02', '2016-05-15 15:43:58');
-INSERT INTO `categories` VALUES ('39', null, '0', '2', '2016-05-15 15:40:24', '2016-05-15 15:44:05');
-INSERT INTO `categories` VALUES ('40', null, '0', '3', '2016-05-15 15:41:03', '2016-05-15 15:44:14');
-INSERT INTO `categories` VALUES ('41', null, '0', '4', '2016-05-15 15:41:29', '2016-05-15 15:44:22');
-INSERT INTO `categories` VALUES ('42', null, '0', '5', '2016-05-15 15:41:47', '2016-05-15 15:44:27');
-INSERT INTO `categories` VALUES ('43', null, '0', '6', '2016-05-15 15:43:01', '2016-05-15 15:44:35');
+INSERT INTO `categories` VALUES ('54', '', '0', '0', '2016-06-18 15:02:11', null);
+INSERT INTO `categories` VALUES ('55', '', '0', '1', '2016-06-18 15:02:30', null);
+INSERT INTO `categories` VALUES ('56', '', '0', '2', '2016-06-18 15:03:23', null);
+INSERT INTO `categories` VALUES ('57', '', '0', '3', '2016-06-18 15:04:05', null);
+INSERT INTO `categories` VALUES ('58', '', '0', '4', '2016-06-18 15:04:36', null);
+INSERT INTO `categories` VALUES ('59', '', '0', '5', '2016-06-18 15:05:11', null);
 
 -- ----------------------------
 -- Table structure for `categories_description`
 -- ----------------------------
 DROP TABLE IF EXISTS `categories_description`;
 CREATE TABLE `categories_description` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `categories_id` int(11) NOT NULL DEFAULT '0',
   `language_id` int(11) NOT NULL DEFAULT '1',
   `categories_name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`categories_id`,`language_id`),
+  PRIMARY KEY (`id`,`categories_id`,`language_id`),
   KEY `idx_categories_name` (`categories_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of categories_description
 -- ----------------------------
-INSERT INTO `categories_description` VALUES ('42', '1', 'Boreys');
-INSERT INTO `categories_description` VALUES ('38', '1', 'Buy');
-INSERT INTO `categories_description` VALUES ('43', '1', 'Commercial');
-INSERT INTO `categories_description` VALUES ('41', '1', 'Condo');
-INSERT INTO `categories_description` VALUES ('40', '1', 'New Developments');
-INSERT INTO `categories_description` VALUES ('39', '1', 'Rent');
-INSERT INTO `categories_description` VALUES ('41', '2', 'ខុនដូ');
-INSERT INTO `categories_description` VALUES ('40', '2', 'គំរោងថ្មី');
-INSERT INTO `categories_description` VALUES ('39', '2', 'ជួល');
-INSERT INTO `categories_description` VALUES ('38', '2', 'ទិញ');
-INSERT INTO `categories_description` VALUES ('42', '2', 'បុរី');
-INSERT INTO `categories_description` VALUES ('43', '2', 'ពាណិជ្ជកម្ម');
+INSERT INTO `categories_description` VALUES ('40', '57', '1', 'Boreys');
+INSERT INTO `categories_description` VALUES ('34', '54', '1', 'Buy');
+INSERT INTO `categories_description` VALUES ('44', '59', '1', 'Commercial');
+INSERT INTO `categories_description` VALUES ('42', '58', '1', 'Condo');
+INSERT INTO `categories_description` VALUES ('38', '56', '1', 'New Developments');
+INSERT INTO `categories_description` VALUES ('36', '55', '1', 'Rent');
+INSERT INTO `categories_description` VALUES ('39', '56', '2', 'ការវិវត្តថ្មី');
+INSERT INTO `categories_description` VALUES ('43', '58', '2', 'ខុនដូរ');
+INSERT INTO `categories_description` VALUES ('37', '55', '2', 'ជូល');
+INSERT INTO `categories_description` VALUES ('35', '54', '2', 'ទិញ');
+INSERT INTO `categories_description` VALUES ('41', '57', '2', 'បុរី');
+INSERT INTO `categories_description` VALUES ('45', '59', '2', 'ពាណិជ្ជកម្ម');
 
 -- ----------------------------
 -- Table structure for `colors`
@@ -10357,7 +10341,7 @@ CREATE TABLE `configuration` (
 -- ----------------------------
 INSERT INTO `configuration` VALUES ('1', 'Store Name', 'STORE_NAME', 'Singa Property', 'The name of my store', '1', '1', '2016-05-21 22:17:29', '2015-02-26 16:56:10', null, null);
 INSERT INTO `configuration` VALUES ('2', 'Store Owner', 'STORE_OWNER', 'Singa Property', 'The name of my store owner', '1', '2', '2016-05-21 22:17:41', '2015-02-26 16:56:10', null, null);
-INSERT INTO `configuration` VALUES ('3', 'E-Mail Address', 'STORE_OWNER_EMAIL_ADDRESS', 'khenkim@gmail.com', 'The e-mail address of my store owner', '1', '3', '2016-05-22 15:41:30', '2015-02-26 16:56:10', null, null);
+INSERT INTO `configuration` VALUES ('3', 'E-Mail Address', 'STORE_OWNER_EMAIL_ADDRESS', 'khenkim@gmail.com', 'The e-mail address of my store owner', '1', '3', '2016-06-15 23:56:56', '2015-02-26 16:56:10', null, null);
 INSERT INTO `configuration` VALUES ('4', 'E-Mail From', 'EMAIL_FROM', '\"Singa Property\" khenkim@gmail.com', 'The e-mail address used in (sent) e-mails', '1', '4', '2016-05-22 15:45:43', '2015-02-26 16:56:10', null, null);
 INSERT INTO `configuration` VALUES ('5', 'Country', 'STORE_COUNTRY', '36', 'The country my store is located in <br /><br /><strong>Note: Please remember to update the store zone.</strong>', '1', '6', '2016-05-15 16:13:37', '2015-02-26 16:56:10', 'tep_get_country_name', 'tep_cfg_pull_down_country_list(');
 INSERT INTO `configuration` VALUES ('6', 'Zone', 'STORE_ZONE', '18', 'The zone my store is located in', '1', '7', null, '2015-02-26 16:56:10', 'tep_cfg_get_zone_name', 'tep_cfg_pull_down_zone_list(');
@@ -11044,6 +11028,7 @@ CREATE TABLE `customers` (
   `photo` varchar(225) COLLATE utf8_unicode_ci NOT NULL,
   `photo_thumbnail` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
   `detail` text COLLATE utf8_unicode_ci,
+  `is_agency` tinyint(1) DEFAULT '0',
   `customers_dob` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `customers_email_address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `customers_default_address_id` int(11) DEFAULT NULL,
@@ -11053,24 +11038,30 @@ CREATE TABLE `customers` (
   `customers_password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `customers_newsletter` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
-  `update_by` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `create_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_date` timestamp NULL DEFAULT NULL,
   `modify_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `update_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`customers_id`),
   KEY `idx_customers_email_address` (`customers_email_address`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of customers
 -- ----------------------------
-INSERT INTO `customers` VALUES ('1', '3', '', 'test', 'test', 'test posting', 'normal\r\nnormal', '', null, null, '0000-00-00 00:00:00', 'test@test.com', '1', 'phnom penh', '0912 332', '', '$P$DHXuIqt1FraLmwA0.jDbRUQKNw69qs.', '1', '1', 'admin', '2016-05-22 15:33:16', '2016-06-15 16:39:31');
-INSERT INTO `customers` VALUES ('2', '0', 'm', 'test', 'test', '', 'member', '', null, null, '2010-05-06 00:00:00', 'cvn@testw.adf', '2', '', '12512', 'test@test.com', '$P$DpiUh/.52rNO0l1mcIRJgTWMWkXjCp/', '', '1', 'admin', '2016-05-22 15:33:16', '2016-06-15 16:39:24');
-INSERT INTO `customers` VALUES ('3', '0', 'm', 'GASG', 'sd gsgd', '', 'agency', '', null, null, '1999-01-05 00:00:00', 'asg@gm.com', '3', '', '1241241 52 1255', '', '$P$DWCxvfMUNfRgLmjSP01fkWZIVEL.fB.', '', '1', 'admin', '2016-05-22 15:33:16', '2016-06-15 16:39:20');
-INSERT INTO `customers` VALUES ('4', '32', 'm', 'm', 'mk', '', 'agency', '', null, null, '0000-00-00 00:00:00', '', null, '', '123432', null, '', null, '1', 'admin', '2016-05-22 15:33:37', '2016-06-15 16:39:19');
-INSERT INTO `customers` VALUES ('5', '0', '', 'asdg', 'sdg', 'test', 'normal', '', null, null, '0000-00-00 00:00:00', 'test32@g.com', '7', '', '', '', '$P$DmCfvPca7v/8NZYUO1Iz.6q3j7O5ib1', '', '1', 'admin', '2016-05-26 23:49:55', '2016-06-15 16:39:18');
-INSERT INTO `customers` VALUES ('6', '12', '', 'Huy ', 'Sokhom', 'huy sokhom#Q', 'member', '', 'huy_sokhom/2016-06-13/image_thumbnail/Hydrangeas..jpg', '<h5 style=\"box-sizing: border-box; font-family: Roboto, sans-serif; font-weight: 500; line-height: 1.1; color: #0dbae8; margin-top: 10px; margin-bottom: 10px; font-size: 18px; text-transform: uppercase;\">ABOUT ME</h5>\n<p style=\"box-sizing: border-box; margin: 0px 0px 40px; line-height: 26px; color: #3c3c44; font-family: Roboto, sans-serif; font-size: 14px;\">Lorem Ipsum is simply dummy text of the printing and typesetting industry, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>\n<p style=\"box-sizing: border-box; margin: 0px 0px 40px; line-height: 26px; color: #3c3c44; font-family: Roboto, sans-serif; font-size: 14px;\">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum, Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.</p>\n<p style=\"box-sizing: border-box; margin: 0px 0px 40px; line-height: 26px; color: #3c3c44; font-family: Roboto, sans-serif; font-size: 14px;\">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>', '0000-00-00 00:00:00', 'oop@gmail.com', '8', 'BDBDBDSDB', '9009900990', '0959641', '$P$DdiyBErNBisXlvOSVaqI2HIMRnkV1/0', '', '1', 'admin', '2016-05-28 21:12:32', '2016-06-15 16:30:46');
-INSERT INTO `customers` VALUES ('7', '0', '', '', '', 'Test', 'normal', '', null, null, '0000-00-00 00:00:00', 'test32@g.com123', '9', '', '', '', '$P$DfaKlfWicS7BMysduo.Iv3iF6pNaCj1', '', '1', null, null, '2016-06-06 21:26:53');
-INSERT INTO `customers` VALUES ('8', '0', '', '', '', 'Teat', 'normal', '', null, null, '0000-00-00 00:00:00', 'testAS@sg.com', '10', '', '', '', '$P$DtTFzzNOlEWVZjb0n6l3AO0v5KGO5b/', '', '1', null, null, '2016-06-13 14:41:53');
+INSERT INTO `customers` VALUES ('1', '3', '', 'test', 'test', 'test posting', 'normal', '', '', '', '1', '0000-00-00 00:00:00', 'test@test.com', '1', 'phnom penh', '0912 332', '', '$P$DHXuIqt1FraLmwA0.jDbRUQKNw69qs.', '1', '1', null, '2016-05-22 15:33:16', '2016-06-15 23:53:17', 'admin');
+INSERT INTO `customers` VALUES ('2', '15', 'm', 'test', 'test', 'asdas', 'agency', '', '', '', '1', '2010-05-06 00:00:00', 'cvn@testw.adf', '2', 'pp', '12512', 'test@test.com', '$P$DpiUh/.52rNO0l1mcIRJgTWMWkXjCp/', '', '1', null, '2016-05-22 15:33:16', '2016-06-15 23:51:49', 'admin');
+INSERT INTO `customers` VALUES ('3', '5', 'm', 'GASG', 'sd gsgd', 'ASFF', 'normal', '', '', '', '0', '1999-01-05 00:00:00', 'asg@gm.com', '3', 'po', '1241241 52 1255', '', '$P$DWCxvfMUNfRgLmjSP01fkWZIVEL.fB.', '', '1', null, '2016-05-22 15:33:16', '2016-06-16 22:30:03', 'admin');
+INSERT INTO `customers` VALUES ('4', '19', 'm', 'm', 'mk', 'TEST', 'member', '', 'news_thumbnail/Chrome-Red.1466005155.jpg', '', '1', '0000-00-00 00:00:00', 'test@test.com12', null, 'PPca', '123432', '', '', null, '1', null, '2016-05-22 15:33:37', '2016-06-15 23:27:56', 'admin');
+INSERT INTO `customers` VALUES ('5', '12', '', 'asdg', 'sdg', 'test', 'agency', '', '', '', '1', '0000-00-00 00:00:00', 'test32@g.com', '7', 's', 'asf', '', '$P$DmCfvPca7v/8NZYUO1Iz.6q3j7O5ib1', '', '1', null, '2016-05-26 23:49:55', '2016-06-15 23:27:55', 'admin');
+INSERT INTO `customers` VALUES ('6', '12', '', 'Huy ', 'Sokhom', 'huy sokhom', 'member', '', 'huy_sokhom/2016-06-11/image_thumbnail/Alienware Power..jpg', '<ul>\n<li>Zasg</li>\n<li>a</li>\n</ul>', '1', '0000-00-00 00:00:00', 'oop@gmail.com', '8', 'zXasda\ntest@test.com', 'r 41 12', 'asdgwe', '$P$DdiyBErNBisXlvOSVaqI2HIMRnkV1/0', '', '1', null, '2016-05-28 21:12:32', '2016-06-16 23:00:45', 'admin');
+INSERT INTO `customers` VALUES ('7', '0', '', '', '', 'Test', 'normal', '', null, null, '0', '0000-00-00 00:00:00', 'test32@g.com123', '9', '', '', '', '$P$DfaKlfWicS7BMysduo.Iv3iF6pNaCj1', '', '1', null, null, '2016-06-16 22:34:16', 'admin');
+INSERT INTO `customers` VALUES ('8', '18', '', '', '', 'asdg', 'normal', '', '', '', '0', '0000-00-00 00:00:00', 'admin@admin.ca32', '10', 'pp', '08809899', '', '$P$Dt3kL6IccUVgkCX2wskmiP1Ved6/jK0', '', '1', null, null, '2016-06-16 22:34:11', 'admin');
+INSERT INTO `customers` VALUES ('9', '0', '', '', '', 'zXC', 'normal', '', null, null, '0', '0000-00-00 00:00:00', 'as@as.com', '11', '', '', '', '$P$DFoob5PKWHI.y5w2GJjJ93M0vn8a7M0', '', '1', null, '2016-06-15 18:31:05', '2016-06-16 22:29:56', 'admin');
+INSERT INTO `customers` VALUES ('10', '0', '', '', '', 'sda', 'agency', '', null, null, '1', '0000-00-00 00:00:00', 'admin@a2dmin.com', '12', '', '', '', '$P$DxhOZ2qxx74SlYejUGVJnLoDS5PIVM1', '', '1', null, '2016-06-15 18:54:04', '2016-06-15 23:54:10', 'admin');
+INSERT INTO `customers` VALUES ('11', '0', '', '', '', 'ZCV', 'normal', '', null, null, '0', '0000-00-00 00:00:00', 'admin@admin.ca32sd', '13', '', '', '', '$P$D51356im.MCIbnSMdg7veS.SSY1eWM.', '', '1', null, '2016-06-15 18:59:24', '2016-06-16 22:29:53', 'admin');
+INSERT INTO `customers` VALUES ('13', '0', '', '', '', 'tesa', 'agency', '', null, null, '0', '0000-00-00 00:00:00', 'admin@admwein.ca32', '15', '', '', '', '$P$D924hyJDMrfZmj/wdr8ZMLhNy6QQ2W1', '', '1', null, '2016-06-15 19:10:31', '2016-06-16 22:43:28', 'admin');
+INSERT INTO `customers` VALUES ('14', '9', '', '', '', 'ASa', 'agency', '', '', '', '0', '0000-00-00 00:00:00', 'AS@ds.com', '16', 'asdsad', '213113', '1313', '$P$D2UTi7fl/Zq6SLvbd2tYVkhJHv3ecE0', '', '1', null, '2016-06-17 17:07:22', '2016-06-17 22:08:09', null);
 
 -- ----------------------------
 -- Table structure for `customers_basket`
@@ -11154,10 +11145,15 @@ INSERT INTO `customers_info` VALUES ('2', null, '0', '2015-09-30 16:39:51', null
 INSERT INTO `customers_info` VALUES ('3', null, '0', '2015-11-12 19:26:58', '2015-11-12 19:33:11', '0', null, null);
 INSERT INTO `customers_info` VALUES ('4', '2016-01-09 17:10:45', '2', '2016-01-09 17:06:43', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('5', null, '0', '2016-01-10 14:46:31', '2016-01-10 14:52:53', '0', null, null);
-INSERT INTO `customers_info` VALUES ('6', '2016-06-15 17:03:15', '24', '2016-01-14 13:07:07', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('6', '2016-06-18 15:32:54', '25', '2016-01-14 13:07:07', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('7', '2016-06-06 22:28:43', '1', '2016-06-06 21:26:53', null, '0', null, null);
-INSERT INTO `customers_info` VALUES ('8', '2016-06-13 14:42:05', '2', '2016-06-13 14:41:53', null, '0', null, null);
-INSERT INTO `customers_info` VALUES ('9', '2016-06-13 14:42:46', '1', '2016-06-13 14:42:41', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('8', '2016-06-15 23:58:49', '3', '2016-06-15 22:09:17', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('9', null, '0', '2016-06-15 23:31:05', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('10', null, '0', '2016-06-15 23:54:05', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('11', null, '0', '2016-06-15 23:59:24', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('12', null, '0', '2016-06-16 00:07:29', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('13', null, '0', '2016-06-16 00:10:32', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('14', null, '0', '2016-06-17 22:07:22', null, '0', null, null);
 
 -- ----------------------------
 -- Table structure for `customers_sagepay_tokens`
@@ -11202,6 +11198,26 @@ CREATE TABLE `customers_stripe_tokens` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `district`
+-- ----------------------------
+DROP TABLE IF EXISTS `district`;
+CREATE TABLE `district` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `province_id` int(11) DEFAULT NULL,
+  `name_en` varchar(127) DEFAULT NULL,
+  `name_kh` varchar(127) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of district
+-- ----------------------------
+INSERT INTO `district` VALUES ('1', '11', 'UG', null, '2016-06-16 21:47:30', '2016-06-16 22:46:44');
+INSERT INTO `district` VALUES ('4', '5', 'asc', null, '2016-06-16 22:45:57', null);
+
+-- ----------------------------
 -- Table structure for `geo_zones`
 -- ----------------------------
 DROP TABLE IF EXISTS `geo_zones`;
@@ -11233,15 +11249,16 @@ CREATE TABLE `image_slider` (
   `created` datetime NOT NULL,
   `sort_order` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of image_slider
 -- ----------------------------
-INSERT INTO `image_slider` VALUES ('66', 'test', 'news/Koala.1465897421.jpg', 'news_thumbnail/Koala.1465897421.jpg', '', '0', '2015-12-31 12:05:49', '1');
-INSERT INTO `image_slider` VALUES ('81', 'BVD', 'news/Hydrangeas.1465897395.jpg', 'news_thumbnail/Hydrangeas.1465897395.jpg', '', '0', '2015-12-31 14:20:44', '2');
-INSERT INTO `image_slider` VALUES ('83', 'SA', 'news/Penguins.1465897408.jpg', 'news_thumbnail/Penguins.1465897408.jpg', '', '0', '2016-06-14 16:21:05', '2');
-INSERT INTO `image_slider` VALUES ('87', 'AAAs', 'news/Penguins.1465898287.jpg', 'news_thumbnail/Penguins.1465898287.jpg', '', '0', '2016-06-14 16:57:53', '0');
+INSERT INTO `image_slider` VALUES ('66', 'test', 'slide-4.1464274668.jpg', 'image-thumbnail/slide-4.1464274668.jpg', '', '0', '2015-12-31 12:05:49', '1');
+INSERT INTO `image_slider` VALUES ('76', 'ZXSD', 'slide-2.1464274678.jpg', 'image-thumbnail/slide-2.1464274678.jpg', '', '0', '2015-12-31 14:19:01', '3');
+INSERT INTO `image_slider` VALUES ('79', 'ឋខ', 'news/Alienware Laptop.1466089784.jpg', 'news_thumbnail/Alienware Laptop.1466089784.jpg', '', '0', '2015-12-31 14:20:02', '0');
+INSERT INTO `image_slider` VALUES ('81', 'ស​ៗ\"', 'news/slide-3.1466089846.jpg', 'news_thumbnail/slide-3.1466089846.jpg', '', '0', '2015-12-31 14:20:44', '0');
+INSERT INTO `image_slider` VALUES ('82', 'as', 'news/Phnom.Penh_.original.3054.1466090427.jpg', 'news_thumbnail/Phnom.Penh_.original.3054.1466090427.jpg', '', '0', '2016-06-16 22:20:30', '43');
 
 -- ----------------------------
 -- Table structure for `languages`
@@ -11271,7 +11288,8 @@ DROP TABLE IF EXISTS `location`;
 CREATE TABLE `location` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(175) NOT NULL,
-  `created` datetime NOT NULL,
+  `name_kh` varchar(127) DEFAULT NULL,
+  `create_date` datetime NOT NULL,
   `modifies` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
@@ -11279,32 +11297,32 @@ CREATE TABLE `location` (
 -- ----------------------------
 -- Records of location
 -- ----------------------------
-INSERT INTO `location` VALUES ('1', 'Phnom Penh', '2015-11-12 00:00:00', '2015-11-12 11:35:34');
-INSERT INTO `location` VALUES ('2', 'Preah Sihanouk', '2015-11-12 00:00:00', '2015-11-12 11:37:31');
-INSERT INTO `location` VALUES ('3', 'Kampong Cham', '2015-11-12 00:00:00', '2015-11-12 11:37:42');
-INSERT INTO `location` VALUES ('4', 'Siem Reap', '2015-11-12 00:00:00', '2015-11-12 11:37:51');
-INSERT INTO `location` VALUES ('5', 'Battambang', '2015-11-12 00:00:00', '2015-11-12 11:37:59');
-INSERT INTO `location` VALUES ('6', 'Kandal', '2015-11-12 00:00:00', '2015-11-12 11:38:15');
-INSERT INTO `location` VALUES ('7', 'Banteay Meanchey', '2015-11-12 00:00:00', '2015-11-12 11:38:17');
-INSERT INTO `location` VALUES ('8', 'Bavet', '2015-11-12 00:00:00', '2015-11-12 11:38:28');
-INSERT INTO `location` VALUES ('9', 'Kampong Chhnang', '2015-11-12 00:00:00', '2015-11-12 11:38:36');
-INSERT INTO `location` VALUES ('10', 'Kampong Speu', '2015-11-12 00:00:00', '2015-11-12 11:38:44');
-INSERT INTO `location` VALUES ('11', 'Kampong Thom', '2015-11-12 00:00:00', '2015-11-12 11:38:51');
-INSERT INTO `location` VALUES ('12', 'Kampot', '2015-11-12 00:00:00', '2015-11-12 11:38:57');
-INSERT INTO `location` VALUES ('13', 'Keb', '2015-11-12 00:00:00', '2015-11-12 11:39:05');
-INSERT INTO `location` VALUES ('14', 'Koh Kong', '2015-11-12 00:00:00', '2015-11-12 11:39:11');
-INSERT INTO `location` VALUES ('15', 'Kratie', '2015-11-12 00:00:00', '2015-11-12 11:39:17');
-INSERT INTO `location` VALUES ('16', 'Mondulkiri', '2015-11-12 00:00:00', '2015-11-12 11:39:22');
-INSERT INTO `location` VALUES ('17', 'Oddor Meanchey', '2015-11-12 00:00:00', '2015-11-12 11:39:28');
-INSERT INTO `location` VALUES ('18', 'Pailin', '2015-11-12 00:00:00', '2015-11-12 11:39:36');
-INSERT INTO `location` VALUES ('19', 'Poipet', '2015-11-12 00:00:00', '2015-11-12 11:39:51');
-INSERT INTO `location` VALUES ('20', 'Preah Vihear', '2015-11-12 00:00:00', '2015-11-12 11:40:26');
-INSERT INTO `location` VALUES ('21', 'Prey Veng', '2015-11-12 00:00:00', '2015-11-12 11:40:33');
-INSERT INTO `location` VALUES ('22', 'Pursat', '2015-11-12 00:00:00', '2015-11-12 11:40:40');
-INSERT INTO `location` VALUES ('23', 'Rattanakiri', '2015-11-12 00:00:00', '2015-11-12 11:40:48');
-INSERT INTO `location` VALUES ('24', 'Stung Treng', '2015-11-12 00:00:00', '2015-11-12 11:40:56');
-INSERT INTO `location` VALUES ('25', 'Svay Rieng', '2015-11-12 00:00:00', '2015-11-12 11:41:02');
-INSERT INTO `location` VALUES ('26', 'Takeo', '2015-11-12 00:00:00', '2015-11-12 11:41:13');
+INSERT INTO `location` VALUES ('1', 'Phnom Penh', null, '2015-11-12 00:00:00', '2015-11-12 11:35:34');
+INSERT INTO `location` VALUES ('2', 'Preah Sihanouk', null, '2015-11-12 00:00:00', '2015-11-12 11:37:31');
+INSERT INTO `location` VALUES ('3', 'Kampong Cham', null, '2015-11-12 00:00:00', '2015-11-12 11:37:42');
+INSERT INTO `location` VALUES ('4', 'Siem Reap1ew', null, '2015-11-12 00:00:00', '2016-06-16 22:07:11');
+INSERT INTO `location` VALUES ('5', 'Battambang', null, '2015-11-12 00:00:00', '2015-11-12 11:37:59');
+INSERT INTO `location` VALUES ('6', 'Kandal', null, '2015-11-12 00:00:00', '2015-11-12 11:38:15');
+INSERT INTO `location` VALUES ('7', 'Banteay Meanchey', null, '2015-11-12 00:00:00', '2015-11-12 11:38:17');
+INSERT INTO `location` VALUES ('8', 'Bavet', null, '2015-11-12 00:00:00', '2015-11-12 11:38:28');
+INSERT INTO `location` VALUES ('9', 'Kampong Chhnang', null, '2015-11-12 00:00:00', '2015-11-12 11:38:36');
+INSERT INTO `location` VALUES ('10', 'Kampong Speu', null, '2015-11-12 00:00:00', '2015-11-12 11:38:44');
+INSERT INTO `location` VALUES ('11', 'Kampong Thom', null, '2015-11-12 00:00:00', '2015-11-12 11:38:51');
+INSERT INTO `location` VALUES ('12', 'Kampot', null, '2015-11-12 00:00:00', '2015-11-12 11:38:57');
+INSERT INTO `location` VALUES ('13', 'Keb', null, '2015-11-12 00:00:00', '2015-11-12 11:39:05');
+INSERT INTO `location` VALUES ('14', 'Koh Kong', null, '2015-11-12 00:00:00', '2015-11-12 11:39:11');
+INSERT INTO `location` VALUES ('15', 'Kratie', null, '2015-11-12 00:00:00', '2015-11-12 11:39:17');
+INSERT INTO `location` VALUES ('16', 'Mondulkiri', null, '2015-11-12 00:00:00', '2015-11-12 11:39:22');
+INSERT INTO `location` VALUES ('17', 'Oddor Meanchey', null, '2015-11-12 00:00:00', '2015-11-12 11:39:28');
+INSERT INTO `location` VALUES ('18', 'Pailin', null, '2015-11-12 00:00:00', '2015-11-12 11:39:36');
+INSERT INTO `location` VALUES ('19', 'Poipet', null, '2015-11-12 00:00:00', '2015-11-12 11:39:51');
+INSERT INTO `location` VALUES ('20', 'Preah Vihear', null, '2015-11-12 00:00:00', '2015-11-12 11:40:26');
+INSERT INTO `location` VALUES ('21', 'Prey Veng', null, '2015-11-12 00:00:00', '2015-11-12 11:40:33');
+INSERT INTO `location` VALUES ('22', 'Pursat', null, '2015-11-12 00:00:00', '2015-11-12 11:40:40');
+INSERT INTO `location` VALUES ('23', 'Rattanakiri', null, '2015-11-12 00:00:00', '2015-11-12 11:40:48');
+INSERT INTO `location` VALUES ('24', 'Stung Treng', null, '2015-11-12 00:00:00', '2015-11-12 11:40:56');
+INSERT INTO `location` VALUES ('25', 'Svay Rieng', null, '2015-11-12 00:00:00', '2015-11-12 11:41:02');
+INSERT INTO `location` VALUES ('26', 'Takeo', null, '2015-11-12 00:00:00', '2015-11-12 11:41:13');
 
 -- ----------------------------
 -- Table structure for `manufacturers`
@@ -11368,7 +11386,7 @@ CREATE TABLE `news` (
   `modified_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `news_type_id` (`news_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of news
@@ -11378,11 +11396,14 @@ INSERT INTO `news` VALUES ('17', '3', '0', '1', '6', 'huy_sokhom/2016-06-01/imag
 INSERT INTO `news` VALUES ('10', '5', '0', '0', '6', 'huy_sokhom/2016-06-01/images/Alienware Blue..jpg', 'huy_sokhom/2016-06-01/image_thumbnail/Alienware Blue..jpg', '2016-06-01 17:36:18', null, null, '2016-06-07 22:09:04');
 INSERT INTO `news` VALUES ('14', '5', '0', '0', '6', 'huy_sokhom/2016-06-01/images/Alienware Power..jpg', 'huy_sokhom/2016-06-01/image_thumbnail/Alienware Power..jpg', '2016-06-01 17:37:56', null, null, '2016-06-07 22:09:06');
 INSERT INTO `news` VALUES ('15', '5', '0', '1', '6', 'huy_sokhom/2016-06-01/images/Chrysanthemum..jpg', 'huy_sokhom/2016-06-01/image_thumbnail/Chrysanthemum..jpg', '2016-06-01 18:58:30', null, '', '2016-06-07 22:09:32');
-INSERT INTO `news` VALUES ('19', '4', '0', '1', '6', 'huy_sokhom/2016-06-02/images/Singacity Logo..png', 'huy_sokhom/2016-06-02/image_thumbnail/Singacity Logo..png', '2016-06-02 21:38:56', 'huy sokhom', 'admin', '2016-06-14 15:03:06');
-INSERT INTO `news` VALUES ('20', '3', '0', '1', '6', '', '', '2016-06-02 21:41:10', 'huy sokhom', 'admin', '2016-06-14 15:03:26');
-INSERT INTO `news` VALUES ('21', '5', '0', '1', '6', '', '', '2016-06-02 21:41:18', 'huy sokhom', 'admin', '2016-06-14 15:17:16');
-INSERT INTO `news` VALUES ('25', '3', '0', '1', '6', 'news/Tulips.1465141520.jpg', 'news_thumbnail/Tulips.1465141520.jpg', '2016-06-02 21:42:00', 'huy sokhom', 'admin', '2016-06-14 15:17:16');
-INSERT INTO `news` VALUES ('34', '4', '0', '1', '0', 'news/Koala.1465893110.jpg', 'news_thumbnail/Koala.1465893110.jpg', '2016-06-14 15:32:02', 'admin', 'admin', '2016-06-15 15:55:51');
+INSERT INTO `news` VALUES ('33', '4', '0', '0', '6', 'huy_sokhom/2016-06-16/images/Phnom.Penh_.original.3054..jpg', 'huy_sokhom/2016-06-16/image_thumbnail/Phnom.Penh_.original.3054..jpg', '2016-06-16 23:06:46', 'huy sokhom', 'huy sokhom', '2016-06-16 23:07:00');
+INSERT INTO `news` VALUES ('19', '4', '0', '1', '6', 'huy_sokhom/2016-06-02/images/Singacity Logo..png', 'huy_sokhom/2016-06-02/image_thumbnail/Singacity Logo..png', '2016-06-02 21:38:56', 'huy sokhom', '', '2016-06-07 22:09:36');
+INSERT INTO `news` VALUES ('20', '3', '0', '1', '6', '', '', '2016-06-02 21:41:10', 'huy sokhom', '', '2016-06-07 22:09:08');
+INSERT INTO `news` VALUES ('21', '5', '0', '1', '6', '', '', '2016-06-02 21:41:18', 'huy sokhom', '', '2016-06-07 22:09:07');
+INSERT INTO `news` VALUES ('25', '3', '0', '1', '6', 'news/Tulips.1465141520.jpg', 'news_thumbnail/Tulips.1465141520.jpg', '2016-06-02 21:42:00', 'huy sokhom', 'huy sokhom', '2016-06-16 23:06:20');
+INSERT INTO `news` VALUES ('29', '4', '0', '1', '0', 'Alienware builds.1465140282.jpg', 'news/Alienware builds.1465140282.jpg', '2016-06-05 22:29:55', '', 'admin', '2016-06-14 22:21:07');
+INSERT INTO `news` VALUES ('30', '4', '0', '1', '0', 'news/Jellyfish.1465140632.jpg', 'news_thumbnail/Jellyfish.1465140632.jpg', '2016-06-05 22:30:47', '', 'admin', '2016-06-14 22:21:06');
+INSERT INTO `news` VALUES ('31', '5', '0', '1', '0', 'news/Chrysanthemum.1465226674.jpg', 'news_thumbnail/Chrysanthemum.1465226674.jpg', '2016-06-06 22:24:37', 'admin', 'admin', '2016-06-14 22:21:06');
 
 -- ----------------------------
 -- Table structure for `newsletters`
@@ -11418,7 +11439,7 @@ CREATE TABLE `news_description` (
   `content` longtext,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of news_description
@@ -11441,10 +11462,16 @@ INSERT INTO `news_description` VALUES ('39', '20', null, '1', 'ក្រុម�
 INSERT INTO `news_description` VALUES ('40', '20', null, '2', 'ក្រុម​កម្ពុជា​', '<div class=\"contentnewsimgpop\">\n<div>ក្រុមកម្ពុជា ស៊ុតចូលពីរគ្រាប់ដោយកីឡាករ កែវ សុខផេង នាទីទី៨ និងឈិន ឈឿននៅនាទី៣១ ខណៈពីគ្រាប់របស់ក្រុមម្ចាស់ផ្ទះរកបានដោយកីឡាករ Wen Chih-hao នាទីទី៦និង Po-liang Chen នាទី២២។ ចូលតង់ទីពីរក្រុមកម្ពុជាមានឪកាសស៊ុតបាល់ប៉េណាល់ទីមួយគ្រាប់ដែរប៉ុន្តែ ចាន់ វឌ្ឍនាការស៊ុតមិនបានសម្រេច។</div>\n<div>&nbsp;</div>\n<div>&nbsp;</div>\n</div>\n<div align=\"center\"><iframe src=\"https://www.youtube.com/embed/98heHprkN3o?rel=0&amp;controls=0&amp;showinfo=0\" width=\"715\" height=\"402\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></div>', null);
 INSERT INTO `news_description` VALUES ('41', '21', null, '1', 'asdg', '<div class=\"contentnewsimgpop\">\n<div>ក្រុមកម្ពុជា ស៊ុតចូលពីរគ្រាប់ដោយកីឡាករ កែវ សុខផេង នាទីទី៨ និងឈិន ឈឿននៅនាទី៣១ ខណៈពីគ្រាប់របស់ក្រុមម្ចាស់ផ្ទះរកបានដោយកីឡាករ Wen Chih-hao នាទីទី៦និង Po-liang Chen នាទី២២។ ចូលតង់ទីពីរក្រុមកម្ពុជាមានឪកាសស៊ុតបាល់ប៉េណាល់ទីមួយគ្រាប់ដែរប៉ុន្តែ ចាន់ វឌ្ឍនាការស៊ុតមិនបានសម្រេច។</div>\n<div>&nbsp;</div>\n<div>&nbsp;</div>\n</div>\n<div align=\"center\"><iframe src=\"https://www.youtube.com/embed/98heHprkN3o?rel=0&amp;controls=0&amp;showinfo=0\" width=\"715\" height=\"402\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></div>', null);
 INSERT INTO `news_description` VALUES ('42', '21', null, '2', 'asdg', '<div class=\"contentnewsimgpop\">\n<div>ក្រុមកម្ពុជា ស៊ុតចូលពីរគ្រាប់ដោយកីឡាករ កែវ សុខផេង នាទីទី៨ និងឈិន ឈឿននៅនាទី៣១ ខណៈពីគ្រាប់របស់ក្រុមម្ចាស់ផ្ទះរកបានដោយកីឡាករ Wen Chih-hao នាទីទី៦និង Po-liang Chen នាទី២២។ ចូលតង់ទីពីរក្រុមកម្ពុជាមានឪកាសស៊ុតបាល់ប៉េណាល់ទីមួយគ្រាប់ដែរប៉ុន្តែ ចាន់ វឌ្ឍនាការស៊ុតមិនបានសម្រេច។</div>\n<div>&nbsp;</div>\n<div>&nbsp;</div>\n</div>\n<div align=\"center\"><iframe src=\"https://www.youtube.com/embed/98heHprkN3o?rel=0&amp;controls=0&amp;showinfo=0\" width=\"715\" height=\"402\" frameborder=\"0\" allowfullscreen=\"allowfullscreen\"></iframe></div>', null);
-INSERT INTO `news_description` VALUES ('49', '25', null, '1', 'CHange', '<p>ហ៊ុយ សុខុុម</p>', null);
-INSERT INTO `news_description` VALUES ('50', '25', null, '2', 'Change', '<div class=\"contentnewsimgpop\">\n<div>&nbsp;ហ៊ុយ សុខុុម</div>\n</div>\n<div align=\"center\">&nbsp;</div>', null);
-INSERT INTO `news_description` VALUES ('68', '34', null, '2', 'sdg', '<p>t at 3434h g3hr&nbsp;</p>', null);
-INSERT INTO `news_description` VALUES ('67', '34', null, '1', 'sdG $G', '<p>&nbsp;hfdh ssss dsfhsh&nbsp;</p>', null);
+INSERT INTO `news_description` VALUES ('62', '31', null, '2', '32cwzs', '<p>&nbsp;f23 casd</p>', null);
+INSERT INTO `news_description` VALUES ('61', '31', null, '1', 'C#', '<p>f32f&nbsp;</p>', null);
+INSERT INTO `news_description` VALUES ('49', '25', null, '1', 'op', '<ul>\n<li>ហ៊ុយ សុខុុម 13&nbsp;</li>\n</ul>', null);
+INSERT INTO `news_description` VALUES ('65', '33', null, '1', 'as d', '<p>wg &nbsp;g wg wg&nbsp;</p>', null);
+INSERT INTO `news_description` VALUES ('66', '33', null, '2', 'wewweg', '<p>wg &nbsp;g g w</p>', null);
+INSERT INTO `news_description` VALUES ('50', '25', null, '2', 'da', '<div class=\"contentnewsimgpop\">\n<div style=\"text-align: center;\">&nbsp;ហ៊ុយ សុខុុម1 w3</div>\n</div>', null);
+INSERT INTO `news_description` VALUES ('57', '29', null, '1', '23', '<p>sadg</p>', null);
+INSERT INTO `news_description` VALUES ('58', '29', null, '2', 'af 23', '<p>23 f23</p>', null);
+INSERT INTO `news_description` VALUES ('59', '30', null, '1', 'GG', '<p>QW</p>', null);
+INSERT INTO `news_description` VALUES ('60', '30', null, '2', '12casv', '<p>R</p>', null);
 
 -- ----------------------------
 -- Table structure for `news_replys`
@@ -11480,16 +11507,14 @@ CREATE TABLE `news_type` (
   `modifies_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of news_type
 -- ----------------------------
 INSERT INTO `news_type` VALUES ('3', 'Events & Annoucements', 'Events & Annoucements', '2016-06-06 23:08:34', 'admin', 'admin', '2016-06-06 23:10:36', '1');
 INSERT INTO `news_type` VALUES ('4', 'Home & Living', 'Home & Living', '2016-06-06 23:10:45', 'admin', null, null, '1');
-INSERT INTO `news_type` VALUES ('5', 'Location Profiles', 'Location Profiles', '2016-06-06 23:11:01', 'admin', null, null, '1');
-INSERT INTO `news_type` VALUES ('6', 'asdgaweg', 'asdgag', '2016-06-14 15:42:05', 'admin', null, null, '1');
-INSERT INTO `news_type` VALUES ('9', 'CS', 'AF F #F', '2016-06-14 15:47:13', 'admin', null, null, '1');
+INSERT INTO `news_type` VALUES ('5', 'Location Profilesedf', 'Location Profiles12', '2016-06-06 23:11:01', 'admin', 'admin', '2016-06-14 00:16:43', '1');
 
 -- ----------------------------
 -- Table structure for `orders`
@@ -11769,30 +11794,40 @@ INSERT INTO `popular_search` VALUES ('3', null, 'ព្រះវិហារ', '
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `products_id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_id` int(11) NOT NULL,
+  `province_id` int(11) NOT NULL,
   `customers_id` int(11) NOT NULL,
-  `products_quantity` int(4) NOT NULL,
-  `products_model` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_image` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `products_image_thumbnail` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
-  `products_price` decimal(15,4) NOT NULL,
-  `products_date_added` datetime NOT NULL,
+  `products_image_thumbnail` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products_kind_of` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products_price` decimal(15,4) DEFAULT NULL,
+  `map` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bed_rooms` int(11) DEFAULT NULL,
+  `bath_rooms` int(11) DEFAULT NULL,
+  `number_of_floors` int(11) DEFAULT NULL,
+  `village_id` int(11) DEFAULT NULL,
+  `district_id` int(11) DEFAULT NULL,
+  `products_status` tinyint(1) NOT NULL DEFAULT '0',
+  `products_ordered` int(11) DEFAULT '0',
+  `products_date_added` datetime DEFAULT NULL,
   `products_last_modified` datetime DEFAULT NULL,
   `products_date_available` datetime DEFAULT NULL,
-  `products_weight` decimal(5,2) NOT NULL,
-  `products_status` tinyint(1) NOT NULL,
-  `products_tax_class_id` int(11) NOT NULL,
+  `products_model` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `products_quantity` int(4) DEFAULT '0',
+  `products_weight` decimal(5,2) DEFAULT NULL,
+  `products_tax_class_id` int(11) DEFAULT NULL,
   `manufacturers_id` int(11) DEFAULT NULL,
-  `products_ordered` int(11) NOT NULL DEFAULT '0',
+  `create_date` datetime DEFAULT NULL,
+  `modifies_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `update_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`products_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('138', '5', '0', '0', '', 'real_estate.png', 'real_estate.png', '0.0000', '2016-05-15 17:08:24', null, null, '0.00', '1', '0', '3', '0');
+INSERT INTO `products` VALUES ('3', '3', '0', null, '', null, '0.0000', null, null, null, null, null, null, '1', '0', '2016-06-18 16:10:07', null, '0000-00-00 00:00:00', '', '23', '0.00', '1', '7', null, null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -11835,21 +11870,22 @@ INSERT INTO `products_attributes_download` VALUES ('26', 'unreal.zip', '7', '3')
 -- ----------------------------
 DROP TABLE IF EXISTS `products_description`;
 CREATE TABLE `products_description` (
-  `products_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `products_id` int(11) NOT NULL,
   `language_id` int(11) NOT NULL DEFAULT '1',
   `products_name` varchar(127) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `products_description` text COLLATE utf8_unicode_ci,
   `products_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `products_viewed` int(5) DEFAULT '0',
-  PRIMARY KEY (`products_id`,`language_id`),
+  PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
 -- ----------------------------
-INSERT INTO `products_description` VALUES ('138', '1', 'Embassy Central , BKK 1, Phnom Penh | New Development for sale in Chamkarmon BKK 1', '<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">Embassy Central is set to become Phnom Penh&rsquo;s most prestigious urban address. Located in the the heart of BKK1, Cambodia&rsquo;s most desirable residential district, Embassy Central brings together contemporary design of the highest standards, sleek interiors and fittings, and a trademark sky garden perfect for star gazers.</p>\r\n<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">With 119 prime freehold units over 25 storeys, and a full selection of penthouse, 1, 2, and 3 bedroom units all available, there is something for everybody at Embassy Central.</p>\r\n<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">All residents can enjoy the swimming pool and sun deck, multi-function room, fitness center, BBQ deck, children&rsquo;s playground, sauna, outdoor dining area, and the yoga and the unique meditation garden.</p>\r\n<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">Step outside of Embassy Central to an array of Phnom Penh&rsquo;s hippest restaurants, cafes, spas and shopping and entertainment venues, all minutes from your home.</p>\r\n<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">Embassy Central is brought to you by Urbanland Asia, a development company with vast experience across the region, and the company that brought Phnom Penh the hugely popular Embassy Residences project.</p>\r\n<p style=\\\"margin: 0px 0px 10px; padding: 0px; border: 0px; outline: 0px; font-size: 14px; vertical-align: baseline; white-space: pre-wrap; word-wrap: break-word; line-height: 21px; font-family: source_sans_proregular, Arial, Helvetica, sans-serif; color: #363636; font-stretch: normal !important; background-image: initial; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;\\\">Inquire today and learn more about this great investment!</p>', '', '2');
-INSERT INTO `products_description` VALUES ('138', '2', 'ស្ថានទូតអាមេរិកកណ្តាល, សង្កាត់បឹងកេងកង 1 រាជធានីភ្នំពេញ | ការអភិវឌ្ឍថ្មីសម្រាប់លក់នៅចំការមនសង្កាត់បឹងកេងកង 1', '<p>ស្ថានទូតអាមេរិកកណ្តាលត្រូវបានកំណត់ដើម្បីក្លាយជាទីក្រុងដែលមានកិត្យានុភាពបំផុតអាសយដ្ឋាននៅរាជធានីភ្នំពេញ។ ទីតាំងស្ថិតនៅក្នុងបេះដូងនៃសង្កាត់បឹងកេងកង 1, ខណ្ឌលំនៅដ្ឋានចង់បានបំផុតរបស់ប្រទេសកម្ពុជាបាននាំមកនូវការរួមគ្នាស្ថានទូតកណ្តាលសហសម័យនៃការរចនាស្តង់ដាខ្ពស់បំផុតខាងក្នុងរលោងនិងបំពង់បង្ហូរទឹកនិងសួនច្បារមេឃយីហោមួយដែលល្អឥតខ្ចោះសម្រាប់ gazers តារា។</p>\r\n<p>&nbsp;</p>\r\n<p>ជាមួយនឹងការ 119 គ្រឿងនាយករដ្ឋមជាង 25 ជាន់តានិងការជ្រើសរើសពេញលេញនៃការជាន់លើបង្អស់, 1, 2, និង 3 គ្រឿងបន្ទប់គេងដែលមានទាំងអស់, មានគឺជាអ្វីមួយសម្រាប់អ្នករាល់គ្នានៅឯស្ថានទូតកណ្តាល។</p>\r\n<p>&nbsp;</p>\r\n<p>អ្នកស្រុកទាំងអស់អាចរីករាយជាមួយនឹងអាងហែលទឹកនិងនាវាព្រះអាទិត្យ, បន្ទប់ពហុមុខងារ, កណ្តាលសម្បទា, នាវាសាច់អាំងកន្លែងលេងរបស់កុមារ, sauna, តំបន់បរិភោគអាហារក្រៅនិងយោគៈនិងសួនច្បារធ្វើសមាធិនេះតែមួយគត់។</p>\r\n<p>&nbsp;</p>\r\n<p>ជំហាននៅក្រៅស្ថានទូតកណ្តាលទៅអារេនៃភោជនីយដ្ឋាន hippest ហាងស្ប៉ារបស់រាជធានីភ្នំពេញនិងកន្លែងដើរទិញឥវ៉ាន់និងការកំសាន្ត, នាទីទាំងអស់ពីផ្ទះរបស់អ្នក។</p>\r\n<p>&nbsp;</p>\r\n<p>ស្ថានទូតអាមេរិកកណ្តាលត្រូវបាននាំយកទៅអ្នកដោយ Urbanland តំបន់អាស៊ីដែលជាក្រុមហ៊ុនអភិវឌ្ឍន៍មួយដែលមានបទពិសោធយ៉ាងច្រើននៅទូទាំងតំបន់និងក្រុមហ៊ុនដែលបាននាំរាជធានីភ្នំពេញដែលគម្រោងរស់នៅពេញនិយមយ៉ាងខ្លាំងនៅស្ថានទូតនេះ។</p>\r\n<p>&nbsp;</p>\r\n<p>សួរនៅថ្ងៃនេះនិងរៀនបន្ថែមទៀតអំពីការវិនិយោគយ៉ាងខ្លាំងនេះ!</p>', '', '4');
+INSERT INTO `products_description` VALUES ('1', '3', '1', 'Gweg', 'hsdfhfsda', '', '4353');
+INSERT INTO `products_description` VALUES ('2', '3', '2', 'ប្រពន្ដ', 'សខថដាដថហ', '', '4353');
 
 -- ----------------------------
 -- Table structure for `products_images`
@@ -11862,14 +11898,16 @@ CREATE TABLE `products_images` (
   `image_thumbnail` varchar(220) COLLATE utf8_unicode_ci NOT NULL,
   `htmlcontent` text COLLATE utf8_unicode_ci,
   `sort_order` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`,`products_id`),
   KEY `products_images_prodid` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_images
 -- ----------------------------
-INSERT INTO `products_images` VALUES ('225', '138', 'real_estate_workflow.png', 'real_estate_workflow.png', '', '1');
+INSERT INTO `products_images` VALUES ('1', '3', 'sd', 'as', null, '0');
+INSERT INTO `products_images` VALUES ('2', '3', 'dd', 'q2', null, '0');
+INSERT INTO `products_images` VALUES ('3', '3', 'qwex', 'ds', null, '0');
 
 -- ----------------------------
 -- Table structure for `products_notifications`
@@ -11982,15 +12020,16 @@ INSERT INTO `products_options_values_to_products_options` VALUES ('14', '1', '14
 -- ----------------------------
 DROP TABLE IF EXISTS `products_to_categories`;
 CREATE TABLE `products_to_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
-  PRIMARY KEY (`products_id`,`categories_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`,`products_id`,`categories_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
 -- ----------------------------
-INSERT INTO `products_to_categories` VALUES ('138', '38');
+INSERT INTO `products_to_categories` VALUES ('1', '3', '0');
 
 -- ----------------------------
 -- Table structure for `product_contact_person`
@@ -12138,12 +12177,11 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('fdia636ir66sli8vs6sqt2d9b0', '1465985116', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('h7i415vv19ahmnprc6j1tb3g75', '1465812045', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('kl0qphuepalc04kjba4f3od186', '1465984997', 'sessiontoken|s:32:\"a2f5b61206f4cbbe5a99ab2e912369a8\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"96003\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:3:{s:6:\"formid\";s:32:\"bb3751cf24b5b52cb824a42d34bd7fb2\";s:13:\"email_address\";s:13:\"oop@gmail.com\";s:8:\"password\";s:7:\"test123\";}}i:2;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:6;user_name|s:12:\"huy sokhom#Q\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('nev2j6psi53uvb8ctee4feaek7', '1465809942', 'sessiontoken|s:32:\"76c4451c6f027c56504cf90a8a8294e1\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
-INSERT INTO `sessions` VALUES ('r8s36fk6q8814e2e7l0u9m9s66', '1465898347', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('t1deujer9ajbtvfj9ulq5587b6', '1465898248', 'sessiontoken|s:32:\"b8fd0f028535e9c2cf7d0a341ee511e8\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";N;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('0oobhpt8larte88jeromteqhq1', '1466241114', 'sessiontoken|s:32:\"85df16c89e374327ac3ec7075d8491fd\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"00252\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:6;user_name|s:10:\"huy sokhom\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('f6j1bmp13kc8ir2vgdrq3u5p20', '1466320321', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('ga8uccvfiacg56bemd2jog2oj0', '1466258902', 'sessiontoken|s:32:\"7096271c43385b4784c14f0f1b85d7ed\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('lnc2fsnp62colth2a5fl4o09t4', '1466241017', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('nnlapel17j5fj759tcpq9f57g3', '1466260147', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 
 -- ----------------------------
 -- Table structure for `specials`
@@ -12206,6 +12244,30 @@ CREATE TABLE `tax_rates` (
 INSERT INTO `tax_rates` VALUES ('1', '1', '1', '1', '7.0000', 'FL TAX 7.0%', '2015-02-26 16:56:42', '2015-02-26 16:56:42');
 
 -- ----------------------------
+-- Table structure for `village`
+-- ----------------------------
+DROP TABLE IF EXISTS `village`;
+CREATE TABLE `village` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `district_id` int(11) DEFAULT NULL,
+  `name_en` varchar(127) DEFAULT NULL,
+  `name_kh` varchar(127) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of village
+-- ----------------------------
+INSERT INTO `village` VALUES ('3', '1', 'af', null, '2016-06-16 22:05:44', null);
+INSERT INTO `village` VALUES ('4', '3', 'ASF', null, '2016-06-16 22:05:52', null);
+INSERT INTO `village` VALUES ('5', '1', 'fAS CV', null, '2016-06-16 22:06:09', null);
+INSERT INTO `village` VALUES ('6', '1', 'SAC S', null, '2016-06-16 22:06:18', null);
+INSERT INTO `village` VALUES ('7', '1', 'afcv wv', null, '2016-06-16 22:06:24', null);
+INSERT INTO `village` VALUES ('8', '3', 'ewfv', null, '2016-06-16 22:06:28', null);
+
+-- ----------------------------
 -- Table structure for `whos_online`
 -- ----------------------------
 DROP TABLE IF EXISTS `whos_online`;
@@ -12223,7 +12285,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('6', 'Huy  Sokhom', 'kl0qphuepalc04kjba4f3od186', '', '1465984988', '1465984997', '/realEstate/api/Session/Customer/');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'ga8uccvfiacg56bemd2jog2oj0', '', '1466258901', '1466258901', '/realEstate/');
 
 -- ----------------------------
 -- Table structure for `zones`
