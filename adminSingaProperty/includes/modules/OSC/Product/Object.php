@@ -6,10 +6,10 @@ use
 	Aedea\Core\Database\StdObject as DbObj
 	, OSC\ProductDescription\Collection
 			as ProductDescriptionCol
-	, OSC\ProductToCategory\Collection
-		as ProductToCategoryCol
-	, OSC\ProductContactPerson\Collection
-		as ProductContactPerson
+	, OSC\Customer\Collection
+		as CustomerCol
+	, OSC\CategoriesDescription\Collection
+		as CategoryCollection
 	, OSC\ProductImage\Collection
 		as ProductImageCol
 ;
@@ -34,6 +34,8 @@ class Object extends DbObj {
 		, $imageDetail
         , $productDetail
 		, $categoriesId
+		, $categoryDetail
+		, $customersDetail
 	;
 	
 	public function toArray( $params = array() ){
@@ -41,6 +43,8 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'categories_id',
+				'category_detail',
+				'customers_detail',
 				'customers_id',
 				'province_id',
                 'district_id',
@@ -49,6 +53,7 @@ class Object extends DbObj {
 				'products_image_thumbnail',
 				'products_price',
 				'create_date',
+				'create_by',
 				'products_status',
 				'products_kind_of',
 				'bed_rooms',
@@ -65,8 +70,8 @@ class Object extends DbObj {
  		parent::__construct($params);
 
  		$this->productDetail = new ProductDescriptionCol();
-//		$this->category = new ProductToCategoryCol();
-//		$this->contact = new ProductContactPerson();
+		$this->customersDetail = new CustomerCol();
+		$this->categoryDetail = new CategoryCollection();
 		$this->imageDetail = new ProductImageCol();
 	}
 
@@ -87,7 +92,8 @@ class Object extends DbObj {
 				bed_rooms,
 				bath_rooms,
 				number_of_floors,
-				create_date
+				create_date,
+				create_by
 			FROM
 				products
 			WHERE
@@ -103,14 +109,14 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-//		$this->contact->setFilter('products_id', $this->getId());
-//		$this->contact->populate();
+		$this->customersDetail->setFilter('id', $this->getCustomersId());
+		$this->customersDetail->populate();
 
  		$this->productDetail->setFilter('id', $this->getId());
  		$this->productDetail->populate();
 
-//		$this->category->setFilter('id', $this->getId());
-//		$this->category->populate();
+		$this->categoryDetail->setFilter('categories_id', $this->getCategoriesId());
+		$this->categoryDetail->populate();
 //
 		$this->imageDetail->setFilter('products_id', $this->getId());
 		$this->imageDetail->populate();
@@ -369,4 +375,19 @@ class Object extends DbObj {
     public function setNumberOfFloors( $int ){
         $this->numberOfFloors = (int)$int;
     }
+
+	public function getCategoryDetail(){
+		return $this->categoryDetail;
+	}
+	public function setCategoryDetail( $array ){
+		$this->categoryDetail = $array;
+	}
+
+	public function getCustomersDetail(){
+		return $this->customersDetail;
+	}
+	public function setCustomersDetail( $array ){
+		$this->customersDetail = $array;
+	}
+
 }

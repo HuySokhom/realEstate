@@ -79,6 +79,11 @@ app.config([
 				templateUrl: 'js/ng/app/product/partials/index.html',
 				controller: 'product_ctrl'
 			})
+			.state('/product/edit/:id', {
+				url: '/product/edit/:id',
+				templateUrl: 'js/ng/app/product/partials/product_edit.html',
+				controller: 'product_edit_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url

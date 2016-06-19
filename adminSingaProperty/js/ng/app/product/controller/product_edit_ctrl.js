@@ -1,5 +1,5 @@
 app.controller(
-	'product_ctrl', [
+	'product_edit_ctrl', [
 	'$scope'
 	, 'Restful'
 	, 'Services'
@@ -8,7 +8,7 @@ app.controller(
 	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
 		var params = {};
-		var url = 'api/Product';
+		var url = 'api/Product/';
 		function init(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products = data;
@@ -19,7 +19,7 @@ app.controller(
 
 		$scope.edit = function(params){
 			console.log(params);
-			$location.path('/product/edit/' + params.id);
+			$location.path('/product/' + params.id);
 		};
 
 		$scope.remove = function($index, params){

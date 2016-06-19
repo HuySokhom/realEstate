@@ -96,6 +96,10 @@
     type="text/javascript"
     src="js/ng/app/product/controller/product_ctrl.js"
 ></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/product/controller/product_edit_ctrl.js"
+></script>
 <!--- End category and product plugin --->
 
 </body>

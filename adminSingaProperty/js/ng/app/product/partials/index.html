@@ -5,7 +5,7 @@
 	data-ng-click="add();"
 >
 	<span class="glyphicon glyphicon-plus"></span>
-	Add Image
+	Add Product
 </button>
 <br/><br/>
 <table class="table table-striped table-bordered default-font">
@@ -14,10 +14,22 @@
 			Id
 		</th>
 		<th>
+			Category
+		</th>
+		<th>
 			Name
 		</th>
 		<th>
 			Description
+		</th>
+		<th>
+			Price
+		</th>
+		<th>
+			View
+		</th>
+		<th>
+			Create By
 		</th>
 		<th>
 			Action
@@ -35,10 +47,23 @@
 			{{p.id}}
 		</td>
 		<td>
+			{{p.category_detail[0].categories_name}}
+		</td>
+		<td>
 			<span data-ng-bind="p.product_detail[0].products_name"></span>
 		</td>
 		<td>
 			<span data-ng-bind="p.product_detail[0].products_description"></span>
+		</td>
+		<td>
+			{{p.products_price | currency}}
+		</td>
+		<td>
+			<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
+		</td>
+		<td>
+			<span data-ng-bind="p.customers_detail[0].user_name" data-ng-if="p.customers_id != 0"></span>
+			<span data-ng-bind="p.create_by" data-ng-if="p.customers_id == 0"></span>
 		</td>
 		<td width="">
 			<button

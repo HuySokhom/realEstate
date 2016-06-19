@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-06-19 16:44:46
+Date: 2016-06-19 22:39:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -68,6 +68,7 @@ INSERT INTO `action_recorder` VALUES ('28', 'ar_admin_login', '0', 'oop@gmail.co
 INSERT INTO `action_recorder` VALUES ('29', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-18 21:10:32');
 INSERT INTO `action_recorder` VALUES ('30', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 11:06:43');
 INSERT INTO `action_recorder` VALUES ('31', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 14:47:13');
+INSERT INTO `action_recorder` VALUES ('32', 'ar_admin_login', '1', 'admin', '', '1', '2016-06-19 20:58:05');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -11821,6 +11822,7 @@ CREATE TABLE `products` (
   `create_date` datetime DEFAULT NULL,
   `modifies_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `update_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `create_by` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
@@ -11829,8 +11831,8 @@ CREATE TABLE `products` (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('3', '0', '4', '0', null, '', null, '10.6200', null, null, null, null, null, null, '1', '0', '2016-06-18 16:10:07', null, '0000-00-00 00:00:00', '', '23', '0.00', '1', '7', null, '2016-06-19 15:18:00', null);
-INSERT INTO `products` VALUES ('4', '0', '0', '0', null, null, null, '56.0000', null, null, null, null, null, null, '1', '0', '2016-06-19 15:21:11', null, '0000-00-00 00:00:00', '', '0', '0.00', '0', '3', null, null, null);
+INSERT INTO `products` VALUES ('3', '56', '4', '0', null, '', null, '10.6200', null, null, null, null, null, null, '1', '0', '2016-06-18 16:10:07', null, '0000-00-00 00:00:00', '', '23', '0.00', '1', '7', null, '2016-06-19 22:32:18', null, 'admin');
+INSERT INTO `products` VALUES ('4', '55', '0', '6', null, null, null, '56.0000', null, null, null, null, null, null, '1', '0', '2016-06-19 15:21:11', null, '0000-00-00 00:00:00', '', '0', '0.00', '0', '3', null, '2016-06-19 22:24:03', null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -12188,7 +12190,9 @@ INSERT INTO `sessions` VALUES ('8tst43q5116etnim48hbt1l3r6', '1466325588', 'sess
 INSERT INTO `sessions` VALUES ('9g66ehipk58k9nb4p2is2hkg45', '1466329426', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('f6j1bmp13kc8ir2vgdrq3u5p20', '1466320321', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('ga8uccvfiacg56bemd2jog2oj0', '1466258902', 'sessiontoken|s:32:\"7096271c43385b4784c14f0f1b85d7ed\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
+INSERT INTO `sessions` VALUES ('hj4p42iqou2fcfuchmvair9jp5', '1466344677', 'sessiontoken|s:32:\"5fbcc35a55aa1489791206d686a3fbc0\";cart|O:12:\"shoppingCart\":4:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}');
 INSERT INTO `sessions` VALUES ('lnc2fsnp62colth2a5fl4o09t4', '1466241017', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('luiiv5jh6kt7t3hdivqq8m83e2', '1466350716', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('nnlapel17j5fj759tcpq9f57g3', '1466260147', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 
 -- ----------------------------
@@ -12293,7 +12297,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('0', 'Guest', '8tst43q5116etnim48hbt1l3r6', '', '1466325577', '1466325577', '/realEstate/');
+INSERT INTO `whos_online` VALUES ('0', 'Guest', 'hj4p42iqou2fcfuchmvair9jp5', '', '1466344677', '1466344677', '/realEstate/');
 
 -- ----------------------------
 -- Table structure for `zones`
