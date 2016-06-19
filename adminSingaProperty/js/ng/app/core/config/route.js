@@ -1,7 +1,8 @@
 app.config([
 	'$stateProvider',
 	'$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+	'$locationProvider',
+	function($stateProvider, $urlRouterProvider, $locationProvider) {
 		$stateProvider
 			.state('/', {
 				url: '/',
@@ -80,5 +81,7 @@ app.config([
 			})
 		;
 		$urlRouterProvider.otherwise('/');
+		// use the HTML5 History API to remove # url
+		$locationProvider.html5Mode(true);
 	}
 ]);

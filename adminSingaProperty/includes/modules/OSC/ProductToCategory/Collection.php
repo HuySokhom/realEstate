@@ -9,15 +9,20 @@ class Collection extends StdCollection {
 	public function __construct( $params = array() ){
 		parent::__construct($params);
 		
-		$this->addTable('products_to_categories', 'p');
-		$this->idField = 'p.products_id';
+		$this->addTable('products_to_categories', 'pc');
+		$this->idField = 'pc.id';
 		$this->setDistinct(true);
 		
 		$this->objectType = __NAMESPACE__ . '\Object';		
 	}
 
+
+	public function filterByCategoriesId( $arg ){
+		$this->addWhere("pc.categories_id = '" . (int)$arg. "' ");
+	}
+
 	public function filterById( $arg ){
-		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
+		$this->addWhere("pc.products_id = '" . (int)$arg. "' ");
 	}
 	
 }

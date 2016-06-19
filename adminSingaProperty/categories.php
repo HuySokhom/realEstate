@@ -223,8 +223,7 @@
                                 'products_weight' => (float)tep_db_prepare_input($HTTP_POST_VARS['products_weight']),
                                 'products_status' => tep_db_prepare_input($HTTP_POST_VARS['products_status']),
                                 'products_tax_class_id' => tep_db_prepare_input($HTTP_POST_VARS['products_tax_class_id']),
-                                'manufacturers_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['manufacturers_id']),
-                                'location_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['location_id']));
+                                'manufacturers_id' => (int)tep_db_prepare_input($HTTP_POST_VARS['manufacturers_id']));
 
         $products_image = new upload('products_image');
         $products_image->set_destination(DIR_FS_CATALOG_IMAGES);

@@ -4,6 +4,8 @@ namespace OSC\ProductToCategory;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\ProductDescription\Collection
+		as ProductDescriptionCol
 ;
 
 class Object extends DbObj {
@@ -11,12 +13,20 @@ class Object extends DbObj {
 	protected
 		$categoriesId
 		, $productsId
+		 , $productDetail
 	;
-	
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+		$this->productDetail = new ProductDescriptionCol();
+	}
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'categories_id',
+				'products_id',
+				'product_detail'
 			)
 		);
 
@@ -26,11 +36,12 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				categories_id
+				categories_id,
+				products_id
 			FROM
 				products_to_categories
 			WHERE
-				products_id = '" . (int)$this->getId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 		
 		if( ! $this->dbNumRows($q) ){
@@ -41,7 +52,8 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
-		
+		$this->productDetail->setFilter('id', $this->getProductsId());
+		$this->productDetail->populate();
 	}
 
 	public function update(){
@@ -70,11 +82,11 @@ class Object extends DbObj {
 				'" . (int)$this->getProductsId() . "'
 			)
 		");
-//		$this->setProductsId( $this->dbInsertId() );
+		$this->setId( $this->dbInsertId() );
 	}
 
 	public function setProductsId( $string ){
-		$this->productsId = (string)$string;
+		$this->productsId = (int)$string;
 	}
 
 	public function getProductsId()
@@ -83,11 +95,18 @@ class Object extends DbObj {
 	}
 
 	public function setCategoriesId( $string ){
-		$this->categoriesId = (string)$string;
+		$this->categoriesId = (int)$string;
 	}
 	
 	public function getCategoriesId(){
 		return $this->categoriesId;
 	}
-	
+
+	public function setProductDetail( $string ){
+		$this->productDetail = (string)$string;
+	}
+
+	public function getProductDetail(){
+		return $this->productDetail;
+	}
 }

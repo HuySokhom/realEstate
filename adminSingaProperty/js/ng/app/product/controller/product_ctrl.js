@@ -8,11 +8,11 @@ app.controller(
 	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
 		var params = {};
-		var url = 'api/Product/';
+		var url = 'api/Product';
 		function init(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products = data;
-				$scope.totalItems = data.count;
+				$scope.totalItems = data.count;console.log(data);
 			});
 		};
 		init(params);
@@ -24,10 +24,7 @@ app.controller(
 		$scope.remove = function($index, params){
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
-				.confirm("Are you sure you want to delete this image?", function (ev) {
-					// The click event is in the
-					// event variable, so you can use
-					// it here.
+				.confirm("Are you sure you want to delete this product?", function (ev) {
 					ev.preventDefault();
 					Restful.delete( url + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);

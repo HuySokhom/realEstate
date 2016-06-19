@@ -61,7 +61,7 @@ class Object extends DbObj {
 
 	public function __construct( $params = array() ){
  		parent::__construct($params);
-		
+
  		$this->productDetail = new ProductDescriptionCol();
 //		$this->category = new ProductToCategoryCol();
 //		$this->contact = new ProductContactPerson();
@@ -336,7 +336,7 @@ class Object extends DbObj {
 		return $this->productsPrice;
 	}
 	public function setProductsPrice( $int ){
-		$this->productsPrice = $int;
+		$this->productsPrice = doubleval($int);
 	}
 
     public function getBedRooms(){
