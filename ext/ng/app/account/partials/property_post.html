@@ -242,17 +242,25 @@
                     </div>
                 </span>
                 <span data-ng-repeat="i in optionalImage">
-                    <div>
-
+                    <div class="col-md-3">
+                        <div>
+                            <img
+                                class="thumb"
+                                src="images/{{i.image_thumbnail}}"
+                            >
+                        </div>
+                        <button
+                            class="btn"
+                            data-ng-click="removeImage($index);"
+                            data-toggle="tooltip"
+                            data-placement="right"
+                            title="Remove"
+                            tooltip
+                        >
+                            <i class="glyphicon glyphicon-trash"></i>
+                            Remove
+                        </button>
                     </div>
-                    <img
-                        class="thumb"
-                        src="images/{{i.image_thumbnail}}"
-                    >
-                    <button class="btn" data-ng-click="removeImage($index);">
-                        <i></i>
-                        Remove
-                    </button>
                 </span>
             </td>
         </tr>
