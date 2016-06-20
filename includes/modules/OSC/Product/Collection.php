@@ -27,6 +27,17 @@ class Collection extends StdCollection {
 		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
 	}
 
+	public function filterByTitle( $arg ){
+		$this->addTable("products_description", "pd");
+		$this->addWhere("p.products_id = pd.products_id");
+
+		$this->addWhere("pd.products_name LIKE '%" . $arg. "%' ");
+	}
+
+	public function filterByCategoryId( $arg ){
+		$this->addWhere("p.categories_id = '" . (int)$arg. "' ");
+	}
+
 	public function sortByDate($arg){
 		$this->addOrderBy('p.products_date_added', $arg);
 	}

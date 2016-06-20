@@ -66,7 +66,13 @@ app.controller(
 					ev.preventDefault();
 				});
 		};
-
+		// search functionality
+		$scope.search = function(){
+			params.search_title = $scope.search_title;
+			params.id = $scope.id;
+			params.type = $scope.category_id;
+			$scope.init(params);
+		};
 		/**
 		 * start functionality pagination
 		 */

@@ -28,6 +28,9 @@ class RestApiSessionUserProductPost extends RestApi {
 		}else {
 			$col->sortByDate('DESC');
 			$col->filterByCustomersId($userId);
+			$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+			$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
+			$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
 			// start limit page
 			$showDataPerPage = 10;
 			$start = $params['GET']['start'];
