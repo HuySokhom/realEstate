@@ -21,7 +21,7 @@ app.controller(
 			image_advtab: true,
 			paste_data_images: true
 		};
-		$scope.propertyTypes = ["For Sale", "For Rent", "Both"];
+		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
 		// init category
 		$scope.initNewsType = function(){
 			Restful.get("api/Category").success(function(data){
@@ -94,7 +94,7 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
-					$timeout(function () {
+					$timeout(function () {console.log(response);
 						file.result = response.data;
 						$scope.image = response.data.image;
 						$scope.image_thumbnail = response.data.image_thumbnail;
