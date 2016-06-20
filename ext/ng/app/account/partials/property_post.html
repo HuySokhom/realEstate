@@ -221,14 +221,8 @@
                 Optional Image:
             </td>
             <td>
-                <div action="/file/upload/" class="dropzone" drop-zone
-                     call-back="myCallBackMethod(response)"
-                     data-max="5"
-                     auto-process="false"
-                     message="Drop file here or click to select"
-                     mimetypes=".doc,.docx,.pages,.pdf,.odt"
-                     id="file-dropzone">
-                </div>
+                <form action="/upload" class="dropzone" drop-zone="" id="file-dropzone">
+                </form>
             </td>
         </tr>
     </table>
@@ -250,5 +244,3 @@
         </button>
     </div>
 </form>
-
-
