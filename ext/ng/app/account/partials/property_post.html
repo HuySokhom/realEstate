@@ -221,7 +221,14 @@
                 Optional Image:
             </td>
             <td>
-                <form action="upload.php" class="dropzone" drop-zone="" id="file-dropzone"></form>
+                <div action="/file/upload/" class="dropzone" drop-zone
+                     call-back="myCallBackMethod(response)"
+                     data-max="5"
+                     auto-process="false"
+                     message="Drop file here or click to select"
+                     mimetypes=".doc,.docx,.pages,.pdf,.odt"
+                     id="file-dropzone">
+                </div>
             </td>
         </tr>
     </table>

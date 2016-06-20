@@ -20,6 +20,7 @@
 
 	require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
+<link href="ext/dropzone/dropzone.min.css" rel="stylesheet">
 <link href="themes/css/table_price.css" rel="stylesheet">
 <div
 	class="container margin-top"
@@ -173,13 +174,11 @@
     ?>
 	</div>
 </div>
-<textarea style="display: none;"></textarea>
-
 <?php
 require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
-
+<script src="ext/dropzone/dropzone.min.js"></script>
 <!-- lib -->
 <script src="ext/tinymce/tinymce.min.js"></script>
 <script
