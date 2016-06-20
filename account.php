@@ -214,7 +214,6 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <!-- for no html5 browsers support -->
 <script src="ext/ng/lib/angular-upload/ng-file-upload.min.js"></script>
 
-<script>tinymce.init({ selector:'textarea' });</script>
 <!-- custom file -->
 
 <script
@@ -247,7 +246,14 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 	type="text/javascript"
 	src="ext/ng/app/account/controller/property_ctrl.js"
 ></script>
-
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/property_post_ctrl.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/controller/property_edit_ctrl.js"
+></script>
 <script
 	type="text/javascript"
 	src="ext/ng/app/account/controller/news_ctrl.js"
@@ -260,15 +266,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 	type="text/javascript"
 	src="ext/ng/app/account/controller/news_post_ctrl.js"
 ></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/directive/location.js"
-></script>
+
+
+
 <script
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"
-></script>
-<script
-	type="text/javascript"
-	src="ext/ng/app/account/directive/image.js"
 ></script>

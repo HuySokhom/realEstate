@@ -67,7 +67,7 @@ app.controller(
 				});
 		};
 
-				/**
+		/**
 		 * start functionality pagination
 		 */
 		$scope.currentPage = 1;
