@@ -80,6 +80,7 @@
                     ngf-max-size="2MB"
                     ngf-model-invalid="errorFiles"
                     ngf-select="uploadPic(picFile)"
+                    class="form-control"
                 >
                 <i ng-show="myForm.file.$error.maxSize">
                     File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
@@ -112,6 +113,7 @@
                     data-ng-change="initDistrict(province_id);"
                     required
                 >
+                    <option value="">--Select Province--</option>
                 </select>
             </td>
         </tr>
@@ -127,6 +129,7 @@
                     data-ng-change="initCommune(district_id);"
                     required
                 >
+                    <option value="">--Select District--</option>
                 </select>
             </td>
         </tr>
@@ -141,6 +144,7 @@
                     class="form-control"
                     required
                 >
+                    <option value="">--Select Commune--</option>
                 </select>
             </td>
         </tr>
@@ -154,6 +158,7 @@
                     class="form-control"
                     ng-options="n for n in [] | rangeNumber:20"
                 >
+                    <option value="">--Select Bed Rooms--</option>
                 </select>
             </td>
         </tr>
@@ -167,6 +172,7 @@
                     class="form-control"
                     ng-options="n for n in [] | rangeNumber:20"
                 >
+                    <option value="">--Select Bath Rooms--</option>
                 </select>
             </td>
         </tr>
@@ -180,6 +186,7 @@
                     class="form-control"
                     ng-options="n for n in [] | rangeNumber:50"
                 >
+                    <option value="">--Select Floors--</option>
                 </select>
             </td>
         </tr>
@@ -207,6 +214,14 @@
                     data-ng-model="content_kh"
                     rows="15"
                 ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Optional Image:
+            </td>
+            <td>
+                <form action="upload.php" class="dropzone" drop-zone="" id="file-dropzone"></form>
             </td>
         </tr>
     </table>
