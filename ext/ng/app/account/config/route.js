@@ -11,12 +11,12 @@ app.config([
 			.state('/manage_property/post', {
 				url: '/manage_property/post',
 				templateUrl: 'ext/ng/app/account/partials/property_post.html',
-				controller: 'add_property_ctrl'
+				controller: 'property_post_ctrl'
 			})
 			.state('/manage_property/edit/:id', {
 				url: '/manage_property/edit/:id',
 				templateUrl: 'ext/ng/app/account/partials/property_edit.html',
-				controller: 'edit_property_ctrl'
+				controller: 'property_edit_ctrl'
 			})
 			.state('/manage_news', {
 				url: '/manage_news',

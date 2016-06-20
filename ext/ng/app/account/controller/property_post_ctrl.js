@@ -21,15 +21,31 @@ app.controller(
 			image_advtab: true,
 			paste_data_images: true
 		};
-
-		// init news type
+		$scope.propertyTypes = ["For Sale", "For Rent", "Both"];
+		// init category
 		$scope.initNewsType = function(){
-			Restful.get("api/NewsType").success(function(data){
-				$scope.newsType = data;
+			Restful.get("api/Category").success(function(data){
+				$scope.categoryList = data;
+			});
+			Restful.get("api/Location").success(function(data){
+				$scope.provinces = data;
 			});
 		};
 		$scope.initNewsType();
 
+		// functional for init district
+		$scope.initDistrict = function(id){
+			Restful.get("api/District/" + id).success(function(data){
+				$scope.districts = data;
+				$scope.communes = '';
+			});
+		};
+		// functional for init Commune
+		$scope.initCommune = function(id){
+			Restful.get("api/Village/" + id).success(function(data){
+				$scope.communes = data;
+			});
+		};
 		// save functionality
 		$scope.save = function(){
 			// set object to save into news

@@ -1,6 +1,6 @@
 <form data-ng-submit="save();" name="myForm">
     <h4>
-        News Information
+        Product Information
     </h4>
     <table class="table table-bordered">
         <tr>
@@ -9,12 +9,27 @@
             </td>
             <td>
                 <select
-                    data-ng-model="news_type_id"
-                    data-ng-options="type.id as type.name_en for type in newsType.elements"
+                    data-ng-model="categories_id"
+                    data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
                     class="form-control"
                     required
                 >
-                    <option value="">--Select--</option>
+                    <option value="">--Select Category--</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Property Type
+            </td>
+            <td>
+                <select
+                    data-ng-model="property_type"
+                    data-ng-options="p for p in propertyTypes"
+                    class="form-control"
+                    required
+                >
+                    <option value="">--Select Category--</option>
                 </select>
             </td>
         </tr>
@@ -27,7 +42,7 @@
                     type="text"
                     class="form-control"
                     data-ng-model="title_en"
-                    required="required"
+                    required
                 />
             </td>
         </tr>
@@ -40,13 +55,21 @@
                     type="text"
                     class="form-control"
                     data-ng-model="title_kh"
-                    required="required"
+                    required
                 />
             </td>
         </tr>
         <tr>
             <td>
-                Image
+                Price:
+            </td>
+            <td>
+                <input type="text" class="form-control" required data-ng-model="price"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Image:
             </td>
             <td>
                 <input
@@ -79,20 +102,103 @@
         </tr>
         <tr>
             <td>
-                Content EN:
+                City / Province
+            </td>
+            <td>
+                <select
+                    data-ng-model="province_id"
+                    data-ng-options="p.id as p.name for p in provinces.elements"
+                    class="form-control"
+                    data-ng-change="initDistrict(province_id);"
+                    required
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Khan/District
+            </td>
+            <td>
+                <select
+                    data-ng-model="district_id"
+                    data-ng-options="d.id as d.name_en for d in districts.elements"
+                    class="form-control"
+                    data-ng-change="initCommune(district_id);"
+                    required
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sangkat / Commune
+            </td>
+            <td>
+                <select
+                    data-ng-model="commune_id"
+                    data-ng-options="c.id as c.name_en for c in communes.elements"
+                    class="form-control"
+                    required
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bed Rooms
+            </td>
+            <td>
+                <select
+                    ng-model="bed_rooms"
+                    class="form-control"
+                    required ng-options="n for n in [] | rangeNumber:20"
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bath rooms
+            </td>
+            <td>
+                <select
+                    ng-model="bath_rooms"
+                    class="form-control"
+                    required ng-options="n for n in [] | rangeNumber:20"
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Number of Floors
+            </td>
+            <td>
+                <select
+                    ng-model="number_of_floors"
+                    class="form-control"
+                    required ng-options="n for n in [] | rangeNumber:50"
+                >
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Description EN:
             </td>
             <td>
                 <textarea
-                        class="form-control"
-                        data-ng-model="content_en"
-                        ui-tinymce="tinymceOptions"
-                        rows="15"
+                    class="form-control"
+                    data-ng-model="content_en"
+                    ui-tinymce="tinymceOptions"
+                    rows="15"
                 ></textarea>
             </td>
         </tr>
         <tr>
             <td>
-                Content KH:
+                Description KH:
             </td>
             <td>
                 <textarea
@@ -107,7 +213,7 @@
     <div class="align-left">
         <button
             class="btn btn-default"
-            onclick="location.href='account.php#/manage_news';"
+            onclick="location.href='account.php#/manage_property';"
         >
             <i class="fa fa-close"></i>
             Close
