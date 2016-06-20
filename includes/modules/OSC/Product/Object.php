@@ -70,7 +70,7 @@ class Object extends DbObj {
  		parent::__construct($params);
 
  		$this->productDetail = new ProductDescriptionCol();
-		$this->customersDetail = new CustomerCol();
+//		$this->customersDetail = new CustomerCol();
 		$this->categoryDetail = new CategoryCollection();
 		$this->imageDetail = new ProductImageCol();
 	}
@@ -109,8 +109,8 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->customersDetail->setFilter('id', $this->getCustomersId());
-		$this->customersDetail->populate();
+//		$this->customersDetail->setFilter('id', $this->getCustomersId());
+//		$this->customersDetail->populate();
 
  		$this->productDetail->setFilter('id', $this->getId());
  		$this->productDetail->populate();

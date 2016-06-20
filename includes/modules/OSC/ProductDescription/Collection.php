@@ -10,7 +10,7 @@ class Collection extends StdCollection {
 		parent::__construct($params);
 		
 		$this->addTable('products_description', 'pd');
-		$this->idField = 'pd.products_id';
+		$this->idField = 'pd.id';
 		$this->setDistinct(true);		
 		$this->objectType = __NAMESPACE__ . '\Object';	
 	}

@@ -35,7 +35,7 @@ class Object extends DbObj {
 			FROM
 				products_description
 			WHERE
-				products_id = '" . (int)$this->getId() . "'
+				id = '" . (int)$this->getId() . "'
 		");
 
 		if( ! $this->dbNumRows($q) ){

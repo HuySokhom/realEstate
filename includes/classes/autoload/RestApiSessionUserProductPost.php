@@ -3,16 +3,16 @@
 use
 	OSC\Product\Collection
 		as ProductPostCol
-	, OSC\Product\Object
-		as ProductPostObj
-	, OSC\ProductToCategory\Object
-		as ProductToCategoryObj
-	, OSC\ProductDescription\Object
-		as ProductDescriptionObj
-	, OSC\ProductContactPerson\Object
-		as ProductContactPersonObj
-	, OSC\ProductImage\Object
-		as ProductImageObj
+//	, OSC\Product\Object
+//		as ProductPostObj
+//	, OSC\ProductToCategory\Object
+//		as ProductToCategoryObj
+//	, OSC\ProductDescription\Object
+//		as ProductDescriptionObj
+//	, OSC\ProductContactPerson\Object
+//		as ProductContactPersonObj
+//	, OSC\ProductImage\Object
+//		as ProductImageObj
 ;
 
 class RestApiSessionUserProductPost extends RestApi {
@@ -26,16 +26,16 @@ class RestApiSessionUserProductPost extends RestApi {
 				403
 			);
 		}else {
-			$col->sortByDate('DESC');
+//			$col->sortByDate('DESC');
 			$col->filterByCustomersId($userId);
 			// start limit page
-			$showDataPerPage = 10;
-			$start = $params['GET']['start'];
-			$this->applyLimit($col,
-				array(
-					'limit' => array( $start, $showDataPerPage )
-				)
-			);
+//			$showDataPerPage = 10;
+//			$start = $params['GET']['start'];
+//			$this->applyLimit($col,
+//				array(
+//					'limit' => array( $start, $showDataPerPage )
+//				)
+//			);
 			$this->applyFilters($col, $params);
 			$this->applySortBy($col, $params);
 			return $this->getReturn($col, $params);
