@@ -21,6 +21,7 @@ app.controller(
 			image_advtab: true,
 			paste_data_images: true
 		};
+		$scope.optionalImage = [];
 		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
 		// init category
 		$scope.initNewsType = function(){
@@ -86,7 +87,7 @@ app.controller(
 			});
 		};
 
-		//functionality upload
+		//functionality upload image feature
 		$scope.uploadPic = function(file) {
 			if (file) {
 				file.upload = Upload.upload({
@@ -94,7 +95,7 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
-					$timeout(function () {console.log(response);
+					$timeout(function () {
 						file.result = response.data;
 						$scope.image = response.data.image;
 						$scope.image_thumbnail = response.data.image_thumbnail;
@@ -108,48 +109,46 @@ app.controller(
 				});
 			}
 		};
-
-
-		$scope.dropzoneConfig = {
-			'options': { // passed into the Dropzone constructor
-				'url': 'upload.php'
-			},
-			'eventHandlers': {
-				'sending': function (file, xhr, formData) {
-				},
-				'success': function (file, response) {
-				}
+		//functionality upload image
+		$scope.uploadPic = function(file, type) {
+			if($scope.optionalImage.length >= 8){
+				return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+			}
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/UploadImage',
+					data: {file: file, username: $scope.username},
+				});
+				file.upload.then(function (response) {
+					$timeout(function () {
+						file.result = response.data;
+						if(type == 'feature_image') {
+							$scope.image = response.data.image;
+							$scope.image_thumbnail = response.data.image_thumbnail;
+						}
+						if(type == 'optional') {
+							var option = {
+								image: response.data.image,
+								image_thumbnail: response.data.image_thumbnail
+							};
+							$scope.optionalImage.push(option)
+							console.log($scope.optionalImage);
+						}
+					});
+				}, function (response) {
+					if (response.status > 0)
+						$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix I	E which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
 			}
 		};
+
+		// remove image
+		$scope.removeImage = function ($index) {
+			$scope.optionalImage.splice($index, 1);
+		};
+
 	}
 ]);
-
-app.directive('dropZone', function() {
-	return function(scope, element, attrs) {
-		console.log(element);
-		element.dropzone({
-			url: "/upload",
-			maxFilesize: 100,
-			paramName: "uploadfile",
-			maxThumbnailFilesize: 5,
-			init: function() {
-				scope.files.push({file: 'added'}); // here works
-				this.on('success', function(file, json) {
-				});
-
-				this.on('addedfile', function(file) {
-					scope.$apply(function(){
-						alert(file);
-						scope.files.push({file: 'added'});
-					});
-				});
-
-				this.on('drop', function(file) {
-					alert('file');
-				});
-
-			}
-
-		});
-	}
-});

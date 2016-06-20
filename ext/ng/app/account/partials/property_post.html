@@ -79,7 +79,7 @@
                     accept="image/*"
                     ngf-max-size="2MB"
                     ngf-model-invalid="errorFiles"
-                    ngf-select="uploadPic(picFile)"
+                    ngf-select="uploadPic(picFile, 'feature_image')"
                     class="form-control"
                 >
                 <i ng-show="myForm.file.$error.maxSize">
@@ -221,8 +221,39 @@
                 Optional Image:
             </td>
             <td>
-                <form action="/upload" class="dropzone" drop-zone="" id="file-dropzone">
-                </form>
+                <input
+                    type="file"
+                    ng-model="picOptFile"
+                    name="fileOpt"
+                    accept="image/*"
+                    ngf-max-size="2MB"
+                    ngf-model-invalid="errorFiles"
+                    ngf-select="uploadPic(picOptFile, 'optional')"
+                    class="form-control"
+                >
+                <div ng-show="myForm.fileOpt.$error.maxSize" class="error">
+                    File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
+                </div>
+                <span class="progress" ng-show="picOptFile.progress >= 0">
+                    <div
+                        style="width:{{picOptFile.progress}}%"
+                        ng-bind="picOptFile.progress + '%'"
+                    >
+                    </div>
+                </span>
+                <span data-ng-repeat="i in optionalImage">
+                    <div>
+
+                    </div>
+                    <img
+                        class="thumb"
+                        src="images/{{i.image_thumbnail}}"
+                    >
+                    <button class="btn" data-ng-click="removeImage($index);">
+                        <i></i>
+                        Remove
+                    </button>
+                </span>
             </td>
         </tr>
     </table>

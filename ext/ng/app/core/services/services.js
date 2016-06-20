@@ -13,6 +13,16 @@ app.service("Services",[
             $alertify.success(text);
         };
 
+        services.prototype.alertMessagePromt = function(text){
+            $alertify.logPosition("top right");
+            $alertify.alert(text);
+        };
+
+        services.prototype.alertMessageWarning = function(text){
+            $alertify.logPosition("top right");
+            $alertify.error(text);
+        };
+
         return services;
 
     }
