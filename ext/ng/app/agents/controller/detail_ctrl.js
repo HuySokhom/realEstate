@@ -10,7 +10,6 @@ app.controller(
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
 				$scope.agent = data.elements[0];
-				console.log(data);
 			});
 			// init other post news
 			var params = {

@@ -56,7 +56,14 @@
     ");
     $product_info = tep_db_fetch_array($product_info_query);
 
-    tep_db_query("update " . TABLE_PRODUCTS_DESCRIPTION . " set products_viewed = products_viewed+1 where products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and language_id = '" . (int)$languages_id . "'");
+    tep_db_query("
+        UPDATE
+            " . TABLE_PRODUCTS_DESCRIPTION . "
+        SET
+            products_viewed = products_viewed+1
+        WHERE
+            products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
+    ");
 
     if ($new_price = tep_get_products_special_price($product_info['products_id'])) {
       $products_price = '<del>' . $currencies->display_price($product_info['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) . '</del> <span class="productSpecialPrice" itemprop="price">' . $currencies->display_price($new_price, tep_get_tax_rate($product_info['products_tax_class_id'])) . '</span>';
