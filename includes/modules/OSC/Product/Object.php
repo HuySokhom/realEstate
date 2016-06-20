@@ -15,7 +15,7 @@ use
 ;
 
 class Object extends DbObj {
-		
+
 	protected
 		$customersId
 		, $productsId
@@ -37,7 +37,7 @@ class Object extends DbObj {
 		, $categoryDetail
 		, $customersDetail
 	;
-	
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
@@ -99,14 +99,14 @@ class Object extends DbObj {
 			WHERE
 				products_id = '" . (int)$this->getId() . "'
 		");
-		
+
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
 				"404: Products not found",
 				404
 			);
 		}
-		
+
 		$this->setProperties($this->dbFetchArray($q));
 
 //		$this->customersDetail->setFilter('id', $this->getCustomersId());
@@ -121,7 +121,7 @@ class Object extends DbObj {
 		$this->imageDetail->setFilter('products_id', $this->getId());
 		$this->imageDetail->populate();
 	}
-	
+
 	public function updateStatus() {
 		if( !$this->getProductsId() ) {
 			throw new Exception("save method requires id");
@@ -129,7 +129,7 @@ class Object extends DbObj {
 		$this->dbQuery("
 			UPDATE
 				products
-			SET 
+			SET
 				products_status = '" . (int)$this->getProductsStatus() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
@@ -206,15 +206,16 @@ class Object extends DbObj {
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 		");
-		
+
 	}
-	
-	public function insert(){	
+
+	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
 				products
 			(
 				customers_id,
+				categories_id,
 				province_id,
 				district_id,
 				village_id,
@@ -232,6 +233,7 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
+				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
 				'" . (int)$this->getDistrictId() . "',
 				'" . (int)$this->getVillageId() . "',
@@ -246,38 +248,38 @@ class Object extends DbObj {
 				'" . (int)$this->getBathRooms() . "',
 				'" . (int)$this->getNumberOfFloors() . "'
 			)
-		");	
+		");
 		$this->setProductsId( $this->dbInsertId() );
 	}
-	
+
 	public function setCustomersId( $int ){
 		$this->customersId = (int)$int;
 	}
-	
+
 	public function getCustomersId(){
 		return $this->customersId;
 	}
-	
+
 	public function setProvinceId( $int ){
 		$this->provinceId = (int)$int;
 	}
-	
+
 	public function getProvinceId(){
 		return $this->provinceId;
 	}
-	
+
 	public function setProductsId( $int ){
 		$this->productsId = (int)$int;
 	}
-	
+
 	public function getProductsId(){
 		return $this->productsId;
 	}
-	
+
 	public function setProductsDateAdded( $date ){
 		$this->productsDateAdded = $date;
 	}
-	
+
 	public function getProductsDateAdded(){
 		return $this->productsDateAdded;
 	}
@@ -293,15 +295,15 @@ class Object extends DbObj {
 	public function setProductsImage( $string ){
 		$this->productsImage = (string)$string;
 	}
-	
+
 	public function getProductsImage(){
 		return $this->productsImage;
 	}
-	
+
 	public function setProductsStatus( $int ){
 		$this->productsStatus = (int)$int;
 	}
-	
+
 	public function getProductsStatus(){
 		return $this->productsStatus;
 	}
@@ -324,8 +326,8 @@ class Object extends DbObj {
 	public function getProductsKindOf(){
 		return $this->productsKindOf;
 	}
-	public function setProductsKindOf( $array ){
-		$this->productsKindOf = $array;
+	public function setProductsKindOf( $string ){
+		$this->productsKindOf = $string;
 	}
 
 	public function getImageDetail(){

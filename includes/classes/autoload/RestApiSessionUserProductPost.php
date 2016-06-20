@@ -53,34 +53,29 @@ class RestApiSessionUserProductPost extends RestApi {
 			$productObject = new ProductPostObj();
 			$userId = $this->getOwner()->getId();
 			$productObject->setCustomersId($userId);
-			$productObject->setProperties($params['POST']['product'][0]);
+			$productObject->setProperties($params['POST']['products']);
 			$productObject->insert();
 			$productId = $productObject->getProductsId();
 
-			$productDetailObject = new ProductDescriptionObj();
-			$productDetailObject->setProductsId($productId);
-			$productDetailObject->setProperties($params['POST']['product_detail'][0]);
-			$productDetailObject->insert();
-
+			// save product to category
 			$productToCategoryObject = new ProductToCategoryObj();
 			$productToCategoryObject->setProductsId($productId);
-			$productToCategoryObject->setProperties($params['POST']['categories'][0]);
+			$productToCategoryObject->setCategoriesId($params['POST']['products']['categories_id']);
 			$productToCategoryObject->insert();
 
-			$productContactPersonObject = new ProductContactPersonObj();
-			$productContactPersonObject->setProductsId($productId);
-			$productContactPersonObject->setCustomersId($userId);
-			$productContactPersonObject->setProperties($params['POST']['contact_person'][0]);
-			$productContactPersonObject->insert();
+//			$productContactPersonObject = new ProductContactPersonObj();
+//			$productContactPersonObject->setProductsId($productId);
+//			$productContactPersonObject->setCustomersId($userId);
+//			$productContactPersonObject->setProperties($params['POST']['contact_person'][0]);
+//			$productContactPersonObject->insert();
 
-			$fields = $params['POST']['products_image'];
+			// save product description
+			$fields = $params['POST']['products_description'];
+			$productDetailObject = new ProductDescriptionObj();
 			foreach ( $fields as $k => $v){
-				if( $v['image'] != '') {
-					$productImageObject = new ProductImageObj();
-					$productImageObject->setProperties($v);
-					$productImageObject->setProductsId($productId);
-					$productImageObject->insert();
-				}
+				$productDetailObject->setProductsId($productId);
+				$productDetailObject->setProperties($v);
+				$productDetailObject->insert();
 			}
 			unset($params);
 			return array(

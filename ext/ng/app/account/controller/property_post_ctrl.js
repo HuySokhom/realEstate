@@ -50,31 +50,39 @@ app.controller(
 		$scope.save = function(){
 			// set object to save into news
 			var data = {
-				news: {
-					image: $scope.image,
-					image_thumbnail: $scope.image_thumbnail,
-					news_type_id: $scope.news_type_id
+				products: {
+					products_image: $scope.image,
+					products_image_thumbnail: $scope.image_thumbnail,
+					categories_id: $scope.categories_id,
+					province_id: $scope.province_id,
+					district_id: $scope.district_id,
+					village_id: $scope.commune_id,
+					products_price: $scope.price,
+					products_kind_of: $scope.property_type,
+					bed_rooms: $scope.bed_rooms,
+					bath_rooms: $scope.bath_rooms,
+					number_of_floors: $scope.number_of_floors,
 				},
-				news_description: [
+				products_description: [
 					{
-						title: $scope.title_en,
-						content: $scope.content_en,
+						products_name: $scope.title_en,
+						products_description: $scope.content_en,
 						language_id: 1
 					},
 					{
-						title: $scope.title_kh,
-						content: $scope.content_kh,
+						products_name: $scope.title_kh,
+						products_description: $scope.content_kh,
 						language_id: 2
 					}
 				]
 			};
 			$scope.disabled = false;
-			//console.log(data);
-			Restful.post('api/Session/User/News', data).success(function (data) {
+			console.log(data);
+			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
 				$scope.disabled = true;
-				//console.log(data);
+				console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-				$location.path('manage_news');
+				//$location.path('manage_property');
 			});
 		};
 
