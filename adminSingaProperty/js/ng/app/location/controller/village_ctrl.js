@@ -81,7 +81,7 @@ app.controller(
 		$scope.edit = function(params){
 			$scope.name = params.name_en;
 			$scope.id = params.id;
-			$scope.province_id = params.detail[0].id;
+			$scope.district_id = params.detail[0].id;
 			$('#villagePopup').modal('show');
 		};
 
