@@ -33,7 +33,7 @@ app.controller(
 			});
 		};
 		$scope.initCategory();
-
+		$scope.disabled = true;
 		// functional for init district
 		$scope.initDistrict = function(id){
 			Restful.get("api/District/" + id).success(function(data){
@@ -84,32 +84,10 @@ app.controller(
 				$scope.disabled = true;
 				//console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-				//$location.path('manage_property');
+				$location.path('manage_property');
 			});
 		};
 
-		//functionality upload image feature
-		$scope.uploadPic = function(file) {
-			if (file) {
-				file.upload = Upload.upload({
-					url: 'api/UploadImage',
-					data: {file: file, username: $scope.username},
-				});
-				file.upload.then(function (response) {
-					$timeout(function () {
-						file.result = response.data;
-						$scope.image = response.data.image;
-						$scope.image_thumbnail = response.data.image_thumbnail;
-					});
-				}, function (response) {
-					if (response.status > 0)
-						$scope.errorMsg = response.status + ': ' + response.data;
-				}, function (evt) {
-					// Math.min is to fix I	E which reports 200% sometimes
-					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				});
-			}
-		};
 		//functionality upload image
 		$scope.uploadPic = function(file, type) {
 			// validate on if image option limit with 8 photo.

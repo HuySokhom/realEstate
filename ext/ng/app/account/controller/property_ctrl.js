@@ -13,11 +13,11 @@ app.controller(
 		var url = 'api/Session/User/ProductPost/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
-				$scope.products_post = data;console.log(data);
+				$scope.products_post = data;
 				$scope.totalItems = data.count;
 			});
 			Restful.get("api/Category").success(function(data){
-				$scope.categoryList = data;console.log(data);
+				$scope.categoryList = data;
 			});
 		};
 		$scope.init();
