@@ -75,7 +75,8 @@ app.controller(
 						products_description: $scope.content_kh,
 						language_id: 2
 					}
-				]
+				],
+				products_image: $scope.optionalImage
 			};
 			$scope.disabled = false;
 			console.log(data);
@@ -111,8 +112,11 @@ app.controller(
 		};
 		//functionality upload image
 		$scope.uploadPic = function(file, type) {
-			if($scope.optionalImage.length >= 8){
-				return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+			// validate on if image option limit with 8 photo.
+			if(type == 'optional') {
+				if($scope.optionalImage.length >= 8){
+					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+				}
 			}
 			if (file) {
 				file.upload = Upload.upload({

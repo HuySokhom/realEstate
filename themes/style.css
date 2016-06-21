@@ -3378,10 +3378,13 @@ button.btn{
 	border-color: #3C64FF;
 }
 
-button.btn:hover{
+button.btn:hover,.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus{
 	background-color: #3C64FF;
 	color: #fff;
 	border-color: #3C64FF;
+}
+.optional-img{
+	padding: 0px 1px 18px 0px;
 }
 a:focus, a:hover {
     text-decoration: none;

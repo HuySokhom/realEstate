@@ -66,11 +66,14 @@ class RestApiSessionUserProductPost extends RestApi {
 			$productToCategoryObject->setCategoriesId($params['POST']['products']['categories_id']);
 			$productToCategoryObject->insert();
 
-//			$productContactPersonObject = new ProductContactPersonObj();
-//			$productContactPersonObject->setProductsId($productId);
-//			$productContactPersonObject->setCustomersId($userId);
-//			$productContactPersonObject->setProperties($params['POST']['contact_person'][0]);
-//			$productContactPersonObject->insert();
+			// save product images
+			$productImageObject = new ProductImageObj();
+			$fields = $params['POST']['products_image'];
+			foreach ( $fields as $k => $v){
+				$productImageObject->setProductsId($productId);
+				$productImageObject->setProperties($v);
+				$productImageObject->insert();
+			}
 
 			// save product description
 			$fields = $params['POST']['products_description'];
