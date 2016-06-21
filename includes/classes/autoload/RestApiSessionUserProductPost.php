@@ -169,28 +169,39 @@ class RestApiSessionUserProductPost extends RestApi {
 			);
 		}
 	}
-	public function delete(){
+	public function delete($params){
 		$userId = $this->getOwner()->getId();
 		if( !$userId ){
 			throw new \Exception(
 				"403: Access Denied",
 				403
 			);
-		}else {
-			$cols = new ProductPostCol();
-			$cols->filterByCustomersId($userId);
-			$cols->filterById( $this->getId() );
-			if( $cols->getTotalCount() > 0 ){
-				$cols->populate();
-				$col = $cols->getFirstElement();
-				$col->setProductsId($this->getId());
-				$col->delete();
+		}else {var_dump($params['DELETE']);
+			if($params['DELETE']['image']){
+				$image = new ProductImageObj();
+				$image->setId($this->getId());
+				$image->delete();
+				return array(
+					'data' => array(
+						'data' => 'success'
+					)
+				);
+			}else {
+				$cols = new ProductPostCol();
+				$cols->filterByCustomersId($userId);
+				$cols->filterById($this->getId());
+				if ($cols->getTotalCount() > 0) {
+					$cols->populate();
+					$col = $cols->getFirstElement();
+					$col->setProductsId($this->getId());
+					$col->delete();
+				}
+				return array(
+					'data' => array(
+						'data' => 'success'
+					)
+				);
 			}
-			return array(
-				'data' => array(
-					'data' => 'success'
-				)
-			);
 		}
 	}
 

@@ -73,7 +73,7 @@ app.controller(
 				$scope.title_kh = data.elements[0].product_detail[1].products_name;
 				$scope.content_en = data.elements[0].product_detail[0].products_description;
 				$scope.content_kh = data.elements[0].product_detail[1].products_description;
-
+				console.log(data);
 			});
 		};
 		$scope.init();
@@ -142,7 +142,7 @@ app.controller(
 		};
 
 		// remove image
-		$scope.removeImage = function ($index) {
+		$scope.removeImage = function ($index, id) {
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
 				.confirm(
@@ -151,12 +151,13 @@ app.controller(
 					"<br/>If you delete this image it will remove directly from database."
 				, function (ev) {
 					ev.preventDefault();
-					$scope.optionalImage.splice($index, 1);
-					//Restful.delete( url + id ).success(function(data){
-					//	$scope.disabled = true;
-					//	$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-					//	$scope.category.elements.splice($index, 1);
-					//});
+
+					var data = {image: 'delete image'};
+					Restful.delete( url + id, data ).success(function(data){
+						console.log(data);
+						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
+						$scope.optionalImage.splice($index, 1);
+					});
 				}, function(ev) {
 					// The click event is in the
 					// event variable, so you can use

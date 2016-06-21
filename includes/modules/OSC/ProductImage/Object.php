@@ -18,6 +18,7 @@ class Object extends DbObj {
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
+				'id',
 				'image',
 				'image_thumbnail',
 				'sort_order'
@@ -52,7 +53,7 @@ class Object extends DbObj {
 	}
 
 	public function delete(){
-		if( !$this->getProductsId() ) {
+		if( !$this->getId() ) {
 			throw new Exception("delete method requires id to be set");
 		}
 		$this->dbQuery("
