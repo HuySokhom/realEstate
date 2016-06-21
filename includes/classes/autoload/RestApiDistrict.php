@@ -11,7 +11,7 @@ class RestApiDistrict extends RestApi {
 
 	public function get($params){
 		$col = new DistrictCol();
-		$col->filterByProvinceId($this->getId());
+		$this->getId() ? $col->filterByProvinceId($this->getId()) : '';
 		// start limit page
 		if($params['GET']['pagination']) {
 			$showDataPerPage = 10;

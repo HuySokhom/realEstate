@@ -11,6 +11,7 @@
                 data-ng-model="categories_id"
                 data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
                 class="form-control"
+                data-ng-selected="categories_id == c.categories_id"
                 required
             >
                 <option value="">--Select Category--</option>
@@ -22,6 +23,7 @@
                 data-ng-model="property_type"
                 data-ng-options="p for p in propertyTypes"
                 class="form-control"
+                data-ng-selected="property_type == p"
                 required
             >
                 <option value="">--Select Category--</option>
@@ -65,7 +67,7 @@
                 File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
             </i>
             <img
-                ng-show="image"
+                ng-show="image_thumbnail"
                 class="thumb"
                 src="images/{{image_thumbnail}}"
             >
@@ -88,6 +90,7 @@
                 data-ng-options="p.id as p.name for p in provinces.elements"
                 class="form-control"
                 data-ng-change="initDistrict(province_id);"
+                data-ng-selected="province_id == p.id"
                 required
             >
                 <option value="">--Select Province--</option>
@@ -101,6 +104,7 @@
                 data-ng-options="d.id as d.name_en for d in districts.elements"
                 class="form-control"
                 data-ng-change="initCommune(district_id);"
+                data-ng-selected="district_id == d.id"
                 required
             >
                 <option value="">--Select District--</option>
@@ -112,6 +116,7 @@
                 data-ng-model="commune_id"
                 data-ng-options="c.id as c.name_en for c in communes.elements"
                 class="form-control"
+                data-ng-selected="commune_id == c.id"
                 required
             >
                 <option value="">--Select Commune--</option>
@@ -123,6 +128,7 @@
                 ng-model="bed_rooms"
                 class="form-control"
                 ng-options="n for n in [] | rangeNumber:20"
+                data-ng-selected="bed_rooms == n"
             >
                 <option value="">--Select Bed Rooms--</option>
             </select>
@@ -134,6 +140,7 @@
                 ng-model="bath_rooms"
                 class="form-control"
                 ng-options="n for n in [] | rangeNumber:20"
+                data-ng-selected="bath_rooms == n"
             >
                 <option value="">--Select Bath Rooms--</option>
             </select>
@@ -144,6 +151,7 @@
                 ng-model="number_of_floors"
                 class="form-control"
                 ng-options="n for n in [] | rangeNumber:50"
+                data-ng-selected="number_of_floors == n"
             >
                 <option value="">--Select Floors--</option>
             </select>

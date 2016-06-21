@@ -11,7 +11,7 @@ class RestApiVillage extends RestApi {
 
 	public function get($params){
 		$col = new VillageCol();
-		$col->filterByDistrictId($this->getId());
+		$this->getId() ? $col->filterByDistrictId($this->getId()): '';
 		// start limit page
 		if($params['GET']['pagination']) {
 			$showDataPerPage = 10;

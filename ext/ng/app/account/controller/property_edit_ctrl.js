@@ -31,6 +31,12 @@ app.controller(
 			Restful.get("api/Location").success(function(data){
 				$scope.provinces = data;
 			});
+			Restful.get("api/District/").success(function(data){
+				$scope.districts = data;console.log(data);
+			});
+			Restful.get("api/Village/").success(function(data){
+				$scope.communes = data;console.log(data);
+			});
 		};
 		$scope.initCategory();
 
@@ -52,15 +58,22 @@ app.controller(
 
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.id, params).success(function(data){
-				$scope.optionalImage = data.elements[0].image_detail;console.log(data);
-				console.log($scope.optionalImage);
-				$scope.news_type_id = data.elements[0].type[0].id;
-				$scope.title_en = data.elements[0].detail[0].title;
-				$scope.title_kh = data.elements[0].detail[1].title;
-				$scope.content_en = data.elements[0].detail[0].content;
-				$scope.content_kh = data.elements[0].detail[1].content;
-				$scope.image = data.elements[0].image;
-				$scope.image_thumbnail = data.elements[0].image_thumbnail;
+				$scope.optionalImage = data.elements[0].image_detail;
+				$scope.district_id = data.elements[0].district_id;
+				$scope.province_id = data.elements[0].province_id;
+				$scope.property_type = data.elements[0].products_kind_of;
+				$scope.bed_rooms = data.elements[0].bed_rooms;
+				$scope.bath_rooms = data.elements[0].bath_rooms;
+				$scope.number_of_floors = data.elements[0].number_of_floors;
+				$scope.image_thumbnail = data.elements[0].products_image_thumbnail;
+				$scope.price = data.elements[0].products_price;
+				$scope.categories_id = data.elements[0].categories_id;
+				$scope.commune_id = data.elements[0].village_id;
+				$scope.title_en = data.elements[0].product_detail[0].products_name;
+				$scope.title_kh = data.elements[0].product_detail[1].products_name;
+				$scope.content_en = data.elements[0].product_detail[0].products_description;
+				$scope.content_kh = data.elements[0].product_detail[1].products_description;
+
 			});
 		};
 		$scope.init();

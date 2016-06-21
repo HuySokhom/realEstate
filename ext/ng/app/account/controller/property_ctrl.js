@@ -57,7 +57,8 @@ app.controller(
 					Restful.delete( url + id ).success(function(data){
 						$scope.disabled = true;
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.category.elements.splice($index, 1);
+						$scope.products_post.elements.splice($index, 1);
+						$scope.init(params);
 					});
 				}, function(ev) {
 					// The click event is in the
