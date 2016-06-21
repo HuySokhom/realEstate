@@ -24,7 +24,7 @@ app.controller(
 		$scope.optionalImage = [];
 		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
 		// init category
-		$scope.initNewsType = function(){
+		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
 				$scope.categoryList = data;
 			});
@@ -32,7 +32,7 @@ app.controller(
 				$scope.provinces = data;
 			});
 		};
-		$scope.initNewsType();
+		$scope.initCategory();
 
 		// functional for init district
 		$scope.initDistrict = function(id){
@@ -79,10 +79,10 @@ app.controller(
 				products_image: $scope.optionalImage
 			};
 			$scope.disabled = false;
-			console.log(data);
+			//console.log(data);
 			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
 				$scope.disabled = true;
-				console.log(data);
+				//console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
 				//$location.path('manage_property');
 			});
@@ -135,8 +135,7 @@ app.controller(
 								image: response.data.image,
 								image_thumbnail: response.data.image_thumbnail
 							};
-							$scope.optionalImage.push(option)
-							console.log($scope.optionalImage);
+							$scope.optionalImage.push(option);
 						}
 					});
 				}, function (response) {
