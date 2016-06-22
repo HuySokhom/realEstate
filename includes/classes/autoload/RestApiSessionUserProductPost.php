@@ -99,7 +99,7 @@ class RestApiSessionUserProductPost extends RestApi {
 				"403: Access Denied",
 				403
 			);
-		}else {var_dump($params['PUT']);
+		}else {
 			$cols = new ProductPostCol();
 			$cols->filterByCustomersId($userId);
 			$productId = $this->getId();
@@ -108,34 +108,42 @@ class RestApiSessionUserProductPost extends RestApi {
 				$cols->populate();
 				$col = $cols->getFirstElement();
 				$col->setProductsId($productId);
-				$col->setProperties($params['PUT']['product'][0]);
+				$col->setProperties($params['PUT']['products']);
 				$col->update();
 
-				$productDetailObject = new ProductDescriptionObj();
-				$productDetailObject->setProductsId($productId);
-				$productDetailObject->setProperties($params['PUT']['product_detail'][0]);
-				$productDetailObject->update();
-//
+				// update category to product
 				$productToCategoryObject = new ProductToCategoryObj();
 				$productToCategoryObject->setProductsId($productId);
-				$productToCategoryObject->setProperties($params['PUT']['categories'][0]);
+				$productToCategoryObject->setCategoriesId($params['PUT']['products']['categories_id']);
 				$productToCategoryObject->update();
-//
-				$productContactPersonObject = new ProductContactPersonObj();
-				$productContactPersonObject->setProductsId($productId);
-				$productContactPersonObject->setProperties($params['PUT']['contact_person'][0]);
-				$productContactPersonObject->update();
 
-//				$fields = $params['PUT']['products_image'];
-//				foreach ( $fields as $k => $v){
-//					if( $v['image'] != '') {
-//						$productImageObject = new ProductImageObj();
-//						$productImageObject->setProperties($v);
-//						$productImageObject->setProductsId($productId);
-//						$productImageObject->update();
-//					}
-//				}
+				// save product description
+				$fields = $params['PUT']['products_description'];
+				$productDetailObject = new ProductDescriptionObj();
+				foreach ( $fields as $k => $v){
+					$productDetailObject->setProductsId($productId);
+					$productDetailObject->setProperties($v);
+					$productDetailObject->update();
+					unset($v);
+				}
 
+				// update product image
+				$imageFields = $params['PUT']['products_image'];
+				$productImageObject = new ProductImageObj();
+				$productImageObject->setProductsId($productId);
+				// delete first insert new after
+				$productImageObject->delete();
+				foreach ( $imageFields as $k => $v){
+//					$productImageObject->setProductsId($productId);
+					$productImageObject->setProperties($v);
+					$productImageObject->insert();
+					unset($v);
+				}
+				return array(
+					'data' => array(
+						'data' => 'update success'
+					)
+				);
 			}
 		}
 	}

@@ -113,13 +113,20 @@ app.controller(
 
 			Restful.put(url + $stateParams.id, data).success(function (data) {
 				$scope.disabled = true;
+				console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
-				$location.path('manage_news');
+				$location.path('manage_property');
 			});
 		};
 
 		//functionality upload
-		$scope.uploadPic = function(file) {
+		$scope.uploadPic = function(file, type) {
+			// validate on if image option limit with 8 photo.
+			if(type == 'optional') {
+				if($scope.optionalImage.length >= 8){
+					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+				}
+			}
 			if (file) {
 				file.upload = Upload.upload({
 					url: 'api/UploadImage',
@@ -128,8 +135,17 @@ app.controller(
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;
-						$scope.image = response.data.image;
-						$scope.image_thumbnail = response.data.image_thumbnail;
+						if(type == 'feature_image') {
+							$scope.image = response.data.image;
+							$scope.image_thumbnail = response.data.image_thumbnail;
+						}
+						if(type == 'optional') {
+							var option = {
+								image: response.data.image,
+								image_thumbnail: response.data.image_thumbnail
+							};
+							$scope.optionalImage.push(option);
+						}
 					});
 				}, function (response) {
 					if (response.status > 0)
@@ -142,29 +158,8 @@ app.controller(
 		};
 
 		// remove image
-		$scope.removeImage = function ($index, id) {
-			$alertify.okBtn("Ok")
-				.cancelBtn("Cancel")
-				.confirm(
-					"<b>Waring: </b>" +
-					"Are you sure want to delete this image." +
-					"<br/>If you delete this image it will remove directly from database."
-				, function (ev) {
-					ev.preventDefault();
-
-					var data = {image: 'delete image'};
-					Restful.delete( url + id, data ).success(function(data){
-						console.log(data);
-						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.optionalImage.splice($index, 1);
-					});
-				}, function(ev) {
-					// The click event is in the
-					// event variable, so you can use
-					// it here.
-					ev.preventDefault();
-				});
-
+		$scope.removeImage = function ($index) {
+			$scope.optionalImage.splice($index, 1);
 		};
 
 	}

@@ -53,14 +53,14 @@ class Object extends DbObj {
 	}
 
 	public function delete(){
-		if( !$this->getId() ) {
+		if( !$this->getProductsId() ) {
 			throw new Exception("delete method requires id to be set");
 		}
 		$this->dbQuery("
 			DELETE FROM
 				products_images
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				products_id = '" . (int)$this->getProductsId() . "'
 		");
 	}
 
