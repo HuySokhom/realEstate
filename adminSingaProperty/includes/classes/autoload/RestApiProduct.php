@@ -3,7 +3,7 @@
 use
 	OSC\Product\Collection
 		as ProductPostCol
-	, OSC\ProductPost\Object
+	, OSC\Product\Object
 		as ProductPostObj
 	, OSC\ProductToCategory\Object
 		as ProductToCategoryObj
@@ -19,9 +19,12 @@ class RestApiProduct extends RestApi {
 
 	public function get($params){
 		$col = new ProductPostCol();
-
+		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+		$params['GET']['search_title'] ? $col->filterByName($params['GET']['search_title']) : '';
+		$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
+		$params['GET']['customer_id'] ? $col->filterByCustomersId($params['GET']['customer_id']) : '';
 		// start limit page
-		$showDataPerPage = 20;
+		$showDataPerPage = 10;
 		$start = $params['GET']['start'];
 		$this->applyLimit($col,
 			array(

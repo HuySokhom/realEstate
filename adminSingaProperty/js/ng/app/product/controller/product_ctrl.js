@@ -47,7 +47,7 @@ app.controller(
 		};
 
 		$scope.edit = function(id){
-			$location.path("/manage_property/edit/" + id);
+			$location.path("/product/edit/" + id);
 		};
 
 		$scope.refreshDate = function(params){
