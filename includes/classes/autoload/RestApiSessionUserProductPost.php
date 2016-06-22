@@ -134,7 +134,7 @@ class RestApiSessionUserProductPost extends RestApi {
 				// delete first insert new after
 				$productImageObject->delete();
 				foreach ( $imageFields as $k => $v){
-//					$productImageObject->setProductsId($productId);
+					$productImageObject->setProductsId($productId);
 					$productImageObject->setProperties($v);
 					$productImageObject->insert();
 					unset($v);

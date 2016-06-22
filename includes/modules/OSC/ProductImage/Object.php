@@ -54,7 +54,7 @@ class Object extends DbObj {
 
 	public function delete(){
 		if( !$this->getProductsId() ) {
-			throw new Exception("delete method requires id to be set");
+			throw new Exception("delete method requires product id to be set");
 		}
 		$this->dbQuery("
 			DELETE FROM
