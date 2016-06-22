@@ -79,6 +79,11 @@ app.config([
 				templateUrl: 'js/ng/app/product/partials/index.html',
 				controller: 'product_ctrl'
 			})
+			.state('/product/post', {
+				url: '/product/post',
+				templateUrl: 'js/ng/app/product/partials/product_post.html',
+				controller: 'product_post_ctrl'
+			})
 			.state('/product/edit/:id', {
 				url: '/product/edit/:id',
 				templateUrl: 'js/ng/app/product/partials/product_edit.html',

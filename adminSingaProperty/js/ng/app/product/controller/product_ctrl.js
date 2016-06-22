@@ -12,7 +12,13 @@ app.controller(
 		function init(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products = data;
-				$scope.totalItems = data.count;console.log(data);
+				$scope.totalItems = data.count;
+			});
+			Restful.get("api/Category").success(function(data){
+				$scope.categoryList = data;
+			});
+			Restful.get("api/Customer").success(function(data){
+				$scope.customerList = data;
 			});
 		};
 		init(params);
@@ -40,6 +46,35 @@ app.controller(
 				});
 		};
 
+		$scope.edit = function(id){
+			$location.path("/manage_property/edit/" + id);
+		};
+
+		$scope.refreshDate = function(params){
+			Restful.patch(url + params.id).success(function(data){
+				init(params);
+			});
+		};
+
+		$scope.updateStatus = function(params){
+			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
+			var data = { status: params.products_status, name: "update_status"};
+			Restful.patch(url + params.id, data).success(function(data){
+				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
+			});
+		};
+
+		$scope.link = function(id){
+			window.open('-p-' + id + '.html','_blank');
+		};
+		// search functionality
+		$scope.search = function(){
+			params.search_title = $scope.search_title;
+			params.id = $scope.id;
+			params.type = $scope.category_id;
+			params.customer_id = $scope.customer_id;
+			init(params);
+		};
 		/**
 		 * start functionality pagination
 		 */

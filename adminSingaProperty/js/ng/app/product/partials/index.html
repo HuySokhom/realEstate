@@ -1,13 +1,68 @@
-<button 
-	class="btn btn-default default-font" 
-	data-toggle="modal" 
-	data-target="#imagePopup"
-	data-ng-click="add();"
->
-	<span class="glyphicon glyphicon-plus"></span>
-	Add Product
-</button>
-<br/><br/>
+<div class="row">
+	<div class="col-md-2">
+		<button
+			class="btn btn-default"
+			onclick="location.href='#/product/post';"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Post Property
+		</button>
+	</div>
+	<div class="col-md-10">
+		<div class="row">
+			<div class="form-group has-feedback col-sm-3">
+				<input
+					type="text"
+					placeholder="Search Title..."
+					style="width: 106%;"
+					class="form-control"
+					data-ng-model="search_title"
+					data-ng-keypress="($event.which === 13) ? search() : 0"
+				/>
+				<span class="glyphicon glyphicon-search form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback col-sm-3">
+				<input
+					type="text"
+					placeholder="Search Id..."
+					style="width: 106%;"
+					class="form-control"
+					data-ng-model="id"
+					data-ng-keypress="($event.which === 13) ? search() : 0"
+				/>
+				<span class="glyphicon glyphicon-search form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback col-sm-3">
+				<select
+					data-ng-model="category_id"
+					data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
+					class="form-control"
+					data-ng-change="search();"
+					required
+				>
+					<option value="">--Filter By Category--</option>
+				</select>
+			</div>
+			<div class="form-group has-feedback col-sm-3">
+				<select
+					data-ng-model="customer_id"
+					data-ng-options="c.id as c.user_name for c in customerList.elements"
+					class="form-control"
+					data-ng-change="search();"
+					required
+				>
+					<option value="">--Filter By Customer--</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+
+<span class="label label-info" data-ng-if="totalItems > 0">
+	Total of Items: {{totalItems}}
+</span>
+<br/>
+<br/>
 <table class="table table-striped table-bordered default-font">
 	<tr>
 		<th>
@@ -20,7 +75,7 @@
 			Name
 		</th>
 		<th>
-			Description
+			Kind Of
 		</th>
 		<th>
 			Price
@@ -53,7 +108,7 @@
 			<span data-ng-bind="p.product_detail[0].products_name"></span>
 		</td>
 		<td>
-			<span data-ng-bind="p.product_detail[0].products_description"></span>
+			<span data-ng-bind="p.products_kind_of"></span>
 		</td>
 		<td>
 			{{p.products_price | currency}}
@@ -68,23 +123,65 @@
 		<td width="">
 			<button
 				class="btn btn-default"
-				data-ng-click="edit(p);"
+				data-ng-click="edit(p.id);"
 				data-toggle="tooltip"
-				data-placement="top"
+				data-placement="left"
 				title="Edit"
 				tooltip
 			>
-				<span class="fa fa-pencil-square-o"></span>
+				<span class="fa fa-edit"></span>
 			</button>
 			<button
 				class="btn btn-danger"
-				data-ng-click="remove($index, p);"
-				data-toggle="modals"
-				data-placement="bottom"
-				title="Delete"
+				data-ng-click="remove($index, p.id);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Remove"
 				tooltip
 			>
-				<span class="glyphicon glyphicon-trash"></span>
+				<span class="fa fa-trash-o"></span>
+			</button>
+			<button
+				class="btn btn-warning"
+				data-ng-click="updateStatus(p);"
+				data-ng-show="p.products_status == 0"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Inactive"
+				tooltip
+			>
+				<span class="fa fa-minus-circle"></span>
+			</button>
+			<button
+				class="btn btn-success"
+				data-ng-click="updateStatus(p);"
+				data-ng-show="p.products_status == 1"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Active"
+				tooltip
+			>
+				<span class="fa fa-check-square-o"></span>
+			</button>
+			<button
+				class="btn btn-info"
+				data-ng-click="refreshDate(p);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Refresh"
+				tooltip
+			>
+				<span class="fa fa-refresh"></span>
+			</button>
+			<button
+				class="btn btn-default"
+				data-ng-click="link(p.id);"
+				data-toggle="tooltip"
+				data-placement="right"
+				title="Link"
+				tooltip
+			>
+				<span class="fa fa-link"></span>
 			</button>
 		</td>
 	</tr>
