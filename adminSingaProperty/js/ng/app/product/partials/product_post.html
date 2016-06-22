@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-md-6">
             <label>
-                Type:
+                Category:
             </label>
             <select
                 data-ng-model="categories_id"
-                data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
+                data-ng-options="c.categories_id as c.detail[0].categories_name for c in categoryList.elements"
                 class="form-control"
                 required
             >
@@ -67,7 +67,7 @@
             <img
                 ng-show="image"
                 class="thumb"
-                src="images/{{image_thumbnail}}"
+                src="../images/{{image_thumbnail}}"
             >
             <span class="progress" ng-show="picFile.progress >= 0">
                 <div
@@ -204,7 +204,7 @@
                 <div>
                     <img
                         class="thumb"
-                        src="images/{{i.image_thumbnail}}"
+                        src="../images/{{i.image_thumbnail}}"
                     >
                 </div>
                 <button

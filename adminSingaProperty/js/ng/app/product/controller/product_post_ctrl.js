@@ -80,11 +80,11 @@ app.controller(
 			};
 			$scope.disabled = false;
 			//console.log(data);
-			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
+			Restful.post("api/Product", data).success(function (data) {
 				$scope.disabled = true;
-				//console.log(data);
+				console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
-				$location.path('manage_property');
+				$location.path('product');
 			});
 		};
 
@@ -98,7 +98,7 @@ app.controller(
 			}
 			if (file) {
 				file.upload = Upload.upload({
-					url: 'api/UploadImage',
+					url: 'api/ImageUpload',
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {

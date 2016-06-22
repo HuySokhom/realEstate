@@ -13,6 +13,7 @@ class Object extends DbObj {
 		, $productsName
 		, $productsDescription
 		, $productsViewed
+		, $languageId
 	;
 	
 	public function toArray( $params = array() ){
@@ -57,10 +58,12 @@ class Object extends DbObj {
 			UPDATE
 				products_description
 			SET 
-				products_name = '" .  $this->dbEscape($this->getProductsName() ). "',
-				products_description = '" .  $this->dbEscape($this->getProductsDescription() ). "'
+				products_name = '" .  $this->getProductsName() . "',
+				products_description = '" .  $this->getProductsDescription() . "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
+					AND
+				language_id = '" . (int)$this->getLanguageId() . "'
 		");
 	}
 
@@ -83,17 +86,26 @@ class Object extends DbObj {
 			(
 				products_name,
 				products_description,
-				products_id
+				products_id,
+				language_id
 			)
 				VALUES
 			(
  				'" . $this->dbEscape( $this->getProductsName() ) . "',
  				'" . $this->dbEscape( $this->getProductsDescription() ) . "',
-				'" . $this->getProductsId() . "'
+				'" . $this->getProductsId() . "',
+				'" . $this->getLanguageId() . "'
 			)
 		");
 	}
-	
+	public function setLanguageId( $string ){
+		$this->languageId = (int)$string;
+	}
+
+	public function getLanguageId(){
+		return $this->languageId;
+	}
+
 	public function setProductsName( $string ){
 		$this->productsName = $string;
 	}

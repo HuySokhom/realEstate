@@ -215,6 +215,7 @@ class Object extends DbObj {
 				products
 			(
 				customers_id,
+				categories_id,
 				province_id,
 				district_id,
 				village_id,
@@ -232,6 +233,7 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
+				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
 				'" . (int)$this->getDistrictId() . "',
 				'" . (int)$this->getVillageId() . "',
