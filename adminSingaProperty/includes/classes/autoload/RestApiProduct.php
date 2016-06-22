@@ -38,52 +38,42 @@ class RestApiProduct extends RestApi {
 	}
 
 	public function post($params){
+		$productObject = new ProductPostObj();
 		$userId = $this->getOwner()->getId();
-		if( !$userId ){
-			throw new \Exception(
-				"403: Access Denied",
-				403
-			);
-		}else {
-			$productObject = new ProductPostObj();
-			$userId = $this->getOwner()->getId();
-			$productObject->setCustomersId($userId);
-			$productObject->setProperties($params['POST']['product'][0]);
-			$productObject->insert();
-			$productId = $productObject->getProductsId();
+		$productObject->setCustomersId($userId);
+		$productObject->setProperties($params['POST']['products']);
+		$productObject->insert();
+		$productId = $productObject->getProductsId();
 
-			$productDetailObject = new ProductDescriptionObj();
-			$productDetailObject->setProductsId($productId);
-			$productDetailObject->setProperties($params['POST']['product_detail'][0]);
-			$productDetailObject->insert();
+		// save product to category
+		$productToCategoryObject = new ProductToCategoryObj();
+		$productToCategoryObject->setProductsId($productId);
+		$productToCategoryObject->setCategoriesId($params['POST']['products']['categories_id']);
+		$productToCategoryObject->insert();
 
-			$productToCategoryObject = new ProductToCategoryObj();
-			$productToCategoryObject->setProductsId($productId);
-			$productToCategoryObject->setProperties($params['POST']['categories'][0]);
-			$productToCategoryObject->insert();
-
-			$productContactPersonObject = new ProductContactPersonObj();
-			$productContactPersonObject->setProductsId($productId);
-			$productContactPersonObject->setCustomersId($userId);
-			$productContactPersonObject->setProperties($params['POST']['contact_person'][0]);
-			$productContactPersonObject->insert();
-
-			$fields = $params['POST']['products_image'];
-			foreach ( $fields as $k => $v){
-				if( $v['image'] != '') {
-					$productImageObject = new ProductImageObj();
-					$productImageObject->setProperties($v);
-					$productImageObject->setProductsId($productId);
-					$productImageObject->insert();
-				}
-			}
-			unset($params);
-			return array(
-				'data' => array(
-					'id' => $productId
-				)
-			);
+		// save product images
+		$productImageObject = new ProductImageObj();
+		$fields = $params['POST']['products_image'];
+		foreach ( $fields as $k => $v){
+			$productImageObject->setProductsId($productId);
+			$productImageObject->setProperties($v);
+			$productImageObject->insert();
 		}
+
+		// save product description
+		$fields = $params['POST']['products_description'];
+		$productDetailObject = new ProductDescriptionObj();
+		foreach ( $fields as $k => $v){
+			$productDetailObject->setProductsId($productId);
+			$productDetailObject->setProperties($v);
+			$productDetailObject->insert();
+		}
+		unset($params);
+		return array(
+				'data' => array(
+						'id' => $productId
+				)
+		);
 	}
 
 	public function put($params){
@@ -135,57 +125,41 @@ class RestApiProduct extends RestApi {
 	}
 
 	public function patch($params){
-		$userId = $this->getOwner()->getId();
-		if( !$userId ){
-			throw new \Exception(
-				"403: Access Denied",
-				403
-			);
-		}else {
-			$cols = new ProductPostCol();
-			$cols->filterByCustomersId($userId);
-			$cols->filterById( $this->getId() );
-			if( $cols->getTotalCount() > 0 ){
-				$cols->populate();
-				$col = $cols->getFirstElement();
-				$col->setProductsId($this->getId());
-				if( $params['PATCH']['name'] ){
-					$col->setProductsStatus($params['PATCH']['status']);
-					$col->updateStatus();
-				}else{
-					$col->refreshDate();
-				}
+		$cols = new ProductPostCol();
+		$cols->filterById( $this->getId() );
+		if( $cols->getTotalCount() > 0 ){
+			$cols->populate();
+			$col = $cols->getFirstElement();
+			$col->setProductsId($this->getId());
+			if( $params['PATCH']['name'] ){
+				$col->setProductsStatus($params['PATCH']['status']);
+				$col->updateStatus();
+			}else{
+				$col->refreshDate();
 			}
-			return array(
-				'data' => array(
-					'data' => 'update success'
-				)
-			);
 		}
+		return array(
+			'data' => array(
+				'data' => 'update success'
+			)
+		);
+
 	}
 	public function delete(){
-		$userId = $this->getOwner()->getId();
-		if( !$userId ){
-			throw new \Exception(
-				"403: Access Denied",
-				403
-			);
-		}else {
-			$cols = new ProductPostCol();
-			$cols->filterByCustomersId($userId);
-			$cols->filterById( $this->getId() );
-			if( $cols->getTotalCount() > 0 ){
-				$cols->populate();
-				$col = $cols->getFirstElement();
-				$col->setProductsId($this->getId());
-				$col->delete();
-			}
-			return array(
-				'data' => array(
-					'data' => 'success'
-				)
-			);
+		$cols = new ProductPostCol();
+		$cols->filterById( $this->getId() );
+		if( $cols->getTotalCount() > 0 ){
+			$cols->populate();
+			$col = $cols->getFirstElement();
+			$col->setProductsId($this->getId());
+			$col->delete();
 		}
+		return array(
+			'data' => array(
+				'data' => 'success'
+			)
+		);
+
 	}
 
 }

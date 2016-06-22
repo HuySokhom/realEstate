@@ -8,7 +8,7 @@ app.controller(
 	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
 		var params = {};
-		var url = 'api/Product';
+		var url = 'api/Product/';
 		function init(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products = data;
@@ -36,7 +36,8 @@ app.controller(
 					Restful.delete( url + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.image_sliders.elements.splice($index, 1);
+						$scope.products.elements.splice($index, 1);
+						init();
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -59,7 +60,7 @@ app.controller(
 		$scope.updateStatus = function(params){
 			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
 			var data = { status: params.products_status, name: "update_status"};
-			Restful.patch(url + params.id, data).success(function(data){
+			Restful.patch(url + params.id, data).success(function(data){console.log(data);
 				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});
 		};
