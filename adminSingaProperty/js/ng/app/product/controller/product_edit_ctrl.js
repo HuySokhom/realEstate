@@ -2,53 +2,164 @@ app.controller(
 	'product_edit_ctrl', [
 	'$scope'
 	, 'Restful'
+	, '$stateParams'
 	, 'Services'
 	, '$location'
 	, 'alertify'
-	, function ($scope, Restful, Services, $location, $alertify){
-		$scope.service = new Services();
-		var params = {};
-		var url = 'api/Product/';
-		function init(params){
-			Restful.get(url, params).success(function(data){
-				$scope.products = data;
-				$scope.totalItems = data.count;console.log(data);
+	, 'Upload'
+	, '$timeout'
+	, function ($scope, Restful, $stateParams, Services, $location, $alertify, Upload, $timeout){
+		// init tiny option
+		$scope.tinymceOptions = {
+			plugins: [
+				"advlist autolink lists link image charmap print preview hr anchor pagebreak",
+				"searchreplace wordcount visualblocks visualchars fullscreen",
+				"insertdatetime media nonbreaking save table contextmenu directionality",
+				"emoticons template paste textcolor colorpicker textpattern media"
+			],
+			toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+			toolbar2: "print preview media | forecolor backcolor emoticons",
+			image_advtab: true,
+			paste_data_images: true
+		};
+		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
+		// init category
+		$scope.initCategory = function(){
+			Restful.get("api/Category").success(function(data){
+				$scope.categoryList = data;
+			});
+			Restful.get("api/Location").success(function(data){
+				$scope.provinces = data;
+			});
+			Restful.get("api/District/").success(function(data){
+				$scope.districts = data;console.log(data);
+			});
+			Restful.get("api/Village/").success(function(data){
+				$scope.communes = data;console.log(data);
 			});
 		};
-		init(params);
+		$scope.initCategory();
 
-		$scope.edit = function(params){
-			console.log(params);
-			$location.path('/product/' + params.id);
+		// functional for init district
+		$scope.initDistrict = function(id){
+			Restful.get("api/District/" + id).success(function(data){
+				$scope.districts = data;
+				$scope.communes = '';
+			});
+		};
+		// functional for init Commune
+		$scope.initCommune = function(id){
+			Restful.get("api/Village/" + id).success(function(data){
+				$scope.communes = data;
+			});
+		};
+		var url = 'api/Product/';
+		$scope.service = new Services();
+
+		$scope.init = function(params){
+			Restful.get(url + $stateParams.id, params).success(function(data){
+				$scope.optionalImage = data.elements[0].image_detail;
+				$scope.district_id = data.elements[0].district_id;
+				$scope.province_id = data.elements[0].province_id;
+				$scope.property_type = data.elements[0].products_kind_of;
+				$scope.bed_rooms = data.elements[0].bed_rooms;
+				$scope.bath_rooms = data.elements[0].bath_rooms;
+				$scope.number_of_floors = data.elements[0].number_of_floors;
+				$scope.image_thumbnail = data.elements[0].products_image_thumbnail;
+				$scope.price = data.elements[0].products_price;
+				$scope.categories_id = data.elements[0].categories_id;
+				$scope.commune_id = data.elements[0].village_id;
+				$scope.title_en = data.elements[0].product_detail[0].products_name;
+				$scope.title_kh = data.elements[0].product_detail[1].products_name;
+				$scope.content_en = data.elements[0].product_detail[0].products_description;
+				$scope.content_kh = data.elements[0].product_detail[1].products_description;
+				console.log(data);
+			});
+		};
+		$scope.init();
+
+		// update functionality
+		$scope.save = function(){
+			// set object to save into news
+			var data = {
+				products: {
+					products_image: $scope.image,
+					products_image_thumbnail: $scope.image_thumbnail,
+					categories_id: $scope.categories_id,
+					province_id: $scope.province_id,
+					district_id: $scope.district_id,
+					village_id: $scope.commune_id,
+					products_price: $scope.price,
+					products_kind_of: $scope.property_type,
+					bed_rooms: $scope.bed_rooms,
+					bath_rooms: $scope.bath_rooms,
+					number_of_floors: $scope.number_of_floors,
+				},
+				products_description: [
+					{
+						products_name: $scope.title_en,
+						products_description: $scope.content_en,
+						language_id: 1
+					},
+					{
+						products_name: $scope.title_kh,
+						products_description: $scope.content_kh,
+						language_id: 2
+					}
+				],
+				products_image: $scope.optionalImage
+			};
+			$scope.disabled = false;
+
+			Restful.put(url + $stateParams.id, data).success(function (data) {
+				$scope.disabled = true;
+				console.log(data);
+				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
+				$location.path('product');
+			});
 		};
 
-		$scope.remove = function($index, params){
-			$alertify.okBtn("Ok")
-				.cancelBtn("Cancel")
-				.confirm("Are you sure you want to delete this product?", function (ev) {
-					ev.preventDefault();
-					Restful.delete( url + params.id, params ).success(function(data){
-						$scope.disabled = true;console.log(data);
-						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.image_sliders.elements.splice($index, 1);
-					});
-				}, function(ev) {
-					// The click event is in the
-					// event variable, so you can use
-					// it here.
-					ev.preventDefault();
+		//functionality upload
+		$scope.uploadPic = function(file, type) {
+			// validate on if image option limit with 8 photo.
+			if(type == 'optional') {
+				if($scope.optionalImage.length >= 8){
+					return $scope.service.alertMessagePromt('<b>Warning: </b>We limit image upload only 8 photo.');
+				}
+			}
+			if (file) {
+				file.upload = Upload.upload({
+					url: 'api/ImageUpload',
+					data: {file: file, username: $scope.username},
 				});
+				file.upload.then(function (response) {
+					$timeout(function () {
+						file.result = response.data;
+						if(type == 'feature_image') {
+							$scope.image = response.data.image;
+							$scope.image_thumbnail = response.data.image_thumbnail;
+						}
+						if(type == 'optional') {
+							var option = {
+								image: response.data.image,
+								image_thumbnail: response.data.image_thumbnail
+							};
+							$scope.optionalImage.push(option);
+						}
+					});
+				}, function (response) {
+					if (response.status > 0)
+						$scope.errorMsg = response.status + ': ' + response.data;
+				}, function (evt) {
+					// Math.min is to fix I	E which reports 200% sometimes
+					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+				});
+			}
 		};
 
-		/**
-		 * start functionality pagination
-		 */
-		$scope.currentPage = 1;
-		//get another portions of data on page changed
-		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
-			params.start = $scope.pageSize;
-			init(params);
+		// remove image
+		$scope.removeImage = function ($index) {
+			$scope.optionalImage.splice($index, 1);
 		};
 	}
 ]);

@@ -59,7 +59,7 @@ class Object extends DbObj {
 			DELETE FROM
 				products_images
 			WHERE
-				id = '" . (int)$this->getId() . "'
+				products_id = '" . (int)$this->getProductsId() . "'
 		");
 	}
 
