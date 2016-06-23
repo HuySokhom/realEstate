@@ -116,9 +116,16 @@ function check_form() {
       </div>
 
       <div class="col-md-3 search">
-        <?php
-        echo tep_draw_pull_down_menu('manufacturers_id', tep_get_manufacturers(array(array('id' => '', 'text' => TEXT_ALL_MANUFACTURERS))), NULL, 'id="entryManufacturers"');
-        ?>
+        <select
+            name="kind_of"
+            class="form-control"
+            id="kind_of"
+        >
+          <option value="" selected="selected"><?php echo TEXT_ALL_MANUFACTURERS;?></option>
+          <option value="For Sale">For Sale</option>
+          <option value="For Rent">For Rent</option>
+          <option value="Both Sale and Rent">Both Sale and Rent</option>
+        </select>
       </div>
 
       <div class="col-md-3 search">
