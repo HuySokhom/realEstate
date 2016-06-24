@@ -44,11 +44,16 @@
 <?php
   } else {
     $product_info_query = tep_db_query("
-        select p.products_id, p.products_image_thumbnail, pd.products_name, pd.products_description, p.products_model, p
-        .products_quantity, pd.products_viewed, p.products_image, pd.products_url, p.products_price, p
-        .products_tax_class_id, p.products_date_added, p.products_date_available, p.manufacturers_id
-        from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
+        select p.products_id, p.products_kind_of, p.products_image_thumbnail, pd.products_name, v.name_en as village_name,
+        l.name as province_name, d.name_en as district_name,
+        pd.products_description, p.products_model, p.products_quantity, p.bed_rooms, p.bath_rooms, p.number_of_floors,
+        pd.products_viewed, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id,
+        p.products_date_added, p.products_date_available, p.manufacturers_id, p.village_id, p.district_id, p.province_id
+        from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, village v, district d
         where p.products_status = '1'
+        and v.id = p.village_id
+        and l.id = p.province_id
+        and d.id = p.district_id
         and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
         and pd.products_id = p.products_id
         and pd.language_id = '" . (int)$languages_id . "'
@@ -139,16 +144,16 @@
             </a>
             <img data-u="thumb" src="<?php echo DIR_WS_IMAGES . $product_info['products_image_thumbnail'];?>" />
           </div>
-          <?php
-            if ($pi_total > 0) {
-                while ($pi = tep_db_fetch_array($pi_query)) {
-                    echo '<div data-p="144.50" style="display: none;">';
-                    echo '<a href="'. DIR_WS_IMAGES . $pi['image'] .'"><img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" /></a>';
-                    echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
-                    echo '</div>';
-                }
-            }
-        ?>
+<!--          --><?php
+//            if ($pi_total > 0) {
+//                while ($pi = tep_db_fetch_array($pi_query)) {
+//                    echo '<div data-p="144.50" style="display: none;">';
+//                    echo '<a href="'. DIR_WS_IMAGES . $pi['image'] .'"><img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" /></a>';
+//                    echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
+//                    echo '</div>';
+//                }
+//            }
+//        ?>
         </div>
         <!-- Thumbnail Navigator -->
         <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
@@ -235,18 +240,6 @@
 </div>
 </div>
 </form>
-<script>
-$('.gallery').each(function() { // the containers for all your galleries
-    $(this).magnificPopup({
-        delegate: 'a', // the selector for gallery item
-        type: 'image',
-        gallery: {
-          enabled:true
-        }
-    });
-});
-
-</script>
 <!-- Property Detail Page -->
 		<div class="property-main-details">
 			<!-- container -->
@@ -259,191 +252,73 @@ $('.gallery').each(function() { // the containers for all your galleries
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
 								<div class="item active">
-									<img src="images/details/detail-slide-1.jpg" alt="Slide">
+									<img src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>"  style="width:100%; height: 450px;">
 								</div>
-								<div class="item">
-									<img src="images/details/detail-slide-1.jpg" alt="Slide">
-								</div>
-								<div class="item">
-									<img src="images/details/detail-slide-1.jpg" alt="Slide">
-								</div>
-								<div class="item">
-									<img src="images/details/detail-slide-1.jpg" alt="Slide">
-								</div>
+								 <?php
+                                    if ($pi_total > 0) {
+                                        while ($pi = tep_db_fetch_array($pi_query)) {
+                                            echo '<div class="item">';
+                                            echo '<img data-u="image" style="width:100%; height: 450px;" src="' . DIR_WS_IMAGES . $pi['image'] . '"/>';
+                                            echo '</div>';
+                                        }
+                                    }
+                                ?>
 							</div>
 							<!-- Controls -->
-							<a class="left carousel-control" href="property-detail-2.html#property-detail1-slider" role="button" data-slide="prev">
+							<a class="left carousel-control" href="#property-detail1-slider" role="button" data-slide="prev">
 								<span class="fa fa-long-arrow-left" aria-hidden="true"></span>
 								<span class="sr-only">Previous</span>
 							</a>
-							<a class="right carousel-control" href="property-detail-2.html#property-detail1-slider" role="button" data-slide="next">
+							<a class="right carousel-control" href="#property-detail1-slider" role="button" data-slide="next">
 								<span class="fa fa-long-arrow-right" aria-hidden="true"></span>
 								<span class="sr-only">Next</span>
 							</a>
 						</div><!-- Slider Section /- -->
 						<div class="property-header">
-							<h3>15421 Southwest 39th Terrace - Miami <span>For Rent</span></h3>
+							<h3>
+							    <?php
+							        echo $product_info['village_name'] .', '. $product_info['district_name'] .',
+							            '.$product_info['province_name'] . ', ' .$product_info['products_name']
+							        ;
+							        echo '<span>' . $product_info['products_kind_of'] . '</span>';
+							    ?>
+                            </h3>
 							<ul>
-								<li>$320/mo</li>
-								<li>Product ID : 201354</li>
 								<li>
-								    Post Date:
 								<?php
-								     echo date('d-F-Y', strtotime($product_info['products_date_added']));
+								    echo $currencies->display_price($product_info['products_price']);
+								?>
+                                </li>
+								<li>Product ID : <?php echo $product_info['products_id']; ?></li>
+								<li>
+								<?php
+								     echo '<i class="fa fa-calendar"></i>' . date('d-F-Y', strtotime($product_info['products_date_added']));
 								?></li>
 								<li>
 								    <?php echo '<i class="fa fa-eye"></i> ' . $product_info['products_viewed']; ?>
                                 </li>
-								<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-								<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-								<li><i class="fa fa-car"></i>1</li>
+								<li>
+								    <?php
+								        echo '<i class="fa fa fa-bed"></i>' . $product_info['bed_rooms'];
+								    ?>
+								</li>
+								<li>
+                                    <?php
+                                        echo '<i class="fa fa fa-bath"></i>' . $product_info['bath_rooms'];
+                                    ?>
+                                </li>
+								<li>
+                                    <?php
+                                        echo '<i class="fa fa-calendar"></i>' . $product_info['number_of_floors'];
+                                    ?>
+                                </li>
 							</ul>
 							<a title="print" href="property-detail-2.html#"><i class="fa fa-print"></i> Print</a>
 						</div>
 						<div class="single-property-details">
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper libero sed ante auctor vel gravida nunc placerat. Suspendisse molestie posuere sem, in viverra dolor venenatis sit amet. Aliquam gravida nibh quis justo pulvinar luctus. Phasellus a malesuada massa. Mauris elementum tempus nisi, vitae ullamcorper sem ultricies vitae. Nullam consectetur lacinia nisi, quis laoreet magna pulvinar in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Cum sociis natoque penatibus et magnis.dis parturient montes, nascetur ridiculus mus.</p>
+							 <?php echo stripslashes($product_info['products_description']);?>
 						</div>
-						<div class="general-amenities pull-left">
-							<h3>General amenities</h3>
-							<div class="amenities-list pull-left">
-								<div class="col-md-3 col-sm-12 col-xs-12">
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-1" checked>
-										<label for="checkbox-1">Air conditioning</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-2" checked>
-										<label for="checkbox-2">Balcony</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-3" checked>
-										<label for="checkbox-3">Bedding</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-4" checked>
-										<label for="checkbox-4">Cable TV</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-5" checked>
-										<label for="checkbox-5">Cleaning after exit</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-6">
-										<label for="checkbox-6">Cofee pot</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-7" checked>
-										<label for="checkbox-7">Computer</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-8">
-										<label for="checkbox-8">Cot</label>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-12 col-xs-12">
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-9">
-										<label for="checkbox-9">Dishwasher</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-10" checked>
-										<label for="checkbox-10">DVD</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-11" checked>
-										<label for="checkbox-11">Fan</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-12" checked>
-										<label for="checkbox-12">Fridge</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-13" checked>
-										<label for="checkbox-13">Grill</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-14">
-										<label for="checkbox-14">Hairdryer</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-15" checked>
-										<label for="checkbox-15">Heating</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-16">
-										<label for="checkbox-16">Hi-fi</label>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-12 col-xs-12">
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-17">
-										<label for="checkbox-17">Internet</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-18" checked>
-										<label for="checkbox-18">Iron</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-19" checked>
-										<label for="checkbox-19">Juicer</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-20" checked>
-										<label for="checkbox-20">Lift</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-21" checked>
-										<label for="checkbox-21">Microwave</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-22">
-										<label for="checkbox-22">Oven</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-23" checked>
-										<label for="checkbox-23">Parking</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-24">
-										<label for="checkbox-24">Parquet</label>
-									</div>
-								</div>
-								<div class="col-md-3 col-sm-12 col-xs-12">
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-25">
-										<label for="checkbox-25">Radio</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-26" checked>
-										<label for="checkbox-26">Roof terrace</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-27" checked>
-										<label for="checkbox-27">Smoking allowed</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-28" checked>
-										<label for="checkbox-28">Terrace</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-29" checked>
-										<label for="checkbox-29">Toaster</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-30">
-										<label for="checkbox-30">Towelwes</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-31" checked>
-										<label for="checkbox-31">Use of pool</label>
-									</div>
-									<div class="amenities-checkbox">
-										<input type="checkbox" id="checkbox-32">
-										<label for="checkbox-32">Video</label>
-									</div>
-								</div>
-							</div>
-						</div>
+
 						<div class="property-direction pull-left">
 							<h3>Get Direction</h3>
 							<div class="property-map">
