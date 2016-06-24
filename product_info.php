@@ -228,90 +228,8 @@
 <?php
     include(DIR_WS_MODULES . 'relate_products.php');
 ?>
-<?php
-    $products_attributes_query = tep_db_query("select count(*) as total from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$HTTP_GET_VARS['products_id'] . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . (int)$languages_id . "'");
-    $products_attributes = tep_db_fetch_array($products_attributes_query);
-    if ($products_attributes['total'] > 0) {
-?>
-
-    <h4><?php echo TEXT_PRODUCT_OPTIONS; ?></h4>
-
-    <p>
-<?php
-      $products_options_name_query = tep_db_query("select distinct popt.products_options_id, popt.products_options_name from " . TABLE_PRODUCTS_OPTIONS . " popt, " . TABLE_PRODUCTS_ATTRIBUTES . " patrib where patrib.products_id='" . (int)$HTTP_GET_VARS['products_id'] . "' and patrib.options_id = popt.products_options_id and popt.language_id = '" . (int)$languages_id . "' order by popt.products_options_name");
-      while ($products_options_name = tep_db_fetch_array($products_options_name_query)) {
-        $products_options_array = array();
-        $products_options_query = tep_db_query("select pov.products_options_values_id, pov.products_options_values_name, pa.options_values_price, pa.price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " pa, " . TABLE_PRODUCTS_OPTIONS_VALUES . " pov where pa.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and pa.options_id = '" . (int)$products_options_name['products_options_id'] . "' and pa.options_values_id = pov.products_options_values_id and pov.language_id = '" . (int)$languages_id . "'");
-        while ($products_options = tep_db_fetch_array($products_options_query)) {
-          $products_options_array[] = array('id' => $products_options['products_options_values_id'], 'text' => $products_options['products_options_values_name']);
-          if ($products_options['options_values_price'] != '0') {
-            $products_options_array[sizeof($products_options_array)-1]['text'] .= ' (' . $products_options['price_prefix'] . $currencies->display_price($products_options['options_values_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) .') ';
-          }
-        }
-
-        if (is_string($HTTP_GET_VARS['products_id']) && isset($cart->contents[$HTTP_GET_VARS['products_id']]['attributes'][$products_options_name['products_options_id']])) {
-          $selected_attribute = $cart->contents[$HTTP_GET_VARS['products_id']]['attributes'][$products_options_name['products_options_id']];
-        } else {
-          $selected_attribute = false;
-        }
-?>
-      <strong><?php echo $products_options_name['products_options_name'] . ':'; ?></strong><br /><?php echo tep_draw_pull_down_menu('id[' . $products_options_name['products_options_id'] . ']', $products_options_array, $selected_attribute, 'style="width: 200px;"'); ?><br />
-<?php
-      }
-?>
-    </p>
-
-<?php
-    }
-?>
-
-    <div class="clearfix"></div>
-
-<?php
-    if ($product_info['products_date_available'] > date('Y-m-d H:i:s')) {
-?>
-
-    <div class="alert alert-info"><?php echo sprintf(TEXT_DATE_AVAILABLE, tep_date_long($product_info['products_date_available'])); ?></div>
-
-<?php
-    }
-?>
 
   </div>
-
-<?php
-    $reviews_query = tep_db_query("select count(*) as count, avg(reviews_rating) as avgrating from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "' and r.reviews_id = rd.reviews_id and rd.languages_id = '" . (int)$languages_id . "' and reviews_status = 1");
-    $reviews = tep_db_fetch_array($reviews_query);
-
-    if ($reviews['count'] > 0) {
-      echo '<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta itemprop="ratingValue" content="' . $reviews['avgrating'] . '" /><meta itemprop="ratingCount" content="' . $reviews['count'] . '" /></span>';
-    }
-?>
-
-  <div class="buttonSet row" style="display: none;">
-    <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_REVIEWS . (($reviews['count'] > 0) ? ' (' . $reviews['count'] . ')' : ''), 'glyphicon glyphicon-comment', tep_href_link(FILENAME_PRODUCT_REVIEWS, tep_get_all_get_params())); ?></div>
-    <div class="col-xs-6 text-right"><?php echo tep_draw_hidden_field('products_id', $product_info['products_id']) . tep_draw_button(IMAGE_BUTTON_IN_CART, 'glyphicon glyphicon-shopping-cart', null, 'primary', null, 'btn-success'); ?></div>
-  </div>
-
-  <div class="row">
-    <?php echo $oscTemplate->getContent('product_info'); ?>
-  </div>
-
-<?php
-    if ((USE_CACHE == 'true') && empty($SID)) {
-      echo tep_cache_also_purchased(3600);
-    } else {
-      include(DIR_WS_MODULES . FILENAME_ALSO_PURCHASED_PRODUCTS);
-    }
-
-    if ($product_info['manufacturers_id'] > 0) {
-      $manufacturer_query = tep_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . (int)$product_info['manufacturers_id'] . "'");
-      if (tep_db_num_rows($manufacturer_query)) {
-        $manufacturer = tep_db_fetch_array($manufacturer_query);
-        echo '<span itemprop="manufacturer" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="' . tep_output_string($manufacturer['manufacturers_name']) . '" /></span>';
-      }
-    }
-?>
 
 </div>
 </div>
@@ -328,12 +246,461 @@ $('.gallery').each(function() { // the containers for all your galleries
     });
 });
 
-//    $(function() {
-//        $( "#columnLeft" ).css('display', 'none');
-//        $( "#bodyContent" ).removeClass('col-md-9 col-md-push-3');
-//        $( "#bodyContent" ).addClass('col-md-12');
-//    });
 </script>
+<!-- Property Detail Page -->
+		<div class="property-main-details">
+			<!-- container -->
+			<div class="container">
+				<div class="property-details-content property-details-content2 container-fluid p_z">
+					<!-- col-md-9 -->
+					<div class="col-md-9 col-sm-6 p_l_z">
+						<!-- Slider Section -->
+						<div id="property-detail1-slider" class="carousel slide property-detail1-slider" data-ride="carousel">
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner" role="listbox">
+								<div class="item active">
+									<img src="images/details/detail-slide-1.jpg" alt="Slide">
+								</div>
+								<div class="item">
+									<img src="images/details/detail-slide-1.jpg" alt="Slide">
+								</div>
+								<div class="item">
+									<img src="images/details/detail-slide-1.jpg" alt="Slide">
+								</div>
+								<div class="item">
+									<img src="images/details/detail-slide-1.jpg" alt="Slide">
+								</div>
+							</div>
+							<!-- Controls -->
+							<a class="left carousel-control" href="property-detail-2.html#property-detail1-slider" role="button" data-slide="prev">
+								<span class="fa fa-long-arrow-left" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="property-detail-2.html#property-detail1-slider" role="button" data-slide="next">
+								<span class="fa fa-long-arrow-right" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div><!-- Slider Section /- -->
+						<div class="property-header">
+							<h3>15421 Southwest 39th Terrace - Miami <span>For Rent</span></h3>
+							<ul>
+								<li>$320/mo</li>
+								<li>Product ID : 201354</li>
+								<li>
+								    Post Date:
+								<?php
+								     echo date('d-F-Y', strtotime($product_info['products_date_added']));
+								?></li>
+								<li>
+								    <?php echo '<i class="fa fa-eye"></i> ' . $product_info['products_viewed']; ?>
+                                </li>
+								<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+								<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+								<li><i class="fa fa-car"></i>1</li>
+							</ul>
+							<a title="print" href="property-detail-2.html#"><i class="fa fa-print"></i> Print</a>
+						</div>
+						<div class="single-property-details">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ullamcorper libero sed ante auctor vel gravida nunc placerat. Suspendisse molestie posuere sem, in viverra dolor venenatis sit amet. Aliquam gravida nibh quis justo pulvinar luctus. Phasellus a malesuada massa. Mauris elementum tempus nisi, vitae ullamcorper sem ultricies vitae. Nullam consectetur lacinia nisi, quis laoreet magna pulvinar in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Cum sociis natoque penatibus et magnis.dis parturient montes, nascetur ridiculus mus.</p>
+						</div>
+						<div class="general-amenities pull-left">
+							<h3>General amenities</h3>
+							<div class="amenities-list pull-left">
+								<div class="col-md-3 col-sm-12 col-xs-12">
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-1" checked>
+										<label for="checkbox-1">Air conditioning</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-2" checked>
+										<label for="checkbox-2">Balcony</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-3" checked>
+										<label for="checkbox-3">Bedding</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-4" checked>
+										<label for="checkbox-4">Cable TV</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-5" checked>
+										<label for="checkbox-5">Cleaning after exit</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-6">
+										<label for="checkbox-6">Cofee pot</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-7" checked>
+										<label for="checkbox-7">Computer</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-8">
+										<label for="checkbox-8">Cot</label>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12">
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-9">
+										<label for="checkbox-9">Dishwasher</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-10" checked>
+										<label for="checkbox-10">DVD</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-11" checked>
+										<label for="checkbox-11">Fan</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-12" checked>
+										<label for="checkbox-12">Fridge</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-13" checked>
+										<label for="checkbox-13">Grill</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-14">
+										<label for="checkbox-14">Hairdryer</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-15" checked>
+										<label for="checkbox-15">Heating</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-16">
+										<label for="checkbox-16">Hi-fi</label>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12">
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-17">
+										<label for="checkbox-17">Internet</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-18" checked>
+										<label for="checkbox-18">Iron</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-19" checked>
+										<label for="checkbox-19">Juicer</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-20" checked>
+										<label for="checkbox-20">Lift</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-21" checked>
+										<label for="checkbox-21">Microwave</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-22">
+										<label for="checkbox-22">Oven</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-23" checked>
+										<label for="checkbox-23">Parking</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-24">
+										<label for="checkbox-24">Parquet</label>
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12 col-xs-12">
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-25">
+										<label for="checkbox-25">Radio</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-26" checked>
+										<label for="checkbox-26">Roof terrace</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-27" checked>
+										<label for="checkbox-27">Smoking allowed</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-28" checked>
+										<label for="checkbox-28">Terrace</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-29" checked>
+										<label for="checkbox-29">Toaster</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-30">
+										<label for="checkbox-30">Towelwes</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-31" checked>
+										<label for="checkbox-31">Use of pool</label>
+									</div>
+									<div class="amenities-checkbox">
+										<input type="checkbox" id="checkbox-32">
+										<label for="checkbox-32">Video</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="property-direction pull-left">
+							<h3>Get Direction</h3>
+							<div class="property-map">
+								<div id="gmap" class="mapping"></div>
+							</div>
+							<div class="property-map contact-agent">
+								<h3>Contact Agent</h3>
+								<div class="col-md-4 agent-details">
+									<div class="agent-header">
+										<div class="agent-img"><img src="images/single-property/agent.jpg" alt="agent" /></div>
+										<div class="agent-name">
+											<h5>agent John Doe</h5>
+											<ul>
+												<li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+												<li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
+											</ul>
+										</div>
+										<p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
+										<p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
+									</div>
+								</div>
+								<div class="col-md-8 agent-information p_z">
+									<div class="agent-info">
+										<p><i class="fa fa-phone"></i>0123 456 7890</p>
+										<p>
+											<i class="fa fa-envelope-o"></i>
+											<a href="mailto:info@johndoe.com" title="mail">info@johndoe.com</a>
+										</p>
+										<p><i class="fa fa-fax"></i>041-789-4561</p>
+									</div>
+									<div class="agent-form">
+										<h3>Send Instant Message</h3>
+										<form>
+											<div class="col-md-6 p_l_z">
+												<input type="text" placeholder="Your Name" />
+											</div>
+											<div class="col-md-6 p_r_z">
+												<input type="text" placeholder="Your Email ID" />
+											</div>
+											<input type="text" placeholder="Message" />
+											<input type="submit" value="Submit" class="btn">
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="property-map">
+								<h3>Share This Property :</h3>
+								<ul>
+									<li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="property-detail-2.html#" title="linkedin-square"><i class="fa fa-linkedin-square"></i></a></li>
+									<li><a href="property-detail-2.html#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+									<li><a href="property-detail-2.html#" title="instagram"><i class="fa fa-instagram"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="other-properties row">
+							<!-- Col-md-4 -->
+							<div class="col-md-4 col-xs-12 rent-block">
+								<!-- Property Main Box -->
+								<div class="property-main-box">
+									<div class="property-images-box">
+										<span>R</span>
+										<a href="property-detail-2.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
+										<h4>&dollar;380 / pm</h4>
+									</div>
+									<div class="clearfix"></div>
+									<div class="property-details">
+										<a href="property-detail-2.html#">Southwest 39th Terrace</a>
+										<ul>
+											<li><i class="fa fa-expand"></i>3326 sq</li>
+											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+										</ul>
+									</div>
+								</div><!-- Property Main Box -->
+							</div><!-- Col-md-4 /- -->
+							<!-- Col-md-4 -->
+							<div class="col-md-4 sale-block">
+								<!-- Property Main Box -->
+								<div class="property-main-box">
+									<div class="property-images-box">
+										<span>S</span>
+										<a href="property-detail-2.html#"><img src="images/rent/rent-4.jpg" alt="rent" /></a>
+										<h4>&dollar;330000</h4>
+									</div>
+									<div class="clearfix"></div>
+									<div class="property-details">
+										<a href="property-detail-2.html#">20 Apartments of Type A</a>
+										<ul>
+											<li><i class="fa fa-expand"></i>3326 sq</li>
+											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+										</ul>
+									</div>
+								</div><!-- Property Main Box /- -->
+							</div><!-- col-md-4 /- -->
+							<!-- Col-md-4 -->
+							<div class="col-md-4 rent-block">
+								<!-- Property Main Box -->
+								<div class="property-main-box">
+									<div class="property-images-box">
+										<span>R</span>
+										<a href="property-detail-2.html#"><img src="images/rent/rent-3.jpg" alt="rent" /></a>
+										<h4>&dollar;380 / pm</h4>
+									</div>
+									<div class="clearfix"></div>
+									<div class="property-details">
+										<a href="property-detail-2.html#">15 Apartments of Type B</a>
+										<ul>
+											<li><i class="fa fa-expand"></i>3326 sq</li>
+											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
+											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+										</ul>
+									</div>
+								</div><!-- Property Main Box -->
+							</div><!-- Col-md-4 /- -->
+						</div>
+					</div><!-- col-md-9 /- -->
+					<!-- col-md-3 -->
+					<div class="col-md-3 col-sm-6 p_r_z property-sidebar">
+						<aside class="widget widget-search">
+							<h2 class="widget-title">search<span>property</span></h2>
+							<form>
+								<select>
+									<option value="selected">Property ID</option>
+									<option value="one">One</option>
+									<option value="two">Two</option>
+									<option value="three">Three</option>
+									<option value="four">Four</option>
+									<option value="five">Five</option>
+								</select>
+								<select>
+									<option value="selected">Location</option>
+									<option value="one">One</option>
+									<option value="two">Two</option>
+									<option value="three">Three</option>
+									<option value="four">Four</option>
+									<option value="five">Five</option>
+								</select>
+								<select>
+									<option value="selected">Type</option>
+									<option value="one">One</option>
+									<option value="two">Two</option>
+									<option value="three">Three</option>
+									<option value="four">Four</option>
+									<option value="five">Five</option>
+								</select>
+								<select>
+									<option value="selected">Status</option>
+									<option value="one">One</option>
+									<option value="two">Two</option>
+									<option value="three">Three</option>
+									<option value="four">Four</option>
+									<option value="five">Five</option>
+								</select>
+								<div class="col-md-6 col-sm-6 p_l_z">
+									<select>
+										<option value="selected">Beds</option>
+										<option value="one">One</option>
+										<option value="two">Two</option>
+										<option value="three">Three</option>
+										<option value="four">Four</option>
+										<option value="five">Five</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-6 p_r_z">
+									<select>
+										<option value="selected">Baths</option>
+										<option value="one">One</option>
+										<option value="two">Two</option>
+										<option value="three">Three</option>
+										<option value="four">Four</option>
+										<option value="five">Five</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-6 p_l_z">
+									<select>
+										<option value="selected">Min Price</option>
+										<option value="one">One</option>
+										<option value="two">Two</option>
+										<option value="three">Three</option>
+										<option value="four">Four</option>
+										<option value="five">Five</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-6 p_r_z">
+									<select>
+										<option value="selected">Max Price</option>
+										<option value="one">$3000</option>
+										<option value="two">$30000</option>
+										<option value="three">$300000</option>
+										<option value="four">$3000000</option>
+										<option value="five">$3000000000000000</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-6 p_l_z">
+									<select>
+										<option value="selected">Min Sqft</option>
+										<option value="one">One</option>
+										<option value="two">Two</option>
+										<option value="three">Three</option>
+										<option value="four">Four</option>
+										<option value="five">Five</option>
+									</select>
+								</div>
+								<div class="col-md-6 col-sm-6 p_r_z">
+									<select>
+										<option value="selected">Max Sqft</option>
+										<option value="one">One</option>
+										<option value="two">Two</option>
+										<option value="three">Three</option>
+										<option value="four">Four</option>
+										<option value="five">Five</option>
+									</select>
+								</div>
+								<input type="submit" value="Search Now" class="btn">
+							</form>
+						</aside>
+						<aside class="widget widget-property-featured">
+							<h2 class="widget-title">featured<span>property</span></h2>
+							<div class="property-featured-inner">
+								<div class="col-md-4 col-sm-3 col-xs-2 p_z">
+									<a href="property-detail-2.html#" title="Fetured Property"><img src="images/aa-listing/feacture1.jpg" alt="feacture1" /></a>
+								</div>
+								<div class="col-md-8 col-sm-9 col-xs-10 featured-content">
+									<a href="property-detail-2.html#" title="Fetured Property">Southwest 39th Terrace</a>
+									<h3>&dollar;350000</h3>
+								</div>
+							</div>
+							<div class="property-featured-inner">
+								<div class="col-md-4 col-sm-3 col-xs-2 p_z">
+									<a href="property-detail-2.html#" title="Fetured Property"><img src="images/aa-listing/feacture2.jpg" alt="feacture2" /></a>
+								</div>
+								<div class="col-md-8 col-sm-9 col-xs-10 featured-content">
+									<a href="property-detail-2.html#" title="Fetured Property">>Southwest 39th Terrace</a>
+									<h3>&dollar;350000</h3>
+								</div>
+							</div>
+							<div class="property-featured-inner">
+								<div class="col-md-4 col-sm-3 col-xs-2 p_z">
+									<a href="property-detail-2.html#" title="Fetured Property"><img src="images/aa-listing/feacture3.jpg" alt="feacture3" /></a>
+								</div>
+								<div class="col-md-8 col-sm-9 col-xs-10 featured-content">
+									<a href="property-detail-2.html#" title="Fetured Property">Southwest 39th Terrace</a>
+									<h3>&dollar;350000</h3>
+								</div>
+							</div>
+						</aside>
+					</div><!-- col-md-3 /- -->
+				</div>
+			</div><!-- container /- -->
+		</div><!-- Property Detail Page /- -->
+
+	</div><!-- Page Content -->
 <?php
   }
   require(DIR_WS_INCLUDES . 'template_bottom.php');
