@@ -151,9 +151,18 @@ function check_form() {
         echo tep_draw_input_field('dto', '', 'id="dto" placeholder="' . ENTRY_BED_TO . '"');
         ?>
       </div>
+  </div>
 
-      <div class="clearfix">
-        <div class="popular-search">
+    <!-- col-md-2 -->
+    <div class="col-md-2 col-sm-3">
+      <div class="section-header">
+        <h3><span><?php echo SEARCH; ?></span><?php echo PROPERTY; ?></h3>
+        <?php echo tep_draw_button(SEARCH, 'fa fa-search', null, 'primary', null, 'btn-success'); ?>
+      </div>
+    </div>
+    <!-- col-md-2 /- -->
+    <div class="clearfix">
+      <div class="popular-search">
           <span class="search_text">
             <?php echo POPULAR_LOCATION;?>
           </span>
@@ -173,10 +182,10 @@ function check_form() {
             <i class="fa fa-hand-o-right"></i>
             <a href="">Tonle Bassac</a>
           </span>
-          <spani>
-            <i class="fa fa-hand-o-right"></i>
-            <a href="">Toul Tum Poung</a>
-          </spani>
+        <spani>
+          <i class="fa fa-hand-o-right"></i>
+          <a href="">Toul Tum Poung</a>
+        </spani>
           <span>
             <i class="fa fa-hand-o-right"></i>
             <a href="">Toul Kork</a>
@@ -185,27 +194,8 @@ function check_form() {
             <i class="fa fa-hand-o-right"></i>
             <a href="">Chamkarmom</a>
           </span>
-          <span>
-            <i class="fa fa-hand-o-right"></i>
-            <a href="">Kampot</a>
-          </span>
-          <span>
-            <i class="fa fa-hand-o-right"></i>
-            <a href="">Riverside</a>
-          </span>
-        </div>
-      </div>
-
-  </div>
-
-    <!-- col-md-2 -->
-    <div class="col-md-2 col-sm-3">
-      <div class="section-header">
-        <h3><span><?php echo SEARCH; ?></span><?php echo PROPERTY; ?></h3>
-        <?php echo tep_draw_button(SEARCH, 'fa fa-search', null, 'primary', null, 'btn-success'); ?>
       </div>
     </div>
-    <!-- col-md-2 /- -->
   </div>
 </div>
 

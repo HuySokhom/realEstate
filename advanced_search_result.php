@@ -19,6 +19,7 @@
   if ( (isset($HTTP_GET_VARS['keywords']) && empty($HTTP_GET_VARS['keywords'])) &&
        (isset($HTTP_GET_VARS['dfrom']) && (empty($HTTP_GET_VARS['dfrom']) || ($HTTP_GET_VARS['dfrom'] == DOB_FORMAT_STRING))) &&
        (isset($HTTP_GET_VARS['dto']) && (empty($HTTP_GET_VARS['dto']) || ($HTTP_GET_VARS['dto'] == DOB_FORMAT_STRING))) &&
+        (isset($HTTP_GET_VARS['location']) && (empty($HTTP_GET_VARS['location']) || (!is_numeric($HTTP_GET_VARS['pfrom'])) )) &&
        (isset($HTTP_GET_VARS['pfrom']) && !is_numeric($HTTP_GET_VARS['pfrom'])) &&
        (isset($HTTP_GET_VARS['pto']) && !is_numeric($HTTP_GET_VARS['pto'])) ) {
     $error = true;
@@ -37,6 +38,10 @@
 
     if (isset($HTTP_GET_VARS['dto'])) {
       $dto = (($HTTP_GET_VARS['dto'] == DOB_FORMAT_STRING) ? '' : $HTTP_GET_VARS['dto']);
+    }
+
+    if (isset($HTTP_GET_VARS['location'])) {
+      $location = $HTTP_GET_VARS['location'];
     }
 
     if (isset($HTTP_GET_VARS['pfrom'])) {

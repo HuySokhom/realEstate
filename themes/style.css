@@ -3428,7 +3428,7 @@ a:hover {
 }
 .popular-search{
 	background-color: #f2f4f5;
-	padding: 20px 0;
+	padding: 5px 5px 20px 10px;
 	clear: both;
 }
 .popular-search > span {
