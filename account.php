@@ -73,10 +73,7 @@
 
 			<div class="alert alert-info">
 				<i class="fa fa-star"></i>
-				Pay Services at SingaProperty.com Prices for publishing ads offers at SingaProperty.com
-				The property ads with higher rank are displayed before the other property ads.
-				All property ads are with duration of 15/30 days. If the desired number of candidates
-				is reached earlier you have the option to stop the property ad.
+				<?php echo TEXT_PLAN;?>
 			</div>
 
 			<div class="row">
@@ -90,7 +87,10 @@
 							<p class="lead"><strong>$100 / month</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-danger"></i> Personal use</li>
+							<li class="list-group-item">
+								<i class="icon-ok text-danger"></i>
+								All Products go to the top of the page.
+							</li>
 							<li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited Property</li>
 							<li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
 						</ul>
@@ -111,8 +111,11 @@
 							<p class="lead"><strong>$60 / month</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-info"></i> Personal use</li>
-							<li class="list-group-item"><i class="icon-ok text-info"></i> Unlimited projects</li>
+							<li class="list-group-item">
+								<i class="icon-ok text-info"></i>
+								Products below of Pro Plan
+							</li>
+							<li class="list-group-item"><i class="icon-ok text-info"></i> 50 Property</li>
 							<li class="list-group-item"><i class="icon-ok text-info"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
@@ -132,8 +135,11 @@
 							<p class="lead"><strong>$30 / month</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Personal use</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Unlimited projects</li>
+							<li class="list-group-item">
+								<i class="icon-ok text-success"></i>
+								Products go to below of Premium Plan.
+							</li>
+							<li class="list-group-item"><i class="icon-ok text-success"></i> 20 Property</li>
 							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
@@ -154,12 +160,15 @@
 							<p class="lead"><strong>$0 / month</strong></p>
 						</div>
 						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Personal use</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Unlimited projects</li>
+							<li class="list-group-item">
+								<i class="icon-ok text-success"></i>
+								No Feature.
+							</li>
+							<li class="list-group-item"><i class="icon-ok text-success"></i> Unlimited Property</li>
 							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
 						</ul>
 						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-primary" href="">BUY NOW!</a>
+
 						</div>
 					</div>
 					<!-- /PRICE ITEM -->

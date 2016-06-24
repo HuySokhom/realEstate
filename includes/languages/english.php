@@ -113,6 +113,11 @@ define('CATEGORY_OPTIONS', 'Options');
 define('CATEGORY_PASSWORD', 'Your Password');
 define('ENTRY_MANAGE_POST', 'Manage Post');
 define('ENTRY_MANAGE_NEWS', 'Manage News');
+define('TEXT_PLAN', 'Pay Services at SingaProperty.com Prices for publishing ads offers at SingaProperty.com
+				The property ads with higher rank are displayed before the other property ads.
+				All property ads are with duration of 15/30 days. If the desired number of candidates
+				is reached earlier you have the option to stop the property ad.
+        ');
 define('ENTRY_MY_ACCOUNT', 'My Account');
 define('ENTRY_COMPANY', 'Company Name');
 define('ENTRY_COMPANY_TEXT', '');
