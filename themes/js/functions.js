@@ -91,17 +91,17 @@
 		
 		/* Rent Property */
 		if( $('#rent-property-block').length ) {
-			
+
 			$("#rent-property-block").owlCarousel(
 			{
 				autoPlay: 3000, //Set AutoPlay to 3 seconds
 
-				items : 3,
+				items : 4,
 				itemsDesktop : [1199,3],
 				itemsDesktopSmall : [991,3],
 				itemsMobile : [680,1],
-				navigation : true,
-				pagination: false
+				//navigation : true,
+				//pagination: false
 			});
 		}
 		

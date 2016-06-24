@@ -176,23 +176,23 @@ function check_form() {
           </span>
           <span>
             <i class="fa fa-hand-o-right"></i>
-            <a href="">Beoung Kangkong 1</a>
+            <a href="javascript:void(0)">Beoung Kangkong 1</a>
           </span>
           <span>
             <i class="fa fa-hand-o-right"></i>
-            <a href="">Tonle Bassac</a>
+            <a href="javascript:void(0)">Tonle Bassac</a>
           </span>
         <spani>
           <i class="fa fa-hand-o-right"></i>
-          <a href="">Toul Tum Poung</a>
+          <a href="javascript:void(0)">Toul Tum Poung</a>
         </spani>
           <span>
             <i class="fa fa-hand-o-right"></i>
-            <a href="">Toul Kork</a>
+            <a href="javascript:void(0)">Toul Kork</a>
           </span>
           <span>
             <i class="fa fa-hand-o-right"></i>
-            <a href="">Chamkarmom</a>
+            <a href="javascript:void(0)">Chamkarmom</a>
           </span>
       </div>
     </div>
