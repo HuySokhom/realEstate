@@ -58,8 +58,8 @@ class Object extends DbObj {
 			UPDATE
 				products_description
 			SET 
-				products_name = '" .  $this->getProductsName() . "',
-				products_description = '" .  $this->getProductsDescription() . "'
+				products_name = '" .  $this->dbEscape( $this->getProductsName() ). "',
+				products_description = '" .  $this->dbEscape( $this->getProductsDescription() ). "'
 			WHERE
 				products_id = '" . (int)$this->getProductsId() . "'
 					AND

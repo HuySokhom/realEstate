@@ -823,8 +823,8 @@ textarea {
 
 /* Rent Property */
 .rent-property {
-	border-bottom: 1px solid #e3e3e3;
-	display: inline-block;
+	/*border-bottom: 1px solid #e3e3e3;*/
+	/*display: inline-block;*/
 	width: 100%;
 	padding-bottom: 59px;
 }
@@ -1585,7 +1585,7 @@ textarea {
 }
 
 .widget-search .btn {
-	background-color: #79b445;
+	background-color: #3C64FF;
 	color: #fff;
 	padding: 15px 55px;
 	border-radius: 0;
@@ -1927,7 +1927,7 @@ textarea {
 
 .property-header h3 span {
 	font-weight: 500;
-	background-color: #0DBAE8;
+	background-color: #3C64FF;
 	padding: 7px 14px;
 	font-size: 17px;
 	color: #fff;
@@ -1939,11 +1939,13 @@ textarea {
 	padding: 0;
 	margin: 0;
 }
-
+.rent{
+	padding: 27px;
+}
 .property-header  ul li:first-child {
 	font-size: 18px;
-	font-weight: 500;
-	color: #0DBAE8;
+	font-weight: 600;
+	color: #D33E63;
 }
 
 .property-details-content {
@@ -1968,7 +1970,7 @@ textarea {
 }
 
 .property-detail1-slider .carousel-control:hover {
-	background-color: #0dbae8;
+	background-color: #3C64FF;
 }
 
 .property-detail1-slider .carousel-control.right {

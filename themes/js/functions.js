@@ -1,7 +1,7 @@
 (function($) {
 
-	"use strict"
-
+	"use strict";
+	$('[data-toggle="tooltip"]').tooltip();
 	$('#back-to-top').on("click", function() {
 		// When arrow is clicked
 		$('body,html').animate({

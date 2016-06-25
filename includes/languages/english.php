@@ -48,6 +48,10 @@ define('CHARSET', 'utf-8');
 
 // page title
 define('TITLE', STORE_NAME);
+define(PROPERTY, 'Property');
+define(RENT, 'For Rent');
+define(SALE, 'Property For Sale');
+define(BOTH, 'Property Sale And Rent');
 
 // customer language 
 define('POST_PROPERTY', 'Post Property');
