@@ -24,7 +24,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 
 ?>
-<div class="container">
+<div class="container margin-top">
 
 <?php
   if ($product_check['total'] < 1) {
@@ -91,157 +91,23 @@
       $products_name .= '<br /><small>[<span itemprop="model">' . $product_info['products_model'] . '</span>]</small>';
     }
 ?>
-
-<?php echo tep_draw_form('cart_quantity', tep_href_link(FILENAME_PRODUCT_INFO, tep_get_all_get_params(array('action')). 'action=add_product', 'NONSSL'), 'post', 'class="form-horizontal" role="form"'); ?>
-
-<div itemscope itemtype="http://schema.org/Product">
-
-<div class="page-header">
-  <h1 class="pull-right product_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><?php echo $products_price;
-  ?></h1>
-  <h1><?php echo $products_name; ?></h1>
-</div>
-
 <?php
   if ($messageStack->size('product_action') > 0) {
     echo $messageStack->output('product_action');
   }
 ?>
-<link rel="stylesheet" href="ext/js/magnific-popup/magnific-popup.css">
-<script src="ext/js/magnific-popup/jquery.magnific-popup.js"></script><script>
-</script>
 <div class="contentContainer">
-  <div class="contentText">
-<script type="text/javascript" src="ext/js/slider/jssor.slider.mini.js"></script>
-    <!-- use jssor.slider.debug.js instead for debug -->
-    <script type="text/javascript" src="ext/js/slide_product.js"></script>
-    <link href="ext/css/slider_product.css" rel="stylesheet">
 <?php
     if (tep_not_null($product_info['products_image'])) {
 
 //      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
-      $pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
-      products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
-      $pi_total = tep_db_num_rows($pi_query);
-      ?>
-      <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px;
-       overflow: hidden; visibility: hidden; background-color: #24262e;">
-        <!-- Loading Screen -->
-        <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
-            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
-            <div style="position:absolute;display:block;background:url('images/product_slider/loading.gif') no-repeat center center;
-            top:0px;left:0px;width:100%;height:100%;"></div>
-        </div>
-        <div class="gallery"  data-u="slides"
-            style="
-                cursor: default; position: relative;
-                top: 0px; left: 0px; width:800px;
-                height: 356px; overflow: hidden;"
-            >
-          <div data-p="144.50" style="display: none;">
-            <a href="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>">
-                <img data-u="image" src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
-            </a>
-            <img data-u="thumb" src="<?php echo DIR_WS_IMAGES . $product_info['products_image_thumbnail'];?>" />
-          </div>
-<!--          --><?php
-//            if ($pi_total > 0) {
-//                while ($pi = tep_db_fetch_array($pi_query)) {
-//                    echo '<div data-p="144.50" style="display: none;">';
-//                    echo '<a href="'. DIR_WS_IMAGES . $pi['image'] .'"><img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '" /></a>';
-//                    echo '<img data-u="thumb" src="' . DIR_WS_IMAGES . $pi['image_thumbnail'] . '" />';
-//                    echo '</div>';
-//                }
-//            }
-//        ?>
-        </div>
-        <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
-            <!-- Thumbnail Item Skin Begin -->
-            <div data-u="slides" style="cursor: default;">
-                <div data-u="prototype" class="p">
-                    <div class="w">
-                        <div data-u="thumbnailtemplate" class="t"></div>
-                    </div>
-                    <div class="c"></div>
-                </div>
-            </div>
-            <!-- Thumbnail Item Skin End -->
-        </div>
-        <!-- Arrow Navigator -->
-        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
-        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
-        <a href="http://www.jssor.com" style="display:none">Bootstrap Carousel</a>
-    </div>
-<?php
+        $pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
+        products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
+        $pi_total = tep_db_num_rows($pi_query);
     }
 ?>
-<div class="col-md-12">
-    <table style="width: 100%; margin-top: 10px;">
-        <tr>
-            <td width="35%">
-                <?php echo '<b>Post Date:</b> ' . date('d-F-Y', strtotime($product_info['products_date_added'])); ?>
-            </td>
-            <td>
-                <?php echo '<b>Kind Of:</b> ' . $product_info['manufacturers_name']; ?>
-            </td>
-            <td>
-                <?php echo '<b>View:</b> ' . $product_info['products_viewed']; ?>
-            </td>
-        </tr>
-    </table>
-</div>
-<div class="col-sm-8 col-md-8">
-    <h4 class="page-header">Description:</h4>
-    <div itemprop="description">
-      <?php echo stripslashes($product_info['products_description']);?>
-    </div>
-</div>
-<div class="col-sm-4 col-md-4">
-    <h4 class="page-header">Contact:</h4>
-    <?php
-        $customer_query = tep_db_query("
-          select contact_name, contact_phone, contact_address, contact_email, customers_id
-          from product_contact_person
-          where
-            products_id = ". (int)$HTTP_GET_VARS['products_id'] . "
-        ");
-        $customer = tep_db_fetch_array($customer_query);
-        if (tep_db_num_rows($customer_query) > 0) {
-            echo '<table>';
-            echo '<tr><td><span class="glyphicon glyphicon-user icon-font"></span>' . $customer['contact_name'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-phone icon-font"></span>' . $customer['contact_phone'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-globe icon-font"></span>' . $customer['contact_address'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-envelope icon-font"></span>' . $customer['contact_email'] . '</td></tr>';
-            echo '<tr><td><span class="glyphicon glyphicon-home icon-font"></span>
-                <a href="user.php?id='. $customer['customers_id'] .'">Go To Store</a></td></tr>';
-            echo '</table>';
-        }
-    ?>
-</div>
-
- <div class="clearfix col-sm-12 col-md-12 alert alert-success">
-    <p>
-        ទំនាក់ទំនងលេខ <?php echo $customer['contact_phone'];?> កុំភ្លេចនិយាយថាអ្នកបានរកឃើញការផ្សព្វផ្សាយនេះនៅលើ
-        <?php echo STORE_NAME;?>។
-   </p>
-    <p>
-        Call to <?php echo $customer['contact_phone'];?> for more information,
-        don't forget to mention that you found this ad on <?php echo STORE_NAME;?>.
-    </p>
-</div>
-<?php
-    include(DIR_WS_MODULES . 'relate_products.php');
-?>
-
-  </div>
-
-</div>
-</div>
-</div>
-</form>
 <!-- Property Detail Page -->
-		<div class="property-main-details">
+		<div class="">
 			<!-- container -->
 			<div class="container">
 				<div class="property-details-content property-details-content2 container-fluid p_z">
@@ -252,13 +118,13 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
 								<div class="item active">
-									<img src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>"  style="width:100%; height: 450px;">
+									<img src="<?php echo DIR_WS_IMAGES . $product_info['products_image'];?>" />
 								</div>
 								 <?php
                                     if ($pi_total > 0) {
                                         while ($pi = tep_db_fetch_array($pi_query)) {
                                             echo '<div class="item">';
-                                            echo '<img data-u="image" style="width:100%; height: 450px;" src="' . DIR_WS_IMAGES . $pi['image'] . '"/>';
+                                            echo '<img data-u="image" src="' . DIR_WS_IMAGES . $pi['image'] . '"/>';
                                             echo '</div>';
                                         }
                                     }
@@ -277,43 +143,66 @@
 						<div class="property-header">
 							<h3>
 							    <?php
-							        echo $product_info['village_name'] .', '. $product_info['district_name'] .',
-							            '.$product_info['province_name'] . ', ' .$product_info['products_name']
-							        ;
+							        echo $product_info['products_name'];
 							        echo '<span>' . $product_info['products_kind_of'] . '</span>';
 							    ?>
                             </h3>
 							<ul>
 								<li>
 								<?php
-								    echo $currencies->display_price($product_info['products_price']);
+								    echo '<span  data-toggle="tooltip" data-placement="top" title="Price">' . $currencies->display_price($product_info['products_price']) . '</span>';
 								?>
                                 </li>
-								<li>Product ID : <?php echo $product_info['products_id']; ?></li>
+								<li>
+                                    <a href="javascript:void(0)">
+                                        <i class="fa fa-product-hunt"  data-toggle="tooltip" data-placement="top" title="Product ID"></i>
+                                        <?php echo $product_info['products_id']; ?>
+                                    </a>
+                                </li>
 								<li>
 								<?php
-								     echo '<i class="fa fa-calendar"></i>' . date('d-F-Y', strtotime($product_info['products_date_added']));
+								     echo '<a href="javascript:void(0)">
+                                            <i class="fa fa-calendar" data-toggle="tooltip" data-placement="top" title="Post Date"></i> '
+                                         . date('d-F-Y', strtotime($product_info['products_date_added'])) . '</a>';
 								?></li>
 								<li>
-								    <?php echo '<i class="fa fa-eye"></i> ' . $product_info['products_viewed']; ?>
+								    <?php echo '<a href="javascript:void(0)">
+										<i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Product Views"></i>
+										' . $product_info['products_viewed'] . '</a>';?>
                                 </li>
 								<li>
 								    <?php
-								        echo '<i class="fa fa fa-bed"></i>' . $product_info['bed_rooms'];
+								        echo '<a href="javascript:void(0)">
+											<i class="fa fa fa-bed" data-toggle="tooltip" data-placement="top" title="Bed Rooms"></i> '
+											. $product_info['bed_rooms'] . '</a>';
 								    ?>
 								</li>
 								<li>
                                     <?php
-                                        echo '<i class="fa fa fa-bath"></i>' . $product_info['bath_rooms'];
+                                        echo '<a href="javascript:void(0)"><img src="images/icon/bath-icon.png"
+                                            style="
+                                                width: 17px;
+                                                height: 13px;
+                                                margin: 4px 0px 11px 0px;
+                                            "
+                                            data-toggle="tooltip" data-placement="top" title="Bath Rooms"
+                                            > ' . $product_info['bath_rooms'] .'</a>';
                                     ?>
                                 </li>
 								<li>
                                     <?php
-                                        echo '<i class="fa fa-calendar"></i>' . $product_info['number_of_floors'];
+                                        echo '<a href="javascript:void(0)">
+											<i class="fa fa fa-institution" data-toggle="tooltip" data-placement="top" title="Number of Floors"></i> '
+											. $product_info['number_of_floors'] . '</a>';
                                     ?>
                                 </li>
+                                <li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="linkedin-square"><i class="fa fa-linkedin-square"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="instagram"><i class="fa fa-instagram"></i></a></li>
 							</ul>
-							<a title="print" href="property-detail-2.html#"><i class="fa fa-print"></i> Print</a>
 						</div>
 						<div class="single-property-details">
 							 <?php echo stripslashes($product_info['products_description']);?>
@@ -378,6 +267,10 @@
 							</div>
 						</div>
 						<div class="other-properties row">
+
+                            <?php
+                            include(DIR_WS_MODULES . 'relate_products.php');
+                            ?>
 							<!-- Col-md-4 -->
 							<div class="col-md-4 col-xs-12 rent-block">
 								<!-- Property Main Box -->

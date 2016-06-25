@@ -66,6 +66,7 @@ app.controller(
 				$scope.bath_rooms = data.elements[0].bath_rooms;
 				$scope.number_of_floors = data.elements[0].number_of_floors;
 				$scope.image_thumbnail = data.elements[0].products_image_thumbnail;
+				$scope.image = data.elements[0].products_image;
 				$scope.price = data.elements[0].products_price;
 				$scope.categories_id = data.elements[0].categories_id;
 				$scope.commune_id = data.elements[0].village_id;
@@ -73,7 +74,6 @@ app.controller(
 				$scope.title_kh = data.elements[0].product_detail[1].products_name;
 				$scope.content_en = data.elements[0].product_detail[0].products_description;
 				$scope.content_kh = data.elements[0].product_detail[1].products_description;
-				console.log(data);
 			});
 		};
 		$scope.init();
