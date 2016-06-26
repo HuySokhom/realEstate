@@ -28,15 +28,16 @@ app.controller(
 		};
 
 		$scope.refreshDate = function(params){
-			Restful.patch('api/Session/User/ProductPost/'+params.id).success(function(data){
+			Restful.patch('api/Session/User/ProductPost/' + params.id).success(function(data){
 				$scope.init();
+				$scope.service.alertMessage('<strong>Complete: </strong> Update Product Refresh Success.');
 			});
 		};
 
 		$scope.updateStatus = function(params){
 			params.products_status == 1 ? params.products_status = 0 : params.products_status = 1;
 			var data = { status: params.products_status, name: "update_status"};
-			Restful.patch('api/Session/User/ProductPost/'+params.id, data).success(function(data){
+			Restful.patch('api/Session/User/ProductPost/' + params.id, data).success(function(data){
 				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});
 		};
