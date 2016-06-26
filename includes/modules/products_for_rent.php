@@ -5,6 +5,9 @@
         pd.products_viewed,
         p.products_image_thumbnail,
         p.products_image,
+        p.bed_rooms,
+        p.bath_rooms,
+        p.number_of_floors,
         p.products_tax_class_id,
         pd.products_name,
         if(s.status, s.specials_new_products_price, p.products_price) as products_price
@@ -65,9 +68,18 @@
               <div class="property-details">
                 <a title="Property Title" href="index.html#">' . $p_name . '</a>
                 <ul>
-                  <li><i class="fa fa-expand"></i>3326 sq</li>
-                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
+                  <li>
+                      <i class="fa fa fa-institution"></i>
+                      ' . $new_products['number_of_floors'] . '
+                  </li>
+                  <li>
+                    <i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>
+                    '. $new_products['bed_rooms'] .'
+                  </li>
+                  <li>
+                    <i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>
+                    '. $new_products['bath_rooms'] . '
+                  </li>
                 </ul>
               </div>
             </div><!-- Property Main Box /- -->
