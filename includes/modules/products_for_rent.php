@@ -16,7 +16,7 @@
         p.products_id = s.products_id,
         " . TABLE_PRODUCTS_DESCRIPTION . " pd
     where
-        p.products_status = '1'
+        p.products_status = 1
             and
         p.products_id = pd.products_id
             and
@@ -24,7 +24,7 @@
             and
         pd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_date_added, p.products_promote desc
+        p.products_promote desc, p.products_date_added desc
         limit " . MAX_DISPLAY_NEW_PRODUCTS
     );
   $num_new_products = tep_db_num_rows($new_products_query);
@@ -78,7 +78,7 @@
 ?>
     <!-- Rent Property -->
     <div class="rent-property">
-    <div class="col-md-3 rent">
+    <div class="col-md-6 rent">
       <div class="section-header">
         <h3><span><?php echo PROPERTY; ?></span><?php echo RENT;?></h3>
       </div>

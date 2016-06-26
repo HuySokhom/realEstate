@@ -120,7 +120,22 @@
 				//pagination: false
 			});
 		}
-		
+
+		/* Sale Property */
+		if( $('#both-property-block').length ) {
+			$("#both-property-block").owlCarousel(
+			{
+				autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+				items : 4,
+				itemsDesktop : [1199,3],
+				itemsDesktopSmall : [991,3],
+				itemsMobile : [680,1],
+				//navigation : true,
+				//pagination: false
+			});
+		}
+
 		/* Featured Property */
 		if( $('#featured-property').length ) {
 			
