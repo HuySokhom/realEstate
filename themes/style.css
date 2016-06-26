@@ -212,7 +212,7 @@ textarea {
 }
 
 .section-header  h3 {
-	font-size: 32px;
+	font-size: 28px;
 	font-weight: 900;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -920,7 +920,6 @@ textarea {
 .sale-property {
 	display: inline-block;
 	width: 100%;
-	padding-top: 59px;
 	clear: both;
 }
 
@@ -1200,7 +1199,6 @@ textarea {
 	height: 795px;
 	width: 100%;
 	clear: both;
-	padding-top: 60px;
 	position: relative;
 }
 
