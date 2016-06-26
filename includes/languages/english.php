@@ -50,8 +50,8 @@ define('CHARSET', 'utf-8');
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'Property');
 define(RENT, 'For Rent');
-define(SALE, 'Property For Sale');
-define(BOTH, 'Property Sale And Rent');
+define(SALE, 'For Sale');
+define(BOTH, 'Sale And Rent');
 
 // customer language 
 define('POST_PROPERTY', 'Post Property');

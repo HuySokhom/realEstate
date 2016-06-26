@@ -538,114 +538,11 @@
 <?php
     }
 
-    include(DIR_WS_MODULES . FILENAME_NEW_PRODUCTS);
-//    include(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
+    include(DIR_WS_MODULES . FILENAME_RENT_PRODUCTS);
+    include(DIR_WS_MODULES . FILENAME_SALE_PRODUCTS);
+//    include(DIR_WS_MODULES . FILENAME_BOTH_PRODUCTS);
 ?>
-  <br/><br/>
-  
-  <div class="clearfix"></div>
-  <!-- Sale Property -->
-  <div class="sale-property">
-    <div class="col-md-3">
-      <div class="section-header">
-        <h3><span>Property</span>For Sale</h3>
-        <p>Our Latest listed properties and check out the facilities on them.</p>
-      </div>
-    </div>
-    <div class="col-md-9 p_r_z">
-      <div id="sale-property-block" class="sale-property-block">
-        <div class="item">
-          <!-- col-md-12 -->
-          <div class="col-md-12 sale-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="property-images-box">
-                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
-                <h4>&dollar;380000</h4>
-              </div>
-              <div class="clearfix"></div>
-              <div class="property-details">
-                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
-                <ul>
-                  <li><i class="fa fa-expand"></i>3326 sq</li>
-                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-                </ul>
-              </div>
-            </div><!-- Property Main Box /- -->
-          </div><!-- Col-md-12 /- -->
-        </div>
-
-        <div class="item">
-          <!-- Col-md-12 -->
-          <div class="col-md-12 sale-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="property-images-box">
-                <a title="Property Image" href="index.html#"><img src="images/rent/rent-2.jpg" alt="rent" /></a>
-                <h4>&dollar;330000</h4>
-              </div>
-              <div class="clearfix"></div>
-              <div class="property-details">
-                <a title="Property Title" href="index.html#">20 Apartments of Type A</a>
-                <ul>
-                  <li><i class="fa fa-expand"></i>3326 sq</li>
-                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-                </ul>
-              </div>
-            </div><!-- Property Main Box /- -->
-          </div><!-- Col-md-12 /- -->
-        </div>
-
-        <div class="item">
-          <!-- Col-md-12 -->
-          <div class="col-md-12 sale-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="property-images-box">
-                <a title="Property Image" href="index.html#"><img src="images/rent/rent-3.jpg" alt="rent" /></a>
-                <h4>&dollar;350000</h4>
-              </div>
-              <div class="clearfix"></div>
-              <div class="property-details">
-                <a title="Property Title" href="index.html#">15 Apartments of Type B</a>
-                <ul>
-                  <li><i class="fa fa-expand"></i>3326 sq</li>
-                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-                </ul>
-              </div>
-            </div><!-- Property Main Box -->
-          </div><!-- col-md-12 -->
-        </div>
-
-        <div class="item">
-          <!-- col-md-12 -->
-          <div class="col-md-12 sale-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="property-images-box">
-                <a title="Property Image" href="index.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
-                <h4>&dollar;380 / pm</h4>
-              </div>
-              <div class="clearfix"></div>
-              <div class="property-details">
-                <a title="Property Title" href="index.html#">Southwest 39th Terrace</a>
-                <ul>
-                  <li><i class="fa fa-expand"></i>3326 sq</li>
-                  <li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-                  <li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-                </ul>
-              </div>
-            </div><!-- Property Main Box /- -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
 <?php
   }
 
