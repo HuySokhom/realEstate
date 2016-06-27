@@ -70,11 +70,12 @@
     echo $prod_list_contents;
     echo '<!-- Pagination -->
           <div class="col-sm-6">
-         '. $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS) . '
+
           </div>
           <div class="col-sm-6">
             <div class="pagenav">
               <ul class="pagination">
+                '. $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS) . '
                ' . $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info', 'x', 'y'))) . '
               </ul>
             </div>
