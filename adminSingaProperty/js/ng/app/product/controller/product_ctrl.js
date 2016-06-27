@@ -28,16 +28,16 @@ app.controller(
 			$location.path('/product/edit/' + params.id);
 		};
 
-		$scope.remove = function($index, params){
+		$scope.remove = function(id){
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
 				.confirm("Are you sure you want to delete this product?", function (ev) {
 					ev.preventDefault();
-					Restful.delete( url + params.id, params ).success(function(data){
-						$scope.disabled = true;console.log(data);
+					Restful.delete( url + id, params ).success(function(data){
+						$scope.disabled = true;
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.products.elements.splice($index, 1);
-						init();
+						//$scope.products.elements.splice($index, 1);
+						init(params);
 					});
 				}, function(ev) {
 					// The click event is in the
