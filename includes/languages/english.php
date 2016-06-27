@@ -49,6 +49,7 @@ define('CHARSET', 'utf-8');
 // page title
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'Property');
+define(LISTING, 'Listing');
 define(RENT, 'For Rent');
 define(SALE, 'For Sale');
 define(BOTH, 'Sale And Rent');

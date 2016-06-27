@@ -49,6 +49,7 @@ define('CHARSET', 'utf-8');
 // page title
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'អចលនទ្រព្យ');
+define(LISTING, 'តារាង');
 define(RENT, 'សម្រាប់ជួល');
 define(SALE, 'សម្រាប់លក់');
 define(BOTH, 'លក់និងជួល');

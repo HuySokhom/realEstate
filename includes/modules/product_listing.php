@@ -1,15 +1,4 @@
 <?php
-/*
-  $Id$
-
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-
-  Copyright (c) 2010 osCommerce
-
-  Released under the GNU General Public License
-*/
-
   $listing_split = new splitPageResults($listing_sql, MAX_DISPLAY_SEARCH_RESULTS, 'p.products_id');
 ?>
 
@@ -18,185 +7,190 @@
     echo $messageStack->output('product_action');
   }
 ?>
-
-  <div class="contentText">
-
+  <div class="container">
 <?php
-  if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
-?>
-<div class="row">
-  <div class="col-sm-6 pagenumber hidden-xs">
-    <?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?>
-  </div>
-  <div class="col-sm-6">
-    <div class="pull-right pagenav"><ul class="pagination"><?php echo $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info', 'x', 'y'))); ?></ul></div>
-    <span class="pull-right"><?php echo TEXT_RESULT_PAGE; ?></span>
-  </div>
-</div>
-<?php
-  }
-
-  if ($listing_split->number_of_rows > 0) { ?>
-    <div class="well well-sm">
-      <div class="btn-group btn-group-sm pull-right">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <?php echo TEXT_SORT_BY; ?><span class="caret"></span>
-        </button>
-
-        <ul class="dropdown-menu text-left">
-          <?php
-          $lc_show_model = false;
-          $lc_show_manu = false;
-          $lc_show_qty = false;
-          $lc_show_lbs = false;
-          for ($col=0, $n=sizeof($column_list); $col<$n; $col++) {
-            switch ($column_list[$col]) {
-              case 'PRODUCT_LIST_MODEL':
-              $lc_text = TABLE_HEADING_MODEL;
-		          $lc_show_model = true;
-              break;
-              case 'PRODUCT_LIST_NAME':
-              $lc_text = TABLE_HEADING_PRODUCTS;
-              break;
-              case 'PRODUCT_LIST_MANUFACTURER':
-              $lc_text = TABLE_HEADING_MANUFACTURER;
-		          $lc_show_manu = true;
-              break;
-              case 'PRODUCT_LIST_PRICE':
-              $lc_text = TABLE_HEADING_PRICE;
-              break;
-              case 'PRODUCT_LIST_QUANTITY':
-              $lc_text = TABLE_HEADING_QUANTITY;
-              $lc_show_qty = true;
-              break;
-              case 'PRODUCT_LIST_WEIGHT':
-              $lc_text = TABLE_HEADING_WEIGHT;
-              $lc_show_lbs = true;
-              break;
-              case 'PRODUCT_LIST_IMAGE':
-              $lc_text = TABLE_HEADING_IMAGE;
-              break;
-              case 'PRODUCT_LIST_BUY_NOW':
-              $lc_text = TABLE_HEADING_BUY_NOW;
-              break;
-              case 'PRODUCT_LIST_ID':
-              $lc_text = TABLE_HEADING_LATEST_ADDED;
-              break;
-            }
-
-            if ( ($column_list[$col] != 'PRODUCT_LIST_BUY_NOW') && ($column_list[$col] != 'PRODUCT_LIST_IMAGE') ) {
-              $lc_text = tep_create_sort_heading($HTTP_GET_VARS['sort'], $col+1, $lc_text);
-	            echo '        <li>' . $lc_text . '</li>';
-            }
-          }
-		      ?>
-        </ul>
-      </div>
-
-    <?php
-    if (MODULE_HEADER_TAGS_GRID_LIST_VIEW_STATUS == 'True') {
-      ?>
-      <strong><?php echo TEXT_VIEW; ?></strong>
-      <div class="btn-group">
-        <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span><?php echo TEXT_VIEW_LIST; ?></a>
-        <a href="#" id="grid" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th"></span><?php echo TEXT_VIEW_GRID; ?></a>
-      </div>
-      <?php
-    }
-    ?>
-    <div class="clearfix"></div>
-  </div>
-
-  <?php
+  if ($listing_split->number_of_rows > 0) {
   $listing_query = tep_db_query($listing_split->sql_query);
   $prod_list_contents = NULL;
 
   while ($listing = tep_db_fetch_array($listing_query)) {
-    $prod_list_contents .= '<div class="item list-group-item col-sm-3">';
-	  $prod_list_contents .= '  <div class="productHolder equal-height" style="height: 200px;">';
-    if (isset($HTTP_GET_VARS['manufacturers_id'])  && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' .
-              $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">' . tep_image
-          (DIR_WS_IMAGES . $listing['products_image_thumbnail'], $listing['products_name'], SMALL_IMAGE_WIDTH,
-              SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive thumbnail group list-group-image new-image') . '</a>';
-    } else {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($sort ? 'sort=' . $sort . '&' :
-                  '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], $listing['products_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, NULL, NULL, 'img-responsive group new-image list-group-image') . '</a>';
-    }
-    $prod_list_contents .= '    <div class="caption">';
-    $prod_list_contents .= '      <p>';
-    if (isset($HTTP_GET_VARS['manufacturers_id']) && tep_not_null($HTTP_GET_VARS['manufacturers_id'])) {
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'manufacturers_id=' . $HTTP_GET_VARS['manufacturers_id'] . '&products_id=' . $listing['products_id']) . '">'
-          . $listing['products_name'] . '</a>';
-    } else {
-      if (strlen($listing['products_name']) > 40) $listing['products_name'] = substr($listing['products_name'], 0,
-              40) . '...';
-      $prod_list_contents .= '    <a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $listing['products_id']) . '">'
-          . $listing['products_name'] . '</a>';
-    }
-    $prod_list_contents .= '      </p>';
 
-    $prod_list_contents .= '      <p class="group inner list-group-item-text">' . strip_tags($listing['products_description'], '<br>') . '&hellip;</p><div class="clearfix"></div>';
-
-    // here it goes the extras, yuck
-    $extra_list_contents = NULL;
-    // manufacturer
-	  if (($lc_show_manu == true) && ($listing['manufacturers_id'] !=  0)) $extra_list_contents .= '<dt>' . TABLE_HEADING_MANUFACTURER . '</dt><dd><a href="' . tep_href_link(FILENAME_DEFAULT, 'manufacturers_id=' . $listing['manufacturers_id']) . '">' . $listing['manufacturers_name'] . '</a></dd>';
-    // model
-	  if ( ($lc_show_model == true) && tep_not_null($listing['products_model'])) $extra_list_contents .= '<dt>' . TABLE_HEADING_MODEL . '</dt><dd>' . $listing['products_model'] . '</dd>';
-    // stock
-	  if (($lc_show_qty == true) && (tep_get_products_stock($listing['products_id'])!= 0) ) $extra_list_contents .= '<dt>' . TABLE_HEADING_QUANTITY . '</dt><dd>' . tep_get_products_stock($listing['products_id']) . '</dd>';
-    // weight
-	  if (($lc_show_lbs == true) && ($listing['products_weight'] != 0)) $extra_list_contents .= '<dt>' . TABLE_HEADING_WEIGHT . '</dt><dd>' . $listing['products_weight'] . '</dd>';
-
-    if (tep_not_null($extra_list_contents)) {
-       $prod_list_contents .= '    <dl class="dl-horizontal list-group-item-text">';
-       $prod_list_contents .=  $extra_list_contents;
-       $prod_list_contents .= '    </dl>';
-    }
-
-	  $prod_list_contents .= '<span class="price">'. $currencies->display_price($listing['products_price'],
-              tep_get_tax_rate($listing['products_tax_class_id']))
-          .'</span><span style="float:right;font-weight: bold;">view: '. $listing['products_viewed'] .' </span>     <div
-class="row"
-style="display:
- none;">';
-    if (tep_not_null($listing['specials_new_products_price'])) {
-      $prod_list_contents .= '      <div class="col-xs-6"><div class="btn-group" role="group"><button type="button" class="btn btn-default"><del>' .  $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</del></span>&nbsp;&nbsp;<span class="productSpecialPrice">' . $currencies->display_price($listing['specials_new_products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</button></div></div>';
-    } else {
-      $prod_list_contents .= '      <div class="col-xs-6"><div class="btn-group" role="group"><button type="button" class="btn btn-default">' . $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) . '</button></div></div>';
-    }
-    $prod_list_contents .= '       <div class="col-xs-6 text-right">' . tep_draw_button(IMAGE_BUTTON_BUY_NOW, 'cart', tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action', 'sort', 'cPath')) . 'action=buy_now&products_id=' . $listing['products_id']), NULL, NULL, 'btn-success btn-sm') . '</div>';
-    $prod_list_contents .= '      </div>';
-
-    $prod_list_contents .= '    </div>';
-    $prod_list_contents .= '  </div>';
-    $prod_list_contents .= '</div>';
+    $prod_list_contents .= '
+        <div class="property-listing-box sale-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="col-md-4 p_z">
+                <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
+                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 203px;"') . '
+                </a>
+              </div>
+              <div class="col-md-8 p_z">
+                <div class="property-details">
+                  <span>s</span>
+                  <a
+                    title="Property Title"
+                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"
+                  >
+                    ' . $listing['products_name'] .'
+                  </a>
+                  <h4>
+                    ' . $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) .'
+                  </h4>
+                  <p>
+                    ' . strip_tags($listing['products_description'], '<br>') .'
+                  </p>
+                  <ul>
+                    <li><i class="fa fa-expand"></i> 3326 sq </li>
+                    <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> 3 </li>
+                    <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon">2 </li>
+                    <li><i class="fa fa-car"></i>1</li>
+                  </ul>
+                </div>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div>';
 
   }
 
-  echo '<div id="products" class="row list-group">' . $prod_list_contents . '</div>';
-} else {
+    echo ' <!-- Property Listing Section -->
+        <div id="property-listing" class="property-listing">
+            <div class="container">
+              <div class="property-left col-md-9 col-sm-6 p_l_z content-area">
+                <div class="section-header p_l_z">
+                  <div class="col-md-10 col-sm-10 p_l_z">
+                    <p>' . PROPERTY . '</p>
+                    <h3>' . LISTING . '</h3>
+                  </div>
+                  <div class="view-list col-md-2 col-sm-2 p_r_z">
+                    <a title="Grid View" href="aa-listing.html"><i class="fa fa-th "></i></a>
+                    <a class="active" title="List View" href="aa-listing-list.html"><i class="fa fa-bars"></i></a>
+                  </div>
+                </div>
+    ';
+    echo $prod_list_contents;
+    echo '<!-- Pagination -->
+          <div class="col-sm-6">
+         '. $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS) . '
+          </div>
+          <div class="col-sm-6">
+            <div class="pagenav">
+              <ul class="pagination">
+               ' . $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info', 'x', 'y'))) . '
+              </ul>
+            </div>
+          </div>
+          <!-- Pagination /- -->
+        </div>
+        <div class="col-md-3 col-sm-6 p_r_z property-sidebar widget-area">
+          <aside class="widget widget-search">
+            <h2 class="widget-title">search<span>property</span></h2>
+            <form>
+              <select>
+                <option value="selected">Property ID</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+              <select>
+                <option value="selected">Location</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+              <select>
+                <option value="selected">Type</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+              <select>
+                <option value="selected">Status</option>
+                <option value="one">One</option>
+                <option value="two">Two</option>
+                <option value="three">Three</option>
+                <option value="four">Four</option>
+                <option value="five">Five</option>
+              </select>
+              <div class="col-md-6 col-sm-6 p_l_z">
+                <select>
+                  <option value="selected">Beds</option>
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                  <option value="four">Four</option>
+                  <option value="five">Five</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-6 p_r_z">
+                <select>
+                  <option value="selected">Baths</option>
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                  <option value="four">Four</option>
+                  <option value="five">Five</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-6 p_l_z">
+                <select>
+                  <option value="selected">Min Price</option>
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                  <option value="four">Four</option>
+                  <option value="five">Five</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-6 p_r_z">
+                <select>
+                  <option value="selected">Max Price</option>
+                  <option value="one">$3000</option>
+                  <option value="two">$30000</option>
+                  <option value="three">$300000</option>
+                  <option value="four">$3000000</option>
+                  <option value="five">$3000000000000000</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-6 p_l_z">
+                <select>
+                  <option value="selected">Min Sqft</option>
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                  <option value="four">Four</option>
+                  <option value="five">Five</option>
+                </select>
+              </div>
+              <div class="col-md-6 col-sm-6 p_r_z">
+                <select>
+                  <option value="selected">Max Sqft</option>
+                  <option value="one">One</option>
+                  <option value="two">Two</option>
+                  <option value="three">Three</option>
+                  <option value="four">Four</option>
+                  <option value="five">Five</option>
+                </select>
+              </div>
+              <input type="submit" value="Search Now" class="btn">
+            </form>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+    <!-- Property Listing Section /- -->';
+}
+
+else {
 ?>
 
   <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
 
 <?php
 }
-
-if ( ($listing_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
-  ?>
-<div class="row">
-  <div class="col-sm-6 pagenumber hidden-xs">
-    <?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?>
-  </div>
-  <div class="col-sm-6">
-    <div class="pull-right pagenav"><ul class="pagination"><?php echo $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info', 'x', 'y'))); ?></ul></div>
-    <span class="pull-right"><?php echo TEXT_RESULT_PAGE; ?></span>
-  </div>
-</div>
-  <?php
-  }
-?>
-
-</div>
