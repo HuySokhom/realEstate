@@ -14,19 +14,40 @@
   $prod_list_contents = NULL;
 
   while ($listing = tep_db_fetch_array($listing_query)) {
-
+    if (strlen(strip_tags($listing['products_description'], '<br>')) > 140){
+       $str_description = substr(strip_tags($listing['products_description'], '<br>'), 0, 140) . '...';
+   }else{
+        $str_description = strip_tags($listing['products_description'], '<br>');
+   }
+   switch ($listing['products_promote']) {
+        case 3:
+            $text = 'Pro';
+            $class = 'pro';
+            break;
+        case 2:
+            $text = 'Premium';
+            $class = 'pro';
+            break;
+        case 1:
+            $text = 'Basic';
+            $class = 'pro';
+            break;
+        default:
+            $text = 'Free';
+            $class = 'free';
+    }
     $prod_list_contents .= '
         <div class="property-listing-box sale-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
               <div class="col-md-4 p_z">
                 <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
-                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 203px;"') . '
+                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 181px;"') . '
                 </a>
               </div>
               <div class="col-md-8 p_z">
                 <div class="property-details">
-                  <span>s</span>
+                  <span>'. $text .'</span>
                   <a
                     title="Property Title"
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"
@@ -37,13 +58,13 @@
                     ' . $currencies->display_price($listing['products_price'], tep_get_tax_rate($listing['products_tax_class_id'])) .'
                   </h4>
                   <p>
-                    ' . strip_tags($listing['products_description'], '<br>') .'
+                    ' . $str_description .'
                   </p>
                   <ul>
-                    <li><i class="fa fa-expand"></i> 3326 sq </li>
-                    <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> 3 </li>
-                    <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon">2 </li>
-                    <li><i class="fa fa-car"></i>1</li>
+                    <li><i class="fa fa-eye"></i> '. $listing['products_viewed'] .' </li>
+                    <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> '.$listing['bed_rooms'].' </li>
+                    <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon"> '.$listing['bath_rooms'].' </li>
+                    <li><i class="fa fa fa-institution"></i> ' . $listing['number_of_floors'] . ' </li>
                   </ul>
                 </div>
               </div>
