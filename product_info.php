@@ -311,72 +311,9 @@
 								</ul>
 							</div>
 						</div>
-						<div class="other-properties row">
-
                             <?php
-                            include(DIR_WS_MODULES . 'relate_products.php');
+                            	include(DIR_WS_MODULES . 'relate_products.php');
                             ?>
-							<!-- Col-md-4 -->
-							<div class="col-md-4 col-xs-12 rent-block">
-								<!-- Property Main Box -->
-								<div class="property-main-box">
-									<div class="property-images-box">
-										<span>R</span>
-										<a href="property-detail-2.html#"><img src="images/rent/rent-1.jpg" alt="rent" /></a>
-										<h4>&dollar;380 / pm</h4>
-									</div>
-									<div class="clearfix"></div>
-									<div class="property-details">
-										<a href="property-detail-2.html#">Southwest 39th Terrace</a>
-										<ul>
-											<li><i class="fa fa-expand"></i>3326 sq</li>
-											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-										</ul>
-									</div>
-								</div><!-- Property Main Box -->
-							</div><!-- Col-md-4 /- -->
-							<!-- Col-md-4 -->
-							<div class="col-md-4 sale-block">
-								<!-- Property Main Box -->
-								<div class="property-main-box">
-									<div class="property-images-box">
-										<span>S</span>
-										<a href="property-detail-2.html#"><img src="images/rent/rent-4.jpg" alt="rent" /></a>
-										<h4>&dollar;330000</h4>
-									</div>
-									<div class="clearfix"></div>
-									<div class="property-details">
-										<a href="property-detail-2.html#">20 Apartments of Type A</a>
-										<ul>
-											<li><i class="fa fa-expand"></i>3326 sq</li>
-											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-										</ul>
-									</div>
-								</div><!-- Property Main Box /- -->
-							</div><!-- col-md-4 /- -->
-							<!-- Col-md-4 -->
-							<div class="col-md-4 rent-block">
-								<!-- Property Main Box -->
-								<div class="property-main-box">
-									<div class="property-images-box">
-										<span>R</span>
-										<a href="property-detail-2.html#"><img src="images/rent/rent-3.jpg" alt="rent" /></a>
-										<h4>&dollar;380 / pm</h4>
-									</div>
-									<div class="clearfix"></div>
-									<div class="property-details">
-										<a href="property-detail-2.html#">15 Apartments of Type B</a>
-										<ul>
-											<li><i class="fa fa-expand"></i>3326 sq</li>
-											<li><i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>3</li>
-											<li><i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>2</li>
-										</ul>
-									</div>
-								</div><!-- Property Main Box -->
-							</div><!-- Col-md-4 /- -->
-						</div>
 					</div><!-- col-md-9 /- -->
 					<!-- col-md-3 -->
 					<div class="col-md-3 col-sm-6 p_r_z property-sidebar">
