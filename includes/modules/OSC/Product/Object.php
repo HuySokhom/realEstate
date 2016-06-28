@@ -36,6 +36,7 @@ class Object extends DbObj {
 		, $categoriesId
 		, $categoryDetail
 		, $customersDetail
+		, $productsPromote
 	;
 
 	public function toArray( $params = array() ){
@@ -43,6 +44,7 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'categories_id',
+				'products_promote',
 				'category_detail',
 				'customers_detail',
 				'customers_id',
@@ -79,6 +81,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
+				products_promote,
 				categories_id,
 				province_id,
 				district_id,
@@ -221,6 +224,7 @@ class Object extends DbObj {
 				village_id,
 				products_image,
 				products_image_thumbnail,
+				products_promote,
 				products_price,
 				products_date_added,
 				products_status,
@@ -239,6 +243,7 @@ class Object extends DbObj {
 				'" . (int)$this->getVillageId() . "',
  				'" . $this->dbEscape( $this->getProductsImage() ) . "',
  				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
+ 				'" . (int)$this->getProductsPromote() . "',
 				'" . $this->getProductsPrice() . "',
  				NOW(),
  				1,
@@ -322,6 +327,14 @@ class Object extends DbObj {
 	public function setVillageId( $int ){
 		$this->villageId = (int)$int;
 	}
+
+	public function getProductsPromote(){
+		return $this->productsPromote;
+	}
+	public function setProductsPromote( $int ){
+		$this->productsPromote = (int)$int;
+	}
+
 
 	public function getProductsKindOf(){
 		return $this->productsKindOf;

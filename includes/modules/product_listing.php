@@ -47,7 +47,7 @@
               </div>
               <div class="col-md-8 p_z">
                 <div class="property-details">
-                  <span>'. $text .'</span>
+                  <span style="display:none;">'. $text .'</span>
                   <a
                     title="Property Title"
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"
