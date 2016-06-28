@@ -1995,8 +1995,8 @@ textarea {
 }
 
 .single-property-details > p {
-	font-weight: 300;
-	color: #757575;
+	/*font-weight: 300;*/
+	/*color: #757575;*/
 	line-height: 26px;
 }
 

@@ -197,7 +197,7 @@
                                     ?>
                                 </li>
                                 <li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook-official"></i></a></li>
                                 <li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
                                 <li><a href="property-detail-2.html#" title="linkedin-square"><i class="fa fa-linkedin-square"></i></a></li>
                                 <li><a href="property-detail-2.html#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
