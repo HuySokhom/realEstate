@@ -98,10 +98,20 @@
 ?>
 <div class="contentContainer">
 <?php
+	if(!empty($_SERVER['HTTPS'])){
+		$url = "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	}else{
+		$url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	}
+	// Construct sharing URL without using any script
+	$twitterURL = 'https://twitter.com/intent/tweet?text='.$product_info['products_name'].'&amp;url='.$url;
+	$facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$url;
+	$googleURL = 'https://plus.google.com/share?url='.$url;
+	$linkedinURL = 'http://www.linkedin.com/shareArticle?url='.$url.'&title='.$product_info['products_name'].'';
+
     if (tep_not_null($product_info['products_image'])) {
 
-//      echo tep_image(DIR_WS_IMAGES . $product_info['products_image'], NULL, NULL, NULL, 'itemprop="image" style="display:none;"');
-        $pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
+		$pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
         products_id = '" . (int)$product_info['products_id'] . "'order by sort_order");
         $pi_total = tep_db_num_rows($pi_query);
     }
@@ -196,12 +206,47 @@
 											. $product_info['number_of_floors'] . '</a>';
                                     ?>
                                 </li>
-                                <li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook-official"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="linkedin-square"><i class="fa fa-linkedin-square"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="property-detail-2.html#" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li>
+									<a
+										href="<?php echo $twitterURL?>"
+								   		title="Share On Twitter"
+										data-toggle="tooltip"
+										data-placement="top"
+										target="_blank"
+									>
+										<i class="fa fa-twitter"></i>
+									</a>
+								</li>
+                                <li>
+									<a href="<?php echo $facebookURL?>"
+									   title="Share On Facebook"
+									   data-toggle="tooltip"
+									   data-placement="top"
+									   target="_blank"
+									>
+										<i class="fa fa-facebook-official"></i>
+									</a>
+								</li>
+                                <li>
+									<a href="<?php echo $googleURL?>"
+									   title="Share On Google-plus"
+									   data-toggle="tooltip"
+									   data-placement="top"
+									   target="_blank"
+									>
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</li>
+                                <li>
+									<a href="<?php echo $linkedinURL?>"
+									   data-toggle="tooltip"
+									   data-placement="top"
+									   title="Share On Linkedin"
+									   target="_blank"
+									>
+										<i class="fa fa-linkedin-square"></i>
+									</a>
+								</li>
 							</ul>
 						</div>
 						<div class="single-property-details">

@@ -230,7 +230,7 @@ textarea {
 .property-details > ul li,
 .property-header  ul li {
 	display: inline-block;
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 
 .property-details > ul li:after,
