@@ -44,19 +44,40 @@
 <?php
   } else {
     $product_info_query = tep_db_query("
-        select p.products_id, p.products_kind_of, p.products_image_thumbnail, pd.products_name, v.name_en as village_name,
-        l.name as province_name, d.name_en as district_name,
-        pd.products_description, p.products_model, p.products_quantity, p.bed_rooms, p.bath_rooms, p.number_of_floors,
-        pd.products_viewed, p.products_image, pd.products_url, p.products_price, p.products_tax_class_id,
-        p.products_date_added, p.products_date_available, p.manufacturers_id, p.village_id, p.district_id, p.province_id
-        from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, village v, district d
-        where p.products_status = '1'
-        and v.id = p.village_id
-        and l.id = p.province_id
-        and d.id = p.district_id
-        and p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
-        and pd.products_id = p.products_id
-        and pd.language_id = '" . (int)$languages_id . "'
+        select
+			p.products_id,
+			p.customers_id,
+			p.products_kind_of,
+			p.products_image_thumbnail,
+			pd.products_name,
+			v.name_en as village_name,
+			l.name as province_name,
+			d.name_en as district_name,
+			pd.products_description,
+			p.bed_rooms,
+			p.bath_rooms,
+			p.number_of_floors,
+			pd.products_viewed,
+			p.products_image,
+			p.products_price,
+			p.products_tax_class_id,
+			p.products_date_added
+        from
+        	" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, village v, district d
+        where
+        	p.products_status = '1'
+        		and
+			v.id = p.village_id
+        		and
+			l.id = p.province_id
+        		and
+			d.id = p.district_id
+        		and
+			p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
+        		and
+			pd.products_id = p.products_id
+        		and
+			pd.language_id = '" . (int)$languages_id . "'
     ");
     $product_info = tep_db_fetch_array($product_info_query);
 
@@ -252,68 +273,12 @@
 						<div class="single-property-details">
 							 <?php echo stripslashes($product_info['products_description']);?>
 						</div>
-
-						<div class="property-direction pull-left">
-							<h3>Get Direction</h3>
-							<div class="property-map">
-								<div id="gmap" class="mapping"></div>
-							</div>
-							<div class="property-map contact-agent">
-								<h3>Contact Agent</h3>
-								<div class="col-md-4 agent-details">
-									<div class="agent-header">
-										<div class="agent-img"><img src="images/single-property/agent.jpg" alt="agent" /></div>
-										<div class="agent-name">
-											<h5>agent John Doe</h5>
-											<ul>
-												<li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-												<li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
-											</ul>
-										</div>
-										<p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
-										<p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
-									</div>
-								</div>
-								<div class="col-md-8 agent-information p_z">
-									<div class="agent-info">
-										<p><i class="fa fa-phone"></i>0123 456 7890</p>
-										<p>
-											<i class="fa fa-envelope-o"></i>
-											<a href="mailto:info@johndoe.com" title="mail">info@johndoe.com</a>
-										</p>
-										<p><i class="fa fa-fax"></i>041-789-4561</p>
-									</div>
-									<div class="agent-form">
-										<h3>Send Instant Message</h3>
-										<form>
-											<div class="col-md-6 p_l_z">
-												<input type="text" placeholder="Your Name" />
-											</div>
-											<div class="col-md-6 p_r_z">
-												<input type="text" placeholder="Your Email ID" />
-											</div>
-											<input type="text" placeholder="Message" />
-											<input type="submit" value="Submit" class="btn">
-										</form>
-									</div>
-								</div>
-							</div>
-							<div class="property-map">
-								<h3>Share This Property :</h3>
-								<ul>
-									<li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
-									<li><a href="property-detail-2.html#" title="linkedin-square"><i class="fa fa-linkedin-square"></i></a></li>
-									<li><a href="property-detail-2.html#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
-									<li><a href="property-detail-2.html#" title="instagram"><i class="fa fa-instagram"></i></a></li>
-								</ul>
-							</div>
-						</div>
-                            <?php
-                            	include(DIR_WS_MODULES . 'relate_products.php');
-                            ?>
+						<?php
+							include(DIR_WS_MODULES . 'contact_person.php');
+						?>
+						<?php
+							include(DIR_WS_MODULES . 'relate_products.php');
+						?>
 					</div><!-- col-md-9 /- -->
 					<!-- col-md-3 -->
 					<div class="col-md-3 col-sm-6 p_r_z property-sidebar">
