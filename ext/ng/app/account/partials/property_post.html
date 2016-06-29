@@ -175,6 +175,26 @@
             </div>
         </div>
     </div>
+    <div>
+        <label>
+            Location Map:
+        </label>
+        <gm-map
+            gm-map-id="'dragMarkerMap'"
+            gm-center="center"
+            gm-zoom="zoom"
+            gm-map-options="options.map"
+            class="map"
+        >
+            <gm-markers
+                gm-objects="houses"
+                gm-id="object.id"
+                gm-position="{lat: object.lat, lng: object.lng}"
+                gm-marker-options="getMarkerOptions(object)"
+                gm-on-dragend="setHouseLocation(object, marker)"
+            ></gm-markers>
+        </gm-map>
+    </div>
     <div class="col-md-12 row">
         <label>
             Optional Image:

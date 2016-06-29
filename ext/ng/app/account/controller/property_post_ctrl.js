@@ -131,5 +131,52 @@ app.controller(
 			$scope.optionalImage.splice($index, 1);
 		};
 
+		// start google map functionality
+		var zIndexMin = 1;
+		var zIndexMax = 100;
+		$scope.houses = [{
+			id: 0,
+			name: 'House A',
+			lat: 11.56614406346928,
+			lng: 104.89746106250004,
+			zIndex: zIndexMin
+		}];
+
+
+		$scope.getMarkerOptions = function (house) {
+			return {
+				clickable: false,
+				draggable: true,
+				title: house.name,
+				zIndex: house.zIndex
+			}
+		};
+
+
+		$scope.options = {
+			map: {
+				center: new google.maps.LatLng( 11.56614406346928, 104.89746106250004 ),
+				zoom: 12,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+		};
+
+		$scope.setHouseLocation = function (house, marker) {
+			var position = marker.getPosition();
+			house.lat = position.lat();
+			house.lng = position.lng();
+		};
+
+
+		$scope.updateZIndex = function () {
+			angular.forEach($scope.houses, function (house) {
+				if (house.zIndex == zIndexMin) house.zIndex = zIndexMax;
+				else house.zIndex = zIndexMin;
+
+				console.log(house);
+			});
+
+			$scope.$broadcast('gmMarkersUpdate', 'houses');
+		};
 	}
 ]);

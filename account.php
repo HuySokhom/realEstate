@@ -187,12 +187,13 @@
 require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
-<script src="ext/dropzone/dropzone.min.js"></script>
+
+<script src="ext/ng/lib/angular-map/google-map-api.js"></script>
 <!-- lib -->
 <script src="ext/tinymce/tinymce.min.js"></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular/1.5.6/angular.min.js"
+	src="ext/ng/lib/angular/1.3.15/angular.min.js"
 ></script>
 <script
 	type="text/javascript"
@@ -217,6 +218,10 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/lib/angular-alertify/js/ngAlertify.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular-map/angular-gm.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
