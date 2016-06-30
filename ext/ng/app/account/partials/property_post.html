@@ -1,4 +1,4 @@
-<form data-ng-submit="save();" name="myForm">
+<form data-ng-submit="save();" name="myForm" data-ng-controller="property_post_ctrl">
     <h4>
         Product Information
     </h4>
@@ -194,6 +194,7 @@
                 gm-on-dragend="setHouseLocation(object, marker)"
             ></gm-markers>
         </gm-map>
+        <label ng-repeat="house in houses">{{house.name}} location: {{house.lat | number:2}}, {{house.lng | number:2}}</label>
     </div>
     <div class="col-md-12 row">
         <label>

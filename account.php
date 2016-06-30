@@ -279,9 +279,6 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 	type="text/javascript"
 	src="ext/ng/app/account/controller/news_post_ctrl.js"
 ></script>
-
-
-
 <script
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"

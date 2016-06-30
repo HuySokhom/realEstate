@@ -54,6 +54,9 @@ app.controller(
 				products: {
 					products_image: $scope.image,
 					products_image_thumbnail: $scope.image_thumbnail,
+					map_lat: $scope.map_lat,
+					map_long: $scope.map_long,
+					map_title: $scope.map_title,
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
 					district_id: $scope.district_id,
@@ -140,6 +143,12 @@ app.controller(
 			lat: 11.56614406346928,
 			lng: 104.89746106250004,
 			zIndex: zIndexMin
+		}, {
+			id: 1,
+			name: 'House B',
+			lat: 11.56014406346900,
+			lng: 104.80746106250026,
+			zIndex: zIndexMax
 		}];
 
 
@@ -152,17 +161,17 @@ app.controller(
 			}
 		};
 
-
 		$scope.options = {
 			map: {
-				center: new google.maps.LatLng( 11.56614406346928, 104.89746106250004 ),
-				zoom: 12,
+				center: new google.maps.LatLng(11.56614406346928, 104.89746106250004),
+				zoom: 10,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 		};
 
 		$scope.setHouseLocation = function (house, marker) {
 			var position = marker.getPosition();
+			console.log(position);
 			house.lat = position.lat();
 			house.lng = position.lng();
 		};
@@ -178,5 +187,7 @@ app.controller(
 
 			$scope.$broadcast('gmMarkersUpdate', 'houses');
 		};
+
+
 	}
 ]);
