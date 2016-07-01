@@ -165,8 +165,8 @@ app.controller(
 				dragend: function(marker, eventName, args) {
 					var lat = marker.getPosition().lat();
 					var lon = marker.getPosition().lng();
-					$log.log(lat);
-					$log.log(lon);
+					//$log.log(lat);
+					//$log.log(lon);
 
 					$scope.marker.options = {
 						draggable: true,

@@ -183,6 +183,25 @@
             </div>
         </div>
     </div>
+    <div>
+        <label>
+            Drag and drop your location:
+        </label>
+        <ui-gmap-google-map
+            center="map.center"
+            zoom="map.zoom"
+            draggable="true"
+            options="options"
+        >
+            <ui-gmap-marker
+                coords="marker.coords"
+                options="marker.options"
+                events="marker.events"
+                idkey="marker.id"
+            >
+            </ui-gmap-marker>
+        </ui-gmap-google-map>
+    </div>
     <div class="col-md-12 row">
         <label>
             Optional Image:
@@ -231,15 +250,7 @@
         <br/>
     </div>
     <div class="row col-md-12">
-        <div class="align-left">
-            <button
-                class="btn btn-default"
-                onclick="location.href='account.php#/manage_property';"
-            >
-                <i class="fa fa-close"></i>
-                Close
-            </button>
-        </div>
+
         <div class="align-right">
             <button
                 class="btn btn-primary"
@@ -248,5 +259,14 @@
                 Save
             </button>
         </div>
-    </div>
 </form>
+<div class="align-left">
+    <button
+            class="btn btn-default"
+            onclick="location.href='account.php#/manage_property';"
+    >
+        <i class="fa fa-close"></i>
+        Close
+    </button>
+</div>
+</div>
