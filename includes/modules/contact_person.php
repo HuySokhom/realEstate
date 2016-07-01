@@ -5,7 +5,9 @@ $new_customer_query = tep_db_query("
       photo_thumbnail,
       detail,
       customers_address,
-      customers_telephone
+      customers_telephone,
+      customers_email_address,
+      customers_fax
     from
         " . TABLE_CUSTOMERS . "
     where
@@ -23,27 +25,25 @@ if ($num_customer > 0) {
         <h3>Contact Agent</h3>
         <div class="col-md-4 agent-details">
             <div class="agent-header">
-                <div class="agent-img"><img src="images/single-property/agent.jpg" alt="agent" /></div>
+                <div class="agent-img"><img src="images/<?php echo $user['photo_thumbnail']; ?>" alt="agent" /></div>
                 <div class="agent-name">
-                    <h5>agent John Doe</h5>
-                    <ul>
-                        <li><a href="property-detail-2.html#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="property-detail-2.html#" title="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="property-detail-2.html#" title="google-plus"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
+                    <h5><?php echo $user['user_name'];?></h5>
                 </div>
-                <p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
-                <p>Our Latest listed properties and check out the facilities on them test listed properties.</p>
+                <p><?php echo stripslashes($user['detail']);?></p>
             </div>
         </div>
         <div class="col-md-8 agent-information p_z">
             <div class="agent-info">
-                <p><i class="fa fa-phone"></i>0123 456 7890</p>
+                <p><i class="fa fa-phone"></i><?php echo $user['customers_telephone'];?></p>
                 <p>
                     <i class="fa fa-envelope-o"></i>
-                    <a href="mailto:info@johndoe.com" title="mail">info@johndoe.com</a>
+                    <a href="mailto:<?php echo $user['customers_email_address'];?>" title="mail"><?php echo $user['customers_email_address'];?></a>
                 </p>
-                <p><i class="fa fa-fax"></i>041-789-4561</p>
+                <?php
+                    if($user['customers_fax'] != ''){
+                        echo '<p><i class="fa fa-fax"></i>' . $user['customers_fax'] . '</p>';
+                    }
+                ?>
             </div>
             <div class="agent-form">
                 <h3>Send Instant Message</h3>
