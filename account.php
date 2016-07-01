@@ -188,7 +188,6 @@ require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
 <!-- lib -->
 <script src="ext/tinymce/tinymce.min.js"></script>
 <script

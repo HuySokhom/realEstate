@@ -273,9 +273,15 @@
 						<div class="single-property-details">
 							 <?php echo stripslashes($product_info['products_description']);?>
 						</div>
-						<?php
-							include(DIR_WS_MODULES . 'contact_person.php');
-						?>
+						<div class="property-direction pull-left">
+							<h3>Get Direction</h3>
+							<div class="property-map">
+								<div id="gmap" class="mapping"></div>
+							</div>
+							<?php
+								include(DIR_WS_MODULES . 'contact_person.php');
+							?>
+						</div>
 						<?php
 							include(DIR_WS_MODULES . 'relate_products.php');
 						?>

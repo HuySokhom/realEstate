@@ -80,7 +80,8 @@
 <!--<script src="themes/libraries/drag-drop/drag-drop.js"></script> <!-- Drag Drop File -->
 <!--<script src="themes/libraries/drag-drop/modernizr.custom.js"></script> <!-- Drag Drop File -->
 <!--<script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false'></script>-->
-<!--<script src="themes/libraries/gmap/jquery.gmap.min.js"></script> <!-- map -->-->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+<script src="themes/libraries/gmap/jquery.gmap.min.js"></script> <!-- map -->
 <!--<script src="themes/libraries/expanding-search/classie.js"></script>-->
 <!--<script src="themes/libraries/expanding-search/uisearch.js"></script>-->
 

@@ -19,11 +19,6 @@ if ($num_customer > 0) {
     var_dump($user['customers_telephone']);
     var_dump( $user['customers_id'] );
 ?>
-    <div class="property-direction pull-left">
-    <h3>Get Direction</h3>
-    <div class="property-map">
-        <div id="gmap" class="mapping"></div>
-    </div>
     <div class="property-map contact-agent">
         <h3>Contact Agent</h3>
         <div class="col-md-4 agent-details">
@@ -65,7 +60,6 @@ if ($num_customer > 0) {
             </div>
         </div>
     </div>
-</div>
 <?php
     }
 ?>
