@@ -8,7 +8,7 @@ var app = angular.module(
 		, 'ngFileUpload'
 		, 'ngCookies'
 		, 'ngAlertify'
-		, 'AngularGM'
+		, 'uiGmapgoogle-maps'
 	]
 );
 // range with number

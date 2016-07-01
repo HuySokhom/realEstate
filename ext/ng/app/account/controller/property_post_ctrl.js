@@ -6,7 +6,8 @@ app.controller(
 	, '$location'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, Services, $location, Upload, $timeout){
+	, '$log'
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $log){
 		$scope.service = new Services();
 		// init tiny option
 		$scope.tinymceOptions = {
@@ -54,8 +55,8 @@ app.controller(
 				products: {
 					products_image: $scope.image,
 					products_image_thumbnail: $scope.image_thumbnail,
-					map_lat: $scope.map_lat,
-					map_long: $scope.map_long,
+					map_lat: $scope.marker.coords.latitude,
+					map_long: $scope.marker.coords.longitude,
 					map_title: $scope.map_title,
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
@@ -134,60 +135,72 @@ app.controller(
 			$scope.optionalImage.splice($index, 1);
 		};
 
-		// start google map functionality
-		var zIndexMin = 1;
-		var zIndexMax = 100;
-		$scope.houses = [{
-			id: 0,
-			name: 'House A',
-			lat: 11.56614406346928,
-			lng: 104.89746106250004,
-			zIndex: zIndexMin
-		}, {
-			id: 1,
-			name: 'House B',
-			lat: 11.56014406346900,
-			lng: 104.80746106250026,
-			zIndex: zIndexMax
-		}];
+		/*************************************
+		 * start google map functionality  ***
+		 * start google map functionality  ***
+		 ************************************/
 
-
-		$scope.getMarkerOptions = function (house) {
-			return {
-				clickable: false,
-				draggable: true,
-				title: house.name,
-				zIndex: house.zIndex
-			}
+		$scope.map = {
+			center: {
+				latitude: 11.534289603605892,
+				longitude: 104.88615066528314
+			},
+			zoom: 10
 		};
-
 		$scope.options = {
-			map: {
-				center: new google.maps.LatLng(11.56614406346928, 104.89746106250004),
-				zoom: 10,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
+			scrollwheel: true
+		};
+		$scope.coordsUpdates = 0;
+		$scope.dynamicMoveCtr = 0;
+		$scope.marker = {
+			id: 0,
+			coords: {
+				latitude: 11.534289603605892,
+				longitude: 104.88615066528314
+			},
+			options: {
+				draggable: true
+			},
+			events: {
+				dragend: function(marker, eventName, args) {
+					var lat = marker.getPosition().lat();
+					var lon = marker.getPosition().lng();
+					$log.log(lat);
+					$log.log(lon);
+
+					$scope.marker.options = {
+						draggable: true,
+						labelContent: "",
+						labelAnchor: "100 0",
+						labelClass: "marker-labels"
+					};
+				}
 			}
 		};
-
-		$scope.setHouseLocation = function (house, marker) {
-			var position = marker.getPosition();
-			console.log(position);
-			house.lat = position.lat();
-			house.lng = position.lng();
-		};
-
-
-		$scope.updateZIndex = function () {
-			angular.forEach($scope.houses, function (house) {
-				if (house.zIndex == zIndexMin) house.zIndex = zIndexMax;
-				else house.zIndex = zIndexMin;
-
-				console.log(house);
-			});
-
-			$scope.$broadcast('gmMarkersUpdate', 'houses');
-		};
-
+		/************************************************************************ /
+		/******* to set every move marker set center map uncommand ***************/
+		/******************************************************************* *****/
+		//$scope.$watchCollection("marker.coords", function(newVal, oldVal) {
+		//	$scope.map.center.latitude = $scope.marker.coords.latitude;
+		//	$scope.map.center.longitude = $scope.marker.coords.longitude;
+		//	if (_.isEqual(newVal, oldVal))
+		//		return;
+		//	$scope.coordsUpdates++;
+		//});
+		//$timeout(function() {
+		//	$scope.marker.coords = {
+		//		latitude: 11.75,
+		//		longitude: 105.07
+		//	};
+		//	$scope.dynamicMoveCtr++;
+		//	$timeout(function() {
+		//		$scope.marker.coords = {
+		//			latitude: 11.75,
+		//			longitude: 105.07
+		//		};
+		//		$scope.dynamicMoveCtr++;
+		//	}, 2000);
+		//}, 1000);
 
 	}
 ]);

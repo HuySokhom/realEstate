@@ -3541,7 +3541,6 @@ form .progress {
 .alertify {
 	z-index: 9999;
 }
-
-.map {
-	height: 300px;
+.angular-google-map-container {
+	height: 400px;
 }

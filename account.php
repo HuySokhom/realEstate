@@ -188,7 +188,7 @@ require(DIR_WS_INCLUDES . 'template_bottom.php');
 require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
 
-<script src="ext/ng/lib/angular-map/google-map-api.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
 <!-- lib -->
 <script src="ext/tinymce/tinymce.min.js"></script>
 <script
@@ -221,7 +221,11 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 ></script>
 <script
 	type="text/javascript"
-	src="ext/ng/lib/angular-map/angular-gm.js"
+	src="ext/ng/lib/angular-map/angular-google-maps.min.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular-map/lodash.min.js"
 ></script>
 <script src="ext/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
