@@ -17,6 +17,7 @@
 <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
 <!-- END PLUGINS -->
 
+<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
 <!-- Plugin Lib Angular Js -->
 <script
     type="text/javascript"
@@ -26,6 +27,16 @@
     type="text/javascript"
     src="js/ng/lib/angular/1.5.6/angular.min.js"
 ></script>
+
+<script
+    type="text/javascript"
+    src="js/ng/lib/angular-map/angular-google-maps.min.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/lib/angular-map/lodash.min.js"
+></script>
+
 <script
     type="text/javascript"
     src="js/ng/lib/angular-cookies/angular-cookies.min.js"
@@ -46,6 +57,7 @@
     type="text/javascript"
     src="js/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
+
 <script
     type="text/javascript"
     src="js/ng/lib/angular-tinymce/tinymce.js"

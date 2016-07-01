@@ -36,12 +36,18 @@ class Object extends DbObj {
 		, $categoriesId
 		, $categoryDetail
 		, $customersDetail
+		, $mapLat
+		, $mapTitle
+		, $mapLong
 	;
 	
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
+				'map_long',
+				'map_lat',
+				'map_title',
 				'categories_id',
 				'category_detail',
 				'customers_detail',
@@ -79,6 +85,9 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
+				map_long,
+				map_lat,
+				map_title,
 				categories_id,
 				province_id,
 				district_id,
@@ -193,6 +202,9 @@ class Object extends DbObj {
 				products
 			SET
 				province_id = '" . (int)$this->getProvinceId() . "',
+				map_long = '" . $this->getMapLong() . "',
+				map_lat = '" . $this->getMapLat() . "',
+				map_title = '" . $this->getMapTitle() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
 				district_id = '" . (int)$this->getDistrictId() . "',
 				village_id = '" . (int)$this->getVillageId() . "',
@@ -215,6 +227,9 @@ class Object extends DbObj {
 				products
 			(
 				customers_id,
+				map_long,
+				map_lat,
+				map_title,
 				categories_id,
 				province_id,
 				district_id,
@@ -233,6 +248,9 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . (int)$this->getCustomersId() . "',
+				'" . $this->getMapLong() . "',
+				'" . $this->getMapLat() . "',
+				'" . $this->getMapTitle() . "',
 				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
 				'" . (int)$this->getDistrictId() . "',
@@ -251,7 +269,28 @@ class Object extends DbObj {
 		");	
 		$this->setProductsId( $this->dbInsertId() );
 	}
-	
+
+	public function getMapLat(){
+		return $this->mapLat;
+	}
+	public function setMapLat( $string ){
+		$this->mapLat = $string;
+	}
+
+	public function getMapTitle(){
+		return $this->mapTitle;
+	}
+	public function setMapTitle( $string ){
+		$this->mapTitle = $string;
+	}
+
+	public function getMapLong(){
+		return $this->mapLong;
+	}
+	public function setMapLong( $string ){
+		$this->mapLong = $string;
+	}
+
 	public function setCustomersId( $int ){
 		$this->customersId = (int)$int;
 	}

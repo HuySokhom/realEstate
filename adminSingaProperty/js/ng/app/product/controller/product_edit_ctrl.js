@@ -74,10 +74,97 @@ app.controller(
 				$scope.title_kh = data.elements[0].product_detail[1].products_name;
 				$scope.content_en = data.elements[0].product_detail[0].products_description;
 				$scope.content_kh = data.elements[0].product_detail[1].products_description;
+
+				/********* Start init UI Google Map NG *************/
+				$scope.map = {
+					center: {
+						latitude: $scope.latitude,
+						longitude: $scope.longitude
+					},
+					zoom: 10
+				};
+				$scope.options = {
+					scrollwheel: true
+				};
+				$scope.coordsUpdates = 0;
+				$scope.dynamicMoveCtr = 0;
+
+				$scope.marker = {
+					id: 0,
+					coords: {
+						latitude: $scope.latitude,
+						longitude: $scope.longitude
+					},
+					options: {
+						draggable: true
+					},
+					events: {
+						dragend: function(marker, eventName, args) {
+							var lat = marker.getPosition().lat();
+							var lon = marker.getPosition().lng();
+							//$log.log(lat);
+							//$log.log(lon);
+
+							$scope.marker.options = {
+								draggable: true,
+								labelContent: "",
+								labelAnchor: "100 0",
+								labelClass: "marker-labels"
+							};
+						}
+					}
+				};
+
+				/********* End init UI Google Map NG *************/
 			});
 		};
 		$scope.init();
+		$scope.longitude = 104;
+		$scope.latitude = 11;
+		/*************************************
+		 * start google map functionality  ***
+		 * start google map functionality  ***
+		 ************************************/
 
+		$scope.map = {
+			center: {
+				latitude: $scope.latitude,
+				longitude: $scope.longitude
+			},
+			zoom: 10
+		};
+		$scope.options = {
+			scrollwheel: true
+		};
+		$scope.coordsUpdates = 0;
+		$scope.dynamicMoveCtr = 0;
+
+		$scope.marker = {
+			id: 0,
+			coords: {
+				latitude: $scope.latitude,
+				longitude: $scope.longitude
+			},
+			options: {
+				draggable: true
+			},
+			events: {
+				dragend: function(marker, eventName, args) {
+					var lat = marker.getPosition().lat();
+					var lon = marker.getPosition().lng();
+					//$log.log(lat);
+					//$log.log(lon);
+
+					$scope.marker.options = {
+						draggable: true,
+						labelContent: "",
+						labelAnchor: "100 0",
+						labelClass: "marker-labels"
+					};
+				}
+			}
+		};
+		/************* End of Functionality google map NG ************************/
 		// update functionality
 		$scope.save = function(){
 			// set object to save into news

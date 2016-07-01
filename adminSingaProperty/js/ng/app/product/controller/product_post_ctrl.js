@@ -130,6 +130,48 @@ app.controller(
 		$scope.removeImage = function ($index) {
 			$scope.optionalImage.splice($index, 1);
 		};
+		/*************************************
+		 * start google map functionality  ***
+		 * start google map functionality  ***
+		 ************************************/
 
+		$scope.map = {
+			center: {
+				latitude: 11.534289603605892,
+				longitude: 104.88615066528314
+			},
+			zoom: 10
+		};
+		$scope.options = {
+			scrollwheel: true
+		};
+		$scope.coordsUpdates = 0;
+		$scope.dynamicMoveCtr = 0;
+		$scope.marker = {
+			id: 0,
+			coords: {
+				latitude: 11.534289603605892,
+				longitude: 104.88615066528314
+			},
+			options: {
+				draggable: true
+			},
+			events: {
+				dragend: function(marker, eventName, args) {
+					var lat = marker.getPosition().lat();
+					var lon = marker.getPosition().lng();
+					//$log.log(lat);
+					//$log.log(lon);
+
+					$scope.marker.options = {
+						draggable: true,
+						labelContent: "",
+						labelAnchor: "100 0",
+						labelClass: "marker-labels"
+					};
+				}
+			}
+		};
+		/********* End init UI Google Map NG *************/
 	}
 ]);
