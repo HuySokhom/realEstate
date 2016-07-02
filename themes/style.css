@@ -842,9 +842,13 @@ textarea {
 	bottom: 0;
 	margin: 0;
 }
-
+.enquiry{
+	width: 100%;
+	background: #f3f3f3;
+	border: 0px;
+}
 .rent-block .property-images-box > h4 {
-	background-color: #0dbae8;
+	background-color: #D33E63;
 }
 
 .sale-block .property-images-box > h4 {
@@ -2003,7 +2007,7 @@ textarea {
 .general-amenities h3,
 .property-direction h3 {
 	font-weight: 500;
-	color: #0DBAE8;
+	/*color: #0DBAE8;*/
 	margin-top: 0;
 	margin-bottom: 30px;
 	font-size: 16px;
@@ -2047,12 +2051,12 @@ textarea {
 
 /* Direction */
 .property-direction {
-	padding: 44px 0;
+	padding: 15px 0;
 }
 
 .property-direction .property-map {
 	padding: 0 30px;
-	margin-bottom: 38px;
+	margin-bottom: 15px;
 }
 
 .property-direction .property-map:last-child {
@@ -2213,7 +2217,7 @@ textarea {
 }
 
 .property-details-content2 .property-direction {
-	border-bottom: 1px solid #f0f0f0;
+	/*border-bottom: 1px solid #f0f0f0;*/
 }
 
 .property-details-content2 .general-amenities {
@@ -2284,7 +2288,7 @@ textarea {
 }
 
 .agent-information .agent-form input[type="submit"] {
-	background-color: #79b445;
+	background-color: #3C64FF;
     border-radius: 0;
     color: #fff;
     font-size: 15px;

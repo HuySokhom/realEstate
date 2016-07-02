@@ -22,7 +22,7 @@ $new_products_query_sale = tep_db_query("
         p.products_status = 1
             and
         p.products_id = pd.products_id
-          and
+            and
         p.products_id != '". (int)$HTTP_GET_VARS['products_id'] ."'
             and
         p.categories_id = '" . (int)$current_category_id ."'
