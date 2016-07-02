@@ -53,7 +53,9 @@ define(LISTING, 'Listing');
 define(RENT, 'For Rent');
 define(SALE, 'For Sale');
 define(BOTH, 'Sale And Rent');
-
+define('TEXT_SEARCH','Search');
+define('TEXT_TYPE', 'Type');
+define('TEXT_ALL_LOCATION', 'Location');
 // customer language 
 define('POST_PROPERTY', 'Post Property');
 define('MENU_AGENTS', 'Agents');

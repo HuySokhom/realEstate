@@ -111,7 +111,12 @@ function check_form() {
 
       <div class="col-md-3 search">
         <?php
-        echo tep_draw_pull_down_menu('categories_id', tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))), NULL, 'id="entryCategories"');
+          echo tep_draw_pull_down_menu(
+              'categories_id',
+              tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
+              NULL,
+              'id="entryCategories" class="form-control"'
+          );
         ?>
       </div>
 

@@ -283,6 +283,9 @@ define('TEXT_VIEW', 'View: ');
 define('TEXT_VIEW_LIST', ' List');
 define('TEXT_VIEW_GRID', ' Grid');
 
+define('TEXT_ALL_LOCATION', 'ខេត្ត');
+define('TEXT_TYPE', 'ប្រភេទ');
+define('TEXT_SEARCH','ស្វែងរក');
 // search placeholder
 define('TEXT_SEARCH_PLACEHOLDER','Search');
 

@@ -263,7 +263,7 @@ function tep_href_link($page = '', $parameters = '', $connection = 'NONSSL', $ad
 
     if (tep_not_null($parameters)) $field .= ' ' . $parameters;
 
-    $field .= ' class="form-control">';
+    $field .= ' class="">';
 
     if (empty($default) && ( (isset($HTTP_GET_VARS[$name]) && is_string($HTTP_GET_VARS[$name])) || (isset($HTTP_POST_VARS[$name]) && is_string($HTTP_POST_VARS[$name])) ) ) {
       if (isset($HTTP_GET_VARS[$name]) && is_string($HTTP_GET_VARS[$name])) {
