@@ -98,6 +98,8 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
           AND
         p.products_id = pd.products_id
           AND
+        p.products_id != '" . (int)$HTTP_GET_VARS['products_id'] . "'
+          AND
         pd.language_id = '" . (int)$languages_id . "'
       ORDER BY
         p.products_promote DESC, p.products_date_added DESC
