@@ -601,21 +601,9 @@ function tep_get_location($id = '') {
     while ($locations = tep_db_fetch_array($location_query)) {
       $locations_array[] = array('id' => $locations['id'], 'text' => $locations['name']);
     }
-
     return $locations_array;
   }
-  // functionality for get bed
-  function tep_get_bed($locations_array = '') {
-    if (!is_array($locations_array)) $locations_array = array();
 
-    $location_query = tep_db_query("select id, name from location order by name");
-
-    while ($locations = tep_db_fetch_array($location_query)) {
-      $locations_array[] = array('id' => $locations['id'], 'text' => $locations['name']);
-    }
-
-    return $locations_array;
-  }
   function tep_get_manufacturers($manufacturers_array = '') {
     if (!is_array($manufacturers_array)) $manufacturers_array = array();
 

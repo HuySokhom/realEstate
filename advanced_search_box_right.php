@@ -1,3 +1,6 @@
+<?php
+require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
+?>
 <div class="col-md-3 col-sm-6 p_r_z property-sidebar widget-area">
   <aside class="widget widget-search">
     <h2 class="widget-title">
@@ -5,8 +8,8 @@
       <span>
         <?php echo PROPERTY;?>
       </span></h2>
-    <form>
-      <?php
+    <form name="advance_search" action="advanced_search_result.php" method="get">
+    <?php
         echo tep_draw_pull_down_menu(
             'categories_id',
             tep_get_categories(array(array('id' => '', 'text' => TEXT_ALL_CATEGORIES))),
@@ -16,60 +19,121 @@
       <?php
         echo tep_draw_pull_down_menu(
             'location_id',
-            tep_get_province(array(array('2id' => '', 'text' => TEXT_ALL_LOCATION))),
+            tep_get_province(array(array('id' => '', 'text' => TEXT_ALL_LOCATION))),
             NULL,
             'id="province"'
         );
       ?>
+
       <select name="type">
         <option value="selected"><?php echo TEXT_TYPE;?></option>
-        <option value="For Rent">For Rent</option>
-        <option value="For Sale">For Sale</option>
-        <option value="Both Sale and Rent">Both Sale and Rent</option>
+        <option value="For Rent"><?php echo RENT?></option>
+        <option value="For Sale"><?php echo SALE?></option>
+        <option value="Both Sale and Rent"><?php echo BOTH?></option>
       </select>
       <div class="col-md-6 col-sm-6 p_l_z" name="bed_from">
-        <select>
-          <option value="selected">Beds</option>
-          <option value="one">One</option>
-          <option value="two">Two</option>
-          <option value="three">Three</option>
-          <option value="four">Four</option>
-          <option value="five">Five</option>
+        <select name="bed">
+          <option value="selected"><?php echo BEDS?></option>
+          <?php
+            $n = 20;
+            for($i=1; $i <= $n; $i++){
+              echo "<option value=$i>$i</option>";
+            }
+          ?>
         </select>
       </div>
       <div class="col-md-6 col-sm-6 p_r_z" name="bed_to">
-        <select>
-          <option value="selected">Baths</option>
-          <option value="one">One</option>
-          <option value="two">Two</option>
-          <option value="three">Three</option>
-          <option value="four">Four</option>
-          <option value="five">Five</option>
+        <select name="bath">
+          <option value="selected"><?php echo BATHS?></option>
+          <?php
+          $n = 20;
+          for($i=1; $i <= $n; $i++){
+            echo "<option value=$i>$i</option>";
+          }
+          ?>
+        </select>
         </select>
       </div>
-      <div class="col-md-6 col-sm-6 p_l_z" name="price_from">
-        <select>
-          <option value="selected">Min Price</option>
-          <option value="one">One</option>
-          <option value="two">Two</option>
-          <option value="three">Three</option>
-          <option value="four">Four</option>
-          <option value="five">Five</option>
+      <div class="col-md-6 col-sm-6 p_l_z">
+        <select name="price_from">
+          <option value="selected"><?php echo ENTRY_PRICE_FROM?></option>
+          <option value="10000">$10000</option>
+          <option value="30000">$30000</option>
+          <option value="60000">$60000</option>
+          <option value="100000">$100000</option>
+          <option value="500000">$500000</option>
+          <option value="1000000">$1000000+</option>
         </select>
       </div>
-      <div class="col-md-6 col-sm-6 p_r_z" name="price_to">
-        <select>
-          <option value="selected">Max Price</option>
-          <option value="one">$3000</option>
-          <option value="two">$30000</option>
-          <option value="three">$300000</option>
-          <option value="four">$3000000</option>
-          <option value="five">$3000000000000000</option>
+      <div class="col-md-6 col-sm-6 p_r_z">
+        <select name="price_to">
+          <option value="selected"><?php echo ENTRY_PRICE_TO?></option>
+          <option value="10000">$10000</option>
+          <option value="30000">$30000</option>
+          <option value="60000">$60000</option>
+          <option value="100000">$100000</option>
+          <option value="500000">$500000</option>
+          <option value="1000000">$1000000+</option>
         </select>
       </div>
 
-      <input type="submit" value="Search Now" class="btn">
+      <input type="submit" value="<?php echo SEARCH;?>" class="btn">
     </form>
   </aside>
 
+  <aside class="widget widget-property-featured">
+    <h2 class="widget-title">
+      <?php echo FEATURED; ?>
+      <span>
+        <?php echo PROPERTY;?>
+      </span>
+    </h2>
+    <?php
+      $featured_query = tep_db_query("
+        SELECT p.products_id, p.products_image_thumbnail, p.products_price, pd.products_name
+        FROM products p, products_description pd
+        WHERE
+          p.products_status = 1
+            AND
+          p.products_id = pd.products_id
+            AND
+          pd.language_id = '" . (int)$languages_id . "'
+        ORDER BY
+          p.products_promote DESC, p.products_date_added DESC
+        LIMIT 5
+      ");
+    $num_featured = tep_db_num_rows($featured_query);
+    if ($num_featured > 0) {
+      while ($featured = tep_db_fetch_array($featured_query)) {
+    ?>
+    <div class="property-featured-inner">
+      <div class="col-md-4 col-sm-3 col-xs-2 p_z">
+        <a
+            title="Property Image"
+            href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>"
+            >
+          <?php
+            echo tep_image(
+                DIR_WS_IMAGES . $featured['products_image_thumbnail'],
+                $featured['products_name'],
+                SMALL_IMAGE_WIDTH,
+                SMALL_IMAGE_HEIGHT,
+                'style="width:100%; height: 70px;"'
+            )
+          ?>
+        </a>
+      </div>
+      <div class="col-md-8 col-sm-9 col-xs-10 featured-content">
+        <a title="Featured Post" href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>">
+          <?php echo $featured['products_name'];?>
+        </a>
+        <h3><?php echo $featured['products_price'];?></h3>
+      </div>
+    </div>
+
+  </aside>
+  <?php
+      }
+    }
+  ?>
 </div>

@@ -54,11 +54,13 @@ define(RENT, 'សម្រាប់ជួល');
 define(SALE, 'សម្រាប់លក់');
 define(BOTH, 'លក់និងជួល');
 
+define(BEDS, 'គ្រែដេក');
+define(BATHS, 'បន្ចបទឹក់');
 // customer language 
 define('POST_PROPERTY', 'បង្កើតអចលនទ្រព្យ');
 define('MENU_AGENTS', 'ភ្នាក់ងារ');
 define('MENU_NEWS', 'ពត័មាន');
-
+define('FEATURED', 'លក្ខណៈពិសេសជាងគេ');
 define('LOGIN', 'ចូល គណនី');
 define('REGISTER', 'ចុះឈ្មោះ');
 

@@ -846,6 +846,8 @@ textarea {
 	width: 100%;
 	background: #f3f3f3;
 	border: 0px;
+	border-bottom: 2px solid #c8c8c8;
+	margin-bottom: 15px;
 }
 .rent-block .property-images-box > h4 {
 	background-color: #D33E63;

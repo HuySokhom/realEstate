@@ -45,7 +45,9 @@ define('HTML_PARAMS', 'dir="ltr" lang="en"');
 
 // charset for web pages and emails
 define('CHARSET', 'utf-8');
-
+define('FEATURED', 'Featured');
+define(BEDS, 'Beds');
+define(BATHS, 'Baths');
 // page title
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'Property');
