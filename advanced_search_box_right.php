@@ -88,50 +88,49 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         <?php echo PROPERTY;?>
       </span>
     </h2>
-    <?php
-      $featured_query = tep_db_query("
-        SELECT p.products_id, p.products_image_thumbnail, p.products_price, pd.products_name
-        FROM products p, products_description pd
-        WHERE
-          p.products_status = 1
-            AND
-          p.products_id = pd.products_id
-            AND
-          pd.language_id = '" . (int)$languages_id . "'
-        ORDER BY
-          p.products_promote DESC, p.products_date_added DESC
-        LIMIT 5
-      ");
-    $num_featured = tep_db_num_rows($featured_query);
-    if ($num_featured > 0) {
-      while ($featured = tep_db_fetch_array($featured_query)) {
-    ?>
-    <div class="property-featured-inner">
-      <div class="col-md-4 col-sm-3 col-xs-2 p_z">
-        <a
-            title="Property Image"
-            href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>"
-            >
-          <?php
-            echo tep_image(
-                DIR_WS_IMAGES . $featured['products_image_thumbnail'],
-                $featured['products_name'],
-                SMALL_IMAGE_WIDTH,
-                SMALL_IMAGE_HEIGHT,
-                'style="width:100%; height: 70px;"'
-            )
-          ?>
-        </a>
-      </div>
-      <div class="col-md-8 col-sm-9 col-xs-10 featured-content">
-        <a title="Featured Post" href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>">
-          <?php echo $featured['products_name'];?>
-        </a>
-        <h3><?php echo $featured['products_price'];?></h3>
-      </div>
-    </div>
-
   </aside>
+  <?php
+    $featured_query = tep_db_query("
+      SELECT p.products_id, p.products_image_thumbnail, p.products_price, pd.products_name
+      FROM products p, products_description pd
+      WHERE
+        p.products_status = 1
+          AND
+        p.products_id = pd.products_id
+          AND
+        pd.language_id = '" . (int)$languages_id . "'
+      ORDER BY
+        p.products_promote DESC, p.products_date_added DESC
+      LIMIT 5
+    ");
+  $num_featured = tep_db_num_rows($featured_query);
+  if ($num_featured > 0) {
+    while ($featured = tep_db_fetch_array($featured_query)) {
+  ?>
+  <div class="property-featured-inner">
+    <div class="col-md-4 col-sm-3 col-xs-2 p_z">
+      <a
+          title="Property Image"
+          href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>"
+          >
+        <?php
+          echo tep_image(
+              DIR_WS_IMAGES . $featured['products_image_thumbnail'],
+              $featured['products_name'],
+              SMALL_IMAGE_WIDTH,
+              SMALL_IMAGE_HEIGHT,
+              'style="width:100%; height: 70px;"'
+          )
+        ?>
+      </a>
+    </div>
+    <div class="col-md-8 col-sm-9 col-xs-10 featured-content">
+      <a title="Featured Post" href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>">
+        <?php echo $featured['products_name'];?>
+      </a>
+      <h3><?php echo $featured['products_price'];?></h3>
+    </div>
+  </div>
   <?php
       }
     }
