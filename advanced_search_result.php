@@ -135,10 +135,6 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE_2; ?></h1>
-</div>
-
 <div class="contentContainer">
 
 <?php
@@ -316,9 +312,10 @@
   }
 
   $listing_sql = $select_str . $from_str . $where_str . $order_str;
-
-  require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
 ?>
+  <div class="margin-top">
+    <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);?>
+  </div>
 
   <br />
 
