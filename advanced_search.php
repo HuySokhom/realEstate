@@ -102,11 +102,6 @@ function check_form() {
   }
 }
 //--></script>
-
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE_1; ?></h1>
-</div>
-
 <?php
   if ($messageStack->size('search') > 0) {
     echo $messageStack->output('search');
@@ -115,9 +110,9 @@ function check_form() {
 
 <?php echo tep_draw_form('advanced_search', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id(); ?>
 
-<div class="contentContainer">
+<div class="margin-top">
 
-  <div class="contentText">
+  <div class="container">
     <div class="form-group has-feedback">
       <label for="inputKeywords" class="control-label col-sm-3"><?php echo HEADING_SEARCH_CRITERIA; ?></label>
       <div class="col-sm-9">
