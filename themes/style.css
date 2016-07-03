@@ -2301,7 +2301,7 @@ textarea {
 .other-properties {
 	display: inline-block;
 	margin-top: 33px;
-	margin-bottom: 100px;
+	/*margin-bottom: 100px;*/
 }
 
 .other-properties .property-images-box span,
@@ -3428,6 +3428,9 @@ a:hover {
 }
 .footer-bottom a{
 	color: #337ab7;
+}
+.user-products{
+	margin-bottom: 15px;
 }
 #active {
 	color: #3C64FF;

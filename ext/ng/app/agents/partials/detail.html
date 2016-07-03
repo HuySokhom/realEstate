@@ -61,91 +61,70 @@
         <!-- Other Property -->
         <div class="other-properties row">
             <h3>MY LISTINGS</h3>
-            <!-- col-md-4 -->
-            <div class="col-md-4 rent-block">
-                <!-- Property Main Box -->
-                <div class="property-main-box">
-                    <div class="property-images-box">
-                        <span>R</span>
-                        <a title="Property Image" href="agent-details.html#"><img src="images/rent/rent-1.jpg" alt="rent"></a>
-                        <h4>$380 / pm</h4>
-                    </div>
-                    <div class="property-details">
-                        <a title="Property Title" href="agent-details.html#">Southwest 39th Terrace</a>
-                        <ul>
-                            <li><i class="fa fa-expand"></i>3326 sq</li>
-                            <li><i><img src="images/icon/bed-icon.png" alt="bed-icon"></i>3</li>
-                            <li><i><img src="images/icon/bath-icon.png" alt="bath-icon"></i>2</li>
-                        </ul>
-                    </div>
-                </div><!-- Property Main Box /- -->
-            </div><!-- col-md-4 /- -->
-            <!-- col-md-4 -->
-            <div class="col-md-4 sale-block">
-                <!-- Property Main Box -->
-                <div class="property-main-box">
-                    <div class="property-images-box">
-                        <span>S</span>
-                        <a title="Property Image" href="agent-details.html#"><img src="images/rent/rent-4.jpg" alt="rent"></a>
-                        <h4>$330000</h4>
-                    </div>
-                    <div class="property-details">
-                        <a title="Property Title" href="agent-details.html#">20 Apartments of Type A</a>
-                        <ul>
-                            <li><i class="fa fa-expand"></i>3326 sq</li>
-                            <li><i><img src="images/icon/bed-icon.png" alt="bed-icon"></i>3</li>
-                            <li><i><img src="images/icon/bath-icon.png" alt="bath-icon"></i>2</li>
-                        </ul>
-                    </div>
-                </div><!-- Property Main Box -->
-            </div><!-- col-md-4 /- -->
-            <!-- col-md-4 -->
-            <div class="col-md-4 rent-block">
-                <!-- Property Main Box -->
-                <div class="property-main-box">
-                    <div class="property-images-box">
-                        <span>R</span>
-                        <a title="Property Image" href="agent-details.html#"><img src="images/rent/rent-3.jpg" alt="rent"></a>
-                        <h4>$380 / pm</h4>
-                    </div>
-                    <div class="property-details">
-                        <a title="Property Title" href="agent-details.html#">15 Apartments of Type B</a>
-                        <ul>
-                            <li><i class="fa fa-expand"></i>3326 sq</li>
-                            <li><i><img src="images/icon/bed-icon.png" alt="bed-icon"></i>3</li>
-                            <li><i><img src="images/icon/bath-icon.png" alt="bath-icon"></i>2</li>
-                        </ul>
-                    </div>
-                </div><!-- Property Main Box /- -->
-            </div><!-- col-md-4 /- -->
-
-        </div><!-- Other Property -->
-
-        <!-- Related Post -->
-        <div class="related-post p_z row">
-            <h3>Relate Post</h3>
             <div
-                data-ng-if="newsOther.count == 0"
-                class="alert alert-info"
+                    data-ng-if="products.count == 0"
+                    class="alert alert-info"
             >
                 <p>
                     No Posting.
                 </p>
             </div>
             <div
-                data-ng-if="!newsOther"
-                class="align_center"
+                    data-ng-if="!products"
+                    class="align_center"
             >
                 <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
             </div>
-            <div class="col-md-4 col-sm-12" data-ng-repeat="n in newsOther.elements">
-                <a title="" href="news.php#/{{n.type[0].id}}/{{n.id}}"><img src="images/{{n.image}}" alt=""></a>
-                <a title="" href="news.php#/{{n.type[0].id}}/{{n.id}}">
-                    <span data-ng-bind-html="n.detail[0].title"></span>
-                </a>
+            <!-- col-md-4 -->
+            <div class="col-md-4 rent-block" data-ng-repeat="p in products.elements">
+                <!-- Property Main Box -->
+                <div class="property-main-box user-products">
+                    <div class="property-images-box">
+                        <a title="Property Image" href="-p-{{p.id}}.html">
+                            <img src="images/{{p.products_image_thumbnail}}" alt="rent">
+                        </a>
+                        <h4>{{p.products_price | currency}}</h4>
+                    </div>
+                    <div class="property-details">
+                        <a title="Property Title" href="-p-{{p.id}}.html">
+                            {{p.product_detail[0].products_name}}
+                        </a>
+                        <ul>
+                            <li>
+                                <i class="fa fa fa-institution"></i>
+                                {{p.number_of_floors}}
+                            </li>
+                            <li>
+                                <i>
+                                    <img src="images/icon/bed-icon.png" alt="bed-icon">
+                                </i>
+                                {{p.bed_rooms}}
+                            </li>
+                            <li>
+                                <i>
+                                    <img src="images/icon/bath-icon.png" alt="bath-icon">
+                                </i>
+                                {{p.bath_rooms}}
+                            </li>
+                        </ul>
+                    </div>
+                </div><!-- Property Main Box /- -->
             </div>
-        </div><!-- Related Post /- -->
-
+            <!-- col-md-4 /- -->
+        </div>
+        <!-- Other Property -->
+        <div class="clearfix">
+            <!-- Pagination -->
+            <pagination
+                total-items="totalItems"
+                ng-model="currentPage"
+                ng-change="pageChanged()"
+                max-size="5"
+                items-per-page="9"
+                boundary-links="true"
+            ></pagination>
+            <!-- Pagination /- -->
+        </div>
     </div>
 </div>
 <div search></div>
