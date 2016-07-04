@@ -181,84 +181,84 @@
 		}
 
 		/* gMAP */
-		$("#gmap").gMap({
-			controls: false,
-			scrollwheel: true,
-
-			markers: [
-				{
-					latitude: 47.670553,
-					longitude: 9.588479,
-					icon: {
-						image: "images/map-marker.png",
-						iconsize: [26, 46],
-						iconanchor: [12,46]
-					}
-				},
-				{
-					latitude: 47.65197522925437,
-					longitude: 9.47845458984375
-				},
-				{
-					latitude: 47.594996,
-					longitude: 9.600708,
-					icon: {
-						image: "images/map-marker.png",
-						iconsize: [26, 46],
-						iconanchor: [12,46]
-					}
-				}
-			],
-			icon: {
-				image: "images/map-marker.png",
-				iconsize: [26, 46],
-				iconanchor: [12, 46]
-			},
-			latitude: 47.58969,
-			longitude: 9.473413,
-			zoom: 10
-		});
-
-		///* gMAP */
-		$("a[href='#add_location']").on('click', function(e) {
-			$("#gmap2").gMap({
-				controls: false,
-				scrollwheel: true,
-
-				markers: [
-					{
-						latitude: 47.670553,
-						longitude: 9.588479,
-						icon: {
-							image: "images/map-marker.png",
-							iconsize: [26, 46],
-							iconanchor: [12,46]
-						}
-					},
-					{
-						latitude: 47.65197522925437,
-						longitude: 9.47845458984375
-					},
-					{
-						latitude: 47.594996,
-						longitude: 9.600708,
-						icon: {
-							image: "images/map-marker.png",
-							iconsize: [26, 46],
-							iconanchor: [12,46]
-						}
-					}
-				],
-				icon: {
-					image: "images/map-marker.png",
-					iconsize: [26, 46],
-					iconanchor: [12, 46]
-				},
-				latitude: 47.58969,
-				longitude: 9.473413,
-				zoom: 10
-			});
-		});
+		//$("#gmap").gMap({
+		//	controls: false,
+		//	scrollwheel: true,
+        //
+		//	markers: [
+		//		{
+		//			latitude: 47.670553,
+		//			longitude: 9.588479,
+		//			icon: {
+		//				image: "images/map-marker.png",
+		//				iconsize: [26, 46],
+		//				iconanchor: [12,46]
+		//			}
+		//		},
+		//		{
+		//			latitude: 47.65197522925437,
+		//			longitude: 9.47845458984375
+		//		},
+		//		{
+		//			latitude: 47.594996,
+		//			longitude: 9.600708,
+		//			icon: {
+		//				image: "images/map-marker.png",
+		//				iconsize: [26, 46],
+		//				iconanchor: [12,46]
+		//			}
+		//		}
+		//	],
+		//	icon: {
+		//		image: "images/map-marker.png",
+		//		iconsize: [26, 46],
+		//		iconanchor: [12, 46]
+		//	},
+		//	latitude: 47.58969,
+		//	longitude: 9.473413,
+		//	zoom: 10
+		//});
+        //
+		/////* gMAP */
+		//$("a[href='#add_location']").on('click', function(e) {
+		//	$("#gmap2").gMap({
+		//		controls: false,
+		//		scrollwheel: true,
+        //
+		//		markers: [
+		//			{
+		//				latitude: 47.670553,
+		//				longitude: 9.588479,
+		//				icon: {
+		//					image: "images/map-marker.png",
+		//					iconsize: [26, 46],
+		//					iconanchor: [12,46]
+		//				}
+		//			},
+		//			{
+		//				latitude: 47.65197522925437,
+		//				longitude: 9.47845458984375
+		//			},
+		//			{
+		//				latitude: 47.594996,
+		//				longitude: 9.600708,
+		//				icon: {
+		//					image: "images/map-marker.png",
+		//					iconsize: [26, 46],
+		//					iconanchor: [12,46]
+		//				}
+		//			}
+		//		],
+		//		icon: {
+		//			image: "images/map-marker.png",
+		//			iconsize: [26, 46],
+		//			iconanchor: [12, 46]
+		//		},
+		//		latitude: 47.58969,
+		//		longitude: 9.473413,
+		//		zoom: 10
+		//	});
+		//});
 
 		/* Checkbox */
 		// $('input').iCheck({
@@ -338,3 +338,30 @@
 	}).attr( 'id', 'active' );//.addClass('active');
 
 })(jQuery);
+
+// init google map
+function initialize() {
+	var lat = $("#lat").val();
+	var long = $("#long").val();
+	var myLatlng = new google.maps.LatLng(lat,long);
+	var myOptions = {
+		zoom: 10,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+	var marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map,
+		draggable: false
+	});
+	google.maps.event.addListener(
+			marker,
+			'drag',
+			function() {
+				document.getElementById('lat').value = marker.position.lat();
+				document.getElementById('long').value = marker.position.lng();
+			}
+	);
+}

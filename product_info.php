@@ -54,6 +54,8 @@
 			l.name as province_name,
 			d.name_en as district_name,
 			pd.products_description,
+			p.map_lat,
+			p.map_long,
 			p.bed_rooms,
 			p.bath_rooms,
 			p.number_of_floors,
@@ -278,7 +280,9 @@
 						<div class="property-direction pull-left">
 							<h3>Get Direction</h3>
 							<div class="property-map">
-								<div id="gmap" class="mapping"></div>
+								<input type="text" hidden id="lat" value="<?php echo $product_info['map_lat'];?>"/>
+								<input type="text" hidden id="long" value="<?php echo $product_info['map_long'];?>"/>
+								<div id="map_canvas" class="mapping"></div>
 							</div>
 							<?php
 								include(DIR_WS_MODULES . 'contact_person.php');
