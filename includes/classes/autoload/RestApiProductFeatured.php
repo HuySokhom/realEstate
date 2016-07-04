@@ -5,17 +5,17 @@ use
 		as ProductCol
 ;
 
-class RestApiProducts extends RestApi {
+class RestApiProductFeatured extends RestApi {
 
 	public function get($params){
 		$col = new ProductCol();
 
 		$col->filterByStatus(1);
 		$col->filterByLanguage($_SESSION['languages_id']);
-		$this->getId() ? $col->filterByCustomersId($this->getId()) : '';
+		//$this->getId() ? $col->filterByCustomersId($this->getId()) : '';
 		$col->sortByDate("DESC");
 		// start limit page
-		$showDataPerPage = 9;
+		$showDataPerPage = 5;
 		$start = $params['GET']['start'];
 		$this->applyLimit($col,
 			array(
