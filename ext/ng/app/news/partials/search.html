@@ -65,15 +65,15 @@
     </aside>
     <aside class="widget widget-property-featured">
         <h2 class="widget-title">featured<span>property</span></h2>
-        <div class="property-featured-inner" data-ng-repeat="p in products.elements">
+        <div class="property-featured-inner" data-ng-repeat="p in products">
             <div class="col-md-4 col-sm-3 col-xs-2 p_z">
-                <a title="Featured Post" href="-p-{{p.id}}.html">
+                <a title="Featured Post" href="-p-{{p.products_id}}.html">
                     <img src="images/{{p.products_image_thumbnail}}" alt="" />
                 </a>
             </div>
             <div class="col-md-8 col-sm-9 col-xs-10 featured-content">
-                <a title="Featured Post" href="-p-{{p.id}}.html">
-                    {{p.product_detail[0].products_name}}
+                <a title="Featured Post" href="-p-{{p.products_id}}.html">
+                    {{p.products_name}}
                 </a>
                 <h3>{{p.products_price | currency}}</h3>
             </div>
