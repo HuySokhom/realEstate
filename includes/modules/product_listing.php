@@ -108,17 +108,18 @@
     </div>
     <!-- Pagination /- -->
     </div>
-    <?php include('advanced_search_box_right.php');?>
-    </div>
-    </div>
+
     <!-- Property Listing Section /- -->';
 <?php
 }
 
 else {
 ?>
-
+<div class="property-left col-md-9 col-sm-6 p_l_z content-area">
   <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
-
+</div>
 <?php
 }
+
+?>
+<?php include('advanced_search_box_right.php');?>
