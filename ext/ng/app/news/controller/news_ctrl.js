@@ -5,25 +5,27 @@ app.controller(
 	, '$location'
 	, function ($scope, Restful, $location){
 		var url = 'api/News';
-		$scope.init = function(params){
+		init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.news = data;
 				$scope.totalItems = data.count;
 			});
+		};
+		init();
 
+		function initType(){
 			Restful.get("api/NewsType").success(function(data){
 				$scope.newsType = data;
 			});
-
-		};
-		$scope.init();
+		}
+		initType();
 
 		/* set active link */
 		$scope.activeMenu = "";
 		$scope.setActive = function(item) {
 			$scope.activeMenu = item;
-			var data = {news_type_id: $scope.activeMenu};
-			$scope.init(data);
+			var params = {news_type_id: $scope.activeMenu};
+			init(params);
 		};
 
 		/* function link page single */
