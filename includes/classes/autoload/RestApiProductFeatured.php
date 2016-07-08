@@ -15,7 +15,7 @@ class RestApiProductFeatured extends RestApi {
 				pd.products_name,
 				p.products_image_thumbnail,
 				p.products_price,
-				products_date_added
+				p.products_date_added
 			from
 				" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
 			where
