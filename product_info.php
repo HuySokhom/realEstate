@@ -176,7 +176,9 @@
 						<div class="property-header">
 							<h3>
 							    <?php
-							        echo $product_info['products_name'];
+							        echo $product_info['products_name'] . ' | ' . $product_info['village_name']
+											. ' | ' . $product_info['district_name'] . ' | ' . $product_info['province_name']
+									;
 							        echo '<span>' . $product_info['products_kind_of'] . '</span>';
 							    ?>
                             </h3>

@@ -28,13 +28,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta name="description" content="singa property, real property, phnom penh, real estate in cambodia, news ">
+    <meta name="description" http-equiv="Description" content="singa property, real property, phnom penh, real estate in cambodia, news ">
     <meta name="keywords" content="singa property, real property, phnom penh, real estate in cambodia, news ">
-    <meta name="author" content="">
+    <meta name="author" content="Singa property">
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta NAME="robots" content="noindex, follow">
-    <meta NAME="robots" content="index, nofollow">
-    <meta NAME="robots" content="noindex, nofollow">
+    <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
     <link rel="shortcut icon" href="images/banners/ico.png">
     <link href="themes/libraries/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <linK href="themes/libraries/owl-carousel/owl.carousel.css" rel="stylesheet"/> <!-- Core Owl Carousel CSS File  *	v1.3.3 -->
@@ -51,8 +49,13 @@
    <script src="ext/js/excanvas.min.js"></script>
 <![endif]-->
     <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
-<script src="ext/jquery/jquery-1.11.1.min.js"></script>
-
+    <script src="ext/jquery/jquery-1.11.1.min.js"></script>
+    <meta property="og:title" content="Singa Property Online Real Estate in Cambodia | Buy &amp;amp; Sell Online on Real Estate Singa.com" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:description" content="Welcome to Singa Online Property"/>
+    <meta property="og:url" content="http://singaproperty.com"/>
+    <meta property="og:site_name" content="SINGA PROPERTY Online Real Estate"/>
 <!-- font awesome -->
 <link rel="stylesheet" href="ext/css/Font-Awesome-master/css/font-awesome.min.css">
     <meta name="csrf-param" content="authenticity_token" />
