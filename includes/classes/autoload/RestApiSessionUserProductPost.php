@@ -26,22 +26,68 @@ class RestApiSessionUserProductPost extends RestApi {
 				403
 			);
 		}else {
-			$col->sortByDate('DESC');
-			$col->filterByCustomersId($userId);
+			$showDataPerPage = 10;
+			$start = $params['GET']['start'] ? $params['GET']['start'] : 0;
+
 			$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 			$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
 			$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
-			// start limit page
-			$showDataPerPage = 10;
-			$start = $params['GET']['start'];
-			$this->applyLimit($col,
-				array(
-					'limit' => array( $start, $showDataPerPage )
+			$news_query = tep_db_query("
+				select
+					p.products_id,
+					p.products_price,
+					p.products_status,
+					p.products_kind_of,
+					c.categories_name,
+					pd.products_name,
+					pd.products_viewed,
+					p.create_date
+				from
+					products p, products_description pd, categories_description c
+				where
+					p.products_id = pd.products_id
+						and
+					p.categories_id = c.categories_id
+						and
+					pd.language_id = '" . $_SESSION['languages_id'] . "'
+						and
+					c.language_id = '" . $_SESSION['languages_id'] . "'
+						and
+					p.customers_id = '" . $userId . "'
+						order by
+					p.create_date desc
+					limit $start, $showDataPerPage
+			");
+			$array = array();
+			while ($news_info = tep_db_fetch_array($news_query)){
+				$array[] = $news_info;
+			}
+			$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
+			$total = tep_db_fetch_array($news_count);
+
+			return array(
+				data => array(
+					elements => $array,
+					count => $total['total']
 				)
 			);
-			$this->applyFilters($col, $params);
-			$this->applySortBy($col, $params);
-			return $this->getReturn($col, $params);
+
+				$col->sortByDate('DESC');
+				$col->filterByCustomersId($userId);
+				$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+				$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
+				$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
+				// start limit page
+				$showDataPerPage = 10;
+				$start = $params['GET']['start'];
+				$this->applyLimit($col,
+					array(
+						'limit' => array( $start, $showDataPerPage )
+					)
+				);
+				$this->applyFilters($col, $params);
+				$this->applySortBy($col, $params);
+				return $this->getReturn($col, $params);
 		}
 	}
 

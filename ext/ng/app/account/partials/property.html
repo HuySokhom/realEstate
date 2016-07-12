@@ -75,13 +75,13 @@
 		</thead>
 		<tr data-ng-repeat="p in products_post.elements">
 			<td>
-				{{p.id}}
+				{{p.products_id}}
 			</td>
 			<td>
-				{{p.category_detail[0].categories_name}}
+				{{p.categories_name}}
 			</td>
 			<td>
-				<span data-ng-bind="p.product_detail[0].products_name"></span>
+				<span data-ng-bind="p.products_name"></span>
 			</td>
 
 			<td>
@@ -91,12 +91,12 @@
 				<span data-ng-bind="p.products_price | currency"></span>
 			</td>
 			<td>
-				<span data-ng-bind="p.product_detail[0].products_viewed" class="label label-primary"></span>
+				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
 			</td>
 			<td>
 				<button
 					class="btn btn-default"
-					data-ng-click="edit(p.id);"
+					data-ng-click="edit(p.products_id);"
 					data-toggle="tooltip"
 					data-placement="left"
 					title="Edit"
@@ -106,7 +106,7 @@
 				</button>
 				<button
 					class="btn btn-danger"
-					data-ng-click="remove($index, p.id);"
+					data-ng-click="remove($index, p.products_id);"
 					data-toggle="tooltip"
 					data-placement="top"
 					title="Remove"
@@ -148,7 +148,7 @@
 				</button>
 				<button
 					class="btn btn-default"
-					data-ng-click="link(p.id);"
+					data-ng-click="link(p.products_id);"
 					data-toggle="tooltip"
 					data-placement="right"
 					title="Link"
