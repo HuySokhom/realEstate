@@ -4,6 +4,7 @@ app.controller(
 	, 'Restful'
 	, '$location'
 	, function ($scope, Restful, $location){
+		$scope.language_id = $('#language_id').val();
 		var url = 'api/News';
 		init = function(params){
 			Restful.get(url, params).success(function(data){

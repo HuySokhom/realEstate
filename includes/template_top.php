@@ -65,8 +65,9 @@
 <body
     data-ng-app="main"
     onload="initialize()"
-    data-ng-model="language_id = <?php echo $_SESSION['languages_id']; ?>"
+    class=""
 >
+<input type="text" id="language_id" value="<?php echo $_SESSION['languages_id']; ?>" hidden>
   <?php echo $oscTemplate->getContent('navigation'); ?>
       <?php require(DIR_WS_INCLUDES . 'header.php');
         $url = $_SERVER['REQUEST_URI'];
