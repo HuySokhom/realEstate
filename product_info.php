@@ -24,7 +24,7 @@
   require(DIR_WS_INCLUDES . 'template_top.php');
 
 ?>
-<div class="container margin-top">
+<div class="container margin-top" data-ng-controller="send_mail_ctrl">
 
 <?php
   if ($product_check['total'] < 1) {
@@ -309,3 +309,38 @@
   require(DIR_WS_INCLUDES . 'template_bottom.php');
   require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
+<script
+	type="text/javascript"
+	src="ext/ng/lib/angular/1.3.15/angular.min.js"
+></script>
+<script>
+	var app = angular.module('main', []);
+	app.controller(
+		'send_mail_ctrl', [
+			'$scope'
+			, '$http'
+			, function ($scope, $http){
+				$scope.language_id = '';
+				$scope.sendMail = function(){
+					var params = {
+						name: $scope.name,
+						email: $scope.email,
+						enquiry: $scope.enquiry
+					};
+					console.log(params);
+					$http({
+						url: 'api/SendMail',
+						method: 'POST',
+						headers: {
+							'Content-Type': undefined
+						},
+						data: JSON.stringify(params)
+					}).success(function(data){
+						console.log(data);
+					});
+				};
+
+
+			}
+		]);
+</script>

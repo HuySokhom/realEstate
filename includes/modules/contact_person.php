@@ -40,15 +40,28 @@ if ($num_customer > 0) {
             </div>
             <div class="agent-form">
                 <h3>Make an Enquiry</h3>
-                <form name="make_enquiry">
+                <form name="make_enquiry" data-ng-submit="sendMail();">
                     <div class="col-md-6 p_l_z">
-                        <input type="text" placeholder="* Your Name" required/>
+                        <input type="text" placeholder="* Your Name" data-ng-model="name" required/>
                     </div>
                     <div class="col-md-6 p_r_z">
-                        <input type="text" placeholder="* Your Email ID" />
+                        <input
+                            type="email"
+                            placeholder="* Your Email ID"
+                            required
+                            data-ng-model="email"
+                            style="
+                                border: none;
+                                background-color: transparent;
+                                padding: 12px 0;
+                                border-bottom: 2px solid #c8c8c8;
+                                width: 100%;
+                                margin-bottom: 30px;
+                            "
+                        />
                     </div>
-                    <textarea required placeholder="* Message" class="enquiry" rows="5"></textarea>
-                    <input type="submit" value="Submit" class="btn">
+                    <textarea required placeholder="* Message" data-ng-model="enquiry" class="enquiry" rows="5"></textarea>
+                    <button type="submit" class="btn">Submit</button>
                 </form>
             </div>
         </div>
