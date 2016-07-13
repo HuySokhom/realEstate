@@ -17,11 +17,11 @@ app.controller(
 		// init products user
 		function initProductUser($params) {
 			Restful.get('api/Products/' + $stateParams.id, params).success(function (data) {
-				$scope.products = data;
+				$scope.productsAgents = data.elements;
 				$scope.totalItems = data.count;
 			});
 		}
-		initProductUser();
+		initProductUser(params);
 		/**
 		 * start functionality pagination
 		 */

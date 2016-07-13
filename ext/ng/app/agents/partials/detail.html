@@ -42,13 +42,6 @@
                             href="mailto:{{agent.customers_email_address}}"
                         ></a>
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li><a title="twitter" href="agent-details.html#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a title="facebook" href="agent-details.html#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a title="google-plus" href="agent-details.html#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a title="linkedin-square" href="agent-details.html#"><i class="fa fa-linkedin-square"></i></a></li>
-                        <li><a title="instagram" href="agent-details.html#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
                 </div>
             </div><!-- col-md-4 /- -->
             <!-- col-md-8 -->
@@ -62,32 +55,32 @@
         <div class="other-properties row">
             <h3>MY LISTINGS</h3>
             <div
-                    data-ng-if="products.count == 0"
-                    class="alert alert-info"
+                data-ng-if="totalItems == 0"
+                class="alert alert-info"
             >
                 <p>
                     No Posting.
                 </p>
             </div>
             <div
-                    data-ng-if="!products"
-                    class="align_center"
+                data-ng-if="!productsAgents"
+                class="align_center"
             >
                 <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
             </div>
             <!-- col-md-4 -->
-            <div class="col-md-4 rent-block" data-ng-repeat="p in products.elements">
+            <div class="col-md-4 rent-block" data-ng-repeat="p in productsAgents">
                 <!-- Property Main Box -->
                 <div class="property-main-box user-products">
                     <div class="property-images-box">
-                        <a title="Property Image" href="-p-{{p.id}}.html">
-                            <img src="images/{{p.products_image_thumbnail}}" alt="rent">
+                        <a title="Property Image" href="-p-{{p.products_id}}.html">
+                            <img src="images/{{p.products_image_thumbnail}}">
                         </a>
                         <h4>{{p.products_price | currency}}</h4>
                     </div>
                     <div class="property-details">
-                        <a title="Property Title" href="-p-{{p.id}}.html">
-                            {{p.product_detail[0].products_name}}
+                        <a title="Property Title" href="-p-{{p.products_id}}.html">
+                            {{p.products_name}}
                         </a>
                         <ul>
                             <li>
