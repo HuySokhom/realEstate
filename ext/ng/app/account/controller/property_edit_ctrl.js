@@ -58,7 +58,7 @@ app.controller(
 		$scope.service = new Services();
 
 		$scope.init = function(params){
-			Restful.get(url + $stateParams.id, params).success(function(data){
+			Restful.get(url + $stateParams.id, params).success(function(data){console.log(data);
 				$scope.optionalImage = data.elements[0].image_detail;
 				$scope.district_id = data.elements[0].district_id;
 				$scope.province_id = data.elements[0].province_id;
@@ -71,10 +71,10 @@ app.controller(
 				$scope.price = data.elements[0].products_price;
 				$scope.categories_id = data.elements[0].categories_id;
 				$scope.commune_id = data.elements[0].village_id;
-				$scope.title_en = data.elements[0].product_detail[0].products_name;
-				$scope.title_kh = data.elements[0].product_detail[1].products_name;
-				$scope.content_en = data.elements[0].product_detail[0].products_description;
-				$scope.content_kh = data.elements[0].product_detail[1].products_description;
+				$scope.title_en = data.elements[0].products_name;
+				$scope.title_kh = data.elements[0].products_name;
+				$scope.content_en = data.elements[0].products_description;
+				$scope.content_kh = data.elements[1].products_description;
 				$scope.longitude = data.elements[0].map_long;
 				$scope.latitude = data.elements[0].map_lat;
 
