@@ -1,14 +1,90 @@
 <div class="row">
-	<div class="col-md-3">
-		<button
-			class="btn btn-default"
-			data-toggle="modal"
-			data-target="#villagePopup"
-			data-ng-click="clear()"
-		>
-			<span class="glyphicon glyphicon-plus-sign"></span>
-			Add New
-		</button>
+	<div class="row">
+
+		<!-- province filter-->
+		<div class="col-md-4">
+			<ui-select
+				ng-model="province_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter Province Name...">
+					{{$select.selected.name}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="province_list in provinceList track by $index"
+					refresh="refreshProvinceList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="province_list.name | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="province_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: province_list.selected.name, location_id: province_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
+		<div class="col-md-4">
+			<!-- district filter-->
+			<ui-select
+				ng-model="district_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter District Name...">
+					{{$select.selected.name_en}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="district_list in districtList track by $index"
+					refresh="refreshDistrictList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="district_list.name_en | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="district_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: district_list.selected.name_en, location_id: district_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
+		<div class="col-md-4">
+			<!-- village filter-->
+			<ui-select
+				ng-model="village_list.selected"
+				theme="select2"
+				reset-search-input="false"
+				style="width: 250px;"
+			>
+				<ui-select-match placeholder="Enter Village Name...">
+					{{$select.selected.name_en}}
+				</ui-select-match>
+				<ui-select-choices
+					repeat="village_list in villageList track by $index"
+					refresh="refreshVillageList($select.search)"
+					refresh-delay="0"
+				>
+					<span data-ng-bind-html="village_list.name_en | highlight: $select.search"></span>
+				</ui-select-choices>
+			</ui-select>
+			<i class="fa fa-refresh" data-ng-click="village_list = {}"></i>
+			<button
+				class="btn btn-default"
+				data-ng-click="save({name: village_list.selected.name_en, location_id: village_list.selected.id})"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Add New
+			</button>
+		</div>
 	</div>
 	<div class="clearfix"></div>
 	<br/>
@@ -32,16 +108,6 @@
 				{{n.name}}
 			</td>
 			<td>
-				<button
-					class="btn btn-default"
-					data-ng-click="edit(n);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-pencil-square-o"></span>
-				</button>
 				<button
 					class="btn btn-danger"
 					data-ng-click="remove(n.id, $index);"
@@ -83,78 +149,5 @@
 	</div>
 </div>
 
-
-<form data-ng-submit="save();" name="myForm">
-	<div
-		class="modal fade"
-		id="villagePopup"
-		data-keyboard="false"
-		data-backdrop="static"
-	>
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button
-						type="button"
-						class="close"
-						data-dismiss="modal"
-					>
-						<span>&times;</span>
-					</button>
-					<h4>
-						<label>Village</label>
-					</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-bordered table-responsive">
-						<tr>
-							<td>
-								Province
-							</td>
-							<td>
-								<select
-									data-ng-model="district_id"
-									data-ng-options="d.id as d.name_en for d in districts.elements"
-									class="form-control"
-									data-ng-selected="district_id == d.id"
-									required
-								>
-									<option value="">--Select District--</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td width="5%">
-								Name:
-							</td>
-							<td>
-								<input
-									type="text"
-									class="form-control"
-									data-ng-model="name"
-									required="required"
-								/>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button
-						class="btn btn-default"
-						data-dismiss="modal"
-					>
-						Close
-					</button>
-					<button
-						class="btn btn-primary"
-						data-ng-disabled="isDisabled"
-					>
-						Save
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</form>
 
 

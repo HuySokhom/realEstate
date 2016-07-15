@@ -46,49 +46,47 @@ app.controller(
 		};
 
 		// save functionality
-		$scope.save = function(){
-			var data = {
-				name_en: $scope.name,
-				district_id: $scope.district_id
-			};
-			$scope.isDisabled = true;
-			if( $scope.id ){
-				Restful.put(url + $scope.id, data).success(function(data){
-					$scope.init(params);
-					$('#villagePopup').modal('hide');
-					$scope.isDisabled = false;
-					$scope.clear();
-				});
-			}else{
-				Restful.post(url, data).success(function(data){
-					$scope.init(params);
-					$scope.clear();
-					$('#villagePopup').modal('hide');
-					$scope.isDisabled = false;
-					$scope.name = "";
-				});
-			}
+		$scope.save = function(params){
+			//console.log(params);
+			Restful.post(url, params).success(function(data){
+				$scope.init();
+				$scope.clear();
+				$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
+			});
+
 		};
 
-		// search functionality
-		$scope.search = function(){
-			params.search_name = $scope.search_title;
-			params.type = $scope.type_id;
-			params.id = $scope.id;
-			$scope.init(params);
+		/****** Province Filter *******/
+		$scope.province_list = {};
+		$scope.refreshProvinceList = function(province_list) {
+			var params = {search_name: province_list, pagination: 'yes'};
+			return Restful.get('api/Location', params).then(function(response) {
+				$scope.provinceList = response.data.elements;
+			});
 		};
-		// edit functionality
-		$scope.edit = function(params){
-			$scope.name = params.name_en;
-			$scope.id = params.id;
-			$scope.district_id = params.detail[0].id;
-			$('#villagePopup').modal('show');
+
+		/****** District Filter *******/
+		$scope.district_list = {};
+		$scope.refreshDistrictList = function(district_list) {
+			var params = {search_name: district_list, pagination: 'yes'};
+			return Restful.get('api/District', params).then(function(response) {
+				$scope.districtList = response.data.elements;
+			});
+		};
+
+		/****** Village Filter *******/
+		$scope.village_list = {};
+		$scope.refreshVillageList = function(village_list) {
+			var params = {search_name: village_list, pagination: 'yes'};
+			return Restful.get('api/Village', params).then(function(response) {
+				$scope.villageList = response.data.elements;
+			});
 		};
 
 		$scope.clear = function(){
-			$scope.id = '';
-			$scope.district_id = '';
-			$scope.name = '';
+			$scope.province_list = {};
+			$scope.district_list = {};
+			$scope.village_list = {};
 		};
 		/**
 		 * start functionality pagination
