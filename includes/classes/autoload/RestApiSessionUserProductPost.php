@@ -32,28 +32,52 @@ class RestApiSessionUserProductPost extends RestApi {
 			$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 			$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
 			$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
+
+			$where = "
+				p.products_id = pd.products_id
+					and
+				p.categories_id = c.categories_id
+					and
+				c.language_id = '".$_SESSION['languages_id']."'
+					and
+				p.customers_id = '".$userId . "'
+			";
+			if($params['GET']['type']){
+				$where .= "and p.categories_id = ".(int)$params['GET']['type']."";
+			}
+			if($params['GET']['search_title']){
+				$where .= "and pd.products_name LIKE %" . $params['GET']['search_title'] ."%";
+			}
+			if($this->getId()){
+				$where .= "and p.products_id = ".(int)$this->getId()."";
+			}else{
+				$where .= "and pd.language_id = ".$_SESSION['languages_id']." ";
+			}
+//var_dump($where);
 			$news_query = tep_db_query("
 				select
 					p.products_id,
 					p.products_price,
 					p.products_status,
 					p.products_kind_of,
+					p.bed_rooms,
+					p.map_lat,
+					p.map_long,
+					p.bath_rooms,
+					p.number_of_floors,
+					p.province_id,
+					p.village_id,
+					p.district_id,
 					c.categories_name,
+					c.categories_id,
 					pd.products_name,
+					pd.products_description,
 					pd.products_viewed,
 					p.create_date
 				from
 					products p, products_description pd, categories_description c
 				where
-					p.products_id = pd.products_id
-						and
-					p.categories_id = c.categories_id
-						and
-					pd.language_id = '" . $_SESSION['languages_id'] . "'
-						and
-					c.language_id = '" . $_SESSION['languages_id'] . "'
-						and
-					p.customers_id = '" . $userId . "'
+					" . $where . "
 						order by
 					p.create_date desc
 					limit $start, $showDataPerPage
