@@ -51,7 +51,7 @@
 ?>
 
 <div class="container margin-top">
-  <h3><?php echo HEADING_TITLE; ?></h3>
+  <h4><?php echo HEADING_TITLE; ?></h4>
 
 <?php
   if ($messageStack->size('contact') > 0) {
@@ -77,15 +77,34 @@
 
 <?php echo tep_draw_form('contact_us', tep_href_link(FILENAME_CONTACT_US, 'action=send'), 'post', 'class="form-horizontal"', true); ?>
 
-<div class="contentContainer">
+<div class="contentContainer col-md-9 col-sm-6 p_l_z">
   <div class="contentText">
-  
+    <div class="row">
+      <div class="col-md-4">
+        <address>
+            <strong><?php echo ENTRY_ADDRESS; ?></strong><br>
+            <?php echo nl2br(STORE_ADDRESS); ?><br>
+            Phone:
+            <?php echo STORE_PHONE; ?>
+            <br>
+            Email:
+            <a href="mailto:<?php echo STORE_OWNER_EMAIL_ADDRESS; ?>" target="_top">
+                <?php echo STORE_OWNER_EMAIL_ADDRESS; ?>
+            </a>
+        </address>
+      </div>
+      <div class="col-md-8">
+        <div class="property-map">
+            <div id="gmap" class="mapping"></div>
+        </div>
+      </div>
+    </div>
     <p class="inputRequirement text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></p>
     <div class="clearfix"></div>
 
     <div class="form-group has-feedback">
-      <label for="inputFromName" class="control-label col-sm-3"><?php echo ENTRY_NAME; ?></label>
-      <div class="col-sm-9">
+      <label for="inputFromName" class="col-sm-2"><?php echo ENTRY_NAME; ?></label>
+      <div class="col-sm-10">
         <?php
         echo tep_draw_input_field('name', NULL, 'required autofocus="autofocus" aria-required="true" id="inputFromName" placeholder="' . ENTRY_NAME . '"');
         echo FORM_REQUIRED_INPUT;
@@ -93,8 +112,8 @@
       </div>
     </div>
     <div class="form-group has-feedback">
-      <label for="inputFromEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL; ?></label>
-      <div class="col-sm-9">
+      <label for="inputFromEmail" class="col-sm-2"><?php echo ENTRY_EMAIL; ?></label>
+      <div class="col-sm-10">
         <?php
         echo tep_draw_input_field('email', NULL, 'required aria-required="true" id="inputFromEmail" placeholder="' . ENTRY_EMAIL . '"', 'email');
         echo FORM_REQUIRED_INPUT;
@@ -102,8 +121,8 @@
       </div>
     </div>
     <div class="form-group has-feedback">
-      <label for="inputEnquiry" class="control-label col-sm-3"><?php echo ENTRY_ENQUIRY; ?></label>
-      <div class="col-sm-9">
+      <label for="inputEnquiry" class="col-sm-2"><?php echo ENTRY_ENQUIRY; ?></label>
+      <div class="col-sm-10">
         <?php
         echo tep_draw_textarea_field('enquiry', 'soft', 50, 15, NULL, 'required aria-required="true" id="inputEnquiry" placeholder="' . ENTRY_ENQUIRY . '"');
         echo FORM_REQUIRED_INPUT;
@@ -118,6 +137,9 @@
 </div>
 
 </form>
+
+<?php include('advanced_search_box_right.php');?>
+
 </div>
 
 <?php
