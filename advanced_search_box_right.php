@@ -18,7 +18,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       ?>
       <?php
         echo tep_draw_pull_down_menu(
-            'location_id',
+            'location',
             tep_get_province(array(array('id' => '', 'text' => TEXT_ALL_LOCATION))),
             NULL,
             'id="province"'
@@ -32,8 +32,8 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         <option value="Both Sale and Rent"><?php echo BOTH?></option>
       </select>
       <div class="col-md-6 col-sm-6 p_l_z" name="bed_from">
-        <select name="bed">
-          <option value="selected"><?php echo BEDS?></option>
+        <select name="bfrom">
+          <option value="selected"><?php echo ENTRY_BED_FROM?></option>
           <?php
             $n = 20;
             for($i=1; $i <= $n; $i++){
@@ -43,8 +43,8 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         </select>
       </div>
       <div class="col-md-6 col-sm-6 p_r_z" name="bed_to">
-        <select name="bath">
-          <option value="selected"><?php echo BATHS?></option>
+        <select name="bto">
+          <option value="selected"><?php echo ENTRY_BED_TO?></option>
           <?php
           $n = 20;
           for($i=1; $i <= $n; $i++){
@@ -55,7 +55,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         </select>
       </div>
       <div class="col-md-6 col-sm-6 p_l_z">
-        <select name="price_from">
+        <select name="pfrom">
           <option value="selected"><?php echo ENTRY_PRICE_FROM?></option>
           <option value="10000">$10000</option>
           <option value="30000">$30000</option>
@@ -66,7 +66,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         </select>
       </div>
       <div class="col-md-6 col-sm-6 p_r_z">
-        <select name="price_to">
+        <select name="pto">
           <option value="selected"><?php echo ENTRY_PRICE_TO?></option>
           <option value="10000">$10000</option>
           <option value="30000">$30000</option>

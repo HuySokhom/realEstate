@@ -90,7 +90,7 @@ function check_form() {
 
 <?php
   if ($messageStack->size('search') > 0) {
-    echo $messageStack->output('search');
+    //echo $messageStack->output('search');
   }
 ?>
 

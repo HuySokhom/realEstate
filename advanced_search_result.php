@@ -188,7 +188,7 @@
         $select_column_list .= 'p.products_quantity, ';
         break;
       case 'PRODUCT_LIST_IMAGE':
-        $select_column_list .= 'p.products_image, ';
+        $select_column_list .= 'p.products_image_thumbnail, ';
         break;
       case 'PRODUCT_LIST_WEIGHT':
         $select_column_list .= 'p.products_weight, ';
@@ -281,10 +281,10 @@
 
   if (tep_not_null($location)) {
     $where_str .= "
-      and p.province_id = '" . (int)$location . "'
+      and (p.province_id = '" . (int)$location . "'
       or p.district_id = '" . (int)$location . "'
-      or p.village_id = '" . (int)$location . "'"
-    ;
+      or p.village_id = '" . (int)$location . "')
+    ";
   }
 
   if (tep_not_null($pfrom)) {
@@ -317,7 +317,7 @@
     for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
       if ($column_list[$i] == 'PRODUCT_LIST_NAME') {
         $HTTP_GET_VARS['sort'] = $i+1 . 'a';
-        $order_str = " order by pd.products_name";
+        $order_str = " order by p.products_promote desc, p.products_date_added desc";
         break;
       }
     }
