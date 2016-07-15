@@ -26,8 +26,8 @@
             <!-- Quick Link Widget -->
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_CONTACT; ?></h3>
-                <div><a title="contact" href="contact_us.html"><?php echo HEADING_FOOTER_CONTACT; ?></a></div>
-                <div><a title="about" href="about.html"><?php echo HEADING_FOOTER_ABOUT; ?></a></div>
+                <div><a title="contact" href="contact_us.php"><?php echo HEADING_FOOTER_CONTACT; ?></a></div>
+                <div><a title="about" href="about_us.php"><?php echo HEADING_FOOTER_ABOUT; ?></a></div>
             </aside>
             <!-- Quick Link Widget /- -->
         </div><!-- col-md-3 -->
