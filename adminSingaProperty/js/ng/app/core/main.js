@@ -9,6 +9,7 @@ var app = angular.module(
         , 'ngCookies'
         , 'ngAlertify'
         , 'uiGmapgoogle-maps'
+        , 'ui.select'
     ]
 );
 // range with number

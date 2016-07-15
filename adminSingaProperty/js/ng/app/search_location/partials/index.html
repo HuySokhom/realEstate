@@ -1,0 +1,160 @@
+<div class="row">
+	<div class="col-md-3">
+		<button
+			class="btn btn-default"
+			data-toggle="modal"
+			data-target="#villagePopup"
+			data-ng-click="clear()"
+		>
+			<span class="glyphicon glyphicon-plus-sign"></span>
+			Add New
+		</button>
+	</div>
+	<div class="clearfix"></div>
+	<br/>
+	<table class="table table-bordered table-striped">
+		<thead>
+		<th>
+			Id
+		</th>
+		<th>
+			Location Name
+		</th>
+		<th style="width: 180px;">
+			Action
+		</th>
+		</thead>
+		<tr data-ng-repeat="n in district.elements">
+			<td>
+				{{n.id}}
+			</td>
+			<td>
+				{{n.name}}
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="edit(n);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Edit"
+					tooltip
+				>
+					<span class="fa fa-pencil-square-o"></span>
+				</button>
+				<button
+					class="btn btn-danger"
+					data-ng-click="remove(n.id, $index);"
+					data-toggle="modals"
+					data-placement="bottom"
+					data-target="#messages"
+					title="Delete"
+					tooltip
+				>
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</td>
+		</tr>
+	</table>
+	<div
+		data-ng-if="district.elements == 0"
+	>
+		<div class="alert alert-danger alert-dismissible">
+			<strong>Warning!</strong> Empty Data.
+		</div>
+	</div>
+	<div
+		data-ng-if="!district"
+		class="align_center"
+	>
+		<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+	</div>
+	<div
+		class="panel-footer"
+	>
+		<pagination
+			total-items="totalItems"
+			ng-model="currentPage"
+			ng-change="pageChanged()"
+			max-size="5"
+			items-per-page="10"
+			boundary-links="true"
+		></pagination>
+	</div>
+</div>
+
+
+<form data-ng-submit="save();" name="myForm">
+	<div
+		class="modal fade"
+		id="villagePopup"
+		data-keyboard="false"
+		data-backdrop="static"
+	>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+					>
+						<span>&times;</span>
+					</button>
+					<h4>
+						<label>Village</label>
+					</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered table-responsive">
+						<tr>
+							<td>
+								Province
+							</td>
+							<td>
+								<select
+									data-ng-model="district_id"
+									data-ng-options="d.id as d.name_en for d in districts.elements"
+									class="form-control"
+									data-ng-selected="district_id == d.id"
+									required
+								>
+									<option value="">--Select District--</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td width="5%">
+								Name:
+							</td>
+							<td>
+								<input
+									type="text"
+									class="form-control"
+									data-ng-model="name"
+									required="required"
+								/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button
+						class="btn btn-default"
+						data-dismiss="modal"
+					>
+						Close
+					</button>
+					<button
+						class="btn btn-primary"
+						data-ng-disabled="isDisabled"
+					>
+						Save
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+

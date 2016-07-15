@@ -17,7 +17,7 @@
 <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
 <!-- END PLUGINS -->
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKqUQ4QmbTWM_KNhkYg7erVxakz_0-noE&v=3.exp"></script>
 <!-- Plugin Lib Angular Js -->
 <script
     type="text/javascript"
@@ -25,7 +25,7 @@
 ></script>
 <script
     type="text/javascript"
-    src="js/ng/lib/angular/1.5.6/angular.min.js"
+    src="js/ng/lib/angular/1.3.15/angular.min.js"
 ></script>
 
 <script
@@ -65,7 +65,10 @@
 <script src="js/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>
 <!-- for no html5 browsers support -->
 <script src="js/ng/lib/angular-upload/ng-file-upload.min.js"></script>
-
+<script
+    type="text/javascript"
+    src="js/ng/lib/angular-select2/select.js"
+></script>
 <!-- End plugin Angular Js-->
 
 <!-- START THIS PAGE PLUGINS-->

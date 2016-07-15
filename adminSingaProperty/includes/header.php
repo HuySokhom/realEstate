@@ -43,7 +43,7 @@
             </ul>
           </li>
           <li>
-            <a href="#/manufacturers"><span class="fa fa-clock-o"></span> Manufacturers</a>
+            <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>
           </li>
           <li>
             <a href="#/news"><span class="fa fa-dashboard"></span> News</a>

@@ -106,5 +106,10 @@
 ></script>
 <!--- End category and product plugin --->
 
+<!--- Add popular search location plugin --->
+<script
+    type="text/javascript"
+    src="js/ng/app/search_location/controller/search_popular_ctrl.js"
+></script>
 </body>
 </html>
