@@ -21,7 +21,11 @@
        (isset($HTTP_GET_VARS['dto']) && (empty($HTTP_GET_VARS['dto']) || ($HTTP_GET_VARS['dto'] == DOB_FORMAT_STRING))) &&
         (isset($HTTP_GET_VARS['location']) && (empty($HTTP_GET_VARS['location']) || (!is_numeric($HTTP_GET_VARS['pfrom'])) )) &&
        (isset($HTTP_GET_VARS['pfrom']) && !is_numeric($HTTP_GET_VARS['pfrom'])) &&
-       (isset($HTTP_GET_VARS['pto']) && !is_numeric($HTTP_GET_VARS['pto'])) ) {
+       (isset($HTTP_GET_VARS['pto']) && !is_numeric($HTTP_GET_VARS['pto'])) &&
+      (isset($HTTP_GET_VARS['bfrom']) && !is_numeric($HTTP_GET_VARS['bfrom'])) &&
+      (isset($HTTP_GET_VARS['bto']) && !is_numeric($HTTP_GET_VARS['bto'])) &&
+      (isset($HTTP_GET_VARS['kind_of']) && empty($HTTP_GET_VARS['kind_of']))
+  ) {
     $error = true;
 
     $messageStack->add_session('search', ERROR_AT_LEAST_ONE_INPUT);
@@ -31,7 +35,8 @@
     $pfrom = '';
     $pto = '';
     $keywords = '';
-
+    $bfrom = '';
+    $bto = '';
     if (isset($HTTP_GET_VARS['dfrom'])) {
       $dfrom = (($HTTP_GET_VARS['dfrom'] == DOB_FORMAT_STRING) ? '' : $HTTP_GET_VARS['dfrom']);
     }
@@ -51,6 +56,19 @@
     if (isset($HTTP_GET_VARS['pto'])) {
       $pto = $HTTP_GET_VARS['pto'];
     }
+
+    if (isset($HTTP_GET_VARS['bfrom'])) {
+      $bfrom = $HTTP_GET_VARS['bfrom'];
+    }
+
+    if (isset($HTTP_GET_VARS['bto'])) {
+      $bto = $HTTP_GET_VARS['bto'];
+    }
+
+    if (isset($HTTP_GET_VARS['kind_of'])) {
+      $kind_of = tep_db_prepare_input($HTTP_GET_VARS['kind_of']);
+    }
+
 
     if (isset($HTTP_GET_VARS['keywords'])) {
       $keywords = tep_db_prepare_input($HTTP_GET_VARS['keywords']);
@@ -126,7 +144,7 @@
   }
 
   if ($error == true) {
-    tep_redirect(tep_href_link(FILENAME_ADVANCED_SEARCH, tep_get_all_get_params(), 'NONSSL', true, false));
+//    tep_redirect(tep_href_link(FILENAME_ADVANCED_SEARCH, tep_get_all_get_params(), 'NONSSL', true, false));
   }
 
   $breadcrumb->add(NAVBAR_TITLE_1, tep_href_link(FILENAME_ADVANCED_SEARCH));
@@ -248,6 +266,27 @@
     $where_str .= " and p.products_date_added <= '" . tep_date_raw($dto) . "'";
   }
 
+
+  if (tep_not_null($bfrom)) {
+    $where_str .= " and p.bed_rooms >= '" . (int)($bfrom) . "'";
+  }
+
+  if (tep_not_null($bto)) {
+    $where_str .= " and p.bed_rooms <= '" . (int)($bto) . "'";
+  }
+
+  if (tep_not_null($kind_of)) {
+    $where_str .= " and p.products_kind_of = '" . tep_db_input($kind_of) . "'";
+  }
+
+  if (tep_not_null($location)) {
+    $where_str .= "
+      and p.province_id = '" . (int)$location . "'
+      or p.district_id = '" . (int)$location . "'
+      or p.village_id = '" . (int)$location . "'"
+    ;
+  }
+
   if (tep_not_null($pfrom)) {
     if ($currencies->is_set($currency)) {
       $rate = $currencies->get_value($currency);
@@ -312,6 +351,7 @@
   }
 
   $listing_sql = $select_str . $from_str . $where_str . $order_str;
+
 ?>
   <div class="margin-top">
     <?php require(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);?>

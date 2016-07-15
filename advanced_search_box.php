@@ -147,13 +147,24 @@ function check_form() {
 
       <div class="col-md-3 search">
         <?php
-        echo tep_draw_input_field('dfrom', '', 'id="dfrom" placeholder="' . ENTRY_BED_FROM . '"');
+        echo tep_draw_input_field('bfrom', '', 'id="bfrom" placeholder="' . ENTRY_BED_FROM . '"');
         ?>
       </div>
 
       <div class="col-md-3 search">
         <?php
-        echo tep_draw_input_field('dto', '', 'id="dto" placeholder="' . ENTRY_BED_TO . '"');
+        echo tep_draw_input_field('bto', '', 'id="bto" placeholder="' . ENTRY_BED_TO . '"');
+        ?>
+      </div>
+
+      <div class="col-md-3 search">
+        <?php
+          echo tep_draw_pull_down_menu(
+              'location',
+              tep_get_province(array(array('id' => '', 'text' => POPULAR_LOCATION))),
+              NULL,
+              'id="location" class="form-control"'
+          );
         ?>
       </div>
   </div>
@@ -165,15 +176,16 @@ function check_form() {
         <?php echo tep_draw_button(SEARCH, 'fa fa-search', null, 'primary', null, 'btn-success'); ?>
       </div>
     </div>
-    <!-- col-md-2 /- -->
+    <div class="popular-search"></div>
+    <!-- col-md-2
     <div class="clearfix">
       <div class="popular-search">
           <span class="search_text">
-            <?php echo POPULAR_LOCATION;?>
+            Popular search
           </span>
           <span class="first">
             <i class="fa fa-hand-o-right"></i>
-            <a href="javascript:void(0)">Siem Reap</a>
+            <a href="advanced_search_result.php?keywords=&search_in_description=1&categories_id=&kind_of=&pfrom=&pto=&bfrom=&bto=&location=3">Siem Reap</a>
           </span>
           <span>
             <i class="fa fa-hand-o-right"></i>
@@ -201,6 +213,7 @@ function check_form() {
           </span>
       </div>
     </div>
+    /- -->
   </div>
 </div>
 

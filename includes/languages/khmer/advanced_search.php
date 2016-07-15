@@ -52,4 +52,4 @@ define('PROPERTY', 'អចលនទ្រព');
 
 define('ENTRY_BED_FROM', 'គ្រែដេកពី');
 define('ENTRY_BED_TO', 'ទៅគ្រែដេក');
-define('POPULAR_LOCATION', 'ទីតាំងពេញនិយម:');
+define('POPULAR_LOCATION', 'ទីតាំងពេញនិយម');
