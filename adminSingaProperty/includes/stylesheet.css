@@ -130,3 +130,15 @@ FORM { display: inline; }
 .tdbLink a { }
 
 .tdbLink button { }
+
+table{
+    width: 100%;  
+    background: transparent;
+    border-collapse: collapse;
+}
+table > th {
+      background: #F8FAFC;
+}
+table > th > tr{
+      background: #F8FAFC;
+}
