@@ -26,14 +26,14 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       ?>
 
       <select name="type">
-        <option value="selected"><?php echo TEXT_TYPE;?></option>
+        <option value=""><?php echo TEXT_TYPE;?></option>
         <option value="For Rent"><?php echo RENT?></option>
         <option value="For Sale"><?php echo SALE?></option>
         <option value="Both Sale and Rent"><?php echo BOTH?></option>
       </select>
       <div class="col-md-6 col-sm-6 p_l_z" name="bed_from">
         <select name="bfrom">
-          <option value="selected"><?php echo ENTRY_BED_FROM?></option>
+          <option value=""><?php echo ENTRY_BED_FROM?></option>
           <?php
             $n = 20;
             for($i=1; $i <= $n; $i++){
@@ -44,7 +44,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       </div>
       <div class="col-md-6 col-sm-6 p_r_z" name="bed_to">
         <select name="bto">
-          <option value="selected"><?php echo ENTRY_BED_TO?></option>
+          <option value=""><?php echo ENTRY_BED_TO?></option>
           <?php
           $n = 20;
           for($i=1; $i <= $n; $i++){
@@ -56,7 +56,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       </div>
       <div class="col-md-6 col-sm-6 p_l_z">
         <select name="pfrom">
-          <option value="selected"><?php echo ENTRY_PRICE_FROM?></option>
+          <option value=""><?php echo ENTRY_PRICE_FROM?></option>
           <option value="10000">$10000</option>
           <option value="30000">$30000</option>
           <option value="60000">$60000</option>
@@ -67,7 +67,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       </div>
       <div class="col-md-6 col-sm-6 p_r_z">
         <select name="pto">
-          <option value="selected"><?php echo ENTRY_PRICE_TO?></option>
+          <option value=""><?php echo ENTRY_PRICE_TO?></option>
           <option value="10000">$10000</option>
           <option value="30000">$30000</option>
           <option value="60000">$60000</option>
