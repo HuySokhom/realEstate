@@ -64,7 +64,10 @@
                 <ul class="footer_social m_b_z">
 
                 </ul>
-                <a href="javascript:void(0)" title="back-to-top" id="back-to-top" class="back-to-top"><i class="fa fa-long-arrow-up"></i> Top</a>
+                <a href="javascript:void(0)" title="back-to-top" id="back-to-top" class="back-to-top">
+                    <i class="fa fa-long-arrow-up"></i>
+                    Top
+                </a>
             </div>
         </div><!-- container /- -->
     </div><!-- Footer Bottom /- -->
