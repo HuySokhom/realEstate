@@ -19,7 +19,8 @@ app.filter('rangeNumber', function () {
 app.controller( 'search_ctrl', [
     '$scope'
     , '$http'
-    , function ( $scope, $http ) {
+    , '$window'
+    , function ( $scope, $http, $window ) {
 
         $scope.init = function(params){
             $http({
@@ -45,5 +46,26 @@ app.controller( 'search_ctrl', [
             });
         };
         $scope.init();
+
+        $scope.search = function(){
+            var cId = '';
+            var location = '';
+            if($scope.categories_id){
+                cId = $scope.categories_id.categories_id;
+            }
+            if($scope.location){
+                location = $scope.location.id;
+            }
+            var link = 
+            "advanced_search_result.php?categories_id=" + cId + 
+            "&location="+ location +
+            "&type=" + $scope.type + 
+            "&bfrom=" + $scope.bedFrom +
+            "&bto=" + $scope.bedTo +
+            "&pfrom=" + $scope.minPrice +
+            "&pto=" + $scope.maxPrice;
+            return $window.location.href = link;
+        };
+
     }
 ]);

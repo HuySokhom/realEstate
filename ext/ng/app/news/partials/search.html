@@ -3,44 +3,44 @@
         <h2 class="widget-title">search<span>property</span></h2>
         <form>
             <select
-                data-ng-model="property"
+                data-ng-model="categories_id"
                 data-ng-options="c.categories_name for c in categories.elements"
             >
                 <option value="">All Categories</option>
             </select>
             <select
-                data-ng-model="property"
+                data-ng-model="location"
                 data-ng-options="l.name for l in locations.elements"
             >
                 <option value="">Location</option>
             </select>
-            <select>
-                <option value="selected">Type</option>
+            <select ng-model="type">
+                <option value="">Type</option>
                 <option value="For Rent">For Rent</option>
                 <option value="For Sale">For Sale</option>
                 <option value="Both Sale and Rent">Both Sale and Rent</option>
             </select>
             <div class="col-md-6 col-sm-6 p_l_z">
                 <select
-                    ng-model="beds"
+                    ng-model="bedFrom"
                     ng-options="n for n in [] | rangeNumber:50"
                     data-ng-selected="number_of_floors == n"
                 >
-                    <option value="">Beds</option>
+                    <option value="">Bed From</option>
                 </select>
             </div>
             <div class="col-md-6 col-sm-6 p_r_z">
                 <select
-                    ng-model="baths"
+                    ng-model="bedTo"
                     ng-options="n for n in [] | rangeNumber:50"
                     data-ng-selected="number_of_floors == n"
                 >
-                    <option value="">Baths</option>
+                    <option value="">Bed To</option>
                 </select>
             </div>
             <div class="col-md-6 col-sm-6 p_l_z">
-                <select>
-                    <option value="selected">Min Price</option>
+                <select data-ng-model="minPrice">
+                    <option value="">Min Price</option>
                     <option value="10000">$10000</option>
                     <option value="30000">$30000</option>
                     <option value="60000">$60000</option>
@@ -50,8 +50,8 @@
                 </select>
             </div>
             <div class="col-md-6 col-sm-6 p_r_z">
-                <select>
-                    <option value="selected">Max Price</option>
+                <select data-ng-model="maxPrice">
+                    <option value="">Max Price</option>
                     <option value="10000">$10000</option>
                     <option value="30000">$30000</option>
                     <option value="60000">$60000</option>
@@ -60,7 +60,7 @@
                     <option value="1000000">$1000000+</option>
                 </select>
             </div>
-            <input type="submit" value="Search Now" class="btn">
+            <input type="submit" data-ng-click="search();" value="Search Now" class="btn">
         </form>
     </aside>
     <aside class="widget widget-property-featured">
