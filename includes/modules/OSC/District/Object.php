@@ -26,7 +26,7 @@ class Object extends DbObj {
 			'include' => array(
 				'id',
 				'name_en',
-				'detail'
+//				'detail'
 			)
 		);
 
@@ -53,8 +53,8 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->detail->setFilter('id', $this->getProvinceId());
-		$this->detail->populate();
+//		$this->detail->setFilter('id', $this->getProvinceId());
+//		$this->detail->populate();
 	}
 
 	public function setNameEn( $string ){

@@ -29,73 +29,7 @@ class RestApiSessionUserProductPost extends RestApi {
 			$showDataPerPage = 10;
 			$start = $params['GET']['start'] ? $params['GET']['start'] : 0;
 
-			$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
-			$params['GET']['type'] ? $col->filterByCategoryId($params['GET']['type']) : '';
-			$params['GET']['search_title'] ? $col->filterByTitle($params['GET']['search_title']) : '';
-
-			$where = "
-				p.products_id = pd.products_id
-					and
-				p.categories_id = c.categories_id
-					and
-				c.language_id = '".$_SESSION['languages_id']."'
-					and
-				p.customers_id = '".$userId . "'
-			";
-			if($params['GET']['type']){
-				$where .= "and p.categories_id = ".(int)$params['GET']['type']."";
-			}
-			if($params['GET']['search_title']){
-				$where .= "and pd.products_name LIKE %" . $params['GET']['search_title'] ."%";
-			}
 			if($this->getId()){
-				$where .= "and p.products_id = ".(int)$this->getId()."";
-			}else{
-				$where .= "and pd.language_id = ".$_SESSION['languages_id']." ";
-			}
-//var_dump($where);
-			$news_query = tep_db_query("
-				select
-					p.products_id,
-					p.products_price,
-					p.products_status,
-					p.products_kind_of,
-					p.bed_rooms,
-					p.map_lat,
-					p.map_long,
-					p.bath_rooms,
-					p.number_of_floors,
-					p.province_id,
-					p.village_id,
-					p.district_id,
-					c.categories_name,
-					c.categories_id,
-					pd.products_name,
-					pd.products_description,
-					pd.products_viewed,
-					p.create_date
-				from
-					products p, products_description pd, categories_description c
-				where
-					" . $where . "
-						order by
-					p.create_date desc
-					limit $start, $showDataPerPage
-			");
-			$array = array();
-			while ($news_info = tep_db_fetch_array($news_query)){
-				$array[] = $news_info;
-			}
-			$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
-			$total = tep_db_fetch_array($news_count);
-
-			return array(
-				data => array(
-					elements => $array,
-					count => $total['total']
-				)
-			);
-
 				$col->sortByDate('DESC');
 				$col->filterByCustomersId($userId);
 				$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
@@ -105,13 +39,72 @@ class RestApiSessionUserProductPost extends RestApi {
 				$showDataPerPage = 10;
 				$start = $params['GET']['start'];
 				$this->applyLimit($col,
-					array(
-						'limit' => array( $start, $showDataPerPage )
-					)
+						array(
+								'limit' => array( $start, $showDataPerPage )
+						)
 				);
 				$this->applyFilters($col, $params);
 				$this->applySortBy($col, $params);
 				return $this->getReturn($col, $params);
+			}else{
+				$where = "
+					p.products_id = pd.products_id
+						and
+					p.categories_id = c.categories_id
+						and
+					c.language_id = '".$_SESSION['languages_id']."'
+						and
+					p.customers_id = '".$userId . "'
+				";
+				if($params['GET']['type']){
+					$where .= "and p.categories_id = ".(int)$params['GET']['type']."";
+				}
+				if($params['GET']['search_title']){
+					$where .= "and pd.products_name LIKE %" . $params['GET']['search_title'] ."%";
+				}
+
+				$news_query = tep_db_query("
+					select
+						p.products_id,
+						p.products_price,
+						p.products_status,
+						p.products_kind_of,
+						p.bed_rooms,
+						p.map_lat,
+						p.map_long,
+						p.bath_rooms,
+						p.number_of_floors,
+						p.province_id,
+						p.village_id,
+						p.district_id,
+						c.categories_name,
+						c.categories_id,
+						pd.products_name,
+						pd.products_description,
+						pd.products_viewed,
+						p.create_date
+					from
+						products p, products_description pd, categories_description c
+					where
+						" . $where . "
+							order by
+						p.create_date desc
+						limit $start, $showDataPerPage
+				");
+				$array = array();
+				while ($news_info = tep_db_fetch_array($news_query)){
+					$array[] = $news_info;
+				}
+				$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
+				$total = tep_db_fetch_array($news_count);
+
+				return array(
+					data => array(
+						elements => $array,
+						count => $total['total']
+					)
+				);
+			}
 		}
 	}
 
