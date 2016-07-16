@@ -71,7 +71,7 @@
 			<th>
 				Product View
 			</th>
-			<th width="240px">
+			<th width="250px">
 				Action
 			</th>
 		</thead>
@@ -100,7 +100,7 @@
 					class="btn btn-default"
 					data-ng-click="edit(p.products_id);"
 					data-toggle="tooltip"
-					data-placement="left"
+					data-placement="top"
 					title="Edit"
 					tooltip
 				>
@@ -125,7 +125,7 @@
 					title="Inactive"
 					tooltip
 				>
-					<span class="fa fa-close"></span>
+					<span class="fa fa-minus"></span>
 				</button>
 				<button
 					class="btn btn-success"
@@ -152,12 +152,23 @@
 					class="btn btn-default"
 					data-ng-click="link(p.products_id);"
 					data-toggle="tooltip"
-					data-placement="right"
+					data-placement="top"
 					title="Link"
 					tooltip
 				>
-					<span class="fa fa-link"></span>
+					<span class="fa fa-eye"></span>
 				</button>
+				<button
+					class="btn btn-default"
+					data-ng-click="promote(p.products_id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="Promote"
+					tooltip
+				>
+					<i class="fa fa-dollar"></i>
+				</button>
+
 			</td>
 		</tr>
 	</table>

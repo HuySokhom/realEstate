@@ -23,7 +23,7 @@ app.controller( 'search_ctrl', [
     , function ( $scope, $http, $window ) {
         $scope.language_id = $("#language_id").val();
         if($scope.language_id == 1){
-            $scope.location = 'Location';
+            $scope.locationText = 'Location';
             $scope.category = 'All Categories';
             $scope.kind_of = 'Type';
             $scope.bedRoomFrom = 'Bed From';
@@ -34,7 +34,7 @@ app.controller( 'search_ctrl', [
             $scope.searchText = 'search';
             $scope.featured = 'Featured';
         }else{
-            $scope.location = 'តំបន់';
+            $scope.locationText = 'តំបន់';
             $scope.category = 'ប្រភេទទាំងអស់';
             $scope.kind_of = 'ប្រភេទ';
             $scope.bedRoomFrom = 'គ្រែចាប់ពីរ';
@@ -47,7 +47,7 @@ app.controller( 'search_ctrl', [
         }
         $scope.init = function(params){
             $http({
-                url: 'api/Location',
+                url: 'api/SearchLocation',
                 method: 'GET',
                 params: params
             }).success(function(data){

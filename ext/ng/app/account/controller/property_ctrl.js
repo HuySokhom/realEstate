@@ -14,6 +14,7 @@ app.controller(
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.products_post = data;
+				console.log(data);
 				$scope.totalItems = data.count;
 			});
 			Restful.get("api/Category").success(function(data){
