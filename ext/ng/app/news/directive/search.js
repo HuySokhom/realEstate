@@ -21,7 +21,30 @@ app.controller( 'search_ctrl', [
     , '$http'
     , '$window'
     , function ( $scope, $http, $window ) {
-
+        $scope.language_id = $("#language_id").val();
+        if($scope.language_id == 1){
+            $scope.location = 'Location';
+            $scope.category = 'All Categories';
+            $scope.kind_of = 'Type';
+            $scope.bedRoomFrom = 'Bed From';
+            $scope.bedRoomTo = 'Bed To';
+            $scope.maxProPrice = 'Max Price';
+            $scope.minProPrice = 'Min Price';
+            $scope.property = 'property';
+            $scope.searchText = 'search';
+            $scope.featured = 'Featured';
+        }else{
+            $scope.location = 'តំបន់';
+            $scope.category = 'ប្រភេទទាំងអស់';
+            $scope.kind_of = 'ប្រភេទ';
+            $scope.bedRoomFrom = 'គ្រែចាប់ពីរ';
+            $scope.bedRoomTo = 'ទៅ';
+            $scope.maxProPrice = 'ទៅ';
+            $scope.minProPrice = 'តំម្លៃចាប់ពីរ';
+            $scope.property = 'អចលនទ្រព្យ';
+            $scope.searchText = 'ស្វែងរក';
+            $scope.featured = 'លក្ខណៈពិសេសជាងគេ';
+        }
         $scope.init = function(params){
             $http({
                 url: 'api/Location',
@@ -50,20 +73,40 @@ app.controller( 'search_ctrl', [
         $scope.search = function(){
             var cId = '';
             var location = '';
+            var type = '';
+            var bedFrom = '';
+            var bedTo = '';
+            var minPrice = '';
+            var maxPrice = '';
             if($scope.categories_id){
                 cId = $scope.categories_id.categories_id;
             }
             if($scope.location){
                 location = $scope.location.id;
             }
+            if($scope.type){
+                type = $scope.type;
+            }
+            if($scope.bedFrom){
+                bedFrom = $scope.bedFrom;
+            }
+            if($scope.bedTo){
+                bedTo = $scope.bedTo;
+            }
+            if($scope.minPrice){
+                minPrice = $scope.minPrice;
+            }
+            if($scope.maxPrice){
+                maxPrice = $scope.maxPrice;
+            }
             var link = 
             "advanced_search_result.php?categories_id=" + cId + 
             "&location="+ location +
-            "&type=" + $scope.type + 
-            "&bfrom=" + $scope.bedFrom +
-            "&bto=" + $scope.bedTo +
-            "&pfrom=" + $scope.minPrice +
-            "&pto=" + $scope.maxPrice;
+            "&type=" + type +
+            "&bfrom=" + bedFrom +
+            "&bto=" + bedTo +
+            "&pfrom=" + minPrice +
+            "&pto=" + maxPrice;
             return $window.location.href = link;
         };
 
