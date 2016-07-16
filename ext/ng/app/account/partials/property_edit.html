@@ -254,8 +254,10 @@
         <div class="align-right">
             <button
                 class="btn btn-primary"
+                data-ng-disabled="disabled"
             >
-                <i class="fa fa-save"></i>
+                <i class="fa fa-save" data-ng-show="!disabled"></i>
+                <i class="fa fa-refresh fa-spin" data-ng-show="disabled"></i>
                 Save
             </button>
         </div>

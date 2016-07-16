@@ -71,10 +71,10 @@ app.controller(
 				$scope.price = data.elements[0].products_price;
 				$scope.categories_id = data.elements[0].categories_id;
 				$scope.commune_id = data.elements[0].village_id;
-				$scope.title_en = data.elements[0].products_name;
-				$scope.title_kh = data.elements[0].products_name;
-				$scope.content_en = data.elements[0].products_description;
-				$scope.content_kh = data.elements[1].products_description;
+				$scope.title_en = data.elements[0].product_detail[0].products_name;
+				$scope.title_kh = data.elements[0].product_detail[1].products_name;
+				$scope.content_en = data.elements[0].product_detail[0].products_description;
+				$scope.content_kh = data.elements[0].product_detail[1].products_description;
 				$scope.longitude = data.elements[0].map_long;
 				$scope.latitude = data.elements[0].map_lat;
 
@@ -202,10 +202,10 @@ app.controller(
 				],
 				products_image: $scope.optionalImage
 			};
-			$scope.disabled = false;
+			$scope.disabled = true;
 
 			Restful.put(url + $stateParams.id, data).success(function (data) {
-				$scope.disabled = true;
+				$scope.disabled = false;
 				$scope.service.alertMessage('<b>Complete: </b>Update Success.');
 				$location.path('manage_property');
 			});

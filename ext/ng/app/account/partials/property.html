@@ -1,54 +1,56 @@
 <div class="panel-body">
-	<div class="col-md-3">
-		<button
-			class="btn btn-default"
-			onclick="location.href='account.php#/manage_property/post';"
-		>
-			<span class="glyphicon glyphicon-plus-sign"></span>
-			Post Property
-		</button>
-		<span class="label label-info" data-ng-if="totalItems > 0">
-			Total of Items: {{totalItems}}
-		</span>
-	</div>
-	<div class="col-md-9">
-		<div class="row">
-			<div class="form-group has-feedback col-sm-4">
-				<input
-					type="text"
-					placeholder="Search Title..."
-					style="width: 106%;"
-					class="form-control"
-					data-ng-model="search_title"
-					data-ng-keypress="($event.which === 13) ? search() : 0"
-				/>
-				<span class="glyphicon glyphicon-search form-control-feedback"></span>
-			</div>
-			<div class="form-group has-feedback col-sm-4">
-				<input
-					type="text"
-					placeholder="Search Id..."
-					style="width: 106%;"
-					class="form-control"
-					data-ng-model="id"
-					data-ng-keypress="($event.which === 13) ? search() : 0"
-				/>
-				<span class="glyphicon glyphicon-search form-control-feedback"></span>
-			</div>
-			<div class="form-group has-feedback col-sm-4">
-				<select
-					data-ng-model="category_id"
-					data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
-					class="form-control"
-					data-ng-change="search();"
-					required
-				>
-					<option value="">--Filter By Category--</option>
-				</select>
+	<div class="row">
+		<div class="col-md-3">
+			<button
+				class="btn btn-default"
+				onclick="location.href='account.php#/manage_property/post';"
+			>
+				<span class="glyphicon glyphicon-plus-sign"></span>
+				Post Property
+			</button>
+			<span class="label label-info" data-ng-if="totalItems > 0">
+				Total of Items: {{totalItems}}
+			</span>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<div class="form-group has-feedback col-sm-4">
+					<input
+						type="text"
+						placeholder="Search Title..."
+						style="width: 106%;"
+						class="form-control"
+						data-ng-model="search_title"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					/>
+					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback col-sm-4">
+					<input
+						type="text"
+						placeholder="Search Id..."
+						style="width: 106%;"
+						class="form-control"
+						data-ng-model="id"
+						data-ng-keypress="($event.which === 13) ? search() : 0"
+					/>
+					<span class="glyphicon glyphicon-search form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback col-sm-4">
+					<select
+						data-ng-model="category_id"
+						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
+						class="form-control"
+						data-ng-change="search();"
+						required
+					>
+						<option value="">--Filter By Category--</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
-	<br/><br/>
+
 	<table class="table table-bordered table-striped">
 		<thead>
 			<th>
