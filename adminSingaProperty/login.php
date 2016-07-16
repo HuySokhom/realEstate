@@ -179,7 +179,7 @@ if (tep_db_num_rows($admins_check_query) < 1) {
     <div class="login-footer">
       <div class="pull-left">
         <div align="center" class="smallText">
-          SK Web Solution Copyright &copy; <?php echo date('Y'); ?>
+          Copyright &copy; <?php echo date('Y'); ?> Power By
           <a href="https://www.facebook.com/skwebsolution/" target="_blank">
             SK Web Solution
           </a>

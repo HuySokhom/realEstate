@@ -5,11 +5,11 @@
     <!-- START X-NAVIGATION -->
     <ul class="x-navigation">
       <li class="xn-logo">
-        <a href="#">Singa Property</a>
+        <a href="#/">Singa Property</a>
         <a href="#" class="x-navigation-control"></a>
       </li>
       <li class="xn-profile">
-        <a href="#" class="profile-mini">
+        <a href="#/" class="profile-mini">
           <img src="images/icons/ico.png" alt="Logo"/>
         </a>
         <div class="profile">
@@ -25,7 +25,7 @@
         </div>
       </li>
       <li class="active">
-        <a href="#"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+        <a href="#/"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
       </li>
       <li class="xn-openable">
         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Catalog</span></a>

@@ -5,6 +5,8 @@ app.controller(
 		, 'Services'
 		, '$location'
 		, function ($scope, Restful, Services, $location){
-
+			Restful.get("api/Index").success(function(data){
+				$scope.index = data;
+			});
 		}
 	]);
