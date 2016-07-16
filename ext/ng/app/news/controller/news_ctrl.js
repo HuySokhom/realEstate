@@ -5,6 +5,7 @@ app.controller(
 	, '$location'
 	, function ($scope, Restful, $location){
 		$scope.language_id = $('#language_id').val();
+		var params = {};
 		var url = 'api/News';
 		init = function(params){
 			Restful.get(url, params).success(function(data){
@@ -12,7 +13,7 @@ app.controller(
 				$scope.totalItems = data.count;
 			});
 		};
-		init();
+		init(params);
 
 		function initType(){
 			Restful.get("api/NewsType").success(function(data){
@@ -25,7 +26,7 @@ app.controller(
 		$scope.activeMenu = "";
 		$scope.setActive = function(item) {
 			$scope.activeMenu = item;
-			var params = {news_type_id: $scope.activeMenu};
+			params.news_type_id = $scope.activeMenu;
 			init(params);
 		};
 
@@ -37,13 +38,12 @@ app.controller(
 		/**
 		 * start functionality pagination
 		 */
-		var params = {};
 		$scope.currentPage = 1;
 		//get another portions of data on page changed
 		$scope.pageChanged = function() {
 			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
 			params.start = $scope.pageSize;
-			$scope.init(params);
+			init(params);
 		};
 	}
 ]);
