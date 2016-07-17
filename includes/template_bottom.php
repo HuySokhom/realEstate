@@ -38,13 +38,13 @@
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_TERM; ?></h3>
                 <div>
-                    Privacy Policy
+                    <?php echo PRIVACY_POLICY;?>
                 </div>
                 <div>
-                    Terms & Conditions
+                    <?php echo Terms_Conditions;?>
                 </div>
                 <div>
-                    Disclaimer
+                    <?php echo Disclaimer;?>
                 </div>
             </aside>
             <!-- Address Widget /- -->

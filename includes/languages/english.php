@@ -39,7 +39,9 @@ function tep_date_raw($date, $reverse = false) {
 
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
 define('LANGUAGE_CURRENCY', 'USD');
-
+define('PRIVACY_POLICY', 'Privacy Policy');
+define('Terms_Conditions', 'Terms & Conditions');
+define('Disclaimer', 'Disclaimer');
 // Global entries for the <html> tag
 define('HTML_PARAMS', 'dir="ltr" lang="en"');
 
