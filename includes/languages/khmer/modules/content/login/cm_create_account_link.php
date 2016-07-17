@@ -19,6 +19,7 @@
 
 define('MODULE_CONTENT_JOIN_FREE', 'ចូលរូមដោយឥតគិតថ្លៃ');
 define('MODULE_CONTENT_JOIN_FREE', 'ប្រកាសផ្សព្វផ្សាយពាណិជ្ជកម្មរបស់អ្នកដោយឥតគិតថ្លៃ');
+define('MODULE_CONTENT_SELL_OR_RENT', 'លក់ឬជួលអចលនទ្រព្យរបស់អ្នកដោយឥតគិតថ្លៃនិងរហ័ស');
 define('MODULE_CONTENT_EASY_MANAGE', 'ងាយស្រួលក្នុងការគ្រប់គ្រងការផ្សព្វផ្សាយរបស់អ្នក');
 
 

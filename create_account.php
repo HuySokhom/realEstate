@@ -454,7 +454,7 @@
         <?php echo MODULE_CONTENT_JOIN_FREE; ?>
       <p>
         <i class="fa fa-hand-o-right"></i>
-        <?php echo MODULE_CONTENT_JOIN_FREE; ?>
+        <?php echo MODULE_CONTENT_SELL_OR_RENT; ?>
       </p>
       <p>
         <i class="fa fa-hand-o-right"></i>

@@ -29,5 +29,6 @@ define('EMAIL_WARNING', '<strong>Note:</strong> This email address was given to 
 define('MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER', 'Register Today and Enjoy :');
 
 define('MODULE_CONTENT_JOIN_FREE', 'Join Free');
+define('MODULE_CONTENT_SELL_OR_RENT', 'Sell or Rent Your Property FREE and FAST');
 define('MODULE_CONTENT_POST_FREE', 'Posting your ads for Free');
 define('MODULE_CONTENT_EASY_MANAGE', 'Easy ways to manage your Ads');

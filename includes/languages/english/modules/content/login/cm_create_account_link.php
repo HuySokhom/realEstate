@@ -18,7 +18,7 @@
   define('MODULE_CONTENT_LOGIN_TEXT_NEW_CUSTOMER_INTRODUCTION', 'By creating an account at ' . STORE_NAME . ' you will be able to shop faster, be up to date on an orders status, and keep track of the orders you have previously made.');
 
 
-
+define('MODULE_CONTENT_SELL_OR_RENT', ' Sell or Rent Your Property FREE and FAST');
 define('MODULE_CONTENT_JOIN_FREE', 'Join Free');
 define('MODULE_CONTENT_POST_FREE', 'Posting your ads for Free');
 define('MODULE_CONTENT_EASY_MANAGE', 'Easy ways to manage your Ads');
