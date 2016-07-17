@@ -60,7 +60,7 @@
       <li class="xn-openable">
         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Configuration</span></a>
         <ul>
-          <li><a href="layout-boxed.html">Boxed</a></li>
+          <li><a href="administrators.php">Administrators</a></li>
           <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
           <li><a href="layout-nav-top.html">Navigation Top</a></li>
           <li><a href="layout-nav-right.html">Navigation Right</a></li>
