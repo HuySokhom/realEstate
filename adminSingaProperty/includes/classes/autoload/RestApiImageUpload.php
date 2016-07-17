@@ -30,7 +30,7 @@ class RestApiImageUpload extends RestApi {
 				$image = DIR_FS_CATALOG . 'images/news/' . $file['name'];
 				// to make image thumbnail
 				$imgThumbnail = DIR_FS_CATALOG . 'images/news_thumbnail/' . $file['name'];
-				$this->make_thumb($file, $image, $imgThumbnail, 250);
+				$this->make_thumb($file, $image, $imgThumbnail, 200);
 			}
 			return array(
 				'data' => array(

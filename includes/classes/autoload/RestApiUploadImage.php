@@ -85,7 +85,7 @@ class RestApiUploadImage extends RestApi {
                         $imgOriginal = $folderImage . $file['name'];
                         $imgThumbnail = $folderImageThumbnail . $file['name'];
 
-                        $this->make_thumb($file, $imgOriginal, $imgThumbnail, 250);
+                        $this->make_thumb($file, $imgOriginal, $imgThumbnail, 200);
                     }
 
                     return array(

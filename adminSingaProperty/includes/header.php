@@ -34,14 +34,6 @@
           <li><a href="#/product"><span class="fa fa-sitemap"></span> Products</a></li>
           <li><a href="#/user"><span class="fa fa-users"></span> Users</a></li>
           <li><a href="#/slider"><span class="fa fa-film"></span> Image Slider</a></li>
-          <li class="xn-openable">
-            <a href="#"><span class="fa fa-map-marker"></span> Location</a>
-            <ul>
-              <li><a href="#/location">Province</a></li>
-              <li><a href="#/district">District</a></li>
-              <li><a href="#/village">Village</a></li>
-            </ul>
-          </li>
           <li>
             <a href="#/popular_location"><span class="fa fa-clock-o"></span> Popular Search</a>
           </li>
@@ -73,39 +65,11 @@
         </ul>
       </li>
       <li class="xn-openable">
-        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Localization</span></a>
+        <a href="#"><span class="fa fa-map-marker"></span> Location</a>
         <ul>
-          <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>
-          <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-          <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>
-          <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
-          <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
-          <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
-          <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
-          <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-          <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>
-          <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
-          <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
-        </ul>
-      </li>
-      <li class="xn-openable">
-        <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Locations / Taxes</span></a>
-        <ul>
-          <li>
-            <a href="form-layouts-two-column.html"><span class="fa fa-tasks"></span> Form Layouts</a>
-            <div class="informer informer-danger">New</div>
-            <ul>
-              <li><a href="form-layouts-one-column.html"><span class="fa fa-align-justify"></span> One Column</a></li>
-              <li><a href="form-layouts-two-column.html"><span class="fa fa-th-large"></span> Two Column</a></li>
-              <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
-              <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
-            </ul>
-          </li>
-          <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
-          <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
-          <li><a href="form-wizards.html"><span class="fa fa-arrow-right"></span> Wizards</a></li>
-          <li><a href="form-editors.html"><span class="fa fa-text-width"></span> WYSIWYG Editors</a></li>
-          <li><a href="form-file-handling.html"><span class="fa fa-floppy-o"></span> File Handling</a></li>
+          <li><a href="#/location">Province</a></li>
+          <li><a href="#/district">District</a></li>
+          <li><a href="#/village">Village</a></li>
         </ul>
       </li>
       <li class="xn-openable">
