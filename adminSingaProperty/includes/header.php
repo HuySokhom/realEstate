@@ -43,7 +43,7 @@
           <li>
             <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>
           </li>
-          <li><a href="#/products_attributes"><span class="fa fa-comments"></span> Products Attributes</a></li>
+          <li><a href="#/content"><span class="fa fa-comments"></span>Content</a></li>
           <li><a href="#/products_expected"><span class="fa fa-calendar"></span> Products Expected</a></li>
           <li><a href="#/reviews"><span class="fa fa-edit"></span> Reviews</a></li>
           <li><a href="#/specials"><span class="fa fa-columns"></span> Specials</a></li>

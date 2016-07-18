@@ -1,0 +1,129 @@
+<div class="row">
+    <table class="table table-bordered table-striped">
+        <thead>
+        <th>
+            Id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Content
+        </th>
+        <th style="width: 180px;">
+            Action
+        </th>
+        </thead>
+        <tr data-ng-repeat="n in contents.elements">
+            <td>
+                {{n.id}}
+            </td>
+            <td>
+                {{n.title}}
+            </td>
+            <td>
+                {{n.content}}
+            </td>
+            <td>
+                <button
+                    class="btn btn-default"
+                    data-ng-click="edit(n);"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Edit"
+                    tooltip
+                >
+                    <span class="fa fa-pencil-square-o"></span>
+                </button>
+            </td>
+        </tr>
+    </table>
+    <div
+        data-ng-if="contents.elements == 0"
+    >
+        <div class="alert alert-danger alert-dismissible">
+            <strong>Warning!</strong> Empty Data.
+        </div>
+    </div>
+    <div
+        data-ng-if="!contents"
+        class="align_center"
+    >
+        <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+    </div>
+</div>
+
+<form data-ng-submit="save();" name="myForm">
+    <div
+        class="modal fade"
+        id="districtPopup"
+        data-keyboard="false"
+        data-backdrop="static"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                    >
+                        <span>&times;</span>
+                    </button>
+                    <h4>
+                        <label>Content</label>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-responsive">
+                        <tr>
+                            <td>
+                                Province
+                            </td>
+                            <td>
+                                <select
+                                    data-ng-model="province_id"
+                                    data-ng-options="p.id as p.name for p in province.elements"
+                                    class="form-control"
+                                    data-ng-selected="province_id == p.id"
+                                    required
+                                >
+                                    <option value="">--Select Province--</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">
+                                Name:
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    data-ng-model="name"
+                                    required="required"
+                                />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        class="btn btn-default"
+                        data-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        data-ng-disabled="isDisabled"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+

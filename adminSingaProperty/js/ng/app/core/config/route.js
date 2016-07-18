@@ -9,6 +9,11 @@ app.config([
 				templateUrl: 'js/ng/app/index/partials/index.html',
 				controller: 'index_ctrl'
 			})
+			.state('/content', {
+				url: '/content',
+				templateUrl: 'js/ng/app/content/partials/index.html',
+				controller: 'content_ctrl'
+			})
 			.state('/news', {
 				url: '/news',
 				templateUrl: 'js/ng/app/news/partials/news.html',
