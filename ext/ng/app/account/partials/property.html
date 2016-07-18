@@ -163,7 +163,12 @@
 					data-ng-click="promote(p.products_id);"
 					data-toggle="tooltip"
 					data-placement="top"
-					title="Promote"
+					title="{{
+						(p.products_promote == 3)
+						? 'Plan Pro' : (p.products_promote == 2)
+						? 'Plan Premium' : (p.products_promote == 1)
+						? 'Plan Basic' : 'Plan Free'
+					}}"
 					tooltip
 				>
 					<i class="fa fa-dollar"></i>

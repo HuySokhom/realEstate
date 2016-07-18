@@ -69,6 +69,7 @@ class RestApiSessionUserProductPost extends RestApi {
 					select
 						p.products_id,
 						p.products_price,
+						p.products_promote,
 						p.products_status,
 						p.products_kind_of,
 						p.bed_rooms,
