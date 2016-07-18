@@ -65,7 +65,7 @@
         </ul>
       </li>
       <li class="xn-openable">
-        <a href="#"><span class="fa fa-map-marker"></span> Location</a>
+        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">Location</span></a>
         <ul>
           <li><a href="#/location">Province</a></li>
           <li><a href="#/district">District</a></li>
