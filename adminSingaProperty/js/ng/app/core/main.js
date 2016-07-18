@@ -11,6 +11,7 @@ var app = angular.module(
         , 'uiGmapgoogle-maps'
         , 'ui.select'
         , 'ds.clock'
+        , 'ui.calendar'
     ]
 );
 // range with number

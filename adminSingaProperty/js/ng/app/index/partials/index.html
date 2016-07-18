@@ -50,23 +50,13 @@
 
         <!-- START WIDGET CLOCK -->
         <div class="widget widget-info widget-padding-sm">
-            <div class="widget-big-int plugin-date"><ds-widget-clock show-digital digital-format="format"></ds-widget-clock></div>
-
-            <div class="widget-buttons widget-c3">
-                <div class="col">
-                    <a href="#"><span class="fa fa-clock-o"></span></a>
-                </div>
-                <div class="col">
-                    <a href="#"><span class="fa fa-bell"></span></a>
-                </div>
-                <div class="col">
-                    <a href="#"><span class="fa fa-calendar"></span></a>
-                </div>
+            <div class="widget-big-int plugin-date">
+                <ds-widget-clock show-digital digital-format="format"></ds-widget-clock>
             </div>
         </div>
         <!-- END WIDGET CLOCK -->
 
     </div>
-
+    <div class="calendar" ng-model="eventSources2" calendar="myCalendar3" ui-calendar="uiConfig.calendar"></div>
 </div>
 <!-- END WIDGETS -->
