@@ -320,3 +320,8 @@ define('PRODUCT_SUBSCRIBED', '%s has been added to your Notification List');
 define('PRODUCT_UNSUBSCRIBED', '%s has been removed from your Notification List');
 define('PRODUCT_ADDED', '%s has been added to your Cart');
 define('PRODUCT_REMOVED', '%s has been removed from your Cart');
+define('TEXT_RELATE', 'អចលនទ្រព្យទាក់ទង');
+define('TEXT_CONTACT_AGENCY', 'ភ្នាក់ងារទំនាក់ទំនង');
+define('TEXT_MAKE_AN_ENQUIRY', 'បង្កើតសំណួរ');
+define('TEXT_MESSAGE', 'សារ');
+define('TEXT_SUBMIT', 'ផ្ញើ');

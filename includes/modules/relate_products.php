@@ -93,6 +93,7 @@ if ($num_new_products_sale > 0) {
   ?>
   <!-- Rent Property -->
   <div class="sale-property">
+    <h3><?php echo TEXT_RELATE; ?></h3>
     <div class="row p_r_z">
       <div id="sale-property-block" class="sale-property-block">
         <?php echo $new_prods_content_sale; ?>

@@ -54,6 +54,8 @@ class RestApiSessionUserProductPost extends RestApi {
 						and
 					c.language_id = '".$_SESSION['languages_id']."'
 						and
+					pd.language_id = '".$_SESSION['languages_id']."'
+						and
 					p.customers_id = '".$userId . "'
 				";
 				if($params['GET']['type']){
