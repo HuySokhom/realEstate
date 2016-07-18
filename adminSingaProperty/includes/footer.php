@@ -57,7 +57,10 @@
     type="text/javascript"
     src="js/ng/lib/angular-alertify/js/ngAlertify.js"
 ></script>
-
+<script
+    type="text/javascript"
+    src="js/ng/lib/angular-clock/angular-clock.min.js"
+></script>
 <script
     type="text/javascript"
     src="js/ng/lib/angular-tinymce/tinymce.js"

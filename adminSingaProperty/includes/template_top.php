@@ -22,6 +22,10 @@
 <link rel="stylesheet" type="text/css" href="css/theme-default.css">
 <link rel="stylesheet" type="text/css" href="css/select2/select2.css">
   <link rel="stylesheet" type="text/css" href="css/select2/select.css">
+  <link
+      type="text/javascript"
+      src="js/ng/lib/angular-clock/angular-clock.css"
+  />
 <link
     href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all'
     rel="stylesheet"

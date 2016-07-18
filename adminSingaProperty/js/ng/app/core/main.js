@@ -10,6 +10,7 @@ var app = angular.module(
         , 'ngAlertify'
         , 'uiGmapgoogle-maps'
         , 'ui.select'
+        , 'ds.clock'
     ]
 );
 // range with number
