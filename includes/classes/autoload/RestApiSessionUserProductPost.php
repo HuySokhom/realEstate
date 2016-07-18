@@ -121,7 +121,7 @@ class RestApiSessionUserProductPost extends RestApi {
 			$productObject = new ProductPostObj();
 			$userId = $this->getOwner()->getId();
 			$productObject->setCustomersId($userId);
-//			$productObject->setProductsPromote($_SESSION['customer_plan']);
+			$productObject->setProductsPromote($_SESSION['customer_plan']);
 			$productObject->setProperties($params['POST']['products']);
 			$productObject->insert();
 			$productId = $productObject->getProductsId();
