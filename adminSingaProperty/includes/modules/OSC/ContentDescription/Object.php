@@ -58,7 +58,7 @@ class Object extends DbObj {
 				content_description
 			SET
 				title = '" .  $this->getTitle() . "',
-				content = '" .  $this->getContent() . "',
+				content = '" . $this->dbEscape(  $this->getContent() ) . "',
 				update_by = '" . $this->getUpdateBy() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
@@ -80,7 +80,7 @@ class Object extends DbObj {
 			)
 				VALUES
 			(
-				'" . $this->getContent() . "',
+				'" . $this->dbEscape(  $this->getContent() ) . "',
 				'" . $this->getTitle() . "',
 				'" . $this->getCreateBy() ."',
 				NOW(),
@@ -91,7 +91,7 @@ class Object extends DbObj {
 	}
 
 	public function setContent( $string ){
-		$this->content = (string)$string;
+		$this->content = $string;
 	}
 	
 	public function getContent(){

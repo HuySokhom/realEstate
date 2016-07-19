@@ -1,7 +1,7 @@
 <div class="row">
     <table class="table table-bordered table-striped">
         <thead>
-        <th>
+        <th style="width: 80px;">
             Id
         </th>
         <th>
@@ -10,7 +10,10 @@
         <th>
             Content
         </th>
-        <th style="width: 180px;">
+        <th>
+            Language
+        </th>
+        <th style="width: 100px;">
             Action
         </th>
         </thead>
@@ -22,7 +25,10 @@
                 {{n.title}}
             </td>
             <td>
-                {{n.content}}
+                <span data-ng-bind-html="n.content | limitTo : 1520 "></span>
+            </td>
+            <td>
+                <span data-ng-bind="n.language_id == 1 ? 'English' : 'Khmer' "></span>
             </td>
             <td>
                 <button
@@ -56,11 +62,11 @@
 <form data-ng-submit="save();" name="myForm">
     <div
         class="modal fade"
-        id="districtPopup"
+        id="contentPopup"
         data-keyboard="false"
         data-backdrop="static"
     >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <button
@@ -78,31 +84,29 @@
                     <table class="table table-bordered table-responsive">
                         <tr>
                             <td>
-                                Province
-                            </td>
-                            <td>
-                                <select
-                                    data-ng-model="province_id"
-                                    data-ng-options="p.id as p.name for p in province.elements"
-                                    class="form-control"
-                                    data-ng-selected="province_id == p.id"
-                                    required
-                                >
-                                    <option value="">--Select Province--</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5%">
-                                Name:
+                                Title
                             </td>
                             <td>
                                 <input
                                     type="text"
                                     class="form-control"
-                                    data-ng-model="name"
+                                    data-ng-model="title"
                                     required="required"
                                 />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">
+                                Content:
+                            </td>
+                            <td>
+                                <textarea
+                                    rows="15"
+                                    class="form-control"
+                                    ui-tinymce="tinymceOptions"
+                                    data-ng-model="content"
+                                    required="required"
+                                ></textarea>
                             </td>
                         </tr>
                     </table>

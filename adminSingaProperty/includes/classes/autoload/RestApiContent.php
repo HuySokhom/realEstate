@@ -18,7 +18,7 @@ class RestApiContent extends RestApi {
 	public function put($params){
 		$obj = new ContentObj();
 		$id = $this->getId();
-		$obj->setProperties($params);
+		$obj->setProperties($params['PUT']);
 		$obj->setId($id);
 		$obj->update();
 		return array(
