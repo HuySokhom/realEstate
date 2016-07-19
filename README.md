@@ -1,2 +1,2 @@
 # realEsate
-Real Estate property base on oscommerce freamwork
+Real Estate property 
