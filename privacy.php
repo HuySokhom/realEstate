@@ -1,39 +1,24 @@
 <?php
-/*
-  $Id$
-
-  osCommerce, Open Source E-Commerce Solutions
-  http://www.oscommerce.com
-
-  Copyright (c) 2010 osCommerce
-
-  Released under the GNU General Public License
-*/
-
-  require('includes/application_top.php');
-
-  require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_PRIVACY);
-
-  $breadcrumb->add(NAVBAR_TITLE, tep_href_link(FILENAME_PRIVACY));
-
-  require(DIR_WS_INCLUDES . 'template_top.php');
+require('includes/application_top.php');
+require(DIR_WS_INCLUDES . 'template_top.php');
+$query = tep_db_query("select * from content_description where content_id = 2 and language_id = ". (int)$languages_id ." ");
+$content = tep_db_fetch_array($query);
 ?>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
+<div class="container margin-top">
+  <h4><?php echo $content['title']; ?></h4>
 
-<div class="contentContainer">
-  <div class="contentText">
-    <?php echo TEXT_INFORMATION; ?>
+  <?php
+  ?>
+  <div class="contentContainer col-md-9 col-sm-6 p_l_z">
+    <p style="text-align: justify;">
+      <?php echo $content['content']?>
+    </p>
   </div>
-
-  <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', tep_href_link(FILENAME_DEFAULT)); ?></div>
-  </div>
+  <?php include('advanced_search_box_right.php');?>
 </div>
 
 <?php
-  require(DIR_WS_INCLUDES . 'template_bottom.php');
-  require(DIR_WS_INCLUDES . 'application_bottom.php');
+require(DIR_WS_INCLUDES . 'template_bottom.php');
+require(DIR_WS_INCLUDES . 'application_bottom.php');
 ?>
