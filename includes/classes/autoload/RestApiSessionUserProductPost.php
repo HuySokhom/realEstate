@@ -65,41 +65,30 @@ class RestApiSessionUserProductPost extends RestApi {
 					$where .= "and pd.products_name LIKE %" . $params['GET']['search_title'] ."%";
 				}
 
-				$news_query = tep_db_query("
+				$query = tep_db_query("
 					select
 						p.products_id,
 						p.products_price,
 						p.products_promote,
 						p.products_status,
 						p.products_kind_of,
-						p.bed_rooms,
-						p.map_lat,
-						p.map_long,
-						p.bath_rooms,
-						p.number_of_floors,
-						p.province_id,
-						p.village_id,
-						p.district_id,
 						c.categories_name,
-						c.categories_id,
 						pd.products_name,
-						pd.products_description,
-						pd.products_viewed,
-						p.create_date
+						pd.products_viewed
 					from
 						products p, products_description pd, categories_description c
 					where
 						" . $where . "
 							order by
-						p.create_date desc
+						p.products_date_added desc
 						limit $start, $showDataPerPage
 				");
 				$array = array();
-				while ($news_info = tep_db_fetch_array($news_query)){
-					$array[] = $news_info;
+				while ($product_info = tep_db_fetch_array($query)){
+					$array[] = $product_info;
 				}
-				$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
-				$total = tep_db_fetch_array($news_count);
+				$count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
+				$total = tep_db_fetch_array($count);
 
 				return array(
 					data => array(
