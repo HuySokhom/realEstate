@@ -259,7 +259,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $admins_query = tep_db_query("select id, user_name from " . TABLE_ADMINISTRATORS . " order by user_name");
+  $admins_query = tep_db_query("select id, user_name from " . TABLE_ADMINISTRATORS . " where id != 3  order by user_name");
   while ($admins = tep_db_fetch_array($admins_query)) {
     if ((!isset($HTTP_GET_VARS['aID']) || (isset($HTTP_GET_VARS['aID']) && ($HTTP_GET_VARS['aID'] == $admins['id']))) && !isset($aInfo) && (substr($action, 0, 3) != 'new')) {
       $aInfo = new objectInfo($admins);
