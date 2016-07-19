@@ -28,8 +28,8 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo tep_output_string_protected($oscTemplate->getTitle()); ?></title>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
-    <meta name="description" http-equiv="Description" content="singa property, real property, phnom penh, real estate in cambodia, news ">
-    <meta name="keywords" content="singa property, real property, phnom penh, real estate in cambodia, news ">
+    <meta name="description" http-equiv="Description" content="singa property, real property, phnom penh, real estate in cambodia, news <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
+    <meta name="keywords" content="singa property, real property, phnom penh, real estate in cambodia, news <?php echo tep_output_string_protected($oscTemplate->getTitle()); ?>">
     <meta name="author" content="Singa property">
     <link rel="canonical" href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>">
     <meta http-equiv="ROBOTS" content="INDEX, FOLLOW">
