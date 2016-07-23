@@ -28,6 +28,19 @@
             >
                 <option value="">--Select Category--</option>
             </select>
+
+            <label>
+                Property Plan
+            </label>
+            <select
+                data-ng-model="property_plan"
+                data-ng-options="n.id as n.name for n in sortType"
+                class="form-control"
+                data-ng-selected="property_plan == n.id"
+                required
+            >
+                <option value="">--Select Plan--</option>
+            </select>
             <label>
                 Title EN:
             </label>
