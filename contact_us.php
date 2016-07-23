@@ -80,9 +80,17 @@
 <div class="contentContainer col-md-9 col-sm-6 p_l_z">
   <div class="contentText">
     <div class="row">
+      <div class="col-md-12">
+        <div class="property-map">
+            <div id="gmap" class="mapping"></div>
+        </div>
+      </div>
+    </div>
+    <br/><br/>
+    <div class="row">
       <div class="col-md-4">
         <address>
-            <strong><?php echo ENTRY_ADDRESS; ?></strong><br>
+            <h4><?php echo ENTRY_ADDRESS; ?></h4>
             <?php echo nl2br(STORE_ADDRESS); ?><br>
             Phone:
             <?php echo STORE_PHONE; ?>
@@ -94,45 +102,42 @@
         </address>
       </div>
       <div class="col-md-8">
-        <div class="property-map">
-            <div id="gmap" class="mapping"></div>
+        <p class="inputRequirement text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></p>
+        <div class="clearfix"></div>
+
+        <div class="form-group has-feedback">
+          <label for="inputFromName" class="col-sm-3"><?php echo ENTRY_NAME; ?></label>
+          <div class="col-sm-9">
+            <?php
+            echo tep_draw_input_field('name', NULL, 'required autofocus="autofocus" aria-required="true" id="inputFromName" placeholder="' . ENTRY_NAME . '"');
+            echo FORM_REQUIRED_INPUT;
+            ?>
+          </div>
+        </div>
+        <div class="form-group has-feedback">
+          <label for="inputFromEmail" class="col-sm-3"><?php echo ENTRY_EMAIL; ?></label>
+          <div class="col-sm-9">
+            <?php
+            echo tep_draw_input_field('email', NULL, 'required aria-required="true" id="inputFromEmail" placeholder="' . ENTRY_EMAIL . '"', 'email');
+            echo FORM_REQUIRED_INPUT;
+            ?>
+          </div>
+        </div>
+        <div class="form-group has-feedback">
+          <label for="inputEnquiry" class="col-sm-3"><?php echo ENTRY_ENQUIRY; ?></label>
+          <div class="col-sm-9">
+            <?php
+            echo tep_draw_textarea_field('enquiry', 'soft', 30, 6, NULL, 'required aria-required="true" id="inputEnquiry" placeholder="' . ENTRY_ENQUIRY . '"');
+            echo FORM_REQUIRED_INPUT;
+            ?>
+          </div>
         </div>
       </div>
-    </div>
-    <p class="inputRequirement text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></p>
-    <div class="clearfix"></div>
 
-    <div class="form-group has-feedback">
-      <label for="inputFromName" class="col-sm-2"><?php echo ENTRY_NAME; ?></label>
-      <div class="col-sm-10">
-        <?php
-        echo tep_draw_input_field('name', NULL, 'required autofocus="autofocus" aria-required="true" id="inputFromName" placeholder="' . ENTRY_NAME . '"');
-        echo FORM_REQUIRED_INPUT;
-        ?>
+      <div class="buttonSet">
+        <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-send', null, 'primary', null, 'btn-success'); ?></div>
       </div>
     </div>
-    <div class="form-group has-feedback">
-      <label for="inputFromEmail" class="col-sm-2"><?php echo ENTRY_EMAIL; ?></label>
-      <div class="col-sm-10">
-        <?php
-        echo tep_draw_input_field('email', NULL, 'required aria-required="true" id="inputFromEmail" placeholder="' . ENTRY_EMAIL . '"', 'email');
-        echo FORM_REQUIRED_INPUT;
-        ?>
-      </div>
-    </div>
-    <div class="form-group has-feedback">
-      <label for="inputEnquiry" class="col-sm-2"><?php echo ENTRY_ENQUIRY; ?></label>
-      <div class="col-sm-10">
-        <?php
-        echo tep_draw_textarea_field('enquiry', 'soft', 50, 15, NULL, 'required aria-required="true" id="inputEnquiry" placeholder="' . ENTRY_ENQUIRY . '"');
-        echo FORM_REQUIRED_INPUT;
-        ?>
-      </div>
-    </div>
-  </div>
-
-  <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-send', null, 'primary', null, 'btn-success'); ?></div>
   </div>
 </div>
 

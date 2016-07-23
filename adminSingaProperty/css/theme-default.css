@@ -7359,3 +7359,7 @@ form .progress {
 .angular-google-map-container {
   height: 400px;
 }
+.fc-unthemed .fc-today {
+  background: #1caf9a;
+  color: #ffffff;
+}

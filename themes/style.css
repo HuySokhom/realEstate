@@ -3553,3 +3553,7 @@ form .progress {
 .angular-google-map-container {
 	height: 400px;
 }
+.glyphicon {
+	color: #D33E63;
+	font-family: 'normal';
+}
