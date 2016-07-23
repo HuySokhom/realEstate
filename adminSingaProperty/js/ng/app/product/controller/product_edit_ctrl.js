@@ -23,6 +23,24 @@ app.controller(
 			paste_data_images: true
 		};
 		$scope.propertyTypes = ["For Sale", "For Rent", "Both Sale and Rent"];
+		$scope.sortType = [
+			{
+				id: 0,
+				name: 'Free Plan'
+			},
+			{
+				id: 1,
+				name: 'Basic Plan'
+			},
+			{
+				id: 2,
+				name: 'Premium Plan'
+			},
+			{
+				id: 3,
+				name: 'Pro Plan'
+			},
+		];
 		// init category
 		$scope.initCategory = function(){
 			Restful.get("api/Category").success(function(data){
@@ -74,6 +92,9 @@ app.controller(
 				$scope.title_kh = data.elements[0].product_detail[1].products_name;
 				$scope.content_en = data.elements[0].product_detail[0].products_description;
 				$scope.content_kh = data.elements[0].product_detail[1].products_description;
+				$scope.property_plan = data.elements[0].products_promote;
+				$scope.longitude = data.elements[0].map_long;
+				$scope.latitude = data.elements[0].map_lat;
 
 				/********* Start init UI Google Map NG *************/
 				$scope.map = {
@@ -181,6 +202,9 @@ app.controller(
 					bed_rooms: $scope.bed_rooms,
 					bath_rooms: $scope.bath_rooms,
 					number_of_floors: $scope.number_of_floors,
+					products_promote: $scope.property_plan,
+					map_lat: $scope.marker.coords.latitude,
+					map_long: $scope.marker.coords.longitude,
 				},
 				products_description: [
 					{

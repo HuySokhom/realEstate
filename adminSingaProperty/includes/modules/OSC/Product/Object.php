@@ -39,6 +39,7 @@ class Object extends DbObj {
 		, $mapLat
 		, $mapTitle
 		, $mapLong
+		, $productsPromote
 	;
 	
 	public function toArray( $params = array() ){
@@ -66,7 +67,8 @@ class Object extends DbObj {
 				'bath_rooms',
                 'number_of_floors',
 				'image_detail',
-				'product_detail'
+				'product_detail',
+				'products_promote',
 			)
 		);
 		return parent::toArray($args);
@@ -90,6 +92,7 @@ class Object extends DbObj {
 				map_title,
 				categories_id,
 				province_id,
+				products_promote,
 				district_id,
 				village_id,
 				products_image,
@@ -209,6 +212,7 @@ class Object extends DbObj {
 				district_id = '" . (int)$this->getDistrictId() . "',
 				village_id = '" . (int)$this->getVillageId() . "',
 				products_image = '" . $this->getProductsImage() . "',
+				products_promote = '" . $this->getProductsPromote() . "',
 				products_image_thumbnail = '" . $this->getProductsImageThumbnail() . "',
  				products_price = '" . $this->getProductsPrice() . "',
  				products_kind_of = '" . $this->getProductsKindOf() . "',
@@ -275,6 +279,13 @@ class Object extends DbObj {
 	}
 	public function setMapLat( $string ){
 		$this->mapLat = $string;
+	}
+
+	public function getProductsPromote(){
+		return $this->productsPromote;
+	}
+	public function setProductsPromote( $string ){
+		$this->productsPromote = (int)$string;
 	}
 
 	public function getMapTitle(){
