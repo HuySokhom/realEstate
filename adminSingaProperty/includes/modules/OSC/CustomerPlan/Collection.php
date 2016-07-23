@@ -20,4 +20,14 @@ class Collection extends StdCollection {
 		$this->addWhere("cp.id = '" . (int)$arg. "' ");
 	}
 
+	public function filterByCustomerId( $arg ){
+		$this->addWhere("cp.customers_id = '" . (int)$arg. "' ");
+	}
+
+
+	public function orderByDate( $arg ){
+		$this->addOrderBy('cp.create_date', $arg);
+	}
+
+
 }
