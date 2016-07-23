@@ -96,6 +96,45 @@ class Object extends DbObj {
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
+
+		if($this->getStatus() == 1){
+			//	update customer plan table
+			$this->dbQuery("
+				UPDATE
+					customers
+				SET
+					customers_plan = '" .  $this->getPlan() . "',
+					plan_date = NOW(),
+					plan_expire = DATE_ADD(NOW(), INTERVAL 31 DAY),
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+		}else{
+			//	update customer plan table
+			$this->dbQuery("
+				UPDATE
+					customers
+				SET
+					customers_plan = 0,
+					plan_date = '',
+					plan_expire = '',
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+			//	update customer plan table
+			$this->dbQuery("
+				UPDATE
+					products
+				SET
+					products_promote = 0,
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+		}
+
 	}
 
 	public function delete(){

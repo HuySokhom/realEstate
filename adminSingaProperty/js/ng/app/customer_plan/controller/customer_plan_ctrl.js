@@ -18,41 +18,14 @@ app.controller(
 		$scope.init(params);
 
 		$scope.updateStatus = function(params){
-			params.status == 1 ? params.status = 0 : params.status = 1;
-			var data = { status: params.status};
+			params.status == 1 ? params.status = 0 : params.status = 1;console.log(params);
+			var data = { status: params.status, customers_id: params.detail[0].id, plan: params.plan};
 			Restful.put(url + params.id, data).success(function(data){
 				console.log(data);
 				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 			});
 		};
 
-		$scope.save = function(){
-			var data = {
-				name: $scope.name
-			};
-			$scope.isDisabled = true;
-			if( $scope.id ){
-				Restful.put(url + $scope.id, data).success(function(data){
-					$scope.init(params);
-					$('#provincePopup').modal('hide');
-					$scope.isDisabled = false;
-					$scope.clear();
-					$scope.service.alertMessage('<strong>Complete: </strong>Update Success.');
-				});
-			}else{
-				Restful.post(url, data).success(function(data){
-					$scope.init(params);
-					$('#provincePopup').modal('hide');
-					$scope.isDisabled = false;
-					$scope.clear();
-					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
-				});
-			}
-		};
-		$scope.clear = function(){
-			$scope.id = '';
-			$scope.name = '';
-		};
 		// remove functionality
 		$scope.remove = function(id, $index){
 			$scope.id = id;
@@ -86,13 +59,6 @@ app.controller(
 			params.status = $scope.status;
 			$scope.init(params);
 		};
-		// edit functionality
-		$scope.edit = function(params){
-			$scope.name = params.name;
-			$scope.id = params.id;
-			$('#provincePopup').modal('show');
-		};
-
 		/**
 		 * start functionality pagination
 		 */
