@@ -71,6 +71,9 @@
 			<th>
 				Product View
 			</th>
+			<th>
+				Plan
+			</th>
 			<th width="250px">
 				Action
 			</th>
@@ -94,6 +97,21 @@
 			</td>
 			<td>
 				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
+			</td>
+			<td>
+				<span data-ng-bind="
+					(p.products_promote == 3) ? 'Plan Pro'
+					: (p.products_promote == 2) ? 'Plan Premium'
+					: (p.products_promote == 1) ? 'Plan Basic'
+					: 'Plan Free'
+				"
+				data-ng-class="
+					(p.products_promote == 3) ? 'label label-danger'
+					: (p.products_promote == 2) ? 'label label-primary'
+					: (p.products_promote == 1) ? 'label label-success'
+					: 'label label-default'
+				"
+				></span>
 			</td>
 			<td>
 				<button
