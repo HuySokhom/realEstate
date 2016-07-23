@@ -290,8 +290,8 @@ define('TEXT_VIEW_GRID', ' Grid');
 define('TEXT_SEARCH_PLACEHOLDER','Search');
 
 // message for required inputs
-define('FORM_REQUIRED_INFORMATION', '<span class="glyphicon glyphicon-asterisk inputRequirement"></span> Required information');
-define('FORM_REQUIRED_INPUT', '<span><span class="glyphicon glyphicon-asterisk form-control-feedback inputRequirement"></span></span>');
+define('FORM_REQUIRED_INFORMATION', '<span class="glyphicon glyphicon-asterisk font-color inputRequirement"></span> Required information');
+define('FORM_REQUIRED_INPUT', '<span><span class="glyphicon glyphicon-asterisk font-color form-control-feedback inputRequirement"></span></span>');
 
 // reviews
 define('REVIEWS_TEXT_RATED', 'Rated %s by <cite title="%s" itemprop="reviewer">%s</cite>');
