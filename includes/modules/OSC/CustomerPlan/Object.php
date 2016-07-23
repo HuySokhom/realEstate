@@ -63,9 +63,7 @@ class Object extends DbObj {
 				customers_plan
 			SET
 				plan = '" .  $this->getPlan() . "',
-				plan_date = NOW(),
-				plan_expire = DATE_SUB(NOW(), INTERVAL 31 DAY),
-				update_by = '" .  $this->getUpdateBy() . "'
+				plan_date = NOW()
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -114,8 +112,8 @@ class Object extends DbObj {
 			(
 				'" . $this->getCustomersId() . "',
 				'" . $this->getPlan() . "',
-				NOW(),
-				DATE_ADD(NOW(), INTERVAL 31 DAY),
+				'',
+				'',
 				0,
 				NOW()
 			)
