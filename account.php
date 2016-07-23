@@ -75,107 +75,7 @@
 				<i class="fa fa-star"></i>
 				<?php echo TEXT_PLAN;?>
 			</div>
-
-			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-					<!-- PRICE ITEM -->
-					<div class="panel price panel-red">
-						<div class="panel-heading  text-center">
-							<h3>PRO PLAN</h3>
-						</div>
-						<div class="panel-body arrow_box text-center">
-							<p class="lead"><strong>$100 / month</strong></p>
-						</div>
-						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item">
-								<i class="icon-ok text-danger"></i>
-								All Products go to the top of the page.
-							</li>
-							<li class="list-group-item"><i class="icon-ok text-danger"></i> Unlimited Property</li>
-							<li class="list-group-item"><i class="icon-ok text-danger"></i> 27/7 support</li>
-						</ul>
-						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-danger" href="">BUY NOW!</a>
-						</div>
-					</div>
-					<!-- /PRICE ITEM -->
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-					<!-- PRICE ITEM -->
-					<div class="panel price panel-blue">
-						<div class="panel-heading arrow_box text-center">
-							<h3>Premium PLAN</h3>
-						</div>
-						<div class="panel-body text-center">
-							<p class="lead"><strong>$60 / month</strong></p>
-						</div>
-						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item">
-								<i class="icon-ok text-info"></i>
-								Products below of Pro Plan
-							</li>
-							<li class="list-group-item"><i class="icon-ok text-info"></i> 50 Property</li>
-							<li class="list-group-item"><i class="icon-ok text-info"></i> 27/7 support</li>
-						</ul>
-						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-info" href="">BUY NOW!</a>
-						</div>
-					</div>
-					<!-- /PRICE ITEM -->
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-					<!-- PRICE ITEM -->
-					<div class="panel price panel-green">
-						<div class="panel-heading arrow_box text-center">
-							<h3>Basic PLAN</h3>
-						</div>
-						<div class="panel-body text-center">
-							<p class="lead"><strong>$30 / month</strong></p>
-						</div>
-						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item">
-								<i class="icon-ok text-success"></i>
-								Products go to below of Premium Plan.
-							</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> 20 Property</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
-						</ul>
-						<div class="panel-footer">
-							<a class="btn btn-lg btn-block btn-success" href="">BUY NOW!</a>
-						</div>
-					</div>
-					<!-- /PRICE ITEM -->
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-
-					<!-- PRICE ITEM -->
-					<div class="panel price panel-grey">
-						<div class="panel-heading arrow_box text-center">
-							<h3>FREE PLAN</h3>
-						</div>
-						<div class="panel-body text-center">
-							<p class="lead"><strong>$0 / month</strong></p>
-						</div>
-						<ul class="list-group list-group-flush text-center">
-							<li class="list-group-item">
-								<i class="icon-ok text-success"></i>
-								No Feature.
-							</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> Unlimited Property</li>
-							<li class="list-group-item"><i class="icon-ok text-success"></i> 27/7 support</li>
-						</ul>
-						<div class="panel-footer">
-
-						</div>
-					</div>
-					<!-- /PRICE ITEM -->
-				</div>
-
-			</div>
-
+			<div plan></div>
 		</div>
     <?php
     	// don't need to show
@@ -285,4 +185,8 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
 <script
 	type="text/javascript"
 	src="ext/ng/app/core/directive/number.js"
+></script>
+<script
+	type="text/javascript"
+	src="ext/ng/app/account/directive/plan.js"
 ></script>
