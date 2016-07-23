@@ -51,8 +51,8 @@ app.controller(
 			$location.path("/product/edit/" + id);
 		};
 
-		$scope.refreshDate = function(params){
-			Restful.patch(url + params.id).success(function(data){
+		$scope.refreshDate = function(param){
+			Restful.patch(url + param.id).success(function(data){
 				init(params);
 			});
 		};

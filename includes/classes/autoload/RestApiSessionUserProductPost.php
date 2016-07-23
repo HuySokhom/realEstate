@@ -58,11 +58,14 @@ class RestApiSessionUserProductPost extends RestApi {
 						and
 					p.customers_id = '".$userId . "'
 				";
+				if($params['GET']['id']){
+					$where .= " and p.products_id = ".(int)$params['GET']['id']."";
+				}
 				if($params['GET']['type']){
-					$where .= "and p.categories_id = ".(int)$params['GET']['type']."";
+					$where .= " and p.categories_id = ".(int)$params['GET']['type']."";
 				}
 				if($params['GET']['search_title']){
-					$where .= "and pd.products_name LIKE %" . $params['GET']['search_title'] ."%";
+					$where .= " and pd.products_name LIKE '%" . $params['GET']['search_title'] ."%' ";
 				}
 
 				$query = tep_db_query("
