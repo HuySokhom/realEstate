@@ -32,6 +32,10 @@ class Collection extends StdCollection {
 		$this->addWhere("p.products_id = '" . (int)$arg. "' ");
 	}
 
+	public function filterByPlan( $arg ){
+		$this->addWhere("p.products_promote = '" . (int)$arg. "' ");
+	}
+
 	public function filterByName( $arg ){
 		$this->addTable("products_description", "pd");
 		$this->addWhere("pd.products_id = p.products_id");

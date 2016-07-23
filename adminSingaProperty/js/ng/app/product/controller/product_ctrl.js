@@ -7,6 +7,24 @@ app.controller(
 	, 'alertify'
 	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
+		$scope.sortType = [
+			{
+				id: 0,
+				name: 'Free Plan'
+			},
+			{
+				id: 1,
+				name: 'Basic Plan'
+			},
+			{
+				id: 2,
+				name: 'Premium Plan'
+			},
+			{
+				id: 3,
+				name: 'Pro Plan'
+			},
+		];
 		var params = {};
 		var url = 'api/Product/';
 		function init(params){
@@ -73,6 +91,7 @@ app.controller(
 			params.search_title = $scope.search_title;
 			params.id = $scope.id;
 			params.type = $scope.category_id;
+			params.sort_by = $scope.sort_by;
 			params.customer_id = $scope.customer_id;
 			init(params);
 		};
