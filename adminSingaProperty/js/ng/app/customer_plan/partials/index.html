@@ -26,6 +26,9 @@
 			Name
 		</th>
 		<th>
+			Book Plan
+		</th>
+		<th>
 			Type
 		</th>
 		<th>
@@ -44,6 +47,22 @@
 		</td>
 		<td>
 			{{n.detail[0].user_name}}
+		</td>
+		<td>
+			<span
+				data-ng-bind="
+					(n.plan == 3) ? 'Plan Pro'
+					: (n.plan == 2) ? 'Plan Premium'
+					: (n.plan == 1) ? 'Plan Basic'
+					: 'Plan Free'
+				"
+				data-ng-class="
+					(n.plan == 3) ? 'label label-danger'
+					: (n.plan == 2) ? 'label label-primary'
+					: (n.plan == 1) ? 'label label-success'
+					: 'label label-default'
+				"
+			></span>
 		</td>
 		<td>
 			{{n.detail[0].user_type}}
