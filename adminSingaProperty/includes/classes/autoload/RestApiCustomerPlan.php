@@ -37,7 +37,17 @@ class RestApiCustomerPlan extends RestApi {
 				'success' => 'true'
 			)
 		);
+	}
 
+	public function delete(){
+		$obj = new planObj();
+		$obj->setId($this->getId());
+		$obj->delete();
+		return array(
+			'data' => array(
+				'data' => 'success'
+			)
+		);
 	}
 
 

@@ -82,9 +82,7 @@ app.controller(
 		};
 		// search functionality
 		$scope.search = function(){
-			params.search_name = $scope.search_title;
-			params.id = $scope.id;
-			params.type = $scope.news_type_id;
+			params.id = $scope.customer_id;
 			$scope.init(params);
 		};
 		// edit functionality

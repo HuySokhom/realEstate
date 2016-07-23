@@ -1,4 +1,22 @@
-<h3>Customer Book Plan</h3>
+<div class="col-md-3">
+	<h3>Customer Book Plan</h3>
+</div>
+<div class="col-md-3">
+	<div class="input-group">
+		<input
+			type="text"
+			class="form-control"
+			data-ng-model="customer_id"
+		 	data-ng-keypress="($event.which === 13) ? search() : 0"
+	  		placeholder="Search Customer Id..."/>
+		<div class="input-group-btn">
+			<button class="btn btn-default" data-ng-click="search();">
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<br/><br/><br/>
 <table class="table table-bordered table-striped" style="font-size: 12px;">
 	<thead>
 		<th>
