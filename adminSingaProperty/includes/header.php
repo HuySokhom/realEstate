@@ -138,19 +138,26 @@
         <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
       </li>
       <!-- END SIGN OUT -->
+      <?php
+        $queryExpiryday = tep_db_query("select count(*) as total from customers_plan where DAY(plan_expire) = DAY(NOW()) AND MONTH(plan_expire) = MONTH(NOW())");
+        $countExpiryDay = tep_db_fetch_array($queryExpiryday);
+      ?>
       <!-- MESSAGES -->
       <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-comments"></span></a>
-        <div class="informer informer-danger">0</div>
+        <div class="informer informer-danger"><?php echo $countExpiryDay['total'];?></div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
           <div class="panel-heading">
             <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
             <div class="pull-right">
-              <span class="label label-danger">0 new</span>
+              <span class="label label-danger"><?php echo $countExpiryDay['total'];?></span>
             </div>
           </div>
           <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-
+            <a class="list-group-item" href="#/customer_expire">
+              <strong>Customer Expire Plan</strong>
+              <span class="label label-danger"><?php echo $countExpiryDay['total'];?></span>
+            </a>
           </div>
           <div class="panel-footer text-center">
             <a href="#">Show all messages</a>
