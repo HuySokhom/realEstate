@@ -33,6 +33,7 @@ class Object extends DbObj {
 				'id',
 				'user_name',
 				'user_type',
+				'customers_telephone'
 			)
 		);
 	
@@ -43,7 +44,8 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				user_name,
-				user_type
+				user_type,
+				customers_telephone
 			FROM
 				customers
 			WHERE

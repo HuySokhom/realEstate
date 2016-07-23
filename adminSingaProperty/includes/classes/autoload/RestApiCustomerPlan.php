@@ -31,7 +31,7 @@ class RestApiCustomerPlan extends RestApi {
 		$id = $this->getId();
 		$obj->setProperties($params['PUT']);
 		$obj->setId($id);
-		$obj->update();
+		$obj->updateStatus();
 		return array(
 			'data' => array(
 				'success' => 'true'

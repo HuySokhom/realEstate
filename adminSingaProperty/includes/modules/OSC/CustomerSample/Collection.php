@@ -1,6 +1,6 @@
 <?php
 
-namespace OSC\CustomerSampleCustomerSample;
+namespace OSC\CustomerSample;
 
 use Aedea\Core\Database\StdCollection;
 

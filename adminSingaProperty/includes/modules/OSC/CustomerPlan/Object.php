@@ -4,6 +4,7 @@ namespace OSC\CustomerPlan;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\CustomerSample\Collection as CustomerCol
 ;
 
 class Object extends DbObj {
@@ -13,16 +14,24 @@ class Object extends DbObj {
 		, $plan
 		, $planDate
 		, $planExpire
+		, $detail
 	;
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+
+		$this->detail = new CustomerCol();
+	}
 
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'id',
-				'customers_id',
 				'plan',
 				'plan_date',
-				'plan_expire'
+				'plan_expire',
+				'detail',
+				'status'
 			)
 		);
 
@@ -53,6 +62,8 @@ class Object extends DbObj {
 		
 		$this->setProperties($this->dbFetchArray($q));
 
+		$this->detail->setFilter('id', $this->getCustomersId());
+		$this->detail->populate();
 	}
 	public function update() {
 		if( !$this->getId() ) {
@@ -123,6 +134,14 @@ class Object extends DbObj {
 		$this->setId( $this->dbInsertId() );
 	}
 
+	public function setDetail( $string ){
+		$this->detail = $string;
+	}
+
+	public function getDetail(){
+		return $this->detail;
+	}
+
 	public function setCustomersId( $string ){
 		$this->customersId = (int)$string;
 	}
@@ -139,14 +158,14 @@ class Object extends DbObj {
 	}
 
 	public function setPlanExpire( $string ){
-		$this->planExpire = $string;
+		$this->planExpire = date('Y-m-d', strtotime( $string ));
 	}
 	public function getPlanExpire(){
 		return $this->planExpire;
 	}
 
 	public function setPlanDate( $string ){
-		$this->planDate = $string;
+		$this->planDate = date('Y-m-d', strtotime( $string ));
 	}
 	public function getPlanDate(){
 		return $this->planDate;

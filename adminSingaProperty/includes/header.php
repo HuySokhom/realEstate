@@ -54,14 +54,6 @@
         <ul>
           <li><a href="administrators.php">Administrators</a></li>
           <li><a href="#/customer_plan">Customer Plan</a></li>
-          <li><a href="layout-nav-top.html">Navigation Top</a></li>
-          <li><a href="layout-nav-right.html">Navigation Right</a></li>
-          <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>
-          <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
-          <li><a href="layout-frame-left.html">Frame Left Column</a></li>
-          <li><a href="layout-frame-right.html">Frame Right Column</a></li>
-          <li><a href="layout-search-left.html">Search Left Side</a></li>
-          <li><a href="blank.html">Blank Page</a></li>
         </ul>
       </li>
       <li class="xn-openable">

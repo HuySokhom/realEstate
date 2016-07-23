@@ -17,6 +17,15 @@ app.controller(
 		};
 		$scope.init(params);
 
+		$scope.updateStatus = function(params){
+			params.status == 1 ? params.status = 0 : params.status = 1;
+			var data = { status: params.status};
+			Restful.put(url + params.id, data).success(function(data){
+				console.log(data);
+				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
+			});
+		};
+
 		$scope.save = function(){
 			var data = {
 				name: $scope.name

@@ -6,7 +6,7 @@ use
 	Aedea\Core\Database\StdObject as DbObj
 	, OSC\ProductDescription\Collection
 			as ProductDescriptionCol
-	, OSC\Customer\Collection
+	, OSC\CustomerSample\Collection
 		as CustomerCol
 	, OSC\CategoriesDescription\Collection
 		as CategoryCollection
