@@ -63,7 +63,7 @@ class Object extends DbObj {
 				customers_plan
 			SET
 				plan = '" .  $this->getPlan() . "',
-				plan_date = NOW()
+				create_date = NOW()
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");

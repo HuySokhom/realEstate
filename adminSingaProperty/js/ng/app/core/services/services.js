@@ -13,6 +13,13 @@ app.service("Services",[
             $alertify.success(text);
         };
 
+
+        // functionality format datetime
+        services.prototype.formatDate = function(date){
+            var dateOut = new Date(date);
+            return dateOut;
+        };
+
         return services;
         
  	}

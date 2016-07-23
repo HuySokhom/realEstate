@@ -31,7 +31,8 @@ class Object extends DbObj {
 				'plan_date',
 				'plan_expire',
 				'detail',
-				'status'
+				'status',
+				'create_date'
 			)
 		);
 

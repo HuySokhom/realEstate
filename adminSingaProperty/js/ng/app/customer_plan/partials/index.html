@@ -71,7 +71,7 @@
 			{{n.detail[0].customers_telephone}}
 		</td>
 		<td>
-			{{n.plan_date}}
+			{{service.formatDate(n.create_date) | date:'dd/MM/yyyy'}}
 		</td>
 		<td>
 			<button
