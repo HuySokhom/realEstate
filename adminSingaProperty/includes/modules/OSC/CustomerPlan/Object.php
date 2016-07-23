@@ -87,15 +87,6 @@ class Object extends DbObj {
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
-		$this->dbQuery("
-			UPDATE
-				customers_plan
-			SET
-				status = '" .  $this->getStatus() . "',
-				update_by = '" . $this->getUpdateBy() . "'
-			WHERE
-				id = '" . (int)$this->getId() . "'
-		");
 
 		if($this->getStatus() == 1){
 			//	update customer plan table
@@ -110,7 +101,30 @@ class Object extends DbObj {
 				WHERE
 					customers_id = '" . (int)$this->getCustomersId() . "'
 			");
+			$this->dbQuery("
+				UPDATE
+					customers_plan
+				SET
+					status = '" .  $this->getStatus() . "',
+					plan_date = NOW(),
+					plan_expire = DATE_ADD(NOW(), INTERVAL 31 DAY),
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					id = '" . (int)$this->getId() . "'
+			");
 		}else{
+
+			$this->dbQuery("
+				UPDATE
+					customers_plan
+				SET
+					status = '" .  $this->getStatus() . "',
+					plan_date = '',
+					plan_expire = '',
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					id = '" . (int)$this->getId() . "'
+			");
 			//	update customer plan table
 			$this->dbQuery("
 				UPDATE
