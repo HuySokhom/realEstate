@@ -16,6 +16,13 @@
 		</div>
 	</div>
 </div>
+<div class="col-md-3">
+	<select data-ng-model="status" class="form-control" data-ng-change="search();">
+		<option value="">--Filter By Status</option>
+		<option value="1">Active</option>
+		<option value="0">Inactive</option>
+	</select>
+</div>
 <br/><br/><br/>
 <table class="table table-bordered table-striped" style="font-size: 12px;">
 	<thead>

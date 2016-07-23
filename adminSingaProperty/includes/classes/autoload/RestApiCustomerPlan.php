@@ -11,6 +11,13 @@ class RestApiCustomerPlan extends RestApi {
 		$col = new planCol();
 		$col->orderByDate('DESC');
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
+		if($params['GET']['status'] === 0){
+			//$col->filterByStatus($params['GET']['status']);
+		}else{
+			if($params['GET']['status'] != ''){
+				$col->filterByStatus($params['GET']['status']);
+			}
+		}
 		$params['GET']['customers_id'] ? $col->filterByCustomerId($params['GET']['customers_id']) : '';
 		// start limit page
 		if($params['GET']['pagination']) {

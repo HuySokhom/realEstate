@@ -24,6 +24,9 @@ class Collection extends StdCollection {
 		$this->addWhere("cp.customers_id = '" . (int)$arg. "' ");
 	}
 
+	public function filterByStatus( $arg ){
+		$this->addWhere("cp.status = '" . (int)$arg. "' ");
+	}
 
 	public function orderByDate( $arg ){
 		$this->addOrderBy('cp.create_date', $arg);

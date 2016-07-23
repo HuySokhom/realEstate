@@ -83,6 +83,7 @@ app.controller(
 		// search functionality
 		$scope.search = function(){
 			params.id = $scope.customer_id;
+			params.status = $scope.status;
 			$scope.init(params);
 		};
 		// edit functionality
