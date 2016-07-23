@@ -123,6 +123,12 @@
     src="js/ng/app/customer_plan/controller/customer_plan_ctrl.js"
 ></script>
 
+<!--- Add report_customer_expire_ctrl plugin -->
+<script
+    type="text/javascript"
+    src="js/ng/app/report_customer_expire/controller/report_customer_expire_ctrl.js"
+></script>
+
 
 </body>
 </html>

@@ -14,6 +14,11 @@ app.config([
 				templateUrl: 'js/ng/app/content/partials/index.html',
 				controller: 'content_ctrl'
 			})
+			.state('/customer_expire', {
+				url: '/customer_expire',
+				templateUrl: 'js/ng/app/report_customer_expire/partials/index.html',
+				controller: 'report_customer_expire_ctrl'
+			})
 			.state('/customer_plan', {
 				url: '/customer_plan',
 				templateUrl: 'js/ng/app/customer_plan/partials/index.html',
