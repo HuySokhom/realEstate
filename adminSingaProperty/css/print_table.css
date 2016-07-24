@@ -1,0 +1,50 @@
+.table-print {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border: 1px solid #000000;
+}
+.table-print tr{
+    border: 1px solid #000000;
+}
+.table-print tr th{
+    background: #ddd;
+}
+.table-print th{
+    text-align: center;
+    border: 1px solid #000000;
+    padding: 5px;
+}
+.table-print tr > td{
+    border: 1px solid #000000;
+    padding: 1px;
+    vertical-align: top;
+}
+.table > thead{
+    background: whitesmoke;
+}
+.scroll{
+    border: 1px solid #ddd;
+}
+.btn-table{
+    margin-top: -10px;
+}
+.align_center{
+    text-align: center;
+}
+.table-full{
+    width: 100%;
+    border: 1px solid #000000;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+.table-full > th{
+    height: 20pt;
+    color: black;
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #F7F7F7;
+}
+.date{
+    width: 220px;
+}

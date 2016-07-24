@@ -1,29 +1,95 @@
-<h3>Report Customer Expire Payment</h3>
-<table class="table table-bordered table-striped">
-    <tr>
-        <th>
-            No
-        </th>
-        <th>
-            Customer Name
-        </th>
-        <th>
-            Plan
-        </th>
-        <th>
-            Type
-        </th>
-        <th>
-            Tel
-        </th>
-        <th>
-            Plan Date
-        </th>
-        <th>
-            Expire Date
-        </th>
-    </tr>
-    <tr>
+<div class="row">
+    <div class="col-md-6">
+        <h3>Report Customer Expire Payment</h3>
+    </div>
+    <div class="col-md-6" style="text-align: right;">
+        <button class="btn btn-primary" data-ng-click="init();">
+            <i class="fa fa-filter"></i>
+            Filters
+        </button>
+        <button class="btn btn-primary" data-ng-click="print();">
+            <i class="fa fa-print"></i>
+            Print
+        </button>
+    </div>
+</div>
+<br>
+<link href="css/print_table.css" rel="stylesheet" type="text/css">
+<div
+    data-ng-if="!plans"
+    class="align_center"
+>
+    <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+</div>
+<div  id="print">
+    <table class="table table-bordered table-striped table-print" data-ng-if="plans">
+        <tr>
+            <th>
+                No
+            </th>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Plan
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Tel
+            </th>
+            <th>
+                Plan Date
+            </th>
+            <th>
+                Expire Date
+            </th>
+        </tr>
+        <tr data-ng-repeat="p in plans.elements">
+            <td>
+                {{$index + 1}}
+            </td>
+            <td>
+                {{p.user_name}}
+            </td>
+            <td>
+                <span
+                    data-ng-bind="
+                        (p.plan == 3) ? 'Plan Pro'
+                        : (p.plan == 2) ? 'Plan Premium'
+                        : (p.plan == 1) ? 'Plan Basic'
+                        : 'Plan Free'
+                    "
+                    data-ng-class="
+                        (p.plan == 3) ? 'label label-danger'
+                        : (p.plan == 2) ? 'label label-primary'
+                        : (p.plan == 1) ? 'label label-success'
+                        : 'label label-default'
+                    "
+                ></span>
+            </td>
+            <td>
+                {{p.user_type}}
+            </td>
+            <td>
+                {{p.customers_telephone}}
+            </td>
+            <td>
+                {{service.formatDate(p.plan_date) | date:'dd/MM/yyyy'}}
+            </td>
 
-    </tr>
-</table>
+            <td>
+                {{service.formatDate(p.plan_expire) | date:'dd/MM/yyyy'}}
+            </td>
+        </tr>
+        <tr data-ng-if="plans.elements == 0">
+            <td colspan="7">
+                <div class="alert alert-warning">
+                    <i class="fa fa-warning" aria-hidden="true"></i>
+                    Empty Data
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
