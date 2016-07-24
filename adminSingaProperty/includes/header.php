@@ -50,7 +50,7 @@
         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Configuration</span></a>
         <ul>
           <li><a href="administrators.php">Administrators</a></li>
-          <li><a href="#/customer_plan">Customer Plan</a></li>
+          <li><a href="#/customer_plan">Customer Book Plan</a></li>
         </ul>
       </li>
       <li class="xn-openable">

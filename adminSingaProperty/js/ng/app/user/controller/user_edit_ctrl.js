@@ -24,6 +24,9 @@ app.controller(
 				$scope.fax = data.elements[0].customers_fax;
 				$scope.type = data.elements[0].user_type;
 				$scope.user_plan = data.elements[0].customers_plan;
+				$scope.plan_date = data.elements[0].plan_date;
+				$scope.plan_expire = data.elements[0].plan_expire;
+				console.log(data);
 			});
 			Restful.get("api/Location").success(function(data){
 				$scope.locations = data.elements;
