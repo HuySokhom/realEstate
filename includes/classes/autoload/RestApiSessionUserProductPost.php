@@ -222,10 +222,14 @@ class RestApiSessionUserProductPost extends RestApi {
 				$cols->populate();
 				$col = $cols->getFirstElement();
 				$col->setProductsId($this->getId());
-				if( $params['PATCH']['name'] ){
+				if( $params['PATCH']['name'] == "update_status" ){
 					$col->setProductsStatus($params['PATCH']['status']);
 					$col->updateStatus();
-				}else{
+				}
+				elseif( $params['PATCH']['name'] == "promote_product" ){
+
+				}
+				else{
 					$col->refreshDate();
 				}
 			}
@@ -243,7 +247,7 @@ class RestApiSessionUserProductPost extends RestApi {
 				"403: Access Denied",
 				403
 			);
-		}else {var_dump($params['DELETE']);
+		}else {
 			if($params['DELETE']['image']){
 				$image = new ProductImageObj();
 				$image->setId($this->getId());
