@@ -15,7 +15,24 @@ app.controller(
 			});
 		};
 		$scope.init();
-
+		$scope.sortType = [
+			{
+				id: 0,
+				name: 'Free Plan'
+			},
+			{
+				id: 1,
+				name: 'Basic Plan'
+			},
+			{
+				id: 2,
+				name: 'Premium Plan'
+			},
+			{
+				id: 3,
+				name: 'Pro Plan'
+			},
+		];
 		$scope.updateStatus = function(params){
 			params.is_agency == 1 ? params.is_agency = 0 : params.is_agency = 1;
 			Restful.patch(url + params.id, params ).success(function(data) {
@@ -55,6 +72,7 @@ app.controller(
 			params.search_name = $scope.search_name;
 			params.id = $scope.id;
 			params.type = $scope.type;
+			params.plan = $scope.property_plan;
 			console.log(params);
 			$scope.init(params);
 		};

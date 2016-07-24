@@ -14,6 +14,10 @@ class RestApiCustomer extends RestApi {
 		$col->sortByDate('DESC');
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['type'] ? $col->filterByType($params['GET']['type']) : '';
+
+		if($params['GET']['plan'] != ''){
+			$col->filterByPlan($params['GET']['plan']);
+		}
 		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
 		// start limit page
 		$showDataPerPage = 10;

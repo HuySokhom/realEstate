@@ -36,4 +36,8 @@ class Collection extends StdCollection {
 		$this->addWhere("c.user_type = '" . $arg . "'");
 	}
 
+	public function filterByPlan( $arg ){
+		$this->addWhere("c.customers_plan = '" . (int)$arg . "'");
+	}
+
 }

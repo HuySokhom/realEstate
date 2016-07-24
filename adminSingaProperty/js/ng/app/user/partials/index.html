@@ -1,9 +1,7 @@
 <div class="row">
-	<div class="col-md-4">
-	</div>
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="row">
-			<div class="form-group has-feedback col-sm-4">
+			<div class="form-group has-feedback col-sm-3">
 				<div class="input-group">
 					<input
 						type="text"
@@ -18,7 +16,7 @@
 				</div>
 
 			</div>
-			<div class="form-group has-feedback col-sm-4">
+			<div class="form-group has-feedback col-sm-3">
 				<div class="input-group">
 					<input
 						type="text"
@@ -32,7 +30,7 @@
 				</span>
 				</div>
 			</div>
-			<div class="form-group has-feedback col-sm-4">
+			<div class="form-group has-feedback col-sm-3">
 				<select class="form-control" data-ng-model="type" data-ng-change="search()">
 					<option value="">--Search Type--</option>
 					<option value="normal">Normal</option>
@@ -40,7 +38,21 @@
 					<option value="member">Member</option>
 				</select>
 			</div>
+			<div class="form-group has-feedback col-sm-3">
+				<select
+					data-ng-model="property_plan"
+					data-ng-options="n.id as n.name for n in sortType"
+					class="form-control"
+					data-ng-change="search()"
+				>
+					<option value="">--Select Plan--</option>
+				</select>
+			</div>
 		</div>
+	</div>
+	<div class="col-md-4">
+		Total:
+		<span class="label label-primary">{{totalItems}}</span>
 	</div>
 	<div class="clearfix"></div>
 	<br/>
@@ -51,6 +63,9 @@
 		</th>
 		<th>
 			Type
+		</th>
+		<th>
+			Plan
 		</th>
 		<th>
 			User Name
@@ -87,6 +102,22 @@
 					{{u.user_type}}
 				</span>
 			</td>
+			<td>{{u.customers_plan}}
+				 <span
+					 data-ng-bind="
+                        (u.customers_plan == 3) ? 'Plan Pro'
+                        : (u.customers_plan == 2) ? 'Plan Premium'
+                        : (u.customers_plan == 1) ? 'Plan Basic'
+                        : 'Plan Free'
+                    "
+					 data-ng-class="
+                        (u.customers_plan == 3) ? 'label label-danger'
+                        : (u.customers_plan == 2) ? 'label label-primary'
+                        : (u.customers_plan == 1) ? 'label label-success'
+                        : 'label label-default'
+                    "
+				 ></span>
+			</td>
 			<td>
 				{{u.user_name}}
 			</td>
@@ -100,28 +131,30 @@
 				<span data-ng-bind="u.customers_address"></span>
 			</td>
 			<td align="center">
-				<button
-					class="btn btn-success"
-					data-ng-click="updateStatus(u);"
-					data-ng-if="u.is_agency == 1"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Active"
-					tooltip
-				>
-					<span class="fa fa-check-square-o"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-if="u.is_agency == 0"
-					data-ng-click="updateStatus(u);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Inactive"
-					tooltip
-				>
-					<span class="fa fa-minus-square-o"></span>
-				</button>
+				<div data-ng-if="u.user_type == 'agency'">
+					<button
+						class="btn btn-success"
+						data-ng-click="updateStatus(u);"
+						data-ng-if="u.is_agency == 1"
+						data-toggle="tooltip"
+						data-placement="top"
+						title="Active"
+						tooltip
+					>
+						<span class="fa fa-check-square-o"></span>
+					</button>
+					<button
+						class="btn btn-warning"
+						data-ng-if="u.is_agency == 0"
+						data-ng-click="updateStatus(u);"
+						data-toggle="tooltip"
+						data-placement="top"
+						title="Inactive"
+						tooltip
+					>
+						<span class="fa fa-minus-square-o"></span>
+					</button>
+				</div>
 			</td>
 			<td>
 				<button
