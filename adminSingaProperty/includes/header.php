@@ -44,9 +44,6 @@
             <a href="#/news_type"><span class="fa fa-crop"></span> News Type</a>
           </li>
           <li><a href="#/content"><span class="fa fa-comments"></span>Content</a></li>
-          <li><a href="#/products_expected"><span class="fa fa-calendar"></span> Products Expected</a></li>
-          <li><a href="#/reviews"><span class="fa fa-edit"></span> Reviews</a></li>
-          <li><a href="#/specials"><span class="fa fa-columns"></span> Specials</a></li>
         </ul>
       </li>
       <li class="xn-openable">
@@ -64,54 +61,6 @@
           <li><a href="#/village">Village</a></li>
         </ul>
       </li>
-      <li class="xn-openable">
-        <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Modules</span></a>
-        <ul>
-          <li><a href="table-basic.html"><span class="fa fa-align-justify"></span> Basic</a></li>
-          <li><a href="table-datatables.html"><span class="fa fa-sort-alpha-desc"></span> Data Tables</a></li>
-          <li><a href="table-export.html"><span class="fa fa-download"></span> Export Tables</a></li>
-        </ul>
-      </li>
-      <li class="xn-openable">
-        <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">Orders</span></a>
-        <ul>
-          <li><a href="charts-morris.html"><span class="xn-text">Morris</span></a></li>
-          <li><a href="charts-nvd3.html"><span class="xn-text">NVD3</span></a></li>
-          <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
-          <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
-        </ul>
-      </li>
-      <li class="xn-openable">
-        <a href="maps.html"><span class="fa fa-map-marker"></span> <span class="xn-text">Reports</span></a>
-        <ul>
-          <li><a href="charts-morris.html"><span class="xn-text">Morris</span></a></li>
-          <li><a href="charts-nvd3.html"><span class="xn-text">NVD3</span></a></li>
-          <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
-          <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
-        </ul>
-      </li>
-      <li class="xn-openable">
-        <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">Tools</span></a>
-        <ul>
-          <li class="xn-openable">
-            <a href="#">Second Level</a>
-            <ul>
-              <li class="xn-openable">
-                <a href="#">Third Level</a>
-                <ul>
-                  <li class="xn-openable">
-                    <a href="#">Fourth Level</a>
-                    <ul>
-                      <li><a href="#">Fifth Level</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-
     </ul>
     <!-- END X-NAVIGATION -->
   </div>
