@@ -74,6 +74,9 @@
 			<th>
 				Plan
 			</th>
+			<th>
+				Boost
+			</th>
 			<th width="250px">
 				Action
 			</th>
@@ -112,6 +115,23 @@
 					: 'label label-default'
 				"
 				></span>
+			</td>
+			<td>
+				<button
+					class="btn btn-default"
+					data-ng-click="promote(p.products_id);"
+					data-toggle="tooltip"
+					data-placement="top"
+					title="{{
+						(p.products_promote == 3)
+						? 'Plan Pro' : (p.products_promote == 2)
+						? 'Plan Premium' : (p.products_promote == 1)
+						? 'Plan Basic' : 'Plan Free'
+					}}"
+					tooltip
+				>
+					<i class="fa fa-dollar"></i>
+				</button>
 			</td>
 			<td>
 				<button
@@ -176,22 +196,6 @@
 				>
 					<span class="fa fa-eye"></span>
 				</button>
-				<button
-					class="btn btn-default"
-					data-ng-click="promote(p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="{{
-						(p.products_promote == 3)
-						? 'Plan Pro' : (p.products_promote == 2)
-						? 'Plan Premium' : (p.products_promote == 1)
-						? 'Plan Basic' : 'Plan Free'
-					}}"
-					tooltip
-				>
-					<i class="fa fa-dollar"></i>
-				</button>
-
 			</td>
 		</tr>
 	</table>
