@@ -227,7 +227,53 @@ class RestApiSessionUserProductPost extends RestApi {
 					$col->updateStatus();
 				}
 				elseif( $params['PATCH']['name'] == "promote_product" ){
-
+					// check plan if upgrade
+					$plan = (int)$_SESSION['customer_plan'];
+					if($plan > 0){
+						$productPromote = (int)$params['PATCH']['products_promote'];
+						if($productPromote > 0){
+							// update if product promote bigger than 0 update plan
+							tep_db_query("
+								update
+									products
+								set
+									products_promote = 0
+								where
+									products_id = " . $this->getId() . "
+							");
+						}else {
+							// valid number of product promote
+							$query = tep_db_query("
+								select
+									count(customers_id) as count
+								from
+									products
+								where
+									customers_id = " . $userId . "
+										and
+									products_promote > 0
+							");
+							$count = tep_db_fetch_array($query);
+							if ($count['count'] < 10) {
+								tep_db_query("
+									update
+										products
+									set
+										products_promote = " . $plan . "
+									where
+										products_id = " . $this->getId() . "
+								");
+								echo 'success';
+							} else {
+								echo 'limit';
+							}
+						}
+					}
+					return array(
+						'data' => array(
+							'data' => false
+						)
+					);
 				}
 				else{
 					$col->refreshDate();

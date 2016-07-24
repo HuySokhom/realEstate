@@ -35,10 +35,12 @@ app.controller(
 			});
 		};
 
-		$scope.promote = function(params){
-			var data = { status: params.products_promote, name: "promote_product"};
+		$scope.promote = function(params){console.log(params);
+			var data = { products_promote: params.products_promote, name: "promote_product"};
 			Restful.patch('api/Session/User/ProductPost/' + params.products_id, data).success(function(data){
 				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
+				console.log(data);
+				$scope.init();
 			});
 		};
 
