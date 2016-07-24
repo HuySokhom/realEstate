@@ -13,6 +13,21 @@
 			</td>
 		</tr>
 		<tr>
+			<td>
+				User Plan:
+			</td>
+			<td>
+				<select
+					data-ng-model="user_plan"
+					data-ng-options="n.id as n.name for n in sortType"
+					class="form-control"
+					data-ng-selected="user_plan == n.id"
+				>
+					<option value="">--Select Plan--</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
 			<td width="20%">
 				User Name:
 			</td>

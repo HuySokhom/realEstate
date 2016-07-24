@@ -23,6 +23,7 @@ app.controller(
 				$scope.photo_thumbnail = data.elements[0].photo_thumbnail;
 				$scope.fax = data.elements[0].customers_fax;
 				$scope.type = data.elements[0].user_type;
+				$scope.user_plan = data.elements[0].customers_plan;
 			});
 			Restful.get("api/Location").success(function(data){
 				$scope.locations = data.elements;
@@ -30,7 +31,24 @@ app.controller(
 		};
 		var params = {id: $stateParams.id};
 		$scope.init(params);
-
+		$scope.sortType = [
+			{
+				id: 0,
+				name: 'Free Plan'
+			},
+			{
+				id: 1,
+				name: 'Basic Plan'
+			},
+			{
+				id: 2,
+				name: 'Premium Plan'
+			},
+			{
+				id: 3,
+				name: 'Pro Plan'
+			},
+		];
 		// update functionality
 		$scope.save = function(){
 			// set object to save into news
@@ -44,7 +62,8 @@ app.controller(
 				detail: $scope.detail,
 				customers_address: $scope.address,
 				photo: $scope.photo,
-				photo_thumbnail: $scope.photo_thumbnail
+				photo_thumbnail: $scope.photo_thumbnail,
+				customers_plan: $scope.user_plan
 			};console.log(data);
 			$scope.disabled = false;
 
