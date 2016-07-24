@@ -21,6 +21,9 @@ class Object extends DbObj {
 		, $customersAppId
 		, $customersCompanyName
 		, $customersContactName
+		, $customersPlan
+		, $planDate
+		, $planExpire
 		, $customersGender
 		, $userName
 		, $userType
@@ -42,7 +45,10 @@ class Object extends DbObj {
 				'customers_address',
 				'customers_fax',
 				'customers_telephone',
-				'customers_location'
+				'customers_location',
+				'customers_plan',
+				'plan_date',
+				'plan_expire',
 			)
 		);
 	
@@ -61,7 +67,10 @@ class Object extends DbObj {
 				customers_telephone,
 				customers_address,
 				customers_location,
-				detail
+				detail,
+				customers_plan,
+				plan_date,
+				plan_expire
 			FROM
 				customers
 			WHERE
@@ -129,6 +138,29 @@ class Object extends DbObj {
 		return $this->customersFax;
 	}
 
+	public function setCustomersPlan( $string ){
+		$this->customersPlan = (int)$string;
+	}
+
+	public function getCustomersPlan(){
+		return $this->customersPlan;
+	}
+
+	public function setPlanDate( $string ){
+		$this->planDate = (string)$string;
+	}
+
+	public function getPlanDate(){
+		return $this->planDate;
+	}
+
+	public function setPlanExpire( $string ){
+		$this->planExpire = (string)$string;
+	}
+
+	public function getPlanExpire(){
+		return $this->planExpire;
+	}
 
 	public function setDetail( $string ){
 		$this->detail = (string)$string;

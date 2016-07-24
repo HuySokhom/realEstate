@@ -1,6 +1,35 @@
 <form name="account" data-ng-submit="save();">
 	<table class="table table-bordered">
 		<tr>
+			<td>
+				Plan:
+			</td>
+			<td>
+				<span
+					data-ng-class="
+						(customers_plan == 3) ? 'label label-danger'
+						: (customers_plan == 2) ? 'label label-primary'
+						: (customers_plan == 1) ? 'label label-success'
+						: 'label label-default'
+					"
+				 	data-ng-bind="
+						(customers_plan == 3) ? 'Plan Pro'
+						: (customers_plan == 2) ? 'Plan Premium'
+						: (customers_plan == 1) ? 'Plan Basic'
+						: 'Plan Free'
+				 	"
+				></span>
+			</td>
+		</tr>
+		<tr data-ng-if="customers_plan > 0">
+			<td>
+				Plan Expire:
+			</td>
+			<td>
+				<span class="label label-primary" data-ng-bind="service.formatDate(plan_expire) | date:'dd/MMMM/yyyy'"></span>
+			</td>
+		</tr>
+		<tr>
 			<td width="20%">
 				User Name:
 			</td>
