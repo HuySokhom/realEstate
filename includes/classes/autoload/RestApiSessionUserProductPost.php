@@ -114,7 +114,7 @@ class RestApiSessionUserProductPost extends RestApi {
 			$productObject = new ProductPostObj();
 			$userId = $this->getOwner()->getId();
 			$productObject->setCustomersId($userId);
-			$productObject->setProductsPromote($_SESSION['customer_plan']);
+			//$productObject->setProductsPromote($_SESSION['customer_plan']);
 			$productObject->setProperties($params['POST']['products']);
 			$productObject->insert();
 			$productId = $productObject->getProductsId();
@@ -227,10 +227,11 @@ class RestApiSessionUserProductPost extends RestApi {
 					$col->updateStatus();
 				}
 				elseif( $params['PATCH']['name'] == "promote_product" ){
-					// check plan if upgrade
+					// check plan if upgrade product promote
 					$plan = (int)$_SESSION['customer_plan'];
-					if($plan > 0){
+					if($plan > 0){var_dump($plan);
 						$productPromote = (int)$params['PATCH']['products_promote'];
+						$limit = (int)$_SESSION['customers_limit_products'];
 						if($productPromote > 0){
 							// update if product promote bigger than 0 update plan
 							tep_db_query("
@@ -242,7 +243,7 @@ class RestApiSessionUserProductPost extends RestApi {
 									products_id = " . $this->getId() . "
 							");
 						}else {
-							// valid number of product promote
+							// count number of product promote
 							$query = tep_db_query("
 								select
 									count(customers_id) as count
@@ -254,7 +255,8 @@ class RestApiSessionUserProductPost extends RestApi {
 									products_promote > 0
 							");
 							$count = tep_db_fetch_array($query);
-							if ($count['count'] < 10) {
+							// check valid of product promote
+							if ($count['count'] < $limit) {
 								tep_db_query("
 									update
 										products
@@ -269,11 +271,7 @@ class RestApiSessionUserProductPost extends RestApi {
 							}
 						}
 					}
-					return array(
-						'data' => array(
-							'data' => false
-						)
-					);
+					echo 'false';
 				}
 				else{
 					$col->refreshDate();
