@@ -229,7 +229,7 @@ class RestApiSessionUserProductPost extends RestApi {
 				elseif( $params['PATCH']['name'] == "promote_product" ){
 					// check plan if upgrade product promote
 					$plan = (int)$_SESSION['customer_plan'];
-					if($plan > 0){var_dump($plan);
+					if($plan > 0){
 						$productPromote = (int)$params['PATCH']['products_promote'];
 						$limit = (int)$_SESSION['customers_limit_products'];
 						if($productPromote > 0){
@@ -242,6 +242,8 @@ class RestApiSessionUserProductPost extends RestApi {
 								where
 									products_id = " . $this->getId() . "
 							");
+							echo 'success';
+							return;
 						}else {
 							// count number of product promote
 							$query = tep_db_query("
@@ -266,12 +268,15 @@ class RestApiSessionUserProductPost extends RestApi {
 										products_id = " . $this->getId() . "
 								");
 								echo 'success';
+								return;
 							} else {
 								echo 'limit';
+								return;
 							}
 						}
 					}
 					echo 'false';
+					return;
 				}
 				else{
 					$col->refreshDate();

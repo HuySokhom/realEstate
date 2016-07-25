@@ -91,6 +91,10 @@
         $queryExpiryday = tep_db_query("select count(*) as total from customers_plan where DAY(plan_expire) = DAY(NOW()) AND MONTH(plan_expire) = MONTH(NOW())");
         $countExpiryDay = tep_db_fetch_array($queryExpiryday);
       ?>
+      <?php
+      $queryBook = tep_db_query("select count(*) as total from customers_plan where DAY(create_date) = DAY(NOW()) AND MONTH(create_date) = MONTH(NOW()) AND YEAR(create_date) = YEAR(NOW()) ");
+      $countBook = tep_db_fetch_array($queryBook);
+      ?>
       <!-- MESSAGES -->
       <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-comments"></span></a>
@@ -117,16 +121,19 @@
       <!-- TASKS -->
       <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-tasks"></span></a>
-        <div class="informer informer-warning">0</div>
+        <div class="informer informer-warning"><?php echo $countBook['total'];?></div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
           <div class="panel-heading">
             <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
             <div class="pull-right">
-              <span class="label label-warning">0 active</span>
+              <span class="label label-warning"><?php echo $countBook['total'];?> active</span>
             </div>
           </div>
           <div class="panel-body list-group scroll" style="height: 200px;">
-
+            <a class="list-group-item" href="#/customer_plan">
+              <strong>Customer Expire Plan</strong>
+              <span class="label label-danger"><?php echo $countBook['total'];?></span>
+            </a>
           </div>
           <div class="panel-footer text-center">
             <a href="#">Show all tasks</a>

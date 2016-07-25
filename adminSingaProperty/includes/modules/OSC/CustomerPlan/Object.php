@@ -89,6 +89,16 @@ class Object extends DbObj {
 		}
 
 		if($this->getStatus() == 1){
+			$numberLimit = 0;
+			if($this->getPlan() == 1){
+				$numberLimit = 20;
+			}
+			if($this->getPlan() == 2){
+				$numberLimit = 50;
+			}
+			if($this->getPlan() == 3){
+				$numberLimit = 120;
+			}
 			//	update customer plan table
 			$this->dbQuery("
 				UPDATE
@@ -97,6 +107,7 @@ class Object extends DbObj {
 					customers_plan = '" .  $this->getPlan() . "',
 					plan_date = NOW(),
 					plan_expire = DATE_ADD(NOW(), INTERVAL 31 DAY),
+					customers_limit_products = " . $numberLimit . ",
 					update_by = '" . $this->getUpdateBy() . "'
 				WHERE
 					customers_id = '" . (int)$this->getCustomersId() . "'
