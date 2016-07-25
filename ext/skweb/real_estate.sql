@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-25 09:48:16
+Date: 2016-07-25 17:02:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -11271,7 +11271,7 @@ CREATE TABLE `customers_plan` (
 -- Records of customers_plan
 -- ----------------------------
 INSERT INTO `customers_plan` VALUES ('63', '6', '3', '2016-07-23 23:30:46', '2016-08-23 23:30:46', '1', '2016-07-25 22:04:31', '', '2016-07-25 09:31:46');
-INSERT INTO `customers_plan` VALUES ('64', '7', '2', '2016-07-25 09:38:44', '2016-08-25 09:38:44', '1', '2016-07-25 09:24:41', '', '2016-07-25 09:38:44');
+INSERT INTO `customers_plan` VALUES ('64', '7', '1', '2016-07-25 09:38:44', '2016-08-25 09:38:44', '1', '2016-07-25 14:31:44', '', '2016-07-25 14:31:44');
 
 -- ----------------------------
 -- Table structure for `customers_sagepay_tokens`
@@ -11974,7 +11974,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
@@ -11985,7 +11985,8 @@ INSERT INTO `products` VALUES ('77', '56', '12', '6', '', '', 'For Rent', '332.0
 INSERT INTO `products` VALUES ('78', '57', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '16', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:48', null, null, null, '0', null, null, null, '2016-07-25 09:10:48', '2016-07-25 09:11:36', null, null);
 INSERT INTO `products` VALUES ('79', '57', '12', '6', '', '', 'Both Sale and Rent', '2332.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:11:06', null, null, null, '0', null, null, null, '2016-07-25 09:11:06', '2016-07-25 09:14:41', null, null);
 INSERT INTO `products` VALUES ('80', '57', '12', '6', '', '', 'For Rent', '22.0000', null, '0', '0', '0', '14', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:27', null, null, null, '0', null, null, null, '2016-07-25 09:11:27', '2016-07-25 09:14:43', null, null);
-INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-07-25 09:44:32', '', null);
+INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-07-25 14:25:24', '', null);
+INSERT INTO `products` VALUES ('82', '56', '12', '7', '', '', 'For Rent', '433.0000', null, '7', '6', '9', '14', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 14:25:01', null, null, null, '0', null, null, null, '2016-07-25 14:25:01', '2016-07-25 14:31:40', null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -12037,7 +12038,7 @@ CREATE TABLE `products_description` (
   `products_viewed` int(5) DEFAULT '0',
   PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=179 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
@@ -12056,6 +12057,8 @@ INSERT INTO `products_description` VALUES ('175', '80', '1', 'ewfwef', '', null,
 INSERT INTO `products_description` VALUES ('176', '80', '2', 'asd', '', null, '0');
 INSERT INTO `products_description` VALUES ('177', '81', '1', 'f23f', '', null, '0');
 INSERT INTO `products_description` VALUES ('178', '81', '2', '23fe', '', null, '0');
+INSERT INTO `products_description` VALUES ('179', '82', '1', '32fd', '', null, '0');
+INSERT INTO `products_description` VALUES ('180', '82', '2', 'sfad', '', null, '0');
 
 -- ----------------------------
 -- Table structure for `products_images`
@@ -12300,7 +12303,7 @@ CREATE TABLE `products_to_categories` (
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`,`categories_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
@@ -12362,6 +12365,7 @@ INSERT INTO `products_to_categories` VALUES ('70', '78', '57');
 INSERT INTO `products_to_categories` VALUES ('71', '79', '57');
 INSERT INTO `products_to_categories` VALUES ('72', '80', '57');
 INSERT INTO `products_to_categories` VALUES ('73', '81', '56');
+INSERT INTO `products_to_categories` VALUES ('74', '82', '56');
 
 -- ----------------------------
 -- Table structure for `product_contact_person`
@@ -12530,9 +12534,9 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('1bvksc3hkpiohjalb4rpeghsi1', '1469414828', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
+INSERT INTO `sessions` VALUES ('1bvksc3hkpiohjalb4rpeghsi1', '1469431954', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 INSERT INTO `sessions` VALUES ('p27nsb6hek2ghgbcagghupnsv4', '1469291446', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"3\";s:8:\"username\";s:17:\"kom.huy@gmail.com\";}');
-INSERT INTO `sessions` VALUES ('t9ec9eqfnd4dli1e2svbkorj53', '1469414839', 'sessiontoken|s:32:\"fc676629eaf05e02f1dd40ca390b3986\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"84036\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:1:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"2\";customer_id|i:7;user_name|s:4:\"Test\";customers_limit_products|s:2:\"50\";user_type|s:6:\"normal\";customer_default_address_id|s:1:\"9\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('t9ec9eqfnd4dli1e2svbkorj53', '1469431904', 'sessiontoken|s:32:\"fc676629eaf05e02f1dd40ca390b3986\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"84036\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"2\";customer_id|i:7;user_name|s:4:\"Test\";customers_limit_products|s:2:\"50\";user_type|s:6:\"normal\";customer_default_address_id|s:1:\"9\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
 INSERT INTO `sessions` VALUES ('vgqg5q34tv6uoo22gtm396co73', '1469287416', 'sessiontoken|s:32:\"756057db9e67fd9e735274b11ecd53f9\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"57977\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:3:{s:6:\"formid\";s:32:\"97f4dd0dfa4b27fb7292328ae0c299e4\";s:13:\"email_address\";s:13:\"oop@gmail.com\";s:8:\"password\";s:7:\"test123\";}}i:2;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|N;customer_id|i:6;user_name|s:10:\"huy sokhom\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
 
 -- ----------------------------
@@ -12643,7 +12647,7 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('7', ' ', 't9ec9eqfnd4dli1e2svbkorj53', '', '1469410419', '1469414838', '/realEstate/index.php');
+INSERT INTO `whos_online` VALUES ('7', ' ', 't9ec9eqfnd4dli1e2svbkorj53', '', '1469431145', '1469431904', '/realEstate/api/Session/User/Plan');
 
 -- ----------------------------
 -- Table structure for `zones`
