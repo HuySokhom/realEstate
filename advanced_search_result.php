@@ -317,7 +317,7 @@
     for ($i=0, $n=sizeof($column_list); $i<$n; $i++) {
       if ($column_list[$i] == 'PRODUCT_LIST_NAME') {
         $HTTP_GET_VARS['sort'] = $i+1 . 'a';
-        $order_str = " order by p.products_promote desc, p.products_date_added desc";
+        $order_str = " order by p.products_promote desc, rand(), p.products_date_added desc";
         break;
       }
     }

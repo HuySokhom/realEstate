@@ -65,7 +65,7 @@
               and
           p.categories_id = '" . (int)$current_category_id . "'
       ORDER BY
-          p.products_promote DESC,
+          p.products_promote DESC, rand(),
           p.products_date_added DESC
       ";
 
