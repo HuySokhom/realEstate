@@ -68,7 +68,8 @@
     class=""
 >
 <input type="text" id="language_id" value="<?php echo $_SESSION['languages_id']; ?>" hidden>
-  <?php echo $oscTemplate->getContent('navigation'); ?>
+<input type="text" id="customers_plan" value="<?php echo $_SESSION['customer_plan']; ?>" hidden>
+<input type="text" id="customers_limit_products" value="<?php echo $_SESSION['customers_limit_products']; ?>" hidden>
       <?php require(DIR_WS_INCLUDES . 'header.php');
         $url = $_SERVER['REQUEST_URI'];
           $fullUrl = end( (explode('/', $url)) );

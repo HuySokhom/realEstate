@@ -9,6 +9,8 @@ app.controller(
 	, '$log'
 	, function ($scope, Restful, Services, $location, Upload, $timeout, $log){
 		$scope.service = new Services();
+		$scope.customers_plan = $("#customers_plan").val();
+		$scope.customers_limit_products = $("#customers_limit_products").val();
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [
