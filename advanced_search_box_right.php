@@ -102,8 +102,8 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
           AND
         pd.language_id = '" . (int)$languages_id . "'
       ORDER BY
-        p.products_promote DESC, p.products_date_added DESC
-      LIMIT 5
+        p.products_promote DESC, rand(), p.products_date_added DESC
+      LIMIT 10
     ");
   $num_featured = tep_db_num_rows($featured_query);
   if ($num_featured > 0) {

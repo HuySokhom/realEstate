@@ -25,8 +25,8 @@ class RestApiProductFeatured extends RestApi {
 					and
 				pd.language_id = '" . $_SESSION['languages_id'] . "'
 					order by
-				p.products_promote desc, p.products_date_added desc
-					limit 5
+				p.products_promote desc, rand(), p.products_date_added desc
+					limit 10
 		");
 		$array = array();
 		while ($product_info = tep_db_fetch_array($product_query)){
