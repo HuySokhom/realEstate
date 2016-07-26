@@ -3528,7 +3528,7 @@ form .progress {
 }
 .active {
 	font-weight: 600;
-	color: #3C64FF;
+	/*color: #3C64FF;*/
 }
 .btn {
 	border-radius: 0px;
@@ -3556,4 +3556,10 @@ form .progress {
 .font-color {
 	color: #D33E63;
 	font-family: 'normal';
+}
+.news{
+	background: #3C64FF;
+	color: #fff;
+	padding: 15px 0px 30px 15px;
+	margin-bottom: 15px;
 }
