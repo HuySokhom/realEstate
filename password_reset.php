@@ -88,10 +88,6 @@
   require('includes/form_check.js.php');
 ?>
 
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
-
 <?php
   if ($messageStack->size('password_reset') > 0) {
     echo $messageStack->output('password_reset');
@@ -100,8 +96,8 @@
 
 <?php echo tep_draw_form('password_reset', tep_href_link(FILENAME_PASSWORD_RESET, 'account=' . $email_address . '&key=' . $password_key . '&action=process', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(password_reset);"', true); ?>
 
-<div class="contentContainer">
-  <div class="contentText">
+<div class="margin-top">
+  <div class="container">
     <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
     
     <div class="form-group has-feedback">
@@ -118,11 +114,12 @@
         <?php echo FORM_REQUIRED_INPUT; ?>
       </div>
     </div>
+    <div class="buttonSet">
+      <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+    </div>
+
   </div>
 
-  <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'glyphicon glyphicon-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
-  </div>
 </div>
 
 </form>
