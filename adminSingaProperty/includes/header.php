@@ -108,7 +108,7 @@
           </div>
           <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
             <a class="list-group-item" href="#/customer_expire">
-              <strong>Customer Expire Plan</strong>
+              <strong>Report Customer Expire Plan</strong>
               <span class="label label-danger"><?php echo $countExpiryDay['total'];?></span>
             </a>
           </div>
@@ -131,7 +131,7 @@
           </div>
           <div class="panel-body list-group scroll" style="height: 200px;">
             <a class="list-group-item" href="#/customer_plan">
-              <strong>Customer Expire Plan</strong>
+              <strong>Customer Book Plan Today</strong>
               <span class="label label-danger"><?php echo $countBook['total'];?></span>
             </a>
           </div>

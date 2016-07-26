@@ -5,6 +5,7 @@
 				<ul class="nav navbar-nav">
 					<li data-ng-repeat="type in newsType.elements">
 						<span
+							class="news-item"
 							data-ng-class="{active : activeMenu === type.id}"
 							data-ng-click="setActive(type.id)"
 							data-ng-bind="language_id == 1 ? type.name_en : type.name_kh"
