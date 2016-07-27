@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-07-25 17:02:05
+Date: 2016-07-27 16:59:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,7 @@ CREATE TABLE `action_recorder` (
   KEY `idx_action_recorder_user_id` (`user_id`),
   KEY `idx_action_recorder_identifier` (`identifier`),
   KEY `idx_action_recorder_date_added` (`date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of action_recorder
@@ -97,6 +97,7 @@ INSERT INTO `action_recorder` VALUES ('57', 'ar_admin_login', '3', 'kom.huy@gmai
 INSERT INTO `action_recorder` VALUES ('58', 'ar_admin_login', '3', 'kom.huy@gmail.com', '', '1', '2016-07-23 11:12:02');
 INSERT INTO `action_recorder` VALUES ('59', 'ar_admin_login', '3', 'kom.huy@gmail.com', '', '1', '2016-07-23 13:30:17');
 INSERT INTO `action_recorder` VALUES ('60', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-25 08:32:09');
+INSERT INTO `action_recorder` VALUES ('61', 'ar_admin_login', '1', 'admin', '', '1', '2016-07-27 11:39:17');
 
 -- ----------------------------
 -- Table structure for `address_book`
@@ -10355,6 +10356,36 @@ INSERT INTO `colors` VALUES ('9', '#666666', 'images/img9.jpg', '1', '2015-03-13
 INSERT INTO `colors` VALUES ('10', '#b76904', 'images/img10.jpg', '1', '2015-03-13 13:21:51', '2015-03-13 13:21:51');
 
 -- ----------------------------
+-- Table structure for `communes`
+-- ----------------------------
+DROP TABLE IF EXISTS `communes`;
+CREATE TABLE `communes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `district_id` int(11) DEFAULT NULL,
+  `name_kh` varchar(127) DEFAULT NULL,
+  `name_en` varchar(127) DEFAULT NULL,
+  `create_date` datetime DEFAULT NULL,
+  `update_by` varchar(127) DEFAULT NULL,
+  `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of communes
+-- ----------------------------
+INSERT INTO `communes` VALUES ('1', '10', null, 'VDD', '2016-07-27 13:19:40', null, '2016-07-27 13:21:52');
+INSERT INTO `communes` VALUES ('2', '8', null, 'as2333333333333333333333', '2016-07-27 13:20:28', null, '2016-07-27 13:21:46');
+INSERT INTO `communes` VALUES ('3', '10', null, '3wdxcw', '2016-07-27 13:20:33', null, null);
+INSERT INTO `communes` VALUES ('4', '7', null, 'das', '2016-07-27 13:21:41', null, null);
+INSERT INTO `communes` VALUES ('5', '8', null, 'sdv', '2016-07-27 13:21:57', null, null);
+INSERT INTO `communes` VALUES ('6', '9', null, 'sdv', '2016-07-27 13:22:02', null, null);
+INSERT INTO `communes` VALUES ('7', '10', null, 'sdv', '2016-07-27 13:22:06', null, null);
+INSERT INTO `communes` VALUES ('8', '10', null, 'sdvsdv', '2016-07-27 13:22:10', null, null);
+INSERT INTO `communes` VALUES ('9', '11', null, 'sdvsdv', '2016-07-27 13:22:14', null, null);
+INSERT INTO `communes` VALUES ('10', '11', null, 'dsv', '2016-07-27 13:22:19', null, null);
+INSERT INTO `communes` VALUES ('11', '9', null, 'dsv', '2016-07-27 13:22:23', null, null);
+
+-- ----------------------------
 -- Table structure for `configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `configuration`;
@@ -11238,7 +11269,7 @@ INSERT INTO `customers_info` VALUES ('2', null, '0', '2015-09-30 16:39:51', null
 INSERT INTO `customers_info` VALUES ('3', null, '0', '2015-11-12 19:26:58', '2015-11-12 19:33:11', '0', null, null);
 INSERT INTO `customers_info` VALUES ('4', '2016-01-09 17:10:45', '2', '2016-01-09 17:06:43', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('5', null, '0', '2016-01-10 14:46:31', '2016-01-10 14:52:53', '0', null, null);
-INSERT INTO `customers_info` VALUES ('6', '2016-07-25 09:10:10', '50', '2016-01-14 13:07:07', null, '0', null, null);
+INSERT INTO `customers_info` VALUES ('6', '2016-07-27 14:20:16', '51', '2016-01-14 13:07:07', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('7', '2016-07-25 09:39:23', '5', '2016-06-06 21:26:53', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('8', '2016-06-15 23:58:49', '3', '2016-06-15 22:09:17', null, '0', null, null);
 INSERT INTO `customers_info` VALUES ('9', null, '0', '2016-06-15 23:31:05', null, '0', null, null);
@@ -11270,7 +11301,7 @@ CREATE TABLE `customers_plan` (
 -- ----------------------------
 -- Records of customers_plan
 -- ----------------------------
-INSERT INTO `customers_plan` VALUES ('63', '6', '3', '2016-07-23 23:30:46', '2016-08-23 23:30:46', '1', '2016-07-25 22:04:31', '', '2016-07-25 09:31:46');
+INSERT INTO `customers_plan` VALUES ('63', '6', '1', '2016-07-23 23:30:46', '2016-08-23 23:30:46', '1', '2016-07-27 16:52:25', '', '2016-07-27 16:52:25');
 INSERT INTO `customers_plan` VALUES ('64', '7', '1', '2016-07-25 09:38:44', '2016-08-25 09:38:44', '1', '2016-07-25 14:31:44', '', '2016-07-25 14:31:44');
 
 -- ----------------------------
@@ -11953,6 +11984,7 @@ CREATE TABLE `products` (
   `village_id` int(11) DEFAULT NULL,
   `map_title` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   `map_long` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `commune_id` int(11) DEFAULT NULL,
   `map_lat` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
   `district_id` int(11) DEFAULT NULL,
   `products_promote` int(11) DEFAULT NULL COMMENT '1:pro, 2:premium, 3:basic, 4:free',
@@ -11974,19 +12006,22 @@ CREATE TABLE `products` (
   PRIMARY KEY (`products_id`,`categories_id`,`province_id`,`customers_id`),
   KEY `idx_products_model` (`products_model`),
   KEY `idx_products_date_added` (`products_date_added`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('75', '56', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '13', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:56:23', null, null, null, '0', null, null, null, '2016-07-25 08:56:23', '2016-07-25 09:11:37', null, null);
-INSERT INTO `products` VALUES ('76', '55', '12', '6', '', '', 'For Rent', '2323.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:59:53', null, null, null, '0', null, null, null, '2016-07-25 08:59:53', '2016-07-25 08:59:56', null, null);
-INSERT INTO `products` VALUES ('77', '56', '12', '6', '', '', 'For Rent', '332.0000', null, '0', '8', '0', '15', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:30', null, null, null, '0', null, null, null, '2016-07-25 09:10:30', '2016-07-25 09:11:31', null, null);
-INSERT INTO `products` VALUES ('78', '57', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '16', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:48', null, null, null, '0', null, null, null, '2016-07-25 09:10:48', '2016-07-25 09:11:36', null, null);
-INSERT INTO `products` VALUES ('79', '57', '12', '6', '', '', 'Both Sale and Rent', '2332.0000', null, '0', '0', '0', '15', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:11:06', null, null, null, '0', null, null, null, '2016-07-25 09:11:06', '2016-07-25 09:14:41', null, null);
-INSERT INTO `products` VALUES ('80', '57', '12', '6', '', '', 'For Rent', '22.0000', null, '0', '0', '0', '14', '', '104.88615066528', '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:27', null, null, null, '0', null, null, null, '2016-07-25 09:11:27', '2016-07-25 09:14:43', null, null);
-INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-07-25 14:25:24', '', null);
-INSERT INTO `products` VALUES ('82', '56', '12', '7', '', '', 'For Rent', '433.0000', null, '7', '6', '9', '14', '', '104.88615066528', '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 14:25:01', null, null, null, '0', null, null, null, '2016-07-25 14:25:01', '2016-07-25 14:31:40', null, null);
+INSERT INTO `products` VALUES ('75', '56', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '13', '', '104.88615066528', null, '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:56:23', null, null, null, '0', null, null, null, '2016-07-25 08:56:23', '2016-07-25 09:11:37', null, null);
+INSERT INTO `products` VALUES ('76', '55', '12', '6', '', '', 'For Rent', '2323.0000', null, '0', '0', '0', '15', '', '104.88615066528', null, '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 08:59:53', null, null, null, '0', null, null, null, '2016-07-25 08:59:53', '2016-07-25 08:59:56', null, null);
+INSERT INTO `products` VALUES ('77', '56', '12', '6', '', '', 'For Rent', '332.0000', null, '0', '8', '0', '15', '', '104.88615066528', null, '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:30', null, null, null, '0', null, null, null, '2016-07-25 09:10:30', '2016-07-25 09:11:31', null, null);
+INSERT INTO `products` VALUES ('78', '57', '12', '6', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '16', '', '104.88615066528', null, '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:10:48', null, null, null, '0', null, null, null, '2016-07-25 09:10:48', '2016-07-25 09:11:36', null, null);
+INSERT INTO `products` VALUES ('79', '57', '12', '6', '', '', 'Both Sale and Rent', '2332.0000', null, '0', '0', '0', '15', '', '104.88615066528', null, '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:11:06', null, null, null, '0', null, null, null, '2016-07-25 09:11:06', '2016-07-25 09:14:41', null, null);
+INSERT INTO `products` VALUES ('80', '57', '12', '6', '', '', 'For Rent', '22.0000', null, '0', '0', '0', '14', '', '104.88615066528', null, '11.534289603606', '10', '3', null, '1', '0', '2016-07-25 09:11:27', null, null, null, '0', null, null, null, '2016-07-25 09:11:27', '2016-07-25 09:14:43', null, null);
+INSERT INTO `products` VALUES ('81', '56', '12', '7', '', '', 'For Rent', '23.0000', null, '0', '0', '0', '12', '', '104.88615066528', null, '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 09:16:12', null, null, null, '0', null, null, null, '2016-07-25 09:16:12', '2016-07-25 14:25:24', '', null);
+INSERT INTO `products` VALUES ('82', '56', '12', '7', '', '', 'For Rent', '433.0000', null, '7', '6', '9', '14', '', '104.88615066528', null, '11.534289603606', '10', '0', null, '1', '0', '2016-07-25 14:25:01', null, null, null, '0', null, null, null, '2016-07-25 14:25:01', '2016-07-25 14:31:40', null, null);
+INSERT INTO `products` VALUES ('83', '57', '12', '6', 'huy_sokhom/2016-07-27/images/drag-image-1..jpg', 'huy_sokhom/2016-07-27/image_thumbnail/drag-image-1..jpg', 'For Rent', '3223.0000', null, '17', '15', '46', '22', '', '104.7653010559', '2', '10.928146538471', '10', '0', null, '1', '0', '2016-07-27 15:52:05', null, null, null, '0', null, null, null, '2016-07-27 15:52:05', '2016-07-27 16:32:21', null, null);
+INSERT INTO `products` VALUES ('84', '56', '12', '6', '', '', 'Both Sale and Rent', '3233223.0000', null, '8', '8', '8', '10', '', '104.90125686646', '1', '11.475078832656', '10', '0', null, '1', '0', '2016-07-27 16:16:15', null, null, null, '0', null, null, null, '2016-07-27 16:16:15', null, null, null);
+INSERT INTO `products` VALUES ('85', '59', '12', '6', '', '', 'For Rent', '2323.0000', null, '3', '0', '0', '21', '', '104.88615066528', '7', '11.534289603606', '10', '0', null, '1', '0', '2016-07-27 16:19:07', null, null, null, '0', null, null, null, '2016-07-27 16:19:07', null, null, null);
 
 -- ----------------------------
 -- Table structure for `products_attributes`
@@ -12038,7 +12073,7 @@ CREATE TABLE `products_description` (
   `products_viewed` int(5) DEFAULT '0',
   PRIMARY KEY (`id`,`products_id`,`language_id`),
   KEY `products_name` (`products_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_description
@@ -12059,6 +12094,12 @@ INSERT INTO `products_description` VALUES ('177', '81', '1', 'f23f', '', null, '
 INSERT INTO `products_description` VALUES ('178', '81', '2', '23fe', '', null, '0');
 INSERT INTO `products_description` VALUES ('179', '82', '1', '32fd', '', null, '0');
 INSERT INTO `products_description` VALUES ('180', '82', '2', 'sfad', '', null, '0');
+INSERT INTO `products_description` VALUES ('181', '83', '1', 'asdas', '<p>gad</p>', null, '0');
+INSERT INTO `products_description` VALUES ('182', '83', '2', 'fsa', '<p>asdsdf asdgt awsg asdg adg&nbsp;</p>', null, '0');
+INSERT INTO `products_description` VALUES ('183', '84', '1', 'asdga', '<p>sdgasdg</p>', null, '0');
+INSERT INTO `products_description` VALUES ('184', '84', '2', 'gwag', '<p>a sdfg asgd&nbsp;</p>', null, '0');
+INSERT INTO `products_description` VALUES ('185', '85', '1', 'asdfa', '<p>sfdhsdf</p>', null, '0');
+INSERT INTO `products_description` VALUES ('186', '85', '2', 'fa', '<p>hsdfh</p>', null, '0');
 
 -- ----------------------------
 -- Table structure for `products_images`
@@ -12073,7 +12114,7 @@ CREATE TABLE `products_images` (
   `sort_order` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`),
   KEY `products_images_prodid` (`products_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_images
@@ -12187,6 +12228,7 @@ INSERT INTO `products_images` VALUES ('223', '79', 'Test/2016-07-18/images/Check
 INSERT INTO `products_images` VALUES ('224', '80', 'Test/2016-07-18/images/nature-wallpapers-10..jpg', 'Test/2016-07-18/image_thumbnail/nature-wallpapers-10..jpg', null, '0');
 INSERT INTO `products_images` VALUES ('225', '81', 'Test/2016-07-18/images/red_cat_sleeps_recreation_pet_animals_ultra_3840x2160_hd-wallpaper-327953..jpg', 'Test/2016-07-18/image_thumbnail/red_cat_sleeps_recreation_pet_animals_ultra_3840x2160_hd-wallpaper-327953..jpg', null, '0');
 INSERT INTO `products_images` VALUES ('226', '73', 'huy_sokhom/2016-07-25/images/red_cat_sleeps_recreation_pet_animals_ultra_3840x2160_hd-wallpaper-327953..jpg', 'huy_sokhom/2016-07-25/image_thumbnail/red_cat_sleeps_recreation_pet_animals_ultra_3840x2160_hd-wallpaper-327953..jpg', null, '0');
+INSERT INTO `products_images` VALUES ('227', '83', 'huy_sokhom/2016-07-27/images/drag-image-2..jpg', 'huy_sokhom/2016-07-27/image_thumbnail/drag-image-2..jpg', null, '0');
 
 -- ----------------------------
 -- Table structure for `products_notifications`
@@ -12303,7 +12345,7 @@ CREATE TABLE `products_to_categories` (
   `products_id` int(11) NOT NULL,
   `categories_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`products_id`,`categories_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of products_to_categories
@@ -12366,6 +12408,9 @@ INSERT INTO `products_to_categories` VALUES ('71', '79', '57');
 INSERT INTO `products_to_categories` VALUES ('72', '80', '57');
 INSERT INTO `products_to_categories` VALUES ('73', '81', '56');
 INSERT INTO `products_to_categories` VALUES ('74', '82', '56');
+INSERT INTO `products_to_categories` VALUES ('75', '83', '57');
+INSERT INTO `products_to_categories` VALUES ('76', '84', '56');
+INSERT INTO `products_to_categories` VALUES ('77', '85', '59');
 
 -- ----------------------------
 -- Table structure for `product_contact_person`
@@ -12534,10 +12579,8 @@ CREATE TABLE `sessions` (
 -- ----------------------------
 -- Records of sessions
 -- ----------------------------
-INSERT INTO `sessions` VALUES ('1bvksc3hkpiohjalb4rpeghsi1', '1469431954', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
-INSERT INTO `sessions` VALUES ('p27nsb6hek2ghgbcagghupnsv4', '1469291446', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"3\";s:8:\"username\";s:17:\"kom.huy@gmail.com\";}');
-INSERT INTO `sessions` VALUES ('t9ec9eqfnd4dli1e2svbkorj53', '1469431904', 'sessiontoken|s:32:\"fc676629eaf05e02f1dd40ca390b3986\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"84036\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:3:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:2;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|s:1:\"2\";customer_id|i:7;user_name|s:4:\"Test\";customers_limit_products|s:2:\"50\";user_type|s:6:\"normal\";customer_default_address_id|s:1:\"9\";customer_first_name|s:0:\"\";customer_last_name|s:0:\"\";customer_country_id|s:2:\"36\";customer_zone_id|s:1:\"0\";');
-INSERT INTO `sessions` VALUES ('vgqg5q34tv6uoo22gtm396co73', '1469287416', 'sessiontoken|s:32:\"756057db9e67fd9e735274b11ecd53f9\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"57977\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:4:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:9:\"login.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:1:{s:6:\"action\";s:7:\"process\";}s:4:\"post\";a:3:{s:6:\"formid\";s:32:\"97f4dd0dfa4b27fb7292328ae0c299e4\";s:13:\"email_address\";s:13:\"oop@gmail.com\";s:8:\"password\";s:7:\"test123\";}}i:2;a:4:{s:4:\"page\";s:11:\"account.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:3;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_plan|N;customer_id|i:6;user_name|s:10:\"huy sokhom\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('p99t153a6kgdkafcfqh7863814', '1469613145', 'sessiontoken|s:32:\"92bcdaee6ee575195c357002bf5ba8c8\";cart|O:12:\"shoppingCart\":5:{s:8:\"contents\";a:0:{}s:5:\"total\";i:0;s:6:\"weight\";i:0;s:6:\"cartID\";s:5:\"72147\";s:12:\"content_type\";b:0;}language|s:7:\"english\";languages_id|s:1:\"1\";currency|s:3:\"USD\";navigation|O:17:\"navigationHistory\":2:{s:4:\"path\";a:2:{i:0;a:4:{s:4:\"page\";s:9:\"index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}i:1;a:4:{s:4:\"page\";s:13:\"api/index.php\";s:4:\"mode\";s:6:\"NONSSL\";s:3:\"get\";a:0:{}s:4:\"post\";a:0:{}}}s:8:\"snapshot\";a:0:{}}customer_id|i:6;user_name|s:10:\"huy sokhom\";customer_plan|s:1:\"3\";customers_limit_products|s:1:\"5\";user_type|s:6:\"member\";customer_default_address_id|s:1:\"8\";customer_first_name|s:4:\"Huy \";customer_last_name|s:6:\"Sokhom\";customer_country_id|s:1:\"0\";customer_zone_id|s:1:\"0\";');
+INSERT INTO `sessions` VALUES ('ru48qio8dn287vbsik1c67hdm5', '1469604578', 'language|s:7:\"english\";languages_id|s:1:\"1\";admin|a:2:{s:2:\"id\";s:1:\"1\";s:8:\"username\";s:5:\"admin\";}');
 
 -- ----------------------------
 -- Table structure for `specials`
@@ -12605,21 +12648,21 @@ INSERT INTO `tax_rates` VALUES ('1', '1', '1', '1', '7.0000', 'FL TAX 7.0%', '20
 DROP TABLE IF EXISTS `village`;
 CREATE TABLE `village` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `district_id` int(11) DEFAULT NULL,
+  `commune_id` int(11) DEFAULT NULL,
   `name_en` varchar(127) DEFAULT NULL,
   `name_kh` varchar(127) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `update_date` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of village
 -- ----------------------------
-INSERT INTO `village` VALUES ('9', '10', 'Beung Sala Khang Cheung', null, '2016-06-22 16:20:33', null);
-INSERT INTO `village` VALUES ('10', '10', 'Beung Sala Khang Tbong', null, '2016-06-22 16:20:43', null);
-INSERT INTO `village` VALUES ('11', '10', 'Domnak Kantout Khan Cheung', null, '2016-06-22 16:20:51', null);
-INSERT INTO `village` VALUES ('12', '10', 'Domnak Kantout Khan Tbong', null, '2016-06-22 16:21:03', null);
+INSERT INTO `village` VALUES ('9', '2', 'Beung Sala Khang Cheung', null, '2016-06-22 16:20:33', '2016-07-27 13:28:24');
+INSERT INTO `village` VALUES ('10', '1', 'Beung Sala Khang Tbong', null, '2016-06-22 16:20:43', '2016-07-27 13:32:31');
+INSERT INTO `village` VALUES ('11', '6', 'Domnak Kantout Khan Cheung', null, '2016-06-22 16:20:51', '2016-07-27 13:28:28');
+INSERT INTO `village` VALUES ('12', '1', 'Domnak Kantout Khan Tbong', null, '2016-06-22 16:21:03', '2016-07-27 13:32:35');
 INSERT INTO `village` VALUES ('13', '10', 'Kampong Trach Khang Kert', null, '2016-06-22 16:21:11', null);
 INSERT INTO `village` VALUES ('14', '10', 'Kampong Trach Khang Lech', null, '2016-06-22 16:21:18', null);
 INSERT INTO `village` VALUES ('15', '10', 'Brasat Phnom Kchorng', null, '2016-06-22 16:21:27', null);
@@ -12628,6 +12671,8 @@ INSERT INTO `village` VALUES ('17', '10', 'Angk Sorphi', null, '2016-06-22 16:21
 INSERT INTO `village` VALUES ('18', '10', 'Praek Kreus', null, '2016-06-22 16:21:50', null);
 INSERT INTO `village` VALUES ('19', '10', 'Russei Srok Khang Kert', null, '2016-06-22 16:21:57', null);
 INSERT INTO `village` VALUES ('20', '10', 'Russei Srok Khang Lech', null, '2016-06-22 16:22:03', null);
+INSERT INTO `village` VALUES ('21', '7', 'asfsdfffffff23', null, '2016-07-27 13:28:34', '2016-07-27 13:29:03');
+INSERT INTO `village` VALUES ('22', '2', 'sQ@#', null, '2016-07-27 13:28:47', null);
 
 -- ----------------------------
 -- Table structure for `whos_online`
@@ -12647,7 +12692,8 @@ CREATE TABLE `whos_online` (
 -- ----------------------------
 -- Records of whos_online
 -- ----------------------------
-INSERT INTO `whos_online` VALUES ('7', ' ', 't9ec9eqfnd4dli1e2svbkorj53', '', '1469431145', '1469431904', '/realEstate/api/Session/User/Plan');
+INSERT INTO `whos_online` VALUES ('6', 'Huy  Sokhom', 'p99t153a6kgdkafcfqh7863814', '', '1469610890', '1469613145', '/realEstate/api/Session/User/Plan');
+INSERT INTO `whos_online` VALUES ('6', 'Huy  Sokhom', 'p99t153a6kgdkafcfqh7863814', '', '1469610890', '1469613145', '/realEstate/api/Session/User/Plan');
 
 -- ----------------------------
 -- Table structure for `zones`
