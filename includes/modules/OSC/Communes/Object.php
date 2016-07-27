@@ -45,7 +45,7 @@ class Object extends DbObj {
 		
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
-				"404: Communes not found",
+				"404: Commune not found",
 				404
 			);
 		}
@@ -53,52 +53,6 @@ class Object extends DbObj {
 		$this->setProperties($this->dbFetchArray($q));
 		$this->detail->setFilter('id', $this->getDistrictId());
 		$this->detail->populate();
-	}
-
-	public function update() {
-		if( !$this->getId() ) {
-			throw new Exception("save method requires id");
-		}
-		$this->dbQuery("
-			UPDATE
-				communes
-			SET
-				name_en = '" .  $this->getNameEn() . "',
-				district_id = '" .  $this->getDistrictId() . "'
-			WHERE
-				id = '" . (int)$this->getId() . "'
-		");
-	}
-
-	public function delete(){
-		if( !$this->getId() ) {
-			throw new Exception("delete method requires id to be set");
-		}
-		$this->dbQuery("
-			DELETE FROM
-				communes
-			WHERE
-				id = '" . (int)$this->getId() . "'
-		");
-	}
-
-	public function insert(){
-		$this->dbQuery("
-			INSERT INTO
-				communes
-			(
-				name_en,
-				district_id,
-				create_date
-			)
-				VALUES
-			(
-				'" . $this->getNameEn() . "',
-				'" . $this->getDistrictId() . "',
-				NOW()
-			)
-		");
-		$this->setId( $this->dbInsertId() );
 	}
 
 	public function setNameEn( $string ){

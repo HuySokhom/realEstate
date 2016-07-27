@@ -1,17 +1,15 @@
 <?php
 
 use
-	OSC\Village\Collection
-		as VillageCol,
-	OSC\Village\Object
-		as VillageObj
+	OSC\Communes\Collection
+		as CommunesCol
 ;
 
-class RestApiVillage extends RestApi {
+class RestApiCommunes extends RestApi {
 
 	public function get($params){
-		$col = new VillageCol();
-		$this->getId() ? $col->filterByCommuneId($this->getId()): '';
+		$col = new CommunesCol();
+		$this->getId() ? $col->filterByDistrictId($this->getId()): '';
 		// start limit page
 		if($params['GET']['pagination']) {
 			$showDataPerPage = 10;

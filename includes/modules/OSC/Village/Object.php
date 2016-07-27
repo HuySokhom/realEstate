@@ -11,7 +11,7 @@ class Object extends DbObj {
 		
 	protected
 		$nameEn
-		, $districtId
+		, $communeId
 		, $detail
 	;
 
@@ -36,7 +36,7 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				name_en,
-				district_id
+				commune_id
 			FROM
 				village
 			WHERE
@@ -63,12 +63,12 @@ class Object extends DbObj {
 		return $this->nameEn;
 	}
 
-	public function setDistrictId( $string ){
-		$this->districtId = (string)$string;
+	public function setCommuneId( $string ){
+		$this->communeId = (int)$string;
 	}
 
-	public function getDistrictId(){
-		return $this->districtId;
+	public function getCommuneId(){
+		return $this->communeId;
 	}
 
 	public function setDetail( $string ){

@@ -46,10 +46,17 @@ app.controller(
 		};
 		// functional for init Commune
 		$scope.initCommune = function(id){
-			Restful.get("api/Village/" + id).success(function(data){
+			Restful.get("api/Communes/" + id).success(function(data){
 				$scope.communes = data;
 			});
 		};
+		// functional for init Village
+		$scope.initVillage = function(id){
+			Restful.get("api/Village/" + id).success(function(data){
+				$scope.village = data;
+			});
+		};
+
 		// save functionality
 		$scope.save = function(){
 			// set object to save into news
@@ -63,7 +70,8 @@ app.controller(
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
 					district_id: $scope.district_id,
-					village_id: $scope.commune_id,
+					village_id: $scope.village_id,
+					commune_id: $scope.commune_id,
 					products_price: $scope.price,
 					products_kind_of: $scope.property_type,
 					bed_rooms: $scope.bed_rooms,

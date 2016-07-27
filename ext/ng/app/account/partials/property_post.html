@@ -130,8 +130,19 @@
                 data-ng-model="commune_id"
                 data-ng-options="c.id as c.name_en for c in communes.elements"
                 class="form-control"
+                data-ng-change="initVillage(commune_id)"
             >
                 <option value="">--Select Commune--</option>
+            </select>
+            <label>
+                Village
+            </label>
+            <select
+                data-ng-model="village_id"
+                data-ng-options="c.id as c.name_en for c in village.elements"
+                class="form-control"
+            >
+                <option value="">--Select Village--</option>
             </select>
             <label>
                 Bed Rooms

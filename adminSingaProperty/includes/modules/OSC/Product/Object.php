@@ -20,6 +20,7 @@ class Object extends DbObj {
 		$customersId
 		, $productsId
 		, $provinceId
+		, $communeId
         , $districtId
         , $villageId
 		, $productsImage
@@ -55,6 +56,7 @@ class Object extends DbObj {
 				'customers_id',
 				'province_id',
                 'district_id',
+				'commune_id',
                 'village_id',
 				'products_image',
 				'products_image_thumbnail',
@@ -92,6 +94,7 @@ class Object extends DbObj {
 				map_title,
 				categories_id,
 				province_id,
+				commune_id,
 				products_promote,
 				district_id,
 				village_id,
@@ -210,6 +213,7 @@ class Object extends DbObj {
 				map_title = '" . $this->getMapTitle() . "',
 				categories_id = '" . (int)$this->getCategoriesId() . "',
 				district_id = '" . (int)$this->getDistrictId() . "',
+				commune_id = '" . (int)$this->getCommuneId() . "',
 				village_id = '" . (int)$this->getVillageId() . "',
 				products_image = '" . $this->getProductsImage() . "',
 				products_promote = '" . $this->getProductsPromote() . "',
@@ -237,6 +241,7 @@ class Object extends DbObj {
 				categories_id,
 				province_id,
 				district_id,
+				commune_id,
 				village_id,
 				products_image,
 				products_image_thumbnail,
@@ -258,6 +263,7 @@ class Object extends DbObj {
 				'" . (int)$this->getCategoriesId() . "',
 				'" . (int)$this->getProvinceId() . "',
 				'" . (int)$this->getDistrictId() . "',
+				'" . (int)$this->getCommuneId() . "',
 				'" . (int)$this->getVillageId() . "',
  				'" . $this->dbEscape( $this->getProductsImage() ) . "',
  				'" . $this->dbEscape( $this->getProductsImageThumbnail() ) . "',
@@ -321,7 +327,15 @@ class Object extends DbObj {
 	public function setProductsId( $int ){
 		$this->productsId = (int)$int;
 	}
-	
+
+	public function getCommuneId(){
+		return $this->communeId;
+	}
+
+	public function setCommuneId( $int ){
+		$this->communeId = (int)$int;
+	}
+
 	public function getProductsId(){
 		return $this->productsId;
 	}
