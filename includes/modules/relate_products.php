@@ -29,7 +29,7 @@ $new_products_query_sale = tep_db_query("
             and
         pd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_promote desc, p.products_date_added desc
+        p.products_promote desc, rand(), p.products_date_added desc
         limit 10"
 );
 
