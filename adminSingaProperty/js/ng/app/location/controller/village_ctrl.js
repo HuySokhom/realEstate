@@ -49,7 +49,7 @@ app.controller(
 		$scope.save = function(){
 			var data = {
 				name_en: $scope.name,
-				district_id: $scope.district_id
+				commune_id: $scope.district_id
 			};
 			$scope.isDisabled = true;
 			if( $scope.id ){

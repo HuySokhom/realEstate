@@ -13,7 +13,7 @@ class RestApiVillage extends RestApi {
 		$col = new VillageCol();
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
-		$params['GET']['type'] ? $col->filterByDistrictId($params['GET']['type']) : '';
+		$params['GET']['type'] ? $col->filterByCommuneId($params['GET']['type']) : '';
 		// start limit page
 		if($params['GET']['pagination']) {
 			$showDataPerPage = 10;

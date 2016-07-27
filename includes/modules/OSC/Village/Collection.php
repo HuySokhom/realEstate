@@ -20,8 +20,8 @@ class Collection extends StdCollection {
 		$this->addWhere("vl.id = '" . (int)$arg. "' ");
 	}
 
-	public function filterByDistrictId( $arg ){
-		$this->addWhere("vl.district_id = '" . (int)$arg. "' ");
+	public function filterByCommuneId( $arg ){
+		$this->addWhere("vl.commune_id = '" . (int)$arg. "' ");
 	}
 
 	public function filterByName( $arg ){
