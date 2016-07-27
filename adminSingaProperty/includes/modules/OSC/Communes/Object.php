@@ -1,23 +1,23 @@
 <?php
 
-namespace OSC\Village;
+namespace OSC\Communes;
 
 use
 	Aedea\Core\Database\StdObject as DbObj,
-	OSC\Communes\Collection as CommunesCol
+	OSC\District\Collection as DistrictCol
 ;
 
 class Object extends DbObj {
 		
 	protected
 		$nameEn
-		, $communeId
+		, $districtId
 		, $detail
 	;
 
 	public function __construct( $params = array() ){
 		parent::__construct($params);
-		$this->detail = new CommunesCol();
+		$this->detail = new DistrictCol();
 	}
 
 	public function toArray( $params = array() ){
@@ -36,9 +36,9 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				name_en,
-				commune_id
+				district_id
 			FROM
-				village
+				communes
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
@@ -51,7 +51,7 @@ class Object extends DbObj {
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
-		$this->detail->setFilter('id', $this->getCommuneId());
+		$this->detail->setFilter('id', $this->getDistrictId());
 		$this->detail->populate();
 	}
 
@@ -61,10 +61,10 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			UPDATE
-				village
+				communes
 			SET
 				name_en = '" .  $this->getNameEn() . "',
-				commune_id = '" .  $this->getCommuneId() . "'
+				district_id = '" .  $this->getDistrictId() . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -76,7 +76,7 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			DELETE FROM
-				village
+				communes
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
@@ -85,16 +85,16 @@ class Object extends DbObj {
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
-				village
+				communes
 			(
 				name_en,
-				commune_id,
+				district_id,
 				create_date
 			)
 				VALUES
 			(
 				'" . $this->getNameEn() . "',
-				'" . $this->getCommuneId() . "',
+				'" . $this->getDistrictId() . "',
 				NOW()
 			)
 		");
@@ -109,12 +109,12 @@ class Object extends DbObj {
 		return $this->nameEn;
 	}
 
-	public function setCommuneId( $string ){
-		$this->communeId = (int)$string;
+	public function setDistrictId( $string ){
+		$this->districtId = (string)$string;
 	}
 
-	public function getCommuneId(){
-		return $this->communeId;
+	public function getDistrictId(){
+		return $this->districtId;
 	}
 
 	public function setDetail( $string ){

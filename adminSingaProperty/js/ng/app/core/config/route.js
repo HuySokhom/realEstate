@@ -79,6 +79,11 @@ app.config([
 				templateUrl: 'js/ng/app/location/partials/district.html',
 				controller: 'district_ctrl'
 			})
+			.state('/commune', {
+				url: '/commune',
+				templateUrl: 'js/ng/app/location/partials/commune.html',
+				controller: 'commune_ctrl'
+			})
 			.state('/village', {
 				url: '/village',
 				templateUrl: 'js/ng/app/location/partials/village.html',

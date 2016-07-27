@@ -58,6 +58,7 @@
         <ul>
           <li><a href="#/location">Province</a></li>
           <li><a href="#/district">District</a></li>
+          <li><a href="#/commune">Commune</a></li>
           <li><a href="#/village">Village</a></li>
         </ul>
       </li>
@@ -88,10 +89,12 @@
       </li>
       <!-- END SIGN OUT -->
       <?php
+        // count expire plan
         $queryExpiryday = tep_db_query("select count(*) as total from customers_plan where DAY(plan_expire) = DAY(NOW()) AND MONTH(plan_expire) = MONTH(NOW())");
         $countExpiryDay = tep_db_fetch_array($queryExpiryday);
       ?>
       <?php
+      // count customer book plan
       $queryBook = tep_db_query("select count(*) as total from customers_plan where DAY(create_date) = DAY(NOW()) AND MONTH(create_date) = MONTH(NOW()) AND YEAR(create_date) = YEAR(NOW()) ");
       $countBook = tep_db_fetch_array($queryBook);
       ?>

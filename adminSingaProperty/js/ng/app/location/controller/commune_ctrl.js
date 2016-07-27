@@ -1,5 +1,5 @@
 app.controller(
-	'village_ctrl', [
+	'commune_ctrl', [
 	'$scope'
 	, 'Restful'
 	, 'Services'
@@ -8,13 +8,13 @@ app.controller(
 	, function ($scope, Restful, Services, $location, $alertify){
 		$scope.service = new Services();
 		var params = {pagination: 'yes'};
-		var url = 'api/Village/';
+		var url = 'api/Commune/';
 		$scope.init = function(params){
 			Restful.get(url, params).success(function(data){
 				$scope.district = data;
 				$scope.totalItems = data.count;
 			});
-			Restful.get('api/Commune/').success(function(data){
+			Restful.get('api/District/').success(function(data){
 				$scope.districts = data;
 			});
 		};

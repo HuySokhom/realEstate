@@ -84,6 +84,10 @@
 ></script>
 <script
     type="text/javascript"
+    src="js/ng/app/location/controller/commune_ctrl.js"
+></script>
+<script
+    type="text/javascript"
     src="js/ng/app/location/controller/district_ctrl.js"
 ></script>
 <!--- End location plugin -->
