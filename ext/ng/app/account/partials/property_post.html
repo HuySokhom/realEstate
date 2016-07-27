@@ -78,6 +78,7 @@
                 ngf-model-invalid="errorFiles"
                 ngf-select="uploadPic(picFile, 'feature_image')"
                 class="form-control"
+                required
             >
             <i ng-show="myForm.file.$error.maxSize">
                 File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M

@@ -36,6 +36,9 @@ app.controller(
 				$scope.districts = data;
 			});
 			Restful.get("api/Village/").success(function(data){
+				$scope.villages = data;
+			});
+			Restful.get("api/Communes/").success(function(data){
 				$scope.communes = data;
 			});
 		};
@@ -50,8 +53,14 @@ app.controller(
 		};
 		// functional for init Commune
 		$scope.initCommune = function(id){
-			Restful.get("api/Village/" + id).success(function(data){
+			Restful.get("api/Communes/" + id).success(function(data){
 				$scope.communes = data;
+			});
+		};
+		// functional for init Village
+		$scope.initVillage = function(id){
+			Restful.get("api/Village/" + id).success(function(data){
+				$scope.villages = data;
 			});
 		};
 		var url = 'api/Session/User/ProductPost/';
@@ -70,7 +79,8 @@ app.controller(
 				$scope.image = data.elements[0].products_image;
 				$scope.price = data.elements[0].products_price;
 				$scope.categories_id = data.elements[0].categories_id;
-				$scope.commune_id = data.elements[0].village_id;
+				$scope.commune_id = data.elements[0].commune_id;
+				$scope.village_id = data.elements[0].village_id;
 				$scope.title_en = data.elements[0].product_detail[0].products_name;
 				$scope.title_kh = data.elements[0].product_detail[1].products_name;
 				$scope.content_en = data.elements[0].product_detail[0].products_description;
@@ -181,7 +191,8 @@ app.controller(
 					categories_id: $scope.categories_id,
 					province_id: $scope.province_id,
 					district_id: $scope.district_id,
-					village_id: $scope.commune_id,
+					commune_id: $scope.commune_id,
+					village_id: $scope.village_id,
 					products_price: $scope.price,
 					products_kind_of: $scope.property_type,
 					bed_rooms: $scope.bed_rooms,

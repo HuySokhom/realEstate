@@ -4,8 +4,21 @@
     </h4>
     <div class="row">
         <div class="col-md-6">
+            <div data-ng-if="customers_plan > 0">
+                <label>
+                    Promote:
+                </label>
+                <select
+                        data-ng-model="promote_product"
+                        class="form-control"
+                >
+                    <option value="">--Select Promote--</option>
+                    <option value="promote">Promote</option>
+                </select>
+            </div>
             <label>
                 Type:
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <select
                 data-ng-model="categories_id"
@@ -18,6 +31,7 @@
             </select>
             <label>
                 Property Type
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <select
                 data-ng-model="property_type"
@@ -30,6 +44,7 @@
             </select>
             <label>
                 Title EN:
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <input
                 type="text"
@@ -39,6 +54,7 @@
             />
             <label>
                 Title KH:
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <input
                 type="text"
@@ -48,10 +64,12 @@
             />
             <label>
                 Price:
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <input type="text" class="form-control" required data-ng-model="price"/>
             <label>
                 Image:
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <input
                 type="file"
@@ -84,6 +102,7 @@
         <div class="col-md-6">
             <label>
                 City / Province
+                <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
             <select
                 data-ng-model="province_id"
@@ -116,10 +135,21 @@
                 data-ng-model="commune_id"
                 data-ng-options="c.id as c.name_en for c in communes.elements"
                 class="form-control"
+                data-ng-change="initVillage(commune_id);"
                 data-ng-selected="commune_id == c.id"
                 required
             >
                 <option value="">--Select Commune--</option>
+            </select>
+            <label>
+                Village
+            </label>
+            <select
+                data-ng-model="village_id"
+                data-ng-options="c.id as c.name_en for c in villages.elements"
+                class="form-control"
+            >
+                <option value="">--Select Village--</option>
             </select>
             <label>
                 Bed Rooms
@@ -162,6 +192,7 @@
             <div class="col-md-6">
                 <label>
                     Description EN:
+                    <span class="glyphicon glyphicon-asterisk font-color"></span>
                 </label>
                 <textarea
                     class="form-control"
@@ -173,6 +204,7 @@
             <div class="col-md-6">
                 <label>
                     Description KH:
+                    <span class="glyphicon glyphicon-asterisk font-color"></span>
                 </label>
                 <textarea
                     class="form-control"
@@ -186,6 +218,7 @@
     <div>
         <label>
             Drag and drop your location:
+            <span class="glyphicon glyphicon-asterisk font-color"></span>
         </label>
         <ui-gmap-google-map
             center="map.center"
