@@ -90,7 +90,12 @@
       <!-- END SIGN OUT -->
       <?php
         // count expire plan
-        $queryExpiryday = tep_db_query("select count(*) as total from customers_plan where DAY(plan_expire) = DAY(NOW()) AND MONTH(plan_expire) = MONTH(NOW())");
+        $queryExpiryday = tep_db_query("
+          SELECT count(*) as total
+          FROM customers_plan
+          WHERE DATEDIFF(plan_expire, NOW()) <= 7 AND status = 1
+          ORDER BY plan_expire DESC
+        ");
         $countExpiryDay = tep_db_fetch_array($queryExpiryday);
       ?>
       <?php

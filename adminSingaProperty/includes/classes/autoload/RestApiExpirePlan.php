@@ -5,22 +5,20 @@ class RestApiExpirePlan extends RestApi {
     public function get($params){
         $queryExpiryday = tep_db_query("
             SELECT
-              cp.id,
-              cp.plan,
-              cp.plan_date,
-              cp.plan_expire,
+              c.customers_id,
               c.user_name,
+              cp.plan,
               c.user_type,
               c.customers_telephone,
-              c.customers_email_address
+              c.customers_email_address,
+              cp.plan_date,
+              cp.plan_expire
             FROM
               customers_plan cp INNER JOIN customers c ON cp.customers_id = c.customers_id
             WHERE
               cp.status = 1
                 AND
-              DAY(cp.plan_expire) = DAY(NOW())
-                AND
-            MONTH(cp.plan_expire) = MONTH(NOW())
+              DATEDIFF(cp.plan_expire, NOW()) <= 7
         ");
 
         $array = array();

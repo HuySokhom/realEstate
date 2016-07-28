@@ -12,6 +12,7 @@ var app = angular.module(
         , 'ui.select'
         , 'ds.clock'
         , 'ui.calendar'
+        , 'ngCsv'
     ]
 );
 // range with number

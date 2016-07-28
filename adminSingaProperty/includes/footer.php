@@ -65,6 +65,10 @@
 ></script>
 <script
     type="text/javascript"
+    src="js/ng/lib/angular-csv/ng-csv.min.js"
+></script>
+<script
+    type="text/javascript"
     src="js/ng/lib/angular-calendar/calendar.js"
 ></script>
 <script

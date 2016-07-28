@@ -11,6 +11,15 @@
             <i class="fa fa-print"></i>
             Print
         </button>
+        <button
+            class="btn btn-primary"
+            ng-csv="csv"
+            csv-header="headers"
+            filename="test.csv"
+        >
+            <i class="fa fa-download"></i>
+            Export To Excel
+        </button>
     </div>
 </div>
 <br>
@@ -21,11 +30,11 @@
 >
     <i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 </div>
-<div  id="print">
+<div id="print">
     <table class="table table-bordered table-striped table-print" data-ng-if="plans">
         <tr>
             <th>
-                No
+                Customer ID
             </th>
             <th>
                 Customer Name
@@ -40,6 +49,9 @@
                 Tel
             </th>
             <th>
+                Email
+            </th>
+            <th>
                 Plan Date
             </th>
             <th>
@@ -48,7 +60,7 @@
         </tr>
         <tr data-ng-repeat="p in plans.elements">
             <td>
-                {{$index + 1}}
+                {{p.customers_id}}
             </td>
             <td>
                 {{p.user_name}}
@@ -74,6 +86,9 @@
             </td>
             <td>
                 {{p.customers_telephone}}
+            </td>
+            <td>
+                {{p.customers_email_address}}
             </td>
             <td>
                 {{service.formatDate(p.plan_date) | date:'dd/MM/yyyy'}}
