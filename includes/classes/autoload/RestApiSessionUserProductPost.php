@@ -116,6 +116,36 @@ class RestApiSessionUserProductPost extends RestApi {
 			$productObject->setCustomersId($userId);
 			//$productObject->setProductsPromote($_SESSION['customer_plan']);
 			$productObject->setProperties($params['POST']['products']);
+
+			var_dump($params['POST']['products']);
+			$promoteProductNumber = (int)$_SESSION['customer_plan'];
+			$limitProductPromote = (int)$_SESSION['customers_limit_products'];
+			/********************************************************
+			 ****** check if customer plan bigger than zero *********
+			 ********************************************************/
+			if( $params['POST']['products']['products_promote'] ) {
+				if ($promoteProductNumber > 0) {
+					/** count if have promote product has limitation of number **/
+					$queryLimit = tep_db_query("
+						SELECT
+							count(products_id) as total
+						FROM
+							products
+						WHERE
+							products_promote > 0
+								AND
+							customers_id = " . $userId . "
+					");
+					$countLimit = tep_db_fetch_array($queryLimit);
+					$numberOfLimitQuery = (int)$countLimit['total'];
+					var_dump($limitProductPromote);
+					var_dump($numberOfLimitQuery);
+					if ( $numberOfLimitQuery <= $limitProductPromote ) {
+						$productObject->setProductsPromote($promoteProductNumber);
+					}
+				}
+			}
+
 			$productObject->insert();
 			$productId = $productObject->getProductsId();
 

@@ -9,11 +9,11 @@
                     Promote:
                 </label>
                 <select
-                    data-ng-model="promote_product"
+                    data-ng-model="productsPromoteOption"
                     class="form-control"
+                    data-ng-options="option as option for option in ['Promote Product']"
                 >
                     <option value="">--Select Promote--</option>
-                    <option value="promote">Promote</option>
                 </select>
             </div>
             <label>
