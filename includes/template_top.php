@@ -50,17 +50,17 @@
 <![endif]-->
     <link href='//fonts.googleapis.com/css?family=Khmer:400normal|Didact+Gothic:400normal|Open+Sans:400normal|Handlee:400normal|Lato:400normal|Lora:400normal|Roboto:400normal|Nunito:400normal|Montserrat:400normal|Hanuman:400normal|Raleway:400normal&subset=all' rel="stylesheet" type="text/css">
     <script src="ext/jquery/jquery-1.11.1.min.js"></script>
-    <meta property="og:title" content="Singa Property Online Real Estate in Cambodia | Buy &amp;amp; Sell Online on Real Estate Singa.com" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="Website" />
-    <meta property="og:description" content="Welcome to Singa Online Property"/>
-    <meta property="og:url" content="http://singaproperty.com"/>
-    <meta property="og:site_name" content="SINGA PROPERTY Online Real Estate"/>
+<!--    <meta property="og:title" content="Singa Property Online Real Estate in Cambodia | Buy &amp;amp; Sell Online on Real Estate Singa.com" />-->
+<!--    <meta property="og:locale" content="en_US" />-->
+<!--    <meta property="og:type" content="Website" />-->
+<!--    <meta property="og:description" content="Welcome to Singa Online Property"/>-->
+<!--    <meta property="og:url" content="http://singaproperty.com"/>-->
+<!--    <meta property="og:site_name" content="SINGA PROPERTY Online Real Estate"/>-->
 <!-- font awesome -->
 <link rel="stylesheet" href="ext/css/Font-Awesome-master/css/font-awesome.min.css">
     <meta name="csrf-param" content="authenticity_token" />
     <meta name="csrf-token" content="sNMk592JV2wwHn6DPJ8C5oy/hHDnjIlZBOHyngtTbpQ=" />
-<?php //echo $oscTemplate->getBlocks('header_tags'); ?>
+<?php echo $oscTemplate->getBlocks('header_tags'); ?>
 </head>
 <body
     data-ng-app="main"
