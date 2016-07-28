@@ -20,4 +20,7 @@ class Collection extends StdCollection {
 		$this->addWhere("cpu.id = '" . (int)$arg. "' ");
 	}
 
+	public function orderByDate($arg){
+		$this->addOrderBy('cpu.create_date', $arg);
+	}
 }
