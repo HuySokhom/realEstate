@@ -236,6 +236,11 @@
       tep_session_register('customer_country_id');
       tep_session_register('customer_zone_id');
 
+      $customer_plan = 0;
+      tep_session_register('customer_plan');
+
+      $customers_limit_products = 0;
+      tep_session_register('customers_limit_products');
 // reset session token
       $sessiontoken = md5(tep_rand() . tep_rand() . tep_rand() . tep_rand());
 

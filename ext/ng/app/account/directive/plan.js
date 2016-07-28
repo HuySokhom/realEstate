@@ -3,6 +3,9 @@ app.directive('plan',function(){
         restrict: 'EA',
         templateUrl : 'ext/ng/app/account/partials/plan.html',
         controller: function ($scope, $http, alertify) {
+
+            $scope.customers_plan = $("#customers_plan").val();
+
             $scope.book = function (planNumber) {
                 $scope.disabled = true;
                 var params = {plan: planNumber};
@@ -17,7 +20,24 @@ app.directive('plan',function(){
                         "<br/>Please wait our assistant will contact you  soon."
                     );
                 });
-            }
+            };
+
+            $scope.upgrade = function (planNumber) {
+                $scope.disabled = true;
+                var params = {plan: planNumber};
+                $http({
+                    url: 'api/Session/User/PlanUpgrade',
+                    method: 'POST',
+                    data: params
+                }).success(function(data){
+                    console.log(data);
+                    $scope.disabled = false;
+                    alertify.alert("" +
+                        "<b>Congratulation:</b> your upgrade has successful. " +
+                        "<br/>Please wait our assistant will contact you  soon."
+                    );
+                });
+            };
         }
     };
 
