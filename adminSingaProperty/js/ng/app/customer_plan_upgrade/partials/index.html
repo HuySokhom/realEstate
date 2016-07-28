@@ -1,0 +1,132 @@
+<div class="col-md-3">
+	<h3>Customer Upgrade Plan</h3>
+</div>
+<div class="col-md-3">
+	<div class="input-group">
+		<input
+			type="text"
+			class="form-control"
+			data-ng-model="customer_id"
+		 	data-ng-keypress="($event.which === 13) ? search() : 0"
+	  		placeholder="Search Customer Id..."/>
+		<div class="input-group-btn">
+			<button class="btn btn-default" data-ng-click="search();">
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+		</div>
+	</div>
+</div>
+<div class="col-md-3">
+	<select data-ng-model="status" class="form-control" data-ng-change="search();">
+		<option value="">--Filter By Status</option>
+		<option value="1">Active</option>
+		<option value="0">Inactive</option>
+	</select>
+</div>
+<br/><br/><br/>
+<table class="table table-bordered table-striped" style="font-size: 12px;">
+	<thead>
+		<th>
+			Id
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Upgrade Plan
+		</th>
+		<th>
+			Type
+		</th>
+		<th>
+			Tel
+		</th>
+		<th>
+			Create Date
+		</th>
+		<th style="width: 130px;">
+			Action
+		</th>
+	</thead>
+	<tr data-ng-repeat="n in plans.elements">
+		<td>
+			{{n.id}}
+		</td>
+		<td>
+			{{n.detail[0].user_name}}
+		</td>
+		<td>
+			<span
+				data-ng-bind="
+					(n.plan == 3) ? 'Plan Pro'
+					: (n.plan == 2) ? 'Plan Premium'
+					: (n.plan == 1) ? 'Plan Basic'
+					: 'Plan Free'
+				"
+				data-ng-class="
+					(n.plan == 3) ? 'label label-danger'
+					: (n.plan == 2) ? 'label label-primary'
+					: (n.plan == 1) ? 'label label-success'
+					: 'label label-default'
+				"
+			></span>
+		</td>
+		<td>
+			{{n.detail[0].user_type}}
+		</td>
+		<td>
+			{{n.detail[0].customers_telephone}}
+		</td>
+		<td>
+			{{service.formatDate(n.create_date) | date:'dd/MM/yyyy'}}
+		</td>
+		<td>
+			<button
+				data-ng-class="n.status == 1 ? 'btn btn-success' : 'btn btn-warning'"
+				data-ng-click="updateStatus(n);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="{{n.status == 1 ? 'Active' : 'Inactive'}}"
+				tooltip
+			>
+				<span data-ng-class="n.status == 1 ? 'fa fa-check-square-o' : 'fa fa-minus-circle'"></span>
+			</button>
+			<button
+				class="btn btn-danger"
+				data-ng-click="remove(n.id, $index);"
+				data-toggle="modals"
+				data-placement="bottom"
+				data-target="#messages"
+				title="Delete"
+				tooltip
+			>
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</td>
+	</tr>
+</table>
+<div
+	data-ng-if="plans.elements == 0"
+>
+	<div class="alert alert-danger alert-dismissible">
+		<strong>Warning!</strong> Empty Data.
+	</div>
+</div>
+<div
+	data-ng-if="!plans"
+	class="align_center"
+>
+<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
+</div>
+<div
+	class="panel-footer"
+>
+	<pagination
+		total-items="totalItems"
+		ng-model="currentPage"
+		ng-change="pageChanged()"
+		max-size="5"
+		items-per-page="10"
+		boundary-links="true"
+	></pagination>
+</div>

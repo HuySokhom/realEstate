@@ -127,6 +127,12 @@
     src="js/ng/app/customer_plan/controller/customer_plan_ctrl.js"
 ></script>
 
+<!--- Add customer_plan upgrade_ctrl plugin -->
+<script
+    type="text/javascript"
+    src="js/ng/app/customer_plan_upgrade/controller/customer_plan_upgrade_ctrl.js"
+></script>
+
 <!--- Add report_customer_expire_ctrl plugin -->
 <script
     type="text/javascript"

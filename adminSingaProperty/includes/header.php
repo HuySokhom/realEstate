@@ -109,7 +109,7 @@
         <div class="informer informer-danger"><?php echo $countExpiryDay['total'];?></div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
           <div class="panel-heading">
-            <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
+            <h3 class="panel-title"><span class="fa fa-comments"></span> Expire Plan</h3>
             <div class="pull-right">
               <span class="label label-danger"><?php echo $countExpiryDay['total'];?></span>
             </div>
@@ -132,7 +132,7 @@
         <div class="informer informer-warning"><?php echo $countBook['total'];?></div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
           <div class="panel-heading">
-            <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
+            <h3 class="panel-title"><span class="fa fa-tasks"></span> Book Plan</h3>
             <div class="pull-right">
               <span class="label label-warning"><?php echo $countBook['total'];?> active</span>
             </div>
@@ -149,5 +149,33 @@
         </div>
       </li>
       <!-- END TASKS -->
+      <!-- Upgrade -->
+      <?php
+      // count customer upgrade plan
+      $queryUpgrade = tep_db_query("select count(*) as total from customers_plan_upgrade where DAY(create_date) = DAY(NOW()) AND MONTH(create_date) = MONTH(NOW()) AND YEAR(create_date) = YEAR(NOW()) ");
+      $countUpgrade = tep_db_fetch_array($queryUpgrade);
+      ?>
+      <li class="xn-icon-button pull-right">
+        <a href="#"><span class="fa fa-tasks"></span></a>
+        <div class="informer informer-success"><?php echo $countUpgrade['total'];?></div>
+        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-success">
+          <div class="panel-heading">
+            <h3 class="panel-title"><span class="fa fa-tasks"></span> Upgrade Plan</h3>
+            <div class="pull-right">
+              <span class="label label-success"><?php echo $countUpgrade['total'];?> active</span>
+            </div>
+          </div>
+          <div class="panel-body list-group scroll" style="height: 200px;">
+            <a class="list-group-item" href="#/customer_plan_upgrade">
+              <strong>Customer Upgrade Plan Today</strong>
+              <span class="label label-danger"><?php echo $countUpgrade['total'];?></span>
+            </a>
+          </div>
+          <div class="panel-footer text-center">
+            <a href="#">Show all tasks</a>
+          </div>
+        </div>
+      </li>
+      <!-- END Upgrad -->
     </ul>
     <!-- END X-NAVIGATION VERTICAL -->

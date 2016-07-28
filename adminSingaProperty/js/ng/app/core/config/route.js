@@ -24,6 +24,11 @@ app.config([
 				templateUrl: 'js/ng/app/customer_plan/partials/index.html',
 				controller: 'customer_plan_ctrl'
 			})
+			.state('/customer_plan_upgrade', {
+				url: '/customer_plan_upgrade',
+				templateUrl: 'js/ng/app/customer_plan_upgrade/partials/index.html',
+				controller: 'customer_plan_upgrade_ctrl'
+			})
 			.state('/news', {
 				url: '/news',
 				templateUrl: 'js/ng/app/news/partials/news.html',
