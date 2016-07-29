@@ -12,14 +12,16 @@ class Object extends DbObj {
 		$newsId,
 		$languageId,
 		$title,
-		$content
+		$content,
+		$shortContent
 	;
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
 				'language_id',
 				'title',
-				'content'
+				'content',
+				'short_content'
 			)
 		);
 		return parent::toArray($args);
@@ -30,7 +32,8 @@ class Object extends DbObj {
 			SELECT
 				title,
 				language_id,
-				content
+				content,
+				short_content
 			FROM
 				news_description
 			WHERE
@@ -57,7 +60,8 @@ class Object extends DbObj {
 				news_description
 			SET 
 				title = '" .  $this->getTitle() . "',
-				content = '" .  $this->getContent() . "'
+				content = '" .  $this->getContent() . "',
+				short_content = '" .  $this->getShortContent() . "'
 			WHERE
 				language_id = '" . (int)$this->getLanguageId() . "'
 					and
@@ -85,6 +89,7 @@ class Object extends DbObj {
 				news_id,
 				title,
 				content,
+				short_content,
 				language_id
 			)
 				VALUES
@@ -92,6 +97,7 @@ class Object extends DbObj {
 				'" . $this->getNewsId() . "',
  				'" . $this->getTitle() . "',
  				'" . $this->getContent() . "',
+ 				'" . $this->getShortContent() . "',
  				'" . $this->getLanguageId() . "'
 			)
 		");
@@ -125,4 +131,10 @@ class Object extends DbObj {
 		$this->content = $string;
 	}
 
+	public function getShortContent(){
+		return $this->shortContent;
+	}
+	public function setShortContent($string){
+		$this->shortContent = $string;
+	}
 }

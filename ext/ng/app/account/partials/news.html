@@ -86,7 +86,7 @@
 			<td>
 				<span data-ng-repeat="i in n.detail">
 					<span data-ng-show="i.language_id == 1">
-						<span data-ng-bind-html="i.content | limitTo:100"></span>
+						<span data-ng-bind="i.short_content"></span>
 					</span>
 				</span>
 			</td>
