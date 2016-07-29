@@ -23,4 +23,10 @@ class Collection extends StdCollection {
 	public function orderByDate($arg){
 		$this->addOrderBy('cpu.create_date', $arg);
 	}
+
+	public function filterByStatus( $arg ){
+		$this->addWhere("cpu.status = '" . (int)$arg. "' ");
+	}
+
+
 }

@@ -4,6 +4,7 @@ namespace OSC\CustomerPlanUpgrade;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\CustomerSample\Collection as CustomerCol
 ;
 
 class Object extends DbObj {
@@ -11,7 +12,14 @@ class Object extends DbObj {
 	protected
 		$customersId
 		, $plan
+		, $detail
 	;
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+
+		$this->detail = new CustomerCol();
+	}
 
 	public function toArray( $params = array() ){
 		$args = array(
@@ -19,6 +27,9 @@ class Object extends DbObj {
 				'id',
 				'customers_id',
 				'plan',
+				'create_date',
+				'status',
+				'detail'
 			)
 		);
 
@@ -29,11 +40,11 @@ class Object extends DbObj {
 		$q = $this->dbQuery("
 			SELECT
 				customers_id,
-				plan
+				plan,
 				status,
 				create_date
 			FROM
-				customers_plan
+				customers_plan_upgrade
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
@@ -44,9 +55,10 @@ class Object extends DbObj {
 				404
 			);
 		}
-		
 		$this->setProperties($this->dbFetchArray($q));
 
+		$this->detail->setFilter('id', $this->getCustomersId());
+		$this->detail->populate();
 	}
 	public function update() {
 		if( !$this->getId() ) {
@@ -67,15 +79,85 @@ class Object extends DbObj {
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
 		}
-		$this->dbQuery("
-			UPDATE
-				customers_plan_upgrade
-			SET
-				status = '" .  $this->getStatus() . "',
-				update_by = '" . $this->getUpdateBy() . "'
-			WHERE
-				id = '" . (int)$this->getId() . "'
-		");
+
+		if($this->getStatus() == 1){
+			$numberLimit = 0;
+			if($this->getPlan() == 1){
+				$numberLimit = 20;
+			}
+			if($this->getPlan() == 2){
+				$numberLimit = 50;
+			}
+			if($this->getPlan() == 3){
+				$numberLimit = 120;
+			}
+			//	update customer plan table
+			$this->dbQuery("
+				UPDATE
+					customers
+				SET
+					customers_plan = '" .  $this->getPlan() . "',
+					customers_limit_products = " . $numberLimit . ",
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+			$this->dbQuery("
+				UPDATE
+					customers_plan_upgrade
+				SET
+					status = '" .  $this->getStatus() . "',
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					id = '" . (int)$this->getId() . "'
+			");
+		}else{
+
+			$this->dbQuery("
+				UPDATE
+					customers_plan_upgrade
+				SET
+					status = '" .  $this->getStatus() . "',
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					id = '" . (int)$this->getId() . "'
+			");
+
+			$q = $this->dbQuery("
+				SELECT
+					customers_id,
+					plan
+				FROM
+					customers_plan
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+			$changePlan = $this->dbFetchArray($q);
+			$getPlan = (int)$changePlan['plan'];
+			$numberLimit = 0;
+			if( $getPlan == 1){
+				$numberLimit = 20;
+			}
+			if( $getPlan == 2){
+				$numberLimit = 50;
+			}
+			if( $getPlan == 3){
+				$numberLimit = 120;
+			}
+			//	update customer plan table
+			$this->dbQuery("
+				UPDATE
+					customers
+				SET
+					customers_plan = " . $changePlan['plan'] . ",
+					customers_limit_products = " . $numberLimit . ",
+					update_by = '" . $this->getUpdateBy() . "'
+				WHERE
+					customers_id = '" . (int)$this->getCustomersId() . "'
+			");
+
+		}
+
 	}
 
 	public function delete(){
@@ -109,6 +191,14 @@ class Object extends DbObj {
 			)
 		");
 		$this->setId( $this->dbInsertId() );
+	}
+
+	public function setDetail( $string ){
+		$this->detail = $string;
+	}
+
+	public function getDetail(){
+		return $this->detail;
 	}
 
 	public function setCustomersId( $string ){

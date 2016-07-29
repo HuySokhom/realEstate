@@ -33,7 +33,7 @@ class Object extends DbObj {
 				status,
 				create_date
 			FROM
-				customers_plan
+				customers_plan_upgrade
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
