@@ -43,13 +43,13 @@
           ?>
               <li>
                 <a href="account.php#/account">
-                  <i class="fa fa-sign-in"></i>
+                  <i class="fa fa-user"></i>
                   <?php echo HEADER_TITLE_MY_ACCOUNT;?>
                 </a>
               </li>
               <li>
                 <a href="logoff.php">
-                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-sign-out"></i>
                   <?php echo HEADER_TITLE_LOGOFF;?>
                 </a>
               </li>
