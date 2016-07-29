@@ -41,6 +41,8 @@ app.controller(
 				$scope.title_kh = data.elements[0].detail[1].title;
 				$scope.content_en = data.elements[0].detail[0].content;
 				$scope.content_kh = data.elements[0].detail[1].content;
+				$scope.short_content_en = data.elements[0].detail[0].short_content;
+				$scope.short_content_kh = data.elements[0].detail[1].short_content;
 				$scope.image = data.elements[0].image;
 				$scope.image_thumbnail = data.elements[0].image_thumbnail;
 				$scope.create_by = data.elements[0].create_by;
@@ -62,11 +64,13 @@ app.controller(
 					{
 						title: $scope.title_en,
 						content: $scope.content_en,
+						short_content: $scope.short_content_en,
 						language_id: 1
 					},
 					{
 						title: $scope.title_kh,
 						content: $scope.content_kh,
+						short_content: $scope.short_content_kh,
 						language_id: 2
 					}
 				]
