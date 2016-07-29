@@ -37,7 +37,7 @@
 								data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"
 								class="click"
 							></div>
-							<div data-ng-bind-html="language_id == 1 ? n.detail[0].content : n.detail[1].content | limitTo:200"></div>
+							<div data-ng-bind-html="language_id == 1 ? n.detail[0].short_content : n.detail[1].short_content"></div>
 							<ul>
 								<li>
 									<i class="fa fa-calendar"></i>
