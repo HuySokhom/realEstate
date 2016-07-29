@@ -42,11 +42,13 @@ app.controller(
 					{
 						title: $scope.title_en,
 						content: $scope.content_en,
+						short_content: $scope.short_content_en,
 						language_id: 1
 					},
 					{
 						title: $scope.title_kh,
 						content: $scope.content_kh,
+						short_content: $scope.short_content_kh,
 						language_id: 2
 					}
 				]
