@@ -59,12 +59,15 @@ app.controller(
 
 		// save functionality
 		$scope.save = function(){
+			if( !$scope.content_en || !$scope.content_kh ){
+				return $scope.service.alertMessagePromt('<b>Warning: </b> Required Description.');
+			}
 			// set object to save into news
 			var data = {
 				products: {
 					products_image: $scope.image,
 					products_image_thumbnail: $scope.image_thumbnail,
-					products_promote: '',
+					products_promote: $("#promote").val(),
 					map_lat: $scope.marker.coords.latitude,
 					map_long: $scope.marker.coords.longitude,
 					map_title: $scope.map_title,
@@ -94,10 +97,10 @@ app.controller(
 				products_image: $scope.optionalImage
 			};
 			$scope.disabled = false;
-			console.log(data);
+			//console.log(data);
 			Restful.post("api/Session/User/ProductPost", data).success(function (data) {
 				$scope.disabled = true;
-				console.log(data);
+				//console.log(data);
 				$scope.service.alertMessage('<b>Complete: </b>Save Success.');
 				$location.path('manage_property');
 			});

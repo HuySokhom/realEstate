@@ -136,7 +136,7 @@ class RestApiSessionUserProductPost extends RestApi {
 					");
 					$countLimit = tep_db_fetch_array($queryLimit);
 					$numberOfLimitQuery = (int)$countLimit['total'];
-					if ( $numberOfLimitQuery <= $limitProductPromote ) {
+					if ( $numberOfLimitQuery < $limitProductPromote ) {
 						$productObject->setProductsPromote($promoteProductNumber);
 					}
 				}
