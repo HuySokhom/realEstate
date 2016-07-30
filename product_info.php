@@ -51,8 +51,9 @@
 			p.products_image_thumbnail,
 			pd.products_name,
 			v.name_en as village_name,
-			l.name as province_name,
 			d.name_en as district_name,
+			cm.name_en as commune_name,
+			l.name as province_name,
 			pd.products_description,
 			p.map_lat,
 			p.map_long,
@@ -65,15 +66,14 @@
 			p.products_tax_class_id,
 			p.products_date_added
         from
-        	" . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd, location l, village v, district d
+        	" . TABLE_PRODUCTS . " p
+        	left join location l on l.id = p.province_id
+        	left join village v on v.id = p.village_id
+        	left join district d on d.id = p.district_id
+        	left join communes cm on cm.id = p.commune_id
+        	, " . TABLE_PRODUCTS_DESCRIPTION . " pd
         where
         	p.products_status = '1'
-        		and
-			v.id = p.village_id
-        		and
-			l.id = p.province_id
-        		and
-			d.id = p.district_id
         		and
 			p.products_id = '" . (int)$HTTP_GET_VARS['products_id'] . "'
         		and
@@ -113,6 +113,11 @@
     if (tep_not_null($product_info['products_model'])) {
       $products_name .= '<br /><small>[<span itemprop="model">' . $product_info['products_model'] . '</span>]</small>';
     }
+
+	$province = $product_info['province_name'] ? " | " . $product_info['province_name'] : '';
+	$district = $product_info['district_name'] ? " | " . $product_info['district_name'] : '';
+	$commune = $product_info['commune_name'] ? " | " . $product_info['commune_name'] : '';
+	$village = $product_info['village_name'] ? " | " . $product_info['village_name'] : '';
 ?>
 <?php
   if ($messageStack->size('product_action') > 0) {
@@ -176,9 +181,7 @@
 						<div class="property-header">
 							<h3>
 							    <?php
-							        echo $product_info['products_name'] . ' | ' . $product_info['village_name']
-											. ' | ' . $product_info['district_name'] . ' | ' . $product_info['province_name']
-									;
+							        echo $product_info['products_name'] . $village . $commune . $district . $province;
 							        echo '<span>' . $product_info['products_kind_of'] . '</span>';
 							    ?>
                             </h3>

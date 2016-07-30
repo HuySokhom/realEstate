@@ -14,8 +14,8 @@
   $prod_list_contents = NULL;
 
   while ($listing = tep_db_fetch_array($listing_query)) {
-    if (strlen(strip_tags($listing['products_description'], '<br>')) > 140){
-       $str_description = substr(strip_tags($listing['products_description'], '<br>'), 0, 140) . '...';
+    if (strlen(strip_tags($listing['products_description'], '<br>')) > 350){
+       $str_description = substr(strip_tags($listing['products_description'], '<br>'), 0, 350) . '...';
    }else{
         $str_description = strip_tags($listing['products_description'], '<br>');
    }
