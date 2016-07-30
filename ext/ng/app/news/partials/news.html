@@ -19,51 +19,60 @@
 			>
 				<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 			</div>
-			<div class="property-listing-box sale-block" data-ng-repeat="n in news.elements">
-				<!-- Property Main Box -->
-				<div class="property-main-box">
-					<div class="col-md-4 p_z">
-						<img
-							src="images/{{n.image_thumbnail}}"
-							class="img-news click"
-							alt=""
-							data-ng-click="link(n.type[0].id, n.id)"
-						/>
+			<div class="blog-listing">
+				<article data-ng-repeat="n in news.elements">
+					<div class="entry-cover">
+						<a title="entry-cover" data-ng-click="link(n.type[0].id, n.id)">
+							<img src="images/{{n.image}}"/>
+						</a>
+						<i class="fa fa-image"></i>
 					</div>
-					<div class="col-md-8 p_z">
-						<div class="property-details">
-							<div
-								data-ng-click="link(n.type[0].id, n.id)"
-								data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"
-								class="click"
-							></div>
-							<div data-ng-bind-html="language_id == 1 ? n.detail[0].short_content : n.detail[1].short_content"></div>
-							<ul>
-								<li>
-									<i class="fa fa-calendar"></i>
+					<div class="entry-header">
+						<h3 class="entry-title">
+							<a data-ng-click="link(n.type[0].id, n.id)">
+								<span
+									data-ng-click="link(n.type[0].id, n.id)"
+									data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"
+									class="click"
+								>
+								</span>
+							</a>
+						</h3>
+						<div class="entry-meta">
+							<span class="posted-on">
+								<a title="Blog Date">
+									<i class="fa fa-clock-o"></i>
 									{{ n.create_date  | date:'MM/dd/yyyy' }}
-								</li>
-								<li>
-									<i class="fa fa-user"></i>
+								</a>
+							</span>
+							<span class="byline">
+								<i class="fa fa-user"></i>
+								<a title="Author">
 									{{n.create_by}}
-								</li>
-							</ul>
+								</a>
+							</span>
 						</div>
 					</div>
-				</div><!-- Property Main Box /- -->
-			</div>
-			<div class="listing-pagination">
-			<!-- Pagination -->
-			<pagination
-				data-ng-show="totalItems > 10"
-				total-items="totalItems"
-				ng-model="currentPage"
-				ng-change="pageChanged()"
-				max-size="5"
-				items-per-page="10"
-				boundary-links="true"
-			></pagination>
-			<!-- Pagination /- -->
+					<div class="entry-content">
+						<p
+							data-ng-bind-html="language_id == 1 ? n.detail[0].short_content : n.detail[1].short_content"
+						>
+						</p>
+					</div>
+				</article>
+				<div class="listing-pagination">
+					<!-- Pagination -->
+					<pagination
+							data-ng-show="totalItems > 10"
+							total-items="totalItems"
+							ng-model="currentPage"
+							ng-change="pageChanged()"
+							max-size="5"
+							items-per-page="10"
+							boundary-links="true"
+					></pagination>
+					<!-- Pagination /- -->
+				</div>
 			</div>
 		</div>
 		<div search></div>

@@ -2549,7 +2549,7 @@ textarea {
 
 .blog-listing .entry-cover > i,
 .blog-slider .item > i {
-	background-color: #79b445;
+	background-color: #3C64FF;
 	width: 45px;
 	height: 41px;
 	text-align: center;
@@ -2601,7 +2601,7 @@ textarea {
 
 .blog-listing .posted-on a,
 .blog-listing .posted-on i {
-	color: #0DBAE8;
+	/*color: #0DBAE8;*/
 }
 
 .blog-listing .entry-content p {
@@ -3563,5 +3563,8 @@ form .progress {
 	margin-bottom: 15px;
 }
 .news-item:hover{
+	color: #3C64FF;
+}
+.click:hover{
 	color: #3C64FF;
 }
