@@ -28,4 +28,8 @@ class Collection extends StdCollection {
 		$this->addWhere("vl.name_en LIKE '%" . $arg. "%' ");
 	}
 
+	public function orderById($arg){
+		$this->addOrderBy('vl.id', $arg);
+	}
+
 }

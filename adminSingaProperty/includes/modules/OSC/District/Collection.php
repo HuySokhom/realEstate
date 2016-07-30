@@ -16,6 +16,10 @@ class Collection extends StdCollection {
 		$this->objectType = __NAMESPACE__ . '\Object';		
 	}
 
+	public function orderById($arg){
+		$this->addOrderBy('d.id', $arg);
+	}
+
 	public function filterById( $arg ){
 		$this->addWhere("d.id = '" . (int)$arg. "' ");
 	}

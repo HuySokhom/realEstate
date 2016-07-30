@@ -11,6 +11,7 @@ class RestApiDistrict extends RestApi {
 
 	public function get($params){
 		$col = new DistrictCol();
+		$col->orderById("DESC");
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
 		$params['GET']['type'] ? $col->filterByProvinceId($params['GET']['type']) : '';

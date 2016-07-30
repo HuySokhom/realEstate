@@ -20,6 +20,10 @@ class Collection extends StdCollection {
 		$this->addWhere("cm.id = '" . (int)$arg. "' ");
 	}
 
+	public function orderById($arg){
+		$this->addOrderBy('cm.id', $arg);
+	}
+
 	public function filterByDistrictId( $arg ){
 		$this->addWhere("cm.district_id = '" . (int)$arg. "' ");
 	}

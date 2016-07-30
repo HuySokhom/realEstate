@@ -11,6 +11,7 @@ class RestApiCommune extends RestApi {
 
 	public function get($params){
 		$col = new CommunesCol();
+		$col->orderById("DESC");
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		$params['GET']['search_name'] ? $col->filterByName($params['GET']['search_name']) : '';
 		$params['GET']['type'] ? $col->filterByDistrictId($params['GET']['type']) : '';
