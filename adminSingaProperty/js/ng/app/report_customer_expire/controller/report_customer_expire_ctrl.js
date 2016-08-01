@@ -5,10 +5,10 @@ app.controller(
         , 'Services'
         , function ($scope, Restful, Services){
             $scope.service = new Services();
-            $scope.csv = [];
             $scope.headers = ['Customers Id', 'Customer Name', 'Plan', 'Type', 'Telephone', 'Email', 'Plan Start Date', 'Expire Date'];
             var url = 'api/ExpirePlan/';
             $scope.init = function(){
+                $scope.csv = [];
                 $scope.plans = '';
                 Restful.get(url).success(function(data){
                     $scope.plans = data;
@@ -26,7 +26,7 @@ app.controller(
                             plan_date: formatDate(value.plan_date),
                             plan_expire: formatDate(value.plan_expire)
                         });
-                    });
+                    });console.log($scope.csv);
                 });
             };
             $scope.init();
