@@ -328,9 +328,10 @@
 					var params = {
 						name: $scope.name,
 						email: $scope.email,
-						enquiry: $scope.enquiry
+						enquiry: $scope.enquiry,
+						email_to: $("#email_to").val()
 					};
-					console.log(params);
+					//console.log(params);
 					$http({
 						url: 'api/SendMail',
 						method: 'POST',
@@ -339,7 +340,8 @@
 						},
 						data: JSON.stringify(params)
 					}).success(function(data){
-						console.log(data);
+						$scope.message = "Send success.";
+						//console.log(data);
 					});
 				};
 
