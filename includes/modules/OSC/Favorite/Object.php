@@ -68,7 +68,8 @@ class Object extends DbObj {
 				product_description,
 				product_price,
 				product_image,
-				product_image_thumbnail
+				product_image_thumbnail,
+				session_id
 			)
 				VALUES
 			(
@@ -78,9 +79,18 @@ class Object extends DbObj {
 				'" . $this->getProductPrice() . "',
 				'" . $this->getProductImage() . "',
 				'" . $this->getProductImageThumbnail() . "'
+				'" . $this->getSessionId() . "'
 			)
 		");
 		$this->setId( $this->dbInsertId() );
+	}
+
+	public function setSessionId( $string ){
+		$this->sessionId = (string)$string;
+	}
+
+	public function getSessionId(){
+		return $this->sessionId;
 	}
 
 	public function setProductDescription( $string ){
