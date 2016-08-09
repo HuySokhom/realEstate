@@ -40,7 +40,7 @@ class RestApiProducts extends RestApi {
 		while ($news_info = tep_db_fetch_array($news_query)){
 			$array[] = $news_info;
 		}
-		$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "'");
+		$news_count = tep_db_query("select count(products_id) as total from products where customers_id = '" . $userId . "' and products_status = 1");
 		$total = tep_db_fetch_array($news_count);
 
 		return array(

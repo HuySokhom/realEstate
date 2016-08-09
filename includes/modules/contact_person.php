@@ -30,13 +30,18 @@ if ($num_customer > 0) {
                 <p><i class="fa fa-phone"></i><?php echo $user['customers_telephone'];?></p>
                 <p>
                     <i class="fa fa-envelope-o"></i>
-                    <a href="mailto:<?php echo $user['customers_email_address'];?>" title="mail"><?php echo $user['customers_email_address'];?></a>
+                    <a 
+                        href="mailto:<?php echo $user['customers_email_address'];?>" title="mail"
+                    >
+                        <?php echo $user['customers_email_address'];?>
+                    </a>
                 </p>
                 <?php
                     if($user['customers_fax'] != ''){
                         echo '<p><i class="fa fa-fax"></i>' . $user['customers_fax'] . '</p>';
                     }
                 ?>
+                <input type="text" id="email_to" value="<?php echo $user['customers_email_address'];?>" hidden />
             </div>
             <div class="agent-form">
                 <h3><?php echo TEXT_MAKE_AN_ENQUIRY; ?></h3>
@@ -62,6 +67,7 @@ if ($num_customer > 0) {
                     </div>
                     <textarea required placeholder="<?php echo TEXT_MESSAGE; ?>"data-ng-model="enquiry" class="enquiry" rows="5"></textarea>
                     <button type="submit" class="btn"><?php echo TEXT_SUBMIT; ?></button>
+                    <span style="color: #D33E63;">{{message}}</span>
                 </form>
             </div>
         </div>
