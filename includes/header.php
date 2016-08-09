@@ -1,8 +1,9 @@
 <header id="header-section" class="header header1 container-fluid p_z">
   <!-- container -->
-  <div class="container">
+  <div>
     <!-- Top Header -->
     <div class="top-header">
+      <div class="container">
       <p class="col-md-6 col-sm-9">
         <span>
           <i class="fa fa-phone"></i>
@@ -64,20 +65,22 @@
             </button>
           </li>
         </ul>
-
+      </div>
       </div>
     </div><!-- Top Header -->
     <!-- Navigation Block -->
+
     <div class="navigation-block">
+      <div class="container">
       <!-- Logo Block -->
       <div class="col-md-2 logo-block no-padding">
         <?php
         echo '<a href="' . tep_href_link('index.php') . '">
-            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"  alt="logo" style="width: 100px;"/></a>';
+            <img src="' . DIR_WS_IMAGES . STORE_LOGO .'"  alt="logo" style="width: 125px;"/></a>';
         ?>
       </div><!-- Logo Block /- -->
       <!-- Menu Block -->
-      <div class="col-md-10 menu-block">
+      <div class="col-md-10 menu-block" style="padding-top: 10px;">
         <!-- nav -->
         <nav class="navbar navbar-default primary-navigation">
           <div class="navbar-header">
@@ -104,6 +107,7 @@
           </div><!--/.nav-collapse -->
         </nav><!-- nav /- -->
       </div><!-- Menu Block /- -->
+      </div>
     </div><!-- Navigation Block /- -->
   </div><!-- container /- -->
 </header><!-- Header Section /- -->

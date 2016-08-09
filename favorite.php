@@ -18,26 +18,42 @@
 
   require(DIR_WS_INCLUDES . 'template_top.php');
 ?>
-
-<div class="page-header">
-  <h1><?php echo HEADING_TITLE; ?></h1>
-</div>
-
-<div class="contentContainer">
-
+<div class="margin-top">
+<div class="container">
 <?php
-  $reviews_query_raw = "select r.reviews_id, SUBSTRING_INDEX(rd.reviews_text, ' ', 20) as reviews_text, r.reviews_rating, r.date_added, p.products_id, pd.products_name, p.products_image, r.customers_name from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd, " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '" . (int)$languages_id . "' and rd.languages_id = '" . (int)$languages_id . "' and reviews_status = 1 order by r.reviews_rating DESC";
-  $reviews_split = new splitPageResults($reviews_query_raw, MAX_DISPLAY_NEW_REVIEWS);
+  $favorite_query_raw = "
+    select
+      f.id,
+      SUBSTRING_INDEX(pd.products_description, ' ', 20)
+        as
+      products_description,
+      p.products_id,
+      pd.products_name,
+      p.products_image,
+      p.products_image_thumbnail
+    from
+      favorite f, " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
+    where
+      p.products_status = '1'
+        and
+      p.products_id = f.products_id
+        and
+      p.products_id = pd.products_id
+      and
+        pd.language_id = '" . (int)$languages_id . "'
+      order by
+        f.id DESC";
+  $favorite_split = new splitPageResults($favorite_query_raw, MAX_DISPLAY_NEW_REVIEWS);
 
-  if ($reviews_split->number_of_rows > 0) {
+  if ($favorite_split->number_of_rows > 0) {
     if ((PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3')) {
 ?>
 <div class="row">
   <div class="col-sm-6 pagenumber hidden-xs">
-    <?php echo $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
+    <?php echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
   </div>
   <div class="col-sm-6">
-    <span class="pull-right pagenav"><ul class="pagination"><?php echo $reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
+    <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
     <span class="pull-right"><?php echo TEXT_RESULT_PAGE; ?></span>
   </div>
 </div>
@@ -47,7 +63,7 @@
     <div class="contentText">
       <div class="reviews">
 <?php
-    $reviews_query = tep_db_query($reviews_split->sql_query);
+    $reviews_query = tep_db_query($favorite_split->sql_query);
     while ($reviews = tep_db_fetch_array($reviews_query)) {
       echo '<blockquote class="col-sm-6">';
       echo '  <p><span class="pull-left">' . tep_image(DIR_WS_IMAGES . tep_output_string_protected($reviews['products_image']), tep_output_string_protected($reviews['products_name']), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</span>' . tep_output_string_protected($reviews['reviews_text']) . ' ... </p><div class="clearfix"></div>';
@@ -70,21 +86,21 @@
 <?php
   }
 
-  if (($reviews_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))) {
+  if (($favorite_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))) {
 ?>
 <div class="row">
   <div class="col-sm-6 pagenumber hidden-xs">
-    <?php echo $reviews_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
+    <?php echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
   </div>
   <div class="col-sm-6">
-    <span class="pull-right pagenav"><ul class="pagination"><?php echo $reviews_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
+    <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
     <span class="pull-right"><?php echo TEXT_RESULT_PAGE; ?></span>
   </div>
 </div>
 <?php
   }
 ?>
-
+</div>
 </div>
 
 <?php
