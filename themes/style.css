@@ -1555,6 +1555,7 @@ textarea {
 	display: inline-block;
 	padding: 35px 33px;
 	width: 100%;
+	border: 1px solid crimson;
 }
 
 .widget-search  .widget-title {
@@ -1570,18 +1571,18 @@ textarea {
 
 .widget-search select,
 .submit-property .contact-feedback-form select {
-	background-color: transparent;
-	box-shadow: none;
-	border: none;
-	border-bottom: 2px solid #c8c8c8;
+	/*background-color: transparent;*/
+	/*box-shadow: none;*/
+	/*border: none;*/
+	/*border-bottom: 2px solid #c8c8c8;*/
 	padding: 10px 0;
-	border-radius: 0;
+	/*border-radius: 0;*/
 	margin-bottom: 30px;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background-image: url("images/aa-listing/dropdown-arrow.png");
-	background-position: right;
-	background-repeat: no-repeat;
+	/*-webkit-appearance: none;*/
+	/*-moz-appearance: none;*/
+	/*background-image: url("images/aa-listing/dropdown-arrow.png");*/
+	/*background-position: right;*/
+	/*background-repeat: no-repeat;*/
 }
 
 .widget-search select:not(.col-md-6) {

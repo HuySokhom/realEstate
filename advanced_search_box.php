@@ -134,27 +134,85 @@ function check_form() {
       </div>
 
       <div class="col-md-3 search">
-        <?php
-        echo tep_draw_input_field('pfrom', '', 'id="PriceFrom" placeholder="' . ENTRY_PRICE_FROM . '"');
-        ?>
+        <select
+            name="pfrom"
+            class="form-control"
+            id="pfrom"
+        >
+          <option value="" selected="selected"><?php echo ENTRY_PRICE_FROM;?></option>
+          <option value="30000">$30,000</option>
+          <option value="40000">$40,000</option>
+          <option value="50000">$50,000</option>
+          <option value="80000">$80,000</option>
+          <option value="100000">$100,000</option>
+          <option value="150000">$150,000</option>
+          <option value="200000">$200,000</option>
+          <option value="300000">$300,000</option>
+          <option value="400000">$400,000</option>
+          <option value="500000">$500,000</option>
+          <option value="1000000000">$1,000,000+</option>
+        </select>
       </div>
 
       <div class="col-md-3 search">
-        <?php
-        echo tep_draw_input_field('pto', '', 'id="PriceTo" placeholder="' . ENTRY_PRICE_TO . '"');
-        ?>
+        <select
+            name="pto"
+            class="form-control"
+            id="pto"
+        >
+          <option value="" selected="selected"><?php echo ENTRY_PRICE_TO;?></option>
+          <option value="30000">$30,000</option>
+          <option value="40000">$40,000</option>
+          <option value="50000">$50,000</option>
+          <option value="80000">$80,000</option>
+          <option value="100000">$100,000</option>
+          <option value="150000">$150,000</option>
+          <option value="200000">$200,000</option>
+          <option value="300000">$300,000</option>
+          <option value="400000">$400,000</option>
+          <option value="500000">$500,000</option>
+          <option value="1000000000">$1,000,000+</option>
+        </select>
       </div>
 
       <div class="col-md-3 search">
-        <?php
-        echo tep_draw_input_field('bfrom', '', 'id="bfrom" placeholder="' . ENTRY_BED_FROM . '"');
-        ?>
+        <select
+            name="bfrom"
+            class="form-control"
+            id="bfrom"
+        >
+          <option value="" selected="selected"><?php echo ENTRY_BED_FROM;?></option>
+          <option value="1">1 Bed</option>
+          <option value="2">2 Bed</option>
+          <option value="3">3 Bed</option>
+          <option value="4">4 Bed</option>
+          <option value="5">5 Bed</option>
+          <option value="6">6 Bed</option>
+          <option value="7">7 Bed</option>
+          <option value="8">8 Bed</option>
+          <option value="9">9 Bed</option>
+          <option value="100">10+ Bed</option>
+        </select>
       </div>
 
       <div class="col-md-3 search">
-        <?php
-        echo tep_draw_input_field('bto', '', 'id="bto" placeholder="' . ENTRY_BED_TO . '"');
-        ?>
+        <select
+            name="bto"
+            class="form-control"
+            id="bto"
+        >
+          <option value="" selected="selected"><?php echo ENTRY_BED_TO;?></option>
+          <option value="1">1 Bed</option>
+          <option value="2">2 Bed</option>
+          <option value="3">3 Bed</option>
+          <option value="4">4 Bed</option>
+          <option value="5">5 Bed</option>
+          <option value="6">6 Bed</option>
+          <option value="7">7 Bed</option>
+          <option value="8">8 Bed</option>
+          <option value="9">9 Bed</option>
+          <option value="100">10+ Bed</option>
+        </select>
       </div>
 
       <div class="col-md-3 search">

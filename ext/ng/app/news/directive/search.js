@@ -26,8 +26,8 @@ app.controller( 'search_ctrl', [
             $scope.locationText = 'Location';
             $scope.category = 'All Categories';
             $scope.kind_of = 'Type';
-            $scope.bedRoomFrom = 'Bed From';
-            $scope.bedRoomTo = 'Bed To';
+            $scope.bedRoomFrom = 'Min Bed';
+            $scope.bedRoomTo = 'Max Bed';
             $scope.maxProPrice = 'Max Price';
             $scope.minProPrice = 'Min Price';
             $scope.property = 'property';

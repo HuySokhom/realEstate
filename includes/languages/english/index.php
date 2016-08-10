@@ -22,5 +22,5 @@ define('TEXT_SHOW', '<strong>Show:</strong>');
 define('TEXT_BUY', 'Buy 1 \'');
 define('TEXT_NOW', '\' now');
 define('TEXT_ALL_CATEGORIES', 'All Categories');
-define('TEXT_ALL_MANUFACTURERS', '--Kind Of--');
+define('TEXT_ALL_MANUFACTURERS', 'Kind Of');
 
