@@ -96,7 +96,7 @@ function check_form() {
 
 <?php echo tep_draw_form('advanced_search', tep_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'class="form-horizontal" onsubmit="return check_form(this);"') . tep_hide_session_id(); ?>
 
-<div class="clearfix" style="padding-top: 20px;background-color: #f2f4f5;">
+<div class="clearfix" style="box-shadow: 2px 2px 6px crimson;padding-top: 20px;background-color: #f2f4f5;">
 
   <div class="container">
     <div class="col-md-10">

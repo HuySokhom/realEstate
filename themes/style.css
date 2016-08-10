@@ -3406,7 +3406,9 @@ a:focus, a:hover {
 	background-color: #000;
 }
 .form-control {
-     border-radius: 0px; 
+	border-radius: 0px;
+	padding: 10px 10px 10px 10px;
+	height: 45px;
 }
 .panel {
      border-radius: 0px; 
@@ -3576,8 +3578,8 @@ form .progress {
 	top:50%;
 	z-index: 9999;
 	right:0;
-	transform: rotate(90deg);
-	margin-right: -104px;
+	transform: rotate(270deg);
+	margin-right: -106px;
 	color: #fff;
 	font-size: 18px;
 }

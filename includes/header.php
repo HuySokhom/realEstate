@@ -62,12 +62,12 @@
             </a>
           </li>
           <li>
-            <button class="btn" style="background: crimson;border: crimson;">
-              <a href="account.php#/manage_property/post" title="<?php echo POST_PROPERTY;?>">
+            <a href="account.php#/manage_property/post" title="<?php echo POST_PROPERTY;?>">
+              <button class="btn" style="background: crimson;border: crimson;">
                 <i class="fa fa-cloud-upload"></i>
                 <?php echo POST_PROPERTY;?>
-              </a>
-            </button>
+              </button>
+            </a>
           </li>
         </ul>
       </div>
