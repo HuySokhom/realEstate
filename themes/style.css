@@ -3626,3 +3626,6 @@ form .progress {
 	position: absolute;
 	background-color: #808080;
 }
+.col-md-4{
+	padding-bottom: 15px;
+}

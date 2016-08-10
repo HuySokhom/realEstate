@@ -46,7 +46,7 @@
 
         <div class="item">
           <!-- col-md-12 -->
-          <div class="col-md-12 rent-block">
+          <div class="col-md-4 rent-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
               <div class="property-images-box">
@@ -66,6 +66,7 @@
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
+                <div class="pro">test Plan</div>
                 <a title="Property Title" href="index.html#">' . $p_name . '</a>
                 <ul>
                   <li>
@@ -92,7 +93,7 @@
     <div class="rent-property">
     <div class="col-md-6 rent">
       <div class="section-header">
-        <h3><span><?php echo PROPERTY; ?></span><?php echo RENT;?></h3>
+        <h3><span><?php echo PROPERTY; ?></span><?php echo FEATURED;?></h3>
       </div>
     </div>
     <div class="col-md-12 p_r_z">
