@@ -904,7 +904,8 @@ body.page-container-boxed .page-container {
   border-bottom: 0px;
 }
 .x-navigation > li.xn-logo > a:first-child {
- font-size: 25px;
+ font-size: 22px;
+ text-transform: uppercase;
  border-bottom: 0px;
  color: #FFF;
  height: 50px;

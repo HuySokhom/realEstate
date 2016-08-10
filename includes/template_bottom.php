@@ -93,13 +93,29 @@
 <?php echo $oscTemplate->getBlocks('footer_scripts'); ?>
 <script>
     $(function(){
+        var windowScroll, windowsize;
+        // detect window scroll function 
         $(window).scroll(function(){
-            var windowScroll = $(this).scrollTop();
-            console.log( windowScroll );
+            windowScroll = $(this).scrollTop();
+            //console.log( windowScroll );
             if(windowScroll < 136){
                 $('.scrollPost').css('display','none');
             }else{
+                if (windowsize < 790) {
+                    $('.scrollPost').css('display','none');
+                }else{
+                    $('.scrollPost').css('display','block');
+                }
+            }
+        });
+        // detect window resize screen function
+        $(window).resize(function() {
+            windowsize = $(window).width();
+            //console.log(windowsize);
+            if (windowsize > 790) {
                 $('.scrollPost').css('display','block');
+            }else{
+                $('.scrollPost').css('display','none');
             }
         });
     });
