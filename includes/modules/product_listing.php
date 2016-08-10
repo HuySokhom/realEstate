@@ -21,16 +21,16 @@
    }
    switch ($listing['products_promote']) {
         case 3:
-            $text = 'Pro';
+            $text = 'Pro Featured';
             $class = 'pro';
             break;
         case 2:
-            $text = 'Premium';
-            $class = 'pro';
+            $text = 'Premium Featured';
+            $class = 'premium';
             break;
         case 1:
-            $text = 'Basic';
-            $class = 'pro';
+            $text = 'Basic Featured';
+            $class = 'basic';
             break;
         default:
             $text = 'Free';
@@ -47,7 +47,7 @@
               </div>
               <div class="col-md-8 p_z">
                 <div class="property-details">
-                  <span style="display:none;">'. $text .'</span>
+                  <div class="' . $class . '">'. $text .'</div>
                   <a
                     title="Property Title"
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"

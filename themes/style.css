@@ -3583,3 +3583,46 @@ form .progress {
 	color: #fff;
 	font-size: 18px;
 }
+.pro{
+	top: 0;
+	right: 0;
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	text-transform: uppercase;
+	background: #d9534f;
+}
+.premium{
+	top: 0;
+	right: 0;
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #fff;
+	position: absolute;
+	background: #31b0d5;
+}
+.basic{
+	top: 0;
+	text-transform: uppercase;
+	right: 0;
+	padding: 10px;
+	font-size: 16px;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	background: #449d44;
+}
+.free{
+	top: 0;
+	right: 0;
+	text-transform: uppercase;
+	padding: 10px;
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	background-color: #808080;
+}

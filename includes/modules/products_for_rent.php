@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="col-md-12 p_r_z">
-    <div id="rent-property-block" class="rent-property-block">
+    <div id="rent-property-block1" class="rent-property-block">
       <?php echo $new_prods_content; ?>
     </div>
     </div>
