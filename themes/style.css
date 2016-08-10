@@ -850,7 +850,7 @@ textarea {
 	margin-bottom: 15px;
 }
 .rent-block .property-images-box > h4 {
-	background-color: #D33E63;
+	background-color: crimson;
 }
 
 .sale-block .property-images-box > h4 {
@@ -1907,7 +1907,7 @@ textarea {
 }
 
 .property-header {
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 	position: relative;
 }
 
@@ -1949,7 +1949,7 @@ textarea {
 .property-header  ul li:first-child {
 	font-size: 18px;
 	font-weight: 600;
-	color: #D33E63;
+	color: crimson;
 }
 
 .property-details-content {
@@ -2192,8 +2192,8 @@ textarea {
 }
 
 .property-details-content2 .property-header {
-	margin-bottom: 44px;
-	margin-top: 48px;
+	/*margin-bottom: 44px;*/
+	margin-top: 30px;
 }
 
 .property-details-content2 .property-header ul {
@@ -3567,4 +3567,16 @@ form .progress {
 }
 .click:hover{
 	color: #3C64FF;
+}
+#upload-property {
+	background: crimson;
+	padding:10px;
+	position:fixed;
+	top:50%;
+	z-index: 9999;
+	right:0;
+	transform: rotate(90deg);
+	margin-right: -104px;
+	color: #fff;
+	font-size: 18px;
 }

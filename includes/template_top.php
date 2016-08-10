@@ -98,7 +98,15 @@
                   sort_order asc limit 10
                ");
             if (tep_db_num_rows($image_slider_query) > 0) {
-
-          include(DIR_WS_INCLUDES . 'slider.php');
-        }}
+                include(DIR_WS_INCLUDES . 'slider.php');
+            }
+        }
       ?>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57849c71a603c3db"></script>
+    <div class="scrollPost" style="display: none;">
+        <a href="account.php#/manage_property/post" title="Post Property" id="upload-property">
+            <i class="fa fa-cloud-upload"></i>
+            Upload Your Property Now
+        </a>
+    </div>

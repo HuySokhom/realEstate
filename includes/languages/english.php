@@ -61,7 +61,7 @@ define('TEXT_SEARCH','Search');
 define('TEXT_TYPE', 'Type');
 define('TEXT_ALL_LOCATION', 'Location');
 // customer language 
-define('POST_PROPERTY', 'Post Property');
+define('POST_PROPERTY', 'Upload Property');
 define('MENU_AGENTS', 'Agents');
 define('MENU_NEWS', 'News');
 define('LOGIN', 'Login');
@@ -79,6 +79,7 @@ define('HEADER_TITLE_CHECKOUT', 'Checkout');
 define('HEADER_TITLE_TOP', '<i class="glyphicon glyphicon-home"></i>');
 define('HEADER_TITLE_CATALOG', 'Catalog');
 define('HEADER_TITLE_LOGOFF', 'Log Off');
+define('HEADER_FAVORITE', 'Favorite');
 define('HEADER_TITLE_LOGIN', 'Log In');
 
 // text for gender

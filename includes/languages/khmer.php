@@ -81,6 +81,7 @@ define('HEADER_TITLE_TOP', '<i class="glyphicon glyphicon-home"></i>');
 define('HEADER_TITLE_CATALOG', 'Catalog');
 define('HEADER_TITLE_LOGOFF', 'ចាកចេញ');
 define('HEADER_TITLE_LOGIN', 'Log In');
+define('HEADER_FAVORITE', 'ចូលចិត្ត');
 
 // text for gender
 define('MALE', 'M<span class="hidden-xs">ale</span>');

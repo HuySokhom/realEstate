@@ -236,49 +236,10 @@
 											. $product_info['number_of_floors'] . '</a>';
                                     ?>
                                 </li>
-                                <li>
-									<a
-										href="<?php echo $twitterURL?>"
-								   		title="Share On Twitter"
-										data-toggle="tooltip"
-										data-placement="top"
-										target="_blank"
-									>
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-                                <li>
-									<a href="<?php echo $facebookURL?>"
-									   title="Share On Facebook"
-									   data-toggle="tooltip"
-									   data-placement="top"
-									   target="_blank"
-									>
-										<i class="fa fa-facebook-official"></i>
-									</a>
-								</li>
-                                <li>
-									<a href="<?php echo $googleURL?>"
-									   title="Share On Google-plus"
-									   data-toggle="tooltip"
-									   data-placement="top"
-									   target="_blank"
-									>
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</li>
-                                <li>
-									<a href="<?php echo $linkedinURL?>"
-									   data-toggle="tooltip"
-									   data-placement="top"
-									   title="Share On Linkedin"
-									   target="_blank"
-									>
-										<i class="fa fa-linkedin-square"></i>
-									</a>
-								</li>
 							</ul>
 						</div>
+						<!-- Go to www.addthis.com/dashboard to customize your tools -->
+						<div class="addthis_native_toolbox"></div>
 						<div class="single-property-details">
 							 <?php echo stripslashes($product_info['products_description']);?>
 						</div>

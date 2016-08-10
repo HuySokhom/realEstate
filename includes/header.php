@@ -4,14 +4,10 @@
     <!-- Top Header -->
     <div class="top-header">
       <div class="container">
-      <p class="col-md-6 col-sm-9">
-        <span>
-          <i class="fa fa-phone"></i>
-          <?php
-            echo STORE_PHONE;
-            $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-          ?>
-        </span>
+      <p class="col-md-3 col-sm-3">
+        <?php
+          $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+        ?>
         <span>
           <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $uri_parts[0] . '?language=kh';?>" title="Khmer">
             <img src="includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; "/>
@@ -21,9 +17,11 @@
           </a>
         </span>
       </p>
-      <div class="col-md-6 col-sm-3 p_r_z">
-
+      <div class="col-md-9 col-sm-9 p_r_z">
         <ul class="property-social p_l_z m_b_z">
+          <li style="margin-right: -30px;">
+            <div class="fb-like" data-href="https://facebook.com/skwebsolution/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+          </li>
           <?php //var_dump($_SESSION);
             if( !$_SESSION['user_name'] ){
           ?>
@@ -58,8 +56,15 @@
             }
           ?>
           <li>
-            <button class="btn">
+            <a href="favorite.php">
+              <i class="fa fa-star"></i>
+              <?php echo HEADER_FAVORITE;?>
+            </a>
+          </li>
+          <li>
+            <button class="btn" style="background: crimson;border: crimson;">
               <a href="account.php#/manage_property/post" title="<?php echo POST_PROPERTY;?>">
+                <i class="fa fa-cloud-upload"></i>
                 <?php echo POST_PROPERTY;?>
               </a>
             </button>

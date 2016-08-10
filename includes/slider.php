@@ -6,9 +6,12 @@
     style="
       position: relative;
       margin: 0 auto;
-      top: 0px; left: 0px;
-      width: 1300px; height: 500px;
-      overflow: hidden; visibility: hidden;
+      top: 0px;
+      left: 0px;
+      width: 1300px;
+      height: 500px;
+      overflow: hidden;
+      visibility: hidden;
     "
     data-ng-controller="slider_ctrl"
     data-ng-init="initImageSlider();"
