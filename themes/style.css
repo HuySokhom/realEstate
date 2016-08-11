@@ -859,7 +859,7 @@ textarea {
 
 .property-details {
 	border: 1px solid #e7e7e7;
-	padding: 23px;
+	padding: 20px;
 	display: inline-block;
 	width: 100%;
 	min-height: 111px;
@@ -3626,6 +3626,6 @@ form .progress {
 	position: absolute;
 	background-color: #808080;
 }
-.col-md-4{
+.col-home{
 	padding-bottom: 15px;
 }

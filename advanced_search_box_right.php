@@ -98,6 +98,10 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
           AND
         p.products_id = pd.products_id
           AND
+        p.categories_id != '". (int)$_GET['cPath']. "'
+          AND
+         p.products_promote > 0
+          AND
         p.products_id != '" . (int)$HTTP_GET_VARS['products_id'] . "'
           AND
         pd.language_id = '" . (int)$languages_id . "'
@@ -130,7 +134,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       <a title="Featured Post" href="<?php echo tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $featured['products_id']) ?>">
         <?php echo $featured['products_name'];?>
       </a>
-      <h3><?php echo $featured['products_price'];?></h3>
+      <h3><?php echo $currencies->display_price($featured['products_price']);?></h3>
     </div>
   </div>
   <?php

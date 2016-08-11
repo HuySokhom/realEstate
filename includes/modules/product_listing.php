@@ -44,10 +44,10 @@
                 <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
                      ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 181px;"') . '
                 </a>
+                <div class="' . $class . '">'. $text .'</div>
               </div>
               <div class="col-md-8 p_z">
                 <div class="property-details">
-                  <div class="' . $class . '">'. $text .'</div>
                   <a
                     title="Property Title"
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '"

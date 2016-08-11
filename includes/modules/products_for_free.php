@@ -1,5 +1,5 @@
 <?php
-    $new_products_query = tep_db_query("
+    $new_products_query_sale = tep_db_query("
       select
         p.products_id,
         pd.products_viewed,
@@ -21,65 +21,65 @@
     where
         p.products_status = 1
             and
-        p.products_id = pd.products_id
+        p.products_promote = 0
             and
-        p.products_kind_of = 'For Rent'
+        p.products_id = pd.products_id
             and
         pd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_promote desc, rand(), p.products_date_added desc
-        limit " . MAX_DISPLAY_NEW_PRODUCTS
+        p.products_promote asc, rand(), p.products_date_added desc
+        limit 6 "
     );
-  $num_new_products = tep_db_num_rows($new_products_query);
 
-  if ($num_new_products > 0) {
+  $num_new_products_sale = tep_db_num_rows($new_products_query_sale);
+
+  if ($num_new_products_sale > 0) {
 
     $new_prods_content = NULL;
 
-    while ($new_products = tep_db_fetch_array($new_products_query)) {
-      if (strlen($new_products['products_name']) > 35) {
-        $p_name = substr($new_products['products_name'], 0, 40) . '...';
+    while ($new_products_sale = tep_db_fetch_array($new_products_query_sale)) {
+      if (strlen($new_products_sale['products_name']) > 35) {
+        $p_name = substr($new_products_sale['products_name'], 0, 40) . '...';
       }else{
-        $p_name = $new_products['products_name'];
+        $p_name = $new_products_sale['products_name'];
       }
-      $new_prods_content .= '
+      $new_prods_content_sale .= '
 
         <div class="item">
           <!-- col-md-12 -->
-          <div class="col-md-4 rent-block">
+          <div class="col-md-12 rent-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
               <div class="property-images-box">
                 <a
                     title="Property Image"
-                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
+                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products_sale['products_id']) . '"
                 >
                 '
-                    . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
-                    $new_products['products_name'], SMALL_IMAGE_WIDTH,
+                    . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
+                    $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
                     SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"') .
                 '
                     </a>
                 <h4>
-                    ' . $currencies->display_price($new_products['products_price'], tep_get_tax_rate($new_products['products_tax_class_id'])) . '
+                    ' . $currencies->display_price($new_products_sale['products_price'], tep_get_tax_rate($new_products_sale['products_tax_class_id'])) . '
                 </h4>
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
-                <div class="pro">test Plan</div>
                 <a title="Property Title" href="index.html#">' . $p_name . '</a>
                 <ul>
                   <li>
                       <i class="fa fa fa-institution"></i>
-                      ' . $new_products['number_of_floors'] . '
+                      ' . $new_products_sale['number_of_floors'] . '
                   </li>
                   <li>
                     <i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>
-                    '. $new_products['bed_rooms'] .'
+                    '. $new_products_sale['bed_rooms'] .'
                   </li>
                   <li>
                     <i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>
-                    '. $new_products['bath_rooms'] . '
+                    '. $new_products_sale['bath_rooms'] . '
                   </li>
                 </ul>
               </div>
@@ -90,15 +90,15 @@
     }
 ?>
     <!-- Rent Property -->
-    <div class="rent-property">
+    <div class="sale-property">
     <div class="col-md-6 rent">
       <div class="section-header">
-        <h3><span><?php echo PROPERTY; ?></span><?php echo FEATURED;?></h3>
+        <h3><span><?php echo PROPERTY; ?></span><?php echo FREE;?></h3>
       </div>
     </div>
     <div class="col-md-12 p_r_z">
-    <div id="rent-property-block1" class="rent-property-block">
-      <?php echo $new_prods_content; ?>
+    <div id="sale-property-block" class="sale-property-block">
+      <?php echo $new_prods_content_sale; ?>
     </div>
     </div>
   </div><!-- Rent Property /- -->

@@ -55,7 +55,7 @@ define(LISTING, 'តារាង');
 define(RENT, 'សម្រាប់ជួល');
 define(SALE, 'សម្រាប់លក់');
 define(BOTH, 'លក់និងជួល');
-
+define(FREE, 'For Free');
 define(BEDS, 'គ្រែដេក');
 define(BATHS, 'បន្ចបទឹក់');
 // customer language 
