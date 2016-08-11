@@ -300,7 +300,31 @@
 			event.preventDefault();
 			$($(this).parent()).remove();			
 		});
-		
+
+		/**
+		 * Functionality for save Favorite Property
+		 */
+		$('.heart-icon').click(function(){
+			var product_id = $(this).attr('data-product');
+			console.log(product_id);
+			$.ajax
+			({
+				url: 'api/Favorite',
+				data: {"products_id": product_id},
+				type: 'post',
+				success: function(result)
+				{
+					if(result.id){
+						alertify.logPosition("top right");
+						alertify.success("<b>Favorite:</b> Save Success.");
+					}else{
+						alertify.logPosition("top right");
+						alertify.success("<b>Favorite:</b> Remove Success.");
+					}
+					console.log(result);
+				}
+			});
+		});
 		
 	});	/* document.ready /- */	
 	

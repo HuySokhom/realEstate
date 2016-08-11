@@ -57,7 +57,7 @@
           ?>
           <li>
             <a href="favorite.php">
-              <i class="fa fa-star"></i>
+              <i class="fa fa-heart"></i>
               <?php echo HEADER_FAVORITE;?>
             </a>
           </li>

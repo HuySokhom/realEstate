@@ -3376,7 +3376,7 @@ button.btn{
 	background-color: #3C64FF;
 	max-height: 37px;
 	line-height: 36px;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	font-size: 16px;
 	border-radius: 0;
 	color: #fff;
@@ -3592,7 +3592,7 @@ form .progress {
 	color: #fff;
 	position: absolute;
 	text-transform: uppercase;
-	background: #d9534f;
+	background-color: rgba(217, 83, 79, 0.8);
 }
 .premium{
 	top: 0;
@@ -3603,7 +3603,7 @@ form .progress {
 	text-transform: uppercase;
 	color: #fff;
 	position: absolute;
-	background: #31b0d5;
+	background-color: rgba(49, 176, 213, 0.8);
 }
 .basic{
 	top: 0;
@@ -3614,7 +3614,7 @@ form .progress {
 	text-align: center;
 	color: #fff;
 	position: absolute;
-	background: #449d44;
+	background-color: rgba(68, 157, 68, 0.8);
 }
 .free{
 	top: 0;
@@ -3624,8 +3624,12 @@ form .progress {
 	text-align: center;
 	color: #fff;
 	position: absolute;
-	background-color: #808080;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 .col-home{
 	padding-bottom: 15px;
+}
+.heart-icon:hover {
+	color: red;
+	cursor: pointer;
 }

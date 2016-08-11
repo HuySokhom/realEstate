@@ -10,6 +10,7 @@ $new_products_query_sale = tep_db_query("
         p.number_of_floors,
         p.products_tax_class_id,
         pd.products_name,
+        p.products_promote,
         if(s.status, s.specials_new_products_price, p.products_price) as products_price
       from
         " . TABLE_PRODUCTS . " p
@@ -40,6 +41,23 @@ if ($num_new_products_sale > 0) {
   $new_prods_content = NULL;
 
   while ($new_products_sale = tep_db_fetch_array($new_products_query_sale)) {
+    switch ($new_products_sale['products_promote']) {
+      case 3:
+        $text = 'Pro Featured';
+        $class = 'pro';
+        break;
+      case 2:
+        $text = 'Premium Featured';
+        $class = 'premium';
+        break;
+      case 1:
+        $text = 'Basic Featured';
+        $class = 'basic';
+        break;
+      default:
+        $text = 'Free';
+        $class = 'free';
+    }
     if (strlen($new_products_sale['products_name']) > 35) {
       $p_name = substr($new_products_sale['products_name'], 0, 40) . '...';
     }else{
@@ -57,12 +75,13 @@ if ($num_new_products_sale > 0) {
                     title="Property Image"
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products_sale['products_id']) . '"
                 >
-                '
-        . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
-            $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
-            SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"') .
-        '
-                    </a>
+                  '
+                  . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
+                      $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
+                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"') .
+                  '
+                </a>
+                <div class="' . $class . '">'. $text .'</div>
                 <h4>
                     ' . $currencies->display_price($new_products_sale['products_price'], tep_get_tax_rate($new_products_sale['products_tax_class_id'])) . '
                 </h4>

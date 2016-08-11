@@ -47,6 +47,17 @@ class Object extends DbObj {
 
 	}
 
+	public function delete(){
+		$this->dbQuery("
+			DELETE FROM
+				favorite
+			WHERE
+				products_id = '" . (int)$this->getProductsId() . "'
+					AND
+				session_id = '". $this->getSessionId() ."'
+		");
+	}
+
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
