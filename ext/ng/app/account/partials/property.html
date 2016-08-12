@@ -1,42 +1,48 @@
 <div class="panel-body">
+	<div
+		class="label label-info"
+		data-ng-if="totalItems > 0"
+		style="
+			padding: 10px;
+			font-size: 14px;
+			font-weight: 500;
+			border-radius: 0px;
+		">
+		Total of Items: {{totalItems}}
+	</div>
+	<br/><br/>
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<button
 				class="btn btn-default"
+				style="max-height: 44px;padding-top: 5px;"
 				onclick="location.href='account.php#/manage_property/post';"
 			>
 				<span class="glyphicon glyphicon-plus-sign"></span>
 				Post Property
 			</button>
-			<span class="label label-info" data-ng-if="totalItems > 0">
-				Total of Items: {{totalItems}}
-			</span>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-10">
 			<div class="row">
-				<div class="form-group has-feedback col-sm-4">
+				<div class="col-md-4">
 					<input
 						type="text"
 						placeholder="Search Title..."
-						style="width: 106%;"
 						class="form-control"
 						data-ng-model="search_title"
 						data-ng-keypress="($event.which === 13) ? search() : 0"
 					/>
-					<span class="glyphicon glyphicon-search form-control-feedback"></span>
 				</div>
-				<div class="form-group has-feedback col-sm-4">
+				<div class="col-md-3">
 					<input
 						type="text"
 						placeholder="Search Id..."
-						style="width: 106%;"
 						class="form-control"
 						data-ng-model="id"
 						data-ng-keypress="($event.which === 13) ? search() : 0"
 					/>
-					<span class="glyphicon glyphicon-search form-control-feedback"></span>
 				</div>
-				<div class="form-group has-feedback col-sm-4">
+				<div class="col-md-3">
 					<select
 						data-ng-model="category_id"
 						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
@@ -44,17 +50,27 @@
 						data-ng-change="search();"
 						required
 					>
-						<option value="">--Filter By Category--</option>
+						<option value="">Filter By Category</option>
 					</select>
+				</div>
+				<div class="col-md-2">
+					<button
+						class="btn btn-default"
+						data-ng-click="search();"
+						style="max-height: 44px;padding-top: 5px;"
+					>
+						<span class="fa fa-search"></span>
+						Search
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<table class="table table-bordered table-striped">
+	<br/>
+	<table class="table table-striped">
 		<thead>
 			<th>
-				Id
+				ID
 			</th>
 			<th>
 				Category
@@ -63,13 +79,13 @@
 				Title
 			</th>
 			<th>
-				Kind of
+				Type
 			</th>
 			<th>
 				Price
 			</th>
 			<th>
-				Product View
+				View
 			</th>
 			<th>
 				Plan
