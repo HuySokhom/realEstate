@@ -269,7 +269,7 @@ define('TEXT_REVIEW_BY', 'by %s');
 define('TEXT_REVIEW_WORD_COUNT', '%s words');
 define('TEXT_REVIEW_RATING', 'Rating: %s [%s]');
 define('TEXT_REVIEW_DATE_ADDED', 'Date Added: %s');
-define('TEXT_NO_REVIEWS', 'There are currently no product reviews.');
+define('TEXT_NO_REVIEWS', 'There are currently no products favorite.');
 
 define('TEXT_NO_NEW_PRODUCTS', 'There are currently no products.');
 

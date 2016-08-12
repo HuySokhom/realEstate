@@ -89,10 +89,6 @@
                     <p>' . PROPERTY . '</p>
                     <h3>' . LISTING . '</h3>
                   </div>
-                  <div class="view-list col-md-2 col-sm-2 p_r_z" style="display:none;">
-                    <a title="Grid View" href="aa-listing.html"><i class="fa fa-th "></i></a>
-                    <a class="active" title="List View" href="aa-listing-list.html"><i class="fa fa-bars"></i></a>
-                  </div>
                 </div>
     ';
     echo $prod_list_contents;
@@ -116,7 +112,7 @@
     <!-- Pagination /- -->
     </div>
 
-    <!-- Property Listing Section /- -->';
+    <!-- Property Listing Section /- -->
 <?php
 }
 

@@ -1,7 +1,7 @@
 <?php
 require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
 ?>
-<div class="col-md-3 col-sm-6 p_r_z property-sidebar widget-area">
+<div class="col-md-3 col-sm-4 p_r_z property-sidebar widget-area">
   <aside class="widget widget-search">
     <h2 class="widget-title">
       <?php echo TEXT_SEARCH;?>

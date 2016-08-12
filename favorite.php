@@ -30,7 +30,12 @@
       p.products_id,
       pd.products_name,
       p.products_image,
-      p.products_image_thumbnail
+      p.products_image_thumbnail,
+      p.bed_rooms,
+      p.bath_rooms,
+      p.number_of_floors,
+      p.products_price,
+      p.products_promote
     from
       favorite f, " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd
     where
@@ -62,22 +67,94 @@
 <?php
     }
     ?>
-    <div class="contentText">
+    <div class="col-sm-8 col-md-9">
       <div class="reviews">
 <?php
     $reviews_query = tep_db_query($favorite_split->sql_query);
     while ($reviews = tep_db_fetch_array($reviews_query)) {
-      echo '<blockquote class="col-sm-6">';
-      echo '  <p><span class="pull-left">' . tep_image(DIR_WS_IMAGES . tep_output_string_protected($reviews['products_image']), tep_output_string_protected($reviews['products_name']), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT) . '</span>' . tep_output_string_protected($reviews['reviews_text']) . ' ... </p><div class="clearfix"></div>';
-      $reviews_name = tep_output_string_protected($reviews['customers_name']);
-      echo '  <footer>' . sprintf(REVIEWS_TEXT_RATED, tep_draw_stars($reviews['reviews_rating']), $reviews_name, $reviews_name) . ' <a href="' . tep_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id=' . (int)$reviews['products_id']) . '"><span class="pull-right label label-info">' . REVIEWS_TEXT_READ_MORE . '</span></a></footer>';
-      echo '</blockquote>';
+      switch ($reviews['products_promote']) {
+        case 3:
+          $text = 'Pro Featured';
+          $class = 'pro';
+          break;
+        case 2:
+          $text = 'Premium Featured';
+          $class = 'premium';
+          break;
+        case 1:
+          $text = 'Basic Featured';
+          $class = 'basic';
+          break;
+        default:
+          $text = 'Free';
+          $class = 'free';
+      }
+      echo '
+         <div class="item">
+          <!-- col-md-12 -->
+          <div class="col-md-4 col-sm-6 col-sm-8 col-home rent-block">
+            <!-- Property Main Box -->
+            <div class="property-main-box">
+              <div class="property-images-box">
+                <a
+                    title="Property Image"
+                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $reviews['products_id']) . '"
+                >
+                  '
+                      . tep_image(DIR_WS_IMAGES . $reviews['products_image_thumbnail'],
+                      $reviews['products_name'], SMALL_IMAGE_WIDTH,
+                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 250px;"') .
+                  '
+                </a>
+                <div class="' . $class . '">'. $text .'</div>
+                <h4>
+                    ' . $currencies->display_price($reviews['products_price'], tep_get_tax_rate($reviews['products_tax_class_id'])) . '
+                </h4>
+                <div class="' . $class . '">'. $text .'</div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="property-details">
+                <a title="Property Title" href="index.html#">' . $p_name . '</a>
+                <ul>
+                  <li>
+                      <i class="fa fa fa-institution"></i>
+                      ' . $reviews['number_of_floors'] . '
+                  </li>
+                  <li>
+                    <i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>
+                    '. $reviews['bed_rooms'] .'
+                  </li>
+                  <li>
+                    <i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>
+                    '. $reviews['bath_rooms'] . '
+                  </li>
+                </ul>
+              </div>
+            </div><!-- Property Main Box /- -->
+          </div><!-- col-md-12 /- -->
+       </div>
+      ';
     }
     ?>
       </div>
       <div class="clearfix"></div>
+      <?php
+      if (($favorite_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))) {
+        ?>
+        <div class="row">
+          <div class="col-sm-6 pagenumber hidden-xs">
+            <?php echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
+          </div>
+          <div class="col-sm-6">
+            <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
+          </div>
+        </div>
+        <?php
+      }
+      ?>
     </div>
-<?php
+    <?php include('advanced_search_box_right.php');?>
+    <?php
   } else {
 ?>
 
@@ -87,21 +164,8 @@
 
 <?php
   }
+?>
 
-  if (($favorite_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))) {
-?>
-<div class="row">
-  <div class="col-sm-6 pagenumber hidden-xs">
-    <?php echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
-  </div>
-  <div class="col-sm-6">
-    <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
-    <span class="pull-right"><?php echo TEXT_RESULT_PAGE; ?></span>
-  </div>
-</div>
-<?php
-  }
-?>
 </div>
 </div>
 
