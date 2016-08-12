@@ -64,12 +64,14 @@ class Object extends DbObj {
 				favorite
 			(
 				products_id,
-				session_id
+				session_id,
+				create_date
 			)
 				VALUES
 			(
 				'" . $this->getProductsId() . "',
-				'" . $this->getSessionId() . "'
+				'" . $this->getSessionId() . "',
+				NOW()
 			)
 		");
 		$this->setId( $this->dbInsertId() );

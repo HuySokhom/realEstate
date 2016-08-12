@@ -39,7 +39,9 @@
       p.products_id = f.products_id
         and
       p.products_id = pd.products_id
-      and
+        and
+      f.session_id = '" . $_SESSION['sessiontoken']. "'
+        and
         pd.language_id = '" . (int)$languages_id . "'
       order by
         f.id DESC";

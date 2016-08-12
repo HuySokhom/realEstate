@@ -306,11 +306,18 @@
 		 */
 		$('.heart-icon').click(function(){
 			var product_id = $(this).attr('data-product');
-			console.log(product_id);
+			var type = $(this).attr("data-type");
+			if(type == 'insert'){
+				$(this).attr("data-type", "delete");
+			}else{
+				$(this).attr("data-type", "insert");
+			}
+			//console.log(type);
+			//console.log(product_id);
 			$.ajax
 			({
 				url: 'api/Favorite',
-				data: {"products_id": product_id},
+				data: {products_id: product_id, type: type},
 				type: 'post',
 				success: function(result)
 				{
@@ -319,9 +326,9 @@
 						alertify.success("<b>Favorite:</b> Save Success.");
 					}else{
 						alertify.logPosition("top right");
-						alertify.success("<b>Favorite:</b> Remove Success.");
+						alertify.error("<b>Favorite:</b> Remove Success.");
 					}
-					console.log(result);
+					//console.log(result);
 				}
 			});
 		});

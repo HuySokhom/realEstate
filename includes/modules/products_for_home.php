@@ -86,7 +86,11 @@
                 <a title="Property Title" href="index.html#">' . $p_name . '</a>
                 <ul>
                     <li>
-                        <i class="fa fa-heart-o heart-icon" data-product="'. $new_products['products_id']. '"></i>
+                        <i
+                            class="fa fa-heart-o heart-icon"
+                            data-product="'. $new_products['products_id']. '"
+                            data-type="insert"
+                        ></i>
                     </l>
                   <li>
                       <i class="fa fa fa-institution"></i>

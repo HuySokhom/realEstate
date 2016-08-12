@@ -10,8 +10,8 @@ class RestApiFavorite extends RestApi {
 		$obj = new FavoriteObj();
 		$obj->setSessionId($_SESSION['sessiontoken']);
 		$obj->setProductsId($params['POST']['products_id']);
-		$delete = $params['POST']['delete'];
-		if($delete){
+		$delete = $params['POST']['type'];
+		if($delete == "delete"){
 			$obj->delete();
 			return array(
 				'data' => array(
