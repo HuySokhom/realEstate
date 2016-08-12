@@ -61,8 +61,15 @@
                     ' . $str_description .'
                   </p>
                   <ul>
+                    <li>
+                        <i
+                            class="fa fa-heart-o heart-icon"
+                            data-product="'. $listing['products_id']. '"
+                            data-type="insert"
+                        ></i>
+                    </li>
                     <li><i class="fa fa-eye"></i> '. $listing['products_viewed'] .' </li>
-                    <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> '.$listing['bed_rooms'].' </li>
+                        <li><img src="images/aa-listing/bedroom-icon.png" alt="bedroom-icon"> '.$listing['bed_rooms'].' </li>
                     <li><img src="images/aa-listing/bathroom-icon.png" alt="bathroom-icon"> '.$listing['bath_rooms'].' </li>
                     <li><i class="fa fa fa-institution"></i> ' . $listing['number_of_floors'] . ' </li>
                   </ul>

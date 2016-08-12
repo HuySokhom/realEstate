@@ -1,4 +1,4 @@
-<div class="create-account-link <?php echo (MODULE_CONTENT_CREATE_ACCOUNT_LINK_CONTENT_WIDTH == 'Half') ? 'col-sm-6' : 'col-sm-12'; ?>">
+<div class="create-account-link col-sm-6 col-md-12">
   <div class="panel panel-default">
     <div class="panel-body">
       <h4><?php echo MODULE_CONTENT_LOGIN_HEADING_NEW_CUSTOMER; ?></h4>

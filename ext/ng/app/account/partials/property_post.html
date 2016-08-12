@@ -64,7 +64,7 @@
                 Price:
                 <span class="glyphicon glyphicon-asterisk font-color"></span>
             </label>
-            <input type="text" class="form-control" required data-ng-model="price"/>
+            <input type="number" class="form-control" required data-ng-model="price"/>
             <label>
                 Image:
                 <span class="glyphicon glyphicon-asterisk font-color"></span>
@@ -151,7 +151,7 @@
             <select
                 ng-model="bed_rooms"
                 class="form-control"
-                ng-options="n for n in [] | rangeNumber:20"
+                ng-options="n for n in [] | rangeNumber:10"
             >
                 <option value="">--Select Bed Rooms--</option>
             </select>
@@ -162,7 +162,7 @@
             <select
                 ng-model="bath_rooms"
                 class="form-control"
-                ng-options="n for n in [] | rangeNumber:20"
+                ng-options="n for n in [] | rangeNumber:10"
             >
                 <option value="">--Select Bath Rooms--</option>
             </select>
@@ -172,7 +172,7 @@
             <select
                 ng-model="number_of_floors"
                 class="form-control"
-                ng-options="n for n in [] | rangeNumber:50"
+                ng-options="n for n in [] | rangeNumber:30"
             >
                 <option value="">--Select Floors--</option>
             </select>

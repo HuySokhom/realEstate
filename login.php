@@ -100,7 +100,16 @@
           echo $messageStack->output('login');
       }
       ?>
-    <?php echo $page_content; ?>
+      <div class="row">
+        <div class="col-md-7">
+          <!-- Featured Property -->
+          <?php include(DIR_WS_MODULES . "products_Featured.php");?>
+          <!-- Featured Property /- -->
+        </div>
+        <div class="col-md-5">
+          <?php echo $page_content; ?>
+        </div>
+      </div>
   </div>
 </div>
 

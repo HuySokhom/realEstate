@@ -79,25 +79,28 @@
 
   <?php echo tep_draw_form('password_forgotten', tep_href_link(FILENAME_PASSWORD_FORGOTTEN, 'action=process', 'SSL'), 'post', 'class="form-horizontal"', true); ?>
 
-  <div class="contentContainer">
-    <div class="contentText">
-      <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
-
-      <div class="form-group has-feedback">
-        <label for="inputEmail" class="control-label col-sm-3"><?php echo ENTRY_EMAIL_ADDRESS; ?></label>
-        <div class="col-sm-9">
-          <?php echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" autofocus="autofocus" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email'); ?>
-          <?php echo FORM_REQUIRED_INPUT; ?>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
+                <div class="form-group has-feedback">
+                <div class="col-sm-12">
+                  <?php echo tep_draw_input_field('email_address', NULL, 'required aria-required="true" autofocus="autofocus" id="inputEmail" placeholder="' . ENTRY_EMAIL_ADDRESS . '"', 'email'); ?>
+                  <?php echo FORM_REQUIRED_INPUT; ?>
+                </div>
+                </div>
+                <div class="buttonSet row">
+                  <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fa fa-chevron-left', tep_href_link(FILENAME_LOGIN, '', 'SSL')); ?></div>
+                  <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-
-    <div class="buttonSet row">
-      <div class="col-xs-6"><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fa fa-chevron-left', tep_href_link(FILENAME_LOGIN, '', 'SSL')); ?></div>
-      <div class="col-xs-6 text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-chevron-right', null, 'primary', null, 'btn-success'); ?></div>
+    <div class="col-md-6">
+        <!-- Featured Property -->
+        <?php include(DIR_WS_MODULES . "products_Featured.php");?>
+        <!-- Featured Property /- -->
     </div>
-  </div>
-
   </form>
 </div>
 <?php
