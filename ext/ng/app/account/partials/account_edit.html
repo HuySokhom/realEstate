@@ -1,10 +1,8 @@
 <form name="account" data-ng-submit="save();">
-	<table class="table table-bordered">
+	<table class="table">
 		<tr>
 			<td>
-				Plan:
-			</td>
-			<td>
+				<label>Plan:</label>
 				<span
 					data-ng-class="
 						(customers_plan == 3) ? 'label label-danger'
@@ -23,33 +21,27 @@
 		</tr>
 		<tr data-ng-if="customers_plan > 0">
 			<td>
-				Plan Expire:
-			</td>
-			<td>
+				<label>Plan Expire:</label>
 				<span class="label label-primary" data-ng-bind="service.formatDate(plan_expire) | date:'dd/MMMM/yyyy'"></span>
 			</td>
 		</tr>
 		<tr>
-			<td width="20%">
-				User Name:
-			</td>
 			<td>
+				<label>User Name:</label>
 				<input type="text" data-ng-model="user_name" required="required" class="form-control" />
 			</td>
 		</tr>
 		<tr>
 			<td>
-				E-Mail Address:
-			</td>
-			<td>
+				<label>E-Mail Address:</label>
 				<input type="email" data-ng-model="email" required="required" class="form-control" />
 			</td>
 		</tr>
 		<tr>
 			<td>
-				Address:
-			</td>
-			<td>
+				<label>
+					Address:
+				</label>
 				<textarea
 					data-ng-model="address"
 					required="required"
@@ -60,9 +52,9 @@
 		</tr>
 		<tr>
 			<td>
-				Location:
-			</td>
-			<td>
+				<label>
+					Location:
+				</label>
 				<select
 					class="form-control"
 					data-ng-model="location"
@@ -76,25 +68,19 @@
 		</tr>
 		<tr>
 			<td>
-				Telephone:
-			</td>
-			<td>
+				<label>Telephone:</label>
 				<input type="text" data-ng-model="telephone" required="required" class="form-control" />
 			</td>
 		</tr>
 		<tr data-ng-show="type == 'agency' || type == 'member'">
 			<td>
-				Fax:
-			</td>
-			<td>
+				<label>Fax:</label>
 				<input type="text" data-ng-model="fax" class="form-control" />
 			</td>
 		</tr>
 		<tr data-ng-show="type == 'agency' || type == 'member'">
 			<td>
-				Detail:
-			</td>
-			<td>
+				<label>Detail:</label>
 				<textarea
 					ui-tinymce="tinymceOptions"
 					data-ng-model="detail"
@@ -105,9 +91,7 @@
 		</tr>
 		<tr>
 			<td>
-				Photo:
-			</td>
-			<td>
+				<label>Photo:</label>
 				<input
 					type="file"
 					ng-model="picFile"
