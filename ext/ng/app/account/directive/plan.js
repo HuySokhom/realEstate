@@ -13,12 +13,19 @@ app.directive('plan',function(){
                     url: 'api/Session/User/Plan',
                     method: 'POST',
                     data: params
-                }).success(function(data){
+                }).success(function(data){console.log(data);
                     $scope.disabled = false;
-                    alertify.alert("" +
-                        "<b>Congratulation:</b> your book has successful. " +
-                        "<br/>Please wait our assistant will contact you  soon."
-                    );
+                    if(data.id != "success"){
+                        alertify.alert("" +
+                            '<b>Congratulation: </b><img src="images/book.jpg" width="50px;"> Your book has successful. ' +
+                            "<br/>Please wait our assistant will contact you  soon."
+                        );
+                    }else{
+                        alertify.alert("" +
+                            '<b>Successful: </b><img src="images/book.jpg" width="50px;"> You already book. ' +
+                            "<br/>Please wait our assistant will contact you  soon."
+                        );
+                    }
                 });
             };
 
@@ -33,7 +40,7 @@ app.directive('plan',function(){
                     console.log(data);
                     $scope.disabled = false;
                     alertify.alert("" +
-                        "<b>Congratulation:</b> your upgrade has successful. " +
+                        '<b>Congratulation:</b><img src="images/upgrade.png" width="50px;">  Your upgrade has successful. ' +
                         "<br/>Please wait our assistant will contact you  soon."
                     );
                 });
