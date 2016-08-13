@@ -196,7 +196,7 @@
     }
   }
 
-  $select_str = "select distinct " . $select_column_list . " pd.products_viewed ,p.bed_rooms, p.bath_rooms, p.number_of_floors, m.manufacturers_id, p.products_id, SUBSTRING_INDEX(pd.products_description, ' ', 20) as products_description, pd.products_name, p.products_price, p.products_tax_class_id, IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status, s.specials_new_products_price, p.products_price) as final_price ";
+  $select_str = "select distinct " . $select_column_list . " pd.products_viewed, p.products_promote, p.bed_rooms, p.bath_rooms, p.number_of_floors, m.manufacturers_id, p.products_id, SUBSTRING_INDEX(pd.products_description, ' ', 20) as products_description, pd.products_name, p.products_price, p.products_tax_class_id, IF(s.status, s.specials_new_products_price, NULL) as specials_new_products_price, IF(s.status, s.specials_new_products_price, p.products_price) as final_price ";
 
   if ( (DISPLAY_PRICE_WITH_TAX == 'true') && (tep_not_null($pfrom) || tep_not_null($pto)) ) {
     $select_str .= ", SUM(tr.tax_rate) as tax_rate ";
@@ -330,7 +330,7 @@
         $order_str = " order by p.products_model " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
         break;
       case 'PRODUCT_LIST_NAME':
-        $order_str = " order by pd.products_name " . ($sort_order == 'd' ? 'desc' : '');
+        $order_str = " order by p.products_promote desc, rand(), p.products_date_added desc, pd.products_name " . ($sort_order == 'd' ? 'desc' : '');
         break;
       case 'PRODUCT_LIST_MANUFACTURER':
         $order_str = " order by m.manufacturers_name " . ($sort_order == 'd' ? 'desc' : '') . ", pd.products_name";
