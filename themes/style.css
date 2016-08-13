@@ -3530,8 +3530,10 @@ form .progress {
 	cursor: pointer;
 }
 .active {
-	font-weight: 600;
-	color: #3C64FF;
+	color: #fff;
+	background: crimson;
+	border-radius: 3px;
+	padding: 13px;
 }
 .btn {
 	border-radius: 0px;
@@ -3561,7 +3563,7 @@ form .progress {
 	font-family: 'normal';
 }
 .news{
-	border: 1px solid #ddd;
+	border-bottom: 1px solid crimson;
 	padding: 15px 0px 30px 15px;
 	margin-bottom: 15px;
 }
