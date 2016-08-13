@@ -1,36 +1,33 @@
 <div class="col-md-8">
 	<div class="col-md-4">
-		<img src="images/icon-person.png"/>
+		<img src="images/icon-person.png" ng-hide="photo_thumbnail"/>
+		<img
+			ng-show="photo_thumbnail"
+			class="thumb"
+			src="images/{{photo_thumbnail}}"
+		>
 	</div>
 	<div class="col-md-4">
 		<label>User Name:</label>
-		<input type="text" data-ng-model="user_name" required="required" class="form-control" />
+		<span data-ng-bind="user_name"></span>
 	</div>
 	<div class="col-md-4">
 		<label>E-Mail Address:</label>
-		<input type="email" data-ng-model="email" required="required" class="form-control" />
+		<span data-ng-bind="email"></span>
 	</div>
 	<div class="col-md-4">
 		<label>
 			Location:
 		</label>
-		<select
-			class="form-control"
-			data-ng-model="location"
-			data-ng-options="location.id as location.name for location in locations"
-			data-ng-init="location == location.id"
-			required
-		>
-			<option value="">--Select--</option>
-		</select>
+		<span data-ng-bind="location"></span>
 	</div>
 	<div class="col-md-4">
 		<label>Telephone:</label>
-		<input type="text" data-ng-model="telephone" required="required" class="form-control" />
+		<span data-ng-bind="telephone"></span>
 	</div>
 	<div class="col-md-4">
 		<label>Fax:</label>
-		<input type="text" data-ng-model="fax" class="form-control" />
+		<span data-ng-bind="fax"></span>
 	</div>
 </div>
 <div class="col-md-4">
@@ -38,21 +35,11 @@
 		<label>
 			Address:
 		</label>
-		<textarea
-			data-ng-model="address"
-			required="required"
-			class="form-control"
-			rows="5"
-		></textarea>
+		<span data-ng-bind-html="address"></span>
 	</div>
 	<div class="col-md-12">
 		<label>Detail:</label>
-		<textarea
-				ui-tinymce="tinymceOptions"
-				data-ng-model="detail"
-				id="detail"
-				class="form-control"
-		></textarea>
+		<span data-ng-bind-html="detail"></span>
 	</div>
 </div>
 <div class="panel-body">
