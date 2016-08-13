@@ -1,11 +1,36 @@
 <div class="col-md-8">
 	<div class="col-md-4">
-		<img src="images/icon-person.png" ng-hide="photo_thumbnail"/>
+		<img src="images/icon-person.png" ng-hide="photo_thumbnail" style="margin-bottom: 10px;"/>
 		<img
 			ng-show="photo_thumbnail"
 			class="thumb"
 			src="images/{{photo_thumbnail}}"
+			style="margin-bottom: 10px;"
 		>
+	</div>
+	<div class="col-md-4">
+		<label>Plan:</label>
+		<span
+			data-ng-class="
+				(customers_plan == 3) ? 'label label-danger'
+				: (customers_plan == 2) ? 'label label-primary'
+				: (customers_plan == 1) ? 'label label-success'
+				: 'label label-default'
+			"
+				data-ng-bind="
+				(customers_plan == 3) ? 'Plan Pro'
+				: (customers_plan == 2) ? 'Plan Premium'
+				: (customers_plan == 1) ? 'Plan Basic'
+				: 'Plan Free'
+			"
+			style="font-size: 14px;"
+		></span>
+	</div>
+	<div class="col-md-4" data-ng-if="customers_plan > 0">
+		<td>
+			<label>Plan Expire:</label>
+			<span class="label label-primary" style="font-size: 14px;" data-ng-bind="service.formatDate(plan_expire) | date:'dd/MMMM/yyyy'"></span>
+		</td>
 	</div>
 	<div class="col-md-4">
 		<label>User Name:</label>
@@ -19,18 +44,18 @@
 		<label>
 			Location:
 		</label>
-		<span data-ng-bind="location"></span>
+		<span data-ng-bind="location_name" data-ng-show="location > 0"></span>
 	</div>
 	<div class="col-md-4">
 		<label>Telephone:</label>
 		<span data-ng-bind="telephone"></span>
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-4" data-ng-show="type == 'agency' || type == 'member'">
 		<label>Fax:</label>
 		<span data-ng-bind="fax"></span>
 	</div>
 </div>
-<div class="col-md-4">
+<div class="col-md-4" data-ng-show="type == 'agency' || type == 'member'">
 	<div class="col-md-12">
 		<label>
 			Address:
@@ -42,29 +67,27 @@
 		<span data-ng-bind-html="detail"></span>
 	</div>
 </div>
-<div class="panel-body">
-	<ul class="accountLinkList">
-		<li>
+<div class="col-md-12">
+	<a href="account.php#/account/edit">
+		<button class="btn btn-primary" style="margin-bottom: 5px;">
 			<i class="fa fa-user"></i>
-			<a href="account.php#/account/edit">
-				<span data-ng-if="language_id == 1 ">
-					View or change my account information.
-				</span>
-				<span data-ng-if="language_id == 2">
-					មើលឬផ្លាស់ប្តូរពគណនីរបស់ខ្ញុំ
-				</span>
-			</a>
-		</li>
-		<li>
+			<span data-ng-if="language_id == 1 ">
+				View or change my account information
+			</span>
+			<span data-ng-if="language_id == 2">
+				មើលឬផ្លាស់ប្តូរពគណនីរបស់ខ្ញុំ
+			</span>
+		</button>
+	</a>
+	<a href="account_password.php">
+		<button class="btn btn-default" style="margin-bottom: 5px;">
 			<i class="fa fa-gears"></i>
-			<a href="account_password.php">
-				<span data-ng-if="language_id == 1 ">
-					Change my account password.
-				</span>
-				<span data-ng-if="language_id == 2">
-					ផ្លាស់ប្តូរពាក្យសម្ងាត់នៃគណនីរបស់ខ្ញុំ
-				</span>
-			</a>
-		</li>
-	</ul>
+			<span data-ng-if="language_id == 1 ">
+				Change my account password
+			</span>
+			<span data-ng-if="language_id == 2">
+				ផ្លាស់ប្តូរពាក្យសម្ងាត់នៃគណនីរបស់ខ្ញុំ
+			</span>
+		</button>
+	</a>
 </div>

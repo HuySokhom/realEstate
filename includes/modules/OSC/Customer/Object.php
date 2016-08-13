@@ -4,6 +4,7 @@ namespace OSC\Customer;
 
 use
 	Aedea\Core\Database\StdObject as DbObj
+	, OSC\Location\Collection as ProvinceCol
 ;
 
 class Object extends DbObj {
@@ -30,8 +31,14 @@ class Object extends DbObj {
 		, $photo
 		, $photoThumbnail
 		, $detail
+	 	, $locationDetail
 	;
-	
+
+	public function __construct( $params = array() ){
+		parent::__construct($params);
+		$this->locationDetail = new ProvinceCol();
+	}
+
 	public function toArray( $params = array() ){
 		$args = array(
 			'include' => array(
@@ -49,6 +56,7 @@ class Object extends DbObj {
 				'customers_plan',
 				'plan_date',
 				'plan_expire',
+				'location_detail'
 			)
 		);
 	
@@ -85,6 +93,8 @@ class Object extends DbObj {
 		}
 	
 		$this->setProperties($this->dbFetchArray($q));
+		$this->locationDetail->setFilter('id', $this->getCustomersLocation());
+		$this->locationDetail->populate();
 	}
 
 	public function updateUserType() {
@@ -128,6 +138,13 @@ class Object extends DbObj {
 				customers_id = '" . (int)$this->getId() . "'
 		");
 	
+	}
+
+	public function setLocationDetail( $string ){
+		$this->locationDetail = $string;
+	}
+	public function getLocationDetail(){
+		return $this->locationDetail;
 	}
 
 	public function setCustomersFax( $string ){
