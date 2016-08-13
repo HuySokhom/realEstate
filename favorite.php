@@ -52,7 +52,7 @@
         pd.language_id = '" . (int)$languages_id . "'
       order by
         f.id DESC";
-  $favorite_split = new splitPageResults($favorite_query_raw, MAX_DISPLAY_NEW_REVIEWS);
+  $favorite_split = new splitPageResults($favorite_query_raw, 12);
 
   if ($favorite_split->number_of_rows > 0) {
     if ((PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3')) {
