@@ -25,4 +25,8 @@ class Collection extends StdCollection {
 	}
 
 
+	public function filterBySessionId( $arg ){
+		$this->addWhere("f.session_id = '" . $arg. "' ");
+	}
+
 }

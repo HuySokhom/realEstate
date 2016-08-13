@@ -103,7 +103,7 @@
                   '
                       . tep_image(DIR_WS_IMAGES . $reviews['products_image_thumbnail'],
                       $reviews['products_name'], SMALL_IMAGE_WIDTH,
-                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 250px;"') .
+                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 200px;"') .
                   '
                 </a>
                 <div class="' . $class . '">'. $text .'</div>
