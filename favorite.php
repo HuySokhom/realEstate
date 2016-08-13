@@ -20,6 +20,8 @@
 ?>
 <div class="margin-top">
 <div class="container">
+  <div class="col-sm-8 col-md-9">
+    <div class="reviews">
 <?php
   $favorite_query_raw = "
     select
@@ -67,8 +69,6 @@
 <?php
     }
     ?>
-    <div class="col-sm-8 col-md-9">
-      <div class="reviews">
 <?php
     $reviews_query = tep_db_query($favorite_split->sql_query);
     while ($reviews = tep_db_fetch_array($reviews_query)) {
@@ -114,7 +114,7 @@
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
-                <a title="Property Title" href="index.html#">' . $p_name . '</a>
+                <a title="Property Title" href="'.tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $reviews['products_id']).'">' . $reviews['products_name'] . '</a>
                 <ul>
                   <li>
                       <i class="fa fa fa-institution"></i>
@@ -136,14 +136,13 @@
       ';
     }
     ?>
-      </div>
       <div class="clearfix"></div>
       <?php
       if (($favorite_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3'))) {
         ?>
         <div class="row">
           <div class="col-sm-6 pagenumber hidden-xs">
-            <?php echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
+            <?php //echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
           </div>
           <div class="col-sm-6">
             <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
@@ -152,8 +151,6 @@
         <?php
       }
       ?>
-    </div>
-    <?php include('advanced_search_box_right.php');?>
     <?php
   } else {
 ?>
@@ -166,6 +163,9 @@
   }
 ?>
 
+    </div>
+  </div>
+  <?php include('advanced_search_box_right.php');?>
 </div>
 </div>
 
