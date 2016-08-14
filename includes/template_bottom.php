@@ -89,12 +89,19 @@
             //console.log( windowScroll );
             if(windowScroll < 136){
                 $('.scrollPost').css('display','none');
+                $('.navigation-block').css('position', 'relative');
             }else{
                 if (windowsize < 790) {
                     $('.scrollPost').css('display','none');
                 }else{
                     $('.scrollPost').css('display','block');
                 }
+                var styles = {
+                    "position": "fixed",
+                    "top": 0,
+                    //"border-bottom": "3px solid crimson"
+                };
+                $('.navigation-block').css(styles);
             }
         });
         // detect window resize screen function
