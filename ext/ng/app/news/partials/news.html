@@ -1,18 +1,31 @@
 <div id="property-listing" class="property-listing">
 	<div class="container">
 		<div class="property-left col-md-9 col-sm-8 p_l_z content-area">
-			<div class="news_type news">
-				<ul class="nav navbar-nav">
-					<li data-ng-repeat="type in newsType.elements">
+			<div class="news_type">
+				<ul class="nav navbar-nav news">
+					<li
+						data-ng-class="{'news-active' : activeMenu === 0}"
+						data-ng-click="setActive(0)"
+					>
 						<span
-							class="news-item"
-							data-ng-class="{'news-active' : activeMenu === type.id}"
-							data-ng-click="setActive(type.id)"
+							data-ng-bind="language_id == 1 ? 'All' : 'ទាំងអស់'"
+							data-ng-class="{'news-item' : activeMenu != 0}"
+						>
+						</span>
+					</li>
+					<li
+						data-ng-repeat="type in newsType.elements"
+						data-ng-class="{'news-active' : activeMenu === type.id}"
+						data-ng-click="setActive(type.id)"
+					>
+						<span
+							data-ng-class="{'news-item' : activeMenu != type.id}"
 							data-ng-bind="language_id == 1 ? type.name_en : type.name_kh"
 						></span>
 					</li>
 				</ul>
 			</div>
+			<div class="clearfix"></div>
 			<div
 				data-ng-if="!news"
 				class="align_center"

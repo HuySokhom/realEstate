@@ -3524,7 +3524,7 @@ form .progress {
 	padding-bottom: 30px;
 }
 .news_type > ul > li{
-	margin-right: 20px;
+	padding: 10px 10px 10px 10px;
 }
 .news_type > ul > li:hover{
 	cursor: pointer;
@@ -3535,7 +3535,6 @@ form .progress {
 .news-active {
 	color: #fff;
 	background: crimson;
-	border-radius: 3px;
 	padding: 13px;
 }
 .btn {
@@ -3566,12 +3565,12 @@ form .progress {
 	font-family: 'normal';
 }
 .news{
-	border-bottom: 1px solid crimson;
-	padding: 15px 0px 30px 15px;
+	border-bottom: 3px solid crimson;
 	margin-bottom: 15px;
+	width: 100%;
 }
 .news-item:hover{
-	color: #3C64FF;
+	color: crimson;
 }
 .click:hover{
 	color: #3C64FF;

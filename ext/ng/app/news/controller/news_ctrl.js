@@ -23,7 +23,7 @@ app.controller(
 		initType();
 
 		/* set active link */
-		$scope.activeMenu = "";
+		$scope.activeMenu = 0;
 		$scope.setActive = function(item) {
 			$scope.activeMenu = item;
 			params.news_type_id = $scope.activeMenu;
