@@ -28,7 +28,7 @@
         pd.language_id = '" . (int)$languages_id . "'
             order by
         p.products_promote asc, rand(), p.products_date_added desc
-        limit 6 "
+        limit 5"
     );
 
   $num_new_products_sale = tep_db_num_rows($new_products_query_sale);

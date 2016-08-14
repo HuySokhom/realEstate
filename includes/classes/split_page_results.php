@@ -83,7 +83,7 @@
       if ($this->current_page_number > 1) {
         $display_links_string .= '<li><a href="' . tep_href_link($PHP_SELF, $parameters . $this->page_name . '=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">&laquo;</a></li>';
       } else {
-        $display_links_string .= '<li class="disabled"><span>&laquo;</span></li>';
+        $display_links_string .= '<li class="disabled"><a>&laquo;</a></li>';
       }
 // check if number_of_pages > $max_page_links
       $cur_window_num = intval($this->current_page_number / $max_page_links);
@@ -111,7 +111,7 @@
       if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) { 
         $display_links_string .= '<li><a href="' . tep_href_link($PHP_SELF, $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">&raquo;</a></li>';
       } else {
-        $display_links_string .= '<li class="disabled"><span>&raquo;</span></li>';
+        $display_links_string .= '<li class="disabled"><a>&raquo;</a></li>';
       }
 
       return $display_links_string;

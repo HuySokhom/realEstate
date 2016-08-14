@@ -100,7 +100,7 @@
           <div>
               <?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS) ?>
           </div>
-          <div class="pagenav">
+          <div class="listing-pagination">
             <ul class="pagination">
               <?php
                 echo $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info', 'x', 'y')));

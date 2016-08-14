@@ -31,7 +31,7 @@ $new_products_query_sale = tep_db_query("
         pd.language_id = '" . (int)$languages_id . "'
             order by
         p.products_promote desc, rand(), p.products_date_added desc
-        limit 10"
+        limit 5"
 );
 
 $num_new_products_sale = tep_db_num_rows($new_products_query_sale);
@@ -67,7 +67,7 @@ if ($num_new_products_sale > 0) {
 
         <div class="item">
           <!-- col-md-12 -->
-          <div class="col-md-12 rent-block">
+          <div class="col-md-12 col-sm-12 rent-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
               <div class="property-images-box">
@@ -78,7 +78,7 @@ if ($num_new_products_sale > 0) {
                   '
                   . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
                       $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
-                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"') .
+                      SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 200px;"') .
                   '
                 </a>
                 <div class="' . $class . '">'. $text .'</div>
@@ -88,7 +88,7 @@ if ($num_new_products_sale > 0) {
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
-                <a title="Property Title" href="index.html#">' . $p_name . '</a>
+                <a title="Property Title" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products_sale['products_id']) . '">' . $p_name . '</a>
                 <ul>
                   <li>
                       <i class="fa fa fa-institution"></i>
@@ -114,7 +114,7 @@ if ($num_new_products_sale > 0) {
   <div class="sale-property">
     <h3><?php echo TEXT_RELATE; ?></h3>
     <div class="row p_r_z">
-      <div id="sale-property-block" class="sale-property-block">
+      <div id="other-property-block" class="sale-property-block">
         <?php echo $new_prods_content_sale; ?>
       </div>
     </div>

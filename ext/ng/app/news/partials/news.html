@@ -6,7 +6,7 @@
 					<li data-ng-repeat="type in newsType.elements">
 						<span
 							class="news-item"
-							data-ng-class="{active : activeMenu === type.id}"
+							data-ng-class="{'news-active' : activeMenu === type.id}"
 							data-ng-click="setActive(type.id)"
 							data-ng-bind="language_id == 1 ? type.name_en : type.name_kh"
 						></span>
@@ -22,7 +22,7 @@
 			<div class="blog-listing">
 				<article data-ng-repeat="n in news.elements">
 					<div class="entry-cover">
-						<a title="entry-cover" data-ng-click="link(n.type[0].id, n.id)">
+						<a title="entry-cover" href="" data-ng-click="link(n.type[0].id, n.id)">
 							<img src="images/{{n.image}}" style="width: 100%;"/>
 						</a>
 						<i class="fa fa-image"></i>

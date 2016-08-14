@@ -150,7 +150,7 @@
 			<div class="container">
 				<div class="property-details-content property-details-content2 container-fluid p_z">
 					<!-- col-md-9 -->
-					<div class="col-md-9 col-sm-6 p_l_z">
+					<div class="col-md-9 col-sm-8 p_l_z">
 						<!-- Slider Section -->
 						<div id="property-detail1-slider" class="carousel slide property-detail1-slider" data-ride="carousel">
 							<!-- Wrapper for slides -->

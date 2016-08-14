@@ -144,8 +144,12 @@
           <div class="col-sm-6 pagenumber hidden-xs">
             <?php //echo $favorite_split->display_count(TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?>
           </div>
-          <div class="col-sm-6">
-            <span class="pull-right pagenav"><ul class="pagination"><?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?></ul></span>
+          <div class="pull-right" style="margin-right: 21px;">
+            <span class="listing-pagination">
+              <ul class="pagination">
+                <?php echo $favorite_split->display_links(MAX_DISPLAY_PAGE_LINKS, tep_get_all_get_params(array('page', 'info'))); ?>
+              </ul>
+            </span>
           </div>
         </div>
         <?php

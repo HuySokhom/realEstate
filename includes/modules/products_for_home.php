@@ -83,7 +83,9 @@
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
-                <a title="Property Title" href="index.html#">' . $p_name . '</a>
+                <a title="Property Title"
+                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
+                >' . $p_name . '</a>
                 <ul>
                     <li>
                         <i

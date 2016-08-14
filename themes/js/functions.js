@@ -121,6 +121,22 @@
 			});
 		}
 
+		/* other Property */
+		if( $('#other-property-block').length ) {
+
+			$("#other-property-block").owlCarousel(
+			{
+				autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+				items : 3,
+				itemsDesktop : [1199,3],
+				itemsDesktopSmall : [991,2],
+				itemsMobile : [680,1],
+				//navigation : true,
+				//pagination: false
+			});
+		}
+
 		/* Sale Property */
 		if( $('#both-property-block').length ) {
 			$("#both-property-block").owlCarousel(

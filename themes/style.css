@@ -3531,6 +3531,9 @@ form .progress {
 }
 .active {
 	color: #fff;
+}
+.news-active {
+	color: #fff;
 	background: crimson;
 	border-radius: 3px;
 	padding: 13px;
