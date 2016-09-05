@@ -119,6 +119,16 @@ app.config([
 				templateUrl: 'js/ng/app/search_location/partials/index.html',
 				controller: 'search_popular_ctrl'
 			})
+			.state('/advertising_banner', {
+				url: '/advertising_banner',
+				templateUrl: 'js/ng/app/advertising_banner/partials/index.html',
+				controller: 'advertising_banner_ctrl'
+			})
+			.state('/partner_banner', {
+				url: '/partner_banner',
+				templateUrl: 'js/ng/app/partner_banner/partials/index.html',
+				controller: 'partner_banner_ctrl'
+			})
 		;
 		$urlRouterProvider.otherwise('/');
 		// use the HTML5 History API to remove # url

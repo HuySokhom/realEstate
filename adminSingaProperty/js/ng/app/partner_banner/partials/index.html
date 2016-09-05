@@ -1,0 +1,91 @@
+<button 
+	class="btn btn-default default-font" 
+	data-toggle="modal" 
+	data-target="#imagePopup"
+	data-ng-click="add();"
+>
+	<span class="glyphicon glyphicon-plus"></span>
+	Add Image
+</button>
+<br/><br/>
+<table class="table table-striped table-bordered default-font">
+	<tr>
+		<th>
+			Id
+		</th>
+		<th>
+			Name
+		</th>
+		<th>
+			Image
+		</th>
+		<th>
+			Action
+		</th>
+	</tr>
+	<tr data-ng-if="!image_sliders">
+		<td colspan="4" align="center">
+			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
+		</td>
+	</tr>
+	<tr
+		data-ng-repeat="image_slider in image_sliders.elements"
+	>
+		<td>
+			{{image_slider.id}}
+		</td>
+		<td>
+			<span data-ng-bind="image_slider.text"></span>
+		</td>
+		<td>
+			<img
+				src="../images/{{image_slider.image_thumbnail}}"
+				data-ng-show="image_slider.image_thumbnail"
+			>
+		</td>
+		<td width="">
+			<button
+				class="btn btn-default"
+				data-ng-click="edit(image_slider);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="Edit"
+				tooltip
+			>
+				<span class="fa fa-pencil-square-o"></span>
+			</button>
+			<button
+				class="btn btn-danger"
+				data-ng-click="remove($index, image_slider);"
+				data-toggle="modals"
+				data-placement="bottom"
+				title="Delete"
+				tooltip
+			>
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+		</td>
+	</tr>
+</table>
+<div
+	data-ng-if="image_sliders.elements == 0"
+>
+	<div class="alert alert-danger alert-dismissible">
+		<strong>Warning!</strong> No Image.
+	</div>
+</div>
+<div
+	class="panel-footer"
+	data-ng-show="totalItems > 10"
+>
+	<pagination
+		total-items="totalItems"
+		ng-model="currentPage"
+		ng-change="pageChanged()"
+		max-size="5"
+		items-per-page="10"
+		boundary-links="true"
+	></pagination>
+</div>
+<image:popup></image:popup>
+

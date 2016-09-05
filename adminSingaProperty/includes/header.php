@@ -51,6 +51,8 @@
         <ul>
           <li><a href="administrators.php">Administrators</a></li>
           <li><a href="#/customer_plan">Customer Book Plan</a></li>
+          <li><a href="#/partner_banner">Partner Banner</a></li>
+          <li><a href="#/advertising_banner">Advertising Banner</a></li>
         </ul>
       </li>
       <li class="xn-openable">
