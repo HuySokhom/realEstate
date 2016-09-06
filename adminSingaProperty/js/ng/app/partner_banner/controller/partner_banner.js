@@ -3,30 +3,30 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, 'Services'
-	, '$location'
 	, 'Upload'
 	, 'alertify'
 	, '$timeout'
-	, function ($scope, Restful, Services, $location, Upload, $alertify, $timeout){
+	, function ($scope, Restful, Services, Upload, $alertify, $timeout){
 		$scope.service = new Services();
+
 		$scope.add = function(){
-			$scope.image_slider = '';
+			$scope.banner = '';
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
 		};
-		$scope.totalItems = 0;
+
 		function init(params){
 			Restful.get(params).success(function(data){
-				$scope.image_sliders = data;
+				$scope.banners = data;
 				$scope.totalItems = data.count;
 			});
 		};
-		init('api/ImageSlider');
+		init('api/PartnerBanner');
 
 		$scope.edit = function(params){
-			$('#imagePopup').modal('show');
-			$scope.image_slider = angular.copy(params);
+			$('#banners').modal('show');
+			$scope.banner = angular.copy(params);
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
@@ -34,22 +34,22 @@ app.controller(
 
 		$scope.save = function(){
 			var data = {
-				text: $scope.image_slider.text,
-				image: $scope.image_slider.image,
-				image_thumbnail: $scope.image_slider.image_thumbnail,
-				sort_order: $scope.image_slider.sort_order
+				title: $scope.banner.title,
+				image: $scope.banner.image,
+				link: $scope.banner.link,
+				sort_order: $scope.banner.sort_order
 			};
 			$scope.isDisabled = true;
-			if( $scope.image_slider.id ){
-				Restful.put('api/ImageSlider/' + $scope.image_slider.id, data).success(function(data){
+			if( $scope.banner.id ){
+				Restful.put('api/ImageSlider/' + $scope.banner.id, data).success(function(data){
 					init('api/ImageSlider/');
-					$('#imagePopup').modal('hide');
+					$('#banners').modal('hide');
 					$scope.isDisabled = false;
 				});
 			}else{
 				Restful.post('api/ImageSlider/', data).success(function(data){
 					init('api/ImageSlider');console.log(data);
-					$('#imagePopup').modal('hide')
+					$('#banners').modal('hide')
 					$scope.isDisabled = false;
 				});
 			}
@@ -100,16 +100,5 @@ app.controller(
 			}
 		};
 
-		/**
-		 * start functionality pagination
-		 */
-		var params = {};
-		$scope.currentPage = 1;
-		//get another portions of data on page changed
-		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
-			params.start = $scope.pageSize;
-			init(params);
-		};
 	}
 ]);
