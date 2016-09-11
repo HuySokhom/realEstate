@@ -71,7 +71,7 @@
 	data-ng-if="banners.elements == 0"
 >
 	<div class="alert alert-danger alert-dismissible">
-		<strong>Warning!</strong> No Image.
+		<strong>Warning!</strong> Empty Data.
 	</div>
 </div>
 
@@ -86,14 +86,14 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button
-							type="button"
-							class="close"
-							data-dismiss="modal"
+						type="button"
+						class="close"
+						data-dismiss="modal"
 					>
 						<span>&times;</span>
 					</button>
 					<h4>
-						<label>Image Slider</label>
+						<label>Partner Banner</label>
 					</h4>
 				</div>
 				<div class="modal-body">
@@ -111,20 +111,20 @@
 								/>
 							</td>
 						</tr>
-						<tr data-ng-show="image_slider.text">
+						<tr data-ng-show="banner.title">
 							<td>
 								Image:
 							</td>
 							<td>
 								<input
-										type="file"
-										ng-model="picFile"
-										name="file"
-										data-ng-disabled="banner.text == ''"
-										accept="image/*"
-										ngf-max-size="2MB"
-										ngf-model-invalid="errorFiles"
-										ngf-select="uploadPic(picFile)"
+									type="file"
+									ng-model="picFile"
+									name="file"
+									data-ng-disabled="banner.text == ''"
+									accept="image/*"
+									ngf-max-size="2MB"
+									ngf-model-invalid="errorFiles"
+									ngf-select="uploadPic(picFile)"
 								>
 								<i ng-show="myForm.file.$error.maxSize" class="error">
 									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
@@ -160,11 +160,11 @@
 								<input type="text" data-ng-model="banner.sort_order" class="form-control"/>
 							</td>
 						</tr>
-						<tr data-ng-hide="true">
+						<tr>
 							<td>
 								Link:
 							</td>
-							<td>
+							<td>{{banner.link}}
 								<input type="text" data-ng-model="banner.link" class="form-control"/>
 							</td>
 						</tr>

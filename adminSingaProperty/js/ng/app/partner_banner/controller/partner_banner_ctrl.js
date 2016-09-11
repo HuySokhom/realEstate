@@ -18,6 +18,7 @@ app.controller(
 
 		function init(params){
 			Restful.get(params).success(function(data){
+				console.log(data);
 				$scope.banners = data;
 				$scope.totalItems = data.count;
 			});
@@ -41,14 +42,14 @@ app.controller(
 			};
 			$scope.isDisabled = true;
 			if( $scope.banner.id ){
-				Restful.put('api/ImageSlider/' + $scope.banner.id, data).success(function(data){
-					init('api/ImageSlider/');
+				Restful.put('api/PartnerBanner/' + $scope.banner.id, data).success(function(data){
+					init('api/PartnerBanner/');
 					$('#banners').modal('hide');
 					$scope.isDisabled = false;
 				});
 			}else{
-				Restful.post('api/ImageSlider/', data).success(function(data){
-					init('api/ImageSlider');console.log(data);
+				Restful.post('api/PartnerBanner/', data).success(function(data){
+					init('api/PartnerBanner');console.log(data);
 					$('#banners').modal('hide')
 					$scope.isDisabled = false;
 				});
@@ -63,7 +64,7 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( 'api/ImageSlider/' + params.id, params ).success(function(data){
+					Restful.delete( 'api/PartnerBanner/' + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
 						$scope.image_sliders.elements.splice($index, 1);
@@ -84,10 +85,11 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
+					console.log(response);
 					$timeout(function () {
 						file.result = response.data;
-						$scope.image_slider.image = response.data.image;
-						$scope.image_slider.image_thumbnail = response.data.image_thumbnail;
+						$scope.banner.image = response.data.image;
+						$scope.banner.image_thumbnail = response.data.image_thumbnail;
 						//file.result.substring(1, file.result.length - 1);
 					});
 				}, function (response) {
