@@ -98,8 +98,8 @@ class Object extends DbObj {
 				image,
 				location,
 				sort_order,
-				status
-				created
+				status,
+				create_date
 			)
 				VALUES
 			(
