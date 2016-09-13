@@ -57,6 +57,7 @@ define(LISTING, 'Listing');
 define(RENT, 'For Rent');
 define(SALE, 'For Sale');
 define(FREE, 'For Free');
+define('OUR_PARTNERS','Our Partners');
 define(BOTH, 'Sale And Rent');
 define('TEXT_SEARCH','Search');
 define('TEXT_TYPE', 'Type');

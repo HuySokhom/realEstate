@@ -58,6 +58,7 @@ define(BOTH, 'លក់និងជួល');
 define(FREE, 'For Free');
 define(BEDS, 'គ្រែដេក');
 define(BATHS, 'បន្ចបទឹក់');
+define('OUR_PARTNERS','ដៃគូររបស់យើង');
 // customer language 
 define('POST_PROPERTY', 'បង្កើតអចលនទ្រព្យ');
 define('MENU_AGENTS', 'ភ្នាក់ងារ');

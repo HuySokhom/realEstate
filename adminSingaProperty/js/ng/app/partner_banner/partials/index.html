@@ -106,12 +106,12 @@
 								<input
 									type="text"
 									class="form-control"
-									data-ng-model="banner.title"
+									data-ng-model="title"
 									required="required"
 								/>
 							</td>
 						</tr>
-						<tr data-ng-show="banner.title">
+						<tr>
 							<td>
 								Image:
 							</td>
@@ -120,7 +120,6 @@
 									type="file"
 									ng-model="picFile"
 									name="file"
-									data-ng-disabled="banner.text == ''"
 									accept="image/*"
 									ngf-max-size="2MB"
 									ngf-model-invalid="errorFiles"
@@ -130,15 +129,10 @@
 									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
 								</i>
 								<div>
-									<i>
-										Image recommend 1970px * 747
-									</i>
-								</div>
-								<div>
 									<img
-										ng-show="banner.image"
+										ng-show="image_thumbnail"
 										class="thumb"
-										src="../images/{{banner.image}}"
+										src="../images/{{image_thumbnail}}"
 									>
 								<span class="progress" ng-show="picFile.progress >= 0">
 									<div
@@ -157,15 +151,15 @@
 								Sort Order:
 							</td>
 							<td>
-								<input type="text" data-ng-model="banner.sort_order" class="form-control"/>
+								<input type="text" data-ng-model="sort_order" class="form-control"/>
 							</td>
 						</tr>
 						<tr>
 							<td>
 								Link:
 							</td>
-							<td>{{banner.link}}
-								<input type="text" data-ng-model="banner.link" class="form-control"/>
+							<td>
+								<input type="text" data-ng-model="link" class="form-control"/>
 							</td>
 						</tr>
 					</table>

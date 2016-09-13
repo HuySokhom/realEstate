@@ -8,9 +8,13 @@ app.controller(
 	, '$timeout'
 	, function ($scope, Restful, Services, Upload, $alertify, $timeout){
 		$scope.service = new Services();
-
 		$scope.add = function(){
 			$scope.banner = '';
+			$scope.title = '';
+			$scope.image_thumbnail = '';
+			$scope.link = '';
+			$scope.sort_order = '';
+			$scope.id = '';
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
@@ -27,29 +31,39 @@ app.controller(
 
 		$scope.edit = function(params){
 			$('#banners').modal('show');
-			$scope.banner = angular.copy(params);
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
+			$scope.title = params.title;
+			$scope.id = params.id;
+			console.log(params);
+			$scope.image_thumbnail = params.image_thumbnail;
+			$scope.link = params.link;
+			$scope.sort_order = params.sort_order;
+			
 		};
 
 		$scope.save = function(){
 			var data = {
-				title: $scope.banner.title,
-				image: $scope.banner.image,
-				link: $scope.banner.link,
-				sort_order: $scope.banner.sort_order
+				title: $scope.title,
+				image: $scope.image,
+				image_thumbnail: $scope.image_thumbnail,
+				link: $scope.link,
+				sort_order: $scope.sort_order
 			};
+			console.log(data);
 			$scope.isDisabled = true;
-			if( $scope.banner.id ){
-				Restful.put('api/PartnerBanner/' + $scope.banner.id, data).success(function(data){
+			if( $scope.id ){
+				Restful.put('api/PartnerBanner/' + $scope.id, data).success(function(data){
 					init('api/PartnerBanner/');
+					console.log(data);
 					$('#banners').modal('hide');
 					$scope.isDisabled = false;
 				});
 			}else{
 				Restful.post('api/PartnerBanner/', data).success(function(data){
-					init('api/PartnerBanner');console.log(data);
+					console.log(data);
+					init('api/PartnerBanner');
 					$('#banners').modal('hide')
 					$scope.isDisabled = false;
 				});
@@ -67,7 +81,7 @@ app.controller(
 					Restful.delete( 'api/PartnerBanner/' + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.image_sliders.elements.splice($index, 1);
+						$scope.banners.elements.splice($index, 1);
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -85,11 +99,10 @@ app.controller(
 					data: {file: file, username: $scope.username},
 				});
 				file.upload.then(function (response) {
-					console.log(response);
 					$timeout(function () {
 						file.result = response.data;
-						$scope.banner.image = response.data.image;
-						$scope.banner.image_thumbnail = response.data.image_thumbnail;
+						$scope.image = response.data.image;
+						$scope.image_thumbnail = response.data.image_thumbnail;
 						//file.result.substring(1, file.result.length - 1);
 					});
 				}, function (response) {

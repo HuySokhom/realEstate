@@ -113,7 +113,44 @@
 
     include(DIR_WS_MODULES . FILENAME_HOME_PRODUCTS);
     include(DIR_WS_MODULES . FILENAME_FREE_PRODUCTS);
+    // query banners
+    $banner_query = tep_db_query("
+      select
+        title, link, image_thumbnail
+      from
+        banner_partner
+      where 
+        status = 1
+      order by sort_order asc      
+    ");
+    $partner_array = [];
+    while ($item = tep_db_fetch_array($banner_query)) {
+      $partner_array[] = $item;
+    }
 ?>
+  <div class="col-md-12">
+    <h3><?php echo OUR_PARTNERS;?></h3>
+  </div>
+  <div class="clearfix"></div> 
+  <!-- Partner Section -->
+  <div id="partner-section" class="partner-section">
+    <div class="container">
+      <div id="business-partner" class="business-partner">
+        <?php 
+          foreach ($partner_array as $obj) {
+            echo '
+              <div class="item">
+                <a title="Gallery Image" href="index.html#">
+                  <img src="images/' . $obj['image_thumbnail'] . '" alt="client1">
+                </a>
+              </div>
+            ';
+          }
+        ?>
+      </div>
+    </div>
+  </div>
+    <!-- Partner Section /- -->
 </div>
 <?php
   }

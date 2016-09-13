@@ -23,13 +23,11 @@ class RestApiImageUpload extends RestApi {
 				. time()
 				. '.' . $ext
 			;
-			var_dump($file['name']);
 			if(move_uploaded_file(
 				$file['tmp_name'],
 				DIR_FS_CATALOG . 'images/news/' . $file['name']
 			)){
-				$image = DIR_FS_CATALOG . 'images/news/' . $file['name'];
-				var_dump($image);
+				$image = DIR_FS_CATALOG . 'images/news/' . $file['name'];				
 				// to make image thumbnail
 				$imgThumbnail = DIR_FS_CATALOG . 'images/news_thumbnail/' . $file['name'];
 				$this->make_thumb($file, $image, $imgThumbnail, 200);

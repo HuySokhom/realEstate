@@ -11,6 +11,7 @@ class Object extends DbObj {
 	protected
 		$title
 		, $image
+		, $imageThumbnail
 		, $link
 		, $sortOrder
 		, $location
@@ -22,9 +23,10 @@ class Object extends DbObj {
 				'id',
 				'title',
 				'image',
+				'image_thumbnail',
 				'link',
 				'sort_order',
-			)
+			)	
 		);
 
 		return parent::toArray($args);
@@ -36,6 +38,7 @@ class Object extends DbObj {
 				title,
 				link,
 				status,
+				image_thumbnail,
 				image,
 				sort_order
 			FROM
@@ -76,6 +79,7 @@ class Object extends DbObj {
 			SET
 				title = '" . $this->dbEscape( $this->getTitle() ) . "',
 				image = '" . $this->dbEscape( $this->getImage() ) . "',
+				image_thumbnail = '" . $this->dbEscape( $this->getImageThumbnail() ) . "',
 				link = '" . $this->dbEscape( $this->getLink() ) . "',
 				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "'
 			WHERE
@@ -93,15 +97,17 @@ class Object extends DbObj {
 				title,
 				link,
 				image,
+				image_thumbnail,
 				sort_order,
-				status
-				created
+				status,
+				create_date
 			)
 				VALUES
 			(
 				'" . $this->dbEscape($this->getTitle()) . "',
 				'" . $this->dbEscape($this->getLink()) . "',
 				'" . $this->dbEscape($this->getImage()) . "',
+				'" . $this->dbEscape($this->getImageThumbnail()) . "',
 				'" . (int)$this->getSortOrder() . "',
 				1,
 				NOW()
@@ -150,4 +156,12 @@ class Object extends DbObj {
 		return $this->title;
 	}
 	
+	public function setImageThumbnail( $string ){
+		$this->imageThumbnail = (string)$string;
+	}
+
+	public function getImageThumbnail(){
+		return $this->imageThumbnail;
+	}
+
 }
