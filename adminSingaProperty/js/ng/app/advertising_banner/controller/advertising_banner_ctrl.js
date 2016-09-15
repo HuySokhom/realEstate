@@ -9,47 +9,47 @@ app.controller(
 	, '$timeout'
 	, function ($scope, Restful, Services, $location, Upload, $alertify, $timeout){
 		$scope.service = new Services();
+		$scope.data = {};
 		$scope.add = function(){
-			$scope.image_slider = '';
+			$scope.data = {};
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
 		};
-		$scope.totalItems = 0;
+
 		function init(params){
 			Restful.get(params).success(function(data){
-				$scope.image_sliders = data;
+				console.log(data);
+				$scope.banners = data;
 				$scope.totalItems = data.count;
 			});
 		};
-		init('api/ImageSlider');
+		init('api/AdvertisingBanner');
 
 		$scope.edit = function(params){
-			$('#imagePopup').modal('show');
-			$scope.image_slider = angular.copy(params);
+			$('#banners').modal('show');
 			if($scope.picFile){
 				$scope.picFile = null;
 			}
+			$scope.data = params;
+			console.log(params);		
 		};
 
-		$scope.save = function(){
-			var data = {
-				text: $scope.image_slider.text,
-				image: $scope.image_slider.image,
-				image_thumbnail: $scope.image_slider.image_thumbnail,
-				sort_order: $scope.image_slider.sort_order
-			};
+		$scope.save = function(){			
+			console.log($scope.data);
 			$scope.isDisabled = true;
-			if( $scope.image_slider.id ){
-				Restful.put('api/ImageSlider/' + $scope.image_slider.id, data).success(function(data){
-					init('api/ImageSlider/');
-					$('#imagePopup').modal('hide');
+			if( $scope.data.id ){
+				Restful.put('api/AdvertisingBanner/' + $scope.data.id, $scope.data).success(function(data){
+					init('api/AdvertisingBanner/');
+					console.log(data);
+					$('#banners').modal('hide');
 					$scope.isDisabled = false;
 				});
 			}else{
-				Restful.post('api/ImageSlider/', data).success(function(data){
-					init('api/ImageSlider');console.log(data);
-					$('#imagePopup').modal('hide')
+				Restful.post('api/AdvertisingBanner/', $scope.data).success(function(data){
+					console.log(data);
+					init('api/AdvertisingBanner');
+					$('#banners').modal('hide')
 					$scope.isDisabled = false;
 				});
 			}
@@ -63,10 +63,10 @@ app.controller(
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( 'api/ImageSlider/' + params.id, params ).success(function(data){
+					Restful.delete( 'api/AdvertisingBanner/' + params.id, params ).success(function(data){
 						$scope.disabled = true;console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.image_sliders.elements.splice($index, 1);
+						$scope.banners.elements.splice($index, 1);
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -74,6 +74,16 @@ app.controller(
 					// it here.
 					ev.preventDefault();
 				});
+		};
+
+		// update status 
+		$scope.updateStatus = function(params){
+			params.status === 1 ? params.status = 0 : params.status = 1;
+			var data = { status: params.status, name: "update_status"};
+			Restful.patch('api/AdvertisingBanner/' + params.id, data).success(function(data){
+				console.log(data);
+				$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
+			});
 		};
 
 		//functionality upload
@@ -86,8 +96,8 @@ app.controller(
 				file.upload.then(function (response) {
 					$timeout(function () {
 						file.result = response.data;
-						$scope.image_slider.image = response.data.image;
-						$scope.image_slider.image_thumbnail = response.data.image_thumbnail;
+						$scope.data.image = response.data.image;
+						//$scope.data.image_thumbnail = response.data.image_thumbnail;
 						//file.result.substring(1, file.result.length - 1);
 					});
 				}, function (response) {
@@ -100,16 +110,5 @@ app.controller(
 			}
 		};
 
-		/**
-		 * start functionality pagination
-		 */
-		var params = {};
-		$scope.currentPage = 1;
-		//get another portions of data on page changed
-		$scope.pageChanged = function() {
-			$scope.pageSize = 10 * ( $scope.currentPage - 1 );
-			params.start = $scope.pageSize;
-			init(params);
-		};
 	}
 ]);

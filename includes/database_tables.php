@@ -19,6 +19,7 @@
   define('TABLE_BANNERS_HISTORY', 'banners_history');
   define('TABLE_CATEGORIES', 'categories');
   define('TABLE_CATEGORIES_DESCRIPTION', 'categories_description');
+  define('TABLE_PAGES_DESCRIPTION', 'pages_description');
   define('TABLE_CONFIGURATION', 'configuration');
   define('TABLE_CONFIGURATION_GROUP', 'configuration_group');
   define('TABLE_COUNTRIES', 'countries');

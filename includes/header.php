@@ -97,11 +97,41 @@
             </button>
           </div>
           <div class="navbar-collapse collapse" id="navbar">
-
             <ul class="nav navbar-nav">
-              <?php 
-                echo tep_get_categories_list();
-              ?>
+              <li>
+                <a href="index.php"><?php echo HOME;?></a>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;"><?php echo TEXT_BUY; ?></a>
+                <ul class="dropdown-menu" role="menu">
+                  <?php
+                  echo tep_get_categories_list();
+                  ?>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;"><?php echo TEXT_RENT; ?></a>
+                <ul class="dropdown-menu" role="menu">
+                  <?php
+                    echo tep_get_categories_list();
+                  ?>
+                </ul>
+              </li>
+              <li>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Service</a>
+              </li>
+              <li>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Publication</a>
+              </li>
+              <li>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Community</a>
+              </li>
+              <li>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Guide</a>
+              </li>
+              <li>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">About Us</a>
+              </li>
               <li>
                 <a href="agents.php"><?php echo MENU_AGENTS; ?></a>
               </li>

@@ -24,7 +24,8 @@ class Object extends DbObj {
 				'image',
 				'link',
 				'sort_order',
-				'location'
+				'location',
+				'status'
 			)
 		);
 
@@ -83,10 +84,23 @@ class Object extends DbObj {
 				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
-		");
-		
+		");		
 	}
 	
+	public function updateStatus(){
+		if( !$this->getId() ) {
+			throw new Exception("save method requires id");
+		}		
+		$this->dbQuery("
+			UPDATE
+				advertising_banner
+			SET
+				status = '" . $this->getStatus() . "'
+			WHERE
+				id = '" . (int)$this->getId() . "'
+		");		
+	}
+
 	public function insert()
 	{
 		$this->dbQuery("

@@ -3582,10 +3582,13 @@ form .progress {
 	top:50%;
 	z-index: 9999;
 	right:0;
-	transform: rotate(270deg);
 	margin-right: -106px;
 	color: #fff;
 	font-size: 18px;
+	-ms-transform:rotate(270deg); /* IE 9 */	
+    -moz-transform:rotate(270deg); /* Firefox */
+    -webkit-transform:rotate(270deg); /* Safari and Chrome */    
+    -o-transform:rotate(270deg); /* Opera */
 }
 .pro{
 	top: 0;

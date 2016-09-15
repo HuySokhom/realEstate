@@ -1,52 +1,71 @@
 <button 
 	class="btn btn-default default-font" 
 	data-toggle="modal" 
-	data-target="#imagePopup"
+	data-target="#banners"
 	data-ng-click="add();"
 >
 	<span class="glyphicon glyphicon-plus"></span>
-	Add Image
+	Add Advertisement Image
 </button>
 <br/><br/>
 <table class="table table-striped table-bordered default-font">
 	<tr>
-		<th>
+		<th width="5%">
 			Id
 		</th>
-		<th>
-			Name
+		<th width="20%">
+			Title
 		</th>
-		<th>
+		<th width="35%">
 			Image
 		</th>
-		<th>
+		<th width="20%">
+			Advertisement Location
+		</th>
+		<th width="20%">
 			Action
 		</th>
 	</tr>
-	<tr data-ng-if="!image_sliders">
+	<tr data-ng-if="!banners">
 		<td colspan="4" align="center">
 			<img src="images/icons/gettestr-large-spinner-orange.gif"/>
 		</td>
 	</tr>
 	<tr
-		data-ng-repeat="image_slider in image_sliders.elements"
+		data-ng-repeat="b in banners.elements"
 	>
 		<td>
-			{{image_slider.id}}
+			{{b.id}}
 		</td>
 		<td>
-			<span data-ng-bind="image_slider.text"></span>
+			<span data-ng-bind="b.title"></span>
 		</td>
 		<td>
 			<img
-				src="../images/{{image_slider.image_thumbnail}}"
-				data-ng-show="image_slider.image_thumbnail"
+				ng-src="../images/{{b.image}}"
+				style="width: 150px;"
+				data-ng-show="b.image"
 			>
 		</td>
-		<td width="">
+		<td>
+			{{b.location}}
+		</td>
+		<td>
+			<button
+				class="btn"
+				data-ng-class="(b.status === 1) ? 'btn-success' : 'btn-warning'"
+				data-ng-click="updateStatus(b);"
+				data-toggle="tooltip"
+				data-placement="top"
+				title="{{(b.status === 1) ? 'Active' : 'Inactive'}}"
+				tooltip
+			>				
+				<span class="fa" 
+					data-ng-class="(b.status === 1) ? 'fa-check-square-o' : 'fa fa-minus-circle'"></span>
+			</button>
 			<button
 				class="btn btn-default"
-				data-ng-click="edit(image_slider);"
+				data-ng-click="edit(b);"
 				data-toggle="tooltip"
 				data-placement="top"
 				title="Edit"
@@ -56,9 +75,9 @@
 			</button>
 			<button
 				class="btn btn-danger"
-				data-ng-click="remove($index, image_slider);"
+				data-ng-click="remove($index, b);"
 				data-toggle="modals"
-				data-placement="bottom"
+				data-placement="top"
 				title="Delete"
 				tooltip
 			>
@@ -68,94 +87,76 @@
 	</tr>
 </table>
 <div
-	data-ng-if="image_sliders.elements == 0"
+	data-ng-if="banners.elements == 0"
 >
 	<div class="alert alert-danger alert-dismissible">
-		<strong>Warning!</strong> No Image.
+		<strong>Warning!</strong> Empty Data.
 	</div>
 </div>
-<div
-	class="panel-footer"
-	data-ng-show="totalItems > 10"
->
-	<pagination
-		total-items="totalItems"
-		ng-model="currentPage"
-		ng-change="pageChanged()"
-		max-size="5"
-		items-per-page="10"
-		boundary-links="true"
-	></pagination>
-</div>
+
 <form data-ng-submit="save();" name="myForm">
 	<div
-			class="modal fade"
-			id="imagePopup"
-			data-keyboard="false"
-			data-backdrop="static"
+		class="modal fade"
+		id="banners"
+		data-keyboard="false"
+		data-backdrop="static"
 	>
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button
-							type="button"
-							class="close"
-							data-dismiss="modal"
+						type="button"
+						class="close"
+						data-dismiss="modal"
 					>
 						<span>&times;</span>
 					</button>
 					<h4>
-						<label>Image Slider</label>
+						<label>Advertisement Image</label>
 					</h4>
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered table-responsive">
 						<tr>
-							<td width="5%">
-								Name:
+							<td width="15%">
+								Title:
 							</td>
 							<td>
 								<input
-										type="text"
-										class="form-control"
-										data-ng-model="image_slider.text"
-										required="required"
+									type="text"
+									class="form-control"
+									data-ng-model="data.title"
+									required="required"
 								/>
 							</td>
 						</tr>
-						<tr data-ng-show="image_slider.text">
+						<tr>
 							<td>
 								Image:
 							</td>
 							<td>
 								<input
-										type="file"
-										ng-model="picFile"
-										name="file"
-										data-ng-disabled="image_slider.text == ''"
-										accept="image/*"
-										ngf-max-size="2MB"
-										ngf-model-invalid="errorFiles"
-										ngf-select="uploadPic(picFile)"
+									type="file"
+									ng-model="picFile"
+									name="file"
+									accept="image/*"
+									ngf-max-size="2MB"
+									ngf-model-invalid="errorFiles"
+									ngf-select="uploadPic(picFile)"
 								>
 								<i ng-show="myForm.file.$error.maxSize" class="error">
 									File too large {{errorFiles[0].size / 1000000|number:1}}MB: max 2M
 								</i>
 								<div>
-									<i>
-										Image recommend 1970px * 747
-									</i>
-								</div>
-								<div>
 									<img
-											ng-show="image_slider.image"
-											class="thumb"
-											src="../images/{{image_slider.image_thumbnail}}"
+										ng-show="data.image"
+										class="thumb"
+										src="../images/{{data.image}}"
 									>
 								<span class="progress" ng-show="picFile.progress >= 0">
 									<div
-											style="width:{{picFile.progress}}%"
-											ng-bind="picFile.progress + '%'"
+										style="width:{{picFile.progress}}%"
+										ng-bind="picFile.progress + '%'"
 									>
 									</div>
 								</span>
@@ -169,29 +170,41 @@
 								Sort Order:
 							</td>
 							<td>
-								<input type="text" data-ng-model="image_slider.sort_order" class="form-control"/>
+								<input type="text" data-ng-model="data.sort_order" class="form-control"/>
 							</td>
 						</tr>
-						<tr data-ng-hide="true">
+						<tr>
 							<td>
 								Link:
 							</td>
 							<td>
-								<input type="text" data-ng-model="image_slider.link" class="form-control"/>
+								<input type="text" data-ng-model="data.link" class="form-control"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Location:
+							</td>
+							<td>
+								<select class="form-control" data-ng-model="data.location">
+									<option value="">None</option>
+									<option value="right">Right</option>
+									<option value="left">Left</option>
+								</select>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="modal-footer">
 					<button
-							class="btn btn-default"
-							data-dismiss="modal"
+						class="btn btn-default"
+						data-dismiss="modal"
 					>
 						Close
 					</button>
 					<button
-							class="btn btn-primary"
-							data-ng-disabled="isDisabled"
+						class="btn btn-primary"
+						data-ng-disabled="isDisabled"
 					>
 						Save
 					</button>
@@ -200,6 +213,5 @@
 		</div>
 	</div>
 </form>
-
 
 

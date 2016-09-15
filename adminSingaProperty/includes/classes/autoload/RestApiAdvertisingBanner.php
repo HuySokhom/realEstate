@@ -6,6 +6,7 @@ use
         as AdvertisingBannerObject
 ;
 class RestApiAdvertisingBanner extends RestApi {
+
     public function get($params){
         $col = new AdvertisingBannerCollection();
         $col->sortByOrder('ASC');
@@ -41,4 +42,20 @@ class RestApiAdvertisingBanner extends RestApi {
         $obj->delete();
     }
 
+    public function patch($params){
+        $cols = new AdvertisingBannerCollection();
+        $cols->filterById( $this->getId() );
+        if( $cols->getTotalCount() > 0 ){
+            $cols->populate();
+            $col = $cols->getFirstElement();
+            $col->setId($this->getId());
+            $col->setStatus($params['PATCH']['status']);
+            $col->updateStatus();
+        }
+        return array(
+            'data' => array(
+                'data' => 'update success'
+            )
+        );
+    }
 }
