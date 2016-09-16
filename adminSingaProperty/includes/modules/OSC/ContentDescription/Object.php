@@ -10,7 +10,8 @@ class Object extends DbObj {
 		
 	protected
 		$content
-		, $title
+		, $pagesTitle
+		, $pagesId
 		, $languageId
 	;
 
@@ -18,8 +19,9 @@ class Object extends DbObj {
 		$args = array(
 			'include' => array(
 				'id',
+				'pages_id',
 				'content',
-				'title',
+				'pages_title',
 				'language_id'
 			)
 		);
@@ -30,11 +32,12 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				title,
+				pages_title,
+				pages_id,
 				content,
 				language_id
 			FROM
-				content_description
+				pages_description
 			WHERE
 				id = '" . (int)$this->getId() . "'	
 		");
@@ -55,9 +58,9 @@ class Object extends DbObj {
 		}
 		$this->dbQuery("
 			UPDATE
-				content_description
+				pages_description
 			SET
-				title = '" .  $this->getTitle() . "',
+				pages_title = '" .  $this->getPagesTitle() . "',
 				content = '" . $this->dbEscape(  $this->getContent() ) . "',
 				update_by = '" . $this->getUpdateBy() . "'
 			WHERE
@@ -70,7 +73,7 @@ class Object extends DbObj {
 	public function insert(){
 		$this->dbQuery("
 			INSERT INTO
-				content_description
+				pages_description
 			(
 				content,
 				title,
@@ -81,7 +84,7 @@ class Object extends DbObj {
 				VALUES
 			(
 				'" . $this->dbEscape(  $this->getContent() ) . "',
-				'" . $this->getTitle() . "',
+				'" . $this->getPagesTitle() . "',
 				'" . $this->getCreateBy() ."',
 				NOW(),
 				'" . $this->getLanguageId() ."'
@@ -98,11 +101,18 @@ class Object extends DbObj {
 		return $this->content;
 	}
 
-	public function setTitle( $string ){
-		$this->title = (string)$string;
+	public function setPagesTitle( $string ){
+		$this->pagesTitle = (string)$string;
 	}
-	public function getTitle(){
-		return $this->title;
+	public function getPagesTitle(){
+		return $this->pagesTitle;
+	}
+
+	public function setPagesId( $string ){
+		$this->pagesId = (int)$string;
+	}
+	public function getPagesId(){
+		return $this->pagesId;
 	}
 
 	public function setLanguageId( $string ){

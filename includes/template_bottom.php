@@ -26,8 +26,16 @@
             <!-- Quick Link Widget -->
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_CONTACT; ?></h3>
-                <div><a title="contact" href="contact_us.php"><?php echo HEADING_FOOTER_CONTACT; ?></a></div>
-                <div><a title="about" href="about_us.php"><?php echo HEADING_FOOTER_ABOUT; ?></a></div>
+                <div>
+                    <a title="contact" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=7');?>">
+                        <?php echo TEXT_CONTACT_US; ?>
+                    </a>
+                </div>
+                <div>
+                    <a title="about" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=6');?>">
+                        <?php echo TEXT_ABOUT_US; ?>
+                    </a>
+                </div>
             </aside>
             <!-- Quick Link Widget /- -->
         </div><!-- col-md-3 -->
@@ -38,13 +46,17 @@
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_TERM; ?></h3>
                 <div>
-                    <a title="about" href="privacy.php"><?php echo PRIVACY_POLICY;?></a>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=8');?>">
+                        <?php echo PRIVACY_POLICY;?>
+                    </a>
                 </div>
                 <div>
-                    <a title="about" href="terms.php"><?php echo Terms_Conditions;?></a>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=9');?>">
+                        <?php echo Terms_Conditions;?>
+                    </a>
                 </div>
                 <div>
-                    <a title="about" href="disclaimer.php"><?php echo Disclaimer;?></a>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=10');?>"><?php echo Disclaimer;?></a>
                 </div>
             </aside>
             <!-- Address Widget /- -->

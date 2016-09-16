@@ -1,7 +1,7 @@
 <?php
 
 use
-	OSC\ContentDescription\Collection as ContentCol,
+	OSC\Content\Collection as ContentCol,
 	OSC\ContentDescription\Object as ContentObj
 ;
 
@@ -17,10 +17,10 @@ class RestApiContent extends RestApi {
 
 	public function put($params){
 		$obj = new ContentObj();
-		$id = $this->getId();
-		$obj->setProperties($params['PUT']);
-		$obj->setId($id);
-		$obj->update();
+		foreach($params['PUT'] as $value){
+			$obj->setProperties($value);
+			$obj->update();
+		}
 		return array(
 			'data' => array(
 				'success' => 'true'

@@ -6,7 +6,7 @@ app.controller(
 	, 'Services'
 	, function ($scope, Restful, $location, Services){
 		$scope.service = new Services();
-
+		$scope.editChange = true;
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [
@@ -33,31 +33,19 @@ app.controller(
 
 		// save functionality
 		$scope.save = function(){
-			var data = {
-				title: $scope.title,
-				content: $scope.content,
-				language_id: $scope.language_id,
-			};
 			$scope.isDisabled = true;
-			if( $scope.id ){
-				console.log(data);
-				Restful.put(url + $scope.id, data).success(function(data){
-					console.log(data);
-					$scope.init();
-					$('#contentPopup').modal('hide');
-					$scope.isDisabled = false;
-					$scope.service.alertMessage('<strong>Complete: </strong>Update Success.');
-				});
-			}
+			Restful.put(url, $scope.page_detail).success(function(data){
+				$scope.init();
+				$scope.isDisabled = false;
+				$scope.editChange = true;
+				$scope.service.alertMessage('<strong>Complete: </strong>Update Success.');
+			});
 		};
 
 		// edit functionality
-		$scope.edit = function(params){console.log(params);
-			$scope.content = params.content;
-			$scope.id = params.id;
-			$scope.title = params.title;
-			$scope.language_id = params.language_id;
-			$('#contentPopup').modal('show');
+		$scope.edit = function(params){
+			$scope.editChange = false;
+			$scope.page_detail = angular.copy(params.detail);
 		};
 
 	}

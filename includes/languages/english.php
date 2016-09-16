@@ -53,6 +53,17 @@ define(BEDS, 'Beds');
 define(BATHS, 'Baths');
 define(TEXT_RENT, 'Rent');
 define(TEXT_BUY, 'Buy');
+
+define(TEXT_PUBLICATION, 'Publication');
+define(TEXT_COMMUNITY, 'Community');
+define(TEXT_OTHER, 'Other');
+define(TEXT_SERVICE, 'Service');
+define(TEXT_GUIDE, 'Guide');
+define(TEXT_LINK, 'Link');
+define(TEXT_ABOUT_US, 'About Us');
+define(TEXT_CONTACT_US, 'Contact Us');
+
+
 // page title
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'Property');

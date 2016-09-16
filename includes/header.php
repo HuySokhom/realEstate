@@ -118,25 +118,52 @@
                 </ul>
               </li>
               <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Service</a>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">
+                  <?php echo TEXT_PUBLICATION;?>
+                </a>
               </li>
               <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Publication</a>
-              </li>
-              <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Community</a>
-              </li>
-              <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">Guide</a>
-              </li>
-              <li>
-                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">About Us</a>
+                <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">
+                  <?php echo TEXT_COMMUNITY;?>
+                </a>
               </li>
               <li>
                 <a href="agents.php"><?php echo MENU_AGENTS; ?></a>
               </li>
               <li>
                 <a href="news.php"><?php echo MENU_NEWS; ?></a>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;">
+                  <?php echo TEXT_OTHER;?>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">
+                      <?php echo TEXT_SERVICE;?>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=4');?>">
+                      <?php echo TEXT_LINK;?>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=5');?>">
+                      <?php echo TEXT_GUIDE;?>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=6');?>">
+                      <?php echo TEXT_ABOUT_US;?>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=7');?>">
+                      <?php echo TEXT_CONTACT_US;?>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div><!--/.nav-collapse -->

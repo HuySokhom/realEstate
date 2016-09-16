@@ -10,7 +10,8 @@ use
 class Object extends DbObj {
 
 	protected
-		$detail
+		$detail,
+		$title
 	;
 
 	public function __construct( $params = array() ){
@@ -23,6 +24,7 @@ class Object extends DbObj {
 		$args = array(
 			'include' => array(
 				'id',
+				'title',
 				'status',
 				'detail'
 			)
@@ -34,23 +36,24 @@ class Object extends DbObj {
 	public function load( $params = array() ){
 		$q = $this->dbQuery("
 			SELECT
-				status
+				status,
+				title
 			FROM
-				content
+				pages
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");
 		
 		if( ! $this->dbNumRows($q) ){
 			throw new \Exception(
-				"404: Content not found",
+				"404: Page not found",
 				404
 			);
 		}
 		
 		$this->setProperties($this->dbFetchArray($q));
 
-		$this->detail->setFilter('id', $this->getId());
+		$this->detail->setFilter('pages_id', $this->getId());
 		$this->detail->populate();
 	}
 
@@ -61,4 +64,10 @@ class Object extends DbObj {
 		return $this->detail;
 	}
 
+	public function setTitle( $string ){
+		$this->title = (string)$string;
+	}
+	public function getTitle(){
+		return $this->title;
+	}
 }

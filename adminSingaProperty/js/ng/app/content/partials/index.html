@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" data-ng-show="editChange">
     <table class="table table-bordered table-striped">
         <thead>
         <th style="width: 80px;">
@@ -7,13 +7,7 @@
         <th>
             Title
         </th>
-        <th>
-            Content
-        </th>
-        <th>
-            Language
-        </th>
-        <th style="width: 100px;">
+        <th style="width: 80px;">
             Action
         </th>
         </thead>
@@ -23,12 +17,6 @@
             </td>
             <td>
                 {{n.title}}
-            </td>
-            <td>
-                <span data-ng-bind-html="n.content | limitTo : 1520 "></span>
-            </td>
-            <td>
-                <span data-ng-bind="n.language_id == 1 ? 'English' : 'Khmer' "></span>
             </td>
             <td>
                 <button
@@ -59,75 +47,82 @@
     </div>
 </div>
 
-<form data-ng-submit="save();" name="myForm">
-    <div
-        class="modal fade"
-        id="contentPopup"
-        data-keyboard="false"
-        data-backdrop="static"
+<div data-ng-show="!editChange">
+    <h4>
+        <label>Content</label>
+    </h4>
+    <button
+        class="btn btn-default"
+        data-ng-click="editChange = true"
     >
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                    >
-                        <span>&times;</span>
-                    </button>
-                    <h4>
-                        <label>Content</label>
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered table-responsive">
-                        <tr>
-                            <td>
-                                Title
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    data-ng-model="title"
-                                    required="required"
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="5%">
-                                Content:
-                            </td>
-                            <td>
-                                <textarea
-                                    rows="15"
-                                    class="form-control"
-                                    ui-tinymce="tinymceOptions"
-                                    data-ng-model="content"
-                                    required="required"
-                                ></textarea>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button
-                        class="btn btn-default"
-                        data-dismiss="modal"
-                    >
-                        Close
-                    </button>
-                    <button
-                        class="btn btn-primary"
-                        data-ng-disabled="isDisabled"
-                    >
-                        Save
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+        Back
+    </button>
+    <button
+        class="btn btn-success"
+        data-ng-click="save();"
+        data-ng-disabled="isDisabled">
+        Save
+    </button>
+    <hr>
+    <table class="table table-bordered table-responsive">
+        <tr>
+            <td width="100px">
+                Title En:
+                <img src="../includes/languages/english/images/icon.gif" style="width: 30px;border: none; ">
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="page_detail[0].pages_title"
+                    required="required"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Content En:
+            </td>
+            <td>
+                <textarea
+                    rows="15"
+                    cols="10"
+                    class="form-control"
+                    ui-tinymce="tinymceOptions"
+                    data-ng-model="page_detail[0].content"
+                    required="required"
+                ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Title Kh:
+                <img ng-src="../includes/languages/khmer/images/icon.gif" style="width: 30px;border: none; ">
+            </td>
+            <td>
+                <input
+                    type="text"
+                    class="form-control"
+                    data-ng-model="page_detail[1].pages_title"
+                    required="required"
+                    />
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                Content Kh:
+            </td>
+            <td>
+                <textarea
+                    rows="15"
+                    class="form-control"
+                    ui-tinymce="tinymceOptions"
+                    data-ng-model="page_detail[1].content"
+                    required="required"
+                    ></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
 
 

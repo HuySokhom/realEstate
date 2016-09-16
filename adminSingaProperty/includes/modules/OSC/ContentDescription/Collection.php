@@ -9,23 +9,23 @@ class Collection extends StdCollection {
 	public function __construct( $params = array() ){
 		parent::__construct($params);
 		
-		$this->addTable('content_description', 'ct');
-		$this->idField = 'ct.id';
+		$this->addTable('pages_description', 'pd');
+		$this->idField = 'pd.id';
 		$this->setDistinct(true);
 		
 		$this->objectType = __NAMESPACE__ . '\Object';		
 	}
 
 	public function filterById( $arg ){
-		$this->addWhere("ct.id = '" . (int)$arg. "' ");
+		$this->addWhere("pd.id = '" . (int)$arg. "' ");
 	}
 
-	public function filterByContentId( $arg ){
-		$this->addWhere("ct.content_id = '" . (int)$arg. "' ");
+	public function filterByPagesId( $arg ){
+		$this->addWhere("pd.pages_id = '" . (int)$arg. "' ");
 	}
 
 	public function filterByTitle( $arg ){
-		$this->addWhere("ct.title LIKE '%" . $arg. "%' ");
+		$this->addWhere("pd.pages_title LIKE '%" . $arg. "%' ");
 	}
 
 

@@ -75,6 +75,15 @@ define('HEADING_FOOTER_TERM', 'រយៈពេល');
 define('HEADING_FOOTER_CONTACT', 'ការ​ទំនាក់ទំនង');
 define('HEADING_FOOTER_ABOUT', 'អំពី');
 
+define(TEXT_PUBLICATION, 'ការបោះពុម្ពផ្សាយ');
+define(TEXT_COMMUNITY, 'សហគមន៍');
+define(TEXT_OTHER, 'ផ្សេងទៀត');
+define(TEXT_SERVICE, 'សេវា');
+define(TEXT_GUIDE, 'ការណែនាំ');
+define(TEXT_LINK, 'តំណភ្ជាប់');
+define(TEXT_ABOUT_US, 'អំពី​ពួក​យើង');
+define(TEXT_CONTACT_US, 'ទាក់ទង​មក​ពួក​យើង');
+
 
 // header text in includes/header.php
 define('HEADER_TITLE_CREATE_ACCOUNT', 'Create an Account');
