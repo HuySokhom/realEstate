@@ -42,7 +42,7 @@ define('FILENAME_USER', 'user.php');
   define('FILENAME_LOGIN', 'login.php');
   define('FILENAME_LOGOFF', 'logoff.php');
   define('FILENAME_HOME_PRODUCTS', 'products_for_home.php');
-  define('FILENAME_FREE_PRODUCTS', 'products_for_free.php');
+  define('FILENAME_NEWS', 'news.php');
   define('FILENAME_BOTH_PRODUCTS', 'products_for_sale_and_rent.php');
   define('FILENAME_PASSWORD_FORGOTTEN', 'password_forgotten.php');
   define('FILENAME_PASSWORD_RESET', 'password_reset.php');

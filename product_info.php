@@ -149,6 +149,10 @@
 			<!-- container -->
 			<div class="container">
 				<div class="property-details-content property-details-content2 container-fluid p_z">
+					<!-- col-md-3 -->
+					<?php
+						require('advanced_search_box_right.php');
+					?>
 					<!-- col-md-9 -->
 					<div class="col-md-9 col-sm-8 p_l_z">
 						<!-- Slider Section -->
@@ -258,10 +262,6 @@
 							include(DIR_WS_MODULES . 'relate_products.php');
 						?>
 					</div><!-- col-md-9 /- -->
-					<!-- col-md-3 -->
-					<?php
-						require('advanced_search_box_right.php');
-					?>
 					<!-- col-md-3 /- -->
 				</div>
 			</div><!-- container /- -->

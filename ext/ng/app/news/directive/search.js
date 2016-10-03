@@ -47,7 +47,7 @@ app.controller( 'search_ctrl', [
         }
         $scope.init = function(params){
             $http({
-                url: 'api/SearchLocation',
+                url: 'api/Location',
                 method: 'GET',
                 params: params
             }).success(function(data){
@@ -100,7 +100,7 @@ app.controller( 'search_ctrl', [
                 maxPrice = $scope.maxPrice;
             }
             var link = 
-            "advanced_search_result.php?categories_id=" + cId + 
+            "advanced_search_result.php?keywords=" + $scope.keywords + "&categories_id=" + cId + 
             "&location="+ location +
             "&type=" + type +
             "&bfrom=" + bedFrom +

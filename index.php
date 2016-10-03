@@ -112,7 +112,7 @@
     }
 
     include(DIR_WS_MODULES . FILENAME_HOME_PRODUCTS);
-    include(DIR_WS_MODULES . FILENAME_FREE_PRODUCTS);
+    include(DIR_WS_MODULES . FILENAME_NEWS);
     // query banners
     $banner_query = tep_db_query("
       select

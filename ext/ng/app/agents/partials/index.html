@@ -1,10 +1,11 @@
 <div id="property-listing" class="property-listing">
 	<div class="container">
-		<div class="col-md-9 col-sm-6 p_l_z">
+		<div search></div>
+		<div class="col-md-9 col-sm-8">
 			<!-- Agent List -->
 			<div class="agent-list row">
 				<!-- col-md-4 -->
-				<div class="col-md-4 col-sm-12" data-ng-repeat="a in agents.elements">
+				<div class="col-md-4 col-sm-6" data-ng-repeat="a in agents.elements">
 					<div class="agent-list-box">
 						<div class="agent-list-image-box">
 							<a title="Agent" href="agents.php#/{{a.id}}">
@@ -52,6 +53,5 @@
 				<!-- Pagination /- -->
 			</div>
 		</div><!-- col-md-9 /- -->
-		<div search></div>
 	</div>
 </div>

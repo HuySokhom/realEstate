@@ -9,6 +9,11 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
         <?php echo PROPERTY;?>
       </span></h2>
     <form name="advance_search" action="advanced_search_result.php" method="get">
+      <?php
+        echo tep_draw_input_field('keywords', '', 'required aria-required="true" id="inputKeywords" placeholder="' . SEARCH . '"', 'search');
+        echo tep_draw_hidden_field('search_in_description', '1');
+        ?>
+      <br>
     <?php
         echo tep_draw_pull_down_menu(
             'categories_id',
@@ -81,6 +86,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
     </form>
   </aside>
 
+  <?php /*
   <aside class="widget widget-property-featured">
     <h2 class="widget-title">
       <?php echo FEATURED; ?>
@@ -89,7 +95,6 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
       </span>
     </h2>
   </aside>
-  <?php
     $featured_query = tep_db_query("
       SELECT p.products_id, p.products_image_thumbnail, p.products_price, pd.products_name
       FROM products p, products_description pd
@@ -139,6 +144,6 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
   </div>
   <?php
       }
-    }
+    } */
   ?>
 </div>

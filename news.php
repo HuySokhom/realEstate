@@ -8,6 +8,7 @@ require(DIR_WS_INCLUDES . 'template_top.php');
 <div
     class="container margin-top"
     data-ng-app="main"
+    data-ng-cloak
 >
     <div data-ui-view=""></div>
 </div>

@@ -8,6 +8,7 @@
   }
 ?>
   <div class="container">
+<?php include('advanced_search_box_right.php');?>
 <?php
   if ($listing_split->number_of_rows > 0) {
   $listing_query = tep_db_query($listing_split->sql_query);
@@ -118,11 +119,10 @@
 
 else {
 ?>
-<div class="property-left col-md-9 col-sm-6 p_l_z content-area">
+<div class="property-left col-md-9 col-sm-8 p_l_z content-area">
   <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
 </div>
 <?php
 }
 
 ?>
-<?php include('advanced_search_box_right.php');?>

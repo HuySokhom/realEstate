@@ -1,10 +1,12 @@
-<div class="col-md-3 col-sm-4 p_r_z property-sidebar widget-area">
+<div class="row col-md-3 col-sm-4 property-sidebar widget-area">
     <aside class="widget widget-search">
         <h2 class="widget-title">
             {{searchText}}
             <span>{{property}}</span>
         </h2>
         <form>
+            <input type="search" required="required" ng-model="keywords" name="keywords" placeholder="Search" class="form-control">
+            <br>
             <select
                 data-ng-model="categories_id"
                 data-ng-options="c.categories_name for c in categories.elements"
@@ -94,7 +96,7 @@
             <input type="submit" data-ng-click="search();" value="Search Now" class="btn">
         </form>
     </aside>
-    <aside class="widget widget-property-featured">
+    <aside class="widget widget-property-featured" ng-hide="true">
         <h2 class="widget-title">
             {{featured}}
             <span>{{property}}</span>

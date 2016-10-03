@@ -27,7 +27,11 @@ if ($num_customer > 0) {
                     <i class="fa fa-user"></i>
                     <?php echo $user['user_name'];?>
                 </p>
-                <p><i class="fa fa-phone"></i><?php echo $user['customers_telephone'];?></p>
+                <p>
+                    <a href="tel:<?php echo $user['customers_telephone'];?>">
+                        <i class="fa fa-phone"></i><?php echo $user['customers_telephone'];?>
+                    </a>
+                </p>
                 <p>
                     <i class="fa fa-envelope-o"></i>
                     <a 

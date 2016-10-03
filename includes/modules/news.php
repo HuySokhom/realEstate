@@ -1,52 +1,29 @@
 <?php
-    $new_products_query_sale = tep_db_query("
+    $new_query = tep_db_query("
       select
-        p.products_id,
-        pd.products_viewed,
-        p.products_image_thumbnail,
-        p.products_image,
-        p.bed_rooms,
-        p.bath_rooms,
-        p.number_of_floors,
-        p.products_tax_class_id,
-        pd.products_name,
-        if(s.status, s.specials_new_products_price, p.products_price) as products_price
+        n.id,
+        n.image_thumbnail,
+        nd.title
       from
-        " . TABLE_PRODUCTS . " p
-            left join
-        " . TABLE_SPECIALS . " s
+        news n
+            inner join
+        news_description nd
             on
-        p.products_id = s.products_id,
-        " . TABLE_PRODUCTS_DESCRIPTION . " pd
+        n.id = nd.news_id
     where
-        p.products_status = 1
-            and
-        p.products_promote = 0
-            and
-        p.products_id = pd.products_id
-            and
-        pd.language_id = '" . (int)$languages_id . "'
+        n.status = 1
+          and
+        nd.language_id = '" . (int)$languages_id . "'
             order by
-        p.products_promote asc, rand(), p.products_date_added desc
-        limit 5"
+        n.id asc, rand()
+        limit 10"
     );
 
-  $num_new_products_sale = tep_db_num_rows($new_products_query_sale);
-
-  if ($num_new_products_sale > 0) {
-
-    $new_prods_content = NULL;
-
-    while ($new_products_sale = tep_db_fetch_array($new_products_query_sale)) {
-      if (strlen($new_products_sale['products_name']) > 35) {
-        $p_name = substr($new_products_sale['products_name'], 0, 40) . '...';
-      }else{
-        $p_name = $new_products_sale['products_name'];
-      }
-      $new_prods_content_sale .= '
-
+  $num_new = tep_db_num_rows($new_query);
+  if ($num_new > 0) {
+    while ($new = tep_db_fetch_array($new_query)) {    
+      $news .= '
         <div class="item">
-          <!-- col-md-12 -->
           <div class="col-md-12 rent-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
@@ -98,7 +75,7 @@
     </div>
     <div class="col-md-12 p_r_z">
     <div id="sale-property-block" class="sale-property-block">
-      <?php echo $new_prods_content_sale; ?>
+      <?php echo $news; ?>
     </div>
     </div>
   </div><!-- Rent Property /- -->
