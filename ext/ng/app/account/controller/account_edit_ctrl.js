@@ -6,8 +6,10 @@ app.controller(
 	, '$location'
 	, 'Upload'
 	, '$timeout'
+	, '$anchorScroll'
 	, 'alertify'
-	, function ($scope, Restful, Services, $location, Upload, $timeout, $alertify){
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $anchorScroll, $alertify){
+		$anchorScroll();
 		var url = 'api/Session/Customer/';
 		$scope.service = new Services();
 		// init tiny option

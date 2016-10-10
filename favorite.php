@@ -20,7 +20,8 @@
 ?>
 <div class="margin-top">
 <div class="container">
-  <div class="col-sm-8 col-md-9">
+  <?php include('advanced_search_box_right.php');?>
+  <div class="col-sm-6 col-md-8">
     <div class="reviews">
 <?php
   $favorite_query_raw = "
@@ -169,7 +170,10 @@
 
     </div>
   </div>
-  <?php include('advanced_search_box_right.php');?>
+  <div class="col-md-2 col-sm-3">
+    <?php include('advertisement_right.php');?>
+  </div>
+
 </div>
 </div>
 

@@ -7,8 +7,10 @@ app.controller(
 	, 'Upload'
 	, '$timeout'
 	, '$log'
-	, function ($scope, Restful, Services, $location, Upload, $timeout, $log){
+	, '$anchorScroll'
+	, function ($scope, Restful, Services, $location, Upload, $timeout, $log, $anchorScroll){
 		$scope.service = new Services();
+		$anchorScroll();
 		$scope.customers_plan = $("#customers_plan").val();
 		$scope.customers_limit_products = $("#customers_limit_products").val();
 		// init tiny option

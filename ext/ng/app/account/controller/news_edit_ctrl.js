@@ -7,7 +7,9 @@ app.controller(
 	, '$location'
 	, 'Upload'
 	, '$timeout'
-	, function ($scope, Restful, $stateParams, Services, $location, Upload, $timeout){
+	, '$anchorScroll'
+	, function ($scope, Restful, $stateParams, Services, $location, Upload, $timeout, $anchorScroll){
+		$anchorScroll();
 		// init tiny option
 		$scope.tinymceOptions = {
 			plugins: [

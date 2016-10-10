@@ -16,8 +16,8 @@
   $prod_list_contents = NULL;
 
   while ($listing = tep_db_fetch_array($listing_query)) {
-    if (strlen(strip_tags($listing['products_description'], '<br>')) > 350){
-       $str_description = substr(strip_tags($listing['products_description'], '<br>'), 0, 350) . '...';
+    if (strlen(strip_tags($listing['products_description'], '<br>')) > 370){
+       $str_description = substr(strip_tags($listing['products_description'], '<br>'), 0, 370) . '...';
    }else{
         $str_description = strip_tags($listing['products_description'], '<br>');
    }
@@ -107,19 +107,18 @@
     </div>
     <!-- Pagination /- -->
     </div>
+  </div>
+</div>
     <!-- Property Listing Section /- -->
 <?php
 } else {
 ?>
-    <div class="property-left col-md-8 col-sm-8 p_l_z content-area">
+    <div class="property-left col-md-12 col-sm-6 p_l_z content-area">
       <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
     </div>
-</div>
 <?php
     }
 ?>
-</div>
-</div>
 </div>
 <div class="col-md-2 col-sm-3">
 <?php

@@ -3,7 +3,9 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, 'Services'
-	, function ($scope, Restful, Services){
+	, '$anchorScroll'
+	, function ($scope, Restful, Services, $anchorScroll){
+		$anchorScroll();
 		$scope.language_id = $('#language_id').val();
 		var url = 'api/Session/Customer/';
 		$scope.service = new Services();

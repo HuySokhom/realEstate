@@ -11,23 +11,33 @@
 		</div>
 		<div class="col-md-10">
 			<div class="row">
-				<div class="has-feedback col-sm-3">
-					<input
-						type="text"
-						placeholder="Search Title"
-						class="form-control"
-						data-ng-model="search_title"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
+				<div class="has-feedback col-sm-4">
+					<div class="input-group">
+						<input type="text" class="form-control"
+							   data-ng-model="id"
+							   data-ng-change="search()"
+							   ng-model-options="{ debounce: 1000 }"
+							   placeholder="Search ID...">
+						<span class="input-group-btn">
+							<button class="btn btn-default">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 				</div>
-				<div class="has-feedback col-sm-3">
-					<input
-						type="text"
-						placeholder="Search ID"
-						class="form-control"
-						data-ng-model="id"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
+				<div class="has-feedback col-sm-4">
+					<div class="input-group">
+						<input type="text" class="form-control"
+							   data-ng-model="search_title"
+							   data-ng-change="search()"
+							   ng-model-options="{ debounce: 1000 }"
+							   placeholder="Search Title...">
+						<span class="input-group-btn">
+							<button class="btn btn-default">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 				</div>
 				<div class="col-sm-4">
 					<select
@@ -37,18 +47,8 @@
 						data-ng-change="search();"
 						required
 					>
-						<option value="">Filter News Type</option>
+						<option value="">Filter By Type</option>
 					</select>
-				</div>
-				<div class="col-md-2">
-					<button
-						class="btn btn-default"
-						data-ng-click="search();"
-						style="max-height: 44px;padding-top: 5px;"
-					>
-						<span class="fa fa-search"></span>
-						Search
-					</button>
 				</div>
 			</div>
 		</div>
@@ -56,22 +56,19 @@
 	<br>
 	<table class="table table-striped">
 		<thead>
-			<th>
+			<th width="5%">
 				ID
 			</th>
-			<th width="150px">
+			<th width="30%">
 				Type
 			</th>
-			<th width="150px">
+			<th width="50%">
 				Title
 			</th>
-			<th>
-				Content
-			</th>
-			<th>
+			<th width="10%">
 				Status
 			</th>
-			<th width="150px">
+			<th width="5%">
 				Action
 			</th>
 		</thead>
@@ -90,13 +87,6 @@
 				</span>
 			</td>
 			<td>
-				<span data-ng-repeat="i in n.detail">
-					<span data-ng-show="i.language_id == 1">
-						<span data-ng-bind="i.short_content"></span>
-					</span>
-				</span>
-			</td>
-			<td>
 				<span data-ng-if="n.status == 0" class="label label-danger">
 					Pending
 				</span>
@@ -105,37 +95,36 @@
 				</span>
 			</td>
 			<td>
-				<button
-					class="btn"
-					data-ng-click="edit(n.id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="edit"
-					tooltip
-				>
-					<span class="fa fa-pencil-square-o"></span>
-				</button>
-				<button
-					class="btn"
-					data-ng-click="remove(n.id, $index);"
-					data-placement="bottom"
-					title="delete"
-					tooltip
-				>
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
-				<a href="news.php#/{{n.type[0].id}}/{{n.id}}" target="_blank">
-					<button
-						class="btn"
-						data-ng-click="link(n.id);"
-						data-toggle="tooltip"
-						data-placement="right"
-						title="view"
-						tooltip
-					>
-						<span class="fa fa-eye"></span>
+				<div class="btn-group">
+					<button type="button"
+							class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
+						<i class="fa fa-cog"></i>
+						<span class="caret"></span>
 					</button>
-				</a>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a href="news.php#/{{n.type[0].id}}/{{n.id}}" target="_blank">
+								<i class="fa fa-eye"></i>
+								View
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="edit(n.id);" href="javascript:;">
+								<i class="fa fa-edit"></i>
+								Edit
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="remove(n.id, $index);" href="javascript:;">
+								<i class="fa fa-trash-o"></i>
+								Delete
+							</a>
+						</li>
+					</ul>
+				</div>
 			</td>
 		</tr>
 	</table>

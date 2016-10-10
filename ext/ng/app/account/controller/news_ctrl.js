@@ -5,7 +5,9 @@ app.controller(
 	, '$location'
 	, 'Services'
 	, 'alertify'
-	, function ($scope, Restful, $location, Services, $alertify){
+	, '$anchorScroll'
+	, function ($scope, Restful, $location, Services, $alertify, $anchorScroll){
+		$anchorScroll();
 		var url = 'api/Session/User/News/';
 		$scope.service = new Services();
 		$scope.init = function(params){

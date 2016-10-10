@@ -7,11 +7,13 @@ app.controller(
 	, '$timeout'
 	, '$location'
 	, 'alertify'
-	, function ($scope, Restful, Services, Upload, $timeout, $location, $alertify){
+	, '$anchorScroll'
+	, function ($scope, Restful, Services, Upload, $timeout, $location, $alertify, $anchorScroll){
 		$scope.service = new Services();
 		var params = {pagination: 'yes'};
 		var url = 'api/Session/User/ProductPost/';
 		$scope.init = function(params){
+			$anchorScroll();
 			Restful.get(url, params).success(function(data){
 				$scope.products_post = data;
 				//console.log(data);
