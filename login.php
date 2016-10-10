@@ -101,13 +101,13 @@
       }
       ?>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-4">
+          <?php echo $page_content; ?>
+        </div>
+        <div class="col-md-8 row">
           <!-- Featured Property -->
           <?php include(DIR_WS_MODULES . "products_Featured.php");?>
           <!-- Featured Property /- -->
-        </div>
-        <div class="col-md-5">
-          <?php echo $page_content; ?>
         </div>
       </div>
   </div>

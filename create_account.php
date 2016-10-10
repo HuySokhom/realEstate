@@ -280,14 +280,8 @@
   }
   ?>
 <div class="row">
-<div class="col-md-7">
-  <!-- Featured Property -->
-  <?php include(DIR_WS_MODULES . "products_Featured.php");?>
-  <!-- Featured Property /- -->
-  <div class="clearfix"></div>
-</div>
 <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'class="form-horizontal" onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
-<div class="col-md-5">
+<div class="col-md-4">
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-body">
@@ -373,7 +367,15 @@
       </div>
     </div>
   </div>
+
+  <div class="col-md-8 row">
+    <!-- Featured Property -->
+    <?php include(DIR_WS_MODULES . "products_Featured.php");?>
+    <!-- Featured Property /- -->
+    <div class="clearfix"></div>
+  </div>
 </div>
+
   </div>
 </div>
 

@@ -39,31 +39,26 @@ if ($num_new_products_sale > 0) {
     while ($new_products_sale = tep_db_fetch_array($new_products_query_sale)) {
         switch ($new_products_sale['products_promote']) {
             case 3:
-                $text = 'Pro Featured';
-                $class = 'pro';
+                $classMd = 'col-md-6';
+                $classSm = 'col-md-6';
                 break;
             case 2:
-                $text = 'Premium Featured';
-                $class = 'premium';
+                $classMd = 'col-md-4';
+                $classSm = 'col-md-4';
                 break;
             case 1:
-                $text = 'Basic Featured';
-                $class = 'basic';
+                $classMd = 'col-md-3';
+                $classSm = 'col-md-3';
                 break;
             default:
-                $text = 'Free';
-                $class = 'free';
-        }
-        if (strlen($new_products_sale['products_name']) > 35) {
-            $p_name = substr($new_products_sale['products_name'], 0, 40) . '...';
-        }else{
-            $p_name = $new_products_sale['products_name'];
+                $classMd = 'col-md-3';
+                $classSm = 'col-md-3';
         }
         $new_prods_content_sale .= '
 
         <div class="item">
           <!-- col-md-12 -->
-          <div class="col-md-6 col-sm-6 col-home rent-block">
+          <div class="'.$classMd.' '.$classSm.' col-home rent-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
               <div class="property-images-box">
@@ -72,20 +67,19 @@ if ($num_new_products_sale > 0) {
                     href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products_sale['products_id']) . '"
                 >
                   '
-            . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
-                $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
-                SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"'
-            ) .
-            '
+                    . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
+                        $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
+                        SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"'
+                    ) .
+                '
                 </a>
-                <div class="' . $class . '">'. $text .'</div>
                 <h4>
                     ' . $currencies->display_price($new_products_sale['products_price'], tep_get_tax_rate($new_products_sale['products_tax_class_id'])) . '
                 </h4>
               </div>
               <div class="clearfix"></div>
               <div class="property-details">
-                <a title="Property Title" href="">' . $p_name . '</a>
+                <a title="Property Title" href="">' . $new_products_sale['products_name'] . '</a>
                 <ul>
                   <li>
                       <i class="fa fa fa-institution"></i>
@@ -108,7 +102,7 @@ if ($num_new_products_sale > 0) {
     }
     ?>
     <div class="">
-        <div class="col-md-12 p_r_z">
+        <div class="p_r_z">
             <div class="sale-property-block">
                 <?php echo $new_prods_content_sale; ?>
             </div>

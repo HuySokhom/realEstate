@@ -9,6 +9,7 @@
 ?>
   <div class="container">
 <?php include('advanced_search_box_right.php');?>
+      <div class="col-md-8 col-sm-6">
 <?php
   if ($listing_split->number_of_rows > 0) {
   $listing_query = tep_db_query($listing_split->sql_query);
@@ -43,7 +44,7 @@
             <div class="property-main-box">
               <div class="col-md-4 p_z">
                 <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
-                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 181px;"') . '
+                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 197px;"') . '
                 </a>
                 <div class="' . $class . '">'. $text .'</div>
               </div>
@@ -83,14 +84,8 @@
 
     echo ' <!-- Property Listing Section -->
         <div id="property-listing" class="property-listing">
-            <div class="container">
-              <div class="property-left col-md-9 col-sm-6 p_l_z content-area">
-                <div class="section-header p_l_z">
-                  <div class="col-md-10 col-sm-10 p_l_z">
-                    <p>' . PROPERTY . '</p>
-                    <h3>' . LISTING . '</h3>
-                  </div>
-                </div>
+            <div class="">
+              <div class="property-left col-md-12 p_l_z content-area">
     ';
     echo $prod_list_contents;
     ?>
@@ -112,17 +107,22 @@
     </div>
     <!-- Pagination /- -->
     </div>
-
     <!-- Property Listing Section /- -->
 <?php
-}
-
-else {
+} else {
 ?>
-<div class="property-left col-md-9 col-sm-8 p_l_z content-area">
-  <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
+    <div class="property-left col-md-8 col-sm-8 p_l_z content-area">
+      <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
+    </div>
 </div>
 <?php
-}
-
+    }
 ?>
+</div>
+</div>
+</div>
+<div class="col-md-2 col-sm-3">
+<?php
+include('advertisement_right.php');
+?>
+</div>

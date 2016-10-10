@@ -79,7 +79,7 @@
 
   <?php echo tep_draw_form('password_forgotten', tep_href_link(FILENAME_PASSWORD_FORGOTTEN, 'action=process', 'SSL'), 'post', 'class="form-horizontal"', true); ?>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="alert alert-info"><?php echo TEXT_MAIN; ?></div>
@@ -96,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <!-- Featured Property -->
         <?php include(DIR_WS_MODULES . "products_Featured.php");?>
         <!-- Featured Property /- -->
