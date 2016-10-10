@@ -63,4 +63,12 @@ require(DIR_WS_INCLUDES . 'application_bottom.php');
     type="text/javascript"
     src="ext/ng/app/news/directive/search.js"
 ></script>
+<script
+    type="text/javascript"
+    src="ext/ng/app/common/directive/advertisement_left.js"
+></script>
+<script
+    type="text/javascript"
+    src="ext/ng/app/common/directive/advertisement_right.js"
+></script>
 

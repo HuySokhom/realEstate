@@ -1,7 +1,10 @@
 <div id="property-listing" class="property-listing">
 	<div class="container">
-		<div search></div>
-		<div class="property-left col-md-10 col-sm-8 content-area">
+		<div class="row col-md-2 col-sm-3">
+			<div search></div>
+			<span advertisement-left></span>
+		</div>
+		<div class="property-left col-md-8 col-sm-6 content-area">
 			<div class="news_type">
 				<ul class="nav navbar-nav news">
 					<li
@@ -33,61 +36,110 @@
 			>
 				<i class="fa fa-refresh fa-spin" style="font-size: 100px;"></i>
 			</div>
-			<div class="blog-listing">
-				<article data-ng-repeat="n in news.elements">
-					<div class="entry-cover">
-						<a title="entry-cover" href="" data-ng-click="link(n.type[0].id, n.id)">
-							<img src="images/{{n.image}}" style="width: 100%;"/>
+			<div class="property-listing-box sale-block" data-ng-repeat="n in news.elements">
+				<!-- Property Main Box -->
+				<div class="property-main-box">
+					<div class="col-md-4 p_z">
+						<a title="{{language_id == 1 ? n.detail[0].title : n.detail[1].title}}"
+						   href=""
+						   data-ng-click="link(n.type[0].id, n.id)">
+							<img ng-src="images/{{n.image}}"
+								 alt="{{language_id == 1 ? n.detail[0].title : n.detail[1].title}}"
+								 class="img-responsive img-news"
+							>
 						</a>
-						<i class="fa fa-image"></i>
 					</div>
-					<div class="entry-header">
-						<h3 class="entry-title">
-							<a data-ng-click="link(n.type[0].id, n.id)">
-								<span
+					<div class="col-md-8 p_z">
+						<div class="property-details">
+							<a title="Property Title" ng-href="" data-ng-click="link(n.type[0].id, n.id)">
+								<div
 									data-ng-click="link(n.type[0].id, n.id)"
 									data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"
 									class="click"
 								>
-								</span>
+								</div>
 							</a>
-						</h3>
-						<div class="entry-meta">
-							<span class="posted-on">
-								<a title="Blog Date">
+							<p
+								data-ng-bind-html="
+									language_id == 1
+										?
+									n.detail[0].short_content
+										:
+									n.detail[1].short_content
+								"
+							>
+							</p>
+							<ul>
+								<li>
 									<i class="fa fa-clock-o"></i>
 									{{ n.create_date  | date:'MM/dd/yyyy' }}
-								</a>
-							</span>
-							<span class="byline">
-								<i class="fa fa-user"></i>
-								<a title="Author">
-									{{n.create_by}}
-								</a>
-							</span>
+								</li>
+								<li><i class="fa fa-user"></i>
+									<a title="Author">
+										{{n.create_by}}
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-					<div class="entry-content">
-						<p
-							data-ng-bind-html="language_id == 1 ? n.detail[0].short_content : n.detail[1].short_content"
-						>
-						</p>
-					</div>
-				</article>
-				<div class="listing-pagination">
-					<!-- Pagination -->
-					<pagination
-							data-ng-show="totalItems > 10"
-							total-items="totalItems"
-							ng-model="currentPage"
-							ng-change="pageChanged()"
-							max-size="5"
-							items-per-page="10"
-							boundary-links="true"
-					></pagination>
-					<!-- Pagination /- -->
-				</div>
+				</div><!-- Property Main Box /- -->
+			</div>
+			<!--<div class="blog-listing">-->
+				<!--<article data-ng-repeat="n in news.elements">-->
+					<!--<div class="entry-cover">-->
+						<!--<a title="entry-cover" href="" data-ng-click="link(n.type[0].id, n.id)">-->
+							<!--<img src="images/{{n.image}}" style="width: 100%;"/>-->
+						<!--</a>-->
+						<!--<i class="fa fa-image"></i>-->
+					<!--</div>-->
+					<!--<div class="entry-header">-->
+						<!--<h3 class="entry-title">-->
+							<!--<a data-ng-click="link(n.type[0].id, n.id)">-->
+								<!--<span-->
+									<!--data-ng-click="link(n.type[0].id, n.id)"-->
+									<!--data-ng-bind="language_id == 1 ? n.detail[0].title : n.detail[1].title"-->
+									<!--class="click"-->
+								<!--&gt;-->
+								<!--</span>-->
+							<!--</a>-->
+						<!--</h3>-->
+						<!--<div class="entry-meta">-->
+							<!--<span class="posted-on">-->
+								<!--<a title="Blog Date">-->
+									<!--<i class="fa fa-clock-o"></i>-->
+									<!--{{ n.create_date  | date:'MM/dd/yyyy' }}-->
+								<!--</a>-->
+							<!--</span>-->
+							<!--<span class="byline">-->
+								<!--<i class="fa fa-user"></i>-->
+								<!--<a title="Author">-->
+									<!--{{n.create_by}}-->
+								<!--</a>-->
+							<!--</span>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<div class="entry-content">-->
+						<!--<p-->
+							<!--data-ng-bind-html="language_id == 1 ? n.detail[0].short_content : n.detail[1].short_content"-->
+						<!--&gt;-->
+						<!--</p>-->
+					<!--</div>-->
+				<!--</article>				-->
+			<!--</div>-->
+			<div class="listing-pagination">
+				<!-- Pagination -->
+				<pagination
+						data-ng-show="totalItems > 10"
+						total-items="totalItems"
+						ng-model="currentPage"
+						ng-change="pageChanged()"
+						max-size="5"
+						items-per-page="10"
+						boundary-links="true"
+				></pagination>
+				<!-- Pagination /- -->
 			</div>
 		</div>
+		<span advertisement-right></span>
 	</div>
 </div>

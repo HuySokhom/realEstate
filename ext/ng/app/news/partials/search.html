@@ -1,11 +1,16 @@
-<div class="row col-md-2 col-sm-4 property-sidebar widget-area">
+<div class="property-sidebar widget-area">
     <aside class="widget widget-search">
         <h2 class="widget-title">
             {{searchText}}
             <span>{{property}}</span>
         </h2>
         <form>
-            <input type="search" required="required" ng-model="keywords" name="keywords" placeholder="Search" class="form-control">
+            <input type="search"
+                   required="required"
+                   ng-model="keywords"
+                   name="keywords"
+                   placeholder="{{language_id == 1 ? 'Search...' : 'ស្វែងរក...'}}"
+                   class="form-control">
             <br>
             <select
                 data-ng-model="categories_id"

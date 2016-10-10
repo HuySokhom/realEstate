@@ -1488,6 +1488,7 @@ textarea {
 	margin-bottom: 27px;
 	width: 100%;
 	position: relative;
+	border: 1px solid #e7e7e7;
 }
 
 .property-listing-box .property-details > a {
@@ -1649,7 +1650,7 @@ textarea {
 }
 
 .property-listing .property-details {
-	border: 1px solid #e7e7e7;
+	/*border: 1px solid #e7e7e7;*/
 }
 
 /* ## Contact ## */
@@ -3654,4 +3655,10 @@ form .progress {
 .news_title_home{
 	font-weight: 600;
 }
-
+.img-news{
+	border: 1px solid #e7e7e7;
+	width: 100%;
+	height: 181px;
+	overflow: auto;
+	min-height: 192px;
+}
