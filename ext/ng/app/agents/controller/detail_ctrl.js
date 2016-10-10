@@ -4,10 +4,12 @@ app.controller(
 	, 'Restful'
 	, '$stateParams'
 	, '$sce'
-	, function ($scope, Restful, $stateParams, $sce){
+	, '$anchorScroll'
+	, function ($scope, Restful, $stateParams, $sce, $anchorScroll){
 
 		var url = 'api/Agent/';
 		$scope.init = function(params){
+			$anchorScroll();
 			Restful.get(url + $stateParams.id, params).success(function(data){
 				$scope.agent = data.elements[0];
 			});

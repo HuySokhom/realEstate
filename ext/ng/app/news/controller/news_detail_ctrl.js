@@ -5,11 +5,13 @@ app.controller(
 	, '$stateParams'
 	, '$sce'
 	, '$location'
-	, function ($scope, Restful, $stateParams, $sce, $location){
+	, '$anchorScroll'
+	, function ($scope, Restful, $stateParams, $sce, $location, $anchorScroll){
 		$scope.url = $("#url").val();
 		$scope.absUrl = $location.absUrl();
 		var url = 'api/News/';
 		$scope.init = function(params){
+			$anchorScroll();
 			Restful.get(url + $stateParams.newsId, params).success(function(data){
 				$scope.news = data;
 				if(data.count > 0) {
