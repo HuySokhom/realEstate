@@ -11,7 +11,7 @@ $content = tep_db_fetch_array($query);
   <div class="contentContainer col-md-9 col-sm-8">
     <h3><?php echo $content['pages_title']; ?></h3>
     <p style="text-align: justify;">
-      <?php echo $content['content']?>
+      <?php echo $content['content'];?>
     </p>
   </div>
 </div>

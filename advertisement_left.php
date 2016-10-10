@@ -1,8 +1,9 @@
 <?php 
-	$query = tep_db_query("select * from advertising_banner where status = 1 order by sort_order asc");
-	$array = [];
+	$query = tep_db_query("select * from advertising_banner where location = 'left' and status = 1 order by sort_order asc");
 	while ($adv= tep_db_fetch_array($query)) {
-		$array[] = $adv;
+		echo '<a href="http://' . $adv['link'] . '" target="_blank">
+			<img src="images/' . $adv['image'] . '" class="adv"/>
+			</a>
+		';
 	}
-	var_dump($array)
 ?>

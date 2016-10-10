@@ -99,7 +99,7 @@
 ?>
 <!-- Search Section /- -->
 
-<div class="container">
+<div class="container" style="margin-top: 20px;">
 <?php
     if (tep_not_null(TEXT_MAIN)) {
 ?>
@@ -110,9 +110,13 @@
 
 <?php
     }
-
+?>
+<div class="col-md-2" style="text-align: center;">
+<?php include('advertisement_left.php');?>
+</div>
+<div class="row col-md-8">
+<?php
     include(DIR_WS_MODULES . FILENAME_HOME_PRODUCTS);
-    include(DIR_WS_MODULES . FILENAME_NEWS);
     // query banners
     $banner_query = tep_db_query("
       select
@@ -128,28 +132,36 @@
       $partner_array[] = $item;
     }
 ?>
-  <div class="col-md-12">
+</div>
+<div class="col-md-2" style="text-align: center;">
+<?php include('advertisement_right.php');?>
+</div>
+
+    <div class="clearfix"></div>
+    <div class="col-md-12">
+    <?php
+        include(DIR_WS_MODULES . FILENAME_NEWS);
+    ?>
     <h3><?php echo OUR_PARTNERS;?></h3>
-  </div>
-  <div class="clearfix"></div> 
-  <!-- Partner Section -->
-  <div id="partner-section" class="partner-section">
-    <div class="container">
-      <div id="business-partner" class="business-partner">
-        <?php 
-          foreach ($partner_array as $obj) {
-            echo '
-              <div class="item">
-                <a title="Gallery Image" href="index.html#">
-                  <img src="images/' . $obj['image_thumbnail'] . '" alt="client1">
-                </a>
-              </div>
-            ';
-          }
-        ?>
+      <!-- Partner Section -->
+      <div id="partner-section" class="partner-section">
+        <div class="row">
+          <div id="business-partner" class="business-partner">
+            <?php
+              foreach ($partner_array as $obj) {
+                echo '
+                  <div class="item">
+                    <a title="' . $obj['title'] . '" href="http://' . $obj['link'] . '" target="_blank">
+                      <img src="images/' . $obj['image_thumbnail'] . '" />
+                    </a>
+                  </div>
+                ';
+              }
+            ?>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
     <!-- Partner Section /- -->
 </div>
 <?php

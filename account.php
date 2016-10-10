@@ -24,7 +24,7 @@
 <link href="themes/css/table_price.css" rel="stylesheet">
 <div
 	class="container margin-top"
-	data-ng-app="main"
+	data-ng-cloak=""
 	>
 	<?php
 	  if ($messageStack->size('account') > 0) {
@@ -72,8 +72,19 @@
 			</div>
 
 			<div class="alert alert-info">
-				<i class="fa fa-star"></i>
-				<?php echo TEXT_PLAN;?>
+				<?php
+				$query = tep_db_query("
+					select
+						*
+					from
+						pages_description
+					where
+						pages_id = 11
+  							and
+  						language_id = ". (int)$languages_id ." ");
+				$content = tep_db_fetch_array($query);
+				echo $content['content'];
+				?>
 			</div>
 			<div plan></div>
 		</div>

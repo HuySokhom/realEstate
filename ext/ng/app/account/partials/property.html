@@ -24,24 +24,34 @@
 		<div class="col-md-10">
 			<div class="row">
 				<div class="col-md-4">
-					<input
-						type="text"
-						placeholder="Search Title..."
-						class="form-control"
-						data-ng-model="search_title"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
+					<div class="input-group">
+						<input type="text" class="form-control"
+							   data-ng-model="id"
+							   data-ng-change="search()"
+							   ng-model-options="{ debounce: 1000 }"
+							   placeholder="Search ID...">
+						<span class="input-group-btn">
+							<button class="btn btn-default">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 				</div>
-				<div class="col-md-3">
-					<input
-						type="text"
-						placeholder="Search Id..."
-						class="form-control"
-						data-ng-model="id"
-						data-ng-keypress="($event.which === 13) ? search() : 0"
-					/>
+				<div class="col-md-4">
+					<div class="input-group">
+						<input type="text" class="form-control"
+							   data-ng-model="search_title"
+							   data-ng-change="search()"
+							   ng-model-options="{ debounce: 1000 }"
+							   placeholder="Search Title...">
+						<span class="input-group-btn">
+							<button class="btn btn-default">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<select
 						data-ng-model="category_id"
 						data-ng-options="c.categories_id as c.categories_name for c in categoryList.elements"
@@ -51,16 +61,6 @@
 					>
 						<option value="">Filter By Category</option>
 					</select>
-				</div>
-				<div class="col-md-2">
-					<button
-						class="btn btn-default"
-						data-ng-click="search();"
-						style="max-height: 44px;padding-top: 5px;"
-					>
-						<span class="fa fa-search"></span>
-						Search
-					</button>
 				</div>
 			</div>
 		</div>
@@ -92,7 +92,7 @@
 			<th>
 				Boost
 			</th>
-			<th width="250px">
+			<th width="10px">
 				Action
 			</th>
 		</thead>
@@ -140,68 +140,44 @@
 				</div>
 			</td>
 			<td>
-				<button
-					class="btn btn-default"
-					data-ng-click="edit(p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Edit"
-					tooltip
-				>
-					<span class="fa fa-edit"></span>
-				</button>
-				<button
-					class="btn btn-danger"
-					data-ng-click="remove($index, p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Remove"
-					tooltip
-				>
-					<span class="fa fa-trash-o"></span>
-				</button>
-				<button
-					class="btn btn-warning"
-					data-ng-click="updateStatus(p);"
-					data-ng-show="p.products_status == 0"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Inactive"
-					tooltip
-				>
-					<span class="fa fa-minus"></span>
-				</button>
-				<button
-					class="btn btn-success"
-					data-ng-click="updateStatus(p);"
-					data-ng-show="p.products_status == 1"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Active"
-					tooltip
-				>
-					<span class="fa fa-check-square-o"></span>
-				</button>
-				<button
-					class="btn btn-info"
-					data-ng-click="refreshDate(p);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Refresh Product"
-					tooltip
-				>
-					<span class="fa fa-refresh"></span>
-				</button>
-				<button
-					class="btn btn-default"
-					data-ng-click="link(p.products_id);"
-					data-toggle="tooltip"
-					data-placement="top"
-					title="Link"
-					tooltip
-				>
-					<span class="fa fa-eye"></span>
-				</button>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fa fa-cog"></i>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right">
+						<li>
+							<a data-ng-click="link(p.products_id);" href="javascript:;">
+								<i class="fa fa-eye"></i>
+								View
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="edit(p.products_id);" href="javascript:;">
+								<i class="fa fa-edit"></i>
+								Edit
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="updateStatus(p);" href="javascript:;">
+								<i ng-class="p.products_status == 0 ? 'fa fa-minus' : 'fa fa-check-square-o' " class="fa fa-check-square-o"></i>
+								<span data-ng-bind="p.products_status == 0 ? 'Active' : 'Inactive'"></span>
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="refreshDate(p);" href="javascript:;">
+								<i class="fa fa-refresh"></i>
+								Refresh
+							</a>
+						</li>
+						<li>
+							<a data-ng-click="remove($index, p.products_id);" href="javascript:;">
+								<i class="fa fa-trash-o"></i>
+								Delete
+							</a>
+						</li>
+					</ul>
+				</div>
 			</td>
 		</tr>
 	</table>

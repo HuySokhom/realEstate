@@ -4,8 +4,10 @@ app.controller(
 	, 'Restful'
 	, '$stateParams'
 	, '$sce'
-	, function ($scope, Restful, $stateParams, $sce){
+	, '$location'
+	, function ($scope, Restful, $stateParams, $sce, $location){
 		$scope.url = $("#url").val();
+		$scope.absUrl = $location.absUrl();
 		var url = 'api/News/';
 		$scope.init = function(params){
 			Restful.get(url + $stateParams.newsId, params).success(function(data){

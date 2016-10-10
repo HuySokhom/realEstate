@@ -874,6 +874,8 @@ textarea {
 	display: block;
 	max-height: 23px;
 	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .property-details > ul {
@@ -1189,7 +1191,7 @@ textarea {
 /* Partner section */
 .business-partner {
 	/*background-color: #f2f4f5;*/
-	padding: 25px;
+	padding: 15px 0px 15px 0px;
 }
 
 .business-partner .item {
@@ -3375,13 +3377,8 @@ textarea {
 }
 button.btn{
 	background-color: #3C64FF;
-	max-height: 37px;
-	line-height: 36px;
-	/*font-weight: bold;*/
-	font-size: 16px;
 	border-radius: 0;
 	color: #fff;
-	padding: 0px 10px 10px 10px;
 	text-align: center;
 	border-color: #3C64FF;
 }
@@ -3651,3 +3648,8 @@ form .progress {
  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+.adv{
+	margin-bottom: 10px;
+}
+
+

@@ -597,9 +597,9 @@ function tep_get_location($id = '') {
   function tep_get_province($locations_array = '') {
     if (!is_array($locations_array)) $locations_array = array();
 
-    $location_query = tep_db_query("select location_id, name from search_location order by name");
+    $location_query = tep_db_query("select id, name from location order by name");
     while ($locations = tep_db_fetch_array($location_query)) {
-      $locations_array[] = array('id' => $locations['location_id'], 'text' => $locations['name']);
+      $locations_array[] = array('id' => $locations['id'], 'text' => $locations['name']);
     }
     return $locations_array;
   }

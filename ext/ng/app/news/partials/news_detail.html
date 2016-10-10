@@ -40,7 +40,7 @@
                                 {{createBy}}
                             </a>
                         </span>
-                        <span class="byline" data-ng-hide="true">
+                        <span class="byline">
                             Share:
                             <i
                                 class="fa fa-facebook-square share"
@@ -48,13 +48,13 @@
                                 socialshare-provider="facebook"
                                 socialshare-type="sharer"
                                 socialshare-text="720kb"
-                                socialshare-url="{{url}}news.php"
+                                socialshare-url="{{absUrl}}"
                                 socialshare-popup-height="300"
                                 socialshare-popup-width="400"
                                 socialshare-trigger="click"
 
                                 data-toggle="tooltip"
-                                data-placement="left"
+                                data-placement="top"
                                 title="Share on Facebook"
                                 tooltip
                             ></i>
@@ -62,10 +62,10 @@
                                 class="fa fa-twitter-square share"
                                 socialshare
                                 socialshare-provider="twitter"
-                                socialshare-hashtags="720kb, apps, opensource, development, internet"
+                                socialshare-hashtags="{{title_en}}"
                                 socialshare-via="twitter"
-                                socialshare-text="720kb - test value is: {{test.testValue}}"
-                                socialshare-url="http://www.freecambodia.net/sell-house-sell-p-1.html"
+                                socialshare-text="{{title_en}}"
+                                socialshare-url="{{absUrl}}"
                                 socialshare-popup-height="300"
                                 socialshare-popup-width="400"
                                 socialshare-trigger="click"
@@ -79,13 +79,13 @@
                                 class="fa fa-google-plus-square share"
                                 socialshare
                                 socialshare-provider="google"
-                                socialshare-url="http://www.freecambodia.net/sell-house-sell-p-1.html"
+                                socialshare-url="{{absUrl}}"
                                 socialshare-popup-height="300"
                                 socialshare-popup-width="400"
                                 socialshare-trigger="click"
 
                                 data-toggle="tooltip"
-                                data-placement="right"
+                                data-placement="top"
                                 title="Share on google+"
                                 tooltip
                             ></i>

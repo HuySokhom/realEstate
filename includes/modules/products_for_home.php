@@ -27,7 +27,7 @@
         pd.language_id = '" . (int)$languages_id . "'
             order by
         p.products_promote desc, rand(), p.products_date_added desc
-        limit 12"
+        limit 6"
     );
   $num_new_products = tep_db_num_rows($new_products_query);
 
@@ -53,79 +53,69 @@
                 $text = 'Free';
                 $class = 'free';
         }
-      if (strlen($new_products['products_name']) > 35) {
-        $p_name = substr($new_products['products_name'], 0, 40) . '...';
-      }else{
         $p_name = $new_products['products_name'];
-      }
-      $new_prods_content .= '
+          $new_prods_content .= '
 
-        <div class="item">
-          <!-- col-md-12 -->
-          <div class="col-md-4 col-sm-6 col-home rent-block">
-            <!-- Property Main Box -->
-            <div class="property-main-box">
-              <div class="property-images-box">
-                <a
-                    title="Property Image"
-                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
-                >
-                '
-                    . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
-                    $new_products['products_name'], SMALL_IMAGE_WIDTH,
-                    SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 250px;"') .
-                '
-                    </a>
-                <h4>
-                    ' . $currencies->display_price($new_products['products_price'], tep_get_tax_rate($new_products['products_tax_class_id'])) . '
-                </h4>
-                <div class="' . $class . '">'. $text .'</div>
-              </div>
-              <div class="clearfix"></div>
-              <div class="property-details">
-                <a title="Property Title"
-                    href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
-                >' . $p_name . '</a>
-                <ul>
-                    <li>
-                        <i
-                            class="fa fa-heart-o heart-icon"
-                            data-product="'. $new_products['products_id']. '"
-                            data-type="insert"
-                        ></i>
-                    </l>
-                  <li>
-                      <i class="fa fa fa-institution"></i>
-                      ' . $new_products['number_of_floors'] . '
-                  </li>
-                  <li>
-                    <i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>
-                    '. $new_products['bed_rooms'] .'
-                  </li>
-                  <li>
-                    <i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>
-                    '. $new_products['bath_rooms'] . '
-                  </li>
-                </ul>
-              </div>
-            </div><!-- Property Main Box /- -->
-          </div><!-- col-md-12 /- -->
-       </div>
+            <div class="item">
+              <!-- col-md-12 -->
+              <div class="col-md-6 col-sm-6 col-home rent-block">
+                <!-- Property Main Box -->
+                <div class="property-main-box">
+                  <div class="property-images-box">
+                    <a
+                        title="Property Image"
+                        href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
+                    >
+                    '
+                        . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
+                        $new_products['products_name'], SMALL_IMAGE_WIDTH,
+                        SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 250px;"') .
+                    '
+                        </a>
+                    <h4>
+                        ' . $currencies->display_price($new_products['products_price'], tep_get_tax_rate($new_products['products_tax_class_id'])) . '
+                    </h4>
+                    <div class="' . $class . '" style="display: none;">'. $text .'</div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="property-details">
+                    <a title="Property Title"
+                        href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $new_products['products_id']) . '"
+                    >' . $p_name . '</a>
+                    <ul>
+                        <li>
+                            <i
+                                class="fa fa-heart-o heart-icon"
+                                data-product="'. $new_products['products_id']. '"
+                                data-type="insert"
+                            ></i>
+                        </l>
+                      <li>
+                          <i class="fa fa fa-institution"></i>
+                          ' . $new_products['number_of_floors'] . '
+                      </li>
+                      <li>
+                        <i><img src="images/icon/bed-icon.png" alt="bed-icon" /></i>
+                        '. $new_products['bed_rooms'] .'
+                      </li>
+                      <li>
+                        <i><img src="images/icon/bath-icon.png" alt="bath-icon" /></i>
+                        '. $new_products['bath_rooms'] . '
+                      </li>
+                    </ul>
+                  </div>
+                </div><!-- Property Main Box /- -->
+              </div><!-- col-md-12 /- -->
+           </div>
           ';
     }
 ?>
     <!-- Rent Property -->
     <div class="">
-    <div class="col-md-6 rent">
-      <div class="section-header">
-        <h3><span><?php echo PROPERTY; ?></span><?php echo FEATURED;?></h3>
-      </div>
+        <div id="rent-property-block1" class="rent-property-block">
+          <?php echo $new_prods_content; ?>
+        </div>
     </div>
-    <div class="col-md-12 p_r_z">
-    <div id="rent-property-block1" class="rent-property-block">
-      <?php echo $new_prods_content; ?>
-    </div>
-    </div>
-  </div><!-- Rent Property /- -->
+      <!-- Rent Property /- -->
 <?php
   }

@@ -121,6 +121,24 @@
 			});
 		}
 
+
+		/* news content */
+		if( $('#new-other-block').length ) {
+
+			$("#news-other-block").owlCarousel(
+				{
+					autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+					items : 5,
+					itemsDesktop : [1199,3],
+					itemsDesktopSmall : [991,2],
+					itemsMobile : [680,1],
+					//navigation : true,
+					//pagination: false
+				});
+		}
+
+
 		/* other Property */
 		if( $('#other-property-block').length ) {
 

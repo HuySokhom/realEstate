@@ -219,7 +219,7 @@ function check_form() {
         <?php
           echo tep_draw_pull_down_menu(
               'location',
-              tep_get_province(array(array('id' => '', 'text' => POPULAR_LOCATION))),
+              tep_get_province(array(array('id' => '', 'text' => TEXT_ALL_LOCATION))),
               NULL,
               'id="location" class="form-control"'
           );

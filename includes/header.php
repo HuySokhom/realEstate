@@ -22,7 +22,7 @@
           <li style="margin-right: -30px;">
             <div class="fb-like" data-href="https://facebook.com/skwebsolution/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
           </li>
-          <?php //var_dump($_SESSION);
+          <?php 
             if( !$_SESSION['user_name'] ){
           ?>
           <li>
@@ -103,7 +103,7 @@
               </li>
               <li class="dropdown">
                 <a href="javascript:;"><?php echo TEXT_BUY; ?></a>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu" style="text-transform: uppercase;">
                   <?php
                   echo tep_get_categories_list();
                   ?>
@@ -111,7 +111,7 @@
               </li>
               <li class="dropdown">
                 <a href="javascript:;"><?php echo TEXT_RENT; ?></a>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu" style="text-transform: uppercase;">
                   <?php
                     echo tep_get_categories_list();
                   ?>
@@ -137,7 +137,7 @@
                 <a href="javascript:;">
                   <?php echo TEXT_OTHER;?>
                 </a>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu" style="text-transform: uppercase;">
                   <li>
                     <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">
                       <?php echo TEXT_SERVICE;?>
