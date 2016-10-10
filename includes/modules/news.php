@@ -15,8 +15,8 @@ $news_query = tep_db_query("
           and
         nd.language_id = '" . (int)$languages_id . "'
             order by
-        n.id asc, rand()
-        limit 10"
+        n.id desc, rand()
+        limit 5"
 );
 $num_news_sale = tep_db_num_rows($news_query);
 
@@ -28,19 +28,12 @@ if ($num_news_sale > 0) {
         $new_display .= '
             <div class="item">
                 <a title="' . $news['title'] . '" href="http://' . $news['link'] . '" target="_blank">
-                  <img src="images/' . $news['image_thumbnail'] . '" />
+                    <img src="images/' . $news['image_thumbnail'] . '" />
+                    <span class="news_title_home">' . $news['title']. '</span>
                 </a>
-              </div>
+            </div>
         ';
     }
-    ?>
-
-    <div id="partner-section" class="partner-section">
-        <div class="row">
-            <div id="business-partner" class="business-partner">
-                <?php echo $new_display; ?>
-            </div>
-        </div>
-    </div>
-    <?php
+    echo '<h3 style="border-bottom: 2px solid #333;">'. MENU_NEWS .'</h3><div class="owl-carousel">' . $new_display . '</div>';
 }
+?>

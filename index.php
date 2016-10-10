@@ -142,7 +142,7 @@
     <?php
         include(DIR_WS_MODULES . FILENAME_NEWS);
     ?>
-    <h3><?php echo OUR_PARTNERS;?></h3>
+    <h3 style="border-bottom: 2px solid #333;"><?php echo OUR_PARTNERS;?></h3>
       <!-- Partner Section -->
       <div id="partner-section" class="partner-section">
         <div class="row">

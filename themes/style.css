@@ -1553,22 +1553,22 @@ textarea {
 }
 
 .property-sidebar .widget-search {
-	background-color: #f2f4f5;
+	/*background-color: #f2f4f5;*/
 	display: inline-block;
-	padding: 35px 33px;
+	/*padding: 35px 33px;*/
 	width: 100%;
-	border: 1px solid crimson;
+	/*border: 1px solid crimson;*/
 	margin-bottom: 10px;
 }
 
 .widget-search  .widget-title {
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 0;
 	margin-bottom: 15px;
 }
 
 .widget-search  .widget-title span {
-	font-size: 26px;
+	font-size: 18px;
 	color: #3c3c44;
 }
 
@@ -3651,5 +3651,7 @@ form .progress {
 .adv{
 	margin-bottom: 10px;
 }
-
+.news_title_home{
+	font-weight: 600;
+}
 

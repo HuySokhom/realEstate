@@ -9,7 +9,7 @@
 		},800);
 		return false;
 	});
-
+	$(".owl-carousel").owlCarousel();
 	/* Event - Document Ready /- */	
 	$(document).ready( function($) {
 		
