@@ -17,11 +17,10 @@ class RestApiImageUpload extends RestApi {
 			))){
 				continue;
 			}
-
+			$milliseconds = substr(round(microtime(true) * 1000), 7);
 			// add timestamp to image name to prevent against overwrites
-			$file['name'] = substr($file['name'], 0, strlen($ext) * -1)
-				. time()
-				. '.' . $ext
+			$file['name'] = substr(str_replace(" ","_",$file['name']), 0, strlen($ext) * -1) . '_' . $milliseconds . '.' . $ext
+					// substr(str_replace(" ","_",$file['name']), 0, strlen($ext) * -1)
 			;
 			if(move_uploaded_file(
 				$file['tmp_name'],
@@ -46,6 +45,9 @@ class RestApiImageUpload extends RestApi {
 		/* read the source image */
 		if( $file['type'] == 'image/jpeg' ){
 			$source_image = imagecreatefromjpeg($src);
+		}
+		else if($file['type'] == "image/gif") {
+			$source_image = imagecreatefromgif($src);
 		}else{
 			$source_image = imagecreatefrompng($src);
 		}
