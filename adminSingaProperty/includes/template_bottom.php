@@ -149,6 +149,14 @@
     type="text/javascript"
     src="js/ng/app/partner_banner/controller/partner_banner_ctrl.js"
 ></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/plan_price/controller/plan_price_ctrl.js"
+></script>
+<script
+    type="text/javascript"
+    src="js/ng/app/plan_text/controller/plan_text_ctrl.js"
+></script>
 
 
 

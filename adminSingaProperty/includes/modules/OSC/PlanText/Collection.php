@@ -19,4 +19,7 @@ class Collection extends StdCollection {
 		$this->addWhere("plp.id = '" . (int)$arg. "' ");
 	}
 
+	public function sortByOrder( $arg ){
+		$this->addOrderBy('plt.sort_order', $arg);
+	}
 }

@@ -13,6 +13,7 @@ class Object extends DbObj {
 		, $standardInfo
 		, $silverInfo
 		, $goldInfo
+		, $sortOrder
 	;
 	
 	public function toArray( $params = array() ){
@@ -23,6 +24,7 @@ class Object extends DbObj {
 				'standard_info',
 				'silver_info',
 				'gold_info',
+				'sort_order'
 			)
 		);
 
@@ -35,7 +37,8 @@ class Object extends DbObj {
 				plan_text,
 				standard_info,
 				silver_info,
-				gold_info
+				gold_info,
+				sort_order
 			FROM
 				plan_text
 			WHERE
@@ -75,12 +78,42 @@ class Object extends DbObj {
 				plan_text = '" . $this->dbEscape( $this->getPlanText() ) . "',
 				standard_info = '" . $this->dbEscape( $this->getStandardInfo() ) . "',
 				silver_info = '" . $this->dbEscape( $this->getSilverInfo() ) . "',
-				gold_info = '" . $this->dbEscape( $this->getGoldInfo() ) . "'
+				gold_info = '" . $this->dbEscape( $this->getGoldInfo() ) . "',
+				sort_order = '" . $this->dbEscape( $this->getSortOrder() ) . "',
+				update_by = '" . $this->dbEscape( $this->getUpdateBy() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");		
 	}
-	
+
+	public function insert()
+	{
+		$this->dbQuery("
+			INSERT INTO
+				plan_text
+			(
+				plan_text,
+				standard_info,
+				silver_info,
+				gold_info,
+				sort_order,
+				create_date,
+				create_by
+			)
+				VALUES
+			(
+				'" . $this->dbEscape($this->getPlanText()) . "',
+				'" . $this->dbEscape($this->getStandardInfo()) . "',
+				'" . $this->dbEscape($this->getSilverInfo()) . "',
+				'" . $this->dbEscape($this->getGoldInfo()) . "',
+				'" . (int)$this->getSortOrder() . "',
+				NOW(),
+				'" . (int)$this->getCreateBy() . "',
+			)
+		");
+		$this->setId($this->dbInsertId());
+	}
+
 	public function updateStatus(){
 		if( !$this->getId() ) {
 			throw new Exception("save method requires id");
@@ -126,5 +159,13 @@ class Object extends DbObj {
 
 	public function getGoldInfo(){
 		return $this->goldInfo;
+	}
+
+	public function setSortOrder( $string ){
+		$this->sortOrder = $string;
+	}
+
+	public function getSortOrder(){
+		return $this->sortOrder;
 	}
 }
