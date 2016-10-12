@@ -3,69 +3,41 @@ app.controller(
 	'$scope'
 	, 'Restful'
 	, 'Services'
-	, 'Upload'
 	, 'alertify'
-	, '$timeout'
-	, function ($scope, Restful, Services, Upload, $alertify, $timeout){
+	, function ($scope, Restful, Services, $alertify){
 		$scope.service = new Services();
-		$scope.add = function(){
-			$scope.banner = '';
-			$scope.title = '';
-			$scope.image_thumbnail = '';
-			$scope.link = '';
-			$scope.sort_order = '';
-			$scope.id = '';
-			if($scope.picFile){
-				$scope.picFile = null;
-			}
-		};
-
 		function init(params){
 			Restful.get(params).success(function(data){
 				console.log(data);
-				$scope.banners = data;
+				$scope.plans = data;
 				$scope.totalItems = data.count;
 			});
 		};
-		init('api/PartnerBanner');
+		init('api/PlanText');
 
 		$scope.edit = function(params){
-			$('#banners').modal('show');
-			if($scope.picFile){
-				$scope.picFile = null;
-			}
-			$scope.title = params.title;
-			$scope.id = params.id;
-			console.log(params);
-			$scope.image_thumbnail = params.image_thumbnail;
-			$scope.link = params.link;
-			$scope.sort_order = params.sort_order;
-			
+			$('#plan_text').modal('show');
+			$scope.data = angular.copy(params);
 		};
 
 		$scope.save = function(){
-			var data = {
-				title: $scope.title,
-				image: $scope.image,
-				image_thumbnail: $scope.image_thumbnail,
-				link: $scope.link,
-				sort_order: $scope.sort_order
-			};
-			console.log(data);
+			console.log($scope.data);
 			$scope.isDisabled = true;
-			if( $scope.id ){
-				Restful.put('api/PartnerBanner/' + $scope.id, data).success(function(data){
-					init('api/PartnerBanner/');
+			if( $scope.data.id ){
+				Restful.put('api/PlanText/' + $scope.data.id, $scope.data).success(function(data){
+					init('api/PlanText/');
 					console.log(data);
-					$('#banners').modal('hide');
+					$('#plan_text').modal('hide');
 					$scope.isDisabled = false;
+					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
 				});
 			}else{
-				Restful.post('api/PartnerBanner/', data).success(function(data){
+				Restful.post('api/PlanText/', $scope.data).success(function(data){
 					console.log(data);
-					init('api/PartnerBanner');
-					$('#banners').modal('hide')
+					init('api/PlanText');
+					$('#plan_text').modal('hide')
 					$scope.isDisabled = false;
+					$scope.service.alertMessage('<strong>Complete: </strong>Save Success.');
 				});
 			}
 		};
@@ -73,15 +45,16 @@ app.controller(
 		$scope.remove = function($index, params){
 			$alertify.okBtn("Ok")
 				.cancelBtn("Cancel")
-				.confirm("Are you sure you want to delete this image?", function (ev) {
+				.confirm("Are you sure you want to delete this plan?", function (ev) {
 					// The click event is in the
 					// event variable, so you can use
 					// it here.
 					ev.preventDefault();
-					Restful.delete( 'api/PartnerBanner/' + params.id, params ).success(function(data){
-						$scope.disabled = true;console.log(data);
+					Restful.delete( 'api/PlanText/' + params.id, params ).success(function(data){
+						$scope.disabled = true;
+						console.log(data);
 						$scope.service.alertMessage('<strong>Complete: </strong>Delete Success.');
-						$scope.banners.elements.splice($index, 1);
+						$scope.plans.elements.splice($index, 1);
 					});
 				}, function(ev) {
 					// The click event is in the
@@ -89,30 +62,6 @@ app.controller(
 					// it here.
 					ev.preventDefault();
 				});
-		};
-
-		//functionality upload
-		$scope.uploadPic = function(file) {
-			if (file) {
-				file.upload = Upload.upload({
-					url: 'api/ImageUpload',
-					data: {file: file, username: $scope.username},
-				});
-				file.upload.then(function (response) {
-					$timeout(function () {
-						file.result = response.data;
-						$scope.image = response.data.image;
-						$scope.image_thumbnail = response.data.image_thumbnail;
-						//file.result.substring(1, file.result.length - 1);
-					});
-				}, function (response) {
-					if (response.status > 0)
-						$scope.errorMsg = response.status + ': ' + response.data;
-				}, function (evt) {
-					// Math.min is to fix IE which reports 200% sometimes
-					file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-				});
-			}
 		};
 
 	}

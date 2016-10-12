@@ -16,6 +16,7 @@ class RestApiPlanPrice extends RestApi {
         $obj = new PlanPriceObject();
         $obj->setId($this->getId());
         $obj->setProperties($params['PUT']);
+        $obj->setCreateBy($_SESSION['admin']['username']);
         $obj->update();
         return array(
             'data' => array(

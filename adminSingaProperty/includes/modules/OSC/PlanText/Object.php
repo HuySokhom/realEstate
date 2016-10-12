@@ -108,7 +108,7 @@ class Object extends DbObj {
 				'" . $this->dbEscape($this->getGoldInfo()) . "',
 				'" . (int)$this->getSortOrder() . "',
 				NOW(),
-				'" . (int)$this->getCreateBy() . "',
+				'" . (int)$this->getCreateBy() . "'
 			)
 		");
 		$this->setId($this->dbInsertId());

@@ -71,7 +71,8 @@ class Object extends DbObj {
 			SET
 				plan_name = '" . $this->dbEscape( $this->getPlanName() ) . "',
 				price = '" . $this->dbEscape( $this->getPrice() ) . "',
-				limit_product = '" . $this->dbEscape( $this->getLimitProduct() ) . "'
+				limit_product = '" . $this->dbEscape( $this->getLimitProduct() ) . "',
+				update_by = '" . $this->dbEscape( $this->getUpdateBy() ) . "'
 			WHERE
 				id = '" . (int)$this->getId() . "'
 		");		
