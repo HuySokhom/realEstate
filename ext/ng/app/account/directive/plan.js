@@ -3,7 +3,22 @@ app.directive('plan',function(){
         restrict: 'EA',
         templateUrl : 'ext/ng/app/account/partials/plan.html',
         controller: function ($scope, $http, alertify) {
-
+            // init plan price
+            $http({
+                url: 'api/PlanPrice',
+                method: 'GET',
+            }).success(function(data){
+                console.log(data);
+                $scope.planPrice = data.elements;
+            });
+            // init plan description
+            $http({
+                url: 'api/PlanText',
+                method: 'GET',
+            }).success(function(data){
+                console.log(data);
+                $scope.planDescriptions = data.elements;
+            });
             $scope.customers_plan = $("#customers_plan").val();
 
             $scope.book = function (planNumber) {
