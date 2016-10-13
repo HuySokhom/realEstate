@@ -9,30 +9,6 @@
 		>
 	</div>
 	<div class="col-md-4">
-		<label>Plan:</label>
-		<span
-			data-ng-class="
-				(customers_plan == 3) ? 'label label-danger'
-				: (customers_plan == 2) ? 'label label-primary'
-				: (customers_plan == 1) ? 'label label-success'
-				: 'label label-default'
-			"
-				data-ng-bind="
-				(customers_plan == 3) ? 'Plan Pro'
-				: (customers_plan == 2) ? 'Plan Premium'
-				: (customers_plan == 1) ? 'Plan Basic'
-				: 'Plan Free'
-			"
-			style="font-size: 14px;"
-		></span>
-	</div>
-	<div class="col-md-4" data-ng-if="customers_plan > 0">
-		<td>
-			<label>Plan Expire:</label>
-			<span class="label label-primary" style="font-size: 14px;" data-ng-bind="service.formatDate(plan_expire) | date:'dd/MMMM/yyyy'"></span>
-		</td>
-	</div>
-	<div class="col-md-4">
 		<label>User Name:</label>
 		<span data-ng-bind="user_name"></span>
 	</div>

@@ -2,31 +2,6 @@
 	<table class="table">
 		<tr>
 			<td>
-				<label>Plan:</label>
-				<span
-					data-ng-class="
-						(customers_plan == 3) ? 'label label-danger'
-						: (customers_plan == 2) ? 'label label-primary'
-						: (customers_plan == 1) ? 'label label-success'
-						: 'label label-default'
-					"
-				 	data-ng-bind="
-						(customers_plan == 3) ? 'Plan Pro'
-						: (customers_plan == 2) ? 'Plan Premium'
-						: (customers_plan == 1) ? 'Plan Basic'
-						: 'Plan Free'
-				 	"
-				></span>
-			</td>
-		</tr>
-		<tr data-ng-if="customers_plan > 0">
-			<td>
-				<label>Plan Expire:</label>
-				<span class="label label-primary" data-ng-bind="service.formatDate(plan_expire) | date:'dd/MMMM/yyyy'"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>
 				<label>User Name:</label>
 				<input type="text" data-ng-model="user_name" required="required" class="form-control" />
 			</td>

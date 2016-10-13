@@ -33,12 +33,26 @@
       tep_session_recreate();
     }
 
-    $customer_info_query = tep_db_query("select c.customers_firstname, c.customers_limit_products, c.customers_plan, c.user_type, c.user_name, c.customers_lastname, c.customers_default_address_id, ab
-.entry_country_id, ab.entry_zone_id from " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " ab on (c.customers_id = ab.customers_id and c.customers_default_address_id = ab.address_book_id) where c.customers_id = '" . (int)$login_customer_id . "'");
+    $customer_info_query = tep_db_query("
+      select c.customers_firstname,
+          c.customers_limit_products, c.customers_plan,
+          c.user_type, c.user_name, c.plan_expire,
+          c.customers_lastname, c.customers_default_address_id,
+          ab.entry_country_id, ab.entry_zone_id
+      from
+          " . TABLE_CUSTOMERS . " c left join " . TABLE_ADDRESS_BOOK . " ab
+              on
+          (c.customers_id = ab.customers_id and c.customers_default_address_id = ab.address_book_id)
+      where
+          c.customers_id = '" . (int)$login_customer_id . "'
+    ");
     $customer_info = tep_db_fetch_array($customer_info_query);
 
     $customer_id = $login_customer_id;
     tep_session_register('customer_id');
+
+    $plan_expire = $customer_info['plan_expire'];
+    tep_session_register('plan_expire');
 
     $user_name = $customer_info['user_name'];
     tep_session_register('user_name');

@@ -81,6 +81,7 @@
     <input type="text" id="language_id" value="<?php echo $_SESSION['languages_id']; ?>" hidden>
     <input type="text" id="customers_plan" value="<?php echo $_SESSION['customer_plan']; ?>" hidden>
     <input type="text" id="customers_limit_products" value="<?php echo $_SESSION['customers_limit_products']; ?>" hidden>
+    <input type="text" id="customers_expire_plan" value="<?php echo $_SESSION['plan_expire']; ?>" hidden>
     <input type="text" id="url" value="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" hidden>
       <?php require(DIR_WS_INCLUDES . 'header.php');
         $url = $_SERVER['REQUEST_URI'];

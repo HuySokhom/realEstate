@@ -4,47 +4,34 @@
             <tbody>
                 <tr>
                     <th></th>
-                    <th class="plan-header plan-header-free">
-                        <div class="pricing-plan-name">Standard</div>
+                    <th class="plan-header" data-ng-repeat="p in planPrice"
+                        data-ng-class="$index == 0 ? 'plan-header-free' : $index == 1 ? 'plan-header-blue' : 'plan-header-standard'">
+                        <div class="pricing-plan-name">
+                            {{p.plan_name}}
+                        </div>
                         <div class="pricing-plan-price">
-                            <sup>$</sup>0<span>.00</span>
+                            {{p.price | currency}}
                         </div>
                         <div class="pricing-plan-period">month</div>
-                    </th>
-                    <th class="plan-header plan-header-blue">
-                        <div class="pricing-plan-name">Silver </div>
-                        <div class="pricing-plan-price">
-                            <sup>$</sup>4<span>.99</span>
-                        </div>
-                        <div class="pricing-plan-period">month</div>
-                    </th>
-                    <th class="plan-header plan-header-standard">
-                        <div class="header-plan-inner">
-                            <div class="pricing-plan-name">Gold</div>
-                            <div class="pricing-plan-price">
-                                <sup>$</sup>34<span>.99</span>
-                            </div>
-                            <div class="pricing-plan-period">month</div>
-                        </div>
                     </th>
                 </tr>
                 <tr>
                     <td></td>
-                    <td class="action-header">
+                    <td class="action-header" data-ng-repeat="p in planPrice">
                         <div class="current-plan">
-                            <div class="with-date">Current Plan</div>
-                            <div><em class="smaller block">renews Feb 19, 2015</em></div>
+                            <div data-ng-show="currentPlan == p.id">
+                                <div class="with-date">
+                                    Current Plan
+                                </div>
+                                <em class="smaller block" data-ng-if="currentPlan != 1">
+                                    <span class="label label-danger">expire:  {{currentPlanExpire | date: 'dd-MMM-yyyy'}}</span>
+                                </em>
+                            </div>
+                            <a class="btn btn-success" data-ng-click="upgrade(p.id);" data-ng-hide="currentPlan == p.id">
+                                <span data-ng-bind="currentPlan >= p.id ? 'Downgrade' : 'Upgrade'">
+                                </span>
+                            </a>
                         </div>
-                    </td>
-                    <td class="action-header">
-                        <a class="btn btn-success">
-                            Upgrade
-                        </a>
-                    </td>
-                    <td class="action-header">
-                        <a class="btn btn-info">
-                            Upgrade
-                        </a>
                     </td>
                 </tr>
                 <tr data-ng-repeat="p in planDescriptions">

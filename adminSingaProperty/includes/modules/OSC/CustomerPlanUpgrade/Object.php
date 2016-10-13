@@ -81,23 +81,18 @@ class Object extends DbObj {
 		}
 
 		if($this->getStatus() == 1){
-			$numberLimit = 0;
-			if($this->getPlan() == 1){
-				$numberLimit = 20;
-			}
-			if($this->getPlan() == 2){
-				$numberLimit = 50;
-			}
-			if($this->getPlan() == 3){
-				$numberLimit = 120;
-			}
+			$query = tep_db_query("select limit_product from plan_price where id = '" . $this->getPlan() . "'");
+			$plan = tep_db_fetch_array($query);
+
 			//	update customer plan table
 			$this->dbQuery("
 				UPDATE
 					customers
 				SET
 					customers_plan = '" .  $this->getPlan() . "',
-					customers_limit_products = " . $numberLimit . ",
+					plan_date = NOW(),
+					plan_expire = DATE_ADD(NOW(), INTERVAL 31 DAY),
+					customers_limit_products = " . $plan['limit_product'] . ",
 					update_by = '" . $this->getUpdateBy() . "'
 				WHERE
 					customers_id = '" . (int)$this->getCustomersId() . "'

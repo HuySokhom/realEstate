@@ -16,7 +16,7 @@
 
 .membership-pricing-table table .plan-header {
     text-align: center;
-    font-size: 48px;
+    font-size: 33px;
     border: 1px solid #e2e2e2;
     padding: 25px 0;
 }
@@ -90,8 +90,8 @@
 }
 
 .membership-pricing-table table tr:first-child th .pricing-plan-period {
-    margin-top: -7px;
-    font-size: 25%
+    /*margin-top: -7px;*/
+    font-size: 50%
 }
 
 .membership-pricing-table table .header-plan-inner {

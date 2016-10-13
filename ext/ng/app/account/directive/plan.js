@@ -3,6 +3,8 @@ app.directive('plan',function(){
         restrict: 'EA',
         templateUrl : 'ext/ng/app/account/partials/plan.html',
         controller: function ($scope, $http, alertify) {
+            $scope.currentPlan = $('#customers_plan').attr('value');
+            $scope.currentPlanExpire = new Date($('#customers_expire_plan').attr('value'));
             // init plan price
             $http({
                 url: 'api/PlanPrice',
@@ -22,6 +24,10 @@ app.directive('plan',function(){
             $scope.customers_plan = $("#customers_plan").val();
 
             $scope.book = function (planNumber) {
+                if($scope.currentPlan > 1){
+                    $scope.upgrade(planNumber);
+                    return;
+                }
                 $scope.disabled = true;
                 var params = {plan: planNumber};
                 $http({
@@ -30,17 +36,11 @@ app.directive('plan',function(){
                     data: params
                 }).success(function(data){console.log(data);
                     $scope.disabled = false;
-                    if(data.id != "success"){
-                        alertify.alert("" +
-                            '<b>Congratulation: </b><img src="images/book.jpg" width="50px;"> Your book has successful. ' +
-                            "<br/>Please wait our assistant will contact you  soon."
-                        );
-                    }else{
-                        alertify.alert("" +
-                            '<b>Successful: </b><img src="images/book.jpg" width="50px;"> You already book. ' +
-                            "<br/>Please wait our assistant will contact you  soon."
-                        );
-                    }
+                    alertify.alert("" +
+                        '<b>Successful: </b><img src="images/book.jpg" width="50px;"> ' +
+                        "<br/>Please wait our assistant will contact you  soon."
+                    );
+
                 });
             };
 
@@ -55,7 +55,7 @@ app.directive('plan',function(){
                     console.log(data);
                     $scope.disabled = false;
                     alertify.alert("" +
-                        '<b>Congratulation:</b><img src="images/upgrade.png" width="50px;">  Your upgrade has successful. ' +
+                        '<b>Successful:</b><img src="images/upgrade.png" width="50px;">' +
                         "<br/>Please wait our assistant will contact you  soon."
                     );
                 });

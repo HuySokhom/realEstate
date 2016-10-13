@@ -24,7 +24,7 @@
   tep_session_unregister('customer_last_name');
   tep_session_unregister('customer_country_id');
   tep_session_unregister('customer_zone_id');
-
+  tep_session_unregister('plan_expire');
   tep_session_unregister('customers_plan');
   tep_session_unregister('customers_limit_products');
 
