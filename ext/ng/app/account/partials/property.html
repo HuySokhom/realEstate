@@ -72,22 +72,13 @@
 				ID
 			</th>
 			<th>
-				Category
-			</th>
-			<th>
 				Title
-			</th>
-			<th>
-				Type
 			</th>
 			<th>
 				Price
 			</th>
 			<th>
 				View
-			</th>
-			<th>
-				Plan
 			</th>
 			<th>
 				Boost
@@ -101,35 +92,13 @@
 				{{p.products_id}}
 			</td>
 			<td>
-				{{p.categories_name}}
-			</td>
-			<td>
 				<span data-ng-bind="p.products_name"></span>
-			</td>
-
-			<td>
-				<span data-ng-bind="p.products_kind_of"></span>
 			</td>
 			<td>
 				<span data-ng-bind="p.products_price | currency"></span>
 			</td>
 			<td>
 				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
-			</td>
-			<td>
-				<span data-ng-bind="
-					(p.products_promote == 3) ? 'Plan Pro'
-					: (p.products_promote == 2) ? 'Plan Premium'
-					: (p.products_promote == 1) ? 'Plan Basic'
-					: 'Plan Free'
-				"
-				data-ng-class="
-					(p.products_promote == 3) ? 'label label-danger'
-					: (p.products_promote == 2) ? 'label label-primary'
-					: (p.products_promote == 1) ? 'label label-success'
-					: 'label label-default'
-				"
-				></span>
 			</td>
 			<td>
 				<div data-ng-if="p.products_promote > 0" style="text-align: center;">

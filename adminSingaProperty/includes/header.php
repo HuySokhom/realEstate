@@ -50,7 +50,6 @@
         <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Configuration</span></a>
         <ul>
           <li><a href="administrators.php">Administrators</a></li>
-          <li><a href="#/customer_plan">Customer Book Plan</a></li>
           <li><a href="#/partner_banner">Partner Banner</a></li>
           <li><a href="#/advertising_banner">Advertising Banner</a></li>
           <li><a href="#/plan_text">Plan Text</a></li>
@@ -131,7 +130,7 @@
       </li>
       <!-- END MESSAGES -->
       <!-- TASKS -->
-      <li class="xn-icon-button pull-right">
+      <li class="xn-icon-button pull-right" style="display: none;">
         <a href="#"><span class="fa fa-tasks"></span></a>
         <div class="informer informer-warning"><?php echo $countBook['total'];?></div>
         <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">

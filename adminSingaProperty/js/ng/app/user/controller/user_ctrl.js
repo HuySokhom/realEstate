@@ -17,20 +17,16 @@ app.controller(
 		$scope.init();
 		$scope.sortType = [
 			{
-				id: 0,
+				id: 1,
 				name: 'Free Plan'
 			},
 			{
-				id: 1,
-				name: 'Basic Plan'
-			},
-			{
 				id: 2,
-				name: 'Premium Plan'
+				name: 'Silver Plan'
 			},
 			{
 				id: 3,
-				name: 'Pro Plan'
+				name: 'Gold Plan'
 			},
 		];
 		$scope.updateStatus = function(params){

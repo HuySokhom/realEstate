@@ -176,6 +176,7 @@
           'customers_lastname' => $lastname,
           'customers_email_address' => $email_address,
           'customers_telephone' => $telephone,
+          'customers_plan' => 1,
           'customers_fax' => $fax,
           'customers_newsletter' => $newsletter,
           'customers_password' => tep_encrypt_password($password),
@@ -236,7 +237,7 @@
       tep_session_register('customer_country_id');
       tep_session_register('customer_zone_id');
 
-      $customer_plan = 0;
+      $customer_plan = 1;
       tep_session_register('customer_plan');
 
       $customers_limit_products = 0;
@@ -263,7 +264,7 @@
       $email_text .= EMAIL_WELCOME . EMAIL_TEXT . EMAIL_CONTACT . EMAIL_WARNING;
       tep_mail($name, $email_address, EMAIL_SUBJECT, $email_text, STORE_OWNER, STORE_OWNER_EMAIL_ADDRESS);
 
-      tep_redirect(tep_href_link(FILENAME_CREATE_ACCOUNT_SUCCESS, '', 'SSL'));
+      tep_redirect(tep_href_link(FILENAME_ACCOUNT, '', 'SSL'));
     }
   }
 

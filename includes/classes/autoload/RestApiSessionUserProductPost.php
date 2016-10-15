@@ -136,8 +136,13 @@ class RestApiSessionUserProductPost extends RestApi {
 					");
 					$countLimit = tep_db_fetch_array($queryLimit);
 					$numberOfLimitQuery = (int)$countLimit['total'];
-					if ( $numberOfLimitQuery < $limitProductPromote ) {
+					if($limitProductPromote == 0){
 						$productObject->setProductsPromote($promoteProductNumber);
+					}
+					else {
+						if ($numberOfLimitQuery < $limitProductPromote) {
+							$productObject->setProductsPromote($promoteProductNumber);
+						}
 					}
 				}
 			}
@@ -284,7 +289,9 @@ class RestApiSessionUserProductPost extends RestApi {
 							");
 							$count = tep_db_fetch_array($query);
 							// check valid of product promote
-							if ($count['count'] < $limit) {
+							if ($limit == 0) {
+								// if limit set zero it mean unlimited promote product
+								// so user can update unlimited promote
 								tep_db_query("
 									update
 										products
@@ -296,8 +303,21 @@ class RestApiSessionUserProductPost extends RestApi {
 								echo 'success';
 								return;
 							} else {
-								echo 'limit';
-								return;
+								if ($count['count'] < $limit) {
+									tep_db_query("
+									update
+										products
+									set
+										products_promote = " . $plan . "
+									where
+										products_id = " . $this->getId() . "
+								");
+									echo 'success';
+									return;
+								} else {
+									echo 'limit';
+									return;
+								}
 							}
 						}
 					}
