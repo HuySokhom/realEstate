@@ -32,7 +32,7 @@
 			</div>
 			<div class="form-group has-feedback col-sm-3">
 				<select class="form-control" data-ng-model="type" data-ng-change="search()">
-					<option value="">--Search Type--</option>
+					<option value="">Search Type</option>
 					<option value="normal">Normal</option>
 					<option value="agency">Agency</option>
 					<option value="member">Member</option>
@@ -45,7 +45,7 @@
 					class="form-control"
 					data-ng-change="search()"
 				>
-					<option value="">--Select Plan--</option>
+					<option value="">Select Plan</option>
 				</select>
 			</div>
 		</div>
@@ -105,16 +105,14 @@
 			<td>
 				 <span
 					 data-ng-bind="
-                        (u.customers_plan == 3) ? 'Plan Pro'
-                        : (u.customers_plan == 2) ? 'Plan Premium'
-                        : (u.customers_plan == 1) ? 'Plan Basic'
-                        : 'Plan Free'
+                        (u.customers_plan == 3) ? 'Gold Plan'
+                        : (u.customers_plan == 2) ? 'Silver Plan'
+                        : 'Free Plan'
                     "
 					 data-ng-class="
-                        (u.customers_plan == 3) ? 'label label-danger'
-                        : (u.customers_plan == 2) ? 'label label-primary'
-                        : (u.customers_plan == 1) ? 'label label-success'
-                        : 'label label-default'
+                        (u.customers_plan == 3) ? 'label label-success'
+                        : (u.customers_plan == 2) ? 'label label-danger'
+                        : 'label label-primary'
                     "
 				 ></span>
 			</td>

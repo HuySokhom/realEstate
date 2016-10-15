@@ -9,20 +9,16 @@ app.controller(
 		$scope.service = new Services();
 		$scope.sortType = [
 			{
-				id: 0,
+				id: 1,
 				name: 'Free Plan'
 			},
 			{
-				id: 1,
-				name: 'Basic Plan'
-			},
-			{
 				id: 2,
-				name: 'Premium Plan'
+				name: 'Silver Plan'
 			},
 			{
 				id: 3,
-				name: 'Pro Plan'
+				name: 'Gold Plan'
 			},
 		];
 		var params = {};
