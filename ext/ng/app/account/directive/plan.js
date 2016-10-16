@@ -10,7 +10,7 @@ app.directive('plan',function(){
                 url: 'api/PlanPrice',
                 method: 'GET',
             }).success(function(data){
-                console.log(data);
+                //console.log(data);
                 $scope.planPrice = data.elements;
             });
             // init plan description
@@ -18,7 +18,7 @@ app.directive('plan',function(){
                 url: 'api/PlanText',
                 method: 'GET',
             }).success(function(data){
-                console.log(data);
+                //console.log(data);
                 $scope.planDescriptions = data.elements;
             });
             $scope.customers_plan = $("#customers_plan").val();
@@ -52,7 +52,7 @@ app.directive('plan',function(){
                     method: 'POST',
                     data: params
                 }).success(function(data){
-                    console.log(data);
+                    //console.log(data);
                     $scope.disabled = false;
                     alertify.alert("" +
                         '<b>Successful:</b><img src="images/upgrade.png" width="50px;">' +

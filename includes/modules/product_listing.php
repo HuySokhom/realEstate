@@ -23,32 +23,31 @@
    }
    switch ($listing['products_promote']) {
         case 3:
-            $text = 'Pro Featured';
-            $class = 'pro';
-            break;
-        case 2:
-            $text = 'Premium Featured';
-            $class = 'premium';
-            break;
-        case 1:
-            $text = 'Basic Featured';
-            $class = 'basic';
-            break;
-        default:
-            $text = 'Free';
-            $class = 'free';
+                $classBig = 'col-md-6';
+                $classSmall = 'col-sm-6';
+                $width = '250px';
+                break;
+            case 2:
+                $classBig = 'col-md-4';
+                $classSmall = 'col-sm-8';
+                $width = '195px';
+                break;
+            default:
+                $classBig = 'col-md-3';
+                $classSmall = 'col-sm-9';
+                $width = '150px';
     }
     $prod_list_contents .= '
         <div class="property-listing-box sale-block">
             <!-- Property Main Box -->
             <div class="property-main-box">
-              <div class="col-md-4 p_z">
-                <a title="Property Image" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
-                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: 197px;"') . '
+              <div class="'.$classBig.' p_z">
+                <a title="' . $listing['products_name'] .'" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
+                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: '.$width.';"') . '
                 </a>
                 <div class="' . $class . '">'. $text .'</div>
               </div>
-              <div class="col-md-8 p_z">
+              <div class="'.$classSmall.' p_z">
                 <div class="property-details">
                   <a
                     title="Property Title"
@@ -113,7 +112,7 @@
 <?php
 } else {
 ?>
-    <div class="property-left col-md-12 col-sm-6 p_l_z content-area">
+    <div class="property-left p_l_z content-area">
       <div class="alert alert-info"><?php echo TEXT_NO_PRODUCTS; ?></div>
     </div>
 <?php

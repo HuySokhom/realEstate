@@ -9,7 +9,7 @@ $content = tep_db_fetch_array($query);
 <div class="container margin-top">
   <?php include('advanced_search_box_right.php');?>
   <div class="contentContainer col-md-8 col-sm-6 row">
-    <h3><?php echo $content['pages_title']; ?></h3>
+    <h3 style="margin-top: 0px;"><?php echo $content['pages_title']; ?></h3>
     <p style="text-align: justify;">
       <?php echo $content['content'];?>
     </p>

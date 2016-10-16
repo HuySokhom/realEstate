@@ -38,27 +38,26 @@
     while ($new_products = tep_db_fetch_array($new_products_query)) {
         switch ($new_products['products_promote']) {
             case 3:
-                $text = 'Pro Featured';
-                $class = 'pro';
+                $classBig = 'col-md-6';
+                $classSmall = 'col-sm-6';
+                $width = '250px';
                 break;
             case 2:
-                $text = 'Premium Featured';
-                $class = 'premium';
-                break;
-            case 1:
-                $text = 'Basic Featured';
-                $class = 'basic';
+                $classBig = 'col-md-4';
+                $classSmall = 'col-sm-4';
+                $width = '195px';
                 break;
             default:
-                $text = 'Free';
-                $class = 'free';
+                $classBig = 'col-md-3';
+                $classSmall = 'col-sm-3';
+                $width = '150px';
         }
         $p_name = $new_products['products_name'];
           $new_prods_content .= '
 
             <div class="item">
               <!-- col-md-12 -->
-              <div class="col-md-6 col-sm-6 col-home rent-block">
+              <div class="'.$classBig.' '.$classSmall.' col-home rent-block">
                 <!-- Property Main Box -->
                 <div class="property-main-box">
                   <div class="property-images-box">
@@ -69,7 +68,7 @@
                     '
                         . tep_image(DIR_WS_IMAGES . $new_products['products_image_thumbnail'],
                         $new_products['products_name'], SMALL_IMAGE_WIDTH,
-                        SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 250px;"') .
+                        SMALL_IMAGE_HEIGHT, 'style="width:100%; height: '.$width.';"') .
                     '
                         </a>
                     <h4>
