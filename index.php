@@ -53,11 +53,14 @@
           p.products_id,
           p.products_promote,
           SUBSTRING_INDEX(pd.products_description, ' ', 20) as products_description,
-          p.products_price
+          p.products_price,
+          c.photo_thumbnail as company_logo
       from
-          products_description pd, products p
+          products_description pd, products p, customers c
       where
           p.products_status = 1
+              and
+          c.customers_id = p.customers_id
               and
           pd.products_id = p.products_id
               and

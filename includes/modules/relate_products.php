@@ -81,7 +81,7 @@ if ($num_new_products_sale > 0) {
                       SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 200px;"') .
                   '
                 </a>
-                <div class="' . $class . '">'. $text .'</div>
+                <div class="' . $class . '" style="display: none;">'. $text .'</div>
                 <h4>
                     ' . $currencies->display_price($new_products_sale['products_price'], tep_get_tax_rate($new_products_sale['products_tax_class_id'])) . '
                 </h4>

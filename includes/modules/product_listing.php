@@ -25,17 +25,20 @@
         case 3:
                 $classBig = 'col-md-6';
                 $classSmall = 'col-sm-6';
-                $width = '250px';
+                $height = '268px';
+                $heightLogo = ' style="max-width: 120px;max-height: 60px;margin-bottom: 10px;"';
                 break;
             case 2:
-                $classBig = 'col-md-4';
-                $classSmall = 'col-sm-8';
-                $width = '195px';
+                $classBig = 'col-md-5';
+                $classSmall = 'col-sm-7';
+                $height = '228px';
+                $heightLogo = ' style="max-width: 100px;max-height: 37px;margin-bottom: 10px;"';
                 break;
             default:
-                $classBig = 'col-md-3';
-                $classSmall = 'col-sm-9';
-                $width = '150px';
+                $classBig = 'col-md-4';
+                $classSmall = 'col-sm-8';
+                $height = '200px';
+                $heightLogo = '';
     }
     $prod_list_contents .= '
         <div class="property-listing-box sale-block">
@@ -43,7 +46,7 @@
             <div class="property-main-box">
               <div class="'.$classBig.' p_z">
                 <a title="' . $listing['products_name'] .'" href="' . tep_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . $listing['products_id']) . '">
-                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: '.$width.';"') . '
+                     ' . tep_image(DIR_WS_IMAGES . $listing['products_image_thumbnail'], '', '', '', 'style="width: 100%;height: '.$height.';"') . '
                 </a>
                 <div class="' . $class . '">'. $text .'</div>
               </div>
@@ -61,6 +64,7 @@
                   <p>
                     ' . $str_description .'
                   </p>
+                  '. ($listing['products_promote'] > 1 ? '<img src="images/' . $listing['company_logo'] . '" '. $heightLogo .'/>'  : '' ).'
                   <ul>
                     <li>
                         <i
