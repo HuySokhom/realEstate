@@ -126,17 +126,6 @@
 ?>
 <div class="contentContainer">
 <?php
-	if(!empty($_SERVER['HTTPS'])){
-		$url = "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	}else{
-		$url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-	}
-	// Construct sharing URL without using any script
-	$twitterURL = 'https://twitter.com/intent/tweet?text='.$product_info['products_name'].'&amp;url='.$url;
-	$facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$url;
-	$googleURL = 'https://plus.google.com/share?url='.$url;
-	$linkedinURL = 'http://www.linkedin.com/shareArticle?url='.$url.'&title='.$product_info['products_name'].'';
-
     if (tep_not_null($product_info['products_image'])) {
 
 		$pi_query = tep_db_query("select image, image_thumbnail, htmlcontent from " . TABLE_PRODUCTS_IMAGES . " where
@@ -149,10 +138,6 @@
 			<!-- container -->
 			<div class="container">
 				<div class="property-details-content property-details-content2 container-fluid p_z">
-					<!-- col-md-3 -->
-					<?php
-						require('advanced_search_box_right.php');
-					?>
 					<!-- col-md-9 -->
 					<div class="col-md-9 col-sm-8 p_l_z">
 						<!-- Slider Section -->
@@ -261,8 +246,51 @@
 						<?php
 							include(DIR_WS_MODULES . 'relate_products.php');
 						?>
-					</div><!-- col-md-9 /- -->
+						<div class="clearfix"></div>
+					</div>
+					<!-- col-md-9 /- -->
 					<!-- col-md-3 /- -->
+					<!-- col-md-3 -->
+					<div class="col-md-3 col-sm-4">
+						<div class="agent-information p_z">
+							<div class="agent-form">
+								<h3>Make an Enquiry</h3>
+								<form name="make_enquiry" data-ng-submit="sendMail();">
+									<div class="p_l_z">
+										<input type="text"
+											   placeholder="<?php echo ENTRY_NAME; ?>"
+											   data-ng-model="name"
+											   required />
+									</div>
+									<div class="p_r_z">
+										<input type="email"
+											   placeholder="<?php echo ENTRY_EMAIL_ADDRESS;?>"
+											   required=""
+											   data-ng-model="email"
+											   style="
+													border: none;
+													background-color: transparent;
+													padding: 12px 0;
+													border-bottom: 2px solid #c8c8c8;
+													width: 100%;
+													margin-bottom: 30px;" />
+									</div>
+									<textarea required=""
+											  placeholder="<?php echo TEXT_MESSAGE; ?>"
+											  data-ng-model="enquiry"
+											  rows="5"
+											  class="enquiry">
+									</textarea>
+									<button type="submit" class="btn">Submit</button>
+									<span style="color: #D33E63;">{{message}}</span>
+								</form>
+							</div>
+						</div>
+
+						<?php
+							require('advertisement_right.php');
+						?>
+					</div>
 				</div>
 			</div><!-- container /- -->
 		</div><!-- Property Detail Page /- -->

@@ -102,7 +102,7 @@ require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_ADVANCED_SEARCH);
     while ($adv = tep_db_fetch_array($adv_query)) {
       echo '
         <a href="http://' . $adv['link'] . '" title="' . $adv['title'] . '">
-          <img src="images/' . $adv['image'] . '" />
+          <img src="images/' . $adv['image'] . '" class="adv"/>
         </a>
       ';
     }

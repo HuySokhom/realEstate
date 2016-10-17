@@ -4,7 +4,7 @@
     <!-- container -->
     <div class="container">
         <!-- col-md-3 -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-3">
             <div class="footerbox">
                 <h3><?php echo HEADING_FOOTER_PROFILE; ?></h3>
                 <address>
@@ -22,18 +22,33 @@
         </div><!-- col-md-3 -->
 
         <!-- col-md-3 -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-3">
             <!-- Quick Link Widget -->
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_CONTACT; ?></h3>
                 <div>
-                    <a title="contact" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=7');?>">
+                    <a title="<?php echo TEXT_CONTACT_US; ?>" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=7');?>">
                         <?php echo TEXT_CONTACT_US; ?>
                     </a>
                 </div>
                 <div>
-                    <a title="about" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=6');?>">
+                    <a title="<?php echo TEXT_ABOUT_US; ?>" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=6');?>">
                         <?php echo TEXT_ABOUT_US; ?>
+                    </a>
+                </div>
+                <div>
+                    <a title="<?php echo TEXT_SERVICE; ?>" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=3');?>">
+                        <?php echo TEXT_SERVICE; ?>
+                    </a>
+                </div>
+                <div>
+                    <a title="<?php echo TEXT_LINK; ?>" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=4');?>">
+                        <?php echo TEXT_LINK; ?>
+                    </a>
+                </div>
+                <div>
+                    <a title="<?php echo TEXT_GUIDE; ?>" href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=5');?>">
+                        <?php echo TEXT_GUIDE; ?>
                     </a>
                 </div>
             </aside>
@@ -41,7 +56,7 @@
         </div><!-- col-md-3 -->
 
         <!-- col-md-3 -->
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-3">
             <!-- Address Widget -->
             <aside class="footerbox">
                 <h3 class="widget-title"><?php echo HEADING_FOOTER_TERM; ?></h3>
@@ -58,15 +73,42 @@
                 <div>
                     <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=10');?>"><?php echo Disclaimer;?></a>
                 </div>
+                <div>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=2');?>">
+                        <?php echo TEXT_COMMUNITY;?>
+                    </a>
+                </div>
+                <div>
+                    <a href="<?php echo tep_href_link(FILENAME_PAGES, 'pages_id=1');?>">
+                        <?php echo TEXT_PUBLICATION;?>
+                    </a>
+                </div>
             </aside>
             <!-- Address Widget /- -->
         </div><!-- col-md-3 -->
+        <div class="col-md-3 col-sm-3">
+            <aside class="footerbox">
+                <h3 class="widget-title"><?php echo POPULAR_LOCATION; ?></h3>
+                <?php
+                    $queryPopLocation = tep_db_query("select location_id, name from search_location");
+                    while( $popLocation = tep_db_fetch_array($queryPopLocation)){
+                        echo '<div>
+                                <a href="advanced_search_result.php?&location='. $popLocation['location_id'] .'">
+                                    '. $popLocation['name'] .'
+                                </a>
+                            </div>
+                        ';
+                    }
+                ?>
+
+            </aside>
+        </div>
    </div><!-- container /- -->
     <!-- Footer Bottom -->
     <div id="footer-bottom" class="footer-bottom">
         <!-- container -->
         <div class="container">
-            <p class="col-md-4 col-sm-6 col-xs-12">
+            <p class="col-md-6 col-sm-6 col-xs-12">
             <?php
                 echo 'Copyright &copy; ' . date('Y') . ' <a href="' . tep_href_link(FILENAME_DEFAULT) . '">' . STORE_NAME . '.</a>';
             ?>

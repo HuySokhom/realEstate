@@ -40,7 +40,13 @@
     /******************************************************************************************/
     /********************** Optional Product Filter by Categories *****************************/
     /******************************************************************************************/
-
+     $type = '';
+    if($HTTP_GET_VARS['type'] === 'buy'){
+        $type = " and p.products_kind_of = 'For Sale' ";
+    }
+     if($HTTP_GET_VARS['type'] === 'rent'){
+         $type = " and p.products_kind_of = 'For Rent' ";
+     }
     $listing_sql = "
       select
           p.products_image,
@@ -61,6 +67,7 @@
           p.products_status = 1
               and
           c.customers_id = p.customers_id
+            " . $type . "
               and
           pd.products_id = p.products_id
               and
@@ -76,7 +83,6 @@
 <div class="margin-top">
 
 <?php
-
     include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
 ?>
 

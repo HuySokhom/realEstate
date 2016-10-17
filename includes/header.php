@@ -105,7 +105,7 @@
                 <a href="javascript:;"><?php echo TEXT_BUY; ?></a>
                 <ul class="dropdown-menu" role="menu" style="text-transform: uppercase;">
                   <?php
-                  echo tep_get_categories_list();
+                  echo tep_get_categories_list('', '', '?type=buy');
                   ?>
                 </ul>
               </li>
@@ -113,7 +113,7 @@
                 <a href="javascript:;"><?php echo TEXT_RENT; ?></a>
                 <ul class="dropdown-menu" role="menu" style="text-transform: uppercase;">
                   <?php
-                    echo tep_get_categories_list();
+                    echo tep_get_categories_list('', '', '?type=rent');
                   ?>
                 </ul>
               </li>
