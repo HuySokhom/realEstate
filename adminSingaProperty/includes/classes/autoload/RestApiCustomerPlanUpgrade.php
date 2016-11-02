@@ -10,6 +10,7 @@ class RestApiCustomerPlanUpgrade extends RestApi {
 	public function get($params){
 		$col = new planCol();
 		$col->orderByDate('DESC');
+		$params['GET']['from_date'] ? $col->filterByDate($params['GET']['from_date'], $params['GET']['to_date']) : '';
 		$params['GET']['id'] ? $col->filterById($params['GET']['id']) : '';
 		if($params['GET']['status'] === 0){
 			//$col->filterByStatus($params['GET']['status']);

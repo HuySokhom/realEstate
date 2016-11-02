@@ -27,7 +27,8 @@ app.config([
 			.state('/customer_plan_upgrade', {
 				url: '/customer_plan_upgrade',
 				templateUrl: 'js/ng/app/customer_plan_upgrade/partials/index.html',
-				controller: 'customer_plan_upgrade_ctrl'
+				controller: 'customer_plan_upgrade_ctrl',
+				controllerAs: 'vm'
 			})
 			.state('/news', {
 				url: '/news',

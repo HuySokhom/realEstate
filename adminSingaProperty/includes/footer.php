@@ -73,6 +73,10 @@
 ></script>
 <script
     type="text/javascript"
+    src="js/ng/lib/angular-date-picker/angular-datepicker.js"
+></script>
+<script
+    type="text/javascript"
     src="js/ng/lib/angular-tinymce/tinymce.js"
 ></script>
 <script src="js/ng/lib/angular-upload/ng-file-upload-shim.min.js"></script>

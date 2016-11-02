@@ -22,6 +22,8 @@
 <link rel="stylesheet" type="text/css" href="css/theme-default.css">
 <link rel="stylesheet" type="text/css" href="css/select2/select2.css">
   <link rel="stylesheet" type="text/css" href="css/select2/select.css">
+
+  <link rel="stylesheet" type="text/css" href="js/ng/lib/angular-date-picker/angular-datepicker.css">
   <link
       type="text/javascript"
       src="js/ng/lib/angular-clock/angular-clock.css"

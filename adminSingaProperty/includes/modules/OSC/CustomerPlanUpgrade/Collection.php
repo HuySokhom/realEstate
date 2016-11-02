@@ -28,5 +28,10 @@ class Collection extends StdCollection {
 		$this->addWhere("cpu.status = '" . (int)$arg. "' ");
 	}
 
+	public function filterByDate($from, $to){
+		$new = $to .' ' . '23:59:59';
+		$this->addWhere("cpu.create_date BETWEEN '" . $from . "' AND '" . $new . "' ");
+	}
+
 
 }

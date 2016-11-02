@@ -13,6 +13,7 @@ var app = angular.module(
         , 'ds.clock'
         , 'ui.calendar'
         , 'ngCsv'
+        , 'cambodia.datepicker'
     ]
 );
 // range with number
