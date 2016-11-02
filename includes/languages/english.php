@@ -53,7 +53,7 @@ define(BEDS, 'Beds');
 define(BATHS, 'Baths');
 define(TEXT_RENT, 'Rent');
 define(TEXT_BUY, 'Buy');
-
+define('POPULAR_LOCATION', 'Popular Locations');
 define(TEXT_PUBLICATION, 'Publication');
 define(TEXT_COMMUNITY, 'Community');
 define(TEXT_OTHER, 'Other');

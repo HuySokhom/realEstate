@@ -48,7 +48,7 @@ define('HTML_PARAMS', 'dir="ltr" lang="en"');
 
 // charset for web pages and emails
 define('CHARSET', 'utf-8');
-
+define('POPULAR_LOCATION', 'ទីតាំងពេញនិយម');
 // page title
 define('TITLE', STORE_NAME);
 define(PROPERTY, 'អចលនទ្រព្យ');

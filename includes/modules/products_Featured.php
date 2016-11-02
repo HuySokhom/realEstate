@@ -69,7 +69,7 @@ if ($num_new_products_sale > 0) {
                   '
                     . tep_image(DIR_WS_IMAGES . $new_products_sale['products_image_thumbnail'],
                         $new_products_sale['products_name'], SMALL_IMAGE_WIDTH,
-                        SMALL_IMAGE_HEIGHT, 'style="width:100%; height: 170px;"'
+                        SMALL_IMAGE_HEIGHT, 'style="width:100%;"'
                     ) .
                 '
                 </a>

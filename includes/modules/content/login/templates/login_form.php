@@ -15,16 +15,10 @@
         <p class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_LOGIN, 'fa fa-sign-in', null, 'primary', NULL, 'btn-success btn-block'); ?></p>
 
       </form>
-    </div>
-  </div>
-
-  <p>
-    <a href="password_forgotten.php">
-      <button class="btn">
+      <a href="password_forgotten.php">
         <i class="fa fa-hand-o-right"></i>
         <?php echo MODULE_CONTENT_LOGIN_TEXT_PASSWORD_FORGOTTEN; ?>
-      </button>
-    </a>
-  </p>
-
+      </a>
+    </div>
+  </div>
 </div>

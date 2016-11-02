@@ -254,7 +254,7 @@
 					<div class="col-md-3 col-sm-4">
 						<div class="agent-information p_z">
 							<div class="agent-form">
-								<h3>Make an Enquiry</h3>
+								<h3><?php echo TEXT_MAKE_AN_ENQUIRY; ?></h3>
 								<form name="make_enquiry" data-ng-submit="sendMail();">
 									<div class="p_l_z">
 										<input type="text"

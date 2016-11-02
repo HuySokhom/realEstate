@@ -43,7 +43,7 @@ app.controller(
 
 			$alertify.okBtn("Ok")
 					.cancelBtn("Cancel")
-					.confirm("Are you sure want to delete this news?", function (ev) {
+					.confirm("Are you sure want to delete this user?", function (ev) {
 						// The click event is in the
 						// event variable, so you can use
 						// it here.
