@@ -16,10 +16,9 @@ app.controller(
                         $scope.csv.push({
                             id: value.customers_id,
                             name: value.user_name,
-                            plan: (value.plan == 3) ? 'Plan Pro'
-                                    : (value.plan == 2) ? 'Plan Premium'
-                                    : (value.plan == 1) ? 'Plan Basic'
-                                    : 'Plan Free',
+                            plan: (value.plan == 3) ? 'Gold'
+                                    : (value.plan == 2) ? 'Silver'
+                                    : 'Standard',
                             type: value.user_type,
                             telephone: value.customers_telephone,
                             email: value.customers_email_address,

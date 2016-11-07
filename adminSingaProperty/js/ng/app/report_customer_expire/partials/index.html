@@ -68,15 +68,13 @@
             <td>
                 <span
                     data-ng-bind="
-                        (p.plan == 3) ? 'Plan Pro'
-                        : (p.plan == 2) ? 'Plan Premium'
-                        : (p.plan == 1) ? 'Plan Basic'
-                        : 'Plan Free'
+                        (p.plan == 3) ? 'Gold'
+                        : (p.plan == 2) ? 'Silver'
+                        : 'Standard'
                     "
                     data-ng-class="
-                        (p.plan == 3) ? 'label label-danger'
-                        : (p.plan == 2) ? 'label label-primary'
-                        : (p.plan == 1) ? 'label label-success'
+                        (p.plan == 3) ? 'label label-success'
+                        : (p.plan == 2) ? 'label label-danger'
                         : 'label label-default'
                     "
                 ></span>
