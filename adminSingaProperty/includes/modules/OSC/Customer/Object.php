@@ -170,6 +170,7 @@ class Object extends DbObj {
 				customers_email_address = '" . $this->dbEscape( $this->getCustomersEmailAddress() ) . "',
 				photo = '" . $this->dbEscape( $this->getPhoto() ) . "',
 				customers_plan = '" . $this->getCustomersPlan() . "',
+				plan_expire = '" . $this->getPlanExpire() . "',
 				photo_thumbnail = '" . $this->dbEscape( $this->getPhotoThumbnail() ) . "',
 				customers_telephone = '" . $this->dbEscape( $this->getCustomersTelephone() ) . "',
 				customers_fax = '" . $this->dbEscape( $this->getCustomersFax() ) . "',

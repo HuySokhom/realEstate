@@ -33,9 +33,23 @@
 			</td>
 			<td>
 				<label>Start Date:</label>
-				<input type="text" class="form-control" data-ng-model="plan_date"/>
+				<div cambodia-date-picker date-format="y-MM-dd" class="input-group">
+					<input type="text" class="form-control" data-ng-model="plan_date" disabled/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="fa fa-calendar"></i>
+						</button>
+					</span>
+				</div>
 				<label>Expire Date:</label>
-				<input type="text" class="form-control" data-ng-model="plan_expire"/>
+				<div cambodia-date-picker date-format="y-MM-dd" class="input-group">
+					<input type="text" class="form-control" data-ng-model="plan_expire" placeholder="plan expire"/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="fa fa-calendar"></i>
+						</button>
+					</span>
+				</div>
 			</td>
 		</tr>
 		<tr>

@@ -66,7 +66,8 @@ app.controller(
 				customers_address: $scope.address,
 				photo: $scope.photo,
 				photo_thumbnail: $scope.photo_thumbnail,
-				customers_plan: $scope.user_plan
+				customers_plan: $scope.user_plan,
+                plan_expire: $scope.plan_expire,
 			};console.log(data);
 			$scope.disabled = false;
 
