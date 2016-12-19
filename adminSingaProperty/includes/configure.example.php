@@ -39,7 +39,7 @@
   define('DB_DATABASE', 'real_estate');
   define('USE_PCONNECT', 'false');
   define('STORE_SESSIONS', 'mysql');
-  define('CFG_TIME_ZONE', 'Europe/Berlin');
+  define('CFG_TIME_ZONE', 'Asia/Phnom_Penh');
 
    // autoload methods
   
