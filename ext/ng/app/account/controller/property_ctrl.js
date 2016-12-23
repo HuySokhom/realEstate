@@ -46,6 +46,8 @@ app.controller(
 					$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 				}else if (data == 'limit'){
 					$scope.service.alertMessagePromt('<strong>Warning: </strong> Your Plan Has Limit Boost Property.');
+				}else if (data == 'expire'){
+					$scope.service.alertMessagePromt('<strong>Warning: </strong> Your Plan Has Expire Boost Property. Please renew your account.');
 				}else{
 					$scope.service.alertMessagePromt('<strong>Warning: </strong> Please Upgrade Your Plan To Boost Property.');
 				}

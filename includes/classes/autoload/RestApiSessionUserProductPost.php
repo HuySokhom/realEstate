@@ -122,26 +122,21 @@ class RestApiSessionUserProductPost extends RestApi {
 			 ****** check if customer plan bigger than zero *********
 			 ********************************************************/
 			if( $params['POST']['products']['products_promote'] ) {
-				if ($promoteProductNumber > 0) {
-					/** count if have promote product has limitation of number **/
-					$queryLimit = tep_db_query("
-						SELECT
-							count(products_id) as total
-						FROM
-							products
-						WHERE
-							products_promote > 0
-								AND
-							customers_id = " . $userId . "
-					");
-					$countLimit = tep_db_fetch_array($queryLimit);
-					$numberOfLimitQuery = (int)$countLimit['total'];
-					if($limitProductPromote == 0){
-						$productObject->setProductsPromote($promoteProductNumber);
-					}
-					else {
-						if ($numberOfLimitQuery < $limitProductPromote) {
+				/** check date expire if expire NOW **/
+                $checkExpire = $this->checkExpire();
+				if($checkExpire > 0){
+					if ($promoteProductNumber > 0) {
+						/** count if have promote product has limitation of number **/
+						$numberOfLimitQuery = $this->checkAmountOfProperty();
+						// if the limit product promote from admin set 0 it mean
+                        // user can add unlimited of product promote
+						if($limitProductPromote == 0){
 							$productObject->setProductsPromote($promoteProductNumber);
+						}
+						else {
+							if ($numberOfLimitQuery < $limitProductPromote) {
+								$productObject->setProductsPromote($promoteProductNumber);
+							}
 						}
 					}
 				}
@@ -199,7 +194,30 @@ class RestApiSessionUserProductPost extends RestApi {
 				$col = $cols->getFirstElement();
 				$col->setProductsId($productId);
 				$col->setProperties($params['PUT']['products']);
-				$col->update();
+                $promoteProductNumber = (int)$_SESSION['customer_plan'];
+                $limitProductPromote = (int)$_SESSION['customers_limit_products'];
+                if( $params['PUT']['products']['products_promote'] ) {
+                    /** check date expire if expire NOW **/
+                    $checkExpire = $this->checkExpire();
+                    if($checkExpire > 0){
+                        if ($promoteProductNumber > 0) {
+                            /** count if have promote product has limitation of number **/
+                            $numberOfLimitQuery = $this->checkAmountOfProperty();
+                            // if the limit product promote from admin set 0 it mean
+                            // user can add unlimited of product promote
+                            if($limitProductPromote == 0){
+                                $col->setProductsPromote($promoteProductNumber);
+                            }
+                            else {
+                                if ($numberOfLimitQuery < $limitProductPromote) {
+                                    $col->setProductsPromote($promoteProductNumber);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $col->update();
 
 				// update category to product
 				$productToCategoryObject = new ProductToCategoryObj();
@@ -259,12 +277,16 @@ class RestApiSessionUserProductPost extends RestApi {
 				}
 				elseif( $params['PATCH']['name'] == "promote_product" ){
 					// check plan if upgrade product promote
-					$plan = (int)$_SESSION['customer_plan'];
-					if($plan > 0){
-						$productPromote = (int)$params['PATCH']['products_promote'];
-						$limit = (int)$_SESSION['customers_limit_products'];
+					// $plan = (int)$_SESSION['customer_plan'];
+
+                    $promoteProductNumber = (int)$_SESSION['customer_plan'];
+                    $limitProductPromote = (int)$_SESSION['customers_limit_products'];
+                    $productPromote = (int)$params['PATCH']['products_promote'];
+                    //$limit = (int)$_SESSION['customers_limit_products'];
+					if($promoteProductNumber > 0){
 						if($productPromote > 0){
-							// update if product promote bigger than 0 update plan
+							// update if product promote get product promote
+                            // bigger than so auto update products product to 0
 							tep_db_query("
 								update
 									products
@@ -276,6 +298,47 @@ class RestApiSessionUserProductPost extends RestApi {
 							echo 'success';
 							return;
 						}else {
+                            if( $params['PUT']['products']['products_promote'] ) {
+                                /** check date expire if expire NOW **/
+                                $checkExpire = $this->checkExpire();
+                                if($checkExpire > 0){
+                                    if ($promoteProductNumber > 0) {
+                                        /** count if have promote product has limitation of number **/
+                                        $numberOfLimitQuery = $this->checkAmountOfProperty();
+                                        // if the limit product promote from admin set 0 it mean
+                                        // user can add unlimited of product promote
+                                        if($limitProductPromote == 0){
+                                            tep_db_query("
+                                                update
+                                                    products
+                                                set
+                                                    products_promote = " . $promoteProductNumber . "
+                                                where
+                                                    products_id = " . $this->getId() . "
+                                            ");
+                                            echo 'success';
+                                            return;
+                                        }
+                                        else {
+                                            if ($numberOfLimitQuery < $limitProductPromote) {
+                                                $col->setProductsPromote($promoteProductNumber);
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    echo 'expire';
+                                    return;
+                                }
+                            }
+
+
+
+
+
+
+
+
+
 							// count number of product promote
 							$query = tep_db_query("
 								select
@@ -370,6 +433,41 @@ class RestApiSessionUserProductPost extends RestApi {
 			}
 		}
 	}
+
+
+    public function checkAmountOfProperty(){
+        $userId = $this->getOwner()->getId();
+        $queryLimit = tep_db_query("
+            SELECT
+                count(products_id) as total
+            FROM
+                products
+            WHERE
+                products_promote > 1
+                    AND
+                customers_id = " . $userId . "
+        ");
+        $countLimit = tep_db_fetch_array($queryLimit);
+        return (int)$countLimit['total'];
+    }
+
+    public function checkExpire(){
+        $userId = $this->getOwner()->getId();
+        /** check date expire if expire NOW **/
+        $queryExpire = tep_db_query("
+			select 
+			  count(customers_id) as total 
+			from 
+			  customers 
+			where 
+			  customers_id = " . (int)$userId . "
+			    and
+			  Date(plan_expire) >= Date(NOW())
+		");
+        $checkExpire = tep_db_fetch_array($queryExpire);
+        return ((int)$checkExpire['total']);
+    }
+
 
 }
 
