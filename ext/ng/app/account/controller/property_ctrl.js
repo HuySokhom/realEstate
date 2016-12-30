@@ -38,10 +38,10 @@ app.controller(
 		};
 
 		$scope.promote = function(params){
-			console.log(params);
+			//console.log(params);
 			var data = { products_promote: params.products_promote, name: "promote_product"};
 			Restful.patch('api/Session/User/ProductPost/' + params.products_id, data).success(function(data){
-				console.log(data);
+				//console.log(data);
 				if(data == 'success'){
 					$scope.service.alertMessage('<strong>Complete: </strong> Update Status Success.');
 				}else if (data == 'limit'){

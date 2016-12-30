@@ -101,10 +101,10 @@
 				<span data-ng-bind="p.products_viewed" class="label label-primary"></span>
 			</td>
 			<td>
-				<div data-ng-if="p.products_promote > 0" style="text-align: center;">
+				<div data-ng-if="p.products_promote > 1" style="text-align: center;">
 					<img src="images/dollar_sign.jpg" data-ng-click="promote(p);" style="width: 35px;cursor: pointer;">
 				</div>
-				<div data-ng-if="p.products_promote == 0" style="text-align: center;">
+				<div data-ng-if="p.products_promote == 0 || p.products_promote == 1" style="text-align: center;">
 					<img src="images/dollar.jpg" data-ng-click="promote(p);" style="width: 60px;cursor: pointer;">
 				</div>
 			</td>

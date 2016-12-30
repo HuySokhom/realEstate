@@ -298,7 +298,7 @@ class RestApiSessionUserProductPost extends RestApi {
 							echo 'success';
 							return;
 						}else {
-                            if( $params['PUT']['products']['products_promote'] ) {
+//                            if( $params['PATCH']['products_promote'] ) {
                                 /** check date expire if expire NOW **/
                                 $checkExpire = $this->checkExpire();
                                 if($checkExpire > 0){
@@ -321,67 +321,72 @@ class RestApiSessionUserProductPost extends RestApi {
                                         }
                                         else {
                                             if ($numberOfLimitQuery < $limitProductPromote) {
-                                                $col->setProductsPromote($promoteProductNumber);
-                                            }
+												tep_db_query("
+													update
+														products
+													set
+														products_promote = " . $promoteProductNumber . "
+													where
+														products_id = " . $this->getId() . "
+												");
+												echo 'success';
+												return;
+                                            }else{
+												echo 'limit';
+												return;
+											}
                                         }
                                     }
                                 }else{
                                     echo 'expire';
                                     return;
                                 }
-                            }
-
-
-
-
-
-
-
+//                            }
 
 
 							// count number of product promote
-							$query = tep_db_query("
-								select
-									count(customers_id) as count
-								from
-									products
-								where
-									customers_id = " . $userId . "
-										and
-									products_promote > 0
-							");
-							$count = tep_db_fetch_array($query);
-							// check valid of product promote
-							if ($limit == 0) {
-								// if limit set zero it mean unlimited promote product
-								// so user can update unlimited promote
-								tep_db_query("
-									update
-										products
-									set
-										products_promote = " . $plan . "
-									where
-										products_id = " . $this->getId() . "
-								");
-								echo 'success';
-								return;
-							} else {
-								if ($count['count'] < $limit) {
-									tep_db_query("
-									update
-										products
-									set
-										products_promote = " . $plan . "
-									where
-										products_id = " . $this->getId() . "
-								");
-									echo 'success';
-									return;
-								} else {
-									echo 'limit';
-									return;
-								}
-							}
+//							$query = tep_db_query("
+//								select
+//									count(customers_id) as count
+//								from
+//									products
+//								where
+//									customers_id = " . $userId . "
+//										and
+//									products_promote > 0
+//							");
+//							$count = tep_db_fetch_array($query);
+//							// check valid of product promote
+//							if ($limit == 0) {
+//								// if limit set zero it mean unlimited promote product
+//								// so user can update unlimited promote
+//								tep_db_query("
+//									update
+//										products
+//									set
+//										products_promote = " . $plan . "
+//									where
+//										products_id = " . $this->getId() . "
+//								");
+//								echo 'success';
+//								return;
+//							} else {
+//								if ($count['count'] < $limit) {
+//									tep_db_query("
+//									update
+//										products
+//									set
+//										products_promote = " . $plan . "
+//									where
+//										products_id = " . $this->getId() . "
+//								");
+//									echo 'success';
+//									return;
+//								} else {
+//									echo 'limit';
+//									return;
+//								}
+//							}
 						}
 					}
 					echo 'false';
